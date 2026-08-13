@@ -350,11 +350,11 @@ const DeliverableCard: React.FC<{ item: Deliverable }> = ({ item }) => {
 
               {item.benefits && (
                 <div>
-                  <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-1.5">{item.benefitsLabel ?? 'Key benefits'}</p>
+                  <p className="text-cyan-300 text-[11px] font-bold uppercase tracking-widest mb-1.5">{item.benefitsLabel ?? 'Key benefits'}</p>
                   <ul className="space-y-1">
                     {item.benefits.map((b) => (
                       <li key={b} className="text-slate-300 text-xs leading-relaxed flex gap-2">
-                        <span className="text-emerald-400 mt-1">•</span>
+                        <span className="text-cyan-400 mt-1">•</span>
                         <span>{b}</span>
                       </li>
                     ))}
@@ -364,11 +364,11 @@ const DeliverableCard: React.FC<{ item: Deliverable }> = ({ item }) => {
 
               {item.audience && (
                 <div>
-                  <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-1.5">Who should attend</p>
+                  <p className="text-cyan-300 text-[11px] font-bold uppercase tracking-widest mb-1.5">Who should attend</p>
                   <ul className="space-y-1">
                     {item.audience.map((a) => (
                       <li key={a} className="text-slate-300 text-xs leading-relaxed flex gap-2">
-                        <span className="text-emerald-400 mt-1">•</span>
+                        <span className="text-cyan-400 mt-1">•</span>
                         <span>{a}</span>
                       </li>
                     ))}
@@ -381,7 +381,7 @@ const DeliverableCard: React.FC<{ item: Deliverable }> = ({ item }) => {
               {item.pills && (
                 <div className="flex flex-wrap gap-2 pt-1">
                   {item.pills.map((p) => (
-                    <span key={p} className="text-[10px] font-semibold text-emerald-300 bg-emerald-400/10 border border-emerald-400/25 px-2.5 py-1 rounded-full">
+                    <span key={p} className="text-[10px] font-semibold text-cyan-300 bg-emerald-400/10 border border-emerald-400/25 px-2.5 py-1 rounded-full">
                       {p}
                     </span>
                   ))}
@@ -395,7 +395,7 @@ const DeliverableCard: React.FC<{ item: Deliverable }> = ({ item }) => {
       {hasDetails && (
         <button
           onClick={() => setOpen((v) => !v)}
-          className="mt-4 inline-flex items-center gap-1 text-emerald-400 text-xs font-semibold hover:underline"
+          className="mt-4 inline-flex items-center gap-1 text-cyan-400 text-xs font-semibold hover:underline"
         >
           {open ? 'Show less' : 'See more'}
           <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
@@ -414,13 +414,13 @@ const Deliverables: React.FC = () => {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/5 px-4 py-1.5 text-emerald-400 text-sm font-semibold">
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/5 px-4 py-1.5 text-cyan-400 text-sm font-semibold">
               <Clock className="w-4 h-4" /> Initiatives
             </span>
             <h2 className="mt-4 text-3xl sm:text-5xl font-bold tracking-tight leading-tight">
               <span className="text-white">Three programmes.</span>
               <br />
-              <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">One human-centred system.</span>
+              <span className="bg-gradient-to-r from-cyan-400 to-cyan-400 bg-clip-text text-transparent">One human-centred system.</span>
             </h2>
             <p className="mt-4 text-slate-400 text-lg">
               Youth readiness, preventive health, and leadership behaviour — each built on the same neuroscience-and-behavioural-science foundation that started at the wellhead, now mapped to Vision 2030.
@@ -433,7 +433,7 @@ const Deliverables: React.FC = () => {
                 onClick={() => setActive(c.key)}
                 className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium transition ${
                   active === c.key
-                    ? 'bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950'
+                    ? 'bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950'
                     : 'border border-white/15 text-slate-300 hover:bg-white/5'
                 }`}
               >

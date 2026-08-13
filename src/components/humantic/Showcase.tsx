@@ -67,7 +67,7 @@ const Showcase: React.FC = () => {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-xl">
-            <span className="text-emerald-400 text-sm font-semibold uppercase tracking-widest flex items-center gap-2">
+            <span className="text-cyan-400 text-sm font-semibold uppercase tracking-widest flex items-center gap-2">
               <Film className="w-4 h-4" /> Reel Showcase
             </span>
             <h2 className="mt-3 text-3xl sm:text-5xl font-bold text-white tracking-tight">Our story in motion</h2>
@@ -79,7 +79,7 @@ const Showcase: React.FC = () => {
               {cats.map((c) => (
                 <button key={c} onClick={() => setActive(c)}
                   className={`px-4 py-1.5 rounded-full text-sm font-medium transition ${
-                    active === c ? 'bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950' : 'border border-white/15 text-slate-300 hover:bg-white/5'
+                    active === c ? 'bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950' : 'border border-white/15 text-slate-300 hover:bg-white/5'
                   }`}>
                   {c}
                 </button>
@@ -95,13 +95,13 @@ const Showcase: React.FC = () => {
               <div className="relative rounded-3xl overflow-hidden aspect-[9/13] border border-dashed border-white/15 bg-gradient-to-br from-slate-800/60 via-slate-900/60 to-slate-950 flex flex-col items-center justify-center text-center px-6">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(16,185,129,0.12),transparent_60%)]" />
                 <div className="relative w-16 h-16 rounded-full bg-white/10 backdrop-blur border border-white/20 flex items-center justify-center">
-                  <Film className="w-7 h-7 text-emerald-300" />
+                  <Film className="w-7 h-7 text-cyan-300" />
                 </div>
                 <h3 className="relative mt-5 text-xl font-semibold text-white">Our story, coming soon</h3>
                 <p className="relative mt-2 text-sm text-slate-400">
                   A brand-new film is on the way. This space is reserved for the video we&apos;re finishing up — check back shortly.
                 </p>
-                <span className="relative mt-5 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-emerald-300 text-xs font-medium uppercase tracking-widest">
+                <span className="relative mt-5 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-cyan-300 text-xs font-medium uppercase tracking-widest">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Reserved
                 </span>
               </div>
@@ -169,7 +169,7 @@ const Showcase: React.FC = () => {
                 <h3 className="text-white font-semibold truncate">{open.title}</h3>
                 <p className="text-slate-400 text-xs">{open.cat} • {open.duration} • {open.views} views</p>
               </div>
-              <button onClick={() => share(open)} className="shrink-0 px-5 py-2.5 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 font-semibold flex items-center gap-2">
+              <button onClick={() => share(open)} className="shrink-0 px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 font-semibold flex items-center gap-2">
                 <Share2 className="w-4 h-4" /> Share
               </button>
             </div>

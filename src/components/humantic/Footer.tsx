@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
         <div className="grid lg:grid-cols-5 gap-12">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-500 flex items-center justify-center">
                 <Activity className="w-5 h-5 text-slate-950" />
               </div>
               <span className="text-white font-semibold text-lg">Humantic Digital</span>
@@ -56,12 +56,12 @@ const Footer: React.FC = () => {
                     className="w-full pl-9 pr-3 py-2.5 rounded-full bg-white/5 border border-white/15 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-emerald-400"
                   />
                 </div>
-                <button disabled={status === 'loading'} className="px-5 py-2.5 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 text-sm font-semibold disabled:opacity-60">
+                <button disabled={status === 'loading'} className="px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 text-sm font-semibold disabled:opacity-60">
                   {status === 'loading' ? <Loader2 className="w-4 h-4 animate-spin" /> : status === 'done' ? <Check className="w-4 h-4" /> : 'Join'}
                 </button>
               </div>
               {status === 'error' && <p className="text-rose-400 text-xs mt-2">Please enter a valid email.</p>}
-              {status === 'done' && <p className="text-emerald-400 text-xs mt-2">You're on the list — welcome aboard.</p>}
+              {status === 'done' && <p className="text-cyan-400 text-xs mt-2">You're on the list — welcome aboard.</p>}
             </form>
           </div>
 
@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
               <h4 className="text-white font-semibold text-sm mb-4">{c.h}</h4>
               <ul className="space-y-2.5">
                 {c.items.map((i) => (
-                  <li key={i}><a href="#" className="text-slate-400 text-sm hover:text-emerald-300 transition">{i}</a></li>
+                  <li key={i}><a href="#" className="text-slate-400 text-sm hover:text-cyan-300 transition">{i}</a></li>
                 ))}
               </ul>
             </div>
@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
         <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">© {new Date().getFullYear()} Humantic Digital. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <Link to="/admin" className="text-slate-500 text-sm hover:text-emerald-300 transition mr-2">Team Admin</Link>
+            <Link to="/admin" className="text-slate-500 text-sm hover:text-cyan-300 transition mr-2">Team Admin</Link>
             {[Instagram, Twitter, Linkedin, Youtube].map((Icon, i) => (
               <a key={i} href="#" className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-slate-400 hover:text-white hover:border-emerald-400 transition">
                 <Icon className="w-4 h-4" />

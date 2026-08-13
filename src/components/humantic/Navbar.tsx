@@ -24,12 +24,12 @@ const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
     <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-slate-950/70 border-b border-white/10">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
         <button onClick={() => go('#top')} className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center shadow-lg shadow-emerald-500/30">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-500 flex items-center justify-center shadow-lg shadow-emerald-500/30">
             <Activity className="w-5 h-5 text-slate-950" />
           </div>
           <div className="leading-tight text-left">
             <span className="block text-white font-semibold tracking-tight">Humantic</span>
-            <span className="block text-[10px] uppercase tracking-[0.2em] text-emerald-400">Digital</span>
+            <span className="block text-[10px] uppercase tracking-[0.2em] text-cyan-400">Digital</span>
           </div>
         </button>
 
@@ -45,7 +45,7 @@ const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <button onClick={onCta} className="px-5 py-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 text-sm font-semibold hover:opacity-90 transition shadow-lg shadow-emerald-500/20">
+          <button onClick={onCta} className="px-5 py-2 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 text-sm font-semibold hover:opacity-90 transition shadow-lg shadow-emerald-500/20">
             Request Access
           </button>
         </div>
@@ -65,7 +65,7 @@ const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           <Link to="/aurion" onClick={() => setOpen(false)} className="block w-full text-left py-1.5 font-medium bg-gradient-to-r from-teal-200 to-cyan-300 bg-clip-text text-transparent">
             AURION ONE
           </Link>
-          <button onClick={() => { setOpen(false); onCta(); }} className="w-full mt-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 font-semibold">
+          <button onClick={() => { setOpen(false); onCta(); }} className="w-full mt-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 font-semibold">
             Request Access
           </button>
         </div>

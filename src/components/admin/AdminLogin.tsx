@@ -32,7 +32,7 @@ const AdminLogin: React.FC = () => {
     <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center px-5">
       <form onSubmit={submit} className="w-full max-w-sm rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur">
         <div className="w-12 h-12 rounded-2xl bg-emerald-400/15 border border-emerald-400/30 flex items-center justify-center mb-5">
-          <Lock className="w-5 h-5 text-emerald-300" />
+          <Lock className="w-5 h-5 text-cyan-300" />
         </div>
         <h1 className="text-2xl font-bold">{mode === 'in' ? 'Admin Sign In' : 'Create Admin Account'}</h1>
         <p className="text-slate-400 text-sm mt-1">
@@ -58,10 +58,10 @@ const AdminLogin: React.FC = () => {
         </label>
 
         {err && <p className="text-rose-400 text-sm mt-3">{err}</p>}
-        {msg && <p className="text-emerald-400 text-sm mt-3">{msg}</p>}
+        {msg && <p className="text-cyan-400 text-sm mt-3">{msg}</p>}
 
         <button type="submit" disabled={busy}
-          className="mt-5 w-full py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 font-semibold flex items-center justify-center gap-2 disabled:opacity-60">
+          className="mt-5 w-full py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 font-semibold flex items-center justify-center gap-2 disabled:opacity-60">
           {busy ? <Loader2 className="w-5 h-5 animate-spin" /> : mode === 'in' ? 'Sign In' : 'Create Account'}
         </button>
 

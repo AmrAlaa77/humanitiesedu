@@ -44,15 +44,15 @@ const AccessModal: React.FC<{ open: boolean; onClose: () => void }> = ({ open, o
         {status === 'done' ? (
           <div className="text-center py-6">
             <div className="w-16 h-16 mx-auto rounded-full bg-emerald-400/15 flex items-center justify-center mb-5">
-              <Check className="w-8 h-8 text-emerald-400" />
+              <Check className="w-8 h-8 text-cyan-400" />
             </div>
             <h3 className="text-white text-2xl font-bold">You're on the list</h3>
             <p className="text-slate-400 mt-2">We'll reach out with your Wellbeing Index onboarding shortly.</p>
-            <button onClick={onClose} className="mt-6 px-6 py-2.5 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 font-semibold">Done</button>
+            <button onClick={onClose} className="mt-6 px-6 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 font-semibold">Done</button>
           </div>
         ) : (
           <>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/10 text-emerald-300 text-xs mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/10 text-cyan-300 text-xs mb-4">
               <ShieldCheck className="w-3.5 h-3.5" /> Early Access
             </div>
             <h3 className="text-white text-2xl font-bold">Request your Wellbeing Index</h3>
@@ -68,7 +68,7 @@ const AccessModal: React.FC<{ open: boolean; onClose: () => void }> = ({ open, o
                 placeholder="Email address" required
                 className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-400"
               />
-              <button disabled={status === 'loading'} className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 font-semibold flex items-center justify-center gap-2 disabled:opacity-60">
+              <button disabled={status === 'loading'} className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 font-semibold flex items-center justify-center gap-2 disabled:opacity-60">
                 {status === 'loading' ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Request Access'}
               </button>
             </form>

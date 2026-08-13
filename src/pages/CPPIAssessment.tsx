@@ -167,7 +167,7 @@ export default function CPPIAssessment() {
     <div className="min-h-screen bg-slate-950 text-white">
       <div className="mx-auto max-w-5xl px-5 py-10">
         <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-10 shadow-2xl">
-          <p className="text-emerald-300 uppercase tracking-[0.3em] text-xs font-semibold">MindFlow™ · CPPI Assessment</p>
+          <p className="text-cyan-300 uppercase tracking-[0.3em] text-xs font-semibold">MindFlow™ · CPPI Assessment</p>
           <h1 className="mt-4 text-3xl md:text-5xl font-bold leading-tight">Cognitive Performance & Workplace Productivity Index</h1>
           <p className="mt-4 text-slate-300 max-w-3xl">
             60 questions · 6 pressure zones · Individual baseline and performance gap analysis.
@@ -177,7 +177,7 @@ export default function CPPIAssessment() {
           <div className="mt-6 rounded-2xl bg-slate-900/80 border border-white/10 p-4">
             <div className="flex items-center justify-between gap-4">
               <span className="text-sm text-slate-300">Progress: {completed}/60 answered</span>
-              <span className="text-sm font-semibold text-emerald-300">{progress}%</span>
+              <span className="text-sm font-semibold text-cyan-300">{progress}%</span>
             </div>
             <div className="mt-3 h-2 rounded-full bg-white/10 overflow-hidden">
               <div className="h-full bg-emerald-400 transition-all" style={{ width: `${progress}%` }} />
@@ -185,7 +185,7 @@ export default function CPPIAssessment() {
           </div>
 
           {message && (
-            <div className={`mt-6 rounded-xl p-4 text-sm ${status === 'done' ? 'bg-emerald-400/10 text-emerald-200 border border-emerald-400/20' : 'bg-red-400/10 text-red-200 border border-red-400/20'}`}>
+            <div className={`mt-6 rounded-xl p-4 text-sm ${status === 'done' ? 'bg-emerald-400/10 text-cyan-200 border border-emerald-400/20' : 'bg-red-400/10 text-red-200 border border-red-400/20'}`}>
               {message}
             </div>
           )}
@@ -217,7 +217,7 @@ export default function CPPIAssessment() {
               <div className="mt-4 grid grid-cols-5 gap-2 text-center text-xs md:text-sm">
                 {SCALE.map((item) => (
                   <div key={item.value} className="rounded-xl border border-white/10 bg-white/5 p-3">
-                    <div className="text-lg font-bold text-emerald-300">{item.value}</div>
+                    <div className="text-lg font-bold text-cyan-300">{item.value}</div>
                     <div className="text-slate-300">{item.label}</div>
                   </div>
                 ))}
@@ -227,14 +227,14 @@ export default function CPPIAssessment() {
             {sections.map((section) => (
               <section key={section.section} className="space-y-5">
                 <div className="sticky top-0 z-20 rounded-2xl border border-emerald-400/20 bg-slate-950/95 p-4 backdrop-blur">
-                  <p className="text-emerald-300 text-sm font-semibold">Section {section.section}</p>
+                  <p className="text-cyan-300 text-sm font-semibold">Section {section.section}</p>
                   <h2 className="text-2xl font-bold">{section.title}</h2>
                 </div>
 
                 {section.questions.map((q) => (
                   <div key={q.id} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
                     <div className="flex gap-3">
-                      <div className="shrink-0 text-emerald-300 font-bold">Q{q.id}</div>
+                      <div className="shrink-0 text-cyan-300 font-bold">Q{q.id}</div>
                       <div>
                         <p className="text-slate-100 leading-relaxed">{q.text}</p>
                         <div className="mt-2 flex flex-wrap gap-2">
@@ -253,7 +253,7 @@ export default function CPPIAssessment() {
                           key={item.value}
                           className={`cursor-pointer rounded-xl border p-3 text-center transition ${
                             answers[q.id] === item.value
-                              ? 'border-emerald-400 bg-emerald-400/15 text-emerald-100'
+                              ? 'border-emerald-400 bg-emerald-400/15 text-cyan-100'
                               : 'border-white/10 bg-white/5 text-slate-300 hover:border-white/25'
                           }`}
                         >
@@ -278,7 +278,7 @@ export default function CPPIAssessment() {
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="w-full rounded-2xl bg-gradient-to-r from-emerald-400 to-cyan-500 px-6 py-4 font-bold text-slate-950 disabled:opacity-60"
+              className="w-full rounded-2xl bg-gradient-to-r from-cyan-400 to-cyan-500 px-6 py-4 font-bold text-slate-950 disabled:opacity-60"
             >
               {status === 'loading' ? 'Submitting...' : 'Submit CPPI Assessment'}
             </button>

@@ -19,7 +19,7 @@ const RING_MACRO = 'https://d64gsuwffb70l.cloudfront.net/6a1bff16eb3a4753d1d1427
 const metrics = [
   { icon: HeartPulse, label: 'Heart Rhythm', val: '62', unit: 'bpm', c: 'text-rose-300', bg: 'from-rose-500/20' },
   { icon: Moon, label: 'Deep Sleep', val: '1h 48m', unit: '', c: 'text-violet-300', bg: 'from-violet-500/20' },
-  { icon: Activity, label: 'Recovery', val: '94', unit: '%', c: 'text-emerald-300', bg: 'from-emerald-500/20' },
+  { icon: Activity, label: 'Recovery', val: '94', unit: '%', c: 'text-cyan-300', bg: 'from-emerald-500/20' },
   { icon: Thermometer, label: 'Skin Temp', val: '+0.2', unit: '°C', c: 'text-amber-300', bg: 'from-amber-500/20' },
   { icon: Droplets, label: 'Blood O₂', val: '98', unit: '%', c: 'text-cyan-300', bg: 'from-cyan-500/20' },
   { icon: Waves, label: 'Stress (HRV)', val: 'Calm', unit: '', c: 'text-teal-300', bg: 'from-teal-500/20' },
@@ -56,7 +56,7 @@ const RingShowcase: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           </div>
           <h2 className="text-4xl sm:text-6xl font-bold tracking-tight leading-[1.05]">
             Health that fits
-            <span className="block bg-gradient-to-r from-emerald-300 via-cyan-300 to-teal-200 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-cyan-300 via-cyan-300 to-teal-200 bg-clip-text text-transparent">
               in the palm of your hand.
             </span>
           </h2>
@@ -89,7 +89,7 @@ const RingShowcase: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                 className="relative z-10 w-64 sm:w-80 rounded-[2rem] shadow-2xl shadow-emerald-500/20 transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-2"
               />
               <div className="absolute -bottom-4 -left-4 z-20 flex items-center gap-2 rounded-2xl border border-white/10 bg-slate-900/80 backdrop-blur px-4 py-3 shadow-xl">
-                <BatteryFull className="w-5 h-5 text-emerald-400" />
+                <BatteryFull className="w-5 h-5 text-cyan-400" />
                 <div>
                   <p className="text-white text-sm font-semibold leading-none">7-day battery</p>
                   <p className="text-slate-400 text-xs">90-min full charge</p>
@@ -112,7 +112,7 @@ const RingShowcase: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                 <p className="text-slate-400 text-xs uppercase tracking-widest">Today's reading</p>
                 <p className="text-white font-semibold">Everything's in balance</p>
               </div>
-              <div className="inline-flex items-center gap-1.5 text-emerald-300 text-xs font-medium px-3 py-1.5 rounded-full bg-emerald-400/10 border border-emerald-400/20">
+              <div className="inline-flex items-center gap-1.5 text-cyan-300 text-xs font-medium px-3 py-1.5 rounded-full bg-emerald-400/10 border border-emerald-400/20">
                 <Sparkles className="w-3.5 h-3.5" /> AI Insight
               </div>
             </div>
@@ -138,14 +138,14 @@ const RingShowcase: React.FC<{ onCta: () => void }> = ({ onCta }) => {
 
             <div className="mt-5 rounded-2xl border border-emerald-400/20 bg-emerald-400/5 p-4">
               <p className="text-sm text-slate-200">
-                <span className="text-emerald-300 font-medium">Aura suggests:</span> Your recovery is high — today is
+                <span className="text-cyan-300 font-medium">Aura suggests:</span> Your recovery is high — today is
                 a great day to push your training. Hydration is trending low, drink up before noon.
               </p>
             </div>
 
             <button
               onClick={onCta}
-              className="group mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 font-semibold hover:opacity-90 transition shadow-lg shadow-emerald-500/25"
+              className="group mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 font-semibold hover:opacity-90 transition shadow-lg shadow-emerald-500/25"
             >
               Reserve Your Aura Ring
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition" />
@@ -180,7 +180,7 @@ const RingShowcase: React.FC<{ onCta: () => void }> = ({ onCta }) => {
         <div className="mt-20 text-center">
           <p className="text-2xl sm:text-3xl font-semibold text-white max-w-3xl mx-auto leading-snug">
             The future of wellbeing isn’t louder.
-            <span className="bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent"> It’s invisible.</span>
+            <span className="bg-gradient-to-r from-cyan-300 to-cyan-300 bg-clip-text text-transparent"> It’s invisible.</span>
           </p>
           <button
             onClick={() => scrollTo('#how')}
@@ -219,7 +219,7 @@ const FeatureTile: React.FC<{
       ) : (
         Icon && (
           <div className="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400/20 to-cyan-500/20 border border-white/10 transition-transform group-hover:scale-110 group-hover:rotate-6">
-            <Icon className="w-6 h-6 text-emerald-300" />
+            <Icon className="w-6 h-6 text-cyan-300" />
           </div>
         )
       )}
