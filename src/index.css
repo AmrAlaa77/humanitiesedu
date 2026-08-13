@@ -1,0 +1,326 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 220 23% 95%;
+    --sidebar-foreground: 215 25% 27%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 90%;
+    --sidebar-accent-foreground: 215 25% 27%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 221 83% 53%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+
+    --sidebar-background: 215 28% 17%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217.2 91.2% 59.8%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 25% 27%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 215 25% 27%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans dark:bg-background dark:text-foreground;
+  }
+
+  pre, code {
+    @apply font-mono;
+  }
+}
+
+.markdown-editor {
+  @apply font-mono text-base leading-relaxed;
+}
+
+.markdown-preview {
+  @apply prose max-w-none prose-blue dark:prose-invert;
+}
+
+.markdown-preview pre {
+  @apply bg-secondary p-4 rounded-md overflow-x-auto;
+}
+
+.markdown-preview code {
+  @apply text-sm font-mono text-primary;
+}
+
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3,
+.markdown-preview h4,
+.markdown-preview h5,
+.markdown-preview h6 {
+  @apply font-sans font-semibold text-foreground;
+}
+
+.markdown-preview ul,
+.markdown-preview ol {
+  @apply my-4 ml-6;
+}
+
+/* ============================================================
+   ANIMATION LIBRARY  — AURION ONE
+   Reusable keyframes + utility classes for cinematic motion.
+   All animations respect prefers-reduced-motion below.
+   ============================================================ */
+
+/* --- Keyframes --- */
+@keyframes ao-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+@keyframes ao-float-slow {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33%      { transform: translateY(-20px) translateX(10px); }
+  66%      { transform: translateY(10px) translateX(-8px); }
+}
+@keyframes ao-fade-up {
+  0%   { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes ao-fade-down {
+  0%   { opacity: 0; transform: translateY(-40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes ao-fade-left {
+  0%   { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes ao-fade-right {
+  0%   { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes ao-zoom-in {
+  0%   { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes ao-blur-in {
+  0%   { opacity: 0; filter: blur(14px); transform: translateY(20px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+@keyframes ao-flip-up {
+  0%   { opacity: 0; transform: perspective(800px) rotateX(35deg) translateY(30px); }
+  100% { opacity: 1; transform: perspective(800px) rotateX(0) translateY(0); }
+}
+@keyframes ao-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+@keyframes ao-shimmer {
+  0%   { transform: translateX(-150%); }
+  100% { transform: translateX(150%); }
+}
+@keyframes ao-glow-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%      { opacity: 0.9; transform: scale(1.08); }
+}
+@keyframes ao-spin-slow {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes ao-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes ao-blob {
+  0%, 100% { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
+  50%      { border-radius: 60% 40% 34% 66% / 64% 55% 45% 36%; }
+}
+@keyframes ao-aurora {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  33%      { transform: translate(40px, -30px) scale(1.15); opacity: 0.8; }
+  66%      { transform: translate(-30px, 25px) scale(0.95); opacity: 0.6; }
+}
+@keyframes ao-bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-8px) rotate(2deg); }
+}
+@keyframes ao-pulse-ring {
+  0%   { transform: scale(0.8); opacity: 0.7; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+@keyframes ao-text-reveal {
+  0%   { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+/* --- Utility classes --- */
+.ao-anim-float       { animation: ao-float 6s ease-in-out infinite; }
+.ao-anim-float-slow  { animation: ao-float-slow 12s ease-in-out infinite; }
+.ao-anim-bob         { animation: ao-bob 4s ease-in-out infinite; }
+.ao-anim-spin-slow   { animation: ao-spin-slow 24s linear infinite; }
+.ao-anim-blob        { animation: ao-blob 14s ease-in-out infinite; }
+.ao-anim-aurora      { animation: ao-aurora 18s ease-in-out infinite; }
+.ao-anim-glow        { animation: ao-glow-pulse 5s ease-in-out infinite; }
+
+/* Animated gradient text */
+.ao-gradient-text {
+  background: linear-gradient(110deg, #34d399, #22d3ee, #818cf8, #34d399);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: ao-gradient-shift 6s ease infinite;
+}
+
+/* Shimmer sweep overlay (place inside a relative + overflow-hidden parent) */
+.ao-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.12) 50%, transparent 100%);
+  transform: translateX(-150%);
+  animation: ao-shimmer 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Pulse ring (radar style) */
+.ao-pulse-ring {
+  animation: ao-pulse-ring 2.4s cubic-bezier(0.4,0,0.2,1) infinite;
+}
+
+/* Marquee track */
+.ao-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: ao-marquee 28s linear infinite;
+}
+.ao-marquee-pause:hover .ao-marquee-track { animation-play-state: paused; }
+
+/* Hover lift / tilt helpers */
+.ao-hover-lift {
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+}
+.ao-hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px -20px rgba(52,211,153,0.35);
+}
+.ao-hover-tilt {
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.ao-hover-tilt:hover {
+  transform: perspective(900px) rotateX(6deg) rotateY(-6deg) scale(1.02);
+}
+
+/* Reveal-on-scroll — MINIMAL & fail-safe, now with directional variants.
+   Base = hidden + a small directional offset. `.is-visible` (set by the
+   hook, which has a safety timeout) always resolves to the SAME resting
+   state, so no matter the variant the content lands cleanly. Motion is
+   gentle/short so it never feels glitchy. */
+.ao-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.6s ease;
+  will-change: opacity, transform;
+}
+
+/* Directional / style variants — only change the *hidden* starting pose. */
+.ao-reveal.ao-v-up      { transform: translateY(24px); }
+.ao-reveal.ao-v-down    { transform: translateY(-24px); }
+.ao-reveal.ao-v-left    { transform: translateX(-32px); }
+.ao-reveal.ao-v-right   { transform: translateX(32px); }
+.ao-reveal.ao-v-zoom    { transform: scale(0.92); }
+.ao-reveal.ao-v-blur    { transform: translateY(16px); filter: blur(10px); }
+.ao-reveal.ao-v-flip    { transform: perspective(900px) rotateX(18deg) translateY(20px); }
+
+/* Every variant collapses to the SAME clean resting state. */
+.ao-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Accessibility & last-resort safety: if the browser prefers reduced
+   motion, OR JS never adds .is-visible, content must still be readable. */
+@media (prefers-reduced-motion: reduce) {
+  .ao-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  .ao-anim-float, .ao-anim-float-slow, .ao-anim-bob, .ao-anim-spin-slow,
+  .ao-anim-blob, .ao-anim-aurora, .ao-anim-glow, .ao-gradient-text,
+  .ao-shimmer::after, .ao-pulse-ring, .ao-marquee-track {
+    animation: none !important;
+  }
+}
