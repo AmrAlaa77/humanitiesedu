@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Package, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown } from 'lucide-react';
+import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown } from 'lucide-react';
 
 type Deliverable = {
   title: string;
@@ -414,12 +414,16 @@ const Deliverables: React.FC = () => {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-xl">
-            <span className="inline-flex items-center gap-2 text-emerald-400 text-sm font-semibold uppercase tracking-widest">
-              <Package className="w-4 h-4" /> Deliverables
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/5 px-4 py-1.5 text-emerald-400 text-sm font-semibold">
+              <Clock className="w-4 h-4" /> Initiatives
             </span>
-            <h2 className="mt-3 text-3xl sm:text-5xl font-bold text-white tracking-tight">Every programme, one catalogue</h2>
+            <h2 className="mt-4 text-3xl sm:text-5xl font-bold tracking-tight leading-tight">
+              <span className="text-white">Three programmes.</span>
+              <br />
+              <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">One human-centred system.</span>
+            </h2>
             <p className="mt-4 text-slate-400 text-lg">
-              From NextGen 2030 to Neurolead — the full set of workshops, diagnostics and certificates, packaged for individuals and organisations alike.
+              Youth readiness, preventive health, and leadership behaviour — each built on the same neuroscience-and-behavioural-science foundation that started at the wellhead, now mapped to Vision 2030.
             </p>
           </div>
           <div className="flex items-center gap-2 flex-wrap">
