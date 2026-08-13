@@ -43,7 +43,7 @@ const instruments: Instrument[] = [
       'Recovery pathway optimisation',
       'Distributed cryptography data security',
     ],
-    price: 150,
+    price: 389,
     priceNote: 'one-time access',
     cta: 'Unlock Neuro Reset Index',
     primary: true,
@@ -112,7 +112,7 @@ const Assessment: React.FC = () => {
 
                 <div className="mt-auto pt-9">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-bold text-white">${it.price}</span>
+                    <span className="text-4xl font-bold text-white">£{it.price}</span>
                     <span className="text-slate-400 text-sm">{it.priceNote}</span>
                   </div>
                   <button

@@ -99,7 +99,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ open, onClose, product }) =
             </div>
             <h3 className="text-white text-2xl font-bold leading-tight">{product.title}</h3>
             <div className="mt-3 flex items-baseline gap-2">
-              <span className="text-3xl font-bold text-white">${product.price}</span>
+              <span className="text-3xl font-bold text-white">£{product.price}</span>
               <span className="text-slate-400 text-sm">{product.note || 'one-time'}</span>
             </div>
 
@@ -155,7 +155,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ open, onClose, product }) =
                 {status === 'loading' ? (
                   <Loader2 className="w-5 h-5 animate-spin" />
                 ) : (
-                  `Pay $${product.price}`
+                  `Pay £${product.price}`
                 )}
               </button>
               <p className="flex items-center justify-center gap-2 text-xs text-slate-500">
