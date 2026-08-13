@@ -67,7 +67,7 @@ const GlowCursor: React.FC = () => {
         className="absolute top-0 left-0 w-[760px] h-[760px] rounded-full will-change-transform"
         style={{
           background:
-            'radial-gradient(circle, rgba(94,234,212,0.22) 0%, rgba(110,231,209,0.12) 30%, rgba(45,212,191,0.04) 55%, transparent 70%)',
+            'radial-gradient(circle, rgba(94,234,212,0.11) 0%, rgba(110,231,209,0.06) 30%, rgba(45,212,191,0.02) 55%, transparent 70%)',
           filter: 'blur(28px)',
         }}
       />
@@ -77,7 +77,7 @@ const GlowCursor: React.FC = () => {
         className="absolute top-0 left-0 w-[440px] h-[440px] rounded-full will-change-transform"
         style={{
           background:
-            'radial-gradient(circle, rgba(110,231,209,0.40) 0%, rgba(94,234,212,0.22) 35%, rgba(45,212,191,0.06) 62%, transparent 74%)',
+            'radial-gradient(circle, rgba(110,231,209,0.20) 0%, rgba(94,234,212,0.11) 35%, rgba(45,212,191,0.03) 62%, transparent 74%)',
           filter: 'blur(16px)',
         }}
       />
@@ -87,7 +87,7 @@ const GlowCursor: React.FC = () => {
         className="absolute top-0 left-0 w-16 h-16 rounded-full will-change-transform"
         style={{
           background:
-            'radial-gradient(circle, rgba(240,255,250,0.95) 0%, rgba(167,243,224,0.55) 42%, transparent 70%)',
+            'radial-gradient(circle, rgba(240,255,250,0.5) 0%, rgba(167,243,224,0.28) 42%, transparent 70%)',
           filter: 'blur(2px)',
         }}
       />
