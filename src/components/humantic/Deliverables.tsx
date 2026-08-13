@@ -39,7 +39,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       },
       {
         title: 'VRify Yourself™: The Science of You',
-        hook: 'Neuroscience meets VR to decode your own stress response.',
+        hook: 'Gamified VR simulation for self-assessment — our flagship experience.',
         details: '2-day workshop or 5-day journey using embodied cognition to identify and rewrite automatic stress responses tailored to individual triggers and biological instincts.',
         pills: ['Embodied cognition'],
       },
