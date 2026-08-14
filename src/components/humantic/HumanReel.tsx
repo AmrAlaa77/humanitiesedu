@@ -78,8 +78,11 @@ const HumanReel: React.FC = () => {
   useEffect(() => {
     const startFade = setTimeout(() => setTransitioning(true), CLIP_MS - FADE_MS);
     const finishFade = setTimeout(() => {
-      setCurrent((c) => (c + 1) % CLIPS.length);
-      setNext((c) => (c + 2) % CLIPS.length);
+      setCurrent((c) => {
+        const nextCurrent = (c + 1) % CLIPS.length;
+        setNext((nextCurrent + 1) % CLIPS.length); // always locked to current+1, never drifts
+        return nextCurrent;
+      });
       setTransitioning(false);
     }, CLIP_MS);
     return () => {
