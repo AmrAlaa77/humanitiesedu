@@ -3,7 +3,6 @@ import Navbar from '@/components/humantic/Navbar';
 import HumanReel from '@/components/humantic/HumanReel';
 import NarrativeReel from '@/components/humantic/NarrativeReel';
 import Hero from '@/components/humantic/Hero';
-import RingShowcase from '@/components/humantic/RingShowcase';
 import Features from '@/components/humantic/Features';
 
 import HowItWorks from '@/components/humantic/HowItWorks';
@@ -39,10 +38,6 @@ const AppLayout: React.FC = () => {
           <HumanReel />
           <NarrativeReel onCta={() => setModalOpen(true)} />
           <Hero onCta={() => setModalOpen(true)} />
-
-          <Reveal variant="zoom">
-            <RingShowcase onCta={() => setModalOpen(true)} />
-          </Reveal>
 
           <Reveal variant="up">
             <Features />
