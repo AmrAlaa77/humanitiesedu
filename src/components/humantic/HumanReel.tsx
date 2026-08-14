@@ -61,8 +61,9 @@ const LondonClock: React.FC = () => {
 const HumanReel: React.FC = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
 
-  const [active, setActive] = useState(0);
-  const [fading, setFading] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [next, setNext] = useState(1 % CLIPS.length);
+  const [transitioning, setTransitioning] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
@@ -72,18 +73,20 @@ const HumanReel: React.FC = () => {
     return () => cancelAnimationFrame(id);
   }, []);
 
-  // Clip cycle: hold, crossfade, advance
+  // Clip cycle: hold, then a TRUE crossfade — current fades out while next fades in
+  // at the same time, so the word is never fully blank between clips.
   useEffect(() => {
-    const hold = setTimeout(() => setFading(true), CLIP_MS - FADE_MS);
-    const advance = setTimeout(() => {
-      setActive((i) => (i + 1) % CLIPS.length);
-      setFading(false);
+    const startFade = setTimeout(() => setTransitioning(true), CLIP_MS - FADE_MS);
+    const finishFade = setTimeout(() => {
+      setCurrent((c) => (c + 1) % CLIPS.length);
+      setNext((c) => (c + 2) % CLIPS.length);
+      setTransitioning(false);
     }, CLIP_MS);
     return () => {
-      clearTimeout(hold);
-      clearTimeout(advance);
+      clearTimeout(startFade);
+      clearTimeout(finishFade);
     };
-  }, [active]);
+  }, [current]);
 
   // Custom floating cursor: spring-lerp follow, only while hovering the masked word
   useEffect(() => {
@@ -212,12 +215,16 @@ const HumanReel: React.FC = () => {
               maskRepeat: 'no-repeat',
             }}
           >
-            {CLIPS.map((clip, i) => (
+            {CLIPS.map((clip, i) => {
+              let opacity = 0;
+              if (i === current) opacity = transitioning ? 0 : 1;
+              else if (i === next) opacity = transitioning ? 1 : 0;
+              return (
               <video
                 key={clip.label}
                 className="absolute inset-0 h-full w-full object-cover transition-opacity ease-in-out"
                 style={{
-                  opacity: i === active ? (fading ? 0 : 1) : 0,
+                  opacity,
                   transitionDuration: `${FADE_MS}ms`,
                 }}
                 src={clip.video}
@@ -227,7 +234,8 @@ const HumanReel: React.FC = () => {
                 playsInline
                 preload="auto"
               />
-            ))}
+              );
+            })}
           </div>
 
           {/* custom floating cursor */}
