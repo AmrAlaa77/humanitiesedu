@@ -109,7 +109,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
       {/* Faint emerald glow — deepest parallax layer */}
       <div
         ref={glowRef}
-        className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] rounded-full bg-emerald-500/10 blur-3xl will-change-transform"
+        className="pointer-events-none absolute -top-10 left-1/2 h-[40rem] w-[40rem] rounded-full bg-emerald-500/[0.04] blur-3xl will-change-transform"
         style={{ transform: 'translate3d(-50%, 0, 0)' }}
       />
 

@@ -256,7 +256,7 @@ const HumanReel: React.FC = () => {
       <div className="h-16 sm:h-20" />
 
       {/* Gradient blend into the next page's background instead of a hard cut */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#0a0e1a]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-[#0a0e1a]/80 to-[#0a0e1a]" />
     </section>
   );
 };
