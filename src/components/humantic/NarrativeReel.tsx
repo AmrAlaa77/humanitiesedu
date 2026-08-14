@@ -43,8 +43,12 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
       mouse.current.y = (e.clientY / window.innerHeight) * 2 - 1;
     };
     const onScroll = () => {
-      const h = sectionRef.current?.offsetHeight || 1;
-      scrollT.current = Math.min(1, Math.max(0, window.scrollY / h));
+      const el = sectionRef.current;
+      if (!el) return;
+      const top = el.getBoundingClientRect().top; // distance from viewport top to this section
+      const h = el.offsetHeight || 1;
+      // t=0 when the section's top is at the viewport top, t=1 once scrolled a full section-height past it
+      scrollT.current = Math.min(1, Math.max(0, -top / h));
     };
     window.addEventListener('pointermove', onMove, { passive: true });
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -90,7 +94,6 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   return (
     <section
       ref={sectionRef}
-      id="top"
       className="relative min-h-[100svh] w-full overflow-hidden bg-[#0a0e1a] text-white"
     >
       {/* Subtle grid lines — drifts gently with the cursor */}

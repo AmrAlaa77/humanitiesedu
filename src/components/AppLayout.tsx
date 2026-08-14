@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/humantic/Navbar';
+import HumanReel from '@/components/humantic/HumanReel';
 import NarrativeReel from '@/components/humantic/NarrativeReel';
 import Hero from '@/components/humantic/Hero';
 import RingShowcase from '@/components/humantic/RingShowcase';
@@ -34,7 +35,8 @@ const AppLayout: React.FC = () => {
       <div className="relative z-10">
         <Navbar onCta={() => setModalOpen(true)} />
         <main>
-          {/* Reel + Hero carry their own intro motion */}
+          {/* HumanReel is the new first page; NarrativeReel is now the second page */}
+          <HumanReel />
           <NarrativeReel onCta={() => setModalOpen(true)} />
           <Hero onCta={() => setModalOpen(true)} />
 

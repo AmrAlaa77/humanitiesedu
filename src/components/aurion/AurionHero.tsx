@@ -71,17 +71,29 @@ const AurionHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
 
         {/* Watch render (static glow — no heavy spin/float loops) */}
         <div className="relative flex items-center justify-center">
-          <div className="absolute w-[26rem] h-[26rem] rounded-full bg-gradient-to-tr from-teal-400/20 via-cyan-400/10 to-transparent blur-2xl" />
+          <div
+            className="absolute w-[26rem] h-[26rem] rounded-full bg-gradient-to-tr from-teal-400/25 via-cyan-400/15 to-transparent blur-2xl"
+            style={{ animation: 'auraPulse 3.6s ease-in-out infinite' }}
+          />
           <div className="absolute w-[30rem] h-[30rem] rounded-full border border-teal-300/15 [mask-image:radial-gradient(circle,transparent_58%,black_60%)]" />
 
-          <div className="relative group">
-            <img
-              src="https://images.pexels.com/photos/31406900/pexels-photo-31406900/free-photo-of-minimalist-white-smartwatch-on-light-background.jpeg?auto=compress&w=1260&h=750&dpr=1"
-              alt="AURION ONE smartwatch, out of focus"
-              className="relative z-10 w-[22rem] sm:w-[28rem] rounded-[2.5rem] object-cover drop-shadow-2xl blur-[3px] transition-all duration-700 group-hover:blur-[1px] group-hover:scale-[1.03]"
-            />
-            <div className="absolute inset-0 rounded-[2.5rem] ring-1 ring-white/10" />
-          </div>
+          <img
+            src="https://images.pexels.com/photos/31406900/pexels-photo-31406900/free-photo-of-minimalist-white-smartwatch-on-light-background.jpeg?auto=compress&w=1260&h=750&dpr=1"
+            alt="AURION ONE smartwatch, floating"
+            className="relative z-10 w-[20rem] sm:w-[25rem] mix-blend-multiply blur-[3px]"
+            style={{ animation: 'auraFloat 4.5s ease-in-out infinite' }}
+          />
+
+          <style>{`
+            @keyframes auraFloat {
+              0%, 100% { transform: translateY(0px); }
+              50% { transform: translateY(-18px); }
+            }
+            @keyframes auraPulse {
+              0%, 100% { transform: scale(1); opacity: 0.85; }
+              50% { transform: scale(1.12); opacity: 1; }
+            }
+          `}</style>
         </div>
       </div>
     </section>

@@ -39,7 +39,7 @@ const AurionShowcase: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               <img
                 src="https://images.pexels.com/photos/31406900/pexels-photo-31406900/free-photo-of-minimalist-white-smartwatch-on-light-background.jpeg?auto=compress&w=1260&h=750&dpr=1"
                 alt="AURION ONE smartwatch macro detail, out of focus"
-                className="w-[150%] max-w-none scale-150 -translate-y-4 object-cover blur-[4px]"
+                className="w-full h-full object-contain scale-110 mix-blend-multiply blur-[4px]"
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
