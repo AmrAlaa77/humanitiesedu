@@ -120,7 +120,7 @@ const HumanReel: React.FC = () => {
   }, [hovering]);
 
   return (
-    <section id="top" className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden border border-[#1C1C1C] bg-[#0D0D0D] text-white">
+    <section id="top" className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden border-x border-t border-[#1C1C1C] bg-[#0D0D0D] text-white">
       {/* Top-left: brand + counter */}
       <div className="absolute top-6 left-6 sm:left-10 z-30 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80">
         HUMAN <span className="text-white/40">®</span> / 01
@@ -254,6 +254,9 @@ const HumanReel: React.FC = () => {
       </div>
 
       <div className="h-16 sm:h-20" />
+
+      {/* Gradient blend into the next page's background instead of a hard cut */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#0a0e1a]" />
     </section>
   );
 };
