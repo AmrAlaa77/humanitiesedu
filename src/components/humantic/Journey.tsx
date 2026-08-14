@@ -103,12 +103,12 @@ const Journey: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             headIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 text-cyan-300 text-xs font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 text-emerald-300 text-xs font-medium mb-6">
             <Compass className="w-3.5 h-3.5" /> Genesis
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.08]">
             From a single conviction
-            <span className="block bg-gradient-to-r from-cyan-300 via-cyan-300 to-teal-200 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-emerald-300 via-cyan-300 to-teal-200 bg-clip-text text-transparent">
               to a global cause.
             </span>
           </h2>
@@ -129,7 +129,7 @@ const Journey: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                 onClick={() => setActive(t.key)}
                 className={`inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
                   on
-                    ? 'bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 shadow-lg shadow-emerald-500/25'
+                    ? 'bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 shadow-lg shadow-emerald-500/25'
                     : 'border border-white/10 text-slate-300 hover:text-white hover:border-white/25'
                 }`}
               >
@@ -155,7 +155,7 @@ const Journey: React.FC<{ onCta: () => void }> = ({ onCta }) => {
 const StartPanel: React.FC = () => (
   <div className="grid lg:grid-cols-2 gap-10 items-center">
     <div>
-      <span className="text-cyan-300 text-sm font-semibold tracking-widest uppercase">
+      <span className="text-emerald-300 text-sm font-semibold tracking-widest uppercase">
         2007 – 2014 · The Field as a Laboratory
       </span>
       <h3 className="mt-3 text-2xl sm:text-3xl font-bold text-white leading-snug">
@@ -186,7 +186,7 @@ const StartPanel: React.FC = () => (
         { icon: Sprout, k: '7yr', v: 'On the field' },
       ].map((s) => (
         <div key={s.v} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center">
-          <s.icon className="w-6 h-6 text-cyan-300 mx-auto mb-3" />
+          <s.icon className="w-6 h-6 text-emerald-300 mx-auto mb-3" />
           <p className="text-2xl font-bold text-white">{s.k}</p>
           <p className="text-xs text-slate-400 mt-1">{s.v}</p>
         </div>
@@ -251,7 +251,7 @@ const InitiativesPanel: React.FC = () => (
       >
         <div className="flex items-center gap-3 mb-3">
           <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-400/20 to-cyan-500/20 border border-white/10 group-hover:scale-110 transition-transform">
-            <it.icon className="w-5 h-5 text-cyan-300" />
+            <it.icon className="w-5 h-5 text-emerald-300" />
           </div>
           <span className="text-xs font-semibold tracking-widest text-cyan-300">{it.year}</span>
         </div>
@@ -268,11 +268,11 @@ const MilestonesPanel: React.FC = () => (
     <div className="space-y-7">
       {milestones.map((m) => (
         <div key={m.year} className="relative pl-12 sm:pl-14">
-          <span className="absolute left-0 sm:left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-cyan-500 shadow-lg shadow-emerald-500/30">
+          <span className="absolute left-0 sm:left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 shadow-lg shadow-emerald-500/30">
             <span className="h-2 w-2 rounded-full bg-slate-950" />
           </span>
           <div className="flex flex-wrap items-baseline gap-x-3">
-            <span className="text-sm font-bold text-cyan-300">{m.year}</span>
+            <span className="text-sm font-bold text-emerald-300">{m.year}</span>
             <h4 className="text-lg font-semibold text-white">{m.title}</h4>
           </div>
           <p className="mt-1 text-sm text-slate-400">{m.desc}</p>
@@ -285,7 +285,7 @@ const MilestonesPanel: React.FC = () => (
 const NextPanel: React.FC<{ onCta: () => void }> = ({ onCta }) => (
   <div className="text-center max-w-2xl mx-auto">
     <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400/20 to-cyan-500/20 border border-white/10 mb-5">
-      <Rocket className="w-7 h-7 text-cyan-300" />
+      <Rocket className="w-7 h-7 text-emerald-300" />
     </div>
     <h3 className="text-2xl sm:text-3xl font-bold text-white">The next chapter is being written now.</h3>
     <p className="mt-4 text-slate-300 leading-relaxed">
@@ -301,7 +301,7 @@ const NextPanel: React.FC<{ onCta: () => void }> = ({ onCta }) => (
     </div>
     <button
       onClick={onCta}
-      className="group mt-8 inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 font-semibold hover:opacity-90 transition shadow-lg shadow-emerald-500/25"
+      className="group mt-8 inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 font-semibold hover:opacity-90 transition shadow-lg shadow-emerald-500/25"
     >
       Be part of what’s next
       <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition" />

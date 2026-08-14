@@ -54,7 +54,7 @@ const AdminSubmissions: React.FC = () => {
     <div>
       <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
         <h2 className="text-xl font-bold flex items-center gap-2">
-          <Inbox className="w-5 h-5 text-cyan-300" /> Assessment submissions
+          <Inbox className="w-5 h-5 text-emerald-300" /> Assessment submissions
           <span className="text-slate-400 text-sm font-normal">· {rows.length} total</span>
         </h2>
         <div className="flex items-center gap-2">
@@ -95,7 +95,7 @@ const AdminSubmissions: React.FC = () => {
                 <tr key={r.id} className="hover:bg-white/[0.02]">
                   <td className="px-4 py-3 text-white">{r.name || <span className="text-slate-500">—</span>}</td>
                   <td className="px-4 py-3">
-                    <a href={`mailto:${r.email}`} className="text-cyan-300 hover:underline flex items-center gap-1.5">
+                    <a href={`mailto:${r.email}`} className="text-emerald-300 hover:underline flex items-center gap-1.5">
                       <Mail className="w-3.5 h-3.5" /> {r.email}
                     </a>
                   </td>

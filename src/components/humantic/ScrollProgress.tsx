@@ -26,7 +26,7 @@ const ScrollProgress: React.FC = () => {
     <>
       <div className="fixed top-0 left-0 right-0 z-[60] h-[3px] bg-transparent pointer-events-none">
         <div
-          className="h-full bg-gradient-to-r from-cyan-400 via-cyan-400 to-indigo-400 shadow-[0_0_12px_rgba(52,211,153,0.6)] transition-[width] duration-150 ease-out"
+          className="h-full bg-gradient-to-r from-emerald-400 via-cyan-400 to-indigo-400 shadow-[0_0_12px_rgba(52,211,153,0.6)] transition-[width] duration-150 ease-out"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -35,7 +35,7 @@ const ScrollProgress: React.FC = () => {
         type="button"
         aria-label="Back to top"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-6 right-6 z-50 grid h-12 w-12 place-items-center rounded-full border border-emerald-400/30 bg-slate-900/80 text-cyan-300 backdrop-blur transition-all duration-500 ao-hover-lift ${
+        className={`fixed bottom-6 right-6 z-50 grid h-12 w-12 place-items-center rounded-full border border-emerald-400/30 bg-slate-900/80 text-emerald-300 backdrop-blur transition-all duration-500 ao-hover-lift ${
           showTop ? 'opacity-100 translate-y-0' : 'pointer-events-none opacity-0 translate-y-4'
         }`}
       >

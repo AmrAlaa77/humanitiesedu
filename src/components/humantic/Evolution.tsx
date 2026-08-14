@@ -65,7 +65,7 @@ const statusStyles: Record<Phase['status'], { dot: string; label: string; chip: 
   done: {
     dot: 'bg-emerald-400 border-emerald-300',
     label: 'Achieved',
-    chip: 'text-cyan-300 border-emerald-400/30 bg-emerald-400/[0.07]',
+    chip: 'text-emerald-300 border-emerald-400/30 bg-emerald-400/[0.07]',
   },
   active: {
     dot: 'bg-cyan-400 border-cyan-300 animate-pulse',
@@ -88,14 +88,14 @@ const Evolution: React.FC = () => (
 
     <div className="max-w-7xl mx-auto px-5 sm:px-8">
       <div className="max-w-2xl">
-        <span className="inline-flex items-center gap-2 text-cyan-400 text-sm font-semibold uppercase tracking-widest">
-          <span className="tabular-nums text-cyan-300/70">05</span>
+        <span className="inline-flex items-center gap-2 text-emerald-400 text-sm font-semibold uppercase tracking-widest">
+          <span className="tabular-nums text-emerald-300/70">05</span>
           <span className="h-px w-6 bg-emerald-400/40" />
           The Evolution of the Initiative
         </span>
         <h2 className="mt-5 text-4xl sm:text-6xl font-bold text-white tracking-tight leading-[1.05]">
           From a single conviction
-          <span className="block bg-gradient-to-r from-cyan-300 to-cyan-300 bg-clip-text text-transparent">
+          <span className="block bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
             to a global cause.
           </span>
         </h2>
@@ -139,7 +139,7 @@ const Evolution: React.FC = () => (
                         left ? 'sm:flex-row-reverse' : ''
                       }`}
                     >
-                      <div className="w-11 h-11 shrink-0 rounded-2xl bg-gradient-to-br from-cyan-400 to-cyan-500 flex items-center justify-center">
+                      <div className="w-11 h-11 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center">
                         <p.icon className="w-5 h-5 text-slate-950" />
                       </div>
                       <div className={left ? 'sm:text-right' : ''}>

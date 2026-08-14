@@ -19,15 +19,15 @@ const Pillar: React.FC = () => (
       <div className="grid lg:grid-cols-2 gap-14 items-center">
         {/* Left — narrative */}
         <div>
-          <span className="inline-flex items-center gap-2 text-cyan-400 text-sm font-semibold uppercase tracking-widest">
-            <span className="tabular-nums text-cyan-300/70">04</span>
+          <span className="inline-flex items-center gap-2 text-emerald-400 text-sm font-semibold uppercase tracking-widest">
+            <span className="tabular-nums text-emerald-300/70">04</span>
             <span className="h-px w-6 bg-emerald-400/40" />
             Platform Pillar · Sociophysiology &amp; Bio-Neurometrics
           </span>
 
           <h2 className="mt-5 text-4xl sm:text-6xl font-bold text-white tracking-tight leading-[1.05]">
             Where biology meets
-            <span className="block bg-gradient-to-r from-cyan-300 to-cyan-300 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
               organisational truth.
             </span>
           </h2>
@@ -41,7 +41,7 @@ const Pillar: React.FC = () => (
           </p>
 
           <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5">
-            <Brain className="w-4 h-4 text-cyan-300" />
+            <Brain className="w-4 h-4 text-emerald-300" />
             <span className="text-slate-300 text-sm font-medium tracking-wide uppercase">
               Organisational behavior
             </span>
@@ -53,14 +53,14 @@ const Pillar: React.FC = () => (
           <div className="flex items-center justify-between mb-7">
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-400/20 to-cyan-500/20 border border-emerald-400/20 flex items-center justify-center">
-                <Activity className="w-5 h-5 text-cyan-300" />
+                <Activity className="w-5 h-5 text-emerald-300" />
               </div>
               <div>
                 <p className="text-white font-semibold leading-tight">Collective Biochemical Scale</p>
                 <p className="text-slate-500 text-xs">Real-time organisational health</p>
               </div>
             </div>
-            <span className="flex items-center gap-1.5 text-xs text-cyan-300">
+            <span className="flex items-center gap-1.5 text-xs text-emerald-300">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> Live
             </span>
           </div>
@@ -73,7 +73,7 @@ const Pillar: React.FC = () => (
               >
                 <m.icon className="w-5 h-5 text-cyan-300 mb-3 group-hover:scale-110 transition" />
                 <p className="text-white text-sm font-medium leading-snug">{m.label}</p>
-                <p className="text-cyan-300/80 text-xs mt-1.5 font-semibold uppercase tracking-wide">{m.value}</p>
+                <p className="text-emerald-300/80 text-xs mt-1.5 font-semibold uppercase tracking-wide">{m.value}</p>
               </div>
             ))}
           </div>
@@ -81,10 +81,10 @@ const Pillar: React.FC = () => (
           <div className="mt-6 rounded-2xl border border-white/10 bg-slate-950/40 p-5">
             <div className="flex items-center justify-between mb-2">
               <span className="text-slate-400 text-xs uppercase tracking-wide">Team sync coherence</span>
-              <span className="text-cyan-300 text-sm font-semibold tabular-nums">87%</span>
+              <span className="text-emerald-300 text-sm font-semibold tabular-nums">87%</span>
             </div>
             <div className="h-2 rounded-full bg-white/10 overflow-hidden">
-              <div className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-cyan-400" style={{ width: '87%' }} />
+              <div className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400" style={{ width: '87%' }} />
             </div>
           </div>
         </div>

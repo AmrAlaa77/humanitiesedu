@@ -29,7 +29,7 @@ const Features: React.FC = () => {
             header.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span className="inline-flex items-center gap-2 text-cyan-400 text-xs sm:text-sm font-semibold uppercase tracking-widest">
+          <span className="inline-flex items-center gap-2 text-emerald-400 text-xs sm:text-sm font-semibold uppercase tracking-widest">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
             The Platform
           </span>
@@ -57,7 +57,7 @@ const Features: React.FC = () => {
               {/* sheen sweep on hover */}
               <div className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.07] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400/20 to-cyan-500/20 border border-emerald-400/20 flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                <f.icon className="w-6 h-6 text-cyan-300 transition-colors group-hover:text-cyan-200" />
+                <f.icon className="w-6 h-6 text-emerald-300 transition-colors group-hover:text-emerald-200" />
               </div>
               <h3 className="relative text-white text-lg font-semibold mb-2">{f.title}</h3>
               <p className="relative text-slate-400 text-sm leading-relaxed">{f.desc}</p>

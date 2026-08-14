@@ -65,7 +65,7 @@ const Assessment: React.FC = () => {
             <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight leading-[1.05]">
               <span className="text-white">We look at the soul of the individual —</span>{' '}
               <span className="text-white">not the </span>
-              <span className="text-cyan-400">utility of the citizen.</span>
+              <span className="text-emerald-400">utility of the citizen.</span>
             </h2>
             <blockquote className="mt-7 border-l-2 border-cyan-400/60 pl-5 text-slate-400 italic leading-relaxed">
               "This is not a test of your efficiency; it is an invitation to be truly seen. In a world that
@@ -87,7 +87,7 @@ const Assessment: React.FC = () => {
                 <span
                   className={`absolute left-0 top-0 h-[2px] w-full rounded-t-2xl ${
                     it.primary
-                      ? 'bg-gradient-to-r from-cyan-400 to-cyan-400'
+                      ? 'bg-gradient-to-r from-emerald-400 to-cyan-400'
                       : 'bg-blue-500/70'
                   }`}
                 />
@@ -104,7 +104,7 @@ const Assessment: React.FC = () => {
                 <ul className="mt-7 space-y-3">
                   {it.features.map((f) => (
                     <li key={f} className="flex items-start gap-3 text-slate-300 text-sm">
-                      <Check className={`mt-0.5 h-4 w-4 shrink-0 ${it.primary ? 'text-cyan-400' : 'text-cyan-400'}`} />
+                      <Check className={`mt-0.5 h-4 w-4 shrink-0 ${it.primary ? 'text-cyan-400' : 'text-emerald-400'}`} />
                       {f}
                     </li>
                   ))}
@@ -136,7 +136,7 @@ const Assessment: React.FC = () => {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs text-slate-500">
-            <span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-cyan-400" /> MISA approved instrument</span>
+            <span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-400" /> MISA approved instrument</span>
             <span className="inline-flex items-center gap-2"><Sparkles className="h-4 w-4 text-cyan-400" /> Read through the lens of socio-neurobiology</span>
           </div>
         </div>

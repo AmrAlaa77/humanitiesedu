@@ -12,12 +12,12 @@ const Hero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
 
       <div className="relative max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-14 items-center">
         <div>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 text-cyan-300 text-xs font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 text-emerald-300 text-xs font-medium mb-6">
             <ShieldCheck className="w-3.5 h-3.5" /> Preventative Medicine, Powered by AI
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold text-white leading-[1.05] tracking-tight">
             Know your body
-            <span className="block bg-gradient-to-r from-cyan-300 via-cyan-300 to-teal-200 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-emerald-300 via-cyan-300 to-teal-200 bg-clip-text text-transparent">
               before it speaks.
             </span>
           </h1>
@@ -28,7 +28,7 @@ const Hero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <button onClick={onCta} className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 font-semibold hover:opacity-90 transition shadow-lg shadow-emerald-500/25">
+            <button onClick={onCta} className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 font-semibold hover:opacity-90 transition shadow-lg shadow-emerald-500/25">
               Get Your Wellbeing Index <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition" />
             </button>
             <button onClick={() => scrollTo('#showcase')} className="px-6 py-3.5 rounded-full border border-white/15 text-white font-semibold hover:bg-white/5 transition">
@@ -53,8 +53,8 @@ const Hero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                 <p className="text-white text-sm">Live composite score</p>
               </div>
               <div className="text-right">
-                <p className="text-5xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-300 bg-clip-text text-transparent">87</p>
-                <p className="text-cyan-400 text-xs">+4 this week</p>
+                <p className="text-5xl font-bold bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">87</p>
+                <p className="text-emerald-400 text-xs">+4 this week</p>
               </div>
             </div>
 

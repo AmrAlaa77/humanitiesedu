@@ -78,7 +78,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ open, onClose, product }) =
         {status === 'done' ? (
           <div className="text-center py-6">
             <div className="w-16 h-16 mx-auto rounded-full bg-emerald-400/15 flex items-center justify-center mb-5">
-              <Check className="w-8 h-8 text-cyan-400" />
+              <Check className="w-8 h-8 text-emerald-400" />
             </div>
             <h3 className="text-white text-2xl font-bold">Payment confirmed</h3>
             <p className="text-slate-400 mt-2">
@@ -87,14 +87,14 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ open, onClose, product }) =
             </p>
             <button
               onClick={close}
-              className="mt-6 px-6 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 font-semibold"
+              className="mt-6 px-6 py-2.5 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 font-semibold"
             >
               Done
             </button>
           </div>
         ) : (
           <>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/10 text-cyan-300 text-xs mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/10 text-emerald-300 text-xs mb-4">
               <Lock className="w-3.5 h-3.5" /> Secure Checkout
             </div>
             <h3 className="text-white text-2xl font-bold leading-tight">{product.title}</h3>
@@ -150,7 +150,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ open, onClose, product }) =
               </div>
               <button
                 disabled={status === 'loading' || !valid}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 font-semibold flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 font-semibold flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 {status === 'loading' ? (
                   <Loader2 className="w-5 h-5 animate-spin" />
@@ -159,7 +159,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ open, onClose, product }) =
                 )}
               </button>
               <p className="flex items-center justify-center gap-2 text-xs text-slate-500">
-                <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" /> Encrypted & secure. Cards are not stored.
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> Encrypted & secure. Cards are not stored.
               </p>
             </form>
           </>

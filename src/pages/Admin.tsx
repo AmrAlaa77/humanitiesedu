@@ -45,7 +45,7 @@ const ReelsManager: React.FC = () => {
   return (
     <div className="grid lg:grid-cols-[400px_1fr] gap-10">
       <form onSubmit={add} className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 h-fit lg:sticky lg:top-24">
-        <h2 className="text-xl font-bold flex items-center gap-2"><Plus className="w-5 h-5 text-cyan-300" /> Add a reel</h2>
+        <h2 className="text-xl font-bold flex items-center gap-2"><Plus className="w-5 h-5 text-emerald-300" /> Add a reel</h2>
         <p className="text-slate-400 text-sm mt-1">Replace the sample videos with your own files.</p>
 
         <label className="block mt-5 text-sm text-slate-300">Title
@@ -67,7 +67,7 @@ const ReelsManager: React.FC = () => {
             className="mt-1.5 w-full rounded-xl bg-slate-900 border border-white/10 px-4 py-2.5 outline-none focus:border-emerald-400/50" />
         </label>
         {detected && (
-          <p className="mt-1.5 text-xs text-cyan-300/80">Detected: {detected.type.toUpperCase()} · {detected.src}</p>
+          <p className="mt-1.5 text-xs text-emerald-300/80">Detected: {detected.type.toUpperCase()} · {detected.src}</p>
         )}
 
         <label className="block mt-4 text-sm text-slate-300">Poster image URL
@@ -87,7 +87,7 @@ const ReelsManager: React.FC = () => {
           </label>
         </div>
 
-        <button type="submit" className="mt-6 w-full py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 font-semibold">
+        <button type="submit" className="mt-6 w-full py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 font-semibold">
           {saved ? 'Added!' : 'Add reel'}
         </button>
         <button type="button" onClick={reset} className="mt-3 w-full py-2.5 rounded-xl border border-white/10 text-slate-300 hover:bg-white/5 text-sm flex items-center justify-center gap-2">
@@ -129,7 +129,7 @@ const Admin: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center text-cyan-300">
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center text-emerald-300">
         <Loader2 className="w-7 h-7 animate-spin" />
       </div>
     );
@@ -142,7 +142,7 @@ const Admin: React.FC = () => {
       <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur sticky top-0 z-20">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-cyan-300" />
+            <ShieldCheck className="w-5 h-5 text-emerald-300" />
             <span className="font-semibold">Humantic Admin</span>
           </div>
           <div className="flex items-center gap-3">
