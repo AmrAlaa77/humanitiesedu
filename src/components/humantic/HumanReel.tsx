@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight } from 'lucide-react';
 
 /**
  * HUMAN — editorial video-reel hero.
  *
  * A pitch-black, high-contrast frame: fixed metadata badges in each
- * corner, a centered 16:9 video reel that crossfades through five
- * subjects, a custom floating cursor while hovering the reel, and a
- * staggered word-by-word headline reveal. The reel's width/radius morphs
- * on scroll (80% rounded -> 100% square) via refs + rAF, not React state,
- * so it stays smooth. No framer-motion dependency — this project can't
- * install new packages in this environment, so the spring/scroll motion
- * is hand-rolled with the same lerp technique already used elsewhere.
+ * corner, a live London clock, a scroll marquee, a staggered word-by-word
+ * intro line, and the centerpiece — the word "HUMAN" rendered as an SVG
+ * luminance mask so the five-clip video reel is visible only *inside* the
+ * letterforms (not a separate framed video with text on top). Hovering
+ * the word hides the cursor and shows a custom spring-follow "Explore"
+ * bubble. No framer-motion dependency (can't install packages in this
+ * environment) — motion is hand-rolled with the same ref+rAF technique
+ * used elsewhere in this codebase.
  */
 
 interface Clip {
@@ -59,17 +59,14 @@ const LondonClock: React.FC = () => {
 };
 
 const HumanReel: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const frameRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
-  const raf = useRef<number>();
 
   const [active, setActive] = useState(0);
   const [fading, setFading] = useState(false);
-  const [hoveringReel, setHoveringReel] = useState(false);
+  const [hovering, setHovering] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
-  // Word-by-word headline reveal on mount
+  // Word-by-word intro reveal + word-mask entrance, on mount
   useEffect(() => {
     const id = requestAnimationFrame(() => setLoaded(true));
     return () => cancelAnimationFrame(id);
@@ -88,31 +85,9 @@ const HumanReel: React.FC = () => {
     };
   }, [active]);
 
-  // Scroll-linked frame morph: 80% rounded -> 100% square, driven by refs (no re-render)
+  // Custom floating cursor: spring-lerp follow, only while hovering the masked word
   useEffect(() => {
-    const tick = () => {
-      const sec = sectionRef.current;
-      const frame = frameRef.current;
-      if (sec && frame) {
-        const rect = sec.getBoundingClientRect();
-        const total = sec.offsetHeight - window.innerHeight;
-        const t = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : 0;
-        const width = 80 + t * 20; // 80% -> 100%
-        const radius = 24 * (1 - t); // 1.5rem -> 0
-        frame.style.width = `${width}%`;
-        frame.style.borderRadius = `${radius}px`;
-      }
-      raf.current = requestAnimationFrame(tick);
-    };
-    raf.current = requestAnimationFrame(tick);
-    return () => {
-      if (raf.current) cancelAnimationFrame(raf.current);
-    };
-  }, []);
-
-  // Custom floating cursor: spring-lerp follow, only rendered while hovering the reel
-  useEffect(() => {
-    if (!hoveringReel) return;
+    if (!hovering) return;
     let target = { x: 0, y: 0 };
     let pos = { x: 0, y: 0 };
     let id: number;
@@ -136,118 +111,138 @@ const HumanReel: React.FC = () => {
       window.removeEventListener('pointermove', move);
       cancelAnimationFrame(id);
     };
-  }, [hoveringReel]);
+  }, [hovering]);
 
   return (
-    <section
-      ref={sectionRef}
-      id="top"
-      className="relative w-full bg-[#0D0D0D] text-white"
-      style={{ minHeight: '160vh' }}
-    >
-      <div className="sticky top-0 flex h-[100svh] w-full flex-col justify-between overflow-hidden border border-[#1C1C1C]">
-        {/* Top-left: brand + counter */}
-        <div className="absolute top-6 left-6 sm:left-10 z-30 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80">
-          HUMAN <span className="text-white/40">®</span> / 01
+    <section id="top" className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden border border-[#1C1C1C] bg-[#0D0D0D] text-white">
+      {/* Top-left: brand + counter */}
+      <div className="absolute top-6 left-6 sm:left-10 z-30 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80">
+        HUMAN <span className="text-white/40">®</span> / 01
+      </div>
+
+      {/* Top-right: live London clock */}
+      <div className="absolute top-6 right-6 sm:right-10 z-30">
+        <LondonClock />
+      </div>
+
+      {/* Bottom-left: location */}
+      <div className="absolute bottom-6 left-6 sm:left-10 z-30 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">
+        LONDON — EST. 2026
+      </div>
+
+      {/* Bottom-right: scroll marquee */}
+      <div className="absolute bottom-6 right-6 sm:right-10 z-30 w-40 overflow-hidden sm:w-56">
+        <div className="flex whitespace-nowrap font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-white/50" style={{ animation: 'humanMarquee 9s linear infinite' }}>
+          <span className="pr-8">SCROLL TO EXPLORE →</span>
+          <span className="pr-8">SCROLL TO EXPLORE →</span>
+          <span className="pr-8">SCROLL TO EXPLORE →</span>
         </div>
+      </div>
 
-        {/* Top-right: live London clock */}
-        <div className="absolute top-6 right-6 sm:right-10 z-30">
-          <LondonClock />
-        </div>
+      <style>{`
+        @keyframes humanMarquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-33.333%); }
+        }
+      `}</style>
 
-        {/* Bottom-left: location */}
-        <div className="absolute bottom-6 left-6 sm:left-10 z-30 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">
-          LONDON — EST. 2026
-        </div>
+      {/* SVG mask definition: white text = visible (video shows through), black = hidden */}
+      <svg width="0" height="0" className="absolute">
+        <defs>
+          <mask id="humanTextMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1200" height="300">
+            <rect x="0" y="0" width="1200" height="300" fill="black" />
+            <text
+              x="600"
+              y="150"
+              textAnchor="middle"
+              dominantBaseline="central"
+              fontFamily="Syne, sans-serif"
+              fontWeight="800"
+              fontSize="248"
+              letterSpacing="-6"
+              fill="white"
+            >
+              HUMAN
+            </text>
+          </mask>
+        </defs>
+      </svg>
 
-        {/* Bottom-right: scroll marquee */}
-        <div className="absolute bottom-6 right-6 sm:right-10 z-30 w-40 overflow-hidden sm:w-56">
-          <div className="flex whitespace-nowrap font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-white/50" style={{ animation: 'humanMarquee 9s linear infinite' }}>
-            <span className="pr-8">SCROLL TO EXPLORE →</span>
-            <span className="pr-8">SCROLL TO EXPLORE →</span>
-            <span className="pr-8">SCROLL TO EXPLORE →</span>
-          </div>
-        </div>
+      {/* Intro line — staggered word-by-word reveal */}
+      <div className="relative z-20 mx-auto mt-28 max-w-md px-6 text-center sm:mt-32">
+        <p className="text-sm leading-relaxed text-white/60 sm:text-base">
+          {HEADLINE_WORDS.map((word, i) => (
+            <span
+              key={i}
+              className="mr-[0.28em] inline-block"
+              style={{
+                opacity: loaded ? 1 : 0,
+                transform: loaded ? 'translateY(0)' : 'translateY(0.5em)',
+                transition: `opacity .5s ease ${i * 0.04}s, transform .5s ease ${i * 0.04}s`,
+              }}
+            >
+              {word}
+            </span>
+          ))}
+        </p>
+      </div>
 
-        <style>{`
-          @keyframes humanMarquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-33.333%); }
-          }
-          @keyframes humanWordUp {
-            from { opacity: 0; transform: translateY(0.6em); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-        `}</style>
-
-        {/* Centered 16:9 video reel */}
-        <div className="relative flex flex-1 items-center justify-center px-4">
+      {/* The word HUMAN — video visible only inside the letterforms */}
+      <div className="relative z-10 flex flex-1 items-center justify-center px-2">
+        <div
+          onMouseEnter={() => setHovering(true)}
+          onMouseLeave={() => setHovering(false)}
+          className="relative w-[94vw] max-w-[1500px] overflow-hidden"
+          style={{
+            aspectRatio: '1200 / 300',
+            cursor: 'none',
+            opacity: loaded ? 1 : 0,
+            transform: loaded ? 'scale(1)' : 'scale(0.94)',
+            transition: 'opacity .9s ease .2s, transform .9s ease .2s',
+          }}
+        >
           <div
-            ref={frameRef}
-            onMouseEnter={() => setHoveringReel(true)}
-            onMouseLeave={() => setHoveringReel(false)}
-            className="relative aspect-video overflow-hidden bg-[#141414] shadow-2xl"
-            style={{ width: '80%', borderRadius: 24, cursor: 'none' }}
+            className="absolute inset-0"
+            style={{
+              WebkitMaskImage: 'url(#humanTextMask)',
+              maskImage: 'url(#humanTextMask)',
+              WebkitMaskSize: '100% 100%',
+              maskSize: '100% 100%',
+              WebkitMaskRepeat: 'no-repeat',
+              maskRepeat: 'no-repeat',
+            }}
           >
             {CLIPS.map((clip, i) => (
-              <div
+              <video
                 key={clip.label}
-                className="absolute inset-0 flex items-center justify-center bg-[#141414] transition-opacity ease-in-out"
+                className="absolute inset-0 h-full w-full object-cover transition-opacity ease-in-out"
                 style={{
                   opacity: i === active ? (fading ? 0 : 1) : 0,
                   transitionDuration: `${FADE_MS}ms`,
-                  zIndex: i === active ? 2 : 1,
                 }}
-              >
-                <video
-                  className="h-full w-full object-cover opacity-90"
-                  src={clip.video}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                />
-              </div>
+                src={clip.video}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+              />
             ))}
-
-            {/* vignette for legibility */}
-            <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(0,0,0,0.55)_100%)]" />
-
-            {/* headline overlay */}
-            <div className="pointer-events-none absolute inset-0 z-20 flex items-end p-6 sm:p-12">
-              <h1 className="font-display max-w-2xl text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl">
-                {HEADLINE_WORDS.map((word, i) => (
-                  <span
-                    key={i}
-                    className="mr-[0.28em] inline-block"
-                    style={{
-                      opacity: loaded ? 1 : 0,
-                      transform: loaded ? 'translateY(0)' : 'translateY(0.6em)',
-                      transition: `opacity .6s ease ${i * 0.05}s, transform .6s ease ${i * 0.05}s`,
-                    }}
-                  >
-                    {word}
-                  </span>
-                ))}
-              </h1>
-            </div>
-
-            {/* custom floating cursor */}
-            {hoveringReel && (
-              <div
-                ref={cursorRef}
-                className="pointer-events-none absolute top-0 left-0 z-30 flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-white/10 font-mono text-[11px] font-semibold uppercase tracking-widest text-white backdrop-blur-md"
-              >
-                Explore
-              </div>
-            )}
           </div>
-        </div>
 
-        <div className="h-16 sm:h-20" />
+          {/* custom floating cursor */}
+          {hovering && (
+            <div
+              ref={cursorRef}
+              className="pointer-events-none absolute top-0 left-0 z-30 flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-white/10 font-mono text-[11px] font-semibold uppercase tracking-widest text-white backdrop-blur-md"
+            >
+              Explore
+            </div>
+          )}
+        </div>
       </div>
+
+      <div className="h-16 sm:h-20" />
     </section>
   );
 };
