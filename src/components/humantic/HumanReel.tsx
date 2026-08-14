@@ -149,17 +149,17 @@ const HumanReel: React.FC = () => {
       {/* SVG mask definition: white text = visible (video shows through), black = hidden */}
       <svg width="0" height="0" className="absolute">
         <defs>
-          <mask id="humanTextMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1200" height="1200">
-            <rect x="0" y="0" width="1200" height="1200" fill="black" />
+          <mask id="humanTextMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1400" height="480">
+            <rect x="0" y="0" width="1400" height="480" fill="black" />
             <text
-              x="600"
-              y="600"
+              x="700"
+              y="240"
               textAnchor="middle"
               dominantBaseline="central"
               fontFamily="Syne, sans-serif"
               fontWeight="800"
-              fontSize="248"
-              letterSpacing="-6"
+              fontSize="200"
+              letterSpacing="-4"
               fill="white"
             >
               HUMAN
@@ -192,10 +192,9 @@ const HumanReel: React.FC = () => {
         <div
           onMouseEnter={() => setHovering(true)}
           onMouseLeave={() => setHovering(false)}
-          className="relative overflow-hidden"
+          className="relative w-[92vw] max-w-[1600px] overflow-hidden"
           style={{
-            width: 'min(94vw, 62vh)',
-            aspectRatio: '1200 / 1200',
+            aspectRatio: '1400 / 480',
             cursor: 'none',
             opacity: loaded ? 1 : 0,
             transform: loaded ? 'scale(1)' : 'scale(0.94)',
