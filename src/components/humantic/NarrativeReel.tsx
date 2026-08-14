@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Instagram, Dribbble, Play, X } from 'lucide-react';
 
 /**
- * The HUMAN reel: five plain, vivid-colored panels — Oil & Gas, Metal &
- * Mining, Healthcare, Tourism, then Graduates — each carrying a close-up
- * portrait video of a real person and revealing one letter of HUMAN. Idle
- * state loops the first portrait quietly behind a glowing seafoam-mint Play
- * control; pressing it launches the full reel, with a matching glowing
- * Close control to exit back to idle. The final panel zooms out.
+ * The HUMAN reel: five full-bleed, real-video sector panels, each revealing
+ * one letter of HUMAN as it plays — Oil & Gas, Metal & Mining, Healthcare,
+ * Tourism, then Graduates, where the full word lands and the camera pulls
+ * back. Idle state loops a quiet ambient clip behind a glowing Play control;
+ * pressing it launches the full reel, with a matching glowing Close control
+ * to exit back to idle.
  */
 
 interface Panel {
@@ -15,7 +15,6 @@ interface Panel {
   label: string;
   sub: string;
   video: string;
-  bg: string;
 }
 
 const PANELS: Panel[] = [
@@ -23,36 +22,31 @@ const PANELS: Panel[] = [
     letter: 'H',
     label: 'Oil & Gas',
     sub: 'Where the wellhead taught us safety is never a slogan.',
-    video: 'https://videos.pexels.com/video-files/8496455/8496455-hd_1920_1080_25fps.mp4',
-    bg: 'linear-gradient(135deg,#7c2d12,#c2410c 45%,#f59e0b)',
+    video: 'https://videos.pexels.com/video-files/37151630/15738797_1920_1080_30fps.mp4',
   },
   {
     letter: 'U',
     label: 'Metal & Mining',
     sub: 'Heavy industry, high stakes — and the people who carry it.',
-    video: 'https://videos.pexels.com/video-files/4772279/4772279-uhd_2560_1440_24fps.mp4',
-    bg: 'linear-gradient(135deg,#78350f,#b45309 45%,#ea580c)',
+    video: 'https://videos.pexels.com/video-files/35357100/14980548_2560_1440_30fps.mp4',
   },
   {
     letter: 'M',
     label: 'Healthcare',
     sub: 'From bedside to boardroom, the same nervous system needs care.',
-    video: 'https://videos.pexels.com/video-files/8111924/8111924-hd_1080_1920_30fps.mp4',
-    bg: 'linear-gradient(135deg,#0c4a6e,#0369a1 45%,#38bdf8)',
+    video: 'https://videos.pexels.com/video-files/30141972/12925676_1920_1080_24fps.mp4',
   },
   {
     letter: 'A',
     label: 'Tourism',
     sub: 'Saudi Arabia, opening to the world — one human at a time.',
-    video: 'https://videos.pexels.com/video-files/6245712/6245712-uhd_1440_2732_30fps.mp4',
-    bg: 'linear-gradient(135deg,#7c2d12,#c2410c 45%,#fbbf24)',
+    video: 'https://videos.pexels.com/video-files/37734489/16005705_1080_1920_30fps.mp4',
   },
   {
     letter: 'N',
     label: 'Education',
     sub: 'And the graduates who carry all of it forward.',
-    video: 'https://videos.pexels.com/video-files/11670491/11670491-hd_1920_1080_24fps.mp4',
-    bg: 'linear-gradient(135deg,#134e4a,#0f766e 45%,#22d3ee)',
+    video: 'https://videos.pexels.com/video-files/7945128/7945128-hd_1920_1080_25fps.mp4',
   },
 ];
 
@@ -61,23 +55,6 @@ const PANEL_MS = 5200;
 /** Glow tuned to match GlowCursor's seafoam-mint palette. */
 const glowShadow = (strength: number) =>
   `0 0 ${28 * strength}px ${8 * strength}px rgba(94,234,212,0.32), 0 0 ${56 * strength}px ${16 * strength}px rgba(110,231,209,0.16)`;
-
-const Portrait: React.FC<{ src: string; zoomOut?: boolean }> = ({ src, zoomOut }) => (
-  <div className="relative flex items-center justify-center">
-    <div
-      className="absolute rounded-full blur-3xl opacity-60"
-      style={{ width: 420, height: 420, background: 'radial-gradient(circle, rgba(94,234,212,0.35), transparent 70%)' }}
-    />
-    <div
-      key={src}
-      className={`relative h-64 w-64 sm:h-80 sm:w-80 md:h-96 md:w-96 overflow-hidden rounded-full border-4 border-white/20 shadow-2xl ${
-        zoomOut ? 'animate-[portraitZoomOut_5.2s_ease-out_forwards]' : 'animate-[portraitZoomIn_5.2s_ease-out_forwards]'
-      }`}
-    >
-      <video className="h-full w-full object-cover" src={src} autoPlay muted loop playsInline preload="auto" />
-    </div>
-  </div>
-);
 
 const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   const [playing, setPlaying] = useState(false);
@@ -104,20 +81,56 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   const isFinal = playing && active === PANELS.length - 1;
   const revealed = playing ? PANELS.slice(0, active + 1).map((p) => p.letter).join('') : '';
   const idlePanel = PANELS[0];
-  const currentPanel = playing ? PANELS[active] : idlePanel;
 
   return (
-    <section id="top" className="relative min-h-[100svh] w-full overflow-hidden text-white">
-      {/* Plain vivid color background — swaps per sector */}
-      <div className="absolute inset-0 transition-[background] duration-1000" style={{ background: currentPanel.bg }} />
-      <div className="absolute inset-0 bg-black/25" />
+    <section id="top" className="relative min-h-[100svh] w-full overflow-hidden bg-[#0a0e1a] text-white">
+      {/* Idle ambient loop */}
+      {!playing && (
+        <div className="absolute inset-0 z-0">
+          <video
+            className="absolute inset-0 h-full w-full object-cover opacity-40"
+            src={idlePanel.video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05070d] via-[#05070d]/70 to-[#05070d]/40" />
+        </div>
+      )}
+
+      {/* Playing panels */}
+      {playing &&
+        PANELS.map((p, i) => (
+          <div
+            key={p.letter}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out z-0 ${
+              i === active ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <video
+              className={`absolute inset-0 h-full w-full object-cover ${
+                i === active ? (i === PANELS.length - 1 ? 'animate-[zoomOut_5.2s_ease-out_forwards]' : 'animate-[kenBurns_5.2s_ease-out_forwards]') : ''
+              }`}
+              src={p.video}
+              autoPlay={i === active}
+              muted
+              loop
+              playsInline
+              preload="auto"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#05070d] via-[#05070d]/55 to-[#05070d]/20" />
+            <div className="absolute inset-0 bg-black/15" />
+          </div>
+        ))}
 
       <style>{`
-        @keyframes portraitZoomIn {
-          0% { transform: scale(0.92); }
-          100% { transform: scale(1.04); }
+        @keyframes kenBurns {
+          0% { transform: scale(1.04); }
+          100% { transform: scale(1.14); }
         }
-        @keyframes portraitZoomOut {
+        @keyframes zoomOut {
           0% { transform: scale(1.3); }
           100% { transform: scale(1); }
         }
@@ -130,9 +143,9 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
       {/* Top bar: wordmark + MISA badge */}
       <div className="absolute top-7 left-6 sm:left-10 z-30 flex items-center gap-5">
         <span className="font-serif text-2xl font-extrabold tracking-tight">HumanticDigital</span>
-        <span className="hidden sm:inline-block h-1.5 w-1.5 rounded-full bg-cyan-300" />
-        <span className="hidden sm:flex items-center gap-2 rounded-md border border-cyan-200/40 px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-cyan-100">
-          <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
+        <span className="hidden sm:inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" />
+        <span className="hidden sm:flex items-center gap-2 rounded-md border border-emerald-400/30 px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-emerald-300">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
           MISA APPROVED
         </span>
       </div>
@@ -140,8 +153,8 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
       {/* Top-right nav */}
       <nav className="absolute top-8 right-6 sm:right-10 z-30 hidden md:flex items-center gap-9 text-sm font-semibold tracking-[0.12em]">
         <a href="#top" className="text-white/90 transition hover:text-white">HOME</a>
-        <a href="#platform" className="text-white/70 transition hover:text-white">PLATFORM</a>
-        <a href="#assessment" className="text-white/70 transition hover:text-white">HEALTHCONSULTING</a>
+        <a href="#platform" className="text-slate-400 transition hover:text-white">PLATFORM</a>
+        <a href="#assessment" className="text-slate-400 transition hover:text-white">HEALTHCONSULTING</a>
       </nav>
 
       {/* Close control — only while the reel is playing */}
@@ -149,10 +162,10 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
         <button
           onClick={closeReel}
           aria-label="Close reel"
-          className="absolute top-8 right-6 sm:right-10 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-teal-100/50 bg-white/10 backdrop-blur transition hover:bg-white/20 md:right-[calc(1.5rem+220px)]"
+          className="absolute top-8 right-6 sm:right-10 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-teal-300/40 bg-white/5 backdrop-blur transition hover:bg-white/10 md:right-[calc(1.5rem+220px)]"
           style={{ boxShadow: glowShadow(1) }}
         >
-          <X className="h-5 w-5 text-teal-50" />
+          <X className="h-5 w-5 text-teal-100" />
         </button>
       )}
 
@@ -163,7 +176,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             <span
               key={p.letter}
               className={`h-1.5 rounded-full transition-all duration-500 ${
-                i === active ? 'w-8 bg-white' : i < active ? 'w-4 bg-white/60' : 'w-4 bg-white/25'
+                i === active ? 'w-8 bg-emerald-400' : i < active ? 'w-4 bg-emerald-400/50' : 'w-4 bg-white/20'
               }`}
             />
           ))}
@@ -171,116 +184,106 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
       )}
 
       {/* Main content */}
-      <div className="relative z-20 mx-auto grid min-h-[100svh] max-w-6xl grid-cols-1 items-center gap-10 px-6 pt-24 lg:grid-cols-[1.15fr_0.85fr]">
-        <div>
-          {!playing ? (
-            <>
-              <div className="flex items-center gap-4 pl-1">
-                <span className="h-px w-10 bg-white/70" />
-                <span className="text-xs sm:text-sm font-semibold tracking-[0.18em] text-white/90">
-                  01 / REALIGNING BIO-VITALITY WITH INTELLIGENT METRICS
-                </span>
+      <div className="relative z-20 mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-6 pt-20">
+        {!playing ? (
+          <>
+            <div className="flex items-center gap-4 pl-1">
+              <span className="h-px w-10 bg-emerald-400" />
+              <span className="text-xs sm:text-sm font-semibold tracking-[0.18em] text-emerald-300">
+                01 / REALIGNING BIO-VITALITY WITH INTELLIGENT METRICS
+              </span>
+            </div>
+
+            <h1 className="mt-8 font-serif text-6xl sm:text-8xl md:text-[8.5rem] font-bold leading-[0.92] tracking-tight text-slate-100">
+              Let&rsquo;s realign{' '}
+              <span className="block sm:inline">bio&ndash;vitality with intelligent</span>{' '}
+              <span className="text-emerald-400">metrics.</span>
+            </h1>
+
+            <div className="mt-8 max-w-xl pl-1">
+              <p className="text-base sm:text-lg leading-relaxed text-slate-300">
+                We help people read their body, shape their wellbeing, and connect with intelligent metrics.{' '}
+                <span className="font-semibold text-white">Less guessing. More signal.</span>
+              </p>
+            </div>
+
+            {/* Glowing Play Reel control */}
+            <div className="mt-10 flex items-center gap-5 pl-1">
+              <button
+                onClick={startReel}
+                aria-label="Play reel"
+                className="group flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-teal-300/40 bg-white/5 backdrop-blur transition hover:bg-white/10"
+                style={{ boxShadow: glowShadow(1.4), animation: 'glowPulse 2.8s ease-in-out infinite' }}
+              >
+                <Play className="h-7 w-7 translate-x-0.5 fill-teal-100 text-teal-100 transition group-hover:scale-110" />
+              </button>
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-200">Play the reel</p>
+                <p className="text-sm text-slate-400">Oil &amp; Gas, Mining, Healthcare, Tourism, Graduates.</p>
               </div>
+            </div>
 
-              <h1 className="mt-8 font-serif text-5xl sm:text-7xl md:text-[6.5rem] font-bold leading-[0.95] tracking-tight text-white">
-                Let&rsquo;s realign bio&ndash;vitality with intelligent metrics.
-              </h1>
+            <div className="mt-8 max-w-xl pl-1">
+              <button
+                onClick={onCta}
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 px-7 py-4 text-sm font-semibold text-slate-950 transition hover:opacity-90"
+              >
+                Get Your Wellbeing Index
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex items-center gap-4 pl-1">
+              <span className="h-px w-10 bg-emerald-400" />
+              <span className="text-xs sm:text-sm font-semibold tracking-[0.18em] text-emerald-300">
+                {String(active + 1).padStart(2, '0')} / {PANELS[active].label.toUpperCase()}
+              </span>
+            </div>
 
-              <div className="mt-8 max-w-xl pl-1">
-                <p className="text-base sm:text-lg leading-relaxed text-white/85">
-                  We help people read their body, shape their wellbeing, and connect with intelligent metrics.{' '}
-                  <span className="font-semibold text-white">Less guessing. More signal.</span>
+            <h1 className="mt-6 font-serif font-bold leading-[0.85] tracking-tight text-slate-100">
+              <span className="block text-[5.5rem] sm:text-[8rem] md:text-[10rem]">
+                {revealed.split('').map((ch, idx) => (
+                  <span key={idx} className={idx === revealed.length - 1 ? 'text-emerald-400' : 'text-slate-100'}>
+                    {ch}
+                  </span>
+                ))}
+              </span>
+            </h1>
+
+            <p className="mt-4 max-w-xl pl-1 text-base sm:text-lg leading-relaxed text-slate-300">
+              {PANELS[active].sub}
+            </p>
+
+            {isFinal && (
+              <div className="mt-8 max-w-2xl pl-1">
+                <p className="font-serif text-2xl sm:text-4xl font-semibold leading-tight text-white">
+                  We were there in all sectors.
+                  <br />
+                  Why? <span className="text-emerald-400">Because we hit humanity at its core.</span>
+                </p>
+                <p className="mt-4 text-lg sm:text-xl font-medium text-slate-200">
+                  Human + Machine Intelligence. <span className="text-cyan-300">Why the wait?</span>
                 </p>
               </div>
+            )}
 
-              {/* Glowing Play Reel control */}
-              <div className="mt-10 flex items-center gap-5 pl-1">
-                <button
-                  onClick={startReel}
-                  aria-label="Play reel"
-                  className="group flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-teal-100/50 bg-white/10 backdrop-blur transition hover:bg-white/20"
-                  style={{ boxShadow: glowShadow(1.4), animation: 'glowPulse 2.8s ease-in-out infinite' }}
-                >
-                  <Play className="h-7 w-7 translate-x-0.5 fill-teal-50 text-teal-50 transition group-hover:scale-110" />
-                </button>
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white">Play the reel</p>
-                  <p className="text-sm text-white/75">Oil &amp; Gas, Mining, Healthcare, Tourism, Graduates.</p>
-                </div>
-              </div>
-
-              <div className="mt-8 max-w-xl pl-1">
-                <button
-                  onClick={onCta}
-                  className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-semibold text-slate-950 transition hover:opacity-90"
-                >
-                  Get Your Wellbeing Index
-                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-                </button>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="flex items-center gap-4 pl-1">
-                <span className="h-px w-10 bg-white/70" />
-                <span className="text-xs sm:text-sm font-semibold tracking-[0.18em] text-white/90">
-                  {String(active + 1).padStart(2, '0')} / {PANELS[active].label.toUpperCase()}
-                </span>
-              </div>
-
-              <h1 className="mt-6 font-serif font-bold leading-[0.85] tracking-tight text-white">
-                <span className="block text-[5.5rem] sm:text-[8rem] md:text-[10rem]">
-                  {revealed.split('').map((ch, idx) => (
-                    <span key={idx} className={idx === revealed.length - 1 ? 'text-white' : 'text-white/70'}>
-                      {ch}
-                    </span>
-                  ))}
-                </span>
-              </h1>
-
-              <p className="mt-4 max-w-xl pl-1 text-base sm:text-lg leading-relaxed text-white/85">
-                {PANELS[active].sub}
-              </p>
-
-              {isFinal && (
-                <div className="mt-8 max-w-2xl pl-1">
-                  <p className="font-serif text-2xl sm:text-4xl font-semibold leading-tight text-white">
-                    We were there in all sectors.
-                    <br />
-                    Why? Because we hit humanity at its core.
-                  </p>
-                  <p className="mt-4 text-lg sm:text-xl font-medium text-white/90">
-                    Human + Machine Intelligence. Why the wait?
-                  </p>
-                </div>
-              )}
-
-              <div className="mt-10 max-w-xl pl-1">
-                <button
-                  onClick={onCta}
-                  className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-semibold text-slate-950 transition hover:opacity-90"
-                >
-                  Get Your Wellbeing Index
-                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-                </button>
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* Portrait — swaps per sector, zooms out on the final panel */}
-        <div className="hidden lg:block">
-          <Portrait src={currentPanel.video} zoomOut={isFinal} />
-        </div>
-      </div>
-
-      {/* Mobile portrait (stacked) */}
-      <div className="relative z-20 flex justify-center pb-16 lg:hidden">
-        <Portrait src={currentPanel.video} zoomOut={isFinal} />
+            <div className="mt-10 max-w-xl pl-1">
+              <button
+                onClick={onCta}
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 px-7 py-4 text-sm font-semibold text-slate-950 transition hover:opacity-90"
+              >
+                Get Your Wellbeing Index
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+              </button>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Social links bottom-left */}
-      <div className="absolute bottom-6 left-6 sm:left-10 z-30 hidden items-center gap-5 text-white/70 lg:flex">
+      <div className="absolute bottom-6 left-6 sm:left-10 z-30 flex items-center gap-5 text-slate-500">
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="transition hover:text-white" aria-label="Instagram">
           <Instagram className="h-4 w-4" />
         </a>
