@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Instagram, Dribbble } from 'lucide-react';
 
 /**
- * Editorial dark-navy hero matching the reference design:
- * a giant serif headline reading "Let's realign bio-vitality with
- * intelligent metrics." over a subtle grid + starfield background.
+ * Editorial dark-navy hero matching the reference design, made interactive:
+ * a multi-layer mouse parallax (grid, glow, starfield, headline each drift
+ * at a different depth), a magnetic CTA button, and a scroll-linked exit
+ * fade — all driven by refs + requestAnimationFrame so nothing re-renders
+ * React on every pointer/scroll event, keeping it smooth instead of laggy.
  */
 
 const STARS = [
@@ -23,37 +25,107 @@ const STARS = [
 ];
 
 const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+  const starsRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLButtonElement>(null);
+
+  const mouse = useRef({ x: 0, y: 0 }); // normalized -1..1 from viewport center
+  const eased = useRef({ x: 0, y: 0 });
+  const scrollT = useRef(0); // 0..1 progress through the hero's own height
+  const raf = useRef<number>();
+
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouse.current.y = (e.clientY / window.innerHeight) * 2 - 1;
+    };
+    const onScroll = () => {
+      const h = sectionRef.current?.offsetHeight || 1;
+      scrollT.current = Math.min(1, Math.max(0, window.scrollY / h));
+    };
+    window.addEventListener('pointermove', onMove, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const tick = () => {
+      eased.current.x += (mouse.current.x - eased.current.x) * 0.06;
+      eased.current.y += (mouse.current.y - eased.current.y) * 0.06;
+      const { x, y } = eased.current;
+      const t = scrollT.current;
+
+      if (gridRef.current) gridRef.current.style.transform = `translate3d(${x * 8}px, ${y * 8}px, 0)`;
+      if (glowRef.current) glowRef.current.style.transform = `translate3d(calc(-50% + ${x * 34}px), ${y * 34}px, 0)`;
+      if (starsRef.current) starsRef.current.style.transform = `translate3d(${x * 16}px, ${y * 16}px, 0)`;
+      if (contentRef.current) {
+        contentRef.current.style.transform = `translate3d(${x * 6}px, ${y * 6 - t * 60}px, 0)`;
+        contentRef.current.style.opacity = `${1 - t * 1.1}`;
+      }
+
+      raf.current = requestAnimationFrame(tick);
+    };
+    raf.current = requestAnimationFrame(tick);
+
+    return () => {
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('scroll', onScroll);
+      if (raf.current) cancelAnimationFrame(raf.current);
+    };
+  }, []);
+
+  // Magnetic CTA: pulls toward the cursor within its own bounds, snaps back on leave.
+  const onCtaMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const btn = ctaRef.current;
+    if (!btn) return;
+    const r = btn.getBoundingClientRect();
+    const relX = e.clientX - (r.left + r.width / 2);
+    const relY = e.clientY - (r.top + r.height / 2);
+    btn.style.transform = `translate3d(${relX * 0.25}px, ${relY * 0.35}px, 0)`;
+  };
+  const onCtaLeave = () => {
+    if (ctaRef.current) ctaRef.current.style.transform = 'translate3d(0,0,0)';
+  };
+
   return (
     <section
+      ref={sectionRef}
       id="top"
       className="relative min-h-[100svh] w-full overflow-hidden bg-[#0a0e1a] text-white"
     >
-      {/* Subtle grid lines */}
+      {/* Subtle grid lines — drifts gently with the cursor */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.18]"
+        ref={gridRef}
+        className="pointer-events-none absolute -inset-4 opacity-[0.18] will-change-transform"
         style={{
           backgroundImage:
             'linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)',
           backgroundSize: '120px 120px',
         }}
       />
-      {/* Faint emerald glow */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl" />
+      {/* Faint emerald glow — deepest parallax layer */}
+      <div
+        ref={glowRef}
+        className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] rounded-full bg-emerald-500/10 blur-3xl will-change-transform"
+        style={{ transform: 'translate3d(-50%, 0, 0)' }}
+      />
 
-      {/* Starfield — twinkling glitter that glows then darkens */}
-      {STARS.map((s, i) => (
-        <span
-          key={i}
-          className="absolute rounded-full bg-emerald-200"
-          style={{
-            top: s.top,
-            left: s.left,
-            width: `${s.size}px`,
-            height: `${s.size}px`,
-            animation: `twinkleGlow ${s.dur} ease-in-out ${s.delay} infinite`,
-          }}
-        />
-      ))}
+      {/* Starfield — twinkling glitter that glows then darkens, drifts with the cursor */}
+      <div ref={starsRef} className="pointer-events-none absolute inset-0 will-change-transform">
+        {STARS.map((s, i) => (
+          <span
+            key={i}
+            className="absolute rounded-full bg-emerald-200"
+            style={{
+              top: s.top,
+              left: s.left,
+              width: `${s.size}px`,
+              height: `${s.size}px`,
+              animation: `twinkleGlow ${s.dur} ease-in-out ${s.delay} infinite`,
+            }}
+          />
+        ))}
+      </div>
 
       {/* Twinkle keyframes: glow bright then darken */}
       <style>{`
@@ -69,6 +141,8 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             box-shadow: 0 0 8px 2px rgba(52,211,153,0.85), 0 0 14px 4px rgba(110,231,183,0.45);
           }
         }
+        .metrics-word { transition: text-shadow .3s ease, transform .3s ease; }
+        .metrics-word:hover { text-shadow: 0 0 24px rgba(52,211,153,0.65); transform: translateY(-2px); }
       `}</style>
 
       {/* Top bar: wordmark + MISA badge */}
@@ -90,8 +164,8 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
         <a href="#assessment" className="text-slate-400 transition hover:text-white">HEALTHCONSULTING</a>
       </nav>
 
-      {/* Section label */}
-      <div className="relative z-20 mx-auto max-w-6xl px-6 pt-32 sm:pt-36">
+      {/* Section label + headline + CTA — drifts + fades with scroll, opposite the background layers for depth */}
+      <div ref={contentRef} className="relative z-20 mx-auto max-w-6xl px-6 pt-32 sm:pt-36 will-change-transform">
         <div className="flex items-center gap-4 pl-1 sm:pl-[42%]">
           <span className="h-px w-10 bg-emerald-400" />
           <span className="text-xs sm:text-sm font-semibold tracking-[0.18em] text-emerald-300">
@@ -103,7 +177,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
         <h1 className="mt-8 font-serif text-6xl sm:text-8xl md:text-[8.5rem] font-bold leading-[0.92] tracking-tight text-slate-100">
           Let&rsquo;s realign{' '}
           <span className="block sm:inline">bio&ndash;vitality with intelligent</span>{' '}
-          <span className="text-emerald-400">metrics.</span>
+          <span className="metrics-word inline-block text-emerald-400">metrics.</span>
         </h1>
 
         {/* Subheading + CTA */}
@@ -116,8 +190,11 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             </span>
           </p>
           <button
+            ref={ctaRef}
             onClick={onCta}
-            className="group mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 px-7 py-4 text-sm font-semibold text-slate-950 transition hover:opacity-90"
+            onMouseMove={onCtaMove}
+            onMouseLeave={onCtaLeave}
+            className="group mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 px-7 py-4 text-sm font-semibold text-slate-950 transition-transform duration-150 ease-out will-change-transform hover:opacity-90"
           >
             Get Your Wellbeing Index
             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
