@@ -1,7 +1,6 @@
 import React from 'react';
 import { useInView } from '@/hooks/use-in-view';
 import { ArrowRight, Feather, ShieldCheck, Gem, Droplets, Cpu, Wifi } from 'lucide-react';
-import BlurryWatch from './BlurryWatch';
 
 const specs = [
   { icon: Feather, k: '3.9 g', l: 'Aerospace titanium', d: 'So light you forget it’s there.' },
@@ -37,7 +36,11 @@ const AurionShowcase: React.FC<{ onCta: () => void }> = ({ onCta }) => {
         >
           <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-slate-950">
             <div className="flex items-center justify-center h-[24rem]">
-              <BlurryWatch className="w-[150%] max-w-none scale-150 -translate-y-4 blur-[4px]" />
+              <img
+                src="https://images.pexels.com/photos/31406900/pexels-photo-31406900/free-photo-of-minimalist-white-smartwatch-on-light-background.jpeg?auto=compress&w=1260&h=750&dpr=1"
+                alt="AURION ONE smartwatch macro detail, out of focus"
+                className="w-[150%] max-w-none scale-150 -translate-y-4 object-cover blur-[4px]"
+              />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 rounded-2xl border border-white/15 bg-slate-900/85 px-5 py-3">

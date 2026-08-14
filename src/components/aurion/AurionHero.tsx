@@ -1,7 +1,6 @@
 import React from 'react';
 import { useInView } from '@/hooks/use-in-view';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import BlurryWatch from './BlurryWatch';
 
 const AurionHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   const { ref, inView } = useInView<HTMLDivElement>();
@@ -76,8 +75,10 @@ const AurionHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           <div className="absolute w-[30rem] h-[30rem] rounded-full border border-teal-300/15 [mask-image:radial-gradient(circle,transparent_58%,black_60%)]" />
 
           <div className="relative group">
-            <BlurryWatch
-              className="relative z-10 w-[22rem] sm:w-[28rem] drop-shadow-2xl blur-[3px] transition-all duration-700 group-hover:blur-[1px] group-hover:scale-[1.03]"
+            <img
+              src="https://images.pexels.com/photos/31406900/pexels-photo-31406900/free-photo-of-minimalist-white-smartwatch-on-light-background.jpeg?auto=compress&w=1260&h=750&dpr=1"
+              alt="AURION ONE smartwatch, out of focus"
+              className="relative z-10 w-[22rem] sm:w-[28rem] rounded-[2.5rem] object-cover drop-shadow-2xl blur-[3px] transition-all duration-700 group-hover:blur-[1px] group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 rounded-[2.5rem] ring-1 ring-white/10" />
           </div>
