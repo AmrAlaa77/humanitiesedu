@@ -77,12 +77,17 @@ const AurionHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           />
           <div className="absolute w-[30rem] h-[30rem] rounded-full border border-teal-300/15 [mask-image:radial-gradient(circle,transparent_58%,black_60%)]" />
 
-          <img
-            src="https://images.pexels.com/photos/31406900/pexels-photo-31406900/free-photo-of-minimalist-white-smartwatch-on-light-background.jpeg?auto=compress&w=1260&h=750&dpr=1"
-            alt="AURION ONE smartwatch, floating"
-            className="relative z-10 w-[20rem] sm:w-[25rem] mix-blend-multiply blur-[3px]"
+          <div
+            className="relative z-10 h-[20rem] w-[20rem] overflow-hidden sm:h-[25rem] sm:w-[25rem]"
             style={{ animation: 'auraFloat 4.5s ease-in-out infinite' }}
-          />
+          >
+            <img
+              src="https://images.pexels.com/photos/31406900/pexels-photo-31406900/free-photo-of-minimalist-white-smartwatch-on-light-background.jpeg?auto=compress&w=1260&h=750&dpr=1"
+              alt="AURION ONE smartwatch, floating"
+              className="absolute inset-0 h-full w-full scale-[1.9] object-cover mix-blend-multiply blur-[3px]"
+              style={{ filter: 'brightness(1.55) contrast(1.4)' }}
+            />
+          </div>
 
           <style>{`
             @keyframes auraFloat {
