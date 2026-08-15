@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, ImageIcon } from 'lucide-react';
+import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, ImageIcon, FileText, X } from 'lucide-react';
 
 type CourseDay = { title: string; points: string[] };
 
@@ -821,7 +821,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
   },
 ];
 
-const DeliverableCard: React.FC<{ item: Deliverable }> = ({ item }) => {
+const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverable) => void }> = ({ item, onOutline }) => {
   const [open, setOpen] = useState(false);
   const hasDetails = Boolean(
     item.details || item.spec || item.benefits || item.audience || item.awarded ||
@@ -968,14 +968,116 @@ const DeliverableCard: React.FC<{ item: Deliverable }> = ({ item }) => {
           </div>
         )}
 
-        {hasDetails && (
+        <div className="mt-4 flex items-center gap-4">
+          {hasDetails && (
+            <button
+              onClick={() => setOpen((v) => !v)}
+              className="inline-flex items-center gap-1 text-emerald-400 text-xs font-semibold hover:underline"
+            >
+              {open ? 'Show less' : 'Learn More'}
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+            </button>
+          )}
           <button
-            onClick={() => setOpen((v) => !v)}
-            className="mt-4 inline-flex items-center gap-1 text-emerald-400 text-xs font-semibold hover:underline"
+            onClick={() => onOutline(item)}
+            className="inline-flex items-center gap-1 text-slate-300 text-xs font-semibold hover:text-white hover:underline"
           >
-            {open ? 'Show less' : 'Learn More'}
-            <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+            <FileText className="w-3.5 h-3.5" /> Outline
           </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const OutlineModal: React.FC<{ item: Deliverable | null; onClose: () => void }> = ({ item, onClose }) => {
+  if (!item) return null;
+  const hasRealOutline = Boolean(item.days);
+
+  return (
+    <div className="fixed inset-0 z-[90] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={onClose}>
+      <div
+        className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl border border-white/10 bg-slate-950 p-8 sm:p-10"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button onClick={onClose} className="absolute top-6 right-6 text-slate-400 hover:text-white">
+          <X className="w-5 h-5" />
+        </button>
+
+        <span className="inline-flex items-center gap-1.5 text-emerald-400 text-xs font-bold uppercase tracking-widest">
+          <FileText className="w-3.5 h-3.5" /> Course Outline
+        </span>
+        <h2 className="mt-3 text-2xl font-bold text-white leading-tight">{item.title}</h2>
+        <p className="mt-2 text-slate-400 text-sm">{item.format ?? item.spec?.join(' · ') ?? ''}</p>
+        {item.delivery && <p className="text-slate-500 text-xs mt-0.5">{item.delivery}</p>}
+
+        <p className="mt-5 text-slate-300 text-sm leading-relaxed">{item.hook}</p>
+        {item.details && <p className="mt-3 text-slate-400 text-sm leading-relaxed">{item.details}</p>}
+
+        {hasRealOutline ? (
+          <>
+            {item.days && (
+              <div className="mt-7">
+                <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-3">Programme Outline</p>
+                <div className="space-y-4">
+                  {item.days.map((d) => (
+                    <div key={d.title} className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
+                      <p className="text-white text-sm font-semibold mb-2">{d.title}</p>
+                      <ul className="space-y-1">
+                        {d.points.map((p) => (
+                          <li key={p} className="text-slate-400 text-xs leading-relaxed flex gap-2">
+                            <span className="text-emerald-400 mt-1">•</span>
+                            <span>{p}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            {item.models && (
+              <p className="mt-5 text-slate-400 text-xs italic border-l-2 border-emerald-400/40 pl-3">
+                <span className="text-slate-300 not-italic font-semibold">Models &amp; Psychology: </span>
+                {item.models}
+              </p>
+            )}
+          </>
+        ) : (
+          item.benefits && (
+            <div className="mt-7">
+              <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-3">{item.benefitsLabel ?? 'Key Learning Points'}</p>
+              <ul className="space-y-1.5">
+                {item.benefits.map((b) => (
+                  <li key={b} className="text-slate-300 text-sm leading-relaxed flex gap-2">
+                    <span className="text-emerald-400 mt-1">•</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        )}
+
+        {item.audience && (
+          <div className="mt-6">
+            <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-2">Who Should Attend</p>
+            <ul className="space-y-1">
+              {item.audience.map((a) => (
+                <li key={a} className="text-slate-400 text-xs leading-relaxed flex gap-2">
+                  <span className="text-emerald-400 mt-1">•</span>
+                  <span>{a}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {item.requirements && <p className="mt-4 text-slate-500 text-xs">Requirements: {item.requirements}</p>}
+        {item.awarded && <p className="mt-2 text-slate-400 text-xs italic">Awarded: {item.awarded}</p>}
+
+        {!hasRealOutline && (
+          <p className="mt-8 text-slate-600 text-[11px]">Full day-by-day outline coming soon for this programme.</p>
         )}
       </div>
     </div>
@@ -984,6 +1086,7 @@ const DeliverableCard: React.FC<{ item: Deliverable }> = ({ item }) => {
 
 const Deliverables: React.FC = () => {
   const [active, setActive] = useState(categories[0].key);
+  const [outlineItem, setOutlineItem] = useState<Deliverable | null>(null);
   const current = categories.find((c) => c.key === active)!;
 
   return (
@@ -1022,10 +1125,12 @@ const Deliverables: React.FC = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {current.items.map((item) => (
-            <DeliverableCard key={item.title} item={item} />
+            <DeliverableCard key={item.title} item={item} onOutline={setOutlineItem} />
           ))}
         </div>
       </div>
+
+      <OutlineModal item={outlineItem} onClose={() => setOutlineItem(null)} />
     </section>
   );
 };
