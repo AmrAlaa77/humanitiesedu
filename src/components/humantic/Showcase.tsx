@@ -72,6 +72,9 @@ const Showcase: React.FC = () => {
             </span>
             <h2 className="mt-3 text-3xl sm:text-5xl font-bold text-white tracking-tight">Our story in motion</h2>
             <p className="mt-4 text-slate-400 text-lg">{reels.length === 0 ? 'A new film showing how Humantic Digital reimagines preventative medicine is on the way.' : 'A curated reel of how Humantic Digital reimagines preventative medicine.'}</p>
+            <p className="mt-3 text-white font-medium">
+              Human + Machine Intelligence. <span className="text-emerald-400">Why the wait?</span>
+            </p>
           </div>
           {reels.length > 0 && (
             <div className="flex items-center gap-2 flex-wrap">
