@@ -1018,7 +1018,7 @@ const OutlineModal: React.FC<{ item: Deliverable | null; onClose: () => void }> 
           <>
             {item.days && (
               <div className="mt-7">
-                <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-3">Programme Outline</p>
+                <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-3">Course Content</p>
                 <div className="space-y-4">
                   {item.days.map((d) => (
                     <div key={d.title} className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
