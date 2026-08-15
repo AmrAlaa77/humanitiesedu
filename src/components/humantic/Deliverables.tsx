@@ -1219,6 +1219,19 @@ const initiatives: Record<string, Initiative> = {
     description:
       'We believe that when organizations prioritize humanizing their business models, they achieve sustainable performance while honoring the intrinsic value of the people at their core. By bridging the gap between biological reality and corporate strategy, we empower institutions to grow with purpose and authenticity.',
   },
+  individuals: {
+    eyebrow: 'Initiative 5 · Personal Leadership',
+    title: 'True Leadership Is Lived, Not Awarded',
+    description:
+      "Too often, talented professionals are overlooked for promotions and left with vague feedback — \"not ready,\" \"not the right fit,\" \"need more executive presence.\" You may have been told you're \"Not the One.\" We believe otherwise.",
+    featuresLabel: 'Employee Assistance Programme (EAP) — Sustainability Phase',
+    features: [
+      'Follow-up meetings, focus groups and one-to-one sessions designed to promote personal growth and resilience',
+      "Science-backed wellbeing plans tailored to each person's unique biology, stress triggers and physiological responses",
+      'Psychological models and strategies that click and last far beyond the workshop days',
+    ],
+    quote: 'Sustainability is our cause.',
+  },
 };
 
 const InitiativeBanner: React.FC<{ initiative: Initiative }> = ({ initiative }) => (
