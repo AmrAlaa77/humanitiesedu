@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
-import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown } from 'lucide-react';
+import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, ImageIcon } from 'lucide-react';
+
+type CourseDay = { title: string; points: string[] };
 
 type Deliverable = {
   title: string;
   hook: string;
+  format?: string;
+  delivery?: string;
   details?: string;
   pills?: string[];
   spec?: string[];
   benefitsLabel?: string;
   benefits?: string[];
+  includes?: string[];
+  days?: CourseDay[];
+  models?: string;
   audience?: string[];
+  requirements?: string;
   awarded?: string;
 };
 
@@ -319,88 +327,657 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         audience: ['KSA-based people managers at any level of seniority', 'Team leads managing cross-functional groups'],
         awarded: 'Certificate of completion and alumni status.',
       },
+
+      // ---- Corporate Leadership Portfolio (added from course document + PDF title list) ----
+      {
+        title: 'Modern Leadership',
+        hook: 'Build the practical psychology, communication and decision-making skills required to lead people in a rapidly changing workplace.',
+        format: '3-Day Flagship Programme',
+        delivery: 'Face-to-Face or Live Virtual',
+        pills: ['Leadership', 'Management', 'People Skills'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Adapt your leadership style to different people and situations',
+          'Delegate without losing accountability',
+          'Build trust and psychological safety',
+          'Motivate people beyond salary and rewards',
+          'Lead hybrid and multigenerational teams',
+          'Coach employees rather than simply give instructions',
+          'Handle difficult conversations confidently',
+          'Make better decisions under uncertainty',
+        ],
+        includes: [
+          '3-Day Leadership Experience', 'Leadership Style Diagnostic', 'Adaptive Leadership Scenarios',
+          'Delegation & Empowerment Lab', 'Psychological Safety Challenge', 'Coaching Practice',
+          'Difficult Conversation Simulations', 'Leadership Decision Cases', 'Personal Leadership Playbook',
+        ],
+        days: [
+          { title: 'Day 1 — Understand Your Leadership', points: ['Modern leadership challenges', 'Leadership styles and adaptability', 'Self-awareness and leadership behaviour', 'Emotional intelligence', 'Trust and psychological safety'] },
+          { title: 'Day 2 — Lead People', points: ['Motivation psychology', 'Delegation and empowerment', 'Coaching versus telling', 'Feedback', 'Accountability without micromanagement'] },
+          { title: 'Day 3 — Lead Performance', points: ['Difficult conversations', 'Conflict management', 'Decision-making under pressure', 'Hybrid and multigenerational leadership', 'Personal leadership action plan'] },
+        ],
+        models: 'Situational Leadership, Self-Determination Theory, Psychological Safety, Emotional Intelligence, Locus of Control, Cognitive Biases.',
+        audience: ['Managers', 'Team leaders', 'Supervisors', 'Department heads', 'High-potential employees', 'Professionals moving into leadership'],
+        requirements: 'No previous leadership qualification required. Experience working with others is helpful.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'Talent Retention',
+        hook: 'Learn how to identify disengagement before resignation happens and create an environment your best people choose to stay in.',
+        format: '2-Day Practical Workshop',
+        delivery: 'Face-to-Face or Live Virtual',
+        pills: ['Talent Management', 'Engagement', 'Leadership'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Understand why talented employees really leave',
+          'Recognize disengagement before resignation',
+          'Identify what motivates different employees',
+          'Conduct effective stay conversations',
+          'Develop high-potential employees',
+          'Improve recognition and belonging',
+          'Create meaningful career conversations',
+          'Build practical retention plans',
+        ],
+        includes: [
+          '2-Day Talent Retention Workshop', 'Retention Risk Diagnostic', 'Motivation Mapping Exercise',
+          'Stay Interview Practice', 'High-Potential Employee Cases', 'Career Conversation Role Plays',
+          'Recognition Strategy Exercise', 'Individual Retention Plan', 'Manager Retention Toolkit',
+        ],
+        days: [
+          { title: 'Day 1 — Why People Leave', points: ['The real causes of employee turnover', 'Engagement versus disengagement', 'Motivation beyond money', 'Fairness, recognition and belonging', 'Identifying retention risk'] },
+          { title: 'Day 2 — Why People Stay', points: ['Stay interviews', 'Career conversations', 'Coaching high potentials', 'Development opportunities', 'Individual retention strategies'] },
+        ],
+        models: 'Self-Determination Theory, Equity Theory, Job Embeddedness, Leader-Member Exchange, Job Characteristics Model.',
+        audience: ['Managers', 'HR professionals', 'Talent managers', 'Department heads', 'Leaders responsible for key employees'],
+        requirements: 'No HR qualification is required.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'Workplace Focus',
+        hook: 'Turn fragmented attention, digital overload and constant busyness into sustained, high-value productivity.',
+        format: '2-Day Practical Workshop',
+        delivery: 'Live Virtual or Face-to-Face',
+        pills: ['Productivity', 'Focus', 'Time Management'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Understand what constant interruption does to attention',
+          'Stop confusing busyness with productivity',
+          'Reduce unnecessary multitasking',
+          'Manage digital distractions',
+          'Protect time for high-value work',
+          'Improve concentration',
+          'Reduce cognitive overload',
+          'Build sustainable productivity habits',
+        ],
+        includes: [
+          '2-Day Productivity Lab', 'Personal Distraction Audit', 'Multitasking Brain Experiment', 'Attention Challenges',
+          'Digital Overload Assessment', 'Priority Mapping Exercise', 'Calendar Redesign', 'Habit Design Lab', 'Personal Focus System',
+        ],
+        days: [
+          { title: 'Day 1 — The Distracted Brain', points: ['Why focus is becoming harder', 'Multitasking versus task switching', 'Cognitive overload', 'Attention residue', 'Personal productivity leaks'] },
+          { title: 'Day 2 — Designing Focus', points: ['Deep versus shallow work', 'Managing interruptions', 'Email and notification control', 'Priority management', 'Building a personal focus system'] },
+        ],
+        models: 'Cognitive Load Theory, Attention Residue, Habit Loop, Implementation Intentions, Zeigarnik Effect.',
+        audience: ['Knowledge workers', 'Managers', 'Professionals dealing with information overload', 'Employees working in interruption-heavy environments'],
+        requirements: 'No prior productivity training required.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'Employee Wellbeing',
+        hook: 'Move beyond superficial wellbeing initiatives and understand the workplace conditions that create sustainable human performance.',
+        format: '2-Day Practical Workshop',
+        pills: ['Wellbeing', 'Engagement', 'Leadership'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Distinguish healthy pressure from harmful stress',
+          'Recognize burnout warning signs',
+          'Identify workplace drivers of poor wellbeing',
+          'Understand the impact of workload and control',
+          'Conduct supportive conversations',
+          'Improve team recovery and energy',
+          'Build psychological safety',
+          'Support sustainable performance',
+        ],
+        includes: [
+          '2-Day Wellbeing Experience', 'Wellbeing & Burnout Diagnostic', 'Energy Management Exercises', 'Workload Risk Mapping',
+          'Manager Wellbeing Conversations', 'Psychological Safety Cases', 'Recovery Planning', 'Team Wellbeing Action Plan', 'Sustainable Performance Toolkit',
+        ],
+        days: [
+          { title: 'Day 1 — Understand Wellbeing', points: ['Wellbeing versus happiness', 'Stress and burnout', 'Workplace risk factors', 'Energy and recovery', 'Psychological safety'] },
+          { title: 'Day 2 — Lead Wellbeing', points: ['Workload management', 'Manager behaviour', 'Supportive conversations', 'Boundaries and recovery', 'Team wellbeing practices'] },
+        ],
+        models: 'Job Demands-Resources Model, Maslach Burnout Framework, PERMA, Conservation of Resources, Psychological Safety.',
+        audience: ['Managers', 'Team leaders', 'HR professionals', 'Wellbeing champions'],
+        requirements: 'No previous wellbeing knowledge required.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'Leadership Pipeline',
+        hook: 'Stop waiting until promotion to discover whether someone can lead. Identify, test and develop leadership potential before the role becomes vacant.',
+        format: '3-Day Flagship Programme',
+        pills: ['Succession', 'Talent Development', 'Leadership'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Distinguish performance from leadership potential',
+          'Identify future leaders earlier',
+          'Assess leadership readiness',
+          'Identify developmental gaps',
+          'Design stretch assignments',
+          'Coach high-potential employees',
+          'Build stronger successors',
+          'Create practical development plans',
+        ],
+        includes: [
+          '3-Day Talent Development Lab', 'Performance-vs-Potential Diagnostic', 'Leadership Readiness Assessment',
+          'High-Potential Identification Cases', 'Assessment-Centre Simulations', 'Stretch Assignment Design',
+          'Developmental Coaching Practice', 'Succession Planning Exercise', '90-Day Talent Development Plan',
+        ],
+        days: [
+          { title: 'Day 1 — Spot Potential', points: ['Performance versus potential', 'Leadership readiness', 'Learning agility', 'Behavioural indicators', 'Talent assessment'] },
+          { title: 'Day 2 — Test Potential', points: ['Leadership simulations', 'Decision scenarios', 'Problem-solving under pressure', 'Feedback interpretation', 'Development gaps'] },
+          { title: 'Day 3 — Grow Potential', points: ['Stretch assignments', 'Coaching and mentoring', 'Succession planning', 'Developmental feedback', 'Individual development planning'] },
+        ],
+        models: 'Learning Agility, Growth Mindset, Deliberate Practice, Self-Efficacy Theory, Experiential Learning.',
+        audience: ['Senior managers', 'Talent managers', 'HR business partners', 'Leaders responsible for succession planning'],
+        requirements: 'Experience managing or developing employees is recommended.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'Wellbeing Audit',
+        hook: 'Understand where your organization really stands before investing in another wellbeing initiative.',
+        format: '2-Day Strategic Workshop',
+        pills: ['Wellbeing Strategy', 'HR Analytics', 'OD'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Measure workplace wellbeing more intelligently',
+          'Identify psychosocial risks',
+          'Diagnose root causes of stress',
+          'Separate symptoms from systemic problems',
+          'Interpret wellbeing indicators',
+          'Prioritize interventions',
+          'Measure intervention effectiveness',
+          'Build an organizational wellbeing roadmap',
+        ],
+        includes: [
+          '2-Day Organizational Wellbeing Lab', 'Workplace Wellbeing Diagnostic', 'Psychosocial Risk Mapping',
+          'Employee Experience Heatmap', 'Root-Cause Analysis Workshop', 'Wellbeing Data Interpretation',
+          'Intervention Prioritization', 'Wellbeing Roadmap Template',
+        ],
+        days: [
+          { title: 'Day 1 — Diagnose', points: ['What should organizations measure?', 'Workload and role clarity', 'Control and autonomy', 'Psychological safety', 'Burnout and engagement indicators'] },
+          { title: 'Day 2 — Improve', points: ['Root causes', 'Risk prioritization', 'Intervention design', 'Measuring impact', 'Building the wellbeing roadmap'] },
+        ],
+        models: 'Job Demands-Resources, Maslach, PERMA, Conservation of Resources, 5 Whys.',
+        audience: ['HR leaders', 'Wellbeing teams', 'Organizational development professionals', 'Senior managers'],
+        requirements: 'Basic organizational experience is useful.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'Peak Performance',
+        hook: 'Use behavioural science and psychology to perform at a high level without depending on longer hours and constant pressure.',
+        format: '2-Day Practical Workshop',
+        pills: ['Performance', 'Psychology', 'Productivity'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Understand how the brain performs under pressure',
+          'Manage energy as well as time',
+          'Create conditions for deep concentration',
+          'Understand flow',
+          'Reduce cognitive overload',
+          'Improve recovery',
+          'Build high-performance habits',
+          'Design your personal performance system',
+        ],
+        includes: [
+          '2-Day Performance Lab', 'Peak Performance Diagnostic', 'Cognitive Performance Experiments', 'Flow-State Challenge',
+          'Energy & Recovery Audit', 'Focus Experiments', 'Habit Architecture Lab', 'Personal Performance Operating System',
+        ],
+        days: [
+          { title: 'Day 1 — The Performance Brain', points: ['Attention', 'Cognitive capacity', 'Flow', 'Stress and performance', 'Energy and recovery'] },
+          { title: 'Day 2 — Performance by Design', points: ['Deliberate practice', 'Habit architecture', 'Decision energy', 'Focus routines', 'Personal performance system'] },
+        ],
+        models: 'Flow Theory, Yerkes-Dodson Law, Deliberate Practice, Cognitive Load Theory, Habit Loop.',
+        audience: ['High performers', 'Managers', 'Knowledge workers', 'Professionals operating under sustained pressure'],
+        requirements: 'No psychology background required.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'Leadership Accelerator',
+        hook: 'Compress years of trial-and-error leadership learning into three intensive days of practice, feedback and reflection.',
+        format: '3-Day Intensive Programme',
+        pills: ['Leadership Development', 'Coaching', 'Management'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Accelerate your transition into leadership',
+          'Practice leadership rather than simply study it',
+          'Delegate effectively',
+          'Coach employees',
+          'Give developmental feedback',
+          'Manage conflict',
+          'Influence others',
+          'Improve decision-making',
+          'Build a personal leadership development plan',
+        ],
+        includes: [
+          '3-Day Leadership Intensive', 'Leadership Capability Diagnostic', 'Rapid-Fire Management Scenarios', 'Delegation Challenge',
+          'Coaching Practice Lab', 'Feedback Simulations', 'Conflict & Influence Challenges', 'Peer Observation',
+          'Leadership Decision Rooms', '30-60-90 Development Plan',
+        ],
+        days: [
+          { title: 'Day 1 — Manage Yourself', points: ['Leadership transition', 'Self-awareness', 'Emotional intelligence', 'Leadership mindset', 'Personal effectiveness'] },
+          { title: 'Day 2 — Manage People', points: ['Delegation', 'Coaching', 'Feedback', 'Difficult conversations', 'Conflict'] },
+          { title: 'Day 3 — Lead Performance', points: ['Influence', 'Decision-making', 'Team performance', 'Leadership simulations', '30-60-90 plan'] },
+        ],
+        models: 'Kolb Experiential Learning, GROW Coaching, Deliberate Practice, Psychological Safety, Reflective Practice.',
+        audience: ['Newly promoted managers', 'Emerging leaders', 'High potentials', 'Managers requiring accelerated development'],
+        requirements: 'Current or upcoming leadership responsibility is recommended.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'Executive Presence',
+        hook: 'Learn how to be heard, trusted and followed when the stakes are high.',
+        format: '2-Day Executive Workshop',
+        pills: ['Communication', 'Influence', 'Leadership'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Communicate with greater confidence and authority',
+          'Structure concise executive messages',
+          'Build credibility',
+          'Improve verbal and non-verbal communication',
+          'Influence senior stakeholders',
+          'Manage nervousness',
+          'Handle challenging questions',
+          'Present ideas at executive level',
+        ],
+        includes: [
+          '2-Day Executive Communication Lab', 'Executive Presence Diagnostic', 'Live Presentation Practice',
+          'Boardroom Communication Simulation', 'Impromptu Speaking Challenges', 'Difficult Question Practice',
+          'Stakeholder Influence Exercise', 'Individual Presentation Feedback', 'Executive Messaging Toolkit',
+        ],
+        days: [
+          { title: 'Day 1 — Presence', points: ['First impressions', 'Confidence', 'Credibility', 'Body language', 'Executive messaging'] },
+          { title: 'Day 2 — Influence', points: ['Persuasion psychology', 'Executive storytelling', 'Stakeholder communication', 'Challenging questions', 'Executive presentation challenge'] },
+        ],
+        models: "Cialdini's Influence Principles, Processing Fluency, Social Signalling, Emotional Regulation, Ethos-Pathos-Logos.",
+        audience: ['Managers', 'Senior leaders', 'Consultants', 'Professionals presenting to senior stakeholders'],
+        requirements: 'Participants are encouraged to bring a real business message or presentation.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'People Leadership',
+        hook: 'Master the human side of management: motivation, trust, feedback, conflict, accountability and performance.',
+        format: '3-Day Flagship Programme',
+        pills: ['People Management', 'Emotional Intelligence', 'Leadership'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Understand what drives employee behaviour',
+          'Motivate different people differently',
+          'Build trust',
+          'Improve emotional intelligence',
+          'Give feedback without creating defensiveness',
+          'Manage conflict',
+          'Hold people accountable',
+          'Conduct difficult conversations',
+          'Create stronger team relationships',
+        ],
+        includes: [
+          '3-Day People Leadership Experience', 'Motivation Diagnostic', 'Emotional Intelligence Exercises',
+          'Trust & Psychological Safety Lab', 'Employee Persona Cases', 'Feedback Conversation Practice',
+          'Conflict Simulations', 'Accountability Role Plays', 'Difficult Employee Scenarios', 'Manager Conversation Toolkit',
+        ],
+        days: [
+          { title: 'Day 1 — Understand People', points: ['Human behaviour at work', 'Emotional intelligence', 'Motivation', 'Trust', 'Psychological safety'] },
+          { title: 'Day 2 — Communicate With People', points: ['Listening', 'Feedback', 'Coaching', 'Difficult conversations', 'Conflict'] },
+          { title: 'Day 3 — Lead Performance', points: ['Accountability', 'Delegation', 'Motivation differences', 'Team dynamics', 'Leadership action plan'] },
+        ],
+        models: 'Self-Determination Theory, Emotional Intelligence, Psychological Safety, Thomas-Kilmann, SBI Feedback, Locus of Control.',
+        audience: ['Managers', 'Supervisors', 'Team leaders', 'New people managers'],
+        requirements: 'Experience managing people is useful but not essential.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'Business Transformation',
+        hook: "Move from reacting to disruption to deliberately shaping your organization's future.",
+        format: '3-Day Strategic Programme',
+        pills: ['Strategy', 'Transformation', 'Innovation'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Recognize forces disrupting your organization',
+          'Understand how AI affects business models',
+          "Think beyond today's operating model",
+          'Identify transformation priorities',
+          'Align people, process and technology',
+          'Engage stakeholders',
+          'Anticipate execution barriers',
+          'Build a practical transformation roadmap',
+        ],
+        includes: [
+          '3-Day Transformation Strategy Lab', 'Business Disruption Scenarios', 'Future Trends Exercise', 'AI Impact Mapping',
+          'Systems-Thinking Challenge', 'Transformation Readiness Diagnostic', 'Stakeholder Mapping',
+          'Strategic Scenario Simulation', 'Transformation Canvas', 'Business Transformation Roadmap',
+        ],
+        days: [
+          { title: 'Day 1 — Understand Disruption', points: ['Changing markets', 'AI and technology', 'Customer expectations', 'Business-model disruption', 'Future scenarios'] },
+          { title: 'Day 2 — Design Transformation', points: ['Systems thinking', 'Strategic priorities', 'Organizational alignment', 'Transformation readiness', 'Stakeholder engagement'] },
+          { title: 'Day 3 — Execute Transformation', points: ['Resistance', 'Execution barriers', 'Governance', 'Measurement', 'Transformation roadmap'] },
+        ],
+        models: 'Systems Thinking, McKinsey 7S, Scenario Planning, Cynefin Framework, Kotter Change Framework.',
+        audience: ['Senior leaders', 'Strategy teams', 'Transformation professionals', 'Department heads', 'Project leaders'],
+        requirements: 'Business management experience is recommended.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'Change Leadership',
+        hook: 'Understand what sits behind resistance and learn how to move people from uncertainty to genuine adoption.',
+        format: '3-Day Flagship Programme',
+        pills: ['Change Management', 'Behaviour Change', 'Leadership'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Understand why people resist change',
+          'Diagnose different forms of resistance',
+          'Communicate change more effectively',
+          'Reduce uncertainty and perceived threat',
+          'Influence adoption',
+          'Handle resistance conversations',
+          'Design behavioural change',
+          'Reinforce new habits',
+          'Make change stick',
+        ],
+        includes: [
+          '3-Day Change Leadership Lab', 'Change Readiness Diagnostic', 'Resistance Mapping', 'Change Psychology Exercises',
+          'Stakeholder Reaction Simulation', 'Difficult Change Conversations', 'COM-B Behaviour Analysis',
+          'Change Communication Challenge', 'Adoption & Reinforcement Plan', 'Live Change Action Plan',
+        ],
+        days: [
+          { title: 'Day 1 — Understand Resistance', points: ['Psychology of change', 'Loss and uncertainty', 'Threat perception', 'Stakeholder reactions', 'Types of resistance'] },
+          { title: 'Day 2 — Lead Change', points: ['Change communication', 'Influence', 'Difficult conversations', 'Psychological safety', 'Stakeholder engagement'] },
+          { title: 'Day 3 — Make Change Stick', points: ['Behaviour-change design', 'COM-B', 'Habit formation', 'Reinforcement', 'Adoption planning'] },
+        ],
+        models: 'COM-B, Kotter, Lewin, Immunity to Change, Psychological Safety, Habit Formation.',
+        audience: ['Leaders managing transformation', 'Project managers', 'Change managers', 'HR and OD professionals', 'Transformation teams'],
+        requirements: 'Participants are encouraged to bring a real change initiative.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'Leadership Psychology',
+        hook: 'Understand what is really happening underneath resistance, conflict and disengagement — and learn how to change the interaction rather than repeat it.',
+        format: '3-Day Experiential Programme',
+        pills: ['Psychology', 'Communication', 'Leadership'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Understand what drives workplace behaviour',
+          'Recognize Parent, Adult and Child communication',
+          'Identify emotional triggers',
+          'Recognize psychological games',
+          'Understand Drama Triangle dynamics',
+          'Reduce defensiveness',
+          'Move conversations toward Adult-to-Adult interaction',
+          'Improve emotional regulation',
+          'Interrupt repeated dysfunctional patterns',
+        ],
+        includes: [
+          '3-Day Behavioural Leadership Lab', 'PAC Ego-State Diagnostic', 'Transaction Analysis Exercises',
+          'Workplace Psychological Games', 'Drama Triangle Simulations', 'Trigger Recognition Exercises',
+          'Adult-to-Adult Conversation Practice', 'Behaviour Observation Challenges', 'Difficult Relationship Cases', 'Leadership Psychology Toolkit',
+        ],
+        days: [
+          { title: 'Day 1 — Decode Behaviour', points: ['Behaviour beneath behaviour', 'Transactional Analysis', 'Parent-Adult-Child', 'Transactions', 'Recognition and strokes'] },
+          { title: 'Day 2 — Understand Dysfunction', points: ['Emotional triggers', 'Psychological games', 'Drama Triangle', 'Victim, Rescuer and Persecutor patterns', 'Locus of control'] },
+          { title: 'Day 3 — Change the Pattern', points: ['Adult-to-Adult communication', 'Emotional regulation', 'Responding rather than reacting', 'Difficult relationship simulations', 'Behavioural leadership plan'] },
+        ],
+        models: "Eric Berne's Transactional Analysis, PAC, Karpman Drama Triangle, Locus of Control, Attribution Bias, Self-Determination Theory.",
+        audience: ['Managers', 'Leaders', 'HR professionals', 'Coaches', 'Professionals managing difficult relationships'],
+        requirements: 'No psychology background required.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'UAE Leadership',
+        hook: "Build the cultural intelligence and people skills required to lead effectively in one of the world's most diverse workplaces.",
+        format: '2-Day Regional Workshop',
+        pills: ['Cultural Intelligence', 'Leadership', 'People Management'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Lead multicultural teams more effectively',
+          'Understand different expectations of leadership',
+          'Adapt communication across cultures',
+          'Build trust in diverse teams',
+          'Prevent misunderstandings without stereotyping',
+          'Give culturally intelligent feedback',
+          'Manage disagreement constructively',
+          'Build inclusive high-performing teams',
+        ],
+        includes: [
+          '2-Day Multicultural Leadership Experience', 'Cultural Intelligence Diagnostic', 'UAE Workplace Cases',
+          'Cross-Cultural Communication Simulation', 'Multinational Team Challenge', 'Trust-Across-Cultures Exercises',
+          'Feedback Across Cultures Practice', 'Inclusive Leadership Action Plan',
+        ],
+        days: [
+          { title: 'Day 1 — Lead Across Cultures', points: ['UAE leadership environment', 'Cultural intelligence', 'Communication differences', 'Trust', 'Psychological safety'] },
+          { title: 'Day 2 — Build Performance', points: ['Motivation across cultures', 'Feedback', 'Conflict', 'Accountability', 'Inclusive leadership'] },
+        ],
+        models: 'Cultural Intelligence, Social Identity Theory, Psychological Safety, Self-Determination Theory, Thomas-Kilmann.',
+        audience: ['UAE-based managers', 'Multicultural team leaders', 'Expatriate leaders', 'Emerging managers'],
+        requirements: 'Experience working within multicultural teams is useful.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'Saudi Leadership',
+        hook: 'Practical people-leadership skills for managers navigating transformation, new workforce expectations and the rapidly changing Saudi workplace.',
+        format: '3-Day Flagship Programme',
+        pills: ['Leadership', 'People Management', 'Transformation'],
+        benefitsLabel: "What You'll Learn",
+        benefits: [
+          'Lead effectively in the rapidly changing Saudi workplace',
+          'Manage different generations and expectations',
+          'Build employee ownership',
+          'Motivate without over-controlling',
+          'Create trust and psychological safety',
+          'Delegate more effectively',
+          'Give meaningful feedback',
+          'Manage conflict and difficult conversations',
+          'Lead people through transformation',
+        ],
+        includes: [
+          '3-Day Saudi Leadership Experience', 'Saudi Workplace Leadership Cases', 'Leadership Behaviour Diagnostic',
+          'Generational Leadership Scenarios', 'Motivation & Ownership Lab', 'Coaching & Delegation Practice',
+          'Accountability Conversations', 'Psychological Safety Simulation', 'Transformation Leadership Challenge',
+          'Real-World Manager Cases', 'Personal Leadership Action Plan',
+        ],
+        days: [
+          { title: "Day 1 — Lead in Today's Saudi Workplace", points: ['Changing leadership expectations', 'Leadership mindset', 'Generational differences', 'Motivation and ownership', 'Trust and psychological safety'] },
+          { title: 'Day 2 — Lead People', points: ['Emotional intelligence', 'Coaching', 'Delegation', 'Feedback', 'Difficult conversations'] },
+          { title: 'Day 3 — Lead Performance & Change', points: ['Accountability', 'Conflict management', 'Leading transformation', 'Building ownership', 'Personal leadership action plan'] },
+        ],
+        models: 'Self-Determination Theory, Transactional Analysis/PAC, Psychological Safety, Locus of Control, Cultural Intelligence, Thomas-Kilmann.',
+        audience: ['Saudi managers', 'Expatriate managers working in Saudi Arabia', 'Supervisors', 'Department heads', 'Emerging leaders', 'Leaders supporting transformation'],
+        requirements: 'No formal leadership qualification required.',
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: "Women's Leadership",
+        hook: 'Building the confidence, presence and strategic capability of women stepping into senior leadership roles.',
+        pills: ['Leadership', 'SDG 5'],
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'Youth Career Development & New Graduates',
+        hook: 'Preparing new graduates and early-career talent for the realities of a professional workplace.',
+        pills: ['Career Readiness', 'Gen Z'],
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'AI and Human Sciences: AI-Driven & Neuroscience-Based Productivity',
+        hook: 'Where artificial intelligence meets neuroscience — using AI-driven tools and brain science to lift team productivity.',
+        pills: ['AI', 'Neuroscience', 'Productivity'],
+        awarded: 'British Certification from CPD-London.',
+      },
+      {
+        title: 'Certified Professional in Office Management',
+        hook: 'A certified standard for running a modern executive office — organisation, discretion and operational excellence.',
+        pills: ['Certified', 'Office Management'],
+        awarded: 'British Certification from CPD-London.',
+      },
     ],
   },
 ];
 
 const DeliverableCard: React.FC<{ item: Deliverable }> = ({ item }) => {
   const [open, setOpen] = useState(false);
-  const hasDetails = Boolean(item.details || item.spec || item.benefits || item.audience || item.awarded || item.pills);
+  const hasDetails = Boolean(
+    item.details || item.spec || item.benefits || item.audience || item.awarded ||
+    item.pills || item.includes || item.days || item.models || item.requirements
+  );
 
   return (
-    <div className="group rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-500 hover:bg-white/[0.06] hover:border-emerald-400/30 hover:-translate-y-1">
-      <h3 className="text-white font-semibold leading-snug">{item.title}</h3>
-      <p className="mt-2 text-slate-400 text-sm leading-relaxed">{item.hook}</p>
+    <div className="group rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden transition-all duration-500 hover:bg-white/[0.06] hover:border-emerald-400/30 hover:-translate-y-1">
+      {/* Image placeholder — real photography to be added later */}
+      <div
+        className="relative aspect-[16/10] border-b border-white/10 flex items-center justify-center"
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(135deg, #0d1424 0px, #0d1424 10px, #101a30 10px, #101a30 20px)',
+        }}
+      >
+        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-500 bg-slate-950/60 border border-dashed border-white/20 rounded-lg px-3 py-1.5">
+          <ImageIcon className="w-3 h-3" /> Image space
+        </span>
+      </div>
 
-      {hasDetails && (
-        <div className={`grid transition-all duration-300 ease-out ${open ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0'}`}>
-          <div className="overflow-hidden">
-            <div className="pt-4 border-t border-white/10 space-y-3">
-              {item.spec && (
-                <div className="flex flex-wrap gap-2">
-                  {item.spec.map((s) => (
-                    <span key={s} className="text-[11px] font-semibold text-slate-200 bg-white/5 border border-white/10 px-2.5 py-1 rounded-lg">
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              )}
+      <div className="p-6">
+        <h3 className="text-white font-semibold leading-snug">{item.title}</h3>
+        <p className="mt-2 text-slate-400 text-sm leading-relaxed">{item.hook}</p>
 
-              {item.details && <p className="text-slate-300 text-sm leading-relaxed">{item.details}</p>}
+        {(item.format || item.delivery || item.spec) && (
+          <div className="mt-3 flex flex-col gap-1.5">
+            {item.format && (
+              <span className="flex items-center gap-1.5 text-xs text-slate-400">
+                <CalendarDays className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> {item.format}
+              </span>
+            )}
+            {item.delivery && (
+              <span className="flex items-center gap-1.5 text-xs text-slate-400">
+                <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> {item.delivery}
+              </span>
+            )}
+            {!item.format && item.spec && (
+              <div className="flex flex-wrap gap-2">
+                {item.spec.map((s) => (
+                  <span key={s} className="text-[11px] font-semibold text-slate-200 bg-white/5 border border-white/10 px-2.5 py-1 rounded-lg">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
 
-              {item.benefits && (
-                <div>
-                  <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-1.5">{item.benefitsLabel ?? 'Key benefits'}</p>
-                  <ul className="space-y-1">
-                    {item.benefits.map((b) => (
-                      <li key={b} className="text-slate-300 text-xs leading-relaxed flex gap-2">
-                        <span className="text-emerald-400 mt-1">•</span>
-                        <span>{b}</span>
-                      </li>
+        {item.pills && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {item.pills.map((p) => (
+              <span key={p} className="text-[10px] font-semibold text-emerald-300 bg-emerald-400/10 border border-emerald-400/25 px-2.5 py-1 rounded-full">
+                {p}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {hasDetails && (
+          <div className={`grid transition-all duration-300 ease-out ${open ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0'}`}>
+            <div className="overflow-hidden">
+              <div className="pt-4 border-t border-white/10 space-y-3">
+                {item.format && item.spec && (
+                  <div className="flex flex-wrap gap-2">
+                    {item.spec.map((s) => (
+                      <span key={s} className="text-[11px] font-semibold text-slate-200 bg-white/5 border border-white/10 px-2.5 py-1 rounded-lg">
+                        {s}
+                      </span>
                     ))}
-                  </ul>
-                </div>
-              )}
+                  </div>
+                )}
 
-              {item.audience && (
-                <div>
-                  <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-1.5">Who should attend</p>
-                  <ul className="space-y-1">
-                    {item.audience.map((a) => (
-                      <li key={a} className="text-slate-300 text-xs leading-relaxed flex gap-2">
-                        <span className="text-emerald-400 mt-1">•</span>
-                        <span>{a}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                {item.details && <p className="text-slate-300 text-sm leading-relaxed">{item.details}</p>}
 
-              {item.awarded && <p className="text-slate-400 text-xs italic">Awarded: {item.awarded}</p>}
+                {item.benefits && (
+                  <div>
+                    <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-1.5">{item.benefitsLabel ?? 'Key benefits'}</p>
+                    <ul className="space-y-1">
+                      {item.benefits.map((b) => (
+                        <li key={b} className="text-slate-300 text-xs leading-relaxed flex gap-2">
+                          <span className="text-emerald-400 mt-1">•</span>
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
-              {item.pills && (
-                <div className="flex flex-wrap gap-2 pt-1">
-                  {item.pills.map((p) => (
-                    <span key={p} className="text-[10px] font-semibold text-emerald-300 bg-emerald-400/10 border border-emerald-400/25 px-2.5 py-1 rounded-full">
-                      {p}
-                    </span>
-                  ))}
-                </div>
-              )}
+                {item.includes && (
+                  <div>
+                    <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-1.5">This Course Includes</p>
+                    <ul className="space-y-1">
+                      {item.includes.map((b) => (
+                        <li key={b} className="text-slate-300 text-xs leading-relaxed flex gap-2">
+                          <span className="text-emerald-400 mt-1">•</span>
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {item.days && (
+                  <div>
+                    <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-1.5">Course Content</p>
+                    <div className="space-y-2">
+                      {item.days.map((d) => (
+                        <div key={d.title}>
+                          <p className="text-white text-xs font-semibold">{d.title}</p>
+                          <p className="text-slate-400 text-xs leading-relaxed">{d.points.join(' · ')}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {item.models && (
+                  <p className="text-slate-400 text-xs italic border-l-2 border-emerald-400/40 pl-3">
+                    <span className="text-slate-300 not-italic font-semibold">Models &amp; Psychology: </span>
+                    {item.models}
+                  </p>
+                )}
+
+                {item.audience && (
+                  <div>
+                    <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-1.5">Who This Course Is For</p>
+                    <ul className="space-y-1">
+                      {item.audience.map((a) => (
+                        <li key={a} className="text-slate-300 text-xs leading-relaxed flex gap-2">
+                          <span className="text-emerald-400 mt-1">•</span>
+                          <span>{a}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {item.requirements && <p className="text-slate-500 text-xs">Requirements: {item.requirements}</p>}
+
+                {item.awarded && <p className="text-slate-400 text-xs italic">Awarded: {item.awarded}</p>}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {hasDetails && (
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="mt-4 inline-flex items-center gap-1 text-emerald-400 text-xs font-semibold hover:underline"
-        >
-          {open ? 'Show less' : 'See more'}
-          <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
-        </button>
-      )}
+        {hasDetails && (
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="mt-4 inline-flex items-center gap-1 text-emerald-400 text-xs font-semibold hover:underline"
+          >
+            {open ? 'Show less' : 'Learn More'}
+            <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+          </button>
+        )}
+      </div>
     </div>
   );
 };
