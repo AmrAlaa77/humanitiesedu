@@ -11,9 +11,15 @@ import Showcase from '@/components/humantic/Showcase';
 import Insights from '@/components/humantic/Insights';
 import Deliverables from '@/components/humantic/Deliverables';
 import Pillar from '@/components/humantic/Pillar';
+import LivingMatrix from '@/components/humantic/LivingMatrix';
 import Journey from '@/components/humantic/Journey';
 import Evolution from '@/components/humantic/Evolution';
+import QualityOfLife from '@/components/humantic/QualityOfLife';
+import VitalMonitoring from '@/components/humantic/VitalMonitoring';
+import NationalIndex from '@/components/humantic/NationalIndex';
+import SDGAlignment from '@/components/humantic/SDGAlignment';
 import Founder from '@/components/humantic/Founder';
+import Pledge from '@/components/humantic/Pledge';
 import Footer from '@/components/humantic/Footer';
 import AccessModal from '@/components/humantic/AccessModal';
 import GlowCursor from '@/components/humantic/GlowCursor';
@@ -70,6 +76,10 @@ const AppLayout: React.FC = () => {
           </Reveal>
 
           <Reveal variant="up">
+            <LivingMatrix />
+          </Reveal>
+
+          <Reveal variant="up">
             <Journey onCta={() => setModalOpen(true)} />
           </Reveal>
 
@@ -79,7 +89,27 @@ const AppLayout: React.FC = () => {
           </Reveal>
 
           <Reveal variant="up">
+            <QualityOfLife />
+          </Reveal>
+
+          <Reveal variant="up">
+            <VitalMonitoring />
+          </Reveal>
+
+          <Reveal variant="up">
+            <NationalIndex />
+          </Reveal>
+
+          <Reveal variant="up">
+            <SDGAlignment />
+          </Reveal>
+
+          <Reveal variant="up">
             <Founder />
+          </Reveal>
+
+          <Reveal variant="up">
+            <Pledge />
           </Reveal>
         </main>
         <Footer />
