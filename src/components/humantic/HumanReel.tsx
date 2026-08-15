@@ -66,6 +66,18 @@ const HumanReel: React.FC = () => {
   const [transitioning, setTransitioning] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [playing, setPlaying] = useState(false); // true while the reel is expanded full-page
+  const [expanded, setExpanded] = useState(false); // drives the zoom-out/zoom-back clip-path transition
+
+  const openReel = () => {
+    setPlaying(true);
+    // two rAFs so the browser paints the tiny starting clip-path before we animate it open
+    requestAnimationFrame(() => requestAnimationFrame(() => setExpanded(true)));
+  };
+  const closeReel = () => {
+    setExpanded(false);
+    window.setTimeout(() => setPlaying(false), 700);
+  };
 
   // Word-by-word intro reveal + word-mask entrance, on mount
   useEffect(() => {
@@ -91,9 +103,9 @@ const HumanReel: React.FC = () => {
     };
   }, [current]);
 
-  // Custom floating cursor: spring-lerp follow, only while hovering the masked word
+  // Custom floating cursor: spring-lerp follow, while hovering the masked word or while the reel is playing full-page
   useEffect(() => {
-    if (!hovering) return;
+    if (!hovering && !playing) return;
     let target = { x: 0, y: 0 };
     let pos = { x: 0, y: 0 };
     let id: number;
@@ -117,7 +129,31 @@ const HumanReel: React.FC = () => {
       window.removeEventListener('pointermove', move);
       cancelAnimationFrame(id);
     };
-  }, [hovering]);
+  }, [hovering, playing]);
+
+  const renderClipStack = () =>
+    CLIPS.map((clip, i) => {
+      let opacity = 0;
+      if (i === current) opacity = transitioning ? 0 : 1;
+      else if (i === next) opacity = transitioning ? 1 : 0;
+      return (
+        <video
+          key={clip.label}
+          className="absolute inset-0 h-full w-full object-cover transition-opacity ease-in-out"
+          style={{
+            opacity,
+            transitionDuration: `${FADE_MS}ms`,
+            animation: 'faceZoomTurn 2.5s ease-in-out infinite',
+          }}
+          src={clip.video}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        />
+      );
+    });
 
   return (
     <section id="top" className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden border-x border-t border-[#1C1C1C] bg-[#0D0D0D] text-white">
@@ -202,8 +238,9 @@ const HumanReel: React.FC = () => {
       {/* The word HUMAN — video visible only inside the letterforms */}
       <div className="relative z-10 flex flex-1 items-center justify-center px-2">
         <div
-          onMouseEnter={() => setHovering(true)}
+          onMouseEnter={() => !playing && setHovering(true)}
           onMouseLeave={() => setHovering(false)}
+          onClick={openReel}
           className="relative w-[92vw] max-w-[1600px] overflow-hidden"
           style={{
             aspectRatio: '1400 / 480',
@@ -224,39 +261,8 @@ const HumanReel: React.FC = () => {
               maskRepeat: 'no-repeat',
             }}
           >
-            {CLIPS.map((clip, i) => {
-              let opacity = 0;
-              if (i === current) opacity = transitioning ? 0 : 1;
-              else if (i === next) opacity = transitioning ? 1 : 0;
-              return (
-              <video
-                key={clip.label}
-                className="absolute inset-0 h-full w-full object-cover transition-opacity ease-in-out"
-                style={{
-                  opacity,
-                  transitionDuration: `${FADE_MS}ms`,
-                  animation: 'faceZoomTurn 2.5s ease-in-out infinite',
-                }}
-                src={clip.video}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-              />
-              );
-            })}
+            {renderClipStack()}
           </div>
-
-          {/* custom floating cursor */}
-          {hovering && (
-            <div
-              ref={cursorRef}
-              className="pointer-events-none absolute top-0 left-0 z-30 flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-white/10 font-mono text-[11px] font-semibold uppercase tracking-widest text-white backdrop-blur-md"
-            >
-              Explore
-            </div>
-          )}
         </div>
       </div>
 
@@ -264,6 +270,32 @@ const HumanReel: React.FC = () => {
 
       {/* Gradient blend into the next page's background instead of a hard cut */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-[#0a0e1a]/80 to-[#0a0e1a]" />
+
+      {/* Full-page reel: zooms out from behind the word to cover the whole page, and back */}
+      {playing && (
+        <div
+          onClick={closeReel}
+          className="fixed inset-0 z-[60] overflow-hidden bg-black"
+          style={{
+            cursor: 'none',
+            clipPath: expanded ? 'inset(0px round 0px)' : 'inset(42% round 260px)',
+            transition: 'clip-path 700ms cubic-bezier(0.65,0,0.35,1)',
+          }}
+        >
+          {renderClipStack()}
+          <div className="pointer-events-none absolute inset-0 bg-black/25" />
+        </div>
+      )}
+
+      {/* custom floating cursor: "Play Reel" over the word, "Close" while the reel is full-page */}
+      {(hovering || playing) && (
+        <div
+          ref={cursorRef}
+          className="pointer-events-none fixed top-0 left-0 z-[70] flex h-24 w-24 items-center justify-center rounded-full bg-black font-sans text-[11px] font-bold uppercase tracking-widest text-white"
+        >
+          {playing ? 'Close' : 'Play Reel'}
+        </div>
+      )}
     </section>
   );
 };
