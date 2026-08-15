@@ -20,11 +20,11 @@ interface Clip {
 }
 
 const CLIPS: Clip[] = [
-  { label: 'Doctor', video: 'https://videos.pexels.com/video-files/5722215/5722215-uhd_2732_1440_25fps.mp4' },
-  { label: 'Metal Miner', video: 'https://videos.pexels.com/video-files/6474370/6474370-uhd_2560_1440_25fps.mp4' },
-  { label: 'Tourist Guide', video: 'https://videos.pexels.com/video-files/9142461/9142461-uhd_1440_2560_30fps.mp4' },
-  { label: 'Graduating Student', video: 'https://videos.pexels.com/video-files/7945902/7945902-hd_1080_1920_25fps.mp4' },
-  { label: 'Girl with Butterflies', video: 'https://videos.pexels.com/video-files/9797821/9797821-uhd_2732_1440_25fps.mp4' },
+  { label: 'Face 1', video: 'https://videos.pexels.com/video-files/4772279/4772279-uhd_2560_1440_24fps.mp4' },
+  { label: 'Face 2', video: 'https://videos.pexels.com/video-files/8496455/8496455-hd_1920_1080_25fps.mp4' },
+  { label: 'Face 3', video: 'https://videos.pexels.com/video-files/6245712/6245712-uhd_1440_2732_30fps.mp4' },
+  { label: 'Face 4', video: 'https://videos.pexels.com/video-files/8111924/8111924-hd_1080_1920_30fps.mp4' },
+  { label: 'Face 5', video: 'https://videos.pexels.com/video-files/11670491/11670491-hd_1920_1080_24fps.mp4' },
 ];
 
 const CLIP_MS = 2500;
@@ -150,6 +150,12 @@ const HumanReel: React.FC = () => {
           0% { transform: translateX(0); }
           100% { transform: translateX(-33.333%); }
         }
+        @keyframes faceZoomTurn {
+          0%   { transform: scale(1)    rotate(0deg); }
+          35%  { transform: scale(1.32) rotate(-2.5deg); }
+          70%  { transform: scale(1.1)  rotate(2deg); }
+          100% { transform: scale(1)    rotate(0deg); }
+        }
       `}</style>
 
       {/* SVG mask definition: white text = visible (video shows through), black = hidden */}
@@ -229,6 +235,7 @@ const HumanReel: React.FC = () => {
                 style={{
                   opacity,
                   transitionDuration: `${FADE_MS}ms`,
+                  animation: 'faceZoomTurn 2.5s ease-in-out infinite',
                 }}
                 src={clip.video}
                 autoPlay
