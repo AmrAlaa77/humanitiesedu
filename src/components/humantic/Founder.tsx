@@ -8,7 +8,10 @@ const stats = [
   { value: '5', label: 'Royal Saudi hospital partnerships' },
 ];
 
-const sectors = ['Education', 'Healthcare', 'Mining', 'Defense', 'Diplomatic & Consular', 'Global Technology'];
+const sectors = [
+  'Education', 'Healthcare', 'Mining', 'Defense', 'Diplomatic & Consular', 'Global Technology',
+  'Aviation', 'Pharmaceuticals', 'Tech Giants', 'Banking', 'Construction',
+];
 
 const credentials = [
   {
