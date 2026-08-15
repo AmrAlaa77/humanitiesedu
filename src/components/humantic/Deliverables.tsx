@@ -40,6 +40,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
               'Addressing bias, perception and belonging at a practical level',
               'Building organisational and interpersonal awareness for real workplace systems',
               'First-Time Right readiness: entering with clarity, credibility and behavioural discipline',
+              "Empowering Gen Z to comprehend the 'why' behind their own actions",
             ],
           },
         ],
@@ -62,6 +63,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
               'Gamified, immersive simulation of day-to-day operations in the field',
               '"Safe Lab" environment where mistakes cost a 10-minute debrief, not millions',
               'Composure, accountability and talent-spotting measured against world-class standards',
+              'Distilled from two decades of industry expertise across Microsoft, Saudi Aramco, Google and PepsiCo',
+              'A high-fidelity, high-energy, zero-lag leadership flight simulator',
             ],
           },
           {
@@ -70,6 +73,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
               '"Flash Debrief" — real-time huddles that turn every task into a learning milestone',
               'Peer focus group to consolidate insights and behaviour shifts',
               'Diagnostic mirror for leaders to reflect on behaviours that enable or block transformation',
+              'Built on experiential dialogue rather than information sessions, for genuine behavioural clarity',
+              'Every leader leaves energised and aligned around a shared leadership charter',
             ],
           },
         ],
@@ -84,6 +89,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           'An intelligent system — your "Mission Control" — that turns every incoming request into a clear, actionable next step',
           'Auto-Run habit automation that eliminates mental overload',
           'Tools built specifically for a generation shaped by automatic scroll and fragmented attention',
+          'Seamless app integration that turns learning into immediate, practical action',
+          'Continuous weekly or biweekly support beyond the workshop — 1:1 sessions, focus groups and team retreats over a month',
         ],
         includes: ['2-day workshop, 4 hours/day'],
       },
@@ -95,19 +102,43 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         days: [
           {
             title: 'Step 1 — Train of Trainers (TTT) for Saudi Nationals',
-            points: ['Fully sponsored, part of the Saudization initiative', 'Passing on wellbeing mental-decluttering fundamentals, delivered by Saudi trainers'],
+            points: [
+              'Fully sponsored, part of the Saudization initiative',
+              'Passing on wellbeing mental-decluttering fundamentals',
+              'Delivered by Saudi Arabian trainers',
+              "Grounded in the same 'Gen Z Fluent' methodology used across the initiative",
+              'The first of four steps in the full journey, ahead of the VR-based workshops',
+            ],
           },
           {
             title: 'Step 2 — VR Visionaries: Virtual Reality Wellness Workshop',
-            points: ['Visualising the inner wellness journey, one simulation at a time'],
+            points: [
+              'Visualising the inner wellness journey, one simulation at a time',
+              "'We Make It Real': an unprecedented immersive experience using virtual reality",
+              "'We Speak Gen Z Fluent': learning reimagined through conviction, memory research and multi-modal learning",
+              'Rethinks the stress response — reframing how participants perceive and manage stress through conscious regulation',
+              'Builds scientific understanding of the brain-body connection: how the nervous system, brain and hormones shape emotions and physical wellbeing',
+            ],
           },
           {
             title: 'Step 3 — VR Realities: Neuroscience-Based Workshop',
-            points: ['Beyond the basics — delivery, mentoring and shaping of the inner wellness journey'],
+            points: [
+              'Beyond the basics — delivery, mentoring and shaping of the inner wellness journey',
+              "'It Just Hits': a personalised biological experience that makes brain and body science easy to understand",
+              "'Learning By Doing': gamified, hands-on activities and guided exploration",
+              'Builds emotional intelligence and self-awareness through reflection and conscious emotional processing',
+              'Closes with a personalised, medically-grounded wellbeing plan and a 3-month follow-up',
+            ],
           },
           {
             title: 'Step 4 — The Power of Togetherness',
-            points: ["Parents' workshop co-creating wellness", "Parents grasp the fundamentals of adolescents' mind & body development to support their young ones"],
+            points: [
+              "Parents' workshop co-creating wellness",
+              "Parents grasp the fundamentals of adolescents' mind & body development",
+              'Understanding teenage brain development and co-regulation strategies',
+              'Family collaboration: sharing personalised wellbeing plans with parents',
+              'Setting collaborative goals for a supportive family environment',
+            ],
           },
         ],
         models: 'Embodied cognition — the brain accelerates learning when the body is actively "present" within a digital environment.',
@@ -124,6 +155,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           'Real impact: tools for lasting change, not temporary highs',
           'Empowering, not prescriptive: a personalised plan, not one-size-fits-all',
           'Sustainable change: habits and routines built to integrate into daily life',
+          'A holistic exploration of wellbeing — from the routines that fuel the body to the emotions that shape reactions',
         ],
       },
       {
@@ -135,15 +167,19 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           {
             title: 'Module 1 — Collective Strengths in Action Workshop',
             points: [
-              'Grounded in strengths-based research to unlock intrinsic strengths within teams',
+              'Grounded in strengths-based research',
+              'Helps leaders unlock intrinsic strengths within their teams',
               'Shifts the focus from deficits to growth',
-              'Helps individuals acknowledge, embrace and celebrate their unique talents',
+              'Empowers individuals to acknowledge, embrace and celebrate their unique talents',
+              'Aimed at maximum organisational impact',
             ],
           },
           {
             title: 'Module 2 — Sustaining Collective Strength: Derailers One-on-Ones',
             points: [
-              'In-house strengths-mapping to maximise team results through synergy',
+              'In-house strengths-mapping methodology',
+              'Enforces a collective-strength philosophy that maximises team results through synergy',
+              'Deliberately combines and aims diverse individual strengths',
               "Team members understand, appreciate and actively leverage one another's strengths",
               'One-on-one derailer debrief to help realise true potential',
             ],
@@ -157,10 +193,46 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         details: 'Four-phase journey: Discovery → Immersion → Integration → Audit — from knowing yourself to embodying it.',
         pills: ['4-phase model'],
         days: [
-          { title: 'Discovery', points: ['One-on-one behavioural analysis', 'Goal: identify the "starting line"'] },
-          { title: 'Immersion', points: ['Focus groups', 'Goal: peer-to-peer modelling'] },
-          { title: 'Integration', points: ['1-month mentoring', 'Goal: move from knowing to embodying'] },
-          { title: 'Audit', points: ['Progress gauging', 'Goal: validate growth and ROI'] },
+          {
+            title: 'Discovery',
+            points: [
+              'One-on-one behavioural analysis',
+              'Goal: identify the "starting line"',
+              'Dives into your own biological and psychological wiring, in a dedicated, confidential sanctuary',
+              'Uncovers the internal barriers that most often block leadership impact',
+              'A safe space to acknowledge both vulnerabilities and strengths',
+            ],
+          },
+          {
+            title: 'Immersion',
+            points: [
+              'Focus groups',
+              'Goal: peer-to-peer modelling',
+              'Co-creates strategies that work specifically for the individual',
+              'Surfaces emotional triggers before they manifest as leadership derailers',
+              "Builds on the Discovery phase's behavioural-analysis findings",
+            ],
+          },
+          {
+            title: 'Integration',
+            points: [
+              '1-month mentoring',
+              'Goal: move from knowing to embodying',
+              'Decodes behaviour patterns to unlock a superior level of self-insight',
+              'Upgrades both individual performance and team execution',
+              'Sustained, ongoing support rather than a single one-off session',
+            ],
+          },
+          {
+            title: 'Audit',
+            points: [
+              'Progress gauging',
+              'Goal: validate growth and ROI',
+              'Confirms whether internal shifts have translated into leadership behaviour change',
+              'Closes the loop on the Discovery-to-Integration journey',
+              'Measures the return on the month-long mentoring investment',
+            ],
+          },
         ],
       },
       {
@@ -174,6 +246,9 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
             points: [
               'Identify and practice techniques for capturing thoughts and reducing brain clutter',
               'Task creation and prioritisation techniques',
+              'Understand the brain-body connection: how the nervous system, brain and hormones shape emotions and behaviour',
+              'Spot the signs of reactivity — increased breathing, clenched muscles, negative self-talk',
+              'Learn to pause and respond consciously rather than react impulsively',
             ],
           },
           {
@@ -182,6 +257,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
               'Download and navigate the digital organisational app',
               'Create and categorise tasks tied to current projects',
               'Set due dates and assign responsibility',
+              'Share files and discuss details — no lost sticky notes or chaotic email threads',
+              'Track progress with dashboards and activity streams by project or team member',
             ],
           },
           {
@@ -189,6 +266,9 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
             points: [
               'Connect mind-clearing and project-management skills to reduced distress/anxiety',
               'Set a SMART goal for applying learned skills within the next month, with a progress-tracking method',
+              'Empowered leadership means guiding, not hovering — enabling progress, not managing every step',
+              'Creates the psychological and operational space for teams to thrive',
+              'Removes the need to constantly track, micromanage or step in',
             ],
           },
         ],
@@ -226,10 +306,46 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         details: 'Five pillars: Behavioral Leadership Fundamentals, Strengths-Based Leadership, Interpersonal Leadership, Neuroscience & Organizational Behavior, and The Psychological Lens on Productivity.',
         pills: ['UK-Accredited Certificate', 'ROI & ROH aligned'],
         days: [
-          { title: 'Phase 01 — Alignment', points: ['Cultural assessment & training needs analysis', 'Pre-delivery assessment & customisation'] },
-          { title: 'Phase 02 — Sustainability', points: ['Focus groups & 1:1 sessions', 'Post-delivery employee assistance programme'] },
-          { title: 'Phase 03 — Productivity', points: ['Productivity hacks & check-ins', 'Recognition programme'] },
-          { title: 'Phase 04 — Happiness & Loyalty', points: ['Team retreats & wellness champions', 'VR-based wellbeing, progress tracking'] },
+          {
+            title: 'Phase 01 — Alignment',
+            points: [
+              'Cultural assessment & training needs analysis',
+              'Knowledge pre-assessment',
+              'Pre-delivery assessment & customisation',
+              'Experiential learning',
+              'Grounded in reflecting on doing — the most effective and enduring form of learning',
+            ],
+          },
+          {
+            title: 'Phase 02 — Sustainability',
+            points: [
+              'Rewarding programme focus group',
+              'Individual assessment & 1:1 sessions',
+              'Customised learning & post-assessment',
+              'Post-delivery employee assistance programme',
+              'Individualised learning — interactive focus groups and mentoring, accessible for 1 month',
+            ],
+          },
+          {
+            title: 'Phase 03 — Productivity',
+            points: [
+              'Productivity hacks & check-ins',
+              'Recognition programme',
+              'Individualised behavioural, productivity & advising sessions',
+              'Technology-assisted learning — AI tools supporting mental clarity and priorities',
+              'Active learning — VR, hands-on activities and personalised competency assessments',
+            ],
+          },
+          {
+            title: 'Phase 04 — Happiness & Loyalty',
+            points: [
+              'Team retreats',
+              'Celebrating wellness champions',
+              'VR-based wellbeing',
+              'Culture & individual progress tracking',
+              'Gamified learning, using the Flash Debriefing methodology',
+            ],
+          },
         ],
         models: 'Business Psychology, Organizational Behavior and Modern Neuroscience — delivered through British Accredited CPD certification.',
       },
@@ -243,6 +359,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           'Personalised behavioural report uncovering tendencies, root causes and derailers',
           'Applied through a confidential one-on-one debrief session',
           'Shares its methodology with the GALLUP+ Strengths & Derailers framework used across the Next Gen 2030 initiative',
+          'Helps leaders unlock intrinsic strengths within their teams rather than fixate on what\'s lacking',
+          'Shifts the focus from deficits to growth, aimed at maximum organisational impact',
         ],
       },
       {
@@ -254,8 +372,11 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         benefits: [
           'Bonus individualised development hours',
           'UK-accredited professional certificate',
+          'Hi-Potential Leaders Development Programme access',
+          'English language courses for employees and/or their families',
           'Healthy lifestyle subsidies',
-          'Personalised Gallup CliftonStrengths® report & debrief',
+          'Wellness / counselling advising sessions',
+          'Personalised individual Gallup CliftonStrengths® report & debrief',
         ],
       },
       {
@@ -265,6 +386,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         pills: ['Behavioural science'],
         benefitsLabel: 'The science',
         benefits: [
+          "Most firms are trapped in a cycle of costly 'Behavioural Repair' — spending millions on training that evaporates within days",
           'Traditional development fails by trying to overwrite deeply rooted habits, creating "Institutional Inertia"',
           'A temporary "Novelty Spike" inevitably collapses back to baseline behaviour',
           'Bio-Core™ uses neural plasticity to install excellence as the only professional language ever learned',
@@ -286,7 +408,9 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         benefits: [
           'Reset through neuroscience-backed practices',
           'Sunrise meditation and 1:1 guided healing sessions',
-          "Extends awareness and knowledge to participants' families for a ripple effect into company culture",
+          "Extends awareness and knowledge to participants' families",
+          'Creates a ripple effect that reinforces internal company culture transformation',
+          'Contributes to broader community wellbeing',
           'Framed within the Sustainability Development Goals era of holistic human capital development',
         ],
         audience: ['Teams needing a collective energy reset', 'Leaders showing early signs of burnout', 'Organisations investing in sustained performance'],
