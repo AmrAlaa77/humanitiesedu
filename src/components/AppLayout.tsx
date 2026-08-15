@@ -13,6 +13,7 @@ import Deliverables from '@/components/humantic/Deliverables';
 import Pillar from '@/components/humantic/Pillar';
 import Journey from '@/components/humantic/Journey';
 import Evolution from '@/components/humantic/Evolution';
+import Founder from '@/components/humantic/Founder';
 import Footer from '@/components/humantic/Footer';
 import AccessModal from '@/components/humantic/AccessModal';
 import GlowCursor from '@/components/humantic/GlowCursor';
@@ -75,6 +76,10 @@ const AppLayout: React.FC = () => {
 
           <Reveal variant="up">
             <Evolution />
+          </Reveal>
+
+          <Reveal variant="up">
+            <Founder />
           </Reveal>
         </main>
         <Footer />
