@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, ImageIcon, FileText, X } from 'lucide-react';
+import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, ImageIcon, FileText, X, Globe, Users, Heart } from 'lucide-react';
 
 type CourseDay = { title: string; points: string[] };
 
@@ -19,6 +19,17 @@ type Deliverable = {
   audience?: string[];
   requirements?: string;
   awarded?: string;
+};
+
+type InitiativeStat = { icon: React.ComponentType<{ className?: string }>; value: string; label: string };
+
+type Initiative = {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  stats?: InitiativeStat[];
+  featuresLabel?: string;
+  features?: string[];
 };
 
 const categories: { key: string; label: string; icon: React.ComponentType<{ className?: string }>; items: Deliverable[] }[] = [
@@ -1152,6 +1163,69 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
   },
 ];
 
+const initiatives: Record<string, Initiative> = {
+  nextgen: {
+    eyebrow: 'Initiative 1 · UK–KSA Collaboration',
+    title: 'NextGen 2030: The Quarter-Billion Covenant',
+    description:
+      'A collaborative UK–Saudi initiative bridging campus to career for Gen Z — nearly a third of the global workforce by 2030, and a generation the region cannot afford to onboard the old way.',
+    stats: [
+      { icon: Globe, value: '~30%', label: 'of the global workforce is Gen Z by 2030' },
+      { icon: Users, value: '140M', label: 'young people aged 10–24 across MENA' },
+      { icon: Heart, value: '50 / 75%', label: 'of lifetime wellbeing issues begin by age 14 / 24' },
+    ],
+  },
+  health: {
+    title: 'Wellbeing Is The New KPI',
+    description: 'Employee wellbeing has a quantifiable link to business performance across industries and countries worldwide.',
+    featuresLabel: 'Program Features',
+    features: [
+      'Link wellbeing to performance with a business case leaders trust.',
+      'Apply evidence-backed frameworks to your culture.',
+      'Reduce attrition through measurable engagement gains.',
+      'Grounded in a proprietary blend of business psychology, the study of self, and human physiology, summarized into one practical leadership overview.',
+    ],
+  },
+};
+
+const InitiativeBanner: React.FC<{ initiative: Initiative }> = ({ initiative }) => (
+  <div className="mb-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8 sm:p-10">
+    {initiative.eyebrow && (
+      <span className="text-emerald-400 text-[11px] font-bold uppercase tracking-widest">{initiative.eyebrow}</span>
+    )}
+    <h3 className={`text-white text-2xl sm:text-3xl font-bold leading-tight ${initiative.eyebrow ? 'mt-3' : ''}`}>{initiative.title}</h3>
+    <p className="mt-4 text-slate-400 text-base leading-relaxed max-w-3xl">{initiative.description}</p>
+
+    {initiative.stats && (
+      <div className="mt-8 grid sm:grid-cols-3 gap-4">
+        {initiative.stats.map((s) => (
+          <div key={s.label} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+            <div className="w-10 h-10 rounded-xl bg-emerald-400/15 flex items-center justify-center">
+              <s.icon className="w-5 h-5 text-emerald-400" />
+            </div>
+            <p className="mt-4 text-white text-2xl font-bold">{s.value}</p>
+            <p className="mt-1 text-slate-400 text-sm leading-relaxed">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {initiative.features && (
+      <div className="mt-6">
+        {initiative.featuresLabel && <p className="text-white text-lg font-bold mb-3">{initiative.featuresLabel}</p>}
+        <ul className="space-y-2.5">
+          {initiative.features.map((f) => (
+            <li key={f} className="flex gap-2.5 text-slate-300 text-sm leading-relaxed">
+              <span className="text-emerald-400 mt-1.5">•</span>
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+);
+
 const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverable) => void }> = ({ item, onOutline }) => {
   const [open, setOpen] = useState(false);
   const hasDetails = Boolean(
@@ -1453,6 +1527,8 @@ const Deliverables: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {initiatives[active] && <InitiativeBanner initiative={initiatives[active]} />}
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {current.items.map((item) => (
