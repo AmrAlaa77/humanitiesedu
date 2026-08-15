@@ -1199,6 +1199,12 @@ const initiatives: Record<string, Initiative> = {
       { icon: TrendingUp, value: '40%', label: 'mortality reduction already achieved via preventive models' },
       { icon: FlaskConical, value: '1st', label: 'AI health platform designed for the Saudi population' },
     ],
+    featuresLabel: 'Prevent before it becomes a treatment cost',
+    features: [
+      'Physical activity: only 48.2% of Saudis meet the Quality of Life Program benchmark of 30 minutes/week, and just 29.7% meet the WHO-recommended 150 minutes/week (Household Sports Practice Survey 2021, Ministry of Sport / Quality of Life Program / Vision 2030)',
+      'Diabetes: 23.1% adult prevalence in Saudi Arabia — among the ten highest rates globally (IDF Diabetes Atlas, 2024)',
+      'Cardiovascular disease: accounts for 42% of non-communicable-disease deaths in the Kingdom (Saudi Ministry of Health)',
+    ],
     quote: 'One honest conversation can save a life.',
   },
   neurolead: {
@@ -1206,6 +1212,12 @@ const initiatives: Record<string, Initiative> = {
     title: 'Neurolead: The Inner Game of Leadership',
     description: 'Leadership derailers live in biology, not character. Decoding why leaders stall, then rebuilding the pattern — not just the person.',
     quote: "The gap between potential and performance isn't a lack of skill — it's a lack of psychological safety.",
+  },
+  orgs: {
+    eyebrow: 'Initiative 4 · Safer Workplace',
+    title: 'Safer Workplace for All',
+    description:
+      'We believe that when organizations prioritize humanizing their business models, they achieve sustainable performance while honoring the intrinsic value of the people at their core. By bridging the gap between biological reality and corporate strategy, we empower institutions to grow with purpose and authenticity.',
   },
 };
 
