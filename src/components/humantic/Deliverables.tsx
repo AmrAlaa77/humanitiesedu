@@ -32,48 +32,167 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         hook: "Fortune 500 leadership strategy, delivered at the speed of Gen Z's feed.",
         details: 'Five-day in-person experiential workshop + 1-month mentoring + 1-on-1 Talent Signature™ debrief. Establishes Foundations of Organizational Awareness through behavioural science and social neuroscience.',
         pills: ['First-Time Right', 'Fortune 500 method'],
+        days: [
+          {
+            title: 'Day One — Foundations of Organizational Awareness',
+            points: [
+              'Behavioural science and social neuroscience grounding in how individuals think, react and interact',
+              'Addressing bias, perception and belonging at a practical level',
+              'Building organisational and interpersonal awareness for real workplace systems',
+              'First-Time Right readiness: entering with clarity, credibility and behavioural discipline',
+            ],
+          },
+        ],
+        includes: [
+          '5-day in-person experiential workshop, 5 hours/day',
+          'Extended 1-month mentoring access',
+          'Interactive focus groups',
+          '1-on-1 Talent Signature™ innate-strengths assessment & debrief, 1.5 hours/participant',
+        ],
       },
       {
         title: 'Game On™: The Open-Air Boardroom',
         hook: "Real terrain, real pressure, zero slide decks. Gen Z learns to win before they're handed the title.",
         details: 'A 2-day gamified simulation of day-to-day operations built from Microsoft, Saudi Aramco, Google and PepsiCo partnership insight. The "Flash Debrief" turns every task into a live learning milestone.',
         pills: ['Safe-Lab simulation', 'Used by Royal Navy, UK Army'],
+        days: [
+          {
+            title: 'Day 1 — Outdoors Experientials (7 hours)',
+            points: [
+              'Gamified, immersive simulation of day-to-day operations in the field',
+              '"Safe Lab" environment where mistakes cost a 10-minute debrief, not millions',
+              'Composure, accountability and talent-spotting measured against world-class standards',
+            ],
+          },
+          {
+            title: 'Day 2 — Indoors Experientials (3 hours) + Focus Group (2 hours)',
+            points: [
+              '"Flash Debrief" — real-time huddles that turn every task into a learning milestone',
+              'Peer focus group to consolidate insights and behaviour shifts',
+              'Diagnostic mirror for leaders to reflect on behaviours that enable or block transformation',
+            ],
+          },
+        ],
       },
       {
         title: 'SyncPoint™: Your Digital Chief of Staff',
         hook: 'Your AI productivity app becomes a Digital Personal Assistant.',
         details: 'A 2-day workshop turning brain science into Auto-Run habit automation — built for a generation shaped by automatic scroll and fragmented attention.',
         pills: ['AI habit automation'],
+        benefitsLabel: 'What you leave with',
+        benefits: [
+          'An intelligent system — your "Mission Control" — that turns every incoming request into a clear, actionable next step',
+          'Auto-Run habit automation that eliminates mental overload',
+          'Tools built specifically for a generation shaped by automatic scroll and fragmented attention',
+        ],
+        includes: ['2-day workshop, 4 hours/day'],
       },
       {
         title: 'VRify Yourself™: The Science of You',
         hook: 'Gamified VR simulation for self-assessment — our flagship experience.',
         details: '2-day workshop or 5-day journey using embodied cognition to identify and rewrite automatic stress responses tailored to individual triggers and biological instincts.',
         pills: ['Embodied cognition'],
+        days: [
+          {
+            title: 'Step 1 — Train of Trainers (TTT) for Saudi Nationals',
+            points: ['Fully sponsored, part of the Saudization initiative', 'Passing on wellbeing mental-decluttering fundamentals, delivered by Saudi trainers'],
+          },
+          {
+            title: 'Step 2 — VR Visionaries: Virtual Reality Wellness Workshop',
+            points: ['Visualising the inner wellness journey, one simulation at a time'],
+          },
+          {
+            title: 'Step 3 — VR Realities: Neuroscience-Based Workshop',
+            points: ['Beyond the basics — delivery, mentoring and shaping of the inner wellness journey'],
+          },
+          {
+            title: 'Step 4 — The Power of Togetherness',
+            points: ["Parents' workshop co-creating wellness", "Parents grasp the fundamentals of adolescents' mind & body development to support their young ones"],
+          },
+        ],
+        models: 'Embodied cognition — the brain accelerates learning when the body is actively "present" within a digital environment.',
+        includes: ['2-day workshop or 5-day journey, 5 hours/day'],
       },
       {
         title: 'Brain Voyage: The Inside Tour of You',
         hook: 'A VR walkthrough of your own brain, in real time.',
         details: '4x more focused, 16x more likely to recall information, 275% more confident applying skills post-training versus traditional methods.',
         pills: ['Royal Society of Medicine UK'],
+        benefitsLabel: 'What makes it stand out',
+        benefits: [
+          'Science-backed: rooted in brain and body chemistry research, not wellness buzzwords',
+          'Real impact: tools for lasting change, not temporary highs',
+          'Empowering, not prescriptive: a personalised plan, not one-size-fits-all',
+          'Sustainable change: habits and routines built to integrate into daily life',
+        ],
       },
       {
         title: 'Shine & Shadow: Strengths & Derailers',
         hook: 'Every talent has a strength — and a shadow that dims it under pressure.',
         details: "Collective Strengths in Action workshop plus one-on-one derailer mapping so teams understand and leverage one another's strengths.",
         pills: ['Strengths-based research'],
+        days: [
+          {
+            title: 'Module 1 — Collective Strengths in Action Workshop',
+            points: [
+              'Grounded in strengths-based research to unlock intrinsic strengths within teams',
+              'Shifts the focus from deficits to growth',
+              'Helps individuals acknowledge, embrace and celebrate their unique talents',
+            ],
+          },
+          {
+            title: 'Module 2 — Sustaining Collective Strength: Derailers One-on-Ones',
+            points: [
+              'In-house strengths-mapping to maximise team results through synergy',
+              "Team members understand, appreciate and actively leverage one another's strengths",
+              'One-on-one derailer debrief to help realise true potential',
+            ],
+          },
+        ],
+        models: 'GALLUP+ Strengths & Derailers.',
       },
       {
         title: 'InnerLead: The Journey Within',
         hook: 'A month-long sanctuary for decoding your own wiring.',
         details: 'Four-phase journey: Discovery → Immersion → Integration → Audit — from knowing yourself to embodying it.',
         pills: ['4-phase model'],
+        days: [
+          { title: 'Discovery', points: ['One-on-one behavioural analysis', 'Goal: identify the "starting line"'] },
+          { title: 'Immersion', points: ['Focus groups', 'Goal: peer-to-peer modelling'] },
+          { title: 'Integration', points: ['1-month mentoring', 'Goal: move from knowing to embodying'] },
+          { title: 'Audit', points: ['Progress gauging', 'Goal: validate growth and ROI'] },
+        ],
       },
       {
         title: 'WorkReady+: More Than Employable',
         hook: 'The organised-mind system every new hire needs before day one.',
         details: 'Covers the brain-body connection, mind-clearing techniques, and an AI-powered organisational tool giving teams shared visibility on ownership and deadlines.',
         pills: ['Certified Office Management'],
+        days: [
+          {
+            title: 'Mind Clearing',
+            points: [
+              'Identify and practice techniques for capturing thoughts and reducing brain clutter',
+              'Task creation and prioritisation techniques',
+            ],
+          },
+          {
+            title: 'Project Management Principles',
+            points: [
+              'Download and navigate the digital organisational app',
+              'Create and categorise tasks tied to current projects',
+              'Set due dates and assign responsibility',
+            ],
+          },
+          {
+            title: 'Wellness Integration',
+            points: [
+              'Connect mind-clearing and project-management skills to reduced distress/anxiety',
+              'Set a SMART goal for applying learned skills within the next month, with a progress-tracking method',
+            ],
+          },
+        ],
+        includes: ['AI-powered organisational tool for shared task visibility, ownership and deadlines'],
       },
     ],
   },
@@ -106,24 +225,51 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         hook: 'A deep dive into the human element behind every enterprise.',
         details: 'Five pillars: Behavioral Leadership Fundamentals, Strengths-Based Leadership, Interpersonal Leadership, Neuroscience & Organizational Behavior, and The Psychological Lens on Productivity.',
         pills: ['UK-Accredited Certificate', 'ROI & ROH aligned'],
+        days: [
+          { title: 'Phase 01 — Alignment', points: ['Cultural assessment & training needs analysis', 'Pre-delivery assessment & customisation'] },
+          { title: 'Phase 02 — Sustainability', points: ['Focus groups & 1:1 sessions', 'Post-delivery employee assistance programme'] },
+          { title: 'Phase 03 — Productivity', points: ['Productivity hacks & check-ins', 'Recognition programme'] },
+          { title: 'Phase 04 — Happiness & Loyalty', points: ['Team retreats & wellness champions', 'VR-based wellbeing, progress tracking'] },
+        ],
+        models: 'Business Psychology, Organizational Behavior and Modern Neuroscience — delivered through British Accredited CPD certification.',
       },
       {
         title: 'Shine & Shadow: Strengths & Derailers Diagnostic',
         hook: 'Every leader has a strength that built their reputation — and a shadow that dims it.',
         details: 'A personalised behavioural report uncovering tendencies, root causes and derailers, applied through a one-on-one debrief session.',
         pills: ['Cross-initiative asset'],
+        benefitsLabel: 'What the diagnostic covers',
+        benefits: [
+          'Personalised behavioural report uncovering tendencies, root causes and derailers',
+          'Applied through a confidential one-on-one debrief session',
+          'Shares its methodology with the GALLUP+ Strengths & Derailers framework used across the Next Gen 2030 initiative',
+        ],
       },
       {
         title: '100 & Rising: The Recognition Covenant',
         hook: 'A fully sponsored wellness-recognition programme, awarded every 100 learners trained.',
-        details: 'Reinforces long-term partnerships and embeds a culture of wellbeing through every level of the organisation.',
+        details: 'For every 200 assessments completed, we sponsor incentives that nurture potential and celebrate broad participation — embedding a genuine commitment to wellbeing at every organisational level.',
         pills: ['UN SDG-aligned'],
+        benefitsLabel: 'What Wellness Ambassadors receive',
+        benefits: [
+          'Bonus individualised development hours',
+          'UK-accredited professional certificate',
+          'Healthy lifestyle subsidies',
+          'Personalised Gallup CliftonStrengths® report & debrief',
+        ],
       },
       {
         title: 'The Neural Relapse Tax',
         hook: 'Most training evaporates within days. This is the science of why.',
         details: 'Uses neural plasticity to install professional readiness as a native feature, turning temporary motivation into permanent, high-performance architecture.',
         pills: ['Behavioural science'],
+        benefitsLabel: 'The science',
+        benefits: [
+          'Traditional development fails by trying to overwrite deeply rooted habits, creating "Institutional Inertia"',
+          'A temporary "Novelty Spike" inevitably collapses back to baseline behaviour',
+          'Bio-Core™ uses neural plasticity to install excellence as the only professional language ever learned',
+          'Systemic Performance Calibration turns temporary motivation into permanent, high-performance architecture',
+        ],
       },
     ],
   },
@@ -137,7 +283,12 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         hook: 'A body-mind reset rooted in neurophysiology, for teams ready to reconnect before the next sprint.',
         spec: ['Retreat · 2 Days, 1 Night', 'In-person, hotel retreat'],
         benefitsLabel: 'Programme features',
-        benefits: ['Reset through neuroscience-backed practices', 'Sunrise meditation and 1:1 guided healing sessions'],
+        benefits: [
+          'Reset through neuroscience-backed practices',
+          'Sunrise meditation and 1:1 guided healing sessions',
+          "Extends awareness and knowledge to participants' families for a ripple effect into company culture",
+          'Framed within the Sustainability Development Goals era of holistic human capital development',
+        ],
         audience: ['Teams needing a collective energy reset', 'Leaders showing early signs of burnout', 'Organisations investing in sustained performance'],
         awarded: 'Certificate of participation. Fee includes accommodation, meals and all sessions.',
       },
