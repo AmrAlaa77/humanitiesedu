@@ -34,15 +34,63 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         pills: ['First-Time Right', 'Fortune 500 method'],
         days: [
           {
-            title: 'Day One — Foundations of Organizational Awareness',
+            title: 'Day 1 — Embracing the "You-nique" You',
             points: [
-              'Behavioural science and social neuroscience grounding in how individuals think, react and interact',
-              'Addressing bias, perception and belonging at a practical level',
-              'Building organisational and interpersonal awareness for real workplace systems',
-              'First-Time Right readiness: entering with clarity, credibility and behavioural discipline',
-              "Empowering Gen Z to comprehend the 'why' behind their own actions",
+              'Audit of internal wiring: identifying personal lenses and unconscious biases that distort perception',
+              'How bias forms and operates beneath conscious awareness',
+              'Distinguishing intent from impact in professional interactions',
+              'Understanding diversity as a cognitive and behavioural reality, not a slogan',
+              'Outcome: individual accountability for internal filters',
             ],
           },
+          {
+            title: 'Day 2 — "Mind-Read" (Sort Of): Predictable Human Differences',
+            points: [
+              'Why people respond differently to pressure, authority, feedback and change',
+              'Introduction to simple, evidence-based psychology models that explain behaviour',
+              'Recognising behavioural signals without judgment or over-personalisation',
+              'Human differences are patterned, predictable and interpretable, not random',
+              'Outcome: reduced friction in cross-functional communication',
+            ],
+          },
+          {
+            title: 'Day 3 — Belonging by Design',
+            points: [
+              'How the nervous system detects safety and threat in group settings',
+              'The link between self-regulation and psychological safety for others',
+              'Everyday behaviours that increase or erode trust and inclusion',
+              'Applying secure regulation to real team and organisational contexts',
+              'Outcome: secure self-regulation within group dynamics',
+            ],
+          },
+          {
+            title: 'Day 4 — Interpersonal & Social Fluency',
+            points: [
+              'Applied behavioural insight: practising high-stakes feedback, professional presence and verbal precision',
+              'Mastering the physical "override" — subtle techniques to shift from high-reactivity to high-composure in seconds',
+              'Practised through role-played "boardroom" and "team conflict" scenarios',
+              'Staying responsive, not reactive, under pressure',
+              'Outcome: elevated professional credibility',
+            ],
+          },
+          {
+            title: 'Day 5 — Organizational Savviness',
+            points: [
+              'Environment decoding: reading cues, power dynamics and decision-making environments',
+              'Recognising the social cues of an office and responding with composed presence',
+              'Cementing the habit through a 3-month community of practice',
+              'Building a roadmap for the first 100 days of a career',
+              'Outcome: a personalised "Readiness Action Plan" for Day-Zero entry',
+            ],
+          },
+        ],
+        benefitsLabel: 'Programme objectives',
+        benefits: [
+          'Calibrate the Native OS: establish professional excellence and organisational awareness as instinctive, biological reflexes',
+          'Neutralise Cognitive Friction: tools to manage stress-based reversion, staying "First-Time Right" under pressure',
+          'Decode Human Predictability: move from guessing workplace dynamics to reading patterned human behaviour',
+          'Architect Belonging: transition psychological safety from a cultural ideal into a measurable biological requirement',
+          'Accelerate Credibility: bypass the typical 6-month "rookie" learning curve',
         ],
         includes: [
           '5-day in-person experiential workshop, 5 hours/day',
@@ -77,6 +125,14 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
               'Every leader leaves energised and aligned around a shared leadership charter',
             ],
           },
+        ],
+        benefitsLabel: "What we're watching for — the Fortune 500 stress test",
+        benefits: [
+          'Information Bottleneck: hunkering down and going silent versus over-communicating for alignment',
+          'Fingerprint of Blame: explaining away failure versus taking extreme ownership',
+          'Tunnel Vision: losing situational awareness of the room under pressure',
+          'Tone Decay: the shift from "would you mind..." to "just do it" as stress rises',
+          'Analysis Paralysis versus Failing Forward: freezing versus making a best-guess decision to keep momentum',
         ],
       },
       {
