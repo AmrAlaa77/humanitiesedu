@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, ImageIcon, FileText, X, Globe, Users, Heart } from 'lucide-react';
+import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, ImageIcon, FileText, X, Globe, Users, Heart, Activity, TrendingUp, FlaskConical } from 'lucide-react';
 
 type CourseDay = { title: string; points: string[] };
 
@@ -30,6 +30,7 @@ type Initiative = {
   stats?: InitiativeStat[];
   featuresLabel?: string;
   features?: string[];
+  quote?: string;
 };
 
 const categories: { key: string; label: string; icon: React.ComponentType<{ className?: string }>; items: Deliverable[] }[] = [
@@ -359,6 +360,19 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         hook: 'The number driving the initiative: most preventable deaths share one fixable root cause.',
         details: 'Flagship campaign framing that reframes healthcare investment from treatment cost to prevention dividend.',
         pills: ['WHO / World Bank sourced'],
+      },
+      {
+        title: 'Wellbeing Is The New KPI',
+        hook: 'Employee wellbeing has a quantifiable link to business performance across industries and countries worldwide.',
+        details: "Wellbeing is not a nice-to-have — it's a measurable driver of performance, retention and culture, built on the same evidence base as the Kingdom's preventive-health pillar.",
+        pills: ['Not a nice-to-have', 'Evidence-backed'],
+        benefitsLabel: 'Program Features',
+        benefits: [
+          'Link wellbeing to performance with a business case leaders trust',
+          'Apply evidence-backed frameworks to your culture',
+          'Reduce attrition through measurable engagement gains',
+          'Grounded in a proprietary blend of business psychology, the study of self, and human physiology, summarized into one practical leadership overview',
+        ],
       },
     ],
   },
@@ -1176,15 +1190,22 @@ const initiatives: Record<string, Initiative> = {
     ],
   },
   health: {
-    title: 'Wellbeing Is The New KPI',
-    description: 'Employee wellbeing has a quantifiable link to business performance across industries and countries worldwide.',
-    featuresLabel: 'Program Features',
-    features: [
-      'Link wellbeing to performance with a business case leaders trust.',
-      'Apply evidence-backed frameworks to your culture.',
-      'Reduce attrition through measurable engagement gains.',
-      'Grounded in a proprietary blend of business psychology, the study of self, and human physiology, summarized into one practical leadership overview.',
+    eyebrow: 'Initiative 2 · Preventive Health',
+    title: 'From Reactive to Rewired: The Preventive Health Initiative',
+    description:
+      "Saudi Arabia's first AI-driven preventive health platform — moving the Kingdom's healthcare pillar from late-stage disease management to proactive wellbeing.",
+    stats: [
+      { icon: Activity, value: '73–74%', label: 'of deaths in Saudi Arabia attributed to non-communicable disease' },
+      { icon: TrendingUp, value: '40%', label: 'mortality reduction already achieved via preventive models' },
+      { icon: FlaskConical, value: '1st', label: 'AI health platform designed for the Saudi population' },
     ],
+    quote: 'One honest conversation can save a life.',
+  },
+  neurolead: {
+    eyebrow: 'Initiative 3 · Leadership Behaviour',
+    title: 'Neurolead: The Inner Game of Leadership',
+    description: 'Leadership derailers live in biology, not character. Decoding why leaders stall, then rebuilding the pattern — not just the person.',
+    quote: "The gap between potential and performance isn't a lack of skill — it's a lack of psychological safety.",
   },
 };
 
@@ -1222,6 +1243,10 @@ const InitiativeBanner: React.FC<{ initiative: Initiative }> = ({ initiative }) 
           ))}
         </ul>
       </div>
+    )}
+
+    {initiative.quote && (
+      <p className="mt-8 pl-4 border-l-2 border-emerald-400/50 text-slate-300 italic text-base">"{initiative.quote}"</p>
     )}
   </div>
 );
