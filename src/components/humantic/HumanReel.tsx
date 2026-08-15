@@ -20,11 +20,15 @@ interface Clip {
 }
 
 const CLIPS: Clip[] = [
-  { label: 'Doctor', video: 'https://videos.pexels.com/video-files/5722215/5722215-uhd_2732_1440_25fps.mp4' },
+  { label: 'Doctor', video: 'https://videos.pexels.com/video-files/8944156/8944156-hd_1920_1080_25fps.mp4' },
   { label: 'Mining Engineer', video: 'https://videos.pexels.com/video-files/6474370/6474370-uhd_2560_1440_25fps.mp4' },
-  { label: 'Veiled', video: 'https://videos.pexels.com/video-files/6245712/6245712-uhd_1440_2732_30fps.mp4' },
+  { label: 'Aviation Pilot', video: 'https://videos.pexels.com/video-files/10801914/10801914-hd_1920_1080.mp4' },
+  { label: 'Tour Guide, Saudi Arabia', video: 'https://videos.pexels.com/video-files/7950908/7950908-hd_1920_1080_30fps.mp4' },
   { label: 'Field Engineer', video: 'https://videos.pexels.com/video-files/7817150/7817150-hd_1080_1920_25fps.mp4' },
   { label: 'Graduate', video: 'https://videos.pexels.com/video-files/11670491/11670491-hd_1920_1080_24fps.mp4' },
+  { label: 'Woman Among Flowers', video: 'https://videos.pexels.com/video-files/7180874/7180874-uhd_2732_1440_25fps.mp4' },
+  { label: 'DNA Strand', video: 'https://videos.pexels.com/video-files/34862858/14774636_1920_1080_30fps.mp4' },
+  { label: 'Digital Human', video: 'https://videos.pexels.com/video-files/854323/854323-hd_1920_1080_25fps.mp4' },
 ];
 
 const CLIP_MS = 2500;
@@ -116,8 +120,8 @@ const HumanReel: React.FC = () => {
     window.addEventListener('pointermove', move, { passive: true });
 
     const tick = () => {
-      pos.x += (target.x - pos.x) * 0.22;
-      pos.y += (target.y - pos.y) * 0.22;
+      pos.x += (target.x - pos.x) * 0.45;
+      pos.y += (target.y - pos.y) * 0.45;
       if (cursorRef.current) {
         cursorRef.current.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0) translate(-50%, -50%)`;
       }
@@ -143,7 +147,6 @@ const HumanReel: React.FC = () => {
           style={{
             opacity,
             transitionDuration: `${FADE_MS}ms`,
-            animation: 'faceZoomTurn 2.5s ease-in-out infinite',
           }}
           src={clip.video}
           autoPlay
