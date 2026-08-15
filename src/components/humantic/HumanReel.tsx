@@ -20,11 +20,11 @@ interface Clip {
 }
 
 const CLIPS: Clip[] = [
-  { label: 'Face 1', video: 'https://videos.pexels.com/video-files/4772279/4772279-uhd_2560_1440_24fps.mp4' },
-  { label: 'Face 2', video: 'https://videos.pexels.com/video-files/8496455/8496455-hd_1920_1080_25fps.mp4' },
-  { label: 'Face 3', video: 'https://videos.pexels.com/video-files/6245712/6245712-uhd_1440_2732_30fps.mp4' },
-  { label: 'Face 4', video: 'https://videos.pexels.com/video-files/8111924/8111924-hd_1080_1920_30fps.mp4' },
-  { label: 'Face 5', video: 'https://videos.pexels.com/video-files/11670491/11670491-hd_1920_1080_24fps.mp4' },
+  { label: 'Doctor', video: 'https://videos.pexels.com/video-files/5722215/5722215-uhd_2732_1440_25fps.mp4' },
+  { label: 'Mining Engineer', video: 'https://videos.pexels.com/video-files/6474370/6474370-uhd_2560_1440_25fps.mp4' },
+  { label: 'Veiled', video: 'https://videos.pexels.com/video-files/6245712/6245712-uhd_1440_2732_30fps.mp4' },
+  { label: 'Field Engineer', video: 'https://videos.pexels.com/video-files/7817150/7817150-hd_1080_1920_25fps.mp4' },
+  { label: 'Graduate', video: 'https://videos.pexels.com/video-files/11670491/11670491-hd_1920_1080_24fps.mp4' },
 ];
 
 const CLIP_MS = 2500;
