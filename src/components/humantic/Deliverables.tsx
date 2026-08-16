@@ -566,7 +566,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Leadership, Rewired For 2030',
         hook: 'An experiential, regionally grounded programme built on real-world scenarios, peer discussion, and hands-on practice managing hybrid teams.',
-        spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
+        image: 'https://images.pexels.com/photos/7433847/pexels-photo-7433847.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: ['Sharpen decision-making under real executive pressure', 'Build executive presence and influence at every level', 'Lead through disruption with confidence and clarity'],
         audience: [
@@ -579,7 +580,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Spot Them. Grow Them. Keep Them.',
         hook: 'From promising talent to future executive — behavioural science, 1:1 mentoring, and real-world simulation.',
-        spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
+        image: 'https://images.pexels.com/photos/8851452/pexels-photo-8851452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: ['Identify high-potential talent early, with behavioural assessment', 'Close skill gaps through 1:1 mentoring and simulation', 'Retain rising leaders with a clear promotion pathway'],
         audience: ['Rising managers identified as high-potential', 'HR and talent leaders building succession pipelines', 'Organisations preparing next-gen leaders for promotion'],
@@ -588,9 +590,10 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Productivity, Decoded By Your Brain',
         hook: 'Neuroscience-backed systems that turn scattered attention into sustained, measurable focus — built for Gen Z pace.',
+        image: 'https://images.pexels.com/photos/7089020/pexels-photo-7089020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details:
           'Procrastination, mental fatigue, distractions and stress are common psychological factors that hinder productivity. Assessing productivity through a psychological lens accommodates individual variation and helps increase efficiency, combat chronic distraction, and address procrastination and misplaced priorities — with specialists customising solutions guided by the assessment.',
-        spec: ['Core · 5 Days · In-person'],
+        spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: [
           'Apply neuroscience to sustain daily focus',
@@ -606,7 +609,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Wellbeing Is The New KPI',
         hook: 'Employee wellbeing has a quantifiable link to business performance across industries and countries worldwide.',
-        spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
+        image: 'https://images.pexels.com/photos/8556604/pexels-photo-8556604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: ['Link wellbeing to performance with a business case leaders trust', 'Apply evidence-backed frameworks to your culture', 'Reduce attrition through measurable engagement gains'],
         audience: ['HR and People leaders building culture strategy', 'Executives accountable for retention and engagement'],
@@ -615,7 +619,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'The Future Of Leadership Starts Now',
         hook: 'Incubation for Hi-Pot leaders, brain-science productivity, and workplace wellbeing, in one executive-track programme.',
-        spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
+        image: 'https://images.pexels.com/photos/5439481/pexels-photo-5439481.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: ['One integrated programme spanning talent, mind, and performance', 'Incubation, productivity, and wellbeing combined, not siloed'],
         audience: ['Organisations building a leadership bench', 'Executives ready to commit to a cohort'],
@@ -624,7 +629,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Know Where You Stand, Before You Move',
         hook: 'Building an employee wellbeing strategy starts with understanding where your practices stand today, and the gaps that remain.',
-        spec: ['Core · 5 Days · Hybrid, remote-OK'],
+        image: 'https://images.pexels.com/photos/7108346/pexels-photo-7108346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: ['Diagnose where your wellbeing practices stand today', 'Uncover gaps with a genuine, individualised coping analysis'],
         audience: ['Institutions starting a wellbeing strategy from scratch', 'HR leaders needing an honest, individualised baseline'],
@@ -633,7 +639,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Science Meets Strategy For Peak Performance',
         hook: 'Neurobiology, behavioural sciences, and technology, delivered by one team.',
-        spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
+        image: 'https://images.pexels.com/photos/8442034/pexels-photo-8442034.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: ['Combine neurobiology, behavioural science, and technology', 'Learn from certified executive strategists'],
         audience: ['Organisations building a DEI&B strategy', 'Executives seeking evidence-based methods'],
@@ -642,7 +649,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Accelerated Development Programme',
         hook: 'A fast-track leadership sprint that compresses years of on-the-job learning into a focused, high-intensity curriculum.',
-        spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
+        image: 'https://images.pexels.com/photos/6285131/pexels-photo-6285131.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: ['Compress years of leadership learning into one intensive track', 'Build core management skills through live simulation'],
         audience: ['First-time managers moving into their first leadership role', 'High-potential individual contributors preparing for management'],
@@ -651,7 +659,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Executive Presence and Communication',
         hook: 'Sharpen how you show up, speak, and influence in the room — the difference between being heard and being followed.',
-        spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
+        image: 'https://images.pexels.com/photos/8872474/pexels-photo-8872474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: ['Command a room with clarity, brevity, and confidence', 'Read and shape group dynamics in real time'],
         audience: ['Executives preparing for board-level visibility', 'Professionals transitioning into public-facing roles'],
@@ -660,16 +669,18 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'High Performance People Skills for Leaders',
         hook: 'The interpersonal skillset behind every high-performing team — trust, feedback, motivation, and conflict, made practical.',
-        spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
+        image: 'https://images.pexels.com/photos/7433851/pexels-photo-7433851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: ['Build trust and psychological safety within teams', 'Turn difficult conversations into productive ones'],
         audience: ['People managers at any level of seniority', 'Team leads managing cross-functional groups'],
-        awarded: 'Certificate of completion and alumni status. Also delivered regionally — see Dubai and Saudi Arabia editions below.',
+        awarded: 'Certificate of completion and alumni status.',
       },
       {
         title: 'Leading Businesses Into The Future',
         hook: 'A forward-looking programme on steering organisations through disruption, technology shifts, and structural change.',
-        spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
+        image: 'https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: ['Anticipate market and technology disruption early', 'Build organisational agility into strategy and structure'],
         audience: ['C-suite and senior executives shaping long-term strategy', 'Boards and founders planning for the next decade'],
@@ -678,7 +689,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Leading Change For Organisational Transformation',
         hook: 'A rigorous, practical curriculum for leaders driving large-scale transformation without losing organisational trust.',
-        spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
+        image: 'https://images.pexels.com/photos/7698712/pexels-photo-7698712.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: ['Sequence transformation initiatives for lasting adoption', 'Manage resistance without stalling momentum'],
         audience: ['Transformation and change-management leads', 'Executives sponsoring enterprise-wide change'],
@@ -687,9 +699,10 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Behavioral Leadership & Organizational Psychology',
         hook: 'Leaders can unknowingly drive disengagement, or worse, quiet cracking, by mismanaging drivers like recognition and autonomy.',
+        image: 'https://images.pexels.com/photos/4226139/pexels-photo-4226139.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details:
           'Unlocking Human Potential: deep dives into human behavior, where psychology, human biology and business collide. Seemingly arbitrary contextual factors, along with our biology, play a significant role in shaping our reactions and interactions at the workplace — affecting wellbeing, emotional reactivity, and overall individual and group performance within an organisation.',
-        spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
+        spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Five pillars',
         benefits: [
           'Behavioral Leadership Fundamentals — hidden barriers to influence',
@@ -704,9 +717,11 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Behavioral Based Safety Programme',
         hook: '"People get hurt, that\'s the cost of doing business" — we\'re here to change that: "we stop and take the time to do it safely, that\'s the cost of doing business."',
+        image: 'https://images.pexels.com/photos/901941/pexels-photo-901941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details:
           'Redefines traditional safety training by integrating Health, Safety & Environment (HSE) management, Behavior-Based Safety (BBS) principles and the critical dimension of Psychological Safety — moving beyond mere compliance to a proactive safety culture. VR Safety Programmes give evaluators detailed insight into user behaviour: observing individuals, running After Action Reviews (AAR), post-experience discussions and reflective exercises. Conventional health and safety training can fail to motivate, engage or feel relevant to real-life contexts — VR\'s realism creates a genuine sense of "actually being there," as the body\'s motor and perceptual systems interact with the virtual world just as they would the physical one.',
-        spec: ['NEBOSH-Accredited', 'VR / AR / AI-enabled'],
+        spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
+        pills: ['NEBOSH-Accredited', 'VR / AR / AI-enabled'],
         benefitsLabel: 'Measured impact',
         benefits: [
           '25% decrease in human casualties or fatalities',
@@ -721,25 +736,11 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         ],
         awarded: 'NEBOSH-accredited certification.',
       },
-      {
-        title: 'High Performance People Skills for Leaders — Dubai',
-        hook: 'The same high-performance people-skills curriculum, delivered locally for leaders based across the UAE.',
-        spec: ['Core · 5 Days · In-person, Dubai', 'Advanced · 8 Weeks · Hybrid'],
-        audience: ['UAE-based people managers at any level of seniority', 'Team leads managing cross-functional groups'],
-        awarded: 'Certificate of completion and alumni status.',
-      },
-      {
-        title: 'High Performance People Skills for Leaders — Saudi Arabia',
-        hook: 'The same high-performance people-skills curriculum, delivered locally for leaders based across Saudi Arabia.',
-        spec: ['Core · 5 Days · In-person, Riyadh', 'Advanced · 8 Weeks · Hybrid'],
-        audience: ['KSA-based people managers at any level of seniority', 'Team leads managing cross-functional groups'],
-        awarded: 'Certificate of completion and alumni status.',
-      },
-
       // ---- Corporate Leadership Portfolio (added from course document + PDF title list) ----
       {
         title: 'Modern Leadership',
         hook: 'Build the practical psychology, communication and decision-making skills required to lead people in a rapidly changing workplace.',
+        image: 'https://images.pexels.com/photos/8134067/pexels-photo-8134067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '3-Day Flagship Programme',
         delivery: 'Face-to-Face or Live Virtual',
         pills: ['Leadership', 'Management', 'People Skills'],
@@ -772,6 +773,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Talent Retention',
         hook: 'Learn how to identify disengagement before resignation happens and create an environment your best people choose to stay in.',
+        image: 'https://images.pexels.com/photos/8636603/pexels-photo-8636603.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '2-Day Practical Workshop',
         delivery: 'Face-to-Face or Live Virtual',
         pills: ['Talent Management', 'Engagement', 'Leadership'],
@@ -803,6 +805,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Workplace Focus',
         hook: 'Turn fragmented attention, digital overload and constant busyness into sustained, high-value productivity.',
+        image: 'https://images.pexels.com/photos/6326035/pexels-photo-6326035.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '2-Day Practical Workshop',
         delivery: 'Live Virtual or Face-to-Face',
         pills: ['Productivity', 'Focus', 'Time Management'],
@@ -833,6 +836,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Employee Wellbeing',
         hook: 'Move beyond superficial wellbeing initiatives and understand the workplace conditions that create sustainable human performance.',
+        image: 'https://images.pexels.com/photos/7971555/pexels-photo-7971555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '2-Day Practical Workshop',
         pills: ['Wellbeing', 'Engagement', 'Leadership'],
         benefitsLabel: "What You'll Learn",
@@ -862,6 +866,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Leadership Pipeline',
         hook: 'Stop waiting until promotion to discover whether someone can lead. Identify, test and develop leadership potential before the role becomes vacant.',
+        image: 'https://images.pexels.com/photos/7869111/pexels-photo-7869111.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '3-Day Flagship Programme',
         pills: ['Succession', 'Talent Development', 'Leadership'],
         benefitsLabel: "What You'll Learn",
@@ -893,6 +898,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Wellbeing Audit',
         hook: 'Understand where your organization really stands before investing in another wellbeing initiative.',
+        image: 'https://images.pexels.com/photos/5915146/pexels-photo-5915146.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '2-Day Strategic Workshop',
         pills: ['Wellbeing Strategy', 'HR Analytics', 'OD'],
         benefitsLabel: "What You'll Learn",
@@ -923,6 +929,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Peak Performance',
         hook: 'Use behavioural science and psychology to perform at a high level without depending on longer hours and constant pressure.',
+        image: 'https://images.pexels.com/photos/6930605/pexels-photo-6930605.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '2-Day Practical Workshop',
         pills: ['Performance', 'Psychology', 'Productivity'],
         benefitsLabel: "What You'll Learn",
@@ -952,6 +959,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Leadership Accelerator',
         hook: 'Compress years of trial-and-error leadership learning into three intensive days of practice, feedback and reflection.',
+        image: 'https://images.pexels.com/photos/7433893/pexels-photo-7433893.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '3-Day Intensive Programme',
         pills: ['Leadership Development', 'Coaching', 'Management'],
         benefitsLabel: "What You'll Learn",
@@ -984,6 +992,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Executive Presence',
         hook: 'Learn how to be heard, trusted and followed when the stakes are high.',
+        image: 'https://images.pexels.com/photos/8872472/pexels-photo-8872472.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '2-Day Executive Workshop',
         pills: ['Communication', 'Influence', 'Leadership'],
         benefitsLabel: "What You'll Learn",
@@ -1014,6 +1023,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'People Leadership',
         hook: 'Master the human side of management: motivation, trust, feedback, conflict, accountability and performance.',
+        image: 'https://images.pexels.com/photos/5946219/pexels-photo-5946219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '3-Day Flagship Programme',
         pills: ['People Management', 'Emotional Intelligence', 'Leadership'],
         benefitsLabel: "What You'll Learn",
@@ -1046,6 +1056,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Business Transformation',
         hook: "Move from reacting to disruption to deliberately shaping your organization's future.",
+        image: 'https://images.pexels.com/photos/8386437/pexels-photo-8386437.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '3-Day Strategic Programme',
         pills: ['Strategy', 'Transformation', 'Innovation'],
         benefitsLabel: "What You'll Learn",
@@ -1077,6 +1088,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Change Leadership',
         hook: 'Understand what sits behind resistance and learn how to move people from uncertainty to genuine adoption.',
+        image: 'https://images.pexels.com/photos/17724732/pexels-photo-17724732.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '3-Day Flagship Programme',
         pills: ['Change Management', 'Behaviour Change', 'Leadership'],
         benefitsLabel: "What You'll Learn",
@@ -1109,6 +1121,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Leadership Psychology',
         hook: 'Understand what is really happening underneath resistance, conflict and disengagement — and learn how to change the interaction rather than repeat it.',
+        image: 'https://images.pexels.com/photos/724994/pexels-photo-724994.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '3-Day Experiential Programme',
         pills: ['Psychology', 'Communication', 'Leadership'],
         benefitsLabel: "What You'll Learn",
@@ -1141,6 +1154,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'UAE Leadership',
         hook: "Build the cultural intelligence and people skills required to lead effectively in one of the world's most diverse workplaces.",
+        image: 'https://images.pexels.com/photos/9301835/pexels-photo-9301835.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '2-Day Regional Workshop',
         pills: ['Cultural Intelligence', 'Leadership', 'People Management'],
         benefitsLabel: "What You'll Learn",
@@ -1171,6 +1185,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Saudi Leadership',
         hook: 'Practical people-leadership skills for managers navigating transformation, new workforce expectations and the rapidly changing Saudi workplace.',
+        image: 'https://images.pexels.com/photos/38096888/pexels-photo-38096888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         format: '3-Day Flagship Programme',
         pills: ['Leadership', 'People Management', 'Transformation'],
         benefitsLabel: "What You'll Learn",
@@ -1204,24 +1219,28 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: "Women's Leadership",
         hook: 'Building the confidence, presence and strategic capability of women stepping into senior leadership roles.',
+        image: 'https://images.pexels.com/photos/7491147/pexels-photo-7491147.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         pills: ['Leadership', 'SDG 5'],
         awarded: 'British Certification from CPD-London.',
       },
       {
         title: 'Youth Career Development & New Graduates',
         hook: 'Preparing new graduates and early-career talent for the realities of a professional workplace.',
+        image: 'https://images.pexels.com/photos/35487002/pexels-photo-35487002.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         pills: ['Career Readiness', 'Gen Z'],
         awarded: 'British Certification from CPD-London.',
       },
       {
         title: 'AI and Human Sciences: AI-Driven & Neuroscience-Based Productivity',
         hook: 'Where artificial intelligence meets neuroscience — using AI-driven tools and brain science to lift team productivity.',
+        image: 'https://images.pexels.com/photos/17483869/pexels-photo-17483869.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         pills: ['AI', 'Neuroscience', 'Productivity'],
         awarded: 'British Certification from CPD-London.',
       },
       {
         title: 'Certified Professional in Office Management',
         hook: 'A certified standard for running a modern executive office — organisation, discretion and operational excellence.',
+        image: 'https://images.pexels.com/photos/6340707/pexels-photo-6340707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         pills: ['Certified', 'Office Management'],
         awarded: 'British Certification from CPD-London.',
       },
