@@ -20,19 +20,18 @@ interface Clip {
 }
 
 const CLIPS: Clip[] = [
-  { label: 'Doctor', video: 'https://videos.pexels.com/video-files/8944156/8944156-hd_1920_1080_25fps.mp4' },
-  { label: 'Mining Engineer', video: 'https://videos.pexels.com/video-files/6474370/6474370-uhd_2560_1440_25fps.mp4' },
-  { label: 'Aviation Pilot', video: 'https://videos.pexels.com/video-files/10801914/10801914-hd_1920_1080.mp4' },
-  { label: 'Tour Guide, Saudi Arabia', video: 'https://videos.pexels.com/video-files/7950908/7950908-hd_1920_1080_30fps.mp4' },
-  { label: 'Field Engineer', video: 'https://videos.pexels.com/video-files/7817150/7817150-hd_1080_1920_25fps.mp4' },
-  { label: 'Graduate', video: 'https://videos.pexels.com/video-files/11670491/11670491-hd_1920_1080_24fps.mp4' },
-  { label: 'Woman Among Flowers', video: 'https://videos.pexels.com/video-files/7180874/7180874-uhd_2732_1440_25fps.mp4' },
-  { label: 'DNA Strand', video: 'https://videos.pexels.com/video-files/34862858/14774636_1920_1080_30fps.mp4' },
-  { label: 'Digital Human', video: 'https://videos.pexels.com/video-files/854323/854323-hd_1920_1080_25fps.mp4' },
+  { label: 'Elder', video: 'https://videos.pexels.com/video-files/5516426/5516426-uhd_2560_1440_30fps.mp4' },
+  { label: 'Doctor', video: 'https://videos.pexels.com/video-files/5453687/5453687-uhd_1440_2560_25fps.mp4' },
+  { label: 'Researcher', video: 'https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4' },
+  { label: 'IT Developer', video: 'https://videos.pexels.com/video-files/6330779/6330779-hd_1920_1080_30fps.mp4' },
+  { label: 'Swimmer', video: 'https://videos.pexels.com/video-files/9617126/9617126-uhd_1440_2732_25fps.mp4' },
+  { label: 'Young Boy', video: 'https://videos.pexels.com/video-files/7207587/7207587-uhd_2732_1440_25fps.mp4' },
+  { label: 'Diverse Group', video: 'https://videos.pexels.com/video-files/5944868/5944868-uhd_2560_1440_25fps.mp4' },
+  { label: 'Graduate', video: 'https://videos.pexels.com/video-files/7712316/7712316-hd_1080_1920_30fps.mp4' },
 ];
 
-const CLIP_MS = 2500;
-const FADE_MS = 500;
+const CLIP_MS = 1400;
+const FADE_MS = 320;
 
 const HEADLINE_WORDS = 'We shape brand identities and build digital experiences that connect.'.split(' ');
 
