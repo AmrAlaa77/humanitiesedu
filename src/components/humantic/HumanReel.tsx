@@ -24,14 +24,21 @@ const CLIPS: Clip[] = [
   { label: 'Doctor', video: 'https://videos.pexels.com/video-files/5453687/5453687-uhd_1440_2560_25fps.mp4' },
   { label: 'Researcher', video: 'https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4' },
   { label: 'IT Developer', video: 'https://videos.pexels.com/video-files/6330779/6330779-hd_1920_1080_30fps.mp4' },
+  { label: 'Businesswoman', video: 'https://videos.pexels.com/video-files/10040753/10040753-hd_1920_1080_24fps.mp4' },
+  { label: 'Businessman', video: 'https://videos.pexels.com/video-files/8348918/8348918-uhd_1440_2560_25fps.mp4' },
+  { label: 'Professional in Hijab', video: 'https://videos.pexels.com/video-files/6082951/6082951-uhd_1440_2560_24fps.mp4' },
+  { label: 'Professional in Turban', video: 'https://videos.pexels.com/video-files/8328588/8328588-uhd_2560_1440_25fps.mp4' },
+  { label: 'Black Professional', video: 'https://videos.pexels.com/video-files/12896416/12896416-uhd_1440_2560_24fps.mp4' },
+  { label: 'East Asian Professional', video: 'https://videos.pexels.com/video-files/7845249/7845249-hd_1920_1080_30fps.mp4' },
+  { label: 'Stylish Young Professional', video: 'https://videos.pexels.com/video-files/8202010/8202010-uhd_2560_1440_25fps.mp4' },
   { label: 'Swimmer', video: 'https://videos.pexels.com/video-files/9617126/9617126-uhd_1440_2732_25fps.mp4' },
   { label: 'Young Boy', video: 'https://videos.pexels.com/video-files/7207587/7207587-uhd_2732_1440_25fps.mp4' },
-  { label: 'Diverse Group', video: 'https://videos.pexels.com/video-files/5944868/5944868-uhd_2560_1440_25fps.mp4' },
   { label: 'Graduate', video: 'https://videos.pexels.com/video-files/7712316/7712316-hd_1080_1920_30fps.mp4' },
+  { label: 'Teenager', video: 'https://videos.pexels.com/video-files/4494959/4494959-uhd_2560_1440_25fps.mp4' },
 ];
 
-const CLIP_MS = 1400;
-const FADE_MS = 320;
+const CLIP_MS = 900;
+const FADE_MS = 220;
 
 const HEADLINE_WORDS = 'We shape brand identities and build digital experiences that connect.'.split(' ');
 
