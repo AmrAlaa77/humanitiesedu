@@ -219,8 +219,8 @@ const HumanReel: React.FC = () => {
               dominantBaseline="central"
               fontFamily="Anton, sans-serif"
               fontWeight="400"
-              fontSize="200"
-              letterSpacing="-2"
+              fontSize="2000"
+              letterSpacing="-20"
               fill="white"
             >
               HUMAN
