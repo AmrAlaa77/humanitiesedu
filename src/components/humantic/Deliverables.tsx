@@ -44,6 +44,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Bio-Core™: The FutureReady Sprint',
         hook: "Fortune 500 leadership strategy, delivered at the speed of Gen Z's feed.",
+        image: 'https://images.pexels.com/photos/7648050/pexels-photo-7648050.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: 'Five-day in-person experiential workshop + 1-month mentoring + 1-on-1 Talent Signature™ debrief. Establishes Foundations of Organizational Awareness through behavioural science and social neuroscience.',
         pills: ['First-Time Right', 'Fortune 500 method'],
         days: [
@@ -116,6 +117,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Game On™: The Open-Air Boardroom',
         hook: "Real terrain, real pressure, zero slide decks. Gen Z learns to win before they're handed the title.",
+        image: 'https://images.pexels.com/photos/7551180/pexels-photo-7551180.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: 'A 2-day gamified simulation of day-to-day operations built from Microsoft, Saudi Aramco, Google and PepsiCo partnership insight. The "Flash Debrief" turns every task into a live learning milestone.',
         pills: ['Safe-Lab simulation', 'Used by Royal Navy, UK Army'],
         days: [
@@ -152,6 +154,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'SyncPoint™: Your Digital Chief of Staff',
         hook: 'Your AI productivity app becomes a Digital Personal Assistant.',
+        image: 'https://images.pexels.com/photos/17754375/pexels-photo-17754375.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: 'A 2-day workshop turning brain science into Auto-Run habit automation — built for a generation shaped by automatic scroll and fragmented attention.',
         pills: ['AI habit automation'],
         benefitsLabel: 'What you leave with',
@@ -167,6 +170,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'VRify Yourself™: The Science of You',
         hook: 'Gamified VR simulation for self-assessment — our flagship experience.',
+        image: 'https://images.pexels.com/photos/7776217/pexels-photo-7776217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: '2-day workshop or 5-day journey using embodied cognition to identify and rewrite automatic stress responses tailored to individual triggers and biological instincts.',
         pills: ['Embodied cognition'],
         days: [
@@ -217,6 +221,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Brain Voyage: The Inside Tour of You',
         hook: 'A VR walkthrough of your own brain, in real time.',
+        image: 'https://images.pexels.com/photos/4996019/pexels-photo-4996019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: '4x more focused, 16x more likely to recall information, 275% more confident applying skills post-training versus traditional methods.',
         pills: ['Royal Society of Medicine UK'],
         benefitsLabel: 'What makes it stand out',
@@ -231,6 +236,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Shine & Shadow: Strengths & Derailers',
         hook: 'Every talent has a strength — and a shadow that dims it under pressure.',
+        image: 'https://images.pexels.com/photos/6914340/pexels-photo-6914340.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: "Collective Strengths in Action workshop plus one-on-one derailer mapping so teams understand and leverage one another's strengths.",
         pills: ['Strengths-based research'],
         days: [
@@ -260,6 +266,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'InnerLead: The Journey Within',
         hook: 'A month-long sanctuary for decoding your own wiring.',
+        image: 'https://images.pexels.com/photos/1058946/pexels-photo-1058946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: 'Four-phase journey: Discovery → Immersion → Integration → Audit — from knowing yourself to embodying it.',
         pills: ['4-phase model'],
         days: [
@@ -308,6 +315,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'WorkReady+: More Than Employable',
         hook: 'The organised-mind system every new hire needs before day one.',
+        image: 'https://images.pexels.com/photos/6893329/pexels-photo-6893329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: 'Covers the brain-body connection, mind-clearing techniques, and an AI-powered organisational tool giving teams shared visibility on ownership and deadlines.',
         pills: ['Certified Office Management'],
         days: [
@@ -354,18 +362,21 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'VitalCore AI: Predictive, Not Reactive',
         hook: 'Proprietary algorithms tuned to Saudi genetics and regional health data.',
+        image: 'https://images.pexels.com/photos/19963125/pexels-photo-19963125.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: 'Direct integration with Saudi electronic health systems. Addresses reactive-only care, limited specialist access outside major cities, and telemedicine that lacks preventive capability.',
         pills: ['Saudi-population-specific'],
       },
       {
         title: 'The 74% Shift',
         hook: 'The number driving the initiative: most preventable deaths share one fixable root cause.',
+        image: 'https://images.pexels.com/photos/7578797/pexels-photo-7578797.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: 'Flagship campaign framing that reframes healthcare investment from treatment cost to prevention dividend.',
         pills: ['WHO / World Bank sourced'],
       },
       {
         title: 'Wellbeing Is The New KPI',
         hook: 'Employee wellbeing has a quantifiable link to business performance across industries and countries worldwide.',
+        image: 'https://images.pexels.com/photos/3860619/pexels-photo-3860619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: "Wellbeing is not a nice-to-have — it's a measurable driver of performance, retention and culture, built on the same evidence base as the Kingdom's preventive-health pillar.",
         pills: ['Not a nice-to-have', 'Evidence-backed'],
         benefitsLabel: 'Program Features',
@@ -386,6 +397,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Neurolead: The Inner Game of Leadership',
         hook: 'A deep dive into the human element behind every enterprise.',
+        image: 'https://images.pexels.com/photos/6949494/pexels-photo-6949494.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: 'Five pillars: Behavioral Leadership Fundamentals, Strengths-Based Leadership, Interpersonal Leadership, Neuroscience & Organizational Behavior, and The Psychological Lens on Productivity.',
         pills: ['UK-Accredited Certificate', 'ROI & ROH aligned'],
         days: [
@@ -435,6 +447,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Shine & Shadow: Strengths & Derailers Diagnostic',
         hook: 'Every leader has a strength that built their reputation — and a shadow that dims it.',
+        image: 'https://images.pexels.com/photos/601170/pexels-photo-601170.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: 'A personalised behavioural report uncovering tendencies, root causes and derailers, applied through a one-on-one debrief session.',
         pills: ['Cross-initiative asset'],
         benefitsLabel: 'What the diagnostic covers',
@@ -449,6 +462,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: '100 & Rising: The Recognition Covenant',
         hook: 'A fully sponsored wellness-recognition programme, awarded every 100 learners trained.',
+        image: 'https://images.pexels.com/photos/15155549/pexels-photo-15155549.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: 'For every 200 assessments completed, we sponsor incentives that nurture potential and celebrate broad participation — embedding a genuine commitment to wellbeing at every organisational level.',
         pills: ['UN SDG-aligned'],
         benefitsLabel: 'What Wellness Ambassadors receive',
@@ -465,6 +479,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'The Neural Relapse Tax',
         hook: 'Most training evaporates within days. This is the science of why.',
+        image: 'https://images.pexels.com/photos/17483868/pexels-photo-17483868.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: 'Uses neural plasticity to install professional readiness as a native feature, turning temporary motivation into permanent, high-performance architecture.',
         pills: ['Behavioural science'],
         benefitsLabel: 'The science',
@@ -486,6 +501,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Breathe In The Beauty',
         hook: 'A body-mind reset rooted in neurophysiology, for teams ready to reconnect before the next sprint.',
+        image: 'https://images.pexels.com/photos/33426373/pexels-photo-33426373.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         spec: ['Retreat · 2 Days, 1 Night', 'In-person, hotel retreat'],
         benefitsLabel: 'Programme features',
         benefits: [
@@ -502,6 +518,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'High-Potential Women Leaders Programme',
         hook: 'Strengthen your leadership capabilities and maximise your impact — built for women accelerating into their next executive role.',
+        image: 'https://images.pexels.com/photos/8424530/pexels-photo-8424530.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: ['Build the confidence and toolkit to lead with greater impact', 'Strengthen executive presence and stakeholder influence'],
@@ -515,6 +532,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Advanced Professional Certificate in Leadership & Management',
         hook: 'Leadership is lived, not awarded. Moves talented professionals past vague feedback into the internal shifts that unlock readiness.',
+        image: 'https://images.pexels.com/photos/5324985/pexels-photo-5324985.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: [
@@ -531,6 +549,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Executive Leadership Excellence',
         hook: "Empower exceptional leaders who inspire, motivate, and achieve impactful results in today's dynamic world.",
+        image: 'https://images.pexels.com/photos/8761329/pexels-photo-8761329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
         benefitsLabel: 'Programme features',
         benefits: ['Empowers leaders who inspire and motivate', 'Built to achieve impactful results in a dynamic world'],
@@ -1328,7 +1347,7 @@ const InitiativeBanner: React.FC<{ initiative: Initiative }> = ({ initiative }) 
 const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverable) => void }> = ({ item, onOutline }) => {
   const [open, setOpen] = useState(false);
   const hasDetails = Boolean(
-    item.details || item.spec || item.benefits || item.audience || item.awarded ||
+    item.spec || item.benefits || item.audience || item.awarded ||
     item.pills || item.includes || item.days || item.models || item.requirements
   );
 
@@ -1422,8 +1441,6 @@ const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverab
                     ))}
                   </div>
                 )}
-
-                {item.details && <p className="text-slate-300 text-sm leading-relaxed">{item.details}</p>}
 
                 {item.benefits && (
                   <div>
