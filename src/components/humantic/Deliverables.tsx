@@ -6,6 +6,7 @@ type CourseDay = { title: string; points: string[] };
 type Deliverable = {
   title: string;
   hook: string;
+  videoSrc?: string;
   format?: string;
   delivery?: string;
   details?: string;
@@ -1332,21 +1333,34 @@ const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverab
 
   return (
     <div className="group rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden transition-all duration-500 hover:bg-white/[0.06] hover:border-emerald-400/30 hover:-translate-y-1">
-      {/* Image placeholder — same teal duotone treatment every real photo will carry once added */}
+      {/* Video/image slot — same teal duotone treatment every clip or photo will carry once added */}
       <div
         className="relative aspect-[16/10] border-b border-white/10 flex items-center justify-center overflow-hidden"
         style={{ background: 'linear-gradient(135deg, #06211f 0%, #0b3b3a 45%, #0d2a3d 100%)' }}
       >
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(135deg, transparent 0px, transparent 10px, rgba(255,255,255,0.04) 10px, rgba(255,255,255,0.04) 20px)',
-          }}
-        />
-        <span className="relative inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-300 bg-slate-950/50 border border-dashed border-white/20 rounded-lg px-3 py-1.5">
-          <ImageIcon className="w-3 h-3" /> Image space
-        </span>
+        {item.videoSrc ? (
+          <video
+            className="absolute inset-0 w-full h-full object-cover"
+            src={item.videoSrc}
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        ) : (
+          <>
+            <div
+              className="absolute inset-0 opacity-30"
+              style={{
+                backgroundImage:
+                  'repeating-linear-gradient(135deg, transparent 0px, transparent 10px, rgba(255,255,255,0.04) 10px, rgba(255,255,255,0.04) 20px)',
+              }}
+            />
+            <span className="relative inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-300 bg-slate-950/50 border border-dashed border-white/20 rounded-lg px-3 py-1.5">
+              <ImageIcon className="w-3 h-3" /> Image space
+            </span>
+          </>
+        )}
       </div>
 
       <div className="p-6">
