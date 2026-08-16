@@ -217,10 +217,10 @@ const HumanReel: React.FC = () => {
               y="240"
               textAnchor="middle"
               dominantBaseline="central"
-              fontFamily="Syne, sans-serif"
-              fontWeight="800"
+              fontFamily="Anton, sans-serif"
+              fontWeight="400"
               fontSize="200"
-              letterSpacing="-4"
+              letterSpacing="-2"
               fill="white"
             >
               HUMAN
@@ -254,7 +254,7 @@ const HumanReel: React.FC = () => {
           onMouseEnter={() => !playing && setHovering(true)}
           onMouseLeave={() => setHovering(false)}
           onClick={openReel}
-          className="relative w-[92vw] max-w-[1600px] overflow-hidden"
+          className="relative w-[80vw] max-w-[2200px] overflow-hidden"
           style={{
             aspectRatio: '1400 / 480',
             cursor: 'none',
