@@ -38,6 +38,7 @@ const CLIPS: Clip[] = [
   { label: 'East Asian Professional', video: 'https://videos.pexels.com/video-files/7845249/7845249-hd_1920_1080_30fps.mp4' },
   { label: 'Stylish Young Professional', video: 'https://videos.pexels.com/video-files/8202010/8202010-uhd_2560_1440_25fps.mp4' },
   { label: 'Teenager', video: 'https://videos.pexels.com/video-files/4494959/4494959-uhd_2560_1440_25fps.mp4' },
+  { label: 'Boy in Astronaut Suit', video: 'https://videos.pexels.com/video-files/5511862/5511862-uhd_1440_2560_24fps.mp4' },
 ];
 
 const CLIP_MS = 900;
