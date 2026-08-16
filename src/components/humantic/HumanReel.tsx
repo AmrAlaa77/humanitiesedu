@@ -254,8 +254,10 @@ const HumanReel: React.FC = () => {
           onMouseEnter={() => !playing && setHovering(true)}
           onMouseLeave={() => setHovering(false)}
           onClick={openReel}
-          className="relative w-[80vw] h-[80vh] max-w-[2200px] max-h-[900px] overflow-hidden"
+          className="relative overflow-hidden"
           style={{
+            width: 'calc(100vw - 4cm)',
+            height: 'calc(100vh - 4cm)',
             cursor: 'none',
             opacity: loaded ? 1 : 0,
             transform: loaded ? 'scale(1)' : 'scale(0.94)',
