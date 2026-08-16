@@ -56,7 +56,7 @@ const initiatives = [
     icon: GraduationCap,
     year: '2014–2018',
     title: 'Global Knowledge Integration',
-    desc: 'We formed joint ventures as the Oxford Humanitarian & Management Development Division of British institutions and colleges — translating field wisdom into accredited learning.',
+    desc: 'We formed joint ventures with leading British awarding bodies — translating field wisdom into accredited learning.',
   },
 ];
 
@@ -80,7 +80,7 @@ const milestones = [
   {
     year: '2014–2018',
     title: 'Global Knowledge Integration',
-    desc: 'Joint ventures as the Oxford Humanitarian & Management Development Division — inspected and recognised by leading British awarding bodies (Ofqual, Great British Qualifications, CACHE).',
+    desc: 'Joint ventures with leading British awarding bodies — inspected and recognised by Ofqual, Great British Qualifications, and CACHE.',
   },
 ];
 
@@ -205,9 +205,9 @@ const GlobalPanel: React.FC = () => (
         When field wisdom found a global voice.
       </h3>
       <p className="mt-4 text-slate-300 leading-relaxed">
-        What we learned on the rigs deserved a wider home. So we formed joint ventures as the
-        <span className="text-white font-medium"> Oxford Humanitarian &amp; Management Development Division </span>
-        of British institutions and colleges — turning hard-won, human-centred lessons into structured,
+        What we learned on the rigs deserved a wider home. So we formed joint ventures with
+        <span className="text-white font-medium"> leading British awarding bodies</span>
+        — turning hard-won, human-centred lessons into structured,
         accredited learning the world could trust.
       </p>
       <p className="mt-4 text-slate-400 leading-relaxed">

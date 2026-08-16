@@ -17,7 +17,7 @@ const credentials = [
   {
     icon: GraduationCap,
     title: 'Academic Foundation',
-    desc: 'Medicine & Surgery + Biology, University of Cambridge — specialization in behavioral consulting based on physiology and neurobiology.',
+    desc: 'Medicine & Surgery + Biology — specialization in behavioral consulting based on physiology and neurobiology.',
   },
   {
     icon: Award,
@@ -27,7 +27,7 @@ const credentials = [
   {
     icon: Building2,
     title: 'Leadership',
-    desc: 'Chair, CSO & CEO of Humantic Digital (MISA approved). Chief Strategy Officer, MENA regional partner of Oxford College.',
+    desc: 'Chair, CSO & CEO of Humantic Digital (MISA approved). Chief Strategy Officer & MENA Regional Partner.',
   },
   {
     icon: Globe2,
@@ -40,7 +40,7 @@ const partners = [
   'Saudi Aramco', 'Ma’aden', 'King Salman Hospital', 'King Abdullah Medical City',
   'National Guard Health Affairs', 'Royal Commission for AlUla', 'U.S. Embassy', 'Embassy of Saudi Arabia',
   'Mubadala', 'PepsiCo', 'Unilever', 'Nestlé', 'Mars Incorporated', 'Google', 'Siemens',
-  'GIZ (German Cooperation)', 'King Fahd University of Petroleum and Minerals', 'Savola Foods',
+  'GIZ (German Cooperation)', 'Savola Foods',
 ];
 
 const Founder: React.FC = () => (
