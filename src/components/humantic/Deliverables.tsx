@@ -567,9 +567,18 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Productivity, Decoded By Your Brain',
         hook: 'Neuroscience-backed systems that turn scattered attention into sustained, measurable focus — built for Gen Z pace.',
+        details:
+          'Procrastination, mental fatigue, distractions and stress are common psychological factors that hinder productivity. Assessing productivity through a psychological lens accommodates individual variation and helps increase efficiency, combat chronic distraction, and address procrastination and misplaced priorities — with specialists customising solutions guided by the assessment.',
         spec: ['Core · 5 Days · In-person'],
         benefitsLabel: 'Key benefits',
-        benefits: ['Apply neuroscience to sustain daily focus', 'Automate routine work with AI-based systems', 'Custom behavioural-science assessments for hiring and development'],
+        benefits: [
+          'Apply neuroscience to sustain daily focus',
+          'Automate routine work with AI-based systems',
+          'Custom behavioural-science assessments for hiring and development',
+          'Keep tasks, files and discussions neatly organised in one place',
+          'See the big picture with drag-and-drop dashboards and boards',
+          'Track progress and deliver on time with a shared activity stream',
+        ],
         audience: ['New graduates and early-career Gen Z professionals', 'Teams facing burnout or scattered attention', 'Organisations wanting measurable, science-backed productivity gains'],
         awarded: 'Certificate of completion.',
       },
@@ -657,6 +666,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Behavioral Leadership & Organizational Psychology',
         hook: 'Leaders can unknowingly drive disengagement, or worse, quiet cracking, by mismanaging drivers like recognition and autonomy.',
+        details:
+          'Unlocking Human Potential: deep dives into human behavior, where psychology, human biology and business collide. Seemingly arbitrary contextual factors, along with our biology, play a significant role in shaping our reactions and interactions at the workplace — affecting wellbeing, emotional reactivity, and overall individual and group performance within an organisation.',
         spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
         benefitsLabel: 'Five pillars',
         benefits: [
@@ -1271,7 +1282,23 @@ const InitiativeBanner: React.FC<{ initiative: Initiative }> = ({ initiative }) 
     )}
 
     {initiative.quote && (
-      <p className="mt-8 pl-4 border-l-2 border-emerald-400/50 text-slate-300 italic text-base">"{initiative.quote}"</p>
+      initiative.quote === 'Sustainability is our cause.' ? (
+        <p className="mt-8 pl-4 border-l-2 border-emerald-400/50 text-slate-300 italic text-base">
+          "Sustainability is{' '}
+          <span className="inline-flex items-center gap-0.5 not-italic">
+            <span
+              className="inline-block w-[0.85em] h-[0.85em] rounded-full align-middle"
+              style={{ background: 'conic-gradient(#e5243b, #fcc30b, #4c9f38, #0a97d9, #dd1367, #00689d, #fd6925, #e5243b)' }}
+              aria-hidden="true"
+            />
+            <span className="sr-only">o</span>
+            ur
+          </span>{' '}
+          cause."
+        </p>
+      ) : (
+        <p className="mt-8 pl-4 border-l-2 border-emerald-400/50 text-slate-300 italic text-base">"{initiative.quote}"</p>
+      )
     )}
   </div>
 );
