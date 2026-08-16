@@ -35,12 +35,8 @@ const AurionShowcase: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           }`}
         >
           <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-slate-950">
-            <div className="flex items-center justify-center h-[24rem]">
-              <img
-                src="https://images.pexels.com/photos/31406900/pexels-photo-31406900/free-photo-of-minimalist-white-smartwatch-on-light-background.jpeg?auto=compress&w=1260&h=750&dpr=1"
-                alt="AURION ONE smartwatch macro detail, out of focus"
-                className="w-full h-full object-contain scale-110 mix-blend-multiply blur-[4px]"
-              />
+            <div className="flex items-center justify-center h-[24rem] border border-dashed border-white/15 m-6 rounded-3xl">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Image space</span>
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 rounded-2xl border border-white/15 bg-slate-900/85 px-5 py-3">
