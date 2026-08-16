@@ -20,20 +20,23 @@ interface Clip {
 }
 
 const CLIPS: Clip[] = [
-  { label: 'Elder', video: 'https://videos.pexels.com/video-files/5516426/5516426-uhd_2560_1440_30fps.mp4' },
-  { label: 'Doctor', video: 'https://videos.pexels.com/video-files/5453687/5453687-uhd_1440_2560_25fps.mp4' },
-  { label: 'Researcher', video: 'https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4' },
+  { label: 'Elderly Man', video: 'https://videos.pexels.com/video-files/5003408/5003408-hd_1920_1080_25fps.mp4' },
+  { label: 'Female Doctor', video: 'https://videos.pexels.com/video-files/5453770/5453770-uhd_2560_1440_25fps.mp4' },
+  { label: 'Male Doctor', video: 'https://videos.pexels.com/video-files/5453687/5453687-uhd_1440_2560_25fps.mp4' },
+  { label: 'Female Researcher', video: 'https://videos.pexels.com/video-files/4121724/4121724-uhd_2560_1440_25fps.mp4' },
+  { label: 'Male Researcher', video: 'https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4' },
   { label: 'IT Developer', video: 'https://videos.pexels.com/video-files/6330779/6330779-hd_1920_1080_30fps.mp4' },
-  { label: 'Businesswoman', video: 'https://videos.pexels.com/video-files/10040753/10040753-hd_1920_1080_24fps.mp4' },
+  { label: 'Female Tech Professional', video: 'https://videos.pexels.com/video-files/8343944/8343944-uhd_2560_1440_25fps.mp4' },
   { label: 'Businessman', video: 'https://videos.pexels.com/video-files/8348918/8348918-uhd_1440_2560_25fps.mp4' },
+  { label: 'Businesswoman', video: 'https://videos.pexels.com/video-files/10040753/10040753-hd_1920_1080_24fps.mp4' },
+  { label: 'Swimmer', video: 'https://videos.pexels.com/video-files/9617126/9617126-uhd_1440_2732_25fps.mp4' },
+  { label: 'Young Boy', video: 'https://videos.pexels.com/video-files/7207587/7207587-uhd_2732_1440_25fps.mp4' },
+  { label: 'Graduate', video: 'https://videos.pexels.com/video-files/7712316/7712316-hd_1080_1920_30fps.mp4' },
   { label: 'Professional in Hijab', video: 'https://videos.pexels.com/video-files/6082951/6082951-uhd_1440_2560_24fps.mp4' },
   { label: 'Professional in Turban', video: 'https://videos.pexels.com/video-files/8328588/8328588-uhd_2560_1440_25fps.mp4' },
   { label: 'Black Professional', video: 'https://videos.pexels.com/video-files/12896416/12896416-uhd_1440_2560_24fps.mp4' },
   { label: 'East Asian Professional', video: 'https://videos.pexels.com/video-files/7845249/7845249-hd_1920_1080_30fps.mp4' },
   { label: 'Stylish Young Professional', video: 'https://videos.pexels.com/video-files/8202010/8202010-uhd_2560_1440_25fps.mp4' },
-  { label: 'Swimmer', video: 'https://videos.pexels.com/video-files/9617126/9617126-uhd_1440_2732_25fps.mp4' },
-  { label: 'Young Boy', video: 'https://videos.pexels.com/video-files/7207587/7207587-uhd_2732_1440_25fps.mp4' },
-  { label: 'Graduate', video: 'https://videos.pexels.com/video-files/7712316/7712316-hd_1080_1920_30fps.mp4' },
   { label: 'Teenager', video: 'https://videos.pexels.com/video-files/4494959/4494959-uhd_2560_1440_25fps.mp4' },
 ];
 
