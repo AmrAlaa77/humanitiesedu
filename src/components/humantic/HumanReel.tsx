@@ -219,8 +219,8 @@ const HumanReel: React.FC = () => {
               dominantBaseline="central"
               fontFamily="Anton, sans-serif"
               fontWeight="400"
-              fontSize="2000"
-              letterSpacing="-20"
+              fontSize="420"
+              letterSpacing="-6"
               fill="white"
             >
               HUMAN
@@ -256,8 +256,8 @@ const HumanReel: React.FC = () => {
           onClick={openReel}
           className="relative overflow-hidden"
           style={{
-            width: 'calc(100vw - 4cm)',
-            height: 'calc(100vh - 4cm)',
+            width: 'min(calc(100vw - 4cm), calc((100vh - 4cm) * 1400 / 480))',
+            aspectRatio: '1400 / 480',
             cursor: 'none',
             opacity: loaded ? 1 : 0,
             transform: loaded ? 'scale(1)' : 'scale(0.94)',
