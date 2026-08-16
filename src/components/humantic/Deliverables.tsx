@@ -681,6 +681,26 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         awarded: 'UK-accredited certificate, personalised strengths report, behavioural leadership report + 1:1 debrief, two-month sustainability phase.',
       },
       {
+        title: 'Behavioral Based Safety Programme',
+        hook: '"People get hurt, that\'s the cost of doing business" — we\'re here to change that: "we stop and take the time to do it safely, that\'s the cost of doing business."',
+        details:
+          'Redefines traditional safety training by integrating Health, Safety & Environment (HSE) management, Behavior-Based Safety (BBS) principles and the critical dimension of Psychological Safety — moving beyond mere compliance to a proactive safety culture. VR Safety Programmes give evaluators detailed insight into user behaviour: observing individuals, running After Action Reviews (AAR), post-experience discussions and reflective exercises. Health and safety training can fail to motivate, engage or feel relevant to real-life contexts (University of Nottingham) — VR\'s realism creates a genuine sense of "actually being there," as the body\'s motor and perceptual systems interact with the virtual world just as they would the physical one.',
+        spec: ['NEBOSH-Accredited', 'VR / AR / AI-enabled'],
+        benefitsLabel: 'Measured impact',
+        benefits: [
+          '25% decrease in human casualties or fatalities',
+          '20% reduction in compensation for occupational hazard claims',
+          "1.3% GDP boost to the Kingdom's economy",
+          '38% Saudi Nationals skills uplift',
+        ],
+        audience: [
+          'HSE leaders in high-risk industries — oil & gas, chemical plants, construction',
+          'Organisations moving from compliance-only training to a proactive safety culture',
+          "Leaders embedding safety into front-line behaviour and the organisation's DNA",
+        ],
+        awarded: 'NEBOSH-accredited certification.',
+      },
+      {
         title: 'High Performance People Skills for Leaders — Dubai',
         hook: 'The same high-performance people-skills curriculum, delivered locally for leaders based across the UAE.',
         spec: ['Core · 5 Days · In-person, Dubai', 'Advanced · 8 Weeks · Hybrid'],
@@ -1312,15 +1332,19 @@ const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverab
 
   return (
     <div className="group rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden transition-all duration-500 hover:bg-white/[0.06] hover:border-emerald-400/30 hover:-translate-y-1">
-      {/* Image placeholder — real photography to be added later */}
+      {/* Image placeholder — same teal duotone treatment every real photo will carry once added */}
       <div
-        className="relative aspect-[16/10] border-b border-white/10 flex items-center justify-center"
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(135deg, #0d1424 0px, #0d1424 10px, #101a30 10px, #101a30 20px)',
-        }}
+        className="relative aspect-[16/10] border-b border-white/10 flex items-center justify-center overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #06211f 0%, #0b3b3a 45%, #0d2a3d 100%)' }}
       >
-        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-500 bg-slate-950/60 border border-dashed border-white/20 rounded-lg px-3 py-1.5">
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage:
+              'repeating-linear-gradient(135deg, transparent 0px, transparent 10px, rgba(255,255,255,0.04) 10px, rgba(255,255,255,0.04) 20px)',
+          }}
+        />
+        <span className="relative inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-300 bg-slate-950/50 border border-dashed border-white/20 rounded-lg px-3 py-1.5">
           <ImageIcon className="w-3 h-3" /> Image space
         </span>
       </div>
