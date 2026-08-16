@@ -82,6 +82,9 @@ const AurionHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             style={{ animation: 'auraFloat 4.5s ease-in-out infinite' }}
           >
             <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Image space</span>
+            <div className="absolute -right-2 bottom-8 rounded-2xl border border-white/15 bg-slate-900/80 px-4 py-2.5 text-sm text-white shadow-xl">
+              Readiness: <span className="text-cyan-200 font-semibold">75%</span>
+            </div>
           </div>
 
           <style>{`
