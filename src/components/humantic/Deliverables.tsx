@@ -6,6 +6,7 @@ type CourseDay = { title: string; points: string[] };
 type Deliverable = {
   title: string;
   hook: string;
+  image?: string;
   videoSrc?: string;
   format?: string;
   delivery?: string;
@@ -1338,7 +1339,14 @@ const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverab
         className="relative aspect-[16/10] border-b border-white/10 flex items-center justify-center overflow-hidden"
         style={{ background: 'linear-gradient(135deg, #06211f 0%, #0b3b3a 45%, #0d2a3d 100%)' }}
       >
-        {item.videoSrc ? (
+        {item.image ? (
+          <img
+            className="absolute inset-0 w-full h-full object-cover"
+            src={item.image}
+            alt={item.title}
+            loading="lazy"
+          />
+        ) : item.videoSrc ? (
           <video
             className="absolute inset-0 w-full h-full object-cover"
             src={item.videoSrc}
