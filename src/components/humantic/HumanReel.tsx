@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 /**
  * HUMAN — editorial video-reel hero.
@@ -74,7 +74,6 @@ const LondonClock: React.FC = () => {
 
 const HumanReel: React.FC = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
-  const wordContainerRef = useRef<HTMLDivElement>(null);
 
   const [current, setCurrent] = useState(0);
   const [next, setNext] = useState(1 % CLIPS.length);
@@ -83,23 +82,6 @@ const HumanReel: React.FC = () => {
   const [loaded, setLoaded] = useState(false);
   const [playing, setPlaying] = useState(false); // true while the reel is expanded full-page
   const [expanded, setExpanded] = useState(false); // drives the zoom-out/zoom-back clip-path transition
-  const [alignLeft, setAlignLeft] = useState<number | null>(null); // measured left edge of the "a" in the nav logo
-
-  // Align the word's left edge to the real rendered position of the "a" in "Humantic" (nav logo),
-  // measured at runtime so it's exact regardless of font metrics or viewport size.
-  useLayoutEffect(() => {
-    const measure = () => {
-      const logoA = document.getElementById('humantic-logo-a');
-      const container = wordContainerRef.current;
-      if (logoA && container) {
-        const offset = logoA.getBoundingClientRect().left - container.getBoundingClientRect().left;
-        setAlignLeft(offset);
-      }
-    };
-    measure();
-    window.addEventListener('resize', measure);
-    return () => window.removeEventListener('resize', measure);
-  }, []);
 
   const openReel = () => {
     setPlaying(true);
@@ -267,7 +249,7 @@ const HumanReel: React.FC = () => {
       </div>
 
       {/* The word HUMAN — video visible only inside the letterforms */}
-      <div ref={wordContainerRef} className="relative z-10 flex flex-1 items-center justify-center px-2">
+      <div className="relative z-10 flex flex-1 items-center justify-center px-2">
         <div
           onMouseEnter={() => !playing && setHovering(true)}
           onMouseLeave={() => setHovering(false)}
@@ -275,10 +257,11 @@ const HumanReel: React.FC = () => {
           className="overflow-hidden"
           style={{
             position: 'absolute',
+            left: 0,
+            right: 0,
             top: '50%',
-            ...(alignLeft !== null
-              ? { left: alignLeft }
-              : { left: 0, right: 0, marginLeft: 'auto', marginRight: 'auto' }),
+            marginLeft: 'auto',
+            marginRight: 'auto',
             width: 'min(calc(100vw - 4cm), calc((100vh - 4cm) * 1400 / 480))',
             aspectRatio: '1400 / 480',
             cursor: 'none',

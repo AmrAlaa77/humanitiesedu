@@ -28,9 +28,7 @@ const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             <Activity className="w-5 h-5 text-slate-950" />
           </div>
           <div className="leading-tight text-left">
-            <span className="block text-white font-semibold tracking-tight">
-              Hum<span id="humantic-logo-a">a</span>ntic
-            </span>
+            <span className="block text-white font-semibold tracking-tight">Humantic</span>
             <span className="block text-[10px] uppercase tracking-[0.2em] text-emerald-400">Digital</span>
           </div>
         </button>
