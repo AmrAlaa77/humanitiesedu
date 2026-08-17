@@ -1449,10 +1449,7 @@ const InitiativeBanner: React.FC<{ initiative: Initiative }> = ({ initiative }) 
 const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverable) => void }> = ({ item, onOutline }) => {
   const [open, setOpen] = useState(false);
   const [playing, setPlaying] = useState(false);
-  const hasDetails = Boolean(
-    item.spec || item.benefits || item.audience || item.awarded ||
-    item.pills || item.includes || item.days || item.models || item.requirements
-  );
+  const hasDetails = Boolean(item.spec || item.requirements || item.awarded);
 
   return (
     <div className="group rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden transition-all duration-500 hover:bg-white/[0.06] hover:border-emerald-400/30 hover:-translate-y-1">
@@ -1568,69 +1565,6 @@ const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverab
                   </div>
                 )}
 
-                {item.benefits && (
-                  <div>
-                    <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-1.5">{item.benefitsLabel ?? 'Key benefits'}</p>
-                    <ul className="space-y-1">
-                      {item.benefits.map((b) => (
-                        <li key={b} className="text-slate-300 text-xs leading-relaxed flex gap-2">
-                          <span className="text-emerald-400 mt-1">•</span>
-                          <span>{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {item.includes && (
-                  <div>
-                    <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-1.5">This Course Includes</p>
-                    <ul className="space-y-1">
-                      {item.includes.map((b) => (
-                        <li key={b} className="text-slate-300 text-xs leading-relaxed flex gap-2">
-                          <span className="text-emerald-400 mt-1">•</span>
-                          <span>{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {item.days && (
-                  <div>
-                    <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-1.5">Course Content</p>
-                    <div className="space-y-2">
-                      {item.days.map((d) => (
-                        <div key={d.title}>
-                          <p className="text-white text-xs font-semibold">{d.title}</p>
-                          <p className="text-slate-400 text-xs leading-relaxed">{d.points.join(' · ')}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {item.models && (
-                  <p className="text-slate-400 text-xs italic border-l-2 border-emerald-400/40 pl-3">
-                    <span className="text-slate-300 not-italic font-semibold">Models &amp; Psychology: </span>
-                    {item.models}
-                  </p>
-                )}
-
-                {item.audience && (
-                  <div>
-                    <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-1.5">Who This Course Is For</p>
-                    <ul className="space-y-1">
-                      {item.audience.map((a) => (
-                        <li key={a} className="text-slate-300 text-xs leading-relaxed flex gap-2">
-                          <span className="text-emerald-400 mt-1">•</span>
-                          <span>{a}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
                 {item.requirements && <p className="text-slate-500 text-xs">Requirements: {item.requirements}</p>}
 
                 {item.awarded && <p className="text-slate-400 text-xs italic">Awarded: {item.awarded}</p>}
@@ -1685,49 +1619,44 @@ const OutlineModal: React.FC<{ item: Deliverable | null; onClose: () => void }> 
         <p className="mt-5 text-slate-300 text-sm leading-relaxed">{item.hook}</p>
         {item.details && <p className="mt-3 text-slate-400 text-sm leading-relaxed">{item.details}</p>}
 
-        {hasRealOutline ? (
-          <>
-            {item.days && (
-              <div className="mt-7">
-                <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-3">Course Content</p>
-                <div className="space-y-4">
-                  {item.days.map((d) => (
-                    <div key={d.title} className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
-                      <p className="text-white text-sm font-semibold mb-2">{d.title}</p>
-                      <ul className="space-y-1">
-                        {d.points.map((p) => (
-                          <li key={p} className="text-slate-400 text-xs leading-relaxed flex gap-2">
-                            <span className="text-emerald-400 mt-1">•</span>
-                            <span>{p}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+        {item.days && (
+          <div className="mt-7">
+            <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-3">Course Content</p>
+            <div className="space-y-4">
+              {item.days.map((d) => (
+                <div key={d.title} className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
+                  <p className="text-white text-sm font-semibold mb-2">{d.title}</p>
+                  <ul className="space-y-1">
+                    {d.points.map((p) => (
+                      <li key={p} className="text-slate-400 text-xs leading-relaxed flex gap-2">
+                        <span className="text-emerald-400 mt-1">•</span>
+                        <span>{p}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-            )}
-            {item.models && (
-              <p className="mt-5 text-slate-400 text-xs italic border-l-2 border-emerald-400/40 pl-3">
-                <span className="text-slate-300 not-italic font-semibold">Models &amp; Psychology: </span>
-                {item.models}
-              </p>
-            )}
-          </>
-        ) : (
-          item.benefits && (
-            <div className="mt-7">
-              <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-3">{item.benefitsLabel ?? 'Key Learning Points'}</p>
-              <ul className="space-y-1.5">
-                {item.benefits.map((b) => (
-                  <li key={b} className="text-slate-300 text-sm leading-relaxed flex gap-2">
-                    <span className="text-emerald-400 mt-1">•</span>
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
+              ))}
             </div>
-          )
+          </div>
+        )}
+        {item.models && (
+          <p className="mt-5 text-slate-400 text-xs italic border-l-2 border-emerald-400/40 pl-3">
+            <span className="text-slate-300 not-italic font-semibold">Models &amp; Psychology: </span>
+            {item.models}
+          </p>
+        )}
+        {item.benefits && (
+          <div className="mt-7">
+            <p className="text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-3">{item.benefitsLabel ?? 'Key Learning Points'}</p>
+            <ul className="space-y-1.5">
+              {item.benefits.map((b) => (
+                <li key={b} className="text-slate-300 text-sm leading-relaxed flex gap-2">
+                  <span className="text-emerald-400 mt-1">•</span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
 
         {item.audience && (
