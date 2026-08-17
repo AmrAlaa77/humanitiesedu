@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, ImageIcon, FileText, X, Globe, Users, Heart, Activity, TrendingUp, FlaskConical } from 'lucide-react';
+import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, ImageIcon, FileText, X, Globe, Users, Heart, Activity, TrendingUp, FlaskConical, Play } from 'lucide-react';
 
 type CourseDay = { title: string; points: string[] };
 
@@ -1458,6 +1458,7 @@ const InitiativeBanner: React.FC<{ initiative: Initiative }> = ({ initiative }) 
 
 const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverable) => void }> = ({ item, onOutline }) => {
   const [open, setOpen] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const hasDetails = Boolean(
     item.spec || item.benefits || item.audience || item.awarded ||
     item.pills || item.includes || item.days || item.models || item.requirements
@@ -1470,21 +1471,44 @@ const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverab
         className="relative aspect-[16/10] border-b border-white/10 flex items-center justify-center overflow-hidden"
         style={{ background: 'linear-gradient(135deg, #06211f 0%, #0b3b3a 45%, #0d2a3d 100%)' }}
       >
-        {item.image ? (
+        {item.videoSrc ? (
+          playing ? (
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              src={item.videoSrc}
+              autoPlay
+              controls
+              playsInline
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={() => setPlaying(true)}
+              className="group/play absolute inset-0 w-full h-full cursor-pointer"
+              aria-label={`Play video: ${item.title}`}
+            >
+              {item.image ? (
+                <img
+                  className="absolute inset-0 w-full h-full object-cover"
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                />
+              ) : null}
+              <span className="absolute inset-0 bg-black/25 group-hover/play:bg-black/35 transition-colors" />
+              <span className="absolute inset-0 flex items-center justify-center">
+                <span className="flex items-center justify-center w-14 h-14 rounded-full bg-white/95 text-slate-950 shadow-lg transition-transform group-hover/play:scale-110">
+                  <Play className="w-6 h-6 ml-0.5" fill="currentColor" />
+                </span>
+              </span>
+            </button>
+          )
+        ) : item.image ? (
           <img
             className="absolute inset-0 w-full h-full object-cover"
             src={item.image}
             alt={item.title}
             loading="lazy"
-          />
-        ) : item.videoSrc ? (
-          <video
-            className="absolute inset-0 w-full h-full object-cover"
-            src={item.videoSrc}
-            autoPlay
-            muted
-            loop
-            playsInline
           />
         ) : (
           <>
