@@ -260,7 +260,7 @@ const HumanReel: React.FC = () => {
             aspectRatio: '1400 / 480',
             cursor: 'none',
             opacity: loaded ? 1 : 0,
-            transform: loaded ? 'scale(1)' : 'scale(0.94)',
+            transform: loaded ? 'translateX(-3%) scale(1)' : 'translateX(-3%) scale(0.94)',
             transition: 'opacity .9s ease .2s, transform .9s ease .2s',
           }}
         >
