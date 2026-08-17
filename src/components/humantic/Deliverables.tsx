@@ -7,6 +7,7 @@ type Deliverable = {
   title: string;
   hook: string;
   image?: string;
+  kenBurns?: boolean;
   videoSrc?: string;
   format?: string;
   delivery?: string;
@@ -1480,7 +1481,7 @@ const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverab
             >
               {item.image ? (
                 <img
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className={`absolute inset-0 w-full h-full object-cover ${item.kenBurns !== false ? 'ken-burns-img' : ''}`}
                   src={item.image}
                   alt={item.title}
                   loading="lazy"
@@ -1496,7 +1497,7 @@ const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverab
           )
         ) : item.image ? (
           <img
-            className="absolute inset-0 w-full h-full object-cover"
+            className={`absolute inset-0 w-full h-full object-cover ${item.kenBurns !== false ? 'ken-burns-img' : ''}`}
             src={item.image}
             alt={item.title}
             loading="lazy"
@@ -1695,6 +1696,17 @@ const Deliverables: React.FC = () => {
 
   return (
     <section id="deliverables" className="relative py-24">
+      <style>{`
+        @keyframes kenBurns {
+          0% { transform: scale(1) translate(0, 0); }
+          100% { transform: scale(1.12) translate(-2%, -1.5%); }
+        }
+        .ken-burns-img {
+          animation: kenBurns 8s ease-in-out infinite alternate;
+          transform-origin: center center;
+          will-change: transform;
+        }
+      `}</style>
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-xl">
