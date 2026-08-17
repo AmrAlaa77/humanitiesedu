@@ -107,6 +107,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           'Architect Belonging: transition psychological safety from a cultural ideal into a measurable biological requirement',
           'Accelerate Credibility: bypass the typical 6-month "rookie" learning curve',
         ],
+        audience: ['Fresh graduates entering their first professional role', 'Gen Z hires within their first year on the job', 'Organisations onboarding large graduate cohorts'],
         includes: [
           '5-day in-person experiential workshop, 5 hours/day',
           'Extended 1-month mentoring access',
@@ -150,6 +151,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           'Tone Decay: the shift from "would you mind..." to "just do it" as stress rises',
           'Analysis Paralysis versus Failing Forward: freezing versus making a best-guess decision to keep momentum',
         ],
+        audience: ['Gen Z employees building real-world composure under pressure', 'Teams wanting an experiential alternative to classroom training', 'Organisations assessing early-career talent through simulation'],
       },
       {
         title: 'SyncPoint™: Your Digital Chief of Staff',
@@ -165,6 +167,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           'Seamless app integration that turns learning into immediate, practical action',
           'Continuous weekly or biweekly support beyond the workshop — 1:1 sessions, focus groups and team retreats over a month',
         ],
+        audience: ['Employees overwhelmed by fragmented tasks and requests', 'Teams wanting a shared system for ownership and deadlines', 'Organisations standardising productivity tools for a generation shaped by scroll and notifications'],
         includes: ['2-day workshop, 4 hours/day'],
       },
       {
@@ -216,6 +219,14 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           },
         ],
         models: 'Embodied cognition — the brain accelerates learning when the body is actively "present" within a digital environment.',
+        benefitsLabel: 'What you leave with',
+        benefits: [
+          'A personalised understanding of your own stress triggers and instincts',
+          'Practical tools to reframe and regulate the stress response',
+          'A grounded, science-backed understanding of the brain-body connection',
+          'A medically-informed wellbeing plan with 3-month follow-up',
+        ],
+        audience: ['Saudi Nationals training as VR wellness facilitators', 'Young people navigating stress, identity and self-awareness', 'Families wanting a shared language around wellbeing'],
         includes: ['2-day workshop or 5-day journey, 5 hours/day'],
       },
       {
@@ -232,6 +243,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           'Sustainable change: habits and routines built to integrate into daily life',
           'A holistic exploration of wellbeing — from the routines that fuel the body to the emotions that shape reactions',
         ],
+        audience: ['Individuals curious about the science behind their own habits', 'Teams wanting an immersive, memorable wellbeing experience', 'Organisations seeking measurable engagement over one-off talks'],
       },
       {
         title: 'Shine & Shadow: Strengths & Derailers',
@@ -262,6 +274,14 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           },
         ],
         models: 'GALLUP+ Strengths & Derailers.',
+        benefitsLabel: 'Programme features',
+        benefits: [
+          'Grounded in strengths-based research, not deficit-fixing',
+          'A Collective Strengths in Action workshop for the whole team',
+          'One-on-one derailer debrief to map what dims a strength under pressure',
+          'A shared language teams use to leverage each other, not compete',
+        ],
+        audience: ['Teams wanting to build on strengths rather than fix weaknesses', 'Leaders navigating their own derailers under pressure', 'Organisations building a strengths-based culture'],
       },
       {
         title: 'InnerLead: The Journey Within',
@@ -311,6 +331,14 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
             ],
           },
         ],
+        benefitsLabel: 'What you leave with',
+        benefits: [
+          'A confidential, one-on-one starting point for your own development',
+          'Peer-modelled strategies that work for your specific triggers',
+          'A month of sustained mentoring, not a single workshop',
+          'A closing audit that validates real behaviour change, not just attendance',
+        ],
+        audience: ['Individuals ready to look honestly at their own leadership wiring', 'High-potential employees preparing for their next step', 'Organisations wanting sustained, one-on-one development over one-off training'],
       },
       {
         title: 'WorkReady+: More Than Employable',
@@ -350,6 +378,14 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
             ],
           },
         ],
+        benefitsLabel: 'What you leave with',
+        benefits: [
+          'Practical mind-clearing techniques for reducing brain clutter',
+          'An AI-powered organisational tool for shared task visibility',
+          'A brain-body understanding of reactivity, and how to interrupt it',
+          'A SMART goal and progress-tracking method to sustain the habit',
+        ],
+        audience: ['New hires before or during their first weeks on the job', 'Early-career employees building organisational habits from scratch', 'Managers wanting a shared system instead of scattered sticky notes and threads'],
         includes: ['AI-powered organisational tool for shared task visibility, ownership and deadlines'],
       },
     ],
@@ -365,6 +401,14 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         image: 'https://images.pexels.com/photos/19963125/pexels-photo-19963125.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: 'Direct integration with Saudi electronic health systems. Addresses reactive-only care, limited specialist access outside major cities, and telemedicine that lacks preventive capability.',
         pills: ['Saudi-population-specific'],
+        benefitsLabel: 'What it delivers',
+        benefits: [
+          'Predictive risk flags instead of after-the-fact diagnosis',
+          'Algorithms tuned specifically to Saudi genetics and regional health data',
+          'Direct integration with existing Saudi electronic health systems',
+          'Extends specialist-level insight beyond major cities',
+        ],
+        audience: ['Healthcare providers moving from reactive to preventive care', 'Health authorities building population-level risk models', 'Organisations designing employee health benefits around real data'],
       },
       {
         title: 'The 74% Shift',
@@ -372,6 +416,14 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         image: 'https://images.pexels.com/photos/7578797/pexels-photo-7578797.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         details: 'Flagship campaign framing that reframes healthcare investment from treatment cost to prevention dividend.',
         pills: ['WHO / World Bank sourced'],
+        benefitsLabel: 'The case for prevention',
+        benefits: [
+          'Reframes healthcare investment from treatment cost to prevention dividend',
+          'Built on WHO and World Bank-sourced figures, not guesswork',
+          'Makes the economic case for prevention as clearly as the human one',
+          'Anchors the wider preventive-health initiative in a single, memorable number',
+        ],
+        audience: ['Health policymakers building the case for preventive investment', 'Employers weighing wellbeing spend against long-term cost', 'Organisations communicating why prevention matters, not just what it is'],
       },
       {
         title: 'Wellbeing Is The New KPI',
@@ -386,6 +438,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           'Reduce attrition through measurable engagement gains',
           'Grounded in a proprietary blend of business psychology, the study of self, and human physiology, summarized into one practical leadership overview',
         ],
+        audience: ['HR and People leaders building the business case for wellbeing', 'Executives who need evidence, not just intuition, to invest', 'Organisations aligning wellbeing spend with measurable outcomes'],
       },
     ],
   },
@@ -443,6 +496,15 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           },
         ],
         models: 'Business Psychology, Organizational Behavior and Modern Neuroscience — delivered through British Accredited CPD certification.',
+        benefitsLabel: 'The five pillars',
+        benefits: [
+          'Behavioral Leadership Fundamentals grounded in real organisational behaviour',
+          'Strengths-Based Leadership that builds on what already works',
+          'Interpersonal Leadership skills for trust and psychological safety',
+          'Neuroscience & Organizational Behavior applied to real decisions',
+          'The Psychological Lens on Productivity, addressing stress and procrastination directly',
+        ],
+        audience: ['Senior leaders shaping culture at scale', 'Organisations wanting a UK-accredited, ROI-aligned leadership framework', 'HR and OD teams sponsoring enterprise-wide leadership development'],
       },
       {
         title: 'Shine & Shadow: Strengths & Derailers Diagnostic',
@@ -458,6 +520,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           'Helps leaders unlock intrinsic strengths within their teams rather than fixate on what\'s lacking',
           'Shifts the focus from deficits to growth, aimed at maximum organisational impact',
         ],
+        audience: ['Leaders wanting an honest, confidential read on their own blind spots', 'Organisations pairing strengths work with individual accountability', 'HR teams building a personalised development plan around real data'],
       },
       {
         title: '100 & Rising: The Recognition Covenant',
@@ -475,6 +538,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           'Wellness / counselling advising sessions',
           'Personalised individual Gallup CliftonStrengths® report & debrief',
         ],
+        audience: ['Organisations wanting participation, not just completion, from their teams', 'Wellness Ambassadors and champions embedded across departments', 'HR leaders building a genuine, sponsor-backed culture of recognition'],
       },
       {
         title: 'The Neural Relapse Tax',
@@ -490,6 +554,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           'Bio-Core™ uses neural plasticity to install excellence as the only professional language ever learned',
           'Systemic Performance Calibration turns temporary motivation into permanent, high-performance architecture',
         ],
+        audience: ['Leaders who have watched training investment evaporate within weeks', 'Organisations tired of one-off workshops with no lasting change', 'L&D teams wanting behaviour change backed by neuroscience, not novelty'],
       },
     ],
   },
@@ -1221,6 +1286,13 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         hook: 'Building the confidence, presence and strategic capability of women stepping into senior leadership roles.',
         image: 'https://images.pexels.com/photos/7491147/pexels-photo-7491147.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         pills: ['Leadership', 'SDG 5'],
+        benefitsLabel: 'Key benefits',
+        benefits: [
+          'Build the confidence and presence to lead at senior level',
+          'Strengthen strategic capability and stakeholder influence',
+          'Address the specific barriers women face on the path to leadership',
+        ],
+        audience: ['Women preparing to step into senior leadership roles', 'Organisations building a female leadership pipeline', 'HR teams aligning development with SDG 5 commitments'],
         awarded: 'British Certification from CPD-London.',
       },
       {
@@ -1228,6 +1300,13 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         hook: 'Preparing new graduates and early-career talent for the realities of a professional workplace.',
         image: 'https://images.pexels.com/photos/35487002/pexels-photo-35487002.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         pills: ['Career Readiness', 'Gen Z'],
+        benefitsLabel: 'Key benefits',
+        benefits: [
+          'Bridge the gap between academic learning and workplace reality',
+          'Build professional communication and workplace-readiness skills',
+          'Set early-career habits that compound over a career, not just a first job',
+        ],
+        audience: ['New graduates entering their first professional role', 'Early-career Gen Z employees within their first year', 'Organisations building structured onboarding for young talent'],
         awarded: 'British Certification from CPD-London.',
       },
       {
@@ -1235,6 +1314,13 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         hook: 'Where artificial intelligence meets neuroscience — using AI-driven tools and brain science to lift team productivity.',
         image: 'https://images.pexels.com/photos/17483869/pexels-photo-17483869.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         pills: ['AI', 'Neuroscience', 'Productivity'],
+        benefitsLabel: 'Key benefits',
+        benefits: [
+          'Apply AI-driven tools to real productivity bottlenecks',
+          'Ground technology adoption in neuroscience, not just features',
+          'Lift team output without adding hours or headcount',
+        ],
+        audience: ['Teams adopting AI tools without a clear productivity framework', 'Leaders wanting evidence-based, not hype-driven, AI adoption', 'Organisations pairing technology investment with human-sciences insight'],
         awarded: 'British Certification from CPD-London.',
       },
       {
@@ -1242,6 +1328,13 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         hook: 'A certified standard for running a modern executive office — organisation, discretion and operational excellence.',
         image: 'https://images.pexels.com/photos/6340707/pexels-photo-6340707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         pills: ['Certified', 'Office Management'],
+        benefitsLabel: 'Key benefits',
+        benefits: [
+          'A certified standard for running a modern executive office',
+          'Practical skills in organisation, discretion and operational excellence',
+          'A recognised credential for career progression in office management',
+        ],
+        audience: ['Executive assistants and office managers formalising their skillset', 'Organisations standardising office-management practice', 'Professionals seeking a certified credential for career advancement'],
         awarded: 'British Certification from CPD-London.',
       },
     ],
