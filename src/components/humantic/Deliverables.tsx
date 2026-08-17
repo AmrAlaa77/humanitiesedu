@@ -418,7 +418,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Wellbeing Is The New KPI',
         hook: 'Employee wellbeing has a quantifiable link to business performance across industries and countries worldwide.',
-        image: 'https://images.pexels.com/photos/3860619/pexels-photo-3860619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        videoSrc: '/videos/wellbeing-is-the-new-kpi.mp4',
         details: "Wellbeing is not a nice-to-have — it's a measurable driver of performance, retention and culture, built on the same evidence base as the Kingdom's preventive-health pillar.",
         pills: ['Not a nice-to-have', 'Evidence-backed'],
         benefitsLabel: 'Program Features',
@@ -659,7 +659,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       {
         title: 'Wellbeing Is The New KPI',
         hook: 'Employee wellbeing has a quantifiable link to business performance across industries and countries worldwide.',
-        image: 'https://images.pexels.com/photos/8556604/pexels-photo-8556604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        videoSrc: '/videos/wellbeing-is-the-new-kpi.mp4',
         spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: ['Link wellbeing to performance with a business case leaders trust', 'Apply evidence-backed frameworks to your culture', 'Reduce attrition through measurable engagement gains'],
