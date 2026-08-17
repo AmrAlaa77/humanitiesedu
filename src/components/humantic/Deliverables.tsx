@@ -119,6 +119,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         title: 'Game On™: The Open-Air Boardroom',
         hook: "Real terrain, real pressure, zero slide decks. Gen Z learns to win before they're handed the title.",
         image: 'https://images.pexels.com/photos/7551180/pexels-photo-7551180.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        videoSrc: 'https://videos.pexels.com/video-files/7550500/7550500-hd_1920_1080_30fps.mp4',
         details: 'A 2-day gamified simulation of day-to-day operations built from Microsoft, Saudi Aramco, Google and PepsiCo partnership insight. The "Flash Debrief" turns every task into a live learning milestone.',
         pills: ['Safe-Lab simulation', 'Used by Royal Navy, UK Army'],
         days: [
@@ -174,6 +175,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         title: 'VRify Yourself™: The Science of You',
         hook: 'Gamified VR simulation for self-assessment — our flagship experience.',
         image: 'https://images.pexels.com/photos/7776217/pexels-photo-7776217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        videoSrc: 'https://videos.pexels.com/video-files/7236769/7236769-uhd_1440_2560_24fps.mp4',
         details: '2-day workshop or 5-day journey using embodied cognition to identify and rewrite automatic stress responses tailored to individual triggers and biological instincts.',
         pills: ['Embodied cognition'],
         days: [
@@ -399,6 +401,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         title: 'VitalCore AI: Predictive, Not Reactive',
         hook: 'Proprietary algorithms tuned to Saudi genetics and regional health data.',
         image: 'https://images.pexels.com/photos/19963125/pexels-photo-19963125.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        videoSrc: 'https://videos.pexels.com/video-files/7089956/7089956-uhd_1440_2560_25fps.mp4',
         details: 'Direct integration with Saudi electronic health systems. Addresses reactive-only care, limited specialist access outside major cities, and telemedicine that lacks preventive capability.',
         pills: ['Saudi-population-specific'],
         benefitsLabel: 'What it delivers',
@@ -526,6 +529,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         title: '100 & Rising: The Recognition Covenant',
         hook: 'A fully sponsored wellness-recognition programme, awarded every 100 learners trained.',
         image: 'https://images.pexels.com/photos/15155549/pexels-photo-15155549.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        videoSrc: 'https://videos.pexels.com/video-files/7005882/uhd_24fps.mp4',
         details: 'For every 200 assessments completed, we sponsor incentives that nurture potential and celebrate broad participation — embedding a genuine commitment to wellbeing at every organisational level.',
         pills: ['UN SDG-aligned'],
         benefitsLabel: 'What Wellness Ambassadors receive',
@@ -567,6 +571,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         title: 'Breathe In The Beauty',
         hook: 'A body-mind reset rooted in neurophysiology, for teams ready to reconnect before the next sprint.',
         image: 'https://images.pexels.com/photos/33426373/pexels-photo-33426373.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        videoSrc: 'https://videos.pexels.com/video-files/5992736/5992736-uhd_1440_2560_25fps.mp4',
         spec: ['Retreat · 2 Days, 1 Night', 'In-person, hotel retreat'],
         benefitsLabel: 'Programme features',
         benefits: [
@@ -1220,6 +1225,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         title: 'UAE Leadership',
         hook: "Build the cultural intelligence and people skills required to lead effectively in one of the world's most diverse workplaces.",
         image: 'https://images.pexels.com/photos/9301835/pexels-photo-9301835.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        videoSrc: 'https://videos.pexels.com/video-files/30048213/12888884_1920_1080_30fps.mp4',
         format: '2-Day Regional Workshop',
         pills: ['Cultural Intelligence', 'Leadership', 'People Management'],
         benefitsLabel: "What You'll Learn",
@@ -1251,6 +1257,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         title: 'Saudi Leadership',
         hook: 'Practical people-leadership skills for managers navigating transformation, new workforce expectations and the rapidly changing Saudi workplace.',
         image: 'https://images.pexels.com/photos/38096888/pexels-photo-38096888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        videoSrc: 'https://videos.pexels.com/video-files/18511357/18511357-uhd_1440_2560_30fps.mp4',
         format: '3-Day Flagship Programme',
         pills: ['Leadership', 'People Management', 'Transformation'],
         benefitsLabel: "What You'll Learn",
@@ -1299,6 +1306,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         title: 'Youth Career Development & New Graduates',
         hook: 'Preparing new graduates and early-career talent for the realities of a professional workplace.',
         image: 'https://images.pexels.com/photos/35487002/pexels-photo-35487002.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        videoSrc: 'https://videos.pexels.com/video-files/7712354/7712354-hd_1920_1080_30fps.mp4',
         pills: ['Career Readiness', 'Gen Z'],
         benefitsLabel: 'Key benefits',
         benefits: [
@@ -1313,6 +1321,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         title: 'AI and Human Sciences: AI-Driven & Neuroscience-Based Productivity',
         hook: 'Where artificial intelligence meets neuroscience — using AI-driven tools and brain science to lift team productivity.',
         image: 'https://images.pexels.com/photos/17483869/pexels-photo-17483869.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        videoSrc: 'https://videos.pexels.com/video-files/5854603/5854603-uhd_2732_1440_24fps.mp4',
         pills: ['AI', 'Neuroscience', 'Productivity'],
         benefitsLabel: 'Key benefits',
         benefits: [

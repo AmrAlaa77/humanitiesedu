@@ -2,6 +2,8 @@ import React from 'react';
 import { useInView } from '@/hooks/use-in-view';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
+const SPHERE = 'https://d64gsuwffb70l.cloudfront.net/6a1bff16eb3a4753d1d1427d_1780343239546_12e60a58.png';
+
 const AurionHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   const { ref, inView } = useInView<HTMLDivElement>();
 
@@ -78,10 +80,10 @@ const AurionHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           <div className="absolute w-[30rem] h-[30rem] rounded-full border border-teal-300/15 [mask-image:radial-gradient(circle,transparent_58%,black_60%)]" />
 
           <div
-            className="relative z-10 h-[20rem] w-[20rem] overflow-hidden rounded-3xl border border-dashed border-white/15 flex items-center justify-center sm:h-[25rem] sm:w-[25rem]"
+            className="relative z-10 h-[20rem] w-[20rem] overflow-hidden flex items-center justify-center sm:h-[25rem] sm:w-[25rem]"
             style={{ animation: 'auraFloat 4.5s ease-in-out infinite' }}
           >
-            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Image space</span>
+            <img src={SPHERE} alt="AURION intelligence sphere" className="w-full h-full object-contain drop-shadow-2xl" />
             <div className="absolute -right-2 bottom-8 rounded-2xl border border-white/15 bg-slate-900/80 px-4 py-2.5 text-sm text-white shadow-xl">
               Readiness: <span className="text-cyan-200 font-semibold">75%</span>
             </div>
