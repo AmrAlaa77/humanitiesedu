@@ -254,9 +254,9 @@ const HumanReel: React.FC = () => {
           onMouseEnter={() => !playing && setHovering(true)}
           onMouseLeave={() => setHovering(false)}
           onClick={openReel}
-          className="relative overflow-hidden mx-auto"
+          className="relative overflow-hidden"
           style={{
-            width: 'min(calc(100% - 4cm), calc((100vh - 4cm) * 1400 / 480))',
+            width: 'min(calc(100vw - 4cm), calc((100vh - 4cm) * 1400 / 480))',
             aspectRatio: '1400 / 480',
             cursor: 'none',
             opacity: loaded ? 1 : 0,
