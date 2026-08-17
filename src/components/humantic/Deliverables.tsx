@@ -587,8 +587,8 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         spec: ['Core · 5 Days · In-person', 'Advanced · 8 Weeks · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: [
-          'Identify the internal barriers — limiting patterns, unconscious bias, communication gaps — behind stalled promotions',
-          'Decode leadership derailers, for yourself and your team, using the Neurolead biology-and-physiology framework',
+          'Identify the hidden barriers behind stalled promotions',
+          'Decode your own and your team\'s leadership derailers',
         ],
         audience: [
           'Talented professionals held back by vague promotion feedback',
