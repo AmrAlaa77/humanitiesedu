@@ -100,12 +100,12 @@ const HumanReel: React.FC = () => {
     };
   }, [hovering, playing]);
 
-  const renderVideo = () => (
+  const renderVideo = (withAudio = false) => (
     <video
       className="absolute inset-0 h-full w-full object-cover"
       src={HUMAN_VIDEO}
       autoPlay
-      muted
+      muted={!withAudio}
       loop
       playsInline
       preload="auto"
@@ -256,7 +256,7 @@ const HumanReel: React.FC = () => {
             transition: 'clip-path 700ms cubic-bezier(0.65,0,0.35,1)',
           }}
         >
-          {renderVideo()}
+          {renderVideo(true)}
           <div className="pointer-events-none absolute inset-0 bg-black/25" />
         </div>
       )}
