@@ -103,6 +103,7 @@ const HumanReel: React.FC = () => {
   const renderVideo = (withAudio = false) => (
     <video
       className="absolute inset-0 h-full w-full object-cover"
+      style={{ objectPosition: '75% center' }}
       src={HUMAN_VIDEO}
       autoPlay
       muted={!withAudio}
