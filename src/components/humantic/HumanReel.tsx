@@ -6,45 +6,20 @@ import React, { useEffect, useRef, useState } from 'react';
  * A pitch-black, high-contrast frame: fixed metadata badges in each
  * corner, a live London clock, a scroll marquee, a staggered word-by-word
  * intro line, and the centerpiece — the word "HUMAN" rendered as an SVG
- * luminance mask so the five-clip video reel is visible only *inside* the
- * letterforms (not a separate framed video with text on top). Hovering
+ * luminance mask so the client's own brand video is visible only *inside*
+ * the letterforms (not a separate framed video with text on top). Hovering
  * the word hides the cursor and shows a custom spring-follow "Explore"
  * bubble. No framer-motion dependency (can't install packages in this
  * environment) — motion is hand-rolled with the same ref+rAF technique
  * used elsewhere in this codebase.
  */
 
-interface Clip {
-  label: string;
-  video: string;
-}
+// The user's own original video, replacing the earlier stock-clip crossfade reel.
+const HUMAN_VIDEO = '/videos/human-hero.mp4';
 
-const CLIPS: Clip[] = [
-  { label: 'Elderly Man', video: 'https://videos.pexels.com/video-files/7552530/7552530-hd_1920_1080_25fps.mp4' },
-  { label: 'Female Doctor', video: 'https://videos.pexels.com/video-files/7904584/7904584-hd_1920_1080_25fps.mp4' },
-  { label: 'Male Doctor', video: 'https://videos.pexels.com/video-files/5453690/5453690-uhd_1440_2560_25fps.mp4' },
-  { label: 'Female Researcher', video: 'https://videos.pexels.com/video-files/8513979/8513979-uhd_1440_2560_24fps.mp4' },
-  { label: 'Male Researcher', video: 'https://videos.pexels.com/video-files/8326541/8326541-uhd_1440_2560_30fps.mp4' },
-  { label: 'Male Tech Professional', video: 'https://videos.pexels.com/video-files/8202014/8202014-uhd_2560_1440_25fps.mp4' },
-  { label: 'Female Tech Professional', video: 'https://videos.pexels.com/video-files/6876321/6876321-hd_1920_1080_25fps.mp4' },
-  { label: 'Young Professional Man', video: 'https://videos.pexels.com/video-files/8348909/8348909-uhd_1440_2560_25fps.mp4' },
-  { label: 'Confident Professional Woman', video: 'https://videos.pexels.com/video-files/8546653/8546653-uhd_1440_2732_25fps.mp4' },
-  { label: 'Swimmer', video: 'https://videos.pexels.com/video-files/8050158/8050158-uhd_1440_2560_25fps.mp4' },
-  { label: 'Young Boy', video: 'https://videos.pexels.com/video-files/8471499/8471499-uhd_2732_1440_25fps.mp4' },
-  { label: 'Graduate', video: 'https://videos.pexels.com/video-files/11670766/11670766-hd_1920_1080_24fps.mp4' },
-  { label: 'Professional in Hijab', video: 'https://videos.pexels.com/video-files/7583799/7583799-hd_1080_1920_25fps.mp4' },
-  { label: 'Professional in Turban', video: 'https://videos.pexels.com/video-files/4333083/4333083-uhd_2560_1440_25fps.mp4' },
-  { label: 'Black Professional', video: 'https://videos.pexels.com/video-files/8488869/8488869-hd_1920_1080_25fps.mp4' },
-  { label: 'East Asian Professional', video: 'https://videos.pexels.com/video-files/8454310/8454310-uhd_1440_2732_25fps.mp4' },
-  { label: 'Stylish Young Professional', video: 'https://videos.pexels.com/video-files/9198209/9198209-uhd_2732_1440_25fps.mp4' },
-  { label: 'Teenager', video: 'https://videos.pexels.com/video-files/34677542/14698092_1920_1080_25fps.mp4' },
-  { label: 'Boy in Astronaut Suit', video: 'https://videos.pexels.com/video-files/5511862/5511862-uhd_1440_2560_24fps.mp4' },
-];
-
-const CLIP_MS = 900;
-const FADE_MS = 220;
-
-const HEADLINE_WORDS = 'We shape brand identities and build digital experiences that connect.'.split(' ');
+const HEADLINE_WORDS =
+  "Digital and deeply human: we forge neuroscience, medicine, and behavioral science into awareness for all — and a wearable that catches what's shifting before your body has to say it. Hope, preached through science."
+    .split(' ');
 
 const LondonClock: React.FC = () => {
   const [time, setTime] = useState('');
@@ -75,9 +50,6 @@ const LondonClock: React.FC = () => {
 const HumanReel: React.FC = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
 
-  const [current, setCurrent] = useState(0);
-  const [next, setNext] = useState(1 % CLIPS.length);
-  const [transitioning, setTransitioning] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [playing, setPlaying] = useState(false); // true while the reel is expanded full-page
@@ -98,24 +70,6 @@ const HumanReel: React.FC = () => {
     const id = requestAnimationFrame(() => setLoaded(true));
     return () => cancelAnimationFrame(id);
   }, []);
-
-  // Clip cycle: hold, then a TRUE crossfade — current fades out while next fades in
-  // at the same time, so the word is never fully blank between clips.
-  useEffect(() => {
-    const startFade = setTimeout(() => setTransitioning(true), CLIP_MS - FADE_MS);
-    const finishFade = setTimeout(() => {
-      setCurrent((c) => {
-        const nextCurrent = (c + 1) % CLIPS.length;
-        setNext((nextCurrent + 1) % CLIPS.length); // always locked to current+1, never drifts
-        return nextCurrent;
-      });
-      setTransitioning(false);
-    }, CLIP_MS);
-    return () => {
-      clearTimeout(startFade);
-      clearTimeout(finishFade);
-    };
-  }, [current]);
 
   // Custom floating cursor: spring-lerp follow, while hovering the masked word or while the reel is playing full-page
   useEffect(() => {
@@ -145,28 +99,17 @@ const HumanReel: React.FC = () => {
     };
   }, [hovering, playing]);
 
-  const renderClipStack = () =>
-    CLIPS.map((clip, i) => {
-      let opacity = 0;
-      if (i === current) opacity = transitioning ? 0 : 1;
-      else if (i === next) opacity = transitioning ? 1 : 0;
-      return (
-        <video
-          key={clip.label}
-          className="absolute inset-0 h-full w-full object-cover transition-opacity ease-in-out"
-          style={{
-            opacity,
-            transitionDuration: `${FADE_MS}ms`,
-          }}
-          src={clip.video}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        />
-      );
-    });
+  const renderVideo = () => (
+    <video
+      className="absolute inset-0 h-full w-full object-cover"
+      src={HUMAN_VIDEO}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+    />
+  );
 
   return (
     <section id="top" className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden border-x border-[#1C1C1C] bg-[#0D0D0D] text-white">
@@ -230,7 +173,7 @@ const HumanReel: React.FC = () => {
       </svg>
 
       {/* Intro line — staggered word-by-word reveal */}
-      <div className="relative z-20 mx-auto mt-28 max-w-md px-6 text-center sm:mt-32">
+      <div className="relative z-20 mx-auto mt-28 max-w-2xl px-6 text-center sm:mt-32">
         <p className="text-sm leading-relaxed text-white/60 sm:text-base">
           {HEADLINE_WORDS.map((word, i) => (
             <span
@@ -281,7 +224,7 @@ const HumanReel: React.FC = () => {
               maskRepeat: 'no-repeat',
             }}
           >
-            {renderClipStack()}
+            {renderVideo()}
           </div>
         </div>
       </div>
@@ -302,7 +245,7 @@ const HumanReel: React.FC = () => {
             transition: 'clip-path 700ms cubic-bezier(0.65,0,0.35,1)',
           }}
         >
-          {renderClipStack()}
+          {renderVideo()}
           <div className="pointer-events-none absolute inset-0 bg-black/25" />
         </div>
       )}
