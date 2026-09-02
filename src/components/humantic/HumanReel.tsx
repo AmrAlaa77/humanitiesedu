@@ -17,9 +17,10 @@ import React, { useEffect, useRef, useState } from 'react';
 // The user's own original video, replacing the earlier stock-clip crossfade reel.
 const HUMAN_VIDEO = '/videos/human-hero.mp4';
 
-const HEADLINE_WORDS =
-  "Digital and deeply human: we forge neuroscience, medicine, and behavioral science into awareness for all — and a wearable that catches what's shifting before your body has to say it. Hope, preached through science."
-    .split(' ');
+const HEADLINE_MAIN =
+  "Digital and deeply human: we forge neuroscience, medicine, and behavioral science into preventative medicine and awareness for all — a wearable that catches what's shifting before your body has to say it.";
+const HEADLINE_WORDS = HEADLINE_MAIN.split(' ');
+const HEADLINE_TAGLINE = 'Hope, preached through science.';
 
 const LondonClock: React.FC = () => {
   const [time, setTime] = useState('');
@@ -172,8 +173,8 @@ const HumanReel: React.FC = () => {
         </defs>
       </svg>
 
-      {/* Intro line — staggered word-by-word reveal */}
-      <div className="relative z-20 mx-auto mt-28 max-w-2xl px-6 text-center sm:mt-32">
+      {/* Intro line — staggered word-by-word reveal, closing on a bolded standalone tagline */}
+      <div className="relative z-20 mx-auto mt-28 max-w-3xl px-6 text-center sm:mt-32">
         <p className="text-sm leading-relaxed text-white/60 sm:text-base">
           {HEADLINE_WORDS.map((word, i) => (
             <span
@@ -188,6 +189,16 @@ const HumanReel: React.FC = () => {
               {word}
             </span>
           ))}
+        </p>
+        <p
+          className="mt-3 text-sm font-semibold text-white sm:text-base"
+          style={{
+            opacity: loaded ? 1 : 0,
+            transform: loaded ? 'translateY(0)' : 'translateY(0.5em)',
+            transition: `opacity .5s ease ${HEADLINE_WORDS.length * 0.04 + 0.15}s, transform .5s ease ${HEADLINE_WORDS.length * 0.04 + 0.15}s`,
+          }}
+        >
+          {HEADLINE_TAGLINE}
         </p>
       </div>
 
