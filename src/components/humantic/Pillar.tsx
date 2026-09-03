@@ -1,5 +1,6 @@
 import React from 'react';
 import { Brain, Activity, Waves, GitBranch, Users, Gauge } from 'lucide-react';
+import { useInView } from '@/hooks/use-in-view';
 
 const metrics = [
   { icon: Waves, label: 'Social contagion dynamics', value: 'Live mapping' },
@@ -8,17 +9,30 @@ const metrics = [
   { icon: Gauge, label: 'Cognitive load index', value: '0–100 scale' },
 ];
 
-const Pillar: React.FC = () => (
-  <section id="pillar" className="relative py-24 overflow-hidden">
-    <div className="absolute inset-0 -z-10">
-      <div className="absolute top-1/4 left-1/3 w-[40rem] h-[40rem] rounded-full bg-emerald-500/[0.07] blur-[140px]" />
-      <div className="absolute bottom-0 right-1/4 w-[32rem] h-[32rem] rounded-full bg-cyan-500/[0.06] blur-[120px]" />
-    </div>
+const Pillar: React.FC = () => {
+  const left = useInView<HTMLDivElement>();
+  const right = useInView<HTMLDivElement>();
 
-    <div className="max-w-7xl mx-auto px-5 sm:px-8">
-      <div className="grid lg:grid-cols-2 gap-14 items-center">
-        {/* Left — narrative */}
-        <div>
+  return (
+    <section id="pillar" className="relative py-24 overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/4 left-1/3 w-[40rem] h-[40rem] rounded-full bg-emerald-500/[0.07] blur-[140px]" style={{ animation: 'pillarDrift 14s ease-in-out infinite' }} />
+        <div className="absolute bottom-0 right-1/4 w-[32rem] h-[32rem] rounded-full bg-cyan-500/[0.06] blur-[120px]" style={{ animation: 'pillarDrift 18s ease-in-out infinite reverse' }} />
+      </div>
+      <style>{`
+        @keyframes pillarDrift {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(3%, -4%) scale(1.08); }
+        }
+      `}</style>
+
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        <div className="grid lg:grid-cols-2 gap-14 items-center">
+          {/* Left — narrative */}
+          <div
+            ref={left.ref}
+            className={`transition-all duration-700 ease-out ${left.inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
+          >
           <span className="inline-flex items-center gap-2 text-emerald-400 text-sm font-semibold uppercase tracking-widest">
             <span className="tabular-nums text-emerald-300/70">04</span>
             <span className="h-px w-6 bg-emerald-400/40" />
@@ -46,10 +60,15 @@ const Pillar: React.FC = () => (
               Organisational behavior
             </span>
           </div>
-        </div>
+          </div>
 
-        {/* Right — metric panel */}
-        <div className="relative rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-7 sm:p-9 backdrop-blur">
+          {/* Right — metric panel */}
+          <div
+            ref={right.ref}
+            className={`relative rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-7 sm:p-9 backdrop-blur transition-all duration-700 ease-out ${
+              right.inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+            }`}
+          >
           <div className="flex items-center justify-between mb-7">
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-400/20 to-cyan-500/20 border border-emerald-400/20 flex items-center justify-center">
@@ -84,13 +103,17 @@ const Pillar: React.FC = () => (
               <span className="text-emerald-300 text-sm font-semibold tabular-nums">87%</span>
             </div>
             <div className="h-2 rounded-full bg-white/10 overflow-hidden">
-              <div className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400" style={{ width: '87%' }} />
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 transition-[width] duration-1000 ease-out"
+                style={{ width: right.inView ? '87%' : '0%' }}
+              />
             </div>
+          </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Pillar;
