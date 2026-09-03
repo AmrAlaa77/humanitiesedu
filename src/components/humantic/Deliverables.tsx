@@ -1376,6 +1376,7 @@ const initiatives: Record<string, Initiative> = {
     features: [
       "Indeed's Work Wellbeing 100, built with the University of Oxford, tracks the corporate cultures that put employee wellbeing first — and those cultures have gone on to outperform the broader stock market",
       "Aligned with Saudi Arabia's Quality of Life Program under Vision 2030, the national benchmark for workplace and community wellbeing",
+      'Part of our Vision 2030 horizon: a safer place for all — a global health intelligence layer that protects, prevents and empowers humanity at scale, workplace by workplace',
     ],
   },
   individuals: {
