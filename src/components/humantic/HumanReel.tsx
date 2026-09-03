@@ -280,6 +280,16 @@ const HumanReel: React.FC = () => {
             className="pointer-events-none absolute inset-x-0 bottom-0 h-6"
             style={{ background: 'linear-gradient(to top, #0D0D0D 0%, #0D0D0D 35%, transparent 100%)' }}
           />
+          {/* Same seam confirmed live on the left/right edges too (DOM-inspected on the deployed site --
+              no bordered element sits there, so it's this same compositing seam, just on the other axis). */}
+          <div
+            className="pointer-events-none absolute inset-y-0 left-0 w-6"
+            style={{ background: 'linear-gradient(to right, #0D0D0D 0%, #0D0D0D 35%, transparent 100%)' }}
+          />
+          <div
+            className="pointer-events-none absolute inset-y-0 right-0 w-6"
+            style={{ background: 'linear-gradient(to left, #0D0D0D 0%, #0D0D0D 35%, transparent 100%)' }}
+          />
         </div>
       </div>
 
