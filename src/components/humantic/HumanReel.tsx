@@ -255,9 +255,17 @@ const HumanReel: React.FC = () => {
           >
             {renderVideo()}
           </div>
-          {/* Cover bars: hide thin line artifacts right at the top and bottom edges of the video */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-2 bg-[#0D0D0D]" />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2 bg-[#0D0D0D]" />
+          {/* Feathered cover fades: hide thin line artifacts baked into the video near the top/bottom
+              edges. A soft gradient (rather than a hard-edge bar) covers a deeper band without visibly
+              chopping the letter tops/bottoms, in case the line sits a few px inside the true edge. */}
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0 h-6"
+            style={{ background: 'linear-gradient(to bottom, #0D0D0D 0%, #0D0D0D 35%, transparent 100%)' }}
+          />
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-6"
+            style={{ background: 'linear-gradient(to top, #0D0D0D 0%, #0D0D0D 35%, transparent 100%)' }}
+          />
         </div>
       </div>
 
