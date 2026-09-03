@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Play, X, Film, Share2, Filter } from 'lucide-react';
 import { Reel, loadReels } from '@/lib/reels';
+import { useInView } from '@/hooks/use-in-view';
 
 const cats = ['All', 'Explainer', 'Tech', 'Health', 'Lifestyle'];
 
@@ -43,6 +44,13 @@ const Showcase: React.FC = () => {
   const [active, setActive] = useState('All');
   const [open, setOpen] = useState<Reel | null>(null);
   const [reels, setReels] = useState<Reel[]>(() => loadReels());
+  const grid = useInView<HTMLDivElement>();
+  const [closing, setClosing] = useState(false);
+
+  const closeModal = () => {
+    setClosing(true);
+    window.setTimeout(() => { setOpen(null); setClosing(false); }, 200);
+  };
 
   useEffect(() => {
     const refresh = () => setReels(loadReels());
@@ -114,9 +122,13 @@ const Showcase: React.FC = () => {
             </div>
           </div>
         ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {filtered.map((r) => (
-              <div key={r.id} className="group relative rounded-3xl overflow-hidden border border-white/10 aspect-[9/13] cursor-pointer bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950"
+          <div ref={grid.ref} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {filtered.map((r, i) => (
+              <div key={r.id}
+                style={{ transitionDelay: grid.inView ? `${i * 70}ms` : '0ms' }}
+                className={`group relative rounded-3xl overflow-hidden border border-white/10 aspect-[9/13] cursor-pointer bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 transition-all duration-700 ease-out hover:border-emerald-400/40 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-emerald-500/10 ${
+                  grid.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
                 onClick={() => setOpen(r)}>
                 <img
                   src={r.poster} alt={r.title} loading="lazy"
@@ -131,7 +143,7 @@ const Showcase: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30" />
 
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center group-hover:scale-110 transition">
+                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center transition-transform duration-300 group-hover:scale-125 group-hover:bg-emerald-400/30 group-hover:border-emerald-300/60">
                     <Play className="w-6 h-6 text-white fill-white ml-0.5" />
                   </div>
                 </div>
@@ -159,9 +171,15 @@ const Showcase: React.FC = () => {
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm" onClick={() => setOpen(null)}>
-          <div className="relative w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => setOpen(null)} className="absolute -top-12 right-0 text-white/80 hover:text-white">
+        <div
+          className={`fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm transition-opacity duration-200 ${closing ? 'opacity-0' : 'opacity-100'}`}
+          onClick={closeModal}
+        >
+          <div
+            className={`relative w-full max-w-sm transition-all duration-200 ${closing ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button onClick={closeModal} className="absolute -top-12 right-0 text-white/80 transition-transform hover:text-white hover:rotate-90">
               <X className="w-7 h-7" />
             </button>
             <div className="relative rounded-3xl overflow-hidden aspect-[9/16] bg-black border border-white/10 shadow-2xl">

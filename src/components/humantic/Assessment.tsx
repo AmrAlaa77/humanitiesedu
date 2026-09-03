@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, Check, ShieldCheck, Sparkles, Lock } from 'lucide-react';
 import PaymentModal from '@/components/humantic/PaymentModal';
+import { useInView } from '@/hooks/use-in-view';
 
 interface Instrument {
   index: string;
@@ -52,6 +53,7 @@ const instruments: Instrument[] = [
 
 const Assessment: React.FC = () => {
   const [checkout, setCheckout] = useState<{ title: string; price: number; note?: string } | null>(null);
+  const grid = useInView<HTMLDivElement>();
 
   return (
     <section id="assessment" className="relative py-24">
@@ -74,14 +76,17 @@ const Assessment: React.FC = () => {
             </blockquote>
           </div>
 
-          <div className="mt-14 grid lg:grid-cols-2 gap-8 items-stretch">
-            {instruments.map((it) => (
+          <div ref={grid.ref} className="mt-14 grid lg:grid-cols-2 gap-8 items-stretch">
+            {instruments.map((it, i) => (
               <div
                 key={it.title}
-                className={`relative flex flex-col rounded-2xl border p-8 sm:p-10 ${
+                style={{ transitionDelay: grid.inView ? `${i * 120}ms` : '0ms' }}
+                className={`group relative flex flex-col rounded-2xl border p-8 sm:p-10 transition-all duration-700 ease-out hover:-translate-y-1.5 ${
+                  grid.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                } ${
                   it.primary
-                    ? 'border-cyan-400/30 bg-gradient-to-b from-cyan-500/[0.06] to-white/[0.02]'
-                    : 'border-white/10 bg-white/[0.02]'
+                    ? 'border-cyan-400/30 bg-gradient-to-b from-cyan-500/[0.06] to-white/[0.02] hover:border-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-500/10'
+                    : 'border-white/10 bg-white/[0.02] hover:border-white/20 hover:shadow-2xl hover:shadow-black/20'
                 }`}
               >
                 <span
@@ -117,15 +122,15 @@ const Assessment: React.FC = () => {
                   </div>
                   <button
                     onClick={() => setCheckout({ title: it.title, price: it.price, note: it.priceNote })}
-                    className={`mt-6 group inline-flex w-full items-center justify-center gap-2 rounded-lg px-6 py-4 text-sm font-semibold transition ${
+                    className={`mt-6 group/btn inline-flex w-full items-center justify-center gap-2 rounded-lg px-6 py-4 text-sm font-semibold transition-all duration-200 active:scale-[0.98] ${
                       it.primary
-                        ? 'bg-gradient-to-r from-emerald-400 to-blue-500 text-white hover:opacity-90'
-                        : 'border border-white/15 text-white hover:bg-white/[0.06]'
+                        ? 'bg-gradient-to-r from-emerald-400 to-blue-500 text-white hover:opacity-90 hover:-translate-y-0.5'
+                        : 'border border-white/15 text-white hover:bg-white/[0.06] hover:-translate-y-0.5'
                     }`}
                   >
                     <Lock className="h-4 w-4" />
                     {it.cta}
-                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                   </button>
                   <p className="mt-3 text-center text-xs text-slate-500">
                     Access unlocks immediately after payment.
