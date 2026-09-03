@@ -25,9 +25,13 @@ const AurionHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
       >
         {/* Copy */}
         <div>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-teal-300/30 bg-white/5 text-teal-200 text-xs font-medium tracking-wide">
-
-            <Sparkles className="w-3.5 h-3.5" /> The next generation of wearable intelligence
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-teal-300/30 bg-white/5 text-teal-200 text-xs font-medium tracking-wide">
+              <Sparkles className="w-3.5 h-3.5" /> The next generation of wearable intelligence
+            </div>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/[0.07] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-300">
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" /> Pre-Launch &middot; In Motion
+            </span>
           </div>
           <h1 className="mt-6 text-5xl sm:text-7xl font-bold tracking-tight leading-[0.95]">
             <span className="bg-gradient-to-br from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">AURION</span>
