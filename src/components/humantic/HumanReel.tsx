@@ -100,10 +100,10 @@ const HumanReel: React.FC = () => {
     };
   }, [hovering, playing]);
 
-  // On-screen text in the source video starts at 00:10.72 — the background
+  // On-screen text in the source video starts at 00:10.69 — the background
   // masked loop must never reach it, so it loops back to 0 just before that
   // point instead of relying on the file's natural end.
-  const TEXT_START = 10.72;
+  const TEXT_START = 10.69;
 
   const renderVideo = (withAudio = false) => (
     <video
