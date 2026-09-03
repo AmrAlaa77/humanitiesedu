@@ -100,6 +100,11 @@ const HumanReel: React.FC = () => {
     };
   }, [hovering, playing]);
 
+  // On-screen text in the source video starts at 00:10.72 — the background
+  // masked loop must never reach it, so it loops back to 0 just before that
+  // point instead of relying on the file's natural end.
+  const TEXT_START = 10.72;
+
   const renderVideo = (withAudio = false) => (
     <video
       className="absolute inset-0 h-full w-full object-cover"
@@ -107,9 +112,18 @@ const HumanReel: React.FC = () => {
       src={HUMAN_VIDEO}
       autoPlay
       muted={!withAudio}
-      loop
+      loop={withAudio}
       playsInline
       preload="auto"
+      onTimeUpdate={
+        withAudio
+          ? undefined
+          : (e) => {
+              if (e.currentTarget.currentTime >= TEXT_START) {
+                e.currentTarget.currentTime = 0;
+              }
+            }
+      }
     />
   );
 
