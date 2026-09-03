@@ -227,6 +227,13 @@ const HumanReel: React.FC = () => {
         </p>
       </div>
 
+      {/* Seam cover: the thin line reported here sits wider than the masked video box itself and
+          didn't move when the video was rescaled, so it isn't the video -- it's a hairline rendering
+          seam Chrome draws at the boundary between this flex row and the one above it (a known
+          artifact where adjacent elements land on separate GPU compositing layers). A solid full-width
+          bar in the same seam position, in normal document flow, papers over it regardless of cause. */}
+      <div className="relative z-20 -mt-2 h-4 w-full bg-[#0D0D0D]" />
+
       {/* The word HUMAN — video visible only inside the letterforms */}
       <div className="relative z-10 flex flex-1 items-center justify-center px-2">
         <div
