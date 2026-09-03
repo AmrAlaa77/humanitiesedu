@@ -108,10 +108,17 @@ const HumanReel: React.FC = () => {
   // relying on the file's natural end.
   const TEXT_START = 9.67;
 
+  // withAudio=false is the masked background loop: scaled up slightly so its edges bleed past the
+  // mask's letter strokes on every side. Whatever is producing the thin line at the top/bottom edge --
+  // baked into the source frame, or a compositing seam from the CSS mask itself -- this pushes it
+  // outside the visible letterform area instead of trying to paint over it after the fact.
   const renderVideo = (withAudio = false) => (
     <video
       className="absolute inset-0 h-full w-full object-cover"
-      style={{ objectPosition: 'center center' }}
+      style={{
+        objectPosition: 'center center',
+        transform: withAudio ? undefined : 'scale(1.08)',
+      }}
       src={HUMAN_VIDEO}
       autoPlay
       muted={!withAudio}
