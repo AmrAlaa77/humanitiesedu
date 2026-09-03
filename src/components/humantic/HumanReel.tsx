@@ -255,6 +255,8 @@ const HumanReel: React.FC = () => {
           >
             {renderVideo()}
           </div>
+          {/* Cover bar: hides a thin line artifact right at the bottom edge of the video */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2 bg-[#0D0D0D]" />
         </div>
       </div>
 
