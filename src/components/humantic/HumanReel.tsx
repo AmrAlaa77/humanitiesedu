@@ -209,24 +209,14 @@ const HumanReel: React.FC = () => {
           ))}
         </p>
         <p
-          className="mt-3 text-sm font-semibold text-white sm:text-base"
+          className="mt-3 text-sm font-semibold text-white sm:text-base whitespace-nowrap"
           style={{
             opacity: loaded ? 1 : 0,
             transform: loaded ? 'translateY(0)' : 'translateY(0.5em)',
             transition: `opacity .5s ease ${HEADLINE_WORDS.length * 0.04 + 0.15}s, transform .5s ease ${HEADLINE_WORDS.length * 0.04 + 0.15}s`,
           }}
         >
-          {HEADLINE_TAGLINE_1}
-        </p>
-        <p
-          className="mt-1 text-sm font-semibold text-white sm:text-base"
-          style={{
-            opacity: loaded ? 1 : 0,
-            transform: loaded ? 'translateY(0)' : 'translateY(0.5em)',
-            transition: `opacity .5s ease ${HEADLINE_WORDS.length * 0.04 + 0.25}s, transform .5s ease ${HEADLINE_WORDS.length * 0.04 + 0.25}s`,
-          }}
-        >
-          {HEADLINE_TAGLINE_2}
+          {HEADLINE_TAGLINE_1} {HEADLINE_TAGLINE_2}
         </p>
       </div>
 
