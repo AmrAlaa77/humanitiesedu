@@ -248,7 +248,7 @@ const HumanReel: React.FC = () => {
             top: '50%',
             marginLeft: 'auto',
             marginRight: 'auto',
-            width: 'min(calc(100vw - 4cm), calc((100vh - 4cm) * 1400 / 480))',
+            width: 'min(calc(100vw - 1.5cm), calc((100vh - 1.5cm) * 1400 / 480))',
             aspectRatio: '1400 / 480',
             cursor: 'none',
             opacity: loaded ? 1 : 0,
