@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/humantic/Navbar';
 import HumanReel from '@/components/humantic/HumanReel';
+import AwarenessJourney from '@/components/humantic/AwarenessJourney';
 import NarrativeReel from '@/components/humantic/NarrativeReel';
 import Hero from '@/components/humantic/Hero';
 import Features from '@/components/humantic/Features';
@@ -41,8 +42,9 @@ const AppLayout: React.FC = () => {
       <div className="relative z-10">
         <Navbar onCta={() => setModalOpen(true)} />
         <main>
-          {/* HumanReel is the new first page; NarrativeReel is now the second page */}
+          {/* HumanReel is the first page; AwarenessJourney sits directly after it, NarrativeReel follows */}
           <HumanReel />
+          <AwarenessJourney />
           <NarrativeReel onCta={() => setModalOpen(true)} />
           <Hero onCta={() => setModalOpen(true)} />
 
