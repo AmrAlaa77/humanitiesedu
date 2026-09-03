@@ -37,9 +37,9 @@ const AccessModal: React.FC<{ open: boolean; onClose: () => void }> = ({ open, o
   };
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={onClose}>
-      <div className="relative w-full max-w-md rounded-3xl border border-white/10 bg-slate-900 p-8" onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-5 right-5 text-slate-400 hover:text-white"><X className="w-5 h-5" /></button>
+    <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in-0 duration-200" onClick={onClose}>
+      <div className="relative w-full max-w-md rounded-3xl border border-white/10 bg-slate-900 p-8 animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-2 duration-200" onClick={(e) => e.stopPropagation()}>
+        <button onClick={onClose} className="absolute top-5 right-5 text-slate-400 transition-all hover:text-white hover:rotate-90"><X className="w-5 h-5" /></button>
 
         {status === 'done' ? (
           <div className="text-center py-6">
@@ -61,14 +61,14 @@ const AccessModal: React.FC<{ open: boolean; onClose: () => void }> = ({ open, o
               <input
                 value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder="Full name" required
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-400"
+                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder:text-slate-500 transition-colors focus:outline-none focus:border-emerald-400 focus:bg-white/[0.07]"
               />
               <input
                 type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
                 placeholder="Email address" required
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-400"
+                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder:text-slate-500 transition-colors focus:outline-none focus:border-emerald-400 focus:bg-white/[0.07]"
               />
-              <button disabled={status === 'loading'} className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 font-semibold flex items-center justify-center gap-2 disabled:opacity-60">
+              <button disabled={status === 'loading'} className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 font-semibold flex items-center justify-center gap-2 transition-transform duration-150 hover:opacity-90 active:scale-[0.98] disabled:opacity-60">
                 {status === 'loading' ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Request Access'}
               </button>
             </form>

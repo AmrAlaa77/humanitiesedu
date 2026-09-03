@@ -64,14 +64,14 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ open, onClose, product }) =
 
   return (
     <div
-      className="fixed inset-0 z-[80] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-[80] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in-0 duration-200"
       onClick={close}
     >
       <div
-        className="relative w-full max-w-md rounded-3xl border border-white/10 bg-slate-900 p-8"
+        className="relative w-full max-w-md rounded-3xl border border-white/10 bg-slate-900 p-8 animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-2 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
-        <button onClick={close} className="absolute top-5 right-5 text-slate-400 hover:text-white">
+        <button onClick={close} className="absolute top-5 right-5 text-slate-400 transition-all hover:text-white hover:rotate-90">
           <X className="w-5 h-5" />
         </button>
 

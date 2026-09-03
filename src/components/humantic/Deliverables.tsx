@@ -1605,12 +1605,12 @@ const OutlineModal: React.FC<{ item: Deliverable | null; onClose: () => void }> 
   const hasRealOutline = Boolean(item.days);
 
   return (
-    <div className="fixed inset-0 z-[90] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-[90] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in-0 duration-200" onClick={onClose}>
       <div
-        className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl border border-white/10 bg-slate-950 p-8 sm:p-10"
+        className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl border border-white/10 bg-slate-950 p-8 sm:p-10 animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-2 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
-        <button onClick={onClose} className="absolute top-6 right-6 text-slate-400 hover:text-white">
+        <button onClick={onClose} className="absolute top-6 right-6 text-slate-400 transition-all hover:text-white hover:rotate-90">
           <X className="w-5 h-5" />
         </button>
 
@@ -1727,10 +1727,10 @@ const Deliverables: React.FC = () => {
               <button
                 key={c.key}
                 onClick={() => setActive(c.key)}
-                className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium transition ${
+                className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 active:scale-95 ${
                   active === c.key
-                    ? 'bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950'
-                    : 'border border-white/15 text-slate-300 hover:bg-white/5'
+                    ? 'bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 shadow-lg shadow-emerald-500/25 scale-105'
+                    : 'border border-white/15 text-slate-300 hover:bg-white/5 hover:border-white/30'
                 }`}
               >
                 <c.icon className="w-3.5 h-3.5" /> {c.label}
@@ -1741,7 +1741,7 @@ const Deliverables: React.FC = () => {
 
         {initiatives[active] && <InitiativeBanner initiative={initiatives[active]} />}
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div key={active} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 animate-in fade-in-0 slide-in-from-bottom-2 duration-300">
           {current.items.map((item) => (
             <DeliverableCard key={item.title} item={item} onOutline={setOutlineItem} />
           ))}
