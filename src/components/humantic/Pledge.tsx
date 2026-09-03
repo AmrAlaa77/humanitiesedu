@@ -27,7 +27,7 @@ const Pledge: React.FC = () => (
 
       <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
         {pledgeItems.map((p) => (
-          <div key={p.label} className="bg-slate-950 p-6">
+          <div key={p.label} className="bg-slate-950 p-6 transition-colors duration-300 hover:bg-emerald-500/[0.05]">
             <p className="text-emerald-400 text-xs font-bold uppercase tracking-widest mb-2">{p.label}</p>
             <p className="text-slate-300 text-sm leading-relaxed">{p.desc}</p>
           </div>

@@ -78,7 +78,7 @@ const Founder: React.FC = () => (
             <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">Sectors Served</p>
             <div className="flex flex-wrap gap-2">
               {sectors.map((s) => (
-                <span key={s} className="text-xs font-medium text-slate-300 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-full">
+                <span key={s} className="text-xs font-medium text-slate-300 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-full transition-all duration-200 hover:border-emerald-400/40 hover:text-white hover:bg-emerald-400/10">
                   {s}
                 </span>
               ))}
@@ -90,8 +90,8 @@ const Founder: React.FC = () => (
         <div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
             {stats.map((s) => (
-              <div key={s.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center">
-                <div className="text-3xl font-bold text-white">{s.value}</div>
+              <div key={s.label} className="group rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.05]">
+                <div className="text-3xl font-bold text-white transition-transform duration-300 group-hover:scale-110">{s.value}</div>
                 <div className="mt-1.5 text-[11px] text-slate-500 leading-tight">{s.label}</div>
               </div>
             ))}
@@ -99,8 +99,8 @@ const Founder: React.FC = () => (
 
           <div className="grid sm:grid-cols-2 gap-4 mb-10">
             {credentials.map((c) => (
-              <div key={c.title} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-                <div className="w-10 h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-4">
+              <div key={c.title} className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.04]">
+                <div className="w-10 h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                   <c.icon className="w-5 h-5 text-emerald-300" />
                 </div>
                 <p className="text-white font-semibold mb-2">{c.title}</p>

@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
                     className="w-full pl-9 pr-3 py-2.5 rounded-full bg-white/5 border border-white/15 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-emerald-400"
                   />
                 </div>
-                <button disabled={status === 'loading'} className="px-5 py-2.5 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 text-sm font-semibold disabled:opacity-60">
+                <button disabled={status === 'loading'} className="px-5 py-2.5 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 text-sm font-semibold transition-transform duration-150 hover:opacity-90 active:scale-95 disabled:opacity-60">
                   {status === 'loading' ? <Loader2 className="w-4 h-4 animate-spin" /> : status === 'done' ? <Check className="w-4 h-4" /> : 'Join'}
                 </button>
               </div>
@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
               <h4 className="text-white font-semibold text-sm mb-4">{c.h}</h4>
               <ul className="space-y-2.5">
                 {c.items.map((i) => (
-                  <li key={i}><a href="#" className="text-slate-400 text-sm hover:text-emerald-300 transition">{i}</a></li>
+                  <li key={i}><a href="#" className="text-slate-400 text-sm transition-all duration-200 hover:text-emerald-300 hover:pl-1">{i}</a></li>
                 ))}
               </ul>
             </div>
@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
           <div className="flex items-center gap-4">
             <Link to="/admin" className="text-slate-500 text-sm hover:text-emerald-300 transition mr-2">Team Admin</Link>
             {[Instagram, Twitter, Linkedin, Youtube].map((Icon, i) => (
-              <a key={i} href="#" className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-slate-400 hover:text-white hover:border-emerald-400 transition">
+              <a key={i} href="#" className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-slate-400 transition-all duration-200 hover:text-white hover:border-emerald-400 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-emerald-500/20">
                 <Icon className="w-4 h-4" />
               </a>
             ))}
