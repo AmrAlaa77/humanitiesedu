@@ -117,6 +117,12 @@
   @apply text-sm font-mono text-primary;
 }
 
+/* Keep anchor-linked sections from landing flush under the fixed navbar,
+   both for JS-driven scrollIntoView and plain #hash navigation. */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
 .markdown-preview h1,
 .markdown-preview h2,
 .markdown-preview h3,
