@@ -1,5 +1,6 @@
 import React from 'react';
 import { HeartPulse, GraduationCap, Users, Landmark } from 'lucide-react';
+import { useInView } from '@/hooks/use-in-view';
 
 const domains = [
   {
@@ -28,7 +29,10 @@ const domains = [
   },
 ];
 
-const QualityOfLife: React.FC = () => (
+const QualityOfLife: React.FC = () => {
+  const grid = useInView<HTMLDivElement>();
+
+  return (
   <section id="quality-of-life" className="relative py-24">
     <div className="max-w-7xl mx-auto px-5 sm:px-8">
       <span className="text-emerald-400 text-sm font-semibold uppercase tracking-widest">UN Habitat Quality of Life &middot; One Human at a Time</span>
@@ -42,10 +46,16 @@ const QualityOfLife: React.FC = () => (
       </p>
 
       <p className="mt-10 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">QoL Index Domains &middot; Our Contribution</p>
-      <div className="grid sm:grid-cols-2 gap-5">
-        {domains.map((d) => (
-          <div key={d.title} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-            <div className="w-10 h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-4">
+      <div ref={grid.ref} className="grid sm:grid-cols-2 gap-5">
+        {domains.map((d, i) => (
+          <div
+            key={d.title}
+            style={{ transitionDelay: grid.inView ? `${i * 90}ms` : '0ms' }}
+            className={`group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-700 ease-out hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.04] ${
+              grid.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <div className="w-10 h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
               <d.icon className="w-5 h-5 text-emerald-300" />
             </div>
             <p className="text-white font-semibold mb-2">{d.title}</p>
@@ -58,6 +68,7 @@ const QualityOfLife: React.FC = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default QualityOfLife;
