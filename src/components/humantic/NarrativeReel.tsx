@@ -169,15 +169,8 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
 
       {/* Section label + headline + CTA — drifts + fades with scroll, opposite the background layers for depth */}
       <div ref={contentRef} className="relative z-20 mx-auto max-w-6xl px-6 pt-32 sm:pt-36 will-change-transform">
-        <div className="flex items-center gap-4 pl-1 sm:pl-[42%]">
-          <span className="h-px w-10 bg-emerald-400" />
-          <span className="text-xs sm:text-sm font-semibold tracking-[0.18em] text-emerald-300">
-            01 / REALIGNING BIO-VITALITY WITH INTELLIGENT METRICS
-          </span>
-        </div>
-
-        {/* Giant editorial headline */}
-        <h1 className="mt-8 font-serif text-6xl sm:text-8xl md:text-[8.5rem] font-bold leading-[0.92] tracking-tight text-slate-100">
+        {/* Headline — sized to match the rest of the site's section headings */}
+        <h1 className="font-serif text-3xl sm:text-5xl font-bold leading-tight tracking-tight text-slate-100">
           Let&rsquo;s realign{' '}
           <span className="block sm:inline">bio&ndash;vitality with intelligent</span>{' '}
           <span className="metrics-word inline-block text-emerald-400">metrics.</span>
