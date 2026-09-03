@@ -192,7 +192,7 @@ const HumanReel: React.FC = () => {
       </svg>
 
       {/* Intro line — staggered word-by-word reveal, closing on a bolded standalone tagline */}
-      <div className="relative z-20 mx-auto mt-28 max-w-3xl px-6 text-center sm:mt-32">
+      <div className="relative z-20 mx-auto mt-28 max-w-4xl px-6 text-center sm:mt-32">
         <p className="text-sm leading-relaxed text-white/60 sm:text-base">
           {HEADLINE_WORDS.map((word, i) => (
             <span
