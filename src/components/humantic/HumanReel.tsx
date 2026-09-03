@@ -138,7 +138,7 @@ const HumanReel: React.FC = () => {
   );
 
   return (
-    <section id="top" className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden border-x border-[#1C1C1C] bg-[#0D0D0D] text-white">
+    <section id="top" className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-[#0D0D0D] text-white">
       {/* Top-left: brand + counter */}
       <div className="absolute top-6 left-6 sm:left-10 z-30 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80">
         HUMAN <span className="text-white/40">®</span> / 01
