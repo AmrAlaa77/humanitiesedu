@@ -1,5 +1,5 @@
 import React from 'react';
-import { CircleDot, Watch } from 'lucide-react';
+import { Lightbulb, Watch } from 'lucide-react';
 import { useInView } from '@/hooks/use-in-view';
 
 /**
@@ -12,7 +12,7 @@ import { useInView } from '@/hooks/use-in-view';
 
 const steps = [
   {
-    icon: CircleDot,
+    icon: Lightbulb,
     kicker: 'First, awareness.',
     title: 'Hybrid Awareness Classes',
     sub: 'In-Person + Digital',
