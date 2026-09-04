@@ -1,5 +1,6 @@
 import React from 'react';
 import { GraduationCap, Award, Globe2, Building2 } from 'lucide-react';
+import { useInView } from '@/hooks/use-in-view';
 
 const stats = [
   { value: '17', label: 'Years building HumanticDigital' },
@@ -43,7 +44,10 @@ const partners = [
   'GIZ (German Cooperation)', 'Savola Foods',
 ];
 
-const Founder: React.FC = () => (
+const Founder: React.FC = () => {
+  const rooted = useInView<HTMLParagraphElement>({ once: false });
+
+  return (
   <section id="founder" className="relative py-24 overflow-hidden">
     <div className="absolute inset-0 -z-10">
       <div className="absolute top-0 right-1/4 w-[36rem] h-[36rem] rounded-full bg-emerald-500/[0.06] blur-[140px]" />
@@ -114,7 +118,12 @@ const Founder: React.FC = () => (
             ))}
           </div>
 
-          <p className="text-slate-400 text-sm leading-relaxed mb-8">
+          <p
+            ref={rooted.ref}
+            className={`text-slate-400 text-sm leading-relaxed mb-8 transition-all duration-700 ease-out ${
+              rooted.inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
+            }`}
+          >
             Rooted in Vision 2030's pillars and woven into the national objectives of multiple Saudi
             ministries — commended by His Highness Prince Mohammed bin Salman — her initiative aligns
             education with global job market demands, directly supporting the Human Capability Development
@@ -133,7 +142,7 @@ const Founder: React.FC = () => (
               onMouseEnter={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'paused')}
               onMouseLeave={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'running')}
             >
-              <div className="partner-track flex w-max items-center gap-10" style={{ animation: 'partnerRail 130s linear infinite' }}>
+              <div className="partner-track flex w-max items-center gap-10" style={{ animation: 'partnerRail 48s linear infinite' }}>
                 {[...partners, ...partners].map((p, i) => (
                   <span key={`${p}-${i}`} className="shrink-0 text-white/70 font-bold text-lg sm:text-xl tracking-tight whitespace-nowrap transition-colors hover:text-white">
                     {p}
@@ -143,7 +152,12 @@ const Founder: React.FC = () => (
             </div>
             <style>{`
               @keyframes partnerRail {
-                0% { transform: translateX(40%); }
+                /* translateX(%) here is relative to the track's OWN width (it's several thousand
+                   px wide, unwrapped), so a "start further right" offset like 40% was actually a
+                   ~2800px jump -- enough to push every name clean out of the visible window. 0%
+                   is the correct, fully-visible starting point; -50% is exactly one full
+                   (un-duplicated) list-length, which is what makes the loop back to 0% seamless. */
+                0% { transform: translateX(0); }
                 100% { transform: translateX(-50%); }
               }
             `}</style>
@@ -152,6 +166,7 @@ const Founder: React.FC = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default Founder;
