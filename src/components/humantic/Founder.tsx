@@ -122,7 +122,7 @@ const Founder: React.FC = () => {
 
           <p
             ref={rooted.ref}
-            className={`rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-slate-400 text-sm leading-relaxed mb-8 text-right transition-opacity duration-700 ease-out ${
+            className={`ml-auto w-full sm:w-2/3 rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-slate-400 text-sm leading-relaxed mb-8 text-right transition-opacity duration-700 ease-out ${
               rooted.inView ? 'opacity-100' : 'opacity-0'
             }`}
           >
@@ -136,11 +136,11 @@ const Founder: React.FC = () => {
               the section's final beat rather than crowding the paragraph above it. */}
           <div
             ref={trusted.ref}
-            className={`mt-10 pt-8 border-t border-white/10 transition-opacity duration-700 ease-out ${
+            className={`ml-auto w-full sm:w-2/3 pt-8 border-t border-white/10 transition-opacity duration-700 ease-out ${
               trusted.inView ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Trusted Across</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4 text-right">Trusted Across</p>
             {/* Auto-scrolling wordmark rail — bold white type standing in for logos (we don't hold
                 authentic logo artwork for these organisations, several of which are trademarked
                 corporate marks; a text rail gets the same "trusted by" motion without that risk). */}
