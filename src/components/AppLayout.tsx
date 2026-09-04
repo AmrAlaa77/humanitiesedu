@@ -49,12 +49,12 @@ const AppLayout: React.FC = () => {
             <Features />
           </Reveal>
 
-          <Reveal variant="blur" repeat>
-            <Assessment />
-          </Reveal>
-
           <Reveal variant="right" repeat>
             <NationalIndex />
+          </Reveal>
+
+          <Reveal variant="blur" repeat>
+            <Assessment />
           </Reveal>
 
           <Reveal variant="zoom" repeat>
