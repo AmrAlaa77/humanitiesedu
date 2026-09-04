@@ -6,9 +6,7 @@ import NarrativeReel from '@/components/humantic/NarrativeReel';
 import Hero from '@/components/humantic/Hero';
 import Features from '@/components/humantic/Features';
 
-import HowItWorks from '@/components/humantic/HowItWorks';
 import Assessment from '@/components/humantic/Assessment';
-import Showcase from '@/components/humantic/Showcase';
 import Insights from '@/components/humantic/Insights';
 import Deliverables from '@/components/humantic/Deliverables';
 import Pillar from '@/components/humantic/Pillar';
@@ -53,16 +51,8 @@ const AppLayout: React.FC = () => {
           </Reveal>
 
 
-          <Reveal variant="left">
-            <HowItWorks />
-          </Reveal>
-
           <Reveal variant="blur">
             <Assessment />
-          </Reveal>
-
-          <Reveal variant="right">
-            <Showcase />
           </Reveal>
 
           <Reveal variant="up">

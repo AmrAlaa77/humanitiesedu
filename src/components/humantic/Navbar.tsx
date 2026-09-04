@@ -5,8 +5,6 @@ import { Activity, Menu, X } from 'lucide-react';
 const links = [
   { label: 'Platform', href: '#platform' },
   { label: 'Assessment', href: '#assessment' },
-  { label: 'How It Works', href: '#how' },
-  { label: 'Showcase', href: '#showcase' },
   { label: 'Insights', href: '#insights' },
   { label: 'Deliverables', href: '#deliverables' },
   { label: 'Journey', href: '#journey' },

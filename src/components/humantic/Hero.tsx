@@ -61,10 +61,10 @@ const Hero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               <ArrowRight className="relative w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
             <button
-              onClick={() => scrollTo('#showcase')}
+              onClick={() => scrollTo('#top')}
               className="px-6 py-3.5 rounded-full border border-white/15 text-white font-semibold transition-all duration-200 hover:bg-white/5 hover:border-white/30 hover:-translate-y-0.5 active:translate-y-0"
             >
-              Watch Showcase
+              Watch the Reel
             </button>
           </div>
 
