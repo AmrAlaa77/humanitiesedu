@@ -218,12 +218,14 @@ const HumanReel: React.FC = () => {
             </span>
           ))}
         </p>
-        {/* Same seam artifact, this time between these two paragraphs -- the first is built from many
-            individually-animated spans (each its own compositing layer), and Chrome draws a hairline
-            at the boundary with whatever follows. The seam runs the full viewport width, but this sits
-            inside the max-w-4xl text column, so the previous narrow cover never actually reached it --
-            breaking out to full-bleed width (independent of the parent's max-width) fixes that. */}
-        <div className="pointer-events-none relative left-1/2 right-1/2 -mx-[50vw] z-20 h-3 w-screen bg-[#0D0D0D]" />
+        {/* Same seam artifact, this time between these two paragraphs. VERIFIED LIVE via
+            getBoundingClientRect: the previous `left-1/2 right-1/2 -mx-[50vw]` breakout rendered
+            at width:0 -- that trick only works on position:absolute; on position:relative (what
+            this had), the CSS spec says `right` is simply ignored once `left` is also set, so it
+            collapsed to a zero-width sliver positioned by `left` alone. Every "fix" before this
+            one was covering nothing. A pure margin-based bleed doesn't depend on left/right
+            resolution at all, so it works on a normal in-flow element regardless of position. */}
+        <div className="pointer-events-none w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] z-20 h-4 bg-[#0D0D0D]" />
         <p
           className="mt-3 text-sm font-semibold text-white sm:text-base whitespace-nowrap"
           style={{
@@ -235,12 +237,12 @@ const HumanReel: React.FC = () => {
         </p>
       </div>
 
-      {/* Seam cover: the thin line reported here sits wider than the masked video box itself and
-          didn't move when the video was rescaled, so it isn't the video -- it's a hairline rendering
-          seam Chrome draws at the boundary between this flex row and the one above it (a known
-          artifact where adjacent elements land on separate GPU compositing layers). A solid full-width
-          bar in the same seam position, in normal document flow, papers over it regardless of cause. */}
-      <div className="pointer-events-none relative z-20 -mx-[2px] h-10 w-[calc(100%+4px)] bg-[#0D0D0D]" />
+      {/* Seam cover between this flex row and the one above it. VERIFIED LIVE: the previous
+          `w-[calc(100%+4px)]` measured only 4px wide -- as a flex item of the column-direction
+          section, the calc-based width wasn't resolving against the container the way a plain
+          block width would. w-screen + margin-based centering sidesteps percentage/calc
+          resolution on the flex item entirely. */}
+      <div className="pointer-events-none w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] z-20 h-10 bg-[#0D0D0D]" />
 
       {/* The word HUMAN — video visible only inside the letterforms */}
       <div className="relative z-10 flex flex-1 items-center justify-center px-2">
