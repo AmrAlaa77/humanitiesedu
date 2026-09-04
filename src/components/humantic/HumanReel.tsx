@@ -188,8 +188,8 @@ const HumanReel: React.FC = () => {
               dominantBaseline="central"
               fontFamily="Anton, sans-serif"
               fontWeight="400"
-              fontSize="420"
-              letterSpacing="-6"
+              fontSize="470"
+              letterSpacing="-8"
               fill="white"
             >
               HUMAN
@@ -215,6 +215,10 @@ const HumanReel: React.FC = () => {
             </span>
           ))}
         </p>
+        {/* Same seam artifact, this time between these two paragraphs -- the first is built from many
+            individually-animated spans (each its own compositing layer), and Chrome draws a hairline
+            at the boundary with whatever follows. Same fix: a solid cover in normal flow at the seam. */}
+        <div className="pointer-events-none relative z-20 h-3 w-full bg-[#0D0D0D]" />
         <p
           className="mt-3 text-sm font-semibold text-white sm:text-base whitespace-nowrap"
           style={{
@@ -248,12 +252,11 @@ const HumanReel: React.FC = () => {
             top: '50%',
             marginLeft: 'auto',
             marginRight: 'auto',
-            // Width-driven, not height-capped: on a wide-but-short window the old min() picked the
-            // height term and left dead space on the sides. This always fills to the horizontal
-            // edges (with a slight bleed, clipped by the section's own overflow-hidden) regardless
-            // of window height -- any extra vertical reach is centered and cropped, which reads
-            // better than empty space left and right.
-            width: 'calc((100vw - 0.4cm) * 1.15)',
+            // Bounded by both dimensions so it can never blow out the section's height on a tall,
+            // narrow window. The gap seen at the edges wasn't this box being too small -- it's the
+            // SVG text's own margin inside its 1400x480 canvas, fixed below by shrinking that margin
+            // (larger font-size / tighter letter-spacing) rather than by growing this box further.
+            width: 'min(calc((100vw - 0.4cm) * 1.1), calc((100vh - 0.4cm) * 1400 / 480))',
             aspectRatio: '1400 / 480',
             cursor: 'none',
             opacity: loaded ? 1 : 0,
@@ -301,7 +304,7 @@ const HumanReel: React.FC = () => {
       <div className="h-16 sm:h-20" />
 
       {/* Gradient blend into the next page's background instead of a hard cut */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-[#0a0e1a]/80 to-[#0a0e1a]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-slate-950/80 to-slate-950" />
 
       {/* Full-page reel: zooms out from behind the word to cover the whole page, and back */}
       {playing && (

@@ -94,7 +94,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100svh] w-full overflow-hidden bg-[#0a0e1a] text-white"
+      className="relative min-h-[100svh] w-full overflow-hidden bg-slate-950 text-white"
     >
       {/* Subtle grid lines — drifts gently with the cursor */}
       <div
