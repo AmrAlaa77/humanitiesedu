@@ -248,7 +248,12 @@ const HumanReel: React.FC = () => {
             top: '50%',
             marginLeft: 'auto',
             marginRight: 'auto',
-            width: 'calc(min(100vw - 0.4cm, (100vh - 0.4cm) * 1400 / 480) * 1.1)',
+            // Width-driven, not height-capped: on a wide-but-short window the old min() picked the
+            // height term and left dead space on the sides. This always fills to the horizontal
+            // edges (with a slight bleed, clipped by the section's own overflow-hidden) regardless
+            // of window height -- any extra vertical reach is centered and cropped, which reads
+            // better than empty space left and right.
+            width: 'calc((100vw - 0.4cm) * 1.15)',
             aspectRatio: '1400 / 480',
             cursor: 'none',
             opacity: loaded ? 1 : 0,
