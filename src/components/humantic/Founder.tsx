@@ -146,7 +146,7 @@ const Founder: React.FC = () => {
                 {[...partners, ...partners].map((p, i) => (
                   <span
                     key={`${p}-${i}`}
-                    className="shrink-0 rounded-xl border border-white/10 bg-white/[0.04] px-5 py-3 text-base sm:text-lg font-bold text-white/70 tracking-tight whitespace-nowrap transition-colors hover:border-emerald-400/30 hover:bg-white/[0.07] hover:text-white"
+                    className="shrink-0 rounded-xl border-2 border-white/20 bg-white/[0.05] px-5 py-3 text-base sm:text-lg font-bold text-white/80 tracking-tight whitespace-nowrap shadow-lg shadow-black/20 transition-colors hover:border-emerald-400/50 hover:bg-white/[0.08] hover:text-white"
                   >
                     {p}
                   </span>
