@@ -42,7 +42,7 @@ const partners = [
   'Saudi Aramco', 'Ma’aden', 'King Salman Hospital', 'King Abdullah Medical City',
   'National Guard Health Affairs', 'Royal Commission for AlUla', 'U.S. Embassy', 'Embassy of Saudi Arabia',
   'Mubadala', 'PepsiCo', 'Unilever', 'Nestlé', 'Mars Incorporated', 'Google', 'Siemens',
-  'GIZ (German Cooperation)',
+  'GIZ German Cooperation',
 ];
 
 const Founder: React.FC = () => {
@@ -158,11 +158,11 @@ const Founder: React.FC = () => {
           onMouseEnter={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'paused')}
           onMouseLeave={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'running')}
         >
-          <div className="partner-track flex w-max items-center gap-4" style={{ animation: 'partnerRail 48s linear infinite' }}>
+          <div className="partner-track flex w-max items-center gap-8" style={{ animation: 'partnerRail 48s linear infinite' }}>
             {[...partners, ...partners].map((p, i) => (
               <span
                 key={`${p}-${i}`}
-                className="shrink-0 text-xs sm:text-sm font-bold text-teal-300 tracking-tight whitespace-nowrap transition-colors hover:text-teal-200"
+                className="shrink-0 text-xs sm:text-sm font-normal text-teal-300 tracking-tight whitespace-nowrap transition-colors hover:text-teal-200"
               >
                 {p}
               </span>
