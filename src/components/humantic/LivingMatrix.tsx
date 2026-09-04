@@ -2,9 +2,9 @@ import React from 'react';
 import { useInView } from '@/hooks/use-in-view';
 
 const LivingMatrix: React.FC = () => {
-  const head = useInView<HTMLDivElement>();
-  const compare = useInView<HTMLDivElement>();
-  const quote = useInView<HTMLQuoteElement>();
+  const head = useInView<HTMLDivElement>({ once: false });
+  const compare = useInView<HTMLDivElement>({ once: false });
+  const quote = useInView<HTMLQuoteElement>({ once: false });
 
   return (
     <section id="living-matrix" className="relative py-24">

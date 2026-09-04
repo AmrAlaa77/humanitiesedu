@@ -88,7 +88,7 @@ const milestones = [
 
 const Journey: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   const [active, setActive] = useState<PanelKey>('start');
-  const { ref: headRef, inView: headIn } = useInView<HTMLDivElement>();
+  const { ref: headRef, inView: headIn } = useInView<HTMLDivElement>({ once: false });
 
   return (
     <section id="journey" className="relative py-24 sm:py-32 overflow-hidden border-t border-white/5">

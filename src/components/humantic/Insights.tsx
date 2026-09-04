@@ -9,8 +9,8 @@ const testimonials = [
 ];
 
 const Insights: React.FC = () => {
-  const header = useInView<HTMLDivElement>();
-  const grid = useInView<HTMLDivElement>();
+  const header = useInView<HTMLDivElement>({ once: false });
+  const grid = useInView<HTMLDivElement>({ once: false });
 
   return (
     <section id="insights" className="relative py-24 bg-gradient-to-b from-transparent via-cyan-950/20 to-transparent">

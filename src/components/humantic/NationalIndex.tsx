@@ -15,8 +15,8 @@ const impact = [
 ];
 
 const NationalIndex: React.FC = () => {
-  const feat = useInView<HTMLDivElement>();
-  const imp = useInView<HTMLDivElement>();
+  const feat = useInView<HTMLDivElement>({ once: false });
+  const imp = useInView<HTMLDivElement>({ once: false });
 
   return (
   <section id="national-index" className="relative py-24 text-center">

@@ -12,9 +12,9 @@ const features = [
 ];
 
 const Features: React.FC = () => {
-  const header = useInView<HTMLDivElement>();
-  const grid = useInView<HTMLDivElement>();
-  const strip = useInView<HTMLDivElement>();
+  const header = useInView<HTMLDivElement>({ once: false });
+  const grid = useInView<HTMLDivElement>({ once: false });
+  const strip = useInView<HTMLDivElement>({ once: false });
 
   return (
     <section id="platform" className="relative py-20 sm:py-24 overflow-hidden">

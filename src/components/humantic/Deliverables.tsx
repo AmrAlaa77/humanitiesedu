@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, ImageIcon, FileText, X, Globe, Users, Heart, Activity, TrendingUp, FlaskConical, Play } from 'lucide-react';
+import { useInView } from '@/hooks/use-in-view';
 
 type CourseDay = { title: string; points: string[] };
 
@@ -1456,9 +1457,15 @@ const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverab
   const [open, setOpen] = useState(false);
   const [playing, setPlaying] = useState(false);
   const hasDetails = Boolean(item.spec || item.requirements || item.awarded);
+  const { ref: cardRef, inView } = useInView<HTMLDivElement>({ once: false, threshold: 0.15 });
 
   return (
-    <div className="group rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden transition-all duration-500 hover:bg-white/[0.06] hover:border-emerald-400/30 hover:-translate-y-1">
+    <div
+      ref={cardRef}
+      className={`group rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden transition-all duration-700 ease-out hover:bg-white/[0.06] hover:border-emerald-400/30 hover:-translate-y-1 ${
+        inView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-[0.97]'
+      }`}
+    >
       {/* Video/image slot — same teal duotone treatment every clip or photo will carry once added */}
       <div
         className="relative aspect-[16/10] border-b border-white/10 flex items-center justify-center overflow-hidden"

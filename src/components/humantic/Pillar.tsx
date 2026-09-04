@@ -10,8 +10,8 @@ const metrics = [
 ];
 
 const Pillar: React.FC = () => {
-  const left = useInView<HTMLDivElement>();
-  const right = useInView<HTMLDivElement>();
+  const left = useInView<HTMLDivElement>({ once: false });
+  const right = useInView<HTMLDivElement>({ once: false });
 
   return (
     <section id="pillar" className="relative py-24 overflow-hidden">

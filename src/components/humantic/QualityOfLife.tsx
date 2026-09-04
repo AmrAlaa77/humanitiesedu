@@ -30,7 +30,7 @@ const domains = [
 ];
 
 const QualityOfLife: React.FC = () => {
-  const grid = useInView<HTMLDivElement>();
+  const grid = useInView<HTMLDivElement>({ once: false });
 
   return (
   <section id="quality-of-life" className="relative py-24">

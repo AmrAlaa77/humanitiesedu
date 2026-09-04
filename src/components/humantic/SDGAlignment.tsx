@@ -20,8 +20,8 @@ const sdohActions = [
 ];
 
 const SDGAlignment: React.FC = () => {
-  const tiles = useInView<HTMLDivElement>();
-  const actions = useInView<HTMLDivElement>();
+  const tiles = useInView<HTMLDivElement>({ once: false });
+  const actions = useInView<HTMLDivElement>({ once: false });
 
   return (
   <section id="sdg-alignment" className="relative py-24">

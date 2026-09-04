@@ -53,7 +53,7 @@ const instruments: Instrument[] = [
 
 const Assessment: React.FC = () => {
   const [checkout, setCheckout] = useState<{ title: string; price: number; note?: string } | null>(null);
-  const grid = useInView<HTMLDivElement>();
+  const grid = useInView<HTMLDivElement>({ once: false });
 
   return (
     <section id="assessment" className="relative py-24">

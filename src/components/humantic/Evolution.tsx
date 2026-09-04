@@ -81,7 +81,7 @@ const statusStyles: Record<Phase['status'], { dot: string; label: string; chip: 
 };
 
 const Evolution: React.FC = () => {
-  const timeline = useInView<HTMLDivElement>();
+  const timeline = useInView<HTMLDivElement>({ once: false });
 
   return (
   <section id="evolution" className="relative py-24 overflow-hidden">

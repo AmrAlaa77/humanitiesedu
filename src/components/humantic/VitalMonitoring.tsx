@@ -15,8 +15,8 @@ const useCases = [
 ];
 
 const VitalMonitoring: React.FC = () => {
-  const caps = useInView<HTMLDivElement>();
-  const cases = useInView<HTMLDivElement>();
+  const caps = useInView<HTMLDivElement>({ once: false });
+  const cases = useInView<HTMLDivElement>({ once: false });
 
   return (
   <section id="vital-monitoring" className="relative py-24 text-center">

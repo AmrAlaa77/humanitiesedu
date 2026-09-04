@@ -46,61 +46,59 @@ const AppLayout: React.FC = () => {
           <NarrativeReel onCta={() => setModalOpen(true)} />
           <Hero onCta={() => setModalOpen(true)} />
 
-          <Reveal variant="up">
+          <Reveal variant="up" repeat>
             <Features />
           </Reveal>
 
-
-          <Reveal variant="blur">
+          <Reveal variant="blur" repeat>
             <Assessment />
           </Reveal>
 
-          <Reveal variant="up">
+          <Reveal variant="zoom" repeat>
             <Insights />
           </Reveal>
 
-          <Reveal variant="up">
+          <Reveal variant="up" repeat>
             <Deliverables />
           </Reveal>
 
-          <Reveal variant="flip">
+          <Reveal variant="flip" repeat>
             <Pillar />
           </Reveal>
 
-          <Reveal variant="up">
+          <Reveal variant="left" repeat>
             <LivingMatrix />
           </Reveal>
 
-          <Reveal variant="up">
+          <Reveal variant="right" repeat>
             <Journey onCta={() => setModalOpen(true)} />
           </Reveal>
 
-
-          <Reveal variant="up">
+          <Reveal variant="left" repeat>
             <Evolution />
           </Reveal>
 
-          <Reveal variant="up">
+          <Reveal variant="zoom" repeat>
             <QualityOfLife />
           </Reveal>
 
-          <Reveal variant="up">
+          <Reveal variant="blur" repeat>
             <VitalMonitoring />
           </Reveal>
 
-          <Reveal variant="up">
+          <Reveal variant="right" repeat>
             <NationalIndex />
           </Reveal>
 
-          <Reveal variant="up">
+          <Reveal variant="left" repeat>
             <SDGAlignment />
           </Reveal>
 
-          <Reveal variant="up">
+          <Reveal variant="up" repeat>
             <Founder />
           </Reveal>
 
-          <Reveal variant="up">
+          <Reveal variant="zoom" repeat>
             <Pledge />
           </Reveal>
         </main>
