@@ -108,23 +108,14 @@ const Founder: React.FC = () => {
             ))}
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-4 mb-10">
-            {credentials.map((c) => (
-              <div key={c.title} className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.04]">
-                <div className="w-10 h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                  <c.icon className="w-5 h-5 text-emerald-300" />
-                </div>
-                <p className="text-white font-semibold mb-2">{c.title}</p>
-                <p className="text-slate-400 text-sm leading-relaxed">{c.desc}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
       {/* Breaks out of the two-column grid above (was confined to the right column's width) --
-          full width of the section, spanning both columns, starting right below the
-          credentials row as its own full-bleed band. */}
+          full width of the section, spanning both columns. The right column above is now just
+          the stats grid (shorter than Sectors Served used to be paired against), so this starts
+          right after Sectors Served finishes instead of waiting on the taller credentials row --
+          credentials have moved below, after this block. */}
       <p
         ref={rooted.ref}
         className={`w-full rounded-2xl border border-white/10 bg-white/[0.02] p-6 mt-10 text-slate-400 text-sm leading-relaxed mb-8 text-right transition-opacity duration-700 ease-out ${
@@ -176,6 +167,20 @@ const Founder: React.FC = () => {
             100% { transform: translateX(-50%); }
           }
         `}</style>
+      </div>
+
+      {/* Credentials, moved here (below the full-width block) so the paragraph above starts
+          right at Sectors Served instead of waiting for these to finish. */}
+      <div className="grid sm:grid-cols-2 gap-4 mt-10">
+        {credentials.map((c) => (
+          <div key={c.title} className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.04]">
+            <div className="w-10 h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <c.icon className="w-5 h-5 text-emerald-300" />
+            </div>
+            <p className="text-white font-semibold mb-2">{c.title}</p>
+            <p className="text-slate-400 text-sm leading-relaxed">{c.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
