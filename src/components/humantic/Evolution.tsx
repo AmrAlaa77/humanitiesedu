@@ -81,8 +81,6 @@ const statusStyles: Record<Phase['status'], { dot: string; label: string; chip: 
 };
 
 const Evolution: React.FC = () => {
-  const timeline = useInView<HTMLDivElement>({ once: false });
-
   return (
   <section id="evolution" className="relative py-24 overflow-hidden">
     <div className="absolute inset-0 -z-10">
@@ -115,71 +113,68 @@ const Evolution: React.FC = () => {
         {/* vertical spine */}
         <div className="absolute left-[1.15rem] top-2 bottom-2 w-px bg-gradient-to-b from-emerald-400/40 via-cyan-400/30 to-white/5 sm:left-1/2 sm:-translate-x-1/2" />
 
-        <div ref={timeline.ref} className="space-y-8">
-          {phases.map((p, i) => {
-            const s = statusStyles[p.status];
-            const left = i % 2 === 0;
-            return (
-              <div
-                key={p.title}
-                style={{ transitionDelay: timeline.inView ? `${i * 90}ms` : '0ms' }}
-                className={`relative sm:grid sm:grid-cols-2 sm:gap-12 transition-all duration-700 ease-out ${
-                  timeline.inView
-                    ? 'opacity-100 translate-x-0'
-                    : left
-                    ? 'opacity-0 -translate-x-12' // left-column cards enter travelling left-to-right
-                    : 'opacity-0 translate-x-12' // right-column cards enter travelling right-to-left
-                } ${left ? '' : 'sm:[direction:rtl]'}`}
-              >
-                {/* node */}
-                <span
-                  className={`absolute left-[1.15rem] -translate-x-1/2 top-7 z-10 w-4 h-4 rounded-full border-2 ${s.dot} sm:left-1/2`}
-                />
-
-                {/* card */}
-                <div
-                  className={`pl-12 sm:pl-0 ${
-                    left ? 'sm:pr-12 sm:text-right' : 'sm:pl-12 sm:[direction:ltr]'
-                  }`}
-                >
-                  <div className="group rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-7 backdrop-blur transition-all duration-300 hover:border-emerald-400/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10">
-                    <div
-                      className={`flex items-center gap-3 ${
-                        left ? 'sm:flex-row-reverse' : ''
-                      }`}
-                    >
-                      <div className="w-11 h-11 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center">
-                        <p.icon className="w-5 h-5 text-slate-950" />
-                      </div>
-                      <div className={left ? 'sm:text-right' : ''}>
-                        <p className="text-white font-semibold leading-tight">{p.tag}</p>
-                        <p className="text-slate-500 text-xs uppercase tracking-wide">{p.period}</p>
-                      </div>
-                    </div>
-
-                    <h3 className="mt-5 text-xl font-bold text-white tracking-tight">{p.title}</h3>
-                    <p className="mt-3 text-slate-400 text-sm leading-relaxed">{p.desc}</p>
-
-                    <div className={`mt-5 flex ${left ? 'sm:justify-end' : ''}`}>
-                      <span
-                        className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide ${s.chip}`}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-current" />
-                        {s.label}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* spacer for opposite column */}
-                <div className="hidden sm:block" />
-              </div>
-            );
-          })}
+        <div className="space-y-8">
+          {phases.map((p, i) => (
+            <TimelineItem key={p.title} phase={p} left={i % 2 === 0} />
+          ))}
         </div>
       </div>
     </div>
   </section>
+  );
+};
+
+// Each card gets its own useInView instance, so it animates in as THAT card individually
+// scrolls into view -- rather than the whole timeline firing together off one shared observer
+// on the outer container (which made every card "arrive" the moment the list's top appeared).
+const TimelineItem: React.FC<{ phase: Phase; left: boolean }> = ({ phase: p, left }) => {
+  const s = statusStyles[p.status];
+  const { ref, inView } = useInView<HTMLDivElement>({ once: false });
+
+  return (
+    <div
+      ref={ref}
+      className={`relative sm:grid sm:grid-cols-2 sm:gap-12 transition-all duration-700 ease-out ${
+        inView
+          ? 'opacity-100 translate-x-0'
+          : left
+          ? 'opacity-0 -translate-x-12' // left-column cards enter travelling left-to-right
+          : 'opacity-0 translate-x-12' // right-column cards enter travelling right-to-left
+      } ${left ? '' : 'sm:[direction:rtl]'}`}
+    >
+      {/* node */}
+      <span
+        className={`absolute left-[1.15rem] -translate-x-1/2 top-7 z-10 w-4 h-4 rounded-full border-2 ${s.dot} sm:left-1/2`}
+      />
+
+      {/* card */}
+      <div className={`pl-12 sm:pl-0 ${left ? 'sm:pr-12 sm:text-right' : 'sm:pl-12 sm:[direction:ltr]'}`}>
+        <div className="group rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-7 backdrop-blur transition-all duration-300 hover:border-emerald-400/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10">
+          <div className={`flex items-center gap-3 ${left ? 'sm:flex-row-reverse' : ''}`}>
+            <div className="w-11 h-11 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center">
+              <p.icon className="w-5 h-5 text-slate-950" />
+            </div>
+            <div className={left ? 'sm:text-right' : ''}>
+              <p className="text-white font-semibold leading-tight">{p.tag}</p>
+              <p className="text-slate-500 text-xs uppercase tracking-wide">{p.period}</p>
+            </div>
+          </div>
+
+          <h3 className="mt-5 text-xl font-bold text-white tracking-tight">{p.title}</h3>
+          <p className="mt-3 text-slate-400 text-sm leading-relaxed">{p.desc}</p>
+
+          <div className={`mt-5 flex ${left ? 'sm:justify-end' : ''}`}>
+            <span className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide ${s.chip}`}>
+              <span className="w-1.5 h-1.5 rounded-full bg-current" />
+              {s.label}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* spacer for opposite column */}
+      <div className="hidden sm:block" />
+    </div>
   );
 };
 
