@@ -111,24 +111,8 @@ const Founder: React.FC = () => {
         </div>
       </div>
 
-      {/* Breaks out of the two-column grid above (was confined to the right column's width) --
-          full width of the section, spanning both columns. The right column above is now just
-          the stats grid (shorter than Sectors Served used to be paired against), so this starts
-          right after Sectors Served finishes instead of waiting on the taller credentials row --
-          credentials have moved below, after this block. */}
-      <p
-        ref={rooted.ref}
-        className={`w-full rounded-2xl border border-white/10 bg-white/[0.02] p-6 mt-10 text-slate-400 text-sm leading-relaxed mb-8 text-right transition-opacity duration-700 ease-out ${
-          rooted.inView ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        Rooted in Vision 2030's pillars and woven into the national objectives of multiple Saudi
-        ministries — commended by His Highness Prince Mohammed bin Salman — her initiative aligns
-        education with global job market demands, directly supporting the Human Capability Development
-        Program, Quality of Life 2030, and the National Strategy for Data &amp; AI.
-      </p>
-
-      {/* Credentials, right after the paragraph above so the rail (below) closes the bio last. */}
+      {/* Credentials, breaking out of the two-column grid above (was confined to the right
+          column's width) -- full width of the section, spanning both columns. */}
       <div className="grid sm:grid-cols-2 gap-4 mt-10">
         {credentials.map((c) => (
           <div key={c.title} className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.04]">
@@ -140,6 +124,19 @@ const Founder: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* Paragraph now sits right under the credentials above. */}
+      <p
+        ref={rooted.ref}
+        className={`w-full rounded-2xl border border-white/10 bg-white/[0.02] p-6 mt-10 text-slate-400 text-sm leading-relaxed mb-8 text-right transition-opacity duration-700 ease-out ${
+          rooted.inView ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        Rooted in Vision 2030's pillars and woven into the national objectives of multiple Saudi
+        ministries — commended by His Highness Prince Mohammed bin Salman — her initiative aligns
+        education with global job market demands, directly supporting the Human Capability Development
+        Program, Quality of Life 2030, and the National Strategy for Data &amp; AI.
+      </p>
 
       {/* Closing element of the bio, set apart with its own top border + spacing so it reads as
           the section's final beat rather than crowding the credentials above it. */}
