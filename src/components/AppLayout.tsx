@@ -45,16 +45,16 @@ const AppLayout: React.FC = () => {
           <NarrativeReel onCta={() => setModalOpen(true)} />
           <Hero onCta={() => setModalOpen(true)} />
 
-          <Reveal variant="up" repeat>
-            <Features />
-          </Reveal>
-
           <Reveal variant="right" repeat>
             <NationalIndex />
           </Reveal>
 
           <Reveal variant="blur" repeat>
             <Assessment />
+          </Reveal>
+
+          <Reveal variant="up" repeat>
+            <Features />
           </Reveal>
 
           <Reveal variant="zoom" repeat>
