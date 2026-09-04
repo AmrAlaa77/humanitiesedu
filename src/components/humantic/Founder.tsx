@@ -119,60 +119,63 @@ const Founder: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+      </div>
 
-          <p
-            ref={rooted.ref}
-            className={`w-full rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-slate-400 text-sm leading-relaxed mb-8 text-right transition-opacity duration-700 ease-out ${
-              rooted.inView ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            Rooted in Vision 2030's pillars and woven into the national objectives of multiple Saudi
-            ministries — commended by His Highness Prince Mohammed bin Salman — her initiative aligns
-            education with global job market demands, directly supporting the Human Capability Development
-            Program, Quality of Life 2030, and the National Strategy for Data &amp; AI.
-          </p>
+      {/* Breaks out of the two-column grid above (was confined to the right column's width) --
+          full width of the section, spanning both columns, starting right below the
+          credentials row as its own full-bleed band. */}
+      <p
+        ref={rooted.ref}
+        className={`w-full rounded-2xl border border-white/10 bg-white/[0.02] p-6 mt-10 text-slate-400 text-sm leading-relaxed mb-8 text-right transition-opacity duration-700 ease-out ${
+          rooted.inView ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        Rooted in Vision 2030's pillars and woven into the national objectives of multiple Saudi
+        ministries — commended by His Highness Prince Mohammed bin Salman — her initiative aligns
+        education with global job market demands, directly supporting the Human Capability Development
+        Program, Quality of Life 2030, and the National Strategy for Data &amp; AI.
+      </p>
 
-          {/* Closing element of the bio, set apart with its own top border + spacing so it reads as
-              the section's final beat rather than crowding the paragraph above it. */}
-          <div
-            ref={trusted.ref}
-            className={`w-full pt-8 border-t border-white/10 transition-opacity duration-700 ease-out ${
-              trusted.inView ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4 text-right">Trusted Across</p>
-            {/* Auto-scrolling wordmark rail — bold white type standing in for logos (we don't hold
-                authentic logo artwork for these organisations, several of which are trademarked
-                corporate marks; a text rail gets the same "trusted by" motion without that risk). */}
-            <div
-              className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
-              onMouseEnter={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'paused')}
-              onMouseLeave={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'running')}
-            >
-              <div className="partner-track flex w-max items-center gap-4" style={{ animation: 'partnerRail 48s linear infinite' }}>
-                {[...partners, ...partners].map((p, i) => (
-                  <span
-                    key={`${p}-${i}`}
-                    className="shrink-0 rounded-xl border-2 border-white/20 bg-white/[0.05] px-5 py-3 text-base sm:text-lg font-bold text-white/80 tracking-tight whitespace-nowrap shadow-lg shadow-black/20 transition-colors hover:border-emerald-400/50 hover:bg-white/[0.08] hover:text-white"
-                  >
-                    {p}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <style>{`
-              @keyframes partnerRail {
-                /* translateX(%) here is relative to the track's OWN width (it's several thousand
-                   px wide, unwrapped), so a "start further right" offset like 40% was actually a
-                   ~2800px jump -- enough to push every name clean out of the visible window. 0%
-                   is the correct, fully-visible starting point; -50% is exactly one full
-                   (un-duplicated) list-length, which is what makes the loop back to 0% seamless. */
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-              }
-            `}</style>
+      {/* Closing element of the bio, set apart with its own top border + spacing so it reads as
+          the section's final beat rather than crowding the paragraph above it. */}
+      <div
+        ref={trusted.ref}
+        className={`w-full pt-8 border-t border-white/10 transition-opacity duration-700 ease-out ${
+          trusted.inView ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4 text-right">Trusted Across</p>
+        {/* Auto-scrolling wordmark rail — bold white type standing in for logos (we don't hold
+            authentic logo artwork for these organisations, several of which are trademarked
+            corporate marks; a text rail gets the same "trusted by" motion without that risk). */}
+        <div
+          className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
+          onMouseEnter={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'paused')}
+          onMouseLeave={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'running')}
+        >
+          <div className="partner-track flex w-max items-center gap-4" style={{ animation: 'partnerRail 48s linear infinite' }}>
+            {[...partners, ...partners].map((p, i) => (
+              <span
+                key={`${p}-${i}`}
+                className="shrink-0 rounded-xl border-2 border-white/20 bg-white/[0.05] px-5 py-3 text-base sm:text-lg font-bold text-white/80 tracking-tight whitespace-nowrap shadow-lg shadow-black/20 transition-colors hover:border-emerald-400/50 hover:bg-white/[0.08] hover:text-white"
+              >
+                {p}
+              </span>
+            ))}
           </div>
         </div>
+        <style>{`
+          @keyframes partnerRail {
+            /* translateX(%) here is relative to the track's OWN width (it's several thousand
+               px wide, unwrapped), so a "start further right" offset like 40% was actually a
+               ~2800px jump -- enough to push every name clean out of the visible window. 0%
+               is the correct, fully-visible starting point; -50% is exactly one full
+               (un-duplicated) list-length, which is what makes the loop back to 0% seamless. */
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
       </div>
     </div>
   </section>
