@@ -1,5 +1,5 @@
 import React from 'react';
-import { Lightbulb, FlaskConical, Landmark, CheckCircle2, Rocket, Globe2 } from 'lucide-react';
+import { Lightbulb, GraduationCap, Landmark, CheckCircle2, Rocket, Globe2 } from 'lucide-react';
 import { useInView } from '@/hooks/use-in-view';
 
 type Phase = {
@@ -21,11 +21,11 @@ const phases: Phase[] = [
     status: 'done',
   },
   {
-    icon: FlaskConical,
+    icon: GraduationCap,
     tag: 'Research',
     period: 'Foundation',
-    title: 'Bio-sensing science engineered',
-    desc: 'Seven precision bio-sensors miniaturised into four grams of aerospace-grade titanium. Months of validation turned a vision into measurable, defensible science.',
+    title: 'British-accredited content is crafted',
+    desc: 'From here, content spanning medicine, human-behaviour science and business psychology was built and validated — carried through British-accredited learning pathways the world could trust.',
     status: 'done',
   },
   {
