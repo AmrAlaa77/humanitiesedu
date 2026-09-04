@@ -80,16 +80,6 @@ const Founder: React.FC = () => {
             </p>
           </blockquote>
 
-          <div className="mt-8">
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">Sectors Served</p>
-            <div className="flex flex-wrap gap-2">
-              {sectors.map((s) => (
-                <span key={s} className="text-xs font-medium text-slate-300 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-full transition-all duration-200 hover:border-emerald-400/40 hover:text-white hover:bg-emerald-400/10">
-                  {s}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
 
         {/* Right — stats, credentials, partners */}
@@ -108,6 +98,19 @@ const Founder: React.FC = () => {
             ))}
           </div>
 
+        </div>
+      </div>
+
+      {/* Sectors Served, broken out of the left column -- full width of the section, tags
+          flowing right-to-left (justify-end) instead of the default left-to-right start. */}
+      <div className="mt-10">
+        <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3 text-right">Sectors Served</p>
+        <div className="flex flex-wrap justify-end gap-2">
+          {sectors.map((s) => (
+            <span key={s} className="text-xs font-medium text-slate-300 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-full transition-all duration-200 hover:border-emerald-400/40 hover:text-white hover:bg-emerald-400/10">
+              {s}
+            </span>
+          ))}
         </div>
       </div>
 
