@@ -122,7 +122,7 @@ const Founder: React.FC = () => {
 
           <p
             ref={rooted.ref}
-            className={`ml-auto w-full sm:w-2/3 rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-slate-400 text-sm leading-relaxed mb-8 text-right transition-opacity duration-700 ease-out ${
+            className={`w-full rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-slate-400 text-sm leading-relaxed mb-8 text-right transition-opacity duration-700 ease-out ${
               rooted.inView ? 'opacity-100' : 'opacity-0'
             }`}
           >
@@ -136,7 +136,7 @@ const Founder: React.FC = () => {
               the section's final beat rather than crowding the paragraph above it. */}
           <div
             ref={trusted.ref}
-            className={`ml-auto w-full sm:w-2/3 pt-8 border-t border-white/10 transition-opacity duration-700 ease-out ${
+            className={`w-full pt-8 border-t border-white/10 transition-opacity duration-700 ease-out ${
               trusted.inView ? 'opacity-100' : 'opacity-0'
             }`}
           >
