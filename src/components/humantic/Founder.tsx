@@ -87,7 +87,12 @@ const Founder: React.FC = () => (
         </div>
 
         {/* Right — stats, credentials, partners */}
-        <div>
+        {/* min-w-0: without it, the partner rail's intrinsically-wide (w-max, all names
+            unwrapped) track contributes its full content width to this grid column's auto-sizing
+            and blows the whole column out to thousands of px wide, pushing the page into
+            horizontal overflow site-wide -- exactly the kind of thing that would make an
+            unrelated hairline seam elsewhere suddenly reappear. */}
+        <div className="min-w-0">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
             {stats.map((s) => (
               <div key={s.label} className="group rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.05]">
