@@ -17,7 +17,7 @@ const phases: Phase[] = [
     tag: 'Genesis',
     period: 'The Spark',
     title: 'A cause for humanity is born',
-    desc: 'It began not as a product, but as a conviction — that precision health intelligence belongs to every human being, and that technology should make the world a safer place.',
+    desc: 'A vow made in medical school to ease pain and restore health led to the field — to HSE, where leadership became a life-preserving act and safety a promise to come home whole. From there, human-behaviour science and business psychology wove together, awakening organisations to our shared humanity.',
     status: 'done',
   },
   {
