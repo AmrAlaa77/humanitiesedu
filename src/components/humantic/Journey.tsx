@@ -161,15 +161,6 @@ const StartPanel: React.FC = () => (
       <h3 className="mt-3 text-2xl sm:text-3xl font-bold text-white leading-snug">
         Where caring for one life became a cause for all.
       </h3>
-      <p className="mt-4 text-slate-300 leading-relaxed">
-        My journey began in medical school — a vow to humanity to ease pain and restore health. But life called me to
-        the field, to the drilling rigs and industrial sites, alongside the people who carry the weight of the world
-        on their shoulders for the families waiting at home.
-      </p>
-      <p className="mt-4 text-slate-300 leading-relaxed">
-        There I learned that on a rig, leadership is never a theory — it is a life-preserving act. And safety is not a
-        slogan to hang on a wall; it is a promise everyone makes to come back home in one piece.
-      </p>
       <p className="mt-4 text-slate-400 leading-relaxed">
         I saw how one honest conversation could save a life, and how one ignored concern could ripple through a whole
         family. So we began weaving together human-behaviour science and business psychology — awakening organisations
