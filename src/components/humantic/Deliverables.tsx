@@ -742,6 +742,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         title: 'Leading Change For Organisational Transformation',
         hook: 'A rigorous, practical curriculum for leaders driving large-scale transformation without losing organisational trust.',
         image: 'https://images.pexels.com/photos/7698712/pexels-photo-7698712.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        videoSrc: '/videos/leading-change-transformation.mp4',
         spec: ['Core · 3 Days · In-person', 'Advanced · 5 Days · Hybrid'],
         benefitsLabel: 'Key benefits',
         benefits: ['Sequence transformation initiatives for lasting adoption', 'Manage resistance without stalling momentum'],
