@@ -218,14 +218,25 @@ const HumanReel: React.FC = () => {
             </span>
           ))}
         </p>
-        {/* Same seam artifact, this time between these two paragraphs. VERIFIED LIVE via
-            getBoundingClientRect: the previous `left-1/2 right-1/2 -mx-[50vw]` breakout rendered
-            at width:0 -- that trick only works on position:absolute; on position:relative (what
-            this had), the CSS spec says `right` is simply ignored once `left` is also set, so it
-            collapsed to a zero-width sliver positioned by `left` alone. Every "fix" before this
-            one was covering nothing. A pure margin-based bleed doesn't depend on left/right
-            resolution at all, so it works on a normal in-flow element regardless of position. */}
-        <div className="pointer-events-none w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] z-20 h-4 bg-[#0D0D0D]" />
+        {/* Same seam artifact, this time between these two paragraphs. Both the left/right-based
+            and the Tailwind-arbitrary-value margin-based versions of this cover measured 0px wide
+            live (confirmed via getBoundingClientRect) -- the calc() in `ml-[calc(50%-50vw)]` may
+            never have compiled into real CSS at all. Raw inline style bypasses Tailwind's
+            arbitrary-value generation entirely, so there's no build-step ambiguity left. */}
+        <div
+          aria-hidden
+          style={{
+            pointerEvents: 'none',
+            display: 'block',
+            width: '100vw',
+            marginLeft: 'calc(50% - 50vw)',
+            marginRight: 'calc(50% - 50vw)',
+            height: '10mm',
+            backgroundColor: '#0D0D0D',
+            position: 'relative',
+            zIndex: 20,
+          }}
+        />
         <p
           className="mt-3 text-sm font-semibold text-white sm:text-base whitespace-nowrap"
           style={{
