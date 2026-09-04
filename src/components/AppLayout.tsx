@@ -14,7 +14,6 @@ import LivingMatrix from '@/components/humantic/LivingMatrix';
 import Journey from '@/components/humantic/Journey';
 import Evolution from '@/components/humantic/Evolution';
 import QualityOfLife from '@/components/humantic/QualityOfLife';
-import VitalMonitoring from '@/components/humantic/VitalMonitoring';
 import NationalIndex from '@/components/humantic/NationalIndex';
 import SDGAlignment from '@/components/humantic/SDGAlignment';
 import Founder from '@/components/humantic/Founder';
@@ -80,10 +79,6 @@ const AppLayout: React.FC = () => {
 
           <Reveal variant="zoom" repeat>
             <QualityOfLife />
-          </Reveal>
-
-          <Reveal variant="blur" repeat>
-            <VitalMonitoring />
           </Reveal>
 
           <Reveal variant="right" repeat>

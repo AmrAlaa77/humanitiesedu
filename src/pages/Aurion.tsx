@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import AurionHero from '@/components/aurion/AurionHero';
 import AurionIntel from '@/components/aurion/AurionIntel';
+import VitalMonitoring from '@/components/humantic/VitalMonitoring';
 import AurionShowcase from '@/components/aurion/AurionShowcase';
 import Footer from '@/components/humantic/Footer';
 import AccessModal from '@/components/humantic/AccessModal';
@@ -33,6 +34,7 @@ const Aurion: React.FC = () => {
       <main>
         <AurionHero onCta={open} />
         <AurionIntel />
+        <VitalMonitoring />
         <AurionShowcase onCta={open} />
       </main>
 

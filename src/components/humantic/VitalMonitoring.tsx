@@ -21,13 +21,13 @@ const VitalMonitoring: React.FC = () => {
   return (
   <section id="vital-monitoring" className="relative py-24 text-center">
     <div className="max-w-7xl mx-auto px-5 sm:px-8">
-      <span className="text-emerald-400 text-sm font-semibold uppercase tracking-widest">What We Do</span>
+      <span className="text-teal-300 text-sm font-semibold uppercase tracking-widest">What We Do</span>
       <h2 className="mt-4 text-3xl sm:text-5xl font-bold text-white tracking-tight">The Intelligence That Cares</h2>
       <p className="mt-4 text-slate-400 text-lg max-w-2xl mx-auto">
         AI-powered wearable integration that looks after you — preventative medicine, always on.
       </p>
       <p className="mt-6 text-slate-400 max-w-3xl mx-auto leading-relaxed">
-        HumanticDigital connects to the wearables your patients already love — smart rings, watches, and patches —
+        AURION connects to the wearables your patients already love — smart rings, watches, and patches —
         streaming high-frequency biometric data into a unified, privacy-first health graph. We turn a noisy
         firehose of signals into calm, actionable intelligence.
       </p>
@@ -37,12 +37,12 @@ const VitalMonitoring: React.FC = () => {
           <div
             key={c.title}
             style={{ transitionDelay: caps.inView ? `${i * 100}ms` : '0ms' }}
-            className={`group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-700 ease-out hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.04] ${
+            className={`group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-700 ease-out hover:-translate-y-1 hover:border-teal-300/30 hover:bg-white/[0.04] ${
               caps.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <div className="w-10 h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
-              <c.icon className="w-5 h-5 text-emerald-300" />
+            <div className="w-10 h-10 rounded-xl bg-teal-300/10 border border-teal-300/20 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
+              <c.icon className="w-5 h-5 text-teal-200" />
             </div>
             <p className="text-white font-semibold mb-2">{c.title}</p>
             <p className="text-slate-400 text-sm leading-relaxed">{c.desc}</p>
@@ -60,7 +60,7 @@ const VitalMonitoring: React.FC = () => {
               cases.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <div className="text-2xl font-bold text-emerald-400 mb-3 transition-transform duration-300 group-hover:scale-110">{u.num}</div>
+            <div className="text-2xl font-bold text-teal-300 mb-3 transition-transform duration-300 group-hover:scale-110">{u.num}</div>
             <p className="text-white font-semibold mb-2">{u.title}</p>
             <p className="text-slate-400 text-sm leading-relaxed">{u.desc}</p>
           </div>
