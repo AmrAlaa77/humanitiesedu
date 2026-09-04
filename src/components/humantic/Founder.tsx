@@ -133,7 +133,7 @@ const Founder: React.FC = () => (
               onMouseEnter={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'paused')}
               onMouseLeave={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'running')}
             >
-              <div className="partner-track flex w-max items-center gap-10" style={{ animation: 'partnerRail 65s linear infinite' }}>
+              <div className="partner-track flex w-max items-center gap-10" style={{ animation: 'partnerRail 130s linear infinite' }}>
                 {[...partners, ...partners].map((p, i) => (
                   <span key={`${p}-${i}`} className="shrink-0 text-white/70 font-bold text-lg sm:text-xl tracking-tight whitespace-nowrap transition-colors hover:text-white">
                     {p}
@@ -143,7 +143,7 @@ const Founder: React.FC = () => (
             </div>
             <style>{`
               @keyframes partnerRail {
-                0% { transform: translateX(0); }
+                0% { transform: translateX(40%); }
                 100% { transform: translateX(-50%); }
               }
             `}</style>
