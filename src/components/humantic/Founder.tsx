@@ -128,11 +128,24 @@ const Founder: React.FC = () => {
         Program, Quality of Life 2030, and the National Strategy for Data &amp; AI.
       </p>
 
+      {/* Credentials, right after the paragraph above so the rail (below) closes the bio last. */}
+      <div className="grid sm:grid-cols-2 gap-4 mt-10">
+        {credentials.map((c) => (
+          <div key={c.title} className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.04]">
+            <div className="w-10 h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <c.icon className="w-5 h-5 text-emerald-300" />
+            </div>
+            <p className="text-white font-semibold mb-2">{c.title}</p>
+            <p className="text-slate-400 text-sm leading-relaxed">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+
       {/* Closing element of the bio, set apart with its own top border + spacing so it reads as
-          the section's final beat rather than crowding the paragraph above it. */}
+          the section's final beat rather than crowding the credentials above it. */}
       <div
         ref={trusted.ref}
-        className={`w-full pt-8 border-t border-white/10 transition-opacity duration-700 ease-out ${
+        className={`w-full mt-10 pt-8 border-t border-white/10 transition-opacity duration-700 ease-out ${
           trusted.inView ? 'opacity-100' : 'opacity-0'
         }`}
       >
@@ -149,7 +162,7 @@ const Founder: React.FC = () => {
             {[...partners, ...partners].map((p, i) => (
               <span
                 key={`${p}-${i}`}
-                className="shrink-0 rounded-xl border-2 border-white/20 bg-white/[0.05] px-5 py-3 text-base sm:text-lg font-bold text-white/80 tracking-tight whitespace-nowrap shadow-lg shadow-black/20 transition-colors hover:border-emerald-400/50 hover:bg-white/[0.08] hover:text-white"
+                className="shrink-0 text-xs sm:text-sm font-bold text-teal-300 tracking-tight whitespace-nowrap transition-colors hover:text-teal-200"
               >
                 {p}
               </span>
@@ -167,20 +180,6 @@ const Founder: React.FC = () => {
             100% { transform: translateX(-50%); }
           }
         `}</style>
-      </div>
-
-      {/* Credentials, moved here (below the full-width block) so the paragraph above starts
-          right at Sectors Served instead of waiting for these to finish. */}
-      <div className="grid sm:grid-cols-2 gap-4 mt-10">
-        {credentials.map((c) => (
-          <div key={c.title} className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.04]">
-            <div className="w-10 h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-              <c.icon className="w-5 h-5 text-emerald-300" />
-            </div>
-            <p className="text-white font-semibold mb-2">{c.title}</p>
-            <p className="text-slate-400 text-sm leading-relaxed">{c.desc}</p>
-          </div>
-        ))}
       </div>
     </div>
   </section>
