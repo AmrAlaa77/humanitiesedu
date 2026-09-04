@@ -56,7 +56,7 @@ const AwarenessJourney: React.FC = () => {
             <div
               key={s.title}
               style={{ transitionDelay: list.inView ? `${i * 140}ms` : '0ms' }}
-              className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8 transition-all duration-700 ease-out hover:-translate-y-1.5 hover:border-emerald-400/30 hover:bg-white/[0.05] hover:shadow-2xl hover:shadow-emerald-500/10 ${
+              className={`group relative rounded-3xl border border-white/10 bg-white/[0.03] p-8 transition-all duration-700 ease-out hover:-translate-y-1.5 hover:border-emerald-400/30 hover:bg-white/[0.05] hover:shadow-2xl hover:shadow-emerald-500/10 ${
                 list.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
