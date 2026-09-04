@@ -117,12 +117,29 @@ const Founder: React.FC = () => (
           </p>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">Trusted Across</p>
-            <div className="flex flex-wrap gap-x-5 gap-y-2">
-              {partners.map((p) => (
-                <span key={p} className="text-xs text-slate-500">{p}</span>
-              ))}
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Trusted Across</p>
+            {/* Auto-scrolling wordmark rail — bold white type standing in for logos (we don't hold
+                authentic logo artwork for these organisations, several of which are trademarked
+                corporate marks; a text rail gets the same "trusted by" motion without that risk). */}
+            <div
+              className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
+              onMouseEnter={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'paused')}
+              onMouseLeave={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'running')}
+            >
+              <div className="partner-track flex w-max items-center gap-10" style={{ animation: 'partnerRail 32s linear infinite' }}>
+                {[...partners, ...partners].map((p, i) => (
+                  <span key={`${p}-${i}`} className="shrink-0 text-white/70 font-bold text-lg sm:text-xl tracking-tight whitespace-nowrap transition-colors hover:text-white">
+                    {p}
+                  </span>
+                ))}
+              </div>
             </div>
+            <style>{`
+              @keyframes partnerRail {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+            `}</style>
           </div>
         </div>
       </div>
