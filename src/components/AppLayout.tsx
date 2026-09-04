@@ -49,6 +49,10 @@ const AppLayout: React.FC = () => {
             <Features />
           </Reveal>
 
+          <Reveal variant="right" repeat>
+            <NationalIndex />
+          </Reveal>
+
           <Reveal variant="blur" repeat>
             <Assessment />
           </Reveal>
@@ -79,10 +83,6 @@ const AppLayout: React.FC = () => {
 
           <Reveal variant="zoom" repeat>
             <QualityOfLife />
-          </Reveal>
-
-          <Reveal variant="right" repeat>
-            <NationalIndex />
           </Reveal>
 
           <Reveal variant="left" repeat>
