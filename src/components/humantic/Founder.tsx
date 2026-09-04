@@ -149,7 +149,7 @@ const Founder: React.FC = () => {
           trusted.inView ? 'opacity-100' : 'opacity-0'
         }`}
       >
-        <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4 text-right">Trusted Across</p>
+        <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4 text-center">Trusted Across</p>
         {/* Auto-scrolling wordmark rail — bold white type standing in for logos (we don't hold
             authentic logo artwork for these organisations, several of which are trademarked
             corporate marks; a text rail gets the same "trusted by" motion without that risk). */}
