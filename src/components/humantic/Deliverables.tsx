@@ -1330,6 +1330,176 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
       },
     ],
   },
+  {
+    key: 'wellbeing',
+    label: 'Wellbeing Journey',
+    icon: Heart,
+    items: [
+      {
+        title: 'Mind Labs',
+        hook: 'Cognitive, emotional, social & somatic deep-dives.',
+        details:
+          'Neuroscience-backed mini-lectures across the four pillars of self-awareness — cognitive, emotional, social and somatic. Filter by pillar, then go deep on any topic through its own session ladder.',
+        pills: ['01 — Masterclasses', '40+ topics across 4 pillars'],
+        days: [
+          {
+            title: 'Cognitive',
+            points: [
+              'Overthinking — interrupt the loop before it interrupts your day',
+              'Procrastination — understand the avoidance, not just the deadline',
+              'Perfectionism — redefine "good enough" without losing your standards',
+              'Self-Doubt — trace the inner critic back to where it started',
+              'Mindfulness — train attention like it\'s a muscle, because it is',
+              'The Anxious Mind — map what anxiety is actually trying to tell you',
+              'Thoughts Reframing — change the lens before you change the story',
+            ],
+          },
+          {
+            title: 'Emotional',
+            points: [
+              'Building Emotional Awareness — name what you feel before it shapes what you do',
+              'Breaking the Habit of Emotional Suppression — feel more, not less, without being overwhelmed',
+              'From Overreaction to Self-Regulation — respond with intention, not instinct',
+              'Finding Safety — create emotional grounding on a nervous-system level',
+              'From Defensive to Open — drop the shield and build real connection',
+              'Moving Beyond Denial — face what\'s hard to see, and start moving forward',
+            ],
+          },
+          {
+            title: 'Social',
+            points: [
+              'Self-Awareness — see your patterns before others point them out',
+              'Self-Control — build the pause between impulse and action',
+              'Emotional Co/Regulation — learn how calm, and chaos, spread between people',
+              'Mastery of Savvy Communication — say the hard thing without losing the room',
+              'Managing Emotional Exhaustion — spot the burnout that hides behind "I\'m fine"',
+              'Handling Tough Communications — have the conversation you\'ve been avoiding',
+            ],
+          },
+          {
+            title: 'Somatic',
+            points: [
+              'Stress Responses & Attachment Bonding — how the body remembers connection and threat',
+              'Biology of Fear & Bodily Sensations — decode what your body tells you before your mind catches up',
+              'Burnout & Productivity — learn where output ends and depletion begins',
+              'Self-Care Rituals That Truly Work — replace performative self-care with what actually regulates you',
+            ],
+          },
+        ],
+        benefitsLabel: 'Session ladder, per topic',
+        benefits: [
+          'A 3-hour Spark session — one focused sitting, a mirror, and a tool to leave with',
+          'A weekend Immersion — a full two-day reset across lecture, practice and processing',
+          'A 3-month Rewire — enough time to change the wiring, not just the mood',
+        ],
+        audience: ['Individuals wanting a structured route into self-awareness', 'Teams building a shared language across cognitive, emotional, social and somatic science', 'Organisations sourcing masterclasses by topic rather than one generic wellbeing talk'],
+      },
+      {
+        title: 'Reset Retreats',
+        hook: 'Family, women\'s & self-healing getaways.',
+        details:
+          'Immersive, location-based experiences for individuals, couples and families — each buildable as a taster, a weekend, or a season-long companion track.',
+        pills: ['02 — Retreats', 'Individuals · Couples · Families'],
+        days: [
+          {
+            title: 'Programmes',
+            points: [
+              'NextGen2030 — Family Retreat: their wellbeing is shaped now, why wait? (Dubai)',
+              'REVIVE — Heal Self & Relationships: resolve, reset and heal together, 1 day (Abu Dhabi)',
+              'Ladies Retreat — Women Empowerment: enough safety to be yourself (Abu Dhabi)',
+              'Breathe in the Beauty: a body-mind reset on the shore, 2 days · 1 night (JW Marriott)',
+              'Beyond Behavior Insights: understand the roots of behavior, thoughts and feelings',
+              'A Journey Within: an ongoing monthly companion track for self-awareness',
+            ],
+          },
+        ],
+        benefitsLabel: 'What you leave with',
+        benefits: [
+          'A location-based reset, not another conference room',
+          'Formats that scale from a single day to an ongoing monthly rhythm',
+          'Family, couple and women-only tracks built for the room they\'re actually in',
+        ],
+        audience: ['Families wanting shared, guided time away from routine', 'Women seeking a dedicated, safe space to reset', 'Individuals and couples wanting an immersive rather than in-office experience'],
+      },
+      {
+        title: 'The Pulse',
+        hook: 'Gen Z & workplace quality-of-life initiatives.',
+        details:
+          'Culture-forward programmes for hi-potential Gen Z talent and the organisations building around them — from belonging to burnout to boundless productivity.',
+        pills: ['03 — Initiatives', 'Gen Z & Culture'],
+        days: [
+          {
+            title: 'Initiatives',
+            points: [
+              'Gen Z Unfiltered — real stories, real change, real connection: heart + mind',
+              'The Colors of DEI — it\'s just different, not a deficit: the neurodiversity advantage',
+              'The Organized Mind — scientific solutions for overwhelm and mental clutter',
+              'Productivity Hacks for Teams — everyone knows what\'s due, and who owns it',
+              'Between Work & Wild — leave the office, experience the shift, enter the moment',
+            ],
+          },
+        ],
+        benefitsLabel: 'Why this cohort',
+        benefits: [
+          'Speaks Gen Z\'s language instead of translating it for them',
+          'Ties belonging and burnout directly to measurable quality-of-life outcomes',
+          'Built for organisations building their culture around hi-potential young talent',
+        ],
+        audience: ['Organisations onboarding or retaining Gen Z talent', 'People teams building a quality-of-life culture strategy', 'Hi-potential young professionals wanting a shared language for their own experience'],
+      },
+      {
+        title: 'Game On Escapes',
+        hook: 'Experiential leadership simulations.',
+        details:
+          'Fortune-500-grade leadership flight simulators, run outdoors. Consequences are educational here, not financial — so the real boardroom never has to learn the hard way.',
+        pills: ['04 — Corporate Retreats', 'Outdoor simulation'],
+        days: [
+          {
+            title: 'Experiences',
+            points: [
+              'The Game On™ Methodology — it doesn\'t tell them how to work, it shows them how to win',
+              'Nature-Based Missions — the world is your office, zero burnout, high fidelity',
+              'Bio-Core™ Day-Zero Intervention — don\'t pay to fight biology, pay to build with it',
+              'The Neural Relapse Tax — why most corporate training evaporates within days',
+              'Human Capability Development (KSA) — a holistic development programme for Saudi nationals',
+            ],
+          },
+        ],
+        benefitsLabel: 'Why outdoors, why simulated',
+        benefits: [
+          'Real terrain, real pressure — decisions with consequences that teach instead of cost',
+          'Built to make the learning stick past the usual post-training relapse window',
+          'A leadership flight simulator, not another slide deck',
+        ],
+        audience: ['Leadership teams wanting an experiential alternative to classroom training', 'Organisations concerned training doesn\'t stick after the workshop ends', 'Saudi-national talent development cohorts'],
+      },
+      {
+        title: 'Safer Place For All — CPD Pillars',
+        hook: 'A legacy of impact, built on 3 SDG pillars.',
+        details:
+          'Shaping wellbeing for today, leading with humanity tomorrow. British-accredited CPD programmes built on Business, Physiology & Brain Science — delivered virtually across London, Beijing and Germany, and face-to-face across the UAE and Saudi Arabia.',
+        pills: ['05 — Corporate Initiative', 'British-accredited CPD'],
+        days: [
+          {
+            title: 'The Three Pillars',
+            points: [
+              'SDG 3 — Good Health & Wellbeing: ensure healthy lives and promote wellbeing for all, at every age',
+              'SDG 8 — Decent Work & Economic Growth: organisational behaviour and business psychology that strengthens group performance',
+              'Retreat Culture Transformation: strategic executive alignment toward Goal 2026',
+            ],
+          },
+        ],
+        benefitsLabel: 'Delivery footprint',
+        benefits: [
+          'Virtual delivery across London, Beijing and Germany',
+          'Face-to-face delivery across the UAE and Saudi Arabia',
+          'Grounded in Business, Physiology & Brain Science, not generic wellness content',
+        ],
+        audience: ['Organisations building a multi-year, SDG-aligned wellbeing strategy', 'Executive teams pursuing strategic culture transformation', 'Global teams needing both virtual and face-to-face delivery'],
+        awarded: 'British-accredited CPD.',
+      },
+    ],
+  },
 ];
 
 const initiatives: Record<string, Initiative> = {
