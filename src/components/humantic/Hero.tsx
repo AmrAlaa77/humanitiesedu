@@ -8,7 +8,7 @@ const BARS = [40, 55, 48, 62, 70, 65, 78, 74, 82, 79, 87, 90];
 const Hero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   const scrollTo = (id: string) => document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
 
-  const stats = useInView<HTMLDivElement>();
+  const stats = useInView<HTMLDivElement>({ once: false });
   const biomarkers = useCountUp(120, stats.inView);
   const accuracy = useCountUp(94, stats.inView);
   const score = useCountUp(87, stats.inView, 1400);
