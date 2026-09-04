@@ -33,7 +33,7 @@ const phases: Phase[] = [
     tag: 'Vision 2030 Portal',
     period: 'The Pitch',
     title: 'Carried to the highest level',
-    desc: 'The cause was presented where a human-centered cause matched ours — aligned with a national vision built for those who think beyond business, in service of humanity.',
+    desc: "Through Vision 2030 Portal, we align with a national vision built for those who think beyond business — shaping a country every visitor would want to call home, rooted in Quality of Life's human-centered initiatives.",
     status: 'done',
   },
   {
