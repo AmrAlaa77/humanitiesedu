@@ -94,8 +94,18 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100svh] w-full overflow-hidden bg-slate-950 text-white"
+      className="relative min-h-[100svh] w-full overflow-hidden text-white"
     >
+      {/* Background as a gradient layer (not a flat bg- class) so it fades to transparent at the
+          very top and very bottom instead of cutting hard into the fixed AmbientBackground glow
+          sitting behind every section -- that glow is what was showing through as a hairline-then-
+          teal seam right where this opaque section ended and the next (transparent) one began. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{ background: 'linear-gradient(to bottom, transparent 0%, #020617 10%, #020617 90%, transparent 100%)' }}
+      />
+
       {/* Subtle grid lines — drifts gently with the cursor */}
       <div
         ref={gridRef}
