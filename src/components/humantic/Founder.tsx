@@ -122,8 +122,8 @@ const Founder: React.FC = () => {
 
           <p
             ref={rooted.ref}
-            className={`rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-slate-400 text-sm leading-relaxed mb-8 transition-all duration-1000 ease-out ${
-              rooted.inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[45vw] sm:translate-x-[30vw]'
+            className={`rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-slate-400 text-sm leading-relaxed mb-8 text-right transition-opacity duration-700 ease-out ${
+              rooted.inView ? 'opacity-100' : 'opacity-0'
             }`}
           >
             Rooted in Vision 2030's pillars and woven into the national objectives of multiple Saudi
@@ -136,8 +136,8 @@ const Founder: React.FC = () => {
               the section's final beat rather than crowding the paragraph above it. */}
           <div
             ref={trusted.ref}
-            className={`mt-10 pt-8 border-t border-white/10 transition-all duration-1000 ease-out ${
-              trusted.inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[45vw] sm:translate-x-[30vw]'
+            className={`mt-10 pt-8 border-t border-white/10 transition-opacity duration-700 ease-out ${
+              trusted.inView ? 'opacity-100' : 'opacity-0'
             }`}
           >
             <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Trusted Across</p>
