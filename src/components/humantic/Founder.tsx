@@ -42,7 +42,7 @@ const partners = [
   'Saudi Aramco', 'Ma’aden', 'King Salman Hospital', 'King Abdullah Medical City',
   'National Guard Health Affairs', 'Royal Commission for AlUla', 'U.S. Embassy', 'Embassy of Saudi Arabia',
   'Mubadala', 'PepsiCo', 'Unilever', 'Nestlé', 'Mars Incorporated', 'Google', 'Siemens',
-  'GIZ (German Cooperation)', 'Savola Foods',
+  'GIZ (German Cooperation)',
 ];
 
 const Founder: React.FC = () => {
