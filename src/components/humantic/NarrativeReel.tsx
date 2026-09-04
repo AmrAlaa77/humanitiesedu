@@ -109,7 +109,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
       {/* Subtle grid lines — drifts gently with the cursor */}
       <div
         ref={gridRef}
-        className="pointer-events-none absolute -inset-4 opacity-[0.18] will-change-transform"
+        className="pointer-events-none absolute -inset-4 opacity-[0.08] will-change-transform"
         style={{
           backgroundImage:
             'linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)',
