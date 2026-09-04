@@ -28,9 +28,11 @@ const steps = [
 ];
 
 const AwarenessJourney: React.FC = () => {
-  const head = useInView<HTMLDivElement>();
-  const list = useInView<HTMLDivElement>();
-  const closing = useInView<HTMLParagraphElement>();
+  // once: false -- replay the entrance every time this scrolls into view, scrolling
+  // either direction, instead of only animating in the first time (more alive on re-visit).
+  const head = useInView<HTMLDivElement>({ once: false });
+  const list = useInView<HTMLDivElement>({ once: false });
+  const closing = useInView<HTMLParagraphElement>({ once: false });
 
   return (
     <section className="relative py-20 sm:py-24 bg-slate-950 text-white overflow-hidden">
