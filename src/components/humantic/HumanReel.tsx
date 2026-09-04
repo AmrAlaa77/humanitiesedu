@@ -292,6 +292,7 @@ const HumanReel: React.FC = () => {
             opacity: loaded ? 1 : 0,
             transform: loaded ? 'translateY(-50%) scale(1)' : 'translateY(-50%) scale(0.94)',
             transition: 'opacity .9s ease .2s, transform .9s ease .2s',
+            isolation: 'isolate',
           }}
         >
           <div
@@ -303,6 +304,13 @@ const HumanReel: React.FC = () => {
               maskSize: '100% 100%',
               WebkitMaskRepeat: 'no-repeat',
               maskRepeat: 'no-repeat',
+              // Researched fix for a documented Chromium bug: mask-image compositing can leak a
+              // hairline of whatever sits behind it through at paint time (sub-pixel rounding gets
+              // floored). isolation:isolate forces this into its own stacking context and
+              // translateZ(0) forces clean GPU-layer compositing, which is the standard workaround
+              // rather than painting cover bars over the symptom after the fact.
+              isolation: 'isolate',
+              transform: 'translateZ(0)',
             }}
           >
             {renderVideo()}
