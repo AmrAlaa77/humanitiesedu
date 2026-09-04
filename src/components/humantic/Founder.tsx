@@ -7,6 +7,7 @@ const stats = [
   { value: '15', label: 'Markets across 5 continents' },
   { value: '2018–2026', label: 'British accreditation' },
   { value: '5', label: 'Royal Saudi hospital partnerships' },
+  { value: '20,000', label: 'Semi/fully funded certifications exclusive for Saudi nationals, 2023–2026' },
 ];
 
 const sectors = [
@@ -97,7 +98,7 @@ const Founder: React.FC = () => {
             horizontal overflow site-wide -- exactly the kind of thing that would make an
             unrelated hairline seam elsewhere suddenly reappear. */}
         <div className="min-w-0">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10">
             {stats.map((s) => (
               <div key={s.label} className="group rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.05]">
                 <div className="text-3xl font-bold text-white transition-transform duration-300 group-hover:scale-110">{s.value}</div>
