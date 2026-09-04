@@ -97,9 +97,14 @@
      scrollWidth past the viewport, which is what let HumanReel's edge-fade covers slip out of
      alignment with the real page edge on more than one occasion. Rather than keep hunting down
      each new source one at a time, clip horizontal overflow at the root so it can never surface
-     as a visual seam again -- nothing on this page relies on horizontal body scroll. */
+     as a visual seam again -- nothing on this page relies on horizontal body scroll.
+     `clip` not `hidden`: overflow:hidden on html/body breaks position:sticky everywhere on the
+     page (it needs an unbroken chain of non-scrolling-but-visible/clip ancestors up to the
+     viewport) -- that's exactly what silently killed the Founder identity card's sticky
+     positioning, leaving a vacant gap once the right column grew taller than it. `clip` visually
+     clips the same way without creating that scrolling/formatting-context side effect. */
   html, body {
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   body {
