@@ -232,7 +232,7 @@ const HumanReel: React.FC = () => {
           seam Chrome draws at the boundary between this flex row and the one above it (a known
           artifact where adjacent elements land on separate GPU compositing layers). A solid full-width
           bar in the same seam position, in normal document flow, papers over it regardless of cause. */}
-      <div className="pointer-events-none relative z-10 h-4 w-full bg-[#0D0D0D]" />
+      <div className="pointer-events-none relative z-20 -mx-[2px] h-10 w-[calc(100%+4px)] bg-[#0D0D0D]" />
 
       {/* The word HUMAN — video visible only inside the letterforms */}
       <div className="relative z-10 flex flex-1 items-center justify-center px-2">
