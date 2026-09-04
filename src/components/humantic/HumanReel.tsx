@@ -237,12 +237,24 @@ const HumanReel: React.FC = () => {
         </p>
       </div>
 
-      {/* Seam cover between this flex row and the one above it. VERIFIED LIVE: the previous
-          `w-[calc(100%+4px)]` measured only 4px wide -- as a flex item of the column-direction
-          section, the calc-based width wasn't resolving against the container the way a plain
-          block width would. w-screen + margin-based centering sidesteps percentage/calc
-          resolution on the flex item entirely. */}
-      <div className="pointer-events-none w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] z-20 h-10 bg-[#0D0D0D]" />
+      {/* Seam cover between this flex row and the one above it, directly under the tagline.
+          Plain inline style, not Tailwind arbitrary values -- every Tailwind-class-based version
+          of this bar measured 0-4px wide in production despite looking correct in source, so
+          this uses raw CSS with no build-time class generation or flex-item width resolution
+          involved: width:100% on a block-level div is unambiguous and doesn't depend on any of
+          the mechanisms that kept failing. */}
+      <div
+        aria-hidden
+        style={{
+          pointerEvents: 'none',
+          display: 'block',
+          width: '100%',
+          height: '10mm',
+          backgroundColor: '#0D0D0D',
+          position: 'relative',
+          zIndex: 20,
+        }}
+      />
 
       {/* The word HUMAN — video visible only inside the letterforms */}
       <div className="relative z-10 flex flex-1 items-center justify-center px-2">
