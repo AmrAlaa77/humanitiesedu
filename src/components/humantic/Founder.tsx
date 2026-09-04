@@ -121,7 +121,7 @@ const Founder: React.FC = () => {
 
           <p
             ref={rooted.ref}
-            className={`text-slate-400 text-sm leading-relaxed mb-8 transition-all duration-700 ease-out ${
+            className={`rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-slate-400 text-sm leading-relaxed mb-8 transition-all duration-700 ease-out ${
               rooted.inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
             }`}
           >
