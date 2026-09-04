@@ -47,6 +47,7 @@ const partners = [
 
 const Founder: React.FC = () => {
   const rooted = useInView<HTMLParagraphElement>({ once: false });
+  const trusted = useInView<HTMLDivElement>({ once: false });
 
   return (
   <section id="founder" className="relative py-24 overflow-hidden">
@@ -121,8 +122,8 @@ const Founder: React.FC = () => {
 
           <p
             ref={rooted.ref}
-            className={`rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-slate-400 text-sm leading-relaxed mb-8 transition-all duration-700 ease-out ${
-              rooted.inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
+            className={`rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-slate-400 text-sm leading-relaxed mb-8 transition-all duration-1000 ease-out ${
+              rooted.inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[45vw] sm:translate-x-[30vw]'
             }`}
           >
             Rooted in Vision 2030's pillars and woven into the national objectives of multiple Saudi
@@ -133,7 +134,12 @@ const Founder: React.FC = () => {
 
           {/* Closing element of the bio, set apart with its own top border + spacing so it reads as
               the section's final beat rather than crowding the paragraph above it. */}
-          <div className="mt-10 pt-8 border-t border-white/10">
+          <div
+            ref={trusted.ref}
+            className={`mt-10 pt-8 border-t border-white/10 transition-all duration-1000 ease-out ${
+              trusted.inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[45vw] sm:translate-x-[30vw]'
+            }`}
+          >
             <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Trusted Across</p>
             {/* Auto-scrolling wordmark rail — bold white type standing in for logos (we don't hold
                 authentic logo artwork for these organisations, several of which are trademarked
