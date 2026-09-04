@@ -116,7 +116,9 @@ const Founder: React.FC = () => (
             Program, Quality of Life 2030, and the National Strategy for Data &amp; AI.
           </p>
 
-          <div>
+          {/* Closing element of the bio, set apart with its own top border + spacing so it reads as
+              the section's final beat rather than crowding the paragraph above it. */}
+          <div className="mt-10 pt-8 border-t border-white/10">
             <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Trusted Across</p>
             {/* Auto-scrolling wordmark rail — bold white type standing in for logos (we don't hold
                 authentic logo artwork for these organisations, several of which are trademarked
@@ -126,7 +128,7 @@ const Founder: React.FC = () => (
               onMouseEnter={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'paused')}
               onMouseLeave={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'running')}
             >
-              <div className="partner-track flex w-max items-center gap-10" style={{ animation: 'partnerRail 32s linear infinite' }}>
+              <div className="partner-track flex w-max items-center gap-10" style={{ animation: 'partnerRail 65s linear infinite' }}>
                 {[...partners, ...partners].map((p, i) => (
                   <span key={`${p}-${i}`} className="shrink-0 text-white/70 font-bold text-lg sm:text-xl tracking-tight whitespace-nowrap transition-colors hover:text-white">
                     {p}
