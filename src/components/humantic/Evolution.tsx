@@ -124,7 +124,11 @@ const Evolution: React.FC = () => {
                 key={p.title}
                 style={{ transitionDelay: timeline.inView ? `${i * 90}ms` : '0ms' }}
                 className={`relative sm:grid sm:grid-cols-2 sm:gap-12 transition-all duration-700 ease-out ${
-                  timeline.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  timeline.inView
+                    ? 'opacity-100 translate-x-0'
+                    : left
+                    ? 'opacity-0 -translate-x-12' // left-column cards enter travelling left-to-right
+                    : 'opacity-0 translate-x-12' // right-column cards enter travelling right-to-left
                 } ${left ? '' : 'sm:[direction:rtl]'}`}
               >
                 {/* node */}
