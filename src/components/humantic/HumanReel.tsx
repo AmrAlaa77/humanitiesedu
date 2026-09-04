@@ -231,6 +231,7 @@ const HumanReel: React.FC = () => {
             width: '100vw',
             marginLeft: 'calc(50% - 50vw)',
             marginRight: 'calc(50% - 50vw)',
+            marginTop: '-4px',
             height: '10mm',
             backgroundColor: '#0D0D0D',
             position: 'relative',
