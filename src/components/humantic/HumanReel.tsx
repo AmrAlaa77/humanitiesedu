@@ -206,9 +206,12 @@ const HumanReel: React.FC = () => {
               key={i}
               className="mr-[0.28em] inline-block"
               style={{
+                // Opacity-only: a translateY per span (dozens of them) forced each word onto its
+                // own GPU compositing layer, which is what was producing the hairline seam right
+                // below this line -- every cover-bar we added just became a new layer boundary in
+                // turn. Dropping the transform removes the layer promotion at the source.
                 opacity: loaded ? 1 : 0,
-                transform: loaded ? 'translateY(0)' : 'translateY(0.5em)',
-                transition: `opacity .5s ease ${i * 0.04}s, transform .5s ease ${i * 0.04}s`,
+                transition: `opacity .5s ease ${i * 0.04}s`,
               }}
             >
               {word}
@@ -225,8 +228,7 @@ const HumanReel: React.FC = () => {
           className="mt-3 text-sm font-semibold text-white sm:text-base whitespace-nowrap"
           style={{
             opacity: loaded ? 1 : 0,
-            transform: loaded ? 'translateY(0)' : 'translateY(0.5em)',
-            transition: `opacity .5s ease ${HEADLINE_WORDS.length * 0.04 + 0.15}s, transform .5s ease ${HEADLINE_WORDS.length * 0.04 + 0.15}s`,
+            transition: `opacity .5s ease ${HEADLINE_WORDS.length * 0.04 + 0.15}s`,
           }}
         >
           {HEADLINE_TAGLINE_1} {HEADLINE_TAGLINE_2}
