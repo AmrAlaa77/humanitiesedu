@@ -307,12 +307,15 @@ const HumanReel: React.FC = () => {
           >
             {renderVideo()}
           </div>
-          {/* Feathered cover fades: hide thin line artifacts baked into the video near the top/bottom
-              edges. A soft gradient (rather than a hard-edge bar) covers a deeper band without visibly
-              chopping the letter tops/bottoms, in case the line sits a few px inside the true edge. */}
+          {/* Feathered cover fades: CONFIRMED by the user zooming in on the live site that the top
+              line is genuinely baked into the source video frame (not a CSS/compositing artifact --
+              every DOM-boundary theory was wrong). Can't re-encode the video in this environment (no
+              ffmpeg/python available), so the fix is masking deeper into the frame with a percentage
+              height (scales with the box, unlike a fixed px cover that becomes proportionally tiny
+              on large screens) -- pushed well past where that artifact sits. */}
           <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-6"
-            style={{ background: 'linear-gradient(to bottom, #0D0D0D 0%, #0D0D0D 35%, transparent 100%)' }}
+            className="pointer-events-none absolute inset-x-0 top-0"
+            style={{ height: '9%', background: 'linear-gradient(to bottom, #0D0D0D 0%, #0D0D0D 55%, transparent 100%)' }}
           />
           <div
             className="pointer-events-none absolute inset-x-0 bottom-0 h-6"
