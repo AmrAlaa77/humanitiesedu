@@ -83,6 +83,9 @@ const Showcase: React.FC = () => {
             <p className="mt-3 text-white font-medium">
               Human + Machine Intelligence. <span className="text-emerald-400">Why the wait?</span>
             </p>
+            <p className="mt-1.5 text-slate-400 text-sm">
+              Humantic <span className="text-white font-medium">+ Digital Intelligence</span> — one story, still becoming.
+            </p>
           </div>
           {reels.length > 0 && (
             <div className="flex items-center gap-2 flex-wrap">
