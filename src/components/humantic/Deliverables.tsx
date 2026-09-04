@@ -889,6 +889,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
         title: 'Employee Wellbeing',
         hook: 'Move beyond superficial wellbeing initiatives and understand the workplace conditions that create sustainable human performance.',
         image: 'https://images.pexels.com/photos/7971555/pexels-photo-7971555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        videoSrc: '/videos/employee-wellbeing.mp4',
         format: '2-Day Practical Workshop',
         pills: ['Wellbeing', 'Engagement', 'Leadership'],
         benefitsLabel: "What You'll Learn",
