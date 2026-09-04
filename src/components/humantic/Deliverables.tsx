@@ -1898,7 +1898,7 @@ const Deliverables: React.FC = () => {
               <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">One human-centred system.</span>
             </h2>
             <p className="mt-4 text-slate-400 text-lg">
-              Youth readiness, preventive health, and leadership behaviour — each built on the same neuroscience-and-behavioural-science foundation that started at the wellhead, now mapped to Vision 2030.
+              Built on the same neuroscience-and-behavioural-science foundation that started at the wellhead, now mapped to Vision 2030.
             </p>
           </div>
           <div className="flex items-center gap-2 flex-wrap">
