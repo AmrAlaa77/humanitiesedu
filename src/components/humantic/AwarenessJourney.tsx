@@ -36,10 +36,10 @@ const AwarenessJourney: React.FC = () => {
     <section className="relative py-20 sm:py-24 bg-slate-950 text-white overflow-hidden">
       <div className="pointer-events-none absolute -top-24 left-1/4 h-72 w-72 sm:h-96 sm:w-96 rounded-full bg-emerald-500/[0.06] blur-3xl" />
 
-      <div className="relative max-w-3xl mx-auto px-5 sm:px-8">
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-8">
         <div
           ref={head.ref}
-          className={`transition-all duration-700 ease-out ${head.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-2xl transition-all duration-700 ease-out ${head.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <span className="text-emerald-400 text-sm font-semibold uppercase tracking-widest">Humantic Digital</span>
 
@@ -49,31 +49,30 @@ const AwarenessJourney: React.FC = () => {
           </h2>
         </div>
 
-        <div ref={list.ref} className="mt-10 sm:mt-12 space-y-4 sm:space-y-5">
+        <div ref={list.ref} className="mt-10 sm:mt-14 grid md:grid-cols-2 gap-6">
           {steps.map((s, i) => (
             <div
               key={s.title}
               style={{ transitionDelay: list.inView ? `${i * 140}ms` : '0ms' }}
-              className={`group flex gap-4 sm:gap-5 rounded-2xl border border-transparent p-4 sm:p-5 -mx-4 sm:-mx-5 transition-all duration-700 ease-out hover:border-emerald-400/20 hover:bg-white/[0.03] ${
+              className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8 transition-all duration-700 ease-out hover:-translate-y-1.5 hover:border-emerald-400/30 hover:bg-white/[0.05] hover:shadow-2xl hover:shadow-emerald-500/10 ${
                 list.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
-              <div className="shrink-0 w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                <s.icon className="w-5 h-5 text-slate-950" />
+              <div className="absolute -top-3 -right-3 text-6xl font-bold text-white/[0.06]">{`0${i + 1}`}</div>
+              <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                <s.icon className="w-6 h-6 text-slate-950" />
               </div>
-              <div className="min-w-0">
-                <span className="text-emerald-400 text-xs font-semibold uppercase tracking-widest">{s.kicker}</span>
-                <h3 className="mt-1 text-white font-semibold text-base sm:text-lg">{s.title}</h3>
-                {s.sub && <p className="mt-1 text-slate-500 text-xs font-semibold uppercase tracking-wide">{s.sub}</p>}
-                <p className="mt-3 text-slate-400 text-sm leading-relaxed">{s.desc}</p>
-              </div>
+              <span className="text-emerald-400 text-xs font-semibold uppercase tracking-widest">{s.kicker}</span>
+              <h3 className="mt-2 text-white font-semibold text-xl">{s.title}</h3>
+              {s.sub && <p className="mt-1 text-slate-500 text-xs font-semibold uppercase tracking-wide">{s.sub}</p>}
+              <p className="mt-3 text-slate-400 text-sm leading-relaxed">{s.desc}</p>
             </div>
           ))}
         </div>
 
         <p
           ref={closing.ref}
-          className={`mt-10 sm:mt-12 text-slate-300 text-base sm:text-lg leading-relaxed transition-all duration-700 ease-out ${
+          className={`mt-12 text-center text-slate-300 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto transition-all duration-700 ease-out ${
             closing.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
