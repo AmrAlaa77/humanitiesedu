@@ -92,6 +92,16 @@
     @apply border-border;
   }
 
+  /* Safety net: a single overflowing element anywhere on the page (an unwrapped flex/grid
+     track, a full-bleed element with rounding error, etc.) pushes document.documentElement's
+     scrollWidth past the viewport, which is what let HumanReel's edge-fade covers slip out of
+     alignment with the real page edge on more than one occasion. Rather than keep hunting down
+     each new source one at a time, clip horizontal overflow at the root so it can never surface
+     as a visual seam again -- nothing on this page relies on horizontal body scroll. */
+  html, body {
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-background text-foreground font-sans dark:bg-background dark:text-foreground;
   }
