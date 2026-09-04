@@ -217,8 +217,10 @@ const HumanReel: React.FC = () => {
         </p>
         {/* Same seam artifact, this time between these two paragraphs -- the first is built from many
             individually-animated spans (each its own compositing layer), and Chrome draws a hairline
-            at the boundary with whatever follows. Same fix: a solid cover in normal flow at the seam. */}
-        <div className="pointer-events-none relative z-20 h-3 w-full bg-[#0D0D0D]" />
+            at the boundary with whatever follows. The seam runs the full viewport width, but this sits
+            inside the max-w-4xl text column, so the previous narrow cover never actually reached it --
+            breaking out to full-bleed width (independent of the parent's max-width) fixes that. */}
+        <div className="pointer-events-none relative left-1/2 right-1/2 -mx-[50vw] z-20 h-3 w-screen bg-[#0D0D0D]" />
         <p
           className="mt-3 text-sm font-semibold text-white sm:text-base whitespace-nowrap"
           style={{
@@ -260,7 +262,7 @@ const HumanReel: React.FC = () => {
             aspectRatio: '1400 / 480',
             cursor: 'none',
             opacity: loaded ? 1 : 0,
-            transform: loaded ? 'translateY(-50%) translateX(-5%) scale(1)' : 'translateY(-50%) translateX(-5%) scale(0.94)',
+            transform: loaded ? 'translateY(-50%) scale(1)' : 'translateY(-50%) scale(0.94)',
             transition: 'opacity .9s ease .2s, transform .9s ease .2s',
           }}
         >
