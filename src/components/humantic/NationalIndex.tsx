@@ -26,7 +26,7 @@ const NationalIndex: React.FC = () => {
         Digitizing Human Wellbeing Metrics for National Capability Development
       </h2>
       <p className="mt-4 text-slate-400 text-lg max-w-2xl mx-auto">
-        A national Wellbeing Index assessment — turning data into capability, one student at a time.
+        A Wellbeing Index assessment — turning data into capability, one human at a time.
       </p>
       <p className="mt-6 text-slate-400 max-w-3xl mx-auto leading-relaxed">
         We digitize human wellbeing into a measurable, trackable Wellbeing Index — combining AI-driven diagnostics,
