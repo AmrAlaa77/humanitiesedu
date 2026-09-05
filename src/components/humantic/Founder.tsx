@@ -147,6 +147,12 @@ const Founder: React.FC = () => {
         }`}
       >
         <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4 text-center">Trusted Across</p>
+        <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight text-center mb-6 leading-snug">
+          One shared standard &mdash; continents wide, sectors wide, no wonder.
+          <span className="block bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
+            Humanity, at the core.
+          </span>
+        </h3>
         {/* Auto-scrolling wordmark rail — bold white type standing in for logos (we don't hold
             authentic logo artwork for these organisations, several of which are trademarked
             corporate marks; a text rail gets the same "trusted by" motion without that risk). */}
@@ -186,13 +192,27 @@ const Founder: React.FC = () => {
 // Own useInView instance per stat, so each counts up individually the moment
 // IT scrolls into view (same pattern as Evolution's TimelineItem) rather than
 // all firing together off one shared observer on the grid container.
+const RANGE_RE = /^(\d+)\s*[–-]\s*(\d+)$/;
+
 const StatCard: React.FC<{ s: (typeof stats)[number] }> = ({ s }) => {
   const { ref, inView } = useInView<HTMLDivElement>({ once: true });
   const target = parseCountTarget(s.value);
+  const range = s.value.match(RANGE_RE);
+  const rangeStart = range ? parseInt(range[1], 10) : 0;
+  const rangeEnd = range ? parseInt(range[2], 10) : 0;
+
   const count = useCountUp(target ?? 0, inView && target !== null);
-  // Non-numeric values (e.g. the "2018–2026" accreditation range) render as-is —
-  // there's nothing to count up to.
-  const display = target !== null ? count.toLocaleString('en-US') : s.value;
+  // A year range like "2018–2026" isn't a single count, but both ends still count up
+  // together so the whole card animates in rather than sitting static.
+  const countStart = useCountUp(rangeStart, inView && Boolean(range));
+  const countEnd = useCountUp(rangeEnd, inView && Boolean(range));
+
+  const display =
+    target !== null
+      ? count.toLocaleString('en-US')
+      : range
+      ? `${countStart}–${countEnd}`
+      : s.value;
 
   return (
     <div

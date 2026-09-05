@@ -1,6 +1,7 @@
 import React from 'react';
 import { Lightbulb, Watch } from 'lucide-react';
 import { useInView } from '@/hooks/use-in-view';
+import SpotlightReveal from './SpotlightReveal';
 
 /**
  * Sits directly after the HUMAN hero reel. Two-step story (awareness, then
@@ -36,7 +37,9 @@ const AwarenessJourney: React.FC = () => {
 
   return (
     <section className="relative py-20 sm:py-24 bg-slate-950 text-white overflow-hidden">
-      <div className="pointer-events-none absolute -top-24 left-1/4 h-72 w-72 sm:h-96 sm:w-96 rounded-full bg-emerald-500/[0.06] blur-3xl" />
+      <SpotlightReveal className="absolute inset-0">
+        <div className="pointer-events-none absolute -top-24 left-1/4 h-72 w-72 sm:h-96 sm:w-96 rounded-full bg-emerald-500/[0.06] blur-3xl" />
+      </SpotlightReveal>
 
       <div className="relative max-w-7xl mx-auto px-5 sm:px-8">
         <div
