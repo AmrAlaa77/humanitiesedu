@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, FileText, X, Globe, Users, Heart, Activity, TrendingUp, FlaskConical } from 'lucide-react';
 import { useInView } from '@/hooks/use-in-view';
 
@@ -1812,6 +1812,37 @@ const Deliverables: React.FC = () => {
   const [outlineItem, setOutlineItem] = useState<Deliverable | null>(null);
   const current = categories.find((c) => c.key === active)!;
 
+  // Drag-to-scroll for the horizontal card carousel: mouse-drag on desktop (touch already scrolls
+  // natively), with a moved-flag so a drag ending on top of a card's own button doesn't also fire
+  // that button's click.
+  const trackRef = useRef<HTMLDivElement>(null);
+  const drag = useRef({ down: false, startX: 0, scrollLeft: 0, moved: false });
+
+  const onDragStart = (e: React.MouseEvent) => {
+    const el = trackRef.current;
+    if (!el) return;
+    drag.current = { down: true, startX: e.pageX - el.offsetLeft, scrollLeft: el.scrollLeft, moved: false };
+  };
+  const onDragMove = (e: React.MouseEvent) => {
+    const el = trackRef.current;
+    if (!el || !drag.current.down) return;
+    e.preventDefault();
+    const x = e.pageX - el.offsetLeft;
+    const walk = x - drag.current.startX;
+    if (Math.abs(walk) > 5) drag.current.moved = true;
+    el.scrollLeft = drag.current.scrollLeft - walk;
+  };
+  const onDragEnd = () => {
+    drag.current.down = false;
+  };
+  const onDragClickCapture = (e: React.MouseEvent) => {
+    if (drag.current.moved) {
+      e.preventDefault();
+      e.stopPropagation();
+      drag.current.moved = false;
+    }
+  };
+
   return (
     <section id="deliverables" className="relative py-24">
       <style>{`
@@ -1859,10 +1890,28 @@ const Deliverables: React.FC = () => {
 
         {initiatives[active] && <InitiativeBanner initiative={initiatives[active]} />}
 
-        <div key={active} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 animate-in fade-in-0 slide-in-from-bottom-2 duration-300">
-          {current.items.map((item) => (
-            <DeliverableCard key={item.title} item={item} onOutline={setOutlineItem} />
-          ))}
+        {/* Draggable card carousel: fixed-width cards in a horizontally scrollable track instead
+            of a wrapping grid -- drag with the mouse on desktop, swipe natively on touch. Edge
+            fades hint there's more to scroll to, same technique as the partner rail elsewhere. */}
+        <div className="relative -mx-5 sm:-mx-8">
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 z-10 bg-gradient-to-r from-slate-950 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-16 z-10 bg-gradient-to-l from-slate-950 to-transparent" />
+          <div
+            key={active}
+            ref={trackRef}
+            onMouseDown={onDragStart}
+            onMouseMove={onDragMove}
+            onMouseUp={onDragEnd}
+            onMouseLeave={onDragEnd}
+            onClickCapture={onDragClickCapture}
+            className="flex gap-5 overflow-x-auto px-5 sm:px-8 pb-4 cursor-grab select-none active:cursor-grabbing animate-in fade-in-0 slide-in-from-bottom-2 duration-300 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {current.items.map((item) => (
+              <div key={item.title} className="shrink-0 w-[320px] sm:w-[360px]">
+                <DeliverableCard item={item} onOutline={setOutlineItem} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
