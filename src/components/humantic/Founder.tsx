@@ -51,16 +51,21 @@ const partners = [
   'Maersk Drilling', 'Shell', 'BP', 'BG Group', 'Nabors',
 ];
 
+// Split into 5 rows for the multi-row scrolling rail, each moving independently.
+const PARTNER_ROW_COUNT = 5;
+const partnerRows: string[][] = (() => {
+  const size = Math.ceil(partners.length / PARTNER_ROW_COUNT);
+  return Array.from({ length: PARTNER_ROW_COUNT }, (_, i) => partners.slice(i * size, i * size + size)).filter(
+    (row) => row.length > 0
+  );
+})();
+
 const Founder: React.FC = () => {
   const rooted = useInView<HTMLParagraphElement>({ once: false });
   const trusted = useInView<HTMLDivElement>({ once: false });
 
   return (
   <section id="founder" className="relative py-24 overflow-hidden">
-    <div className="absolute inset-0 -z-10">
-      <div className="absolute top-0 right-1/4 w-[36rem] h-[36rem] rounded-full bg-emerald-500/[0.06] blur-[140px]" />
-    </div>
-
     <div className="max-w-7xl mx-auto px-5 sm:px-8">
       <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-14 items-start">
         {/* Left — identity card */}
@@ -148,20 +153,38 @@ const Founder: React.FC = () => {
             We hit humanity at the core.
           </span>
         </h3>
-        {/* Static wrapped pill grid — bold outlined type standing in for logos (we don't hold
-            authentic logo artwork for these organisations, several of which are trademarked
-            corporate marks; a text pill gets the same "trusted by" read with no auto-scroll
-            motion, reading as five clean rows instead of a marquee). */}
-        <div className="flex flex-wrap justify-center gap-3">
-          {partners.map((p) => (
-            <span
-              key={p}
-              className="text-xs sm:text-sm font-normal text-teal-300 tracking-tight whitespace-nowrap border border-teal-400/20 rounded-full px-4 py-2 transition-colors hover:text-teal-200 hover:border-teal-400/40"
+        {/* Five independently auto-scrolling rows, alternating direction, instead of one static
+            grid or one long single-row marquee -- bold outlined type standing in for logos (we
+            don't hold authentic logo artwork for these organisations, several of which are
+            trademarked corporate marks). */}
+        <div className="space-y-3">
+          {partnerRows.map((row, ri) => (
+            <div
+              key={ri}
+              className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
+              onMouseEnter={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'paused')}
+              onMouseLeave={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'running')}
             >
-              {p}
-            </span>
+              <div
+                className="partner-track flex w-max items-center gap-3"
+                style={{ animation: `${ri % 2 === 0 ? 'partnerRail' : 'partnerRailRev'} ${34 + ri * 5}s linear infinite` }}
+              >
+                {[...row, ...row].map((p, i) => (
+                  <span
+                    key={`${p}-${i}`}
+                    className="shrink-0 text-xs sm:text-sm font-normal text-teal-300 tracking-tight whitespace-nowrap border border-teal-400/20 rounded-full px-4 py-2 transition-colors hover:text-teal-200 hover:border-teal-400/40"
+                  >
+                    {p}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
+        <style>{`
+          @keyframes partnerRail { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+          @keyframes partnerRailRev { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        `}</style>
       </div>
     </div>
   </section>
