@@ -150,7 +150,7 @@ const Founder: React.FC = () => {
         <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight text-center mb-6 leading-snug">
           One shared standard &mdash; continents wide, sectors wide, no wonder.
           <span className="block bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
-            Humanity, at the core.
+            We hit humanity at the core.
           </span>
         </h3>
         {/* Auto-scrolling wordmark rail — bold white type standing in for logos (we don't hold
