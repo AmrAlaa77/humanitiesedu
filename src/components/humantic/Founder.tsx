@@ -148,36 +148,20 @@ const Founder: React.FC = () => {
             We hit humanity at the core.
           </span>
         </h3>
-        {/* Auto-scrolling wordmark rail — bold white type standing in for logos (we don't hold
+        {/* Static wrapped pill grid — bold outlined type standing in for logos (we don't hold
             authentic logo artwork for these organisations, several of which are trademarked
-            corporate marks; a text rail gets the same "trusted by" motion without that risk). */}
-        <div
-          className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
-          onMouseEnter={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'paused')}
-          onMouseLeave={(e) => (e.currentTarget.querySelector<HTMLElement>('.partner-track')!.style.animationPlayState = 'running')}
-        >
-          <div className="partner-track flex w-max items-center gap-8" style={{ animation: 'partnerRail 48s linear infinite' }}>
-            {[...partners, ...partners].map((p, i) => (
-              <span
-                key={`${p}-${i}`}
-                className="shrink-0 text-xs sm:text-sm font-normal text-teal-300 tracking-tight whitespace-nowrap transition-colors hover:text-teal-200"
-              >
-                {p}
-              </span>
-            ))}
-          </div>
+            corporate marks; a text pill gets the same "trusted by" read with no auto-scroll
+            motion, reading as five clean rows instead of a marquee). */}
+        <div className="flex flex-wrap justify-center gap-3">
+          {partners.map((p) => (
+            <span
+              key={p}
+              className="text-xs sm:text-sm font-normal text-teal-300 tracking-tight whitespace-nowrap border border-teal-400/20 rounded-full px-4 py-2 transition-colors hover:text-teal-200 hover:border-teal-400/40"
+            >
+              {p}
+            </span>
+          ))}
         </div>
-        <style>{`
-          @keyframes partnerRail {
-            /* translateX(%) here is relative to the track's OWN width (it's several thousand
-               px wide, unwrapped), so a "start further right" offset like 40% was actually a
-               ~2800px jump -- enough to push every name clean out of the visible window. 0%
-               is the correct, fully-visible starting point; -50% is exactly one full
-               (un-duplicated) list-length, which is what makes the loop back to 0% seamless. */
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-        `}</style>
       </div>
     </div>
   </section>
