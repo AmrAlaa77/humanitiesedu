@@ -6,7 +6,7 @@ import { useTilt } from '@/hooks/use-tilt';
 
 const stats = [
   { value: '17', label: 'Years building HumanticDigital' },
-  { value: '15', label: 'Markets across 5 continents' },
+  { value: '15+', label: 'Markets across 5 continents' },
   { value: '2018–2026', label: 'British accreditation' },
   { value: '5', label: 'Royal Saudi hospital partnerships' },
   { value: '20,000', label: 'Semi/fully funded certifications exclusive for Saudi nationals, 2023–2026' },
