@@ -224,7 +224,7 @@ const StatCard: React.FC<{ s: (typeof stats)[number] }> = ({ s }) => {
       ref={ref}
       className="group rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.05]"
     >
-      <div className="text-3xl font-bold text-white tabular-nums transition-transform duration-300 group-hover:scale-110">{display}</div>
+      <div className={`font-bold text-white tabular-nums whitespace-nowrap transition-transform duration-300 group-hover:scale-110 ${range ? 'text-xl sm:text-2xl' : 'text-3xl'}`}>{display}</div>
       <div className="mt-1.5 text-[11px] text-slate-500 leading-tight">{s.label}</div>
     </div>
   );
