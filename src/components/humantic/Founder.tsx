@@ -171,7 +171,7 @@ const Founder: React.FC = () => {
             >
               <div
                 className="partner-track flex w-max items-center gap-3"
-                style={{ animation: `${ri % 2 === 0 ? 'partnerRail' : 'partnerRailRev'} ${70 + ri * 10}s linear infinite` }}
+                style={{ animation: `${ri % 2 === 0 ? 'partnerRail' : 'partnerRailRev'} 80s linear infinite` }}
               >
                 {[...row, ...row].map((p, i) => (
                   <span
