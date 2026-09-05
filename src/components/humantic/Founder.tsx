@@ -47,12 +47,12 @@ const partners = [
   'Mubadala', 'PepsiCo', 'Unilever', 'Nestlé', 'Mars Incorporated', 'Google', 'Siemens',
   'GIZ German Cooperation', 'Alnafitha IT', 'SGS Aviation Services', 'SAAS',
   'King Saud bin Abdulaziz University for Health Sciences', 'King Fahd University of Petroleum and Minerals',
-  'Roads & Transport Authority, Dubai', 'Valeo', 'Kuwait Energy', 'EQUATE', 'Philip Morris International',
+  'Roads & Transport Authority, Dubai', 'Valeo', 'Kuwait Energy', 'Philip Morris International',
   'Maersk Drilling', 'Shell', 'BP', 'BG Group', 'Nabors',
 ];
 
-// Split into 5 rows for the multi-row scrolling rail, each moving independently.
-const PARTNER_ROW_COUNT = 5;
+// Split into 4 rows for the multi-row scrolling rail, each moving independently.
+const PARTNER_ROW_COUNT = 4;
 const partnerRows: string[][] = (() => {
   const size = Math.ceil(partners.length / PARTNER_ROW_COUNT);
   return Array.from({ length: PARTNER_ROW_COUNT }, (_, i) => partners.slice(i * size, i * size + size)).filter(
