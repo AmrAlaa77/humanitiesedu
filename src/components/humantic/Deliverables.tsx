@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, ImageIcon, FileText, X, Globe, Users, Heart, Activity, TrendingUp, FlaskConical, Play } from 'lucide-react';
+import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, FileText, X, Globe, Users, Heart, Activity, TrendingUp, FlaskConical } from 'lucide-react';
 import { useInView } from '@/hooks/use-in-view';
 
 type CourseDay = { title: string; points: string[] };
@@ -1626,7 +1626,6 @@ const InitiativeBanner: React.FC<{ initiative: Initiative }> = ({ initiative }) 
 
 const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverable) => void }> = ({ item, onOutline }) => {
   const [open, setOpen] = useState(false);
-  const [playing, setPlaying] = useState(false);
   const hasDetails = Boolean(item.spec || item.requirements || item.awarded);
   const { ref: cardRef, inView } = useInView<HTMLDivElement>({ once: false, threshold: 0.15 });
 
@@ -1637,66 +1636,6 @@ const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverab
         inView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-[0.97]'
       }`}
     >
-      {/* Video/image slot — same teal duotone treatment every clip or photo will carry once added */}
-      <div
-        className="relative aspect-[16/10] border-b border-white/10 flex items-center justify-center overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #06211f 0%, #0b3b3a 45%, #0d2a3d 100%)' }}
-      >
-        {item.videoSrc ? (
-          playing ? (
-            <video
-              className="absolute inset-0 w-full h-full object-cover"
-              src={item.videoSrc}
-              autoPlay
-              controls
-              playsInline
-            />
-          ) : (
-            <button
-              type="button"
-              onClick={() => setPlaying(true)}
-              className="group/play absolute inset-0 w-full h-full cursor-pointer"
-              aria-label={`Play video: ${item.title}`}
-            >
-              {item.image ? (
-                <img
-                  className={`absolute inset-0 w-full h-full object-cover ${item.kenBurns !== false ? 'ken-burns-img' : ''}`}
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                />
-              ) : null}
-              <span className="absolute inset-0 bg-black/25 group-hover/play:bg-black/35 transition-colors" />
-              <span className="absolute inset-0 flex items-center justify-center">
-                <span className="flex items-center justify-center w-14 h-14 rounded-full bg-white/95 text-slate-950 shadow-lg transition-transform group-hover/play:scale-110">
-                  <Play className="w-6 h-6 ml-0.5" fill="currentColor" />
-                </span>
-              </span>
-            </button>
-          )
-        ) : item.image ? (
-          <img
-            className={`absolute inset-0 w-full h-full object-cover ${item.kenBurns !== false ? 'ken-burns-img' : ''}`}
-            src={item.image}
-            alt={item.title}
-            loading="lazy"
-          />
-        ) : (
-          <>
-            <div
-              className="absolute inset-0 opacity-30"
-              style={{
-                backgroundImage:
-                  'repeating-linear-gradient(135deg, transparent 0px, transparent 10px, rgba(255,255,255,0.04) 10px, rgba(255,255,255,0.04) 20px)',
-              }}
-            />
-            <span className="relative inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-300 bg-slate-950/50 border border-dashed border-white/20 rounded-lg px-3 py-1.5">
-              <ImageIcon className="w-3 h-3" /> Image space
-            </span>
-          </>
-        )}
-      </div>
-
       <div className="p-6">
         <h3 className="text-white font-semibold leading-snug">{item.title}</h3>
         <p className="mt-2 text-slate-400 text-sm leading-relaxed">{item.hook}</p>
