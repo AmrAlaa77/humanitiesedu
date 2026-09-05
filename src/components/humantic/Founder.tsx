@@ -195,7 +195,12 @@ const Founder: React.FC = () => {
 const RANGE_RE = /^(\d+)\s*[–-]\s*(\d+)$/;
 
 const StatCard: React.FC<{ s: (typeof stats)[number] }> = ({ s }) => {
-  const { ref, inView } = useInView<HTMLDivElement>({ once: true });
+  // safetyMs default (700ms) is meant as a last-resort fallback for browsers where
+  // IntersectionObserver never fires -- but Founder sits far down a long page, so 700ms after
+  // PAGE LOAD (not after scroll) was elapsing long before anyone could scroll this far, forcing
+  // inView=true and finishing the count-up off-screen. A much longer safety window lets the real
+  // scroll-triggered observer do its job for any realistic scroll timing.
+  const { ref, inView } = useInView<HTMLDivElement>({ once: true, safetyMs: 30000 });
   const target = parseCountTarget(s.value);
   const range = s.value.match(RANGE_RE);
   const rangeStart = range ? parseInt(range[1], 10) : 0;
