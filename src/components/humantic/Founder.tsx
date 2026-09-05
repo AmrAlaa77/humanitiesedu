@@ -67,14 +67,9 @@ const Founder: React.FC = () => {
         <div className="lg:sticky lg:top-28">
           <span className="text-emerald-400 text-sm font-semibold uppercase tracking-widest">Founder &amp; Initiative Owner</span>
 
-          <div className="mt-6 flex items-center gap-4">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-slate-950 font-bold text-2xl shrink-0">
-              SA
-            </div>
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Dr. Sherina Abraham</h2>
-              <p className="text-slate-400 text-sm">Medical Doctor &middot; Investor &middot; C-Suite Executive</p>
-            </div>
+          <div className="mt-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Dr. Sherina Abraham</h2>
+            <p className="text-slate-400 text-sm">Medical Doctor &middot; Investor &middot; C-Suite Executive</p>
           </div>
 
           <blockquote className="mt-8 border-l-2 border-emerald-400/50 pl-5">
