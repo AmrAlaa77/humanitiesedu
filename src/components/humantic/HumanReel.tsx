@@ -313,7 +313,6 @@ const HumanReel: React.FC = () => {
               transform: 'translateZ(0)',
             }}
           >
-            <video
             {renderVideo()}
           </div>
           {/* Feathered cover fades: CONFIRMED by the user zooming in on the live site that the top
