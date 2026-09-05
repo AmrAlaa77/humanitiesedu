@@ -47,7 +47,7 @@ const partners = [
   'Mubadala', 'PepsiCo', 'Unilever', 'Nestlé', 'Mars Incorporated', 'Google', 'Siemens',
   'GIZ German Cooperation', 'Alnafitha IT', 'SGS Aviation Services', 'SAAS',
   'King Saud bin Abdulaziz University for Health Sciences', 'King Fahd University of Petroleum and Minerals',
-  'Roads & Transport Authority', 'Valeo', 'Kuwait Energy', 'EQUATE', 'Philip Morris International',
+  'Roads & Transport Authority, Dubai', 'Valeo', 'Kuwait Energy', 'EQUATE', 'Philip Morris International',
   'Maersk Drilling', 'Shell', 'BP', 'BG Group', 'Nabors',
 ];
 
