@@ -35,26 +35,8 @@ const initiatives = [
     desc: 'On the rigs and sites of Saudi Aramco, we reframed safety from a slogan into a promise — every worker returning home in one piece, every shift.',
   },
   {
-    icon: Lightbulb,
-    year: '2007–2014',
-    title: 'The Honest Conversation',
-    desc: 'We trained leaders to listen — because one honest conversation can save a life, and one ignored concern can ripple through a whole family.',
-  },
-  {
-    icon: Users,
-    year: '2007–2014',
-    title: 'Behaviour Meets Industry',
-    desc: 'We wove human-behaviour science and business psychology into corporate culture, awakening teams to their shared humanity.',
-  },
-  {
-    icon: Compass,
-    year: '2007–2014',
-    title: 'The Field as a Laboratory',
-    desc: 'Every drilling site became a classroom. Leadership was no longer theory — it was a daily, life-preserving act.',
-  },
-  {
     icon: GraduationCap,
-    year: '2014–2018',
+    year: '2016–2024',
     title: 'Global Knowledge Integration',
     desc: 'We formed joint ventures with leading British awarding bodies — translating field wisdom into accredited learning.',
   },
@@ -78,7 +60,7 @@ const milestones = [
     desc: 'Leadership reframed as a life-preserving act, and safety as a promise to come home in one piece.',
   },
   {
-    year: '2014–2018',
+    year: '2016–2024',
     title: 'Global Knowledge Integration',
     desc: 'Joint ventures with leading British awarding bodies — inspected and recognised by Ofqual, Great British Qualifications, and CACHE.',
   },
@@ -190,7 +172,7 @@ const GlobalPanel: React.FC = () => (
   <div className="grid lg:grid-cols-2 gap-10 items-center">
     <div>
       <span className="text-cyan-300 text-sm font-semibold tracking-widest uppercase">
-        2014 – 2018 · Global Knowledge Integration
+        2016 – 2024 · Global Knowledge Integration
       </span>
       <h3 className="mt-3 text-2xl sm:text-3xl font-bold text-white leading-snug">
         When field wisdom found a global voice.
