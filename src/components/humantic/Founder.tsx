@@ -13,8 +13,9 @@ const stats = [
 ];
 
 const sectors = [
-  'Education', 'Healthcare', 'Mining', 'Defense', 'Diplomatic & Consular', 'Global Technology',
-  'Aviation', 'Pharmaceuticals', 'Tech Giants', 'Banking', 'Construction',
+  'Education', 'Healthcare', 'Mining', 'Defense', 'Diplomatic & Consular', 'Public Diplomacy', 'Global Technology',
+  'Aviation', 'Pharmaceuticals', 'Tech Giants', 'Banking', 'Construction', 'Engineering',
+  'Federal Government Agencies', 'Information Technology', 'Telecom', 'Recruitment and HR', 'Investment and Contracting',
 ];
 
 const credentials = [
@@ -46,6 +47,8 @@ const partners = [
   'Mubadala', 'PepsiCo', 'Unilever', 'Nestlé', 'Mars Incorporated', 'Google', 'Siemens',
   'GIZ German Cooperation', 'Alnafitha IT', 'SGS Aviation Services', 'SAAS',
   'King Saud bin Abdulaziz University for Health Sciences', 'King Fahd University of Petroleum and Minerals',
+  'Roads & Transport Authority', 'Valeo', 'Kuwait Energy', 'EQUATE', 'Philip Morris International',
+  'Maersk Drilling', 'Shell', 'BP', 'BG Group', 'Nabors',
 ];
 
 const Founder: React.FC = () => {
