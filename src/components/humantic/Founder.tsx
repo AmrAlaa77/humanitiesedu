@@ -51,8 +51,12 @@ const partners = [
   'Maersk Drilling', 'Shell', 'BP', 'BG Group', 'Nabors',
 ];
 
-// Split into 4 rows for the multi-row scrolling rail, each moving independently.
-const PARTNER_ROW_COUNT = 4;
+// Each row's track renders as [...row, ...row] for a seamless scroll loop — if a row is too
+// short, both copies fit on screen at once and the same name visibly repeats mid-rail. So the
+// row count is derived from a minimum row length, not fixed, guaranteeing every row is long
+// enough that the duplicate half is always scrolled off-screen.
+const MIN_PARTNERS_PER_ROW = 10;
+const PARTNER_ROW_COUNT = Math.max(1, Math.floor(partners.length / MIN_PARTNERS_PER_ROW));
 const partnerRows: string[][] = (() => {
   const size = Math.ceil(partners.length / PARTNER_ROW_COUNT);
   return Array.from({ length: PARTNER_ROW_COUNT }, (_, i) => partners.slice(i * size, i * size + size)).filter(
