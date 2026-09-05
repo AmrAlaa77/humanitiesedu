@@ -51,6 +51,8 @@ const LondonClock: React.FC = () => {
 
 const HumanReel: React.FC = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const bgVideoRef = useRef<HTMLVideoElement>(null);
 
   const [hovering, setHovering] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -103,42 +105,63 @@ const HumanReel: React.FC = () => {
 
   // On-screen text in the source video starts around 00:10.69, but earlier
   // cutoffs still let a frame or two flash before looping -- pulled back
-  // further to 00:09.67 for a clean margin. The background masked loop must
-  // never reach it, looping back to 0 just before this point instead of
-  // relying on the file's natural end.
+  // further to 00:09.67 for a clean margin. The background masked video must
+  // never scrub past it.
   const TEXT_START = 9.67;
 
-  // withAudio=false is the masked background loop: scaled up slightly so its edges bleed past the
-  // mask's letter strokes on every side. Whatever is producing the thin line at the top/bottom edge --
-  // baked into the source frame, or a compositing seam from the CSS mask itself -- this pushes it
-  // outside the visible letterform area instead of trying to paint over it after the fact.
-  const renderVideo = (withAudio = false) => (
+  // Scroll-scrubbed playback for the masked background video: instead of autoplaying/looping on
+  // its own clock, its currentTime is driven directly by scroll progress through this section (0 at
+  // the section's top, TEXT_START once scrolled a full section-height past it) -- scrolling IS the
+  // playback control. Playback behavior only; the section's own layout/positioning is untouched.
+  useEffect(() => {
+    const video = bgVideoRef.current;
+    const section = sectionRef.current;
+    if (!video || !section) return;
+
+    let ready = false;
+    const onLoaded = () => { ready = true; };
+    video.addEventListener('loadedmetadata', onLoaded);
+    video.pause();
+
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      if (!ready) return;
+      const top = section.getBoundingClientRect().top;
+      const height = section.offsetHeight || 1;
+      const t = Math.min(1, Math.max(0, -top / height));
+      video.currentTime = t * TEXT_START;
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    update();
+
+    return () => {
+      video.removeEventListener('loadedmetadata', onLoaded);
+      window.removeEventListener('scroll', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  // Full-page "Play Reel" video only (with audio, on click) -- plays and loops normally on its own
+  // clock, unlike the scroll-scrubbed background video above.
+  const renderVideo = (withAudio = true) => (
     <video
       className="absolute inset-0 h-full w-full object-cover"
-      style={{
-        objectPosition: 'center center',
-        transform: withAudio ? undefined : 'scale(1.08)',
-      }}
+      style={{ objectPosition: 'center center' }}
       src={HUMAN_VIDEO}
       autoPlay
       muted={!withAudio}
-      loop={withAudio}
+      loop
       playsInline
       preload="auto"
-      onTimeUpdate={
-        withAudio
-          ? undefined
-          : (e) => {
-              if (e.currentTarget.currentTime >= TEXT_START) {
-                e.currentTarget.currentTime = 0;
-              }
-            }
-      }
     />
   );
 
   return (
-    <section id="top" className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-[#0D0D0D] text-white">
+    <section ref={sectionRef} id="top" className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-[#0D0D0D] text-white">
       {/* Top-left: brand + counter */}
       <div className="absolute top-6 left-6 sm:left-10 z-30 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80">
         HUMAN <span className="text-white/40">®</span> / 01
@@ -313,7 +336,15 @@ const HumanReel: React.FC = () => {
               transform: 'translateZ(0)',
             }}
           >
-            {renderVideo()}
+            <video
+              ref={bgVideoRef}
+              className="absolute inset-0 h-full w-full object-cover"
+              style={{ objectPosition: 'center center', transform: 'scale(1.08)' }}
+              src={HUMAN_VIDEO}
+              muted
+              playsInline
+              preload="auto"
+            />
           </div>
           {/* Feathered cover fades: CONFIRMED by the user zooming in on the live site that the top
               line is genuinely baked into the source video frame (not a CSS/compositing artifact --
