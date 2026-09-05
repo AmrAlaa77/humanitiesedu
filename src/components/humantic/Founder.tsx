@@ -44,7 +44,8 @@ const partners = [
   'Saudi Aramco', 'Ma’aden', 'King Salman Hospital', 'King Abdullah Medical City',
   'National Guard Health Affairs', 'Royal Commission for AlUla', 'U.S. Embassy', 'Embassy of Saudi Arabia',
   'Mubadala', 'PepsiCo', 'Unilever', 'Nestlé', 'Mars Incorporated', 'Google', 'Siemens',
-  'GIZ German Cooperation',
+  'GIZ German Cooperation', 'Alnafitha IT', 'SGS Aviation Services', 'SAAS',
+  'King Saud bin Abdulaziz University for Health Sciences', 'King Fahd University of Petroleum and Minerals',
 ];
 
 const Founder: React.FC = () => {
