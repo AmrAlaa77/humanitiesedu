@@ -1,38 +1,39 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 /**
- * Animates a number counting up from 0 to `end` while `start` is true (e.g.
- * driven by useInView with `once: false`). Eases out so it settles rather
- * than ticking linearly. Resets to 0 whenever `start` goes false, so it
- * counts up again from scratch the next time it scrolls into view --
- * matching a repeat-on-scroll useInView instead of firing once and staying put.
+ * Animates a number from 0 to `target` with ease-out cubic timing, driven by
+ * rAF (not setInterval) for a smooth ramp. Stays at 0 until `active` flips
+ * true, so it's meant to be paired with useInView -- animate once, on the
+ * moment the number actually scrolls into view, not on mount.
  */
-export function useCountUp(end: number, start: boolean, durationMs = 1200) {
+export function useCountUp(target: number, active: boolean, duration = 1400) {
   const [value, setValue] = useState(0);
-  const raf = useRef<number>();
 
   useEffect(() => {
-    if (!start) {
-      if (raf.current) cancelAnimationFrame(raf.current);
-      setValue(0);
-      return;
-    }
+    if (!active) return;
+    let raf: number;
+    const start = performance.now();
 
-    const t0 = performance.now();
     const tick = (now: number) => {
-      const t = Math.min(1, (now - t0) / durationMs);
-      const eased = 1 - Math.pow(1 - t, 3); // ease-out-cubic
-      setValue(Math.round(end * eased));
-      if (t < 1) raf.current = requestAnimationFrame(tick);
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setValue(Math.round(eased * target));
+      if (t < 1) raf = requestAnimationFrame(tick);
     };
-    raf.current = requestAnimationFrame(tick);
+    raf = requestAnimationFrame(tick);
 
-    return () => {
-      if (raf.current) cancelAnimationFrame(raf.current);
-    };
-  }, [start, end, durationMs]);
+    return () => cancelAnimationFrame(raf);
+  }, [active, target, duration]);
 
   return value;
+}
+
+/** Extracts a plain integer from strings like "20,000" or "17"; returns null
+ *  for anything that isn't a pure count (e.g. a year range like "2018–2026"),
+ *  since those should render statically rather than "counting up". */
+export function parseCountTarget(value: string): number | null {
+  const clean = value.replace(/,/g, '');
+  return /^\d+$/.test(clean) ? parseInt(clean, 10) : null;
 }
 
 export default useCountUp;

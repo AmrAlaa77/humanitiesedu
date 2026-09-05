@@ -1,6 +1,8 @@
 import React from 'react';
 import { GraduationCap, Award, Globe2, Building2 } from 'lucide-react';
 import { useInView } from '@/hooks/use-in-view';
+import { useCountUp, parseCountTarget } from '@/hooks/use-count-up';
+import { useTilt } from '@/hooks/use-tilt';
 
 const stats = [
   { value: '17', label: 'Years building HumanticDigital' },
@@ -91,10 +93,7 @@ const Founder: React.FC = () => {
         <div className="min-w-0">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10">
             {stats.map((s) => (
-              <div key={s.label} className="group rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.05]">
-                <div className="text-3xl font-bold text-white transition-transform duration-300 group-hover:scale-110">{s.value}</div>
-                <div className="mt-1.5 text-[11px] text-slate-500 leading-tight">{s.label}</div>
-              </div>
+              <StatCard key={s.label} s={s} />
             ))}
           </div>
 
@@ -118,13 +117,7 @@ const Founder: React.FC = () => {
           column's width) -- full width of the section, spanning both columns. */}
       <div className="grid sm:grid-cols-2 gap-4 mt-10">
         {credentials.map((c) => (
-          <div key={c.title} className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.04]">
-            <div className="w-10 h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-              <c.icon className="w-5 h-5 text-emerald-300" />
-            </div>
-            <p className="text-white font-semibold mb-2">{c.title}</p>
-            <p className="text-slate-400 text-sm leading-relaxed">{c.desc}</p>
-          </div>
+          <CredentialCard key={c.title} c={c} />
         ))}
       </div>
 
@@ -183,6 +176,50 @@ const Founder: React.FC = () => {
       </div>
     </div>
   </section>
+  );
+};
+
+// Own useInView instance per stat, so each counts up individually the moment
+// IT scrolls into view (same pattern as Evolution's TimelineItem) rather than
+// all firing together off one shared observer on the grid container.
+const StatCard: React.FC<{ s: (typeof stats)[number] }> = ({ s }) => {
+  const { ref, inView } = useInView<HTMLDivElement>({ once: true });
+  const target = parseCountTarget(s.value);
+  const count = useCountUp(target ?? 0, inView && target !== null);
+  // Non-numeric values (e.g. the "2018–2026" accreditation range) render as-is —
+  // there's nothing to count up to.
+  const display = target !== null ? count.toLocaleString('en-US') : s.value;
+
+  return (
+    <div
+      ref={ref}
+      className="group rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.05]"
+    >
+      <div className="text-3xl font-bold text-white tabular-nums transition-transform duration-300 group-hover:scale-110">{display}</div>
+      <div className="mt-1.5 text-[11px] text-slate-500 leading-tight">{s.label}</div>
+    </div>
+  );
+};
+
+// 3D cursor-tilt on each credential card -- rotates toward the pointer within
+// its own bounds via useTilt, snapping back flat on mouse leave.
+const CredentialCard: React.FC<{ c: (typeof credentials)[number] }> = ({ c }) => {
+  const { ref, onMouseMove, onMouseLeave } = useTilt<HTMLDivElement>(6);
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-[transform,background-color,border-color] duration-300 hover:border-emerald-400/30 hover:bg-white/[0.04] will-change-transform"
+      style={{ transformStyle: 'preserve-3d' }}
+    >
+      <div className="w-10 h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+        <c.icon className="w-5 h-5 text-emerald-300" />
+      </div>
+      <p className="text-white font-semibold mb-2">{c.title}</p>
+      <p className="text-slate-400 text-sm leading-relaxed">{c.desc}</p>
+    </div>
   );
 };
 
