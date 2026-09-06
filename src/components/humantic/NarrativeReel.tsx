@@ -274,24 +274,6 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                 <details className="group">
                   <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                     <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
-                      Royal Commission for AlUla
-                    </span>
-                    <span className="line-clamp-2 group-open:hidden">
-                      Delivered educational programs equipping national talent to lead within AlUla&rsquo;s
-                      touristic sites.
-                    </span>
-                    <span className="hidden group-open:inline">
-                      Delivered educational programs equipping national talent to lead within AlUla&rsquo;s
-                      touristic sites.
-                    </span>
-                    <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
-                  </summary>
-                </details>
-              </li>
-              <li>
-                <details className="group">
-                  <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                    <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
                       Human Capability Development
                     </span>
                     <span className="line-clamp-2 group-open:hidden">
@@ -301,6 +283,28 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                     <span className="hidden group-open:inline">
                       Led the fully-funded Saudi Career Development Program, awarding British-accredited
                       certifications to 70+ nationals at King Saud bin Abdulaziz University for Health Sciences.
+                    </span>
+                    <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
+                  </summary>
+                </details>
+              </li>
+              <li>
+                <details className="group">
+                  <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                    <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+                      Tourism &amp; Quality of Life 2030
+                    </span>
+                    <span className="line-clamp-2 group-open:hidden">
+                      Delivered educational programs equipping national talent to lead within the Royal
+                      Commission for AlUla&rsquo;s touristic sites, aligned with Quality of Life 2030 and the
+                      UN&rsquo;s Sustainable Development Goal domains &mdash; building Saudi, a country one can
+                      call home.
+                    </span>
+                    <span className="hidden group-open:inline">
+                      Delivered educational programs equipping national talent to lead within the Royal
+                      Commission for AlUla&rsquo;s touristic sites, aligned with Quality of Life 2030 and the
+                      UN&rsquo;s Sustainable Development Goal domains &mdash; building Saudi, a country one can
+                      call home.
                     </span>
                     <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
                   </summary>
@@ -321,26 +325,6 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                       Bespoke programs on health, safety and wellbeing across National Guard Health Affairs, King
                       Salman Hospital, King Abdulaziz Medical City, King Salman Specialist Children&rsquo;s
                       Hospital, and King Abdullah Medical City.
-                    </span>
-                    <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
-                  </summary>
-                </details>
-              </li>
-              <li>
-                <details className="group">
-                  <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                    <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
-                      QoL &amp; UN Domains
-                    </span>
-                    <span className="line-clamp-2 group-open:hidden">
-                      Aligned with Quality of Life 2030 and the UN&rsquo;s Sustainable Development Goal domains
-                      &mdash; embedding wellbeing, health, and human capital into national and international
-                      frameworks alike.
-                    </span>
-                    <span className="hidden group-open:inline">
-                      Aligned with Quality of Life 2030 and the UN&rsquo;s Sustainable Development Goal domains
-                      &mdash; embedding wellbeing, health, and human capital into national and international
-                      frameworks alike.
                     </span>
                     <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
                   </summary>
