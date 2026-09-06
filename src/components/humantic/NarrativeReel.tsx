@@ -251,15 +251,9 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               Led by <span className="font-semibold text-white">Dr. Sherina Abraham</span> &mdash; Medical
               Doctor, Investor, and Chair &amp; CEO of Humantic Digital (MISA approved).
             </p>
-            <details className="group mt-4">
-              <summary className="flex list-none cursor-pointer items-center gap-1.5 text-sm font-semibold text-emerald-400 [&::-webkit-details-marker]:hidden">
-                <span className="text-base leading-none transition-transform group-open:rotate-45">+</span>
-                Learn More
-              </summary>
-              <p className="mt-3 font-serif text-base sm:text-lg font-semibold italic text-white/90">
-                These 17 years are what made Humantic Digital what it is today.
-              </p>
-            </details>
+            <p className="mt-4 font-serif text-base sm:text-lg font-semibold italic text-white/90">
+              Built on 17 years, Humantic Digital is what it is today.
+            </p>
           </div>
 
           {/* Summary card — condensed from the fuller Vision 2030 Contribution reference (proven
