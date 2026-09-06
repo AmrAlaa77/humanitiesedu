@@ -248,6 +248,7 @@ const HumanReel: React.FC = () => {
             // gap -- it's a rendering artifact of Inter's variable-font hinting at this weight/size
             // combo. A static, non-variable font sidesteps that hinting path entirely.
             fontFamily: "Arial, Helvetica, sans-serif",
+            lineHeight: 1.1,
           }}
         >
           {HEADLINE_TAGLINE_1} {HEADLINE_TAGLINE_2}
