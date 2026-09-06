@@ -186,10 +186,14 @@ const HumanReel: React.FC = () => {
               y="240"
               textAnchor="middle"
               dominantBaseline="central"
-              fontFamily="Anton, sans-serif"
-              fontWeight="400"
-              fontSize="470"
-              letterSpacing="-8"
+              // Syne is the site's actual display font (see tailwind.config's `font-display` and
+              // every other headline component) -- Anton was a one-off that didn't match anywhere
+              // else. Syne's glyphs run wider than Anton's condensed cut, so size/tracking are
+              // pulled back to keep HUMAN filling the same 1400x480 mask canvas without clipping.
+              fontFamily="Syne, sans-serif"
+              fontWeight="800"
+              fontSize="400"
+              letterSpacing="-6"
               fill="white"
             >
               HUMAN
