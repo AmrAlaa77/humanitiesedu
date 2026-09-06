@@ -232,14 +232,17 @@ const HumanReel: React.FC = () => {
             marginLeft: 'calc(50% - 50vw)',
             marginRight: 'calc(50% - 50vw)',
             marginTop: '-4px',
-            height: '10mm',
+            // Shrunk from 10mm -- this bar never actually covered a real gap (see comment above),
+            // it was just adding space. Pulling it down brings the tagline visually closer to the
+            // sentence above it.
+            height: '2mm',
             backgroundColor: '#0D0D0D',
             position: 'relative',
             zIndex: 20,
           }}
         />
         <p
-          className="mt-3 text-sm font-semibold text-white sm:text-base whitespace-nowrap"
+          className="mt-1 text-sm font-semibold text-white sm:text-base whitespace-nowrap"
           style={{
             opacity: loaded ? 1 : 0,
             transition: `opacity .5s ease ${HEADLINE_WORDS.length * 0.04 + 0.15}s`,
