@@ -284,12 +284,13 @@ const HumanReel: React.FC = () => {
       />
 
       {/* The word HUMAN — video visible only inside the letterforms.
-          overflow-hidden: bottom-anchoring the word (below) means its aspect-ratio-driven height
-          can exceed this flex-1 area's actual space, pushing its top edge up past this container
-          and behind the intro text -- without a clip, that overflow shows as a disconnected sliver
-          of letter-tops floating above the tagline. Clipping it here keeps a single clean edge
-          instead. */}
-      <div className="relative z-10 flex flex-1 items-center justify-center overflow-hidden px-2">
+          overflow-y-hidden only: bottom-anchoring the word (below) means its aspect-ratio-driven
+          height can exceed this flex-1 area's actual space, pushing its top edge up past this
+          container and behind the intro text -- without a clip, that overflow shows as a
+          disconnected sliver of letter-tops floating above the tagline. The horizontal axis is
+          left unclipped as a second safety net, but the real fix for H/N getting cut off is below:
+          the box's own width no longer runs wider than the viewport in the first place. */}
+      <div className="relative z-10 flex flex-1 items-center justify-center overflow-x-visible overflow-y-hidden px-2">
         <div
           onMouseEnter={() => !playing && setHovering(true)}
           onMouseLeave={() => setHovering(false)}
@@ -308,7 +309,9 @@ const HumanReel: React.FC = () => {
             // narrow window. The gap seen at the edges wasn't this box being too small -- it's the
             // SVG text's own margin inside its 1400x480 canvas, fixed below by shrinking that margin
             // (larger font-size / tighter letter-spacing) rather than by growing this box further.
-            width: 'min(calc((100vw - 0.4cm) * 1.1), calc((100vh - 0.4cm) * 1400 / 480))',
+            // The old *1.1 deliberately ran this box ~10% wider than the viewport so H and N bled
+            // off both edges -- dropped so the full word actually fits on screen instead.
+            width: 'min(calc(100vw - 0.4cm), calc((100vh - 0.4cm) * 1400 / 480))',
             aspectRatio: '1400 / 480',
             cursor: 'none',
             opacity: loaded ? 1 : 0,
