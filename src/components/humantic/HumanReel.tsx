@@ -186,16 +186,17 @@ const HumanReel: React.FC = () => {
               y="240"
               textAnchor="middle"
               dominantBaseline="central"
-              // Syne's distinctive geometric cuts (the dipped M, the triangular counter in A) read
-              // as broken/illegible shapes once used as a silhouette mask instead of solid text --
-              // fine as body type, bad as a cutout. Archivo Black is a single-weight ultra-bold
-              // display face built for exactly this kind of bold-word treatment: plain, chunky,
-              // unambiguous letterforms. Same 1400x480 canvas, so this still occupies the same
-              // on-screen space -- only size/tracking shift to refill it for this font's metrics.
+              // Negative tracking on an ultra-bold face was letting adjacent strokes crowd and
+              // merge, which is what read as "broken" rather than as the word HUMAN. textLength
+              // pins the rendered word to an exact, explicit width regardless of the font's own
+              // metrics -- so letters keep normal, un-crowded spacing, and any future font swap
+              // still fills this same 1400x480 canvas without needing fontSize/tracking guesswork.
               fontFamily="'Archivo Black', sans-serif"
               fontWeight="400"
-              fontSize="430"
-              letterSpacing="-4"
+              fontSize="380"
+              letterSpacing="0"
+              textLength="1360"
+              lengthAdjust="spacingAndGlyphs"
               fill="white"
             >
               HUMAN
