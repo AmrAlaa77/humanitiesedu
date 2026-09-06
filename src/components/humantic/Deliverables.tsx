@@ -1890,37 +1890,13 @@ const Deliverables: React.FC = () => {
 
         {initiatives[active] && <InitiativeBanner initiative={initiatives[active]} />}
 
-        {/* A group with few enough items to fit on one line gets a plain grid -- no drag, no edge
-            fades, nothing hinting at more content off-screen, because there isn't any. Larger
-            groups keep the draggable horizontally-scrollable track below. */}
-        {current.items.length <= 3 ? (
-          <div key={active} className="grid grid-cols-1 gap-5 sm:grid-cols-3 animate-in fade-in-0 slide-in-from-bottom-2 duration-300">
-            {current.items.map((item) => (
-              <DeliverableCard key={item.title} item={item} onOutline={setOutlineItem} />
-            ))}
-          </div>
-        ) : (
-          <div className="relative -mx-5 sm:-mx-8">
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 z-10 bg-gradient-to-r from-slate-950 to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-16 z-10 bg-gradient-to-l from-slate-950 to-transparent" />
-            <div
-              key={active}
-              ref={trackRef}
-              onMouseDown={onDragStart}
-              onMouseMove={onDragMove}
-              onMouseUp={onDragEnd}
-              onMouseLeave={onDragEnd}
-              onClickCapture={onDragClickCapture}
-              className="flex gap-5 overflow-x-auto px-5 sm:px-8 pb-4 cursor-grab select-none active:cursor-grabbing animate-in fade-in-0 slide-in-from-bottom-2 duration-300 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-            >
-              {current.items.map((item) => (
-                <div key={item.title} className="shrink-0 w-[320px] sm:w-[360px]">
-                  <DeliverableCard item={item} onOutline={setOutlineItem} />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        {/* Every group, regardless of item count, stacks its cards in a single column -- no
+            horizontal scroll track, no dark edge-fade overlays hinting at off-screen content. */}
+        <div key={active} className="flex flex-col gap-5 animate-in fade-in-0 slide-in-from-bottom-2 duration-300">
+          {current.items.map((item) => (
+            <DeliverableCard key={item.title} item={item} onOutline={setOutlineItem} />
+          ))}
+        </div>
       </div>
 
       <OutlineModal item={outlineItem} onClose={() => setOutlineItem(null)} />
