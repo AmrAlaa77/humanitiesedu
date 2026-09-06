@@ -288,7 +288,9 @@ const HumanReel: React.FC = () => {
             position: 'absolute',
             left: 0,
             right: 0,
-            top: '50%',
+            // Anchored to the bottom of the section's flex-1 space instead of vertically centered,
+            // so the word sits as low as this container allows.
+            bottom: 0,
             marginLeft: 'auto',
             marginRight: 'auto',
             // Bounded by both dimensions so it can never blow out the section's height on a tall,
@@ -299,7 +301,7 @@ const HumanReel: React.FC = () => {
             aspectRatio: '1400 / 480',
             cursor: 'none',
             opacity: loaded ? 1 : 0,
-            transform: loaded ? 'translateY(-50%) scale(1)' : 'translateY(-50%) scale(0.94)',
+            transform: loaded ? 'scale(1)' : 'scale(0.94)',
             transition: 'opacity .9s ease .2s, transform .9s ease .2s',
             isolation: 'isolate',
           }}
