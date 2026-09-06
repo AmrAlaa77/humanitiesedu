@@ -243,6 +243,11 @@ const HumanReel: React.FC = () => {
           style={{
             opacity: loaded ? 1 : 0,
             transition: `opacity .5s ease ${HEADLINE_WORDS.length * 0.04 + 0.15}s`,
+            // Every layout-based fix for the hairline seam above this line measured 0px wide in
+            // production (see the cover-bar comments above), so the seam itself was never a real
+            // gap -- it's a rendering artifact of Inter's variable-font hinting at this weight/size
+            // combo. A static, non-variable font sidesteps that hinting path entirely.
+            fontFamily: "Arial, Helvetica, sans-serif",
           }}
         >
           {HEADLINE_TAGLINE_1} {HEADLINE_TAGLINE_2}
