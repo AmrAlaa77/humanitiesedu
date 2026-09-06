@@ -39,11 +39,11 @@ const AppLayout: React.FC = () => {
       <div className="relative z-10">
         <Navbar onCta={() => setModalOpen(true)} />
         <main>
-          {/* HumanReel is the first page; AwarenessJourney sits directly after it, NarrativeReel follows */}
+          {/* HumanReel is the first page; Hero now sits directly after it, then AwarenessJourney, then NarrativeReel */}
           <HumanReel />
+          <Hero onCta={() => setModalOpen(true)} />
           <AwarenessJourney />
           <NarrativeReel onCta={() => setModalOpen(true)} />
-          <Hero onCta={() => setModalOpen(true)} />
 
           <Reveal variant="right" repeat>
             <NationalIndex />
