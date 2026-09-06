@@ -4,7 +4,7 @@ import { useInView } from '@/hooks/use-in-view';
 
 const metrics = [
   { icon: Waves, label: 'Social contagion dynamics', value: 'Live mapping' },
-  { icon: Users, label: 'Emotional mirror syncing', value: 'Per-team' },
+  { icon: Users, label: 'Emotional attunement tracking', value: 'Per-team' },
   { icon: GitBranch, label: 'Communication friction', value: 'Early signal' },
   { icon: Gauge, label: 'Cognitive load index', value: '0–100 scale' },
 ];
@@ -75,7 +75,7 @@ const Pillar: React.FC = () => {
                 <Activity className="w-5 h-5 text-emerald-300" />
               </div>
               <div>
-                <p className="text-white font-semibold leading-tight">Collective Biochemical Scale</p>
+                <p className="text-white font-semibold leading-tight">Collective Bio-Behavioral Scale</p>
                 <p className="text-slate-500 text-xs">Real-time organisational health</p>
               </div>
             </div>
