@@ -310,7 +310,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                 <details className="group">
                   <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                     <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
-                      A Call to Serve
+                      A Call to Serve &middot; Healthcare
                     </span>
                     <span className="line-clamp-2 group-open:hidden">
                       Bespoke programs on health, safety and wellbeing across National Guard Health Affairs, King
