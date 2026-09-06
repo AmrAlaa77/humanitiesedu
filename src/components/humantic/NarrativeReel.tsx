@@ -253,7 +253,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               Ministry of Investment Saudi Arabia.
             </p>
             <p className="mt-4 font-serif text-base sm:text-lg font-semibold italic text-white/90">
-              Built on 17 years, Humantic Digital is what it is today.
+              Where Biology, Behavioral Science and Business Collide.
             </p>
             <p className="mt-4 text-xs leading-relaxed text-slate-400">
               Rooted in Vision 2030&rsquo;s pillars and ministries&rsquo; mandates, commanded by Crown
