@@ -186,14 +186,16 @@ const HumanReel: React.FC = () => {
               y="240"
               textAnchor="middle"
               dominantBaseline="central"
-              // Syne is the site's actual display font (see tailwind.config's `font-display` and
-              // every other headline component) -- Anton was a one-off that didn't match anywhere
-              // else. Syne's glyphs run wider than Anton's condensed cut, so size/tracking are
-              // pulled back to keep HUMAN filling the same 1400x480 mask canvas without clipping.
-              fontFamily="Syne, sans-serif"
-              fontWeight="800"
-              fontSize="400"
-              letterSpacing="-6"
+              // Syne's distinctive geometric cuts (the dipped M, the triangular counter in A) read
+              // as broken/illegible shapes once used as a silhouette mask instead of solid text --
+              // fine as body type, bad as a cutout. Archivo Black is a single-weight ultra-bold
+              // display face built for exactly this kind of bold-word treatment: plain, chunky,
+              // unambiguous letterforms. Same 1400x480 canvas, so this still occupies the same
+              // on-screen space -- only size/tracking shift to refill it for this font's metrics.
+              fontFamily="'Archivo Black', sans-serif"
+              fontWeight="400"
+              fontSize="430"
+              letterSpacing="-4"
               fill="white"
             >
               HUMAN
