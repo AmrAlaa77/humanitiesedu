@@ -224,14 +224,29 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                 behavioural science into policy.
               </span>
             </h2>
-            <p className="mt-5 text-sm sm:text-base leading-relaxed text-slate-300">
-              Built on a 12-year foundation of international strategic joint ventures across the United Kingdom
-              and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the British
-              College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian and
-              development division into <span className="font-semibold text-white">Humantic Digital</span>: a
-              sovereign medical-digital entity dedicated to Behaviorometric Engineering, Bio-Organizational
-              Development, and British-accredited people, leadership and management education.
-            </p>
+            <details className="group mt-5">
+              <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span className="line-clamp-2 text-sm sm:text-base leading-relaxed text-slate-300 group-open:hidden">
+                  Built on a 12-year foundation of international strategic joint ventures across the United
+                  Kingdom and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the
+                  British College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian
+                  and development division into Humantic Digital: a sovereign medical-digital entity dedicated
+                  to Behaviorometric Engineering, Bio-Organizational Development, and British-accredited people,
+                  leadership and management education.
+                </span>
+                <span className="hidden text-sm sm:text-base leading-relaxed text-slate-300 group-open:inline">
+                  Built on a 12-year foundation of international strategic joint ventures across the United
+                  Kingdom and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the
+                  British College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian
+                  and development division into <span className="font-semibold text-white">Humantic Digital</span>:
+                  a sovereign medical-digital entity dedicated to Behaviorometric Engineering, Bio-Organizational
+                  Development, and British-accredited people, leadership and management education.
+                </span>
+                <span className="mt-1.5 flex items-center gap-1.5 text-sm font-semibold text-emerald-400 group-open:hidden">
+                  <span className="text-base leading-none">+</span> Learn More
+                </span>
+              </summary>
+            </details>
             <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-300">
               Led by <span className="font-semibold text-white">Dr. Sherina Abraham</span> &mdash; Medical
               Doctor, Investor, and Chair &amp; CEO of Humantic Digital (MISA approved).
@@ -264,7 +279,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                 <details className="group">
                   <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                     <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
-                      Proven Track Record
+                      Human Capability Development
                     </span>
                     <span className="line-clamp-2 group-open:hidden">
                       Led the fully-funded Saudi Career Development Program, awarding British-accredited
@@ -282,7 +297,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                 <details className="group">
                   <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                     <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
-                      Royal Commission for AlUla
+                      AlUla &middot; Tourism
                     </span>
                     <span className="line-clamp-2 group-open:hidden">
                       Delivered educational programs equipping national talent to lead within AlUla&rsquo;s
@@ -300,7 +315,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                 <details className="group">
                   <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                     <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
-                      Healthcare Partnerships
+                      A Call to Serve
                     </span>
                     <span className="line-clamp-2 group-open:hidden">
                       Bespoke programs on health, safety and wellbeing across National Guard Health Affairs, King
