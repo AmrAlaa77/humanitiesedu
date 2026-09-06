@@ -231,8 +231,8 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                   Kingdom and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the
                   British College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian
                   and development division into Humantic Digital: a sovereign medical-digital entity dedicated
-                  to Behaviorometric Engineering, Bio-Organizational Development, and British-accredited people,
-                  leadership and management education.
+                  to Behaviorometric Engineering, Bio-Organizational Development, and British-accredited Executive,
+                  People and Culture education.
                 </span>
                 <span className="hidden text-sm sm:text-base leading-relaxed text-slate-300 group-open:inline">
                   Built on a 17-year foundation of international strategic joint ventures across the United
@@ -240,7 +240,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                   British College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian
                   and development division into <span className="font-semibold text-white">Humantic Digital</span>:
                   a sovereign medical-digital entity dedicated to Behaviorometric Engineering, Bio-Organizational
-                  Development, and British-accredited people, leadership and management education.
+                  Development, and British-accredited Executive, People and Culture education.
                 </span>
                 <span className="mt-1.5 flex items-center gap-1.5 text-sm font-semibold text-emerald-400 group-open:hidden">
                   <span className="text-base leading-none">+</span> Learn More
