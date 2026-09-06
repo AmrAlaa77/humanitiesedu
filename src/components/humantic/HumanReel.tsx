@@ -246,11 +246,10 @@ const HumanReel: React.FC = () => {
           style={{
             opacity: loaded ? 1 : 0,
             transition: `opacity .5s ease ${HEADLINE_WORDS.length * 0.04 + 0.15}s`,
-            // Every layout-based fix for the hairline seam above this line measured 0px wide in
-            // production (see the cover-bar comments above), so the seam itself was never a real
-            // gap -- it's a rendering artifact of Inter's variable-font hinting at this weight/size
-            // combo. A static, non-variable font sidesteps that hinting path entirely.
-            fontFamily: "Arial, Helvetica, sans-serif",
+            // The seam above this line turned out to be a real layout overflow (fixed via the
+            // bottom-anchor + overflow-hidden on the HUMAN word container below), not a font
+            // rendering artifact -- so back to Inter, matching every other font on the site,
+            // instead of the Arial swap tried while that was still unclear.
             lineHeight: 1.1,
           }}
         >
