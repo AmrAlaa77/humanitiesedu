@@ -269,9 +269,9 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               </li>
             </ul>
             <p className="mt-5 pt-5 border-t border-white/10 text-xs leading-relaxed text-slate-400">
-              Rooted in Vision 2030&rsquo;s pillars and commended by His Highness Prince Mohammed bin
-              Salman &mdash; directly supporting the Human Capability Development Program, Quality of Life
-              2030, and the National Strategy for Data &amp; AI.
+              Rooted in Vision 2030&rsquo;s pillars and ministries&rsquo; mandates, commanded by Crown
+              Prince Mohammed bin Salman &mdash; directly supporting the Human Capability Development
+              Program, Quality of Life 2030, and the National Strategy for Data &amp; AI.
             </p>
           </div>
         </div>
