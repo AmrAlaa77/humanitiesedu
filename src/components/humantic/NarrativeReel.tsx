@@ -206,6 +206,35 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
           </button>
         </div>
+
+        {/* Who We Are — fills the empty lower half of this full-height hero */}
+        <div className="mt-20 max-w-2xl pl-1">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">
+            Humantic Digital &middot; Riyadh
+          </p>
+          <div className="mt-3 flex items-center gap-2">
+            <span className="h-px w-6 bg-emerald-400/50" />
+            <span className="text-emerald-400 text-xs font-semibold uppercase tracking-widest">Who We Are</span>
+          </div>
+          <h2 className="mt-4 font-serif text-2xl sm:text-4xl font-bold leading-tight tracking-tight text-white">
+            17 years turning
+            <span className="block bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
+              behavioural science into policy.
+            </span>
+          </h2>
+          <p className="mt-5 text-sm sm:text-base leading-relaxed text-slate-300">
+            Built on a 12-year foundation of international strategic joint ventures across the United Kingdom
+            and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the British
+            College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian and
+            development division into <span className="font-semibold text-white">Humantic Digital</span>: a
+            sovereign medical-digital entity dedicated to Behaviorometric Engineering, Bio-Organizational
+            Development, and British-accredited people, leadership and management education.
+          </p>
+          <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-300">
+            Led by <span className="font-semibold text-white">Dr. Sherina Abraham</span> &mdash; Medical
+            Doctor, Investor, C-Suite Executive, and Chair, CSO &amp; CEO of Humantic Digital (MISA approved).
+          </p>
+        </div>
       </div>
 
       {/* Social links bottom-left */}
