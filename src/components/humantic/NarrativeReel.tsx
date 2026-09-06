@@ -227,7 +227,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             <details className="group mt-5">
               <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                 <span className="line-clamp-2 text-sm sm:text-base leading-relaxed text-slate-300 group-open:hidden">
-                  Built on a 12-year foundation of international strategic joint ventures across the United
+                  Built on a 17-year foundation of international strategic joint ventures across the United
                   Kingdom and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the
                   British College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian
                   and development division into Humantic Digital: a sovereign medical-digital entity dedicated
@@ -235,7 +235,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                   leadership and management education.
                 </span>
                 <span className="hidden text-sm sm:text-base leading-relaxed text-slate-300 group-open:inline">
-                  Built on a 12-year foundation of international strategic joint ventures across the United
+                  Built on a 17-year foundation of international strategic joint ventures across the United
                   Kingdom and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the
                   British College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian
                   and development division into <span className="font-semibold text-white">Humantic Digital</span>:
