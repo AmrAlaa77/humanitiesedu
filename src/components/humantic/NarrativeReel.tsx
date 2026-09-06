@@ -202,7 +202,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             onMouseLeave={onCtaLeave}
             className="group mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 px-7 py-4 text-sm font-semibold text-slate-950 transition-transform duration-150 ease-out will-change-transform hover:opacity-90"
           >
-            Get Your Wellbeing Index
+            Get Your Behavioral Assessment
             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
           </button>
         </div>
@@ -224,14 +224,20 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                 behavioural science into policy.
               </span>
             </h2>
-            <p className="mt-5 text-sm sm:text-base leading-relaxed text-slate-300">
-              Built on a 12-year foundation of international strategic joint ventures across the United Kingdom
-              and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the British
-              College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian and
-              development division into <span className="font-semibold text-white">Humantic Digital</span>: a
-              sovereign medical-digital entity dedicated to Behaviorometric Engineering, Bio-Organizational
-              Development, and British-accredited people, leadership and management education.
-            </p>
+            <details className="group mt-5">
+              <summary className="flex list-none cursor-pointer items-center gap-1.5 text-sm font-semibold text-emerald-400 [&::-webkit-details-marker]:hidden">
+                <span className="text-base leading-none transition-transform group-open:rotate-45">+</span>
+                Learn More
+              </summary>
+              <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-300">
+                Built on a 12-year foundation of international strategic joint ventures across the United Kingdom
+                and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the British
+                College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian and
+                development division into <span className="font-semibold text-white">Humantic Digital</span>: a
+                sovereign medical-digital entity dedicated to Behaviorometric Engineering, Bio-Organizational
+                Development, and British-accredited people, leadership and management education.
+              </p>
+            </details>
             <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-300">
               Led by <span className="font-semibold text-white">Dr. Sherina Abraham</span> &mdash; Medical
               Doctor, Investor, and Chair &amp; CEO of Humantic Digital (MISA approved).
@@ -253,29 +259,35 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             <p className="mt-1 text-emerald-400 text-[11px] font-semibold uppercase tracking-widest">
               Initiative Implementation, Kingdom-Wide
             </p>
-            <ul className="mt-5 space-y-4 text-sm leading-relaxed text-slate-300">
-              <li>
-                <span className="font-semibold text-white">Proven Track Record</span> &mdash; led the
-                fully-funded Saudi Career Development Program, awarding British-accredited certifications
-                to 70+ nationals at King Saud bin Abdulaziz University for Health Sciences.
-              </li>
-              <li>
-                <span className="font-semibold text-white">Royal Commission for AlUla</span> &mdash;
-                delivered educational programs equipping national talent to lead within AlUla&rsquo;s
-                touristic sites.
-              </li>
-              <li>
-                <span className="font-semibold text-white">Healthcare Partnerships</span> &mdash; bespoke
-                programs on health, safety and wellbeing across National Guard Health Affairs, King Salman
-                Hospital, King Abdulaziz Medical City, King Salman Specialist Children&rsquo;s Hospital, and
-                King Abdullah Medical City.
-              </li>
-            </ul>
-            <p className="mt-5 pt-5 border-t border-white/10 text-xs leading-relaxed text-slate-400">
-              Rooted in Vision 2030&rsquo;s pillars and ministries&rsquo; mandates, commanded by Crown
-              Prince Mohammed bin Salman &mdash; directly supporting the Human Capability Development
-              Program, Quality of Life 2030, and the National Strategy for Data &amp; AI.
-            </p>
+            <details className="group mt-5">
+              <summary className="flex list-none cursor-pointer items-center gap-1.5 text-sm font-semibold text-emerald-400 [&::-webkit-details-marker]:hidden">
+                <span className="text-base leading-none transition-transform group-open:rotate-45">+</span>
+                Learn More
+              </summary>
+              <ul className="mt-4 space-y-4 text-sm leading-relaxed text-slate-300">
+                <li>
+                  <span className="font-semibold text-white">Proven Track Record</span> &mdash; led the
+                  fully-funded Saudi Career Development Program, awarding British-accredited certifications
+                  to 70+ nationals at King Saud bin Abdulaziz University for Health Sciences.
+                </li>
+                <li>
+                  <span className="font-semibold text-white">Royal Commission for AlUla</span> &mdash;
+                  delivered educational programs equipping national talent to lead within AlUla&rsquo;s
+                  touristic sites.
+                </li>
+                <li>
+                  <span className="font-semibold text-white">Healthcare Partnerships</span> &mdash; bespoke
+                  programs on health, safety and wellbeing across National Guard Health Affairs, King Salman
+                  Hospital, King Abdulaziz Medical City, King Salman Specialist Children&rsquo;s Hospital, and
+                  King Abdullah Medical City.
+                </li>
+              </ul>
+              <p className="mt-5 pt-5 border-t border-white/10 text-xs leading-relaxed text-slate-400">
+                Rooted in Vision 2030&rsquo;s pillars and ministries&rsquo; mandates, commanded by Crown
+                Prince Mohammed bin Salman &mdash; directly supporting the Human Capability Development
+                Program, Quality of Life 2030, and the National Strategy for Data &amp; AI.
+              </p>
+            </details>
           </div>
         </div>
       </div>
