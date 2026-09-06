@@ -207,33 +207,73 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           </button>
         </div>
 
-        {/* Who We Are — fills the empty lower half of this full-height hero */}
-        <div className="mt-20 max-w-2xl pl-1">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">
-            Humantic Digital &middot; Riyadh
-          </p>
-          <div className="mt-3 flex items-center gap-2">
-            <span className="h-px w-6 bg-emerald-400/50" />
-            <span className="text-emerald-400 text-xs font-semibold uppercase tracking-widest">Who We Are</span>
+        {/* Who We Are + Vision 2030 Contribution — fills the empty lower half of this full-height
+            hero, side by side on wider screens. */}
+        <div className="mt-20 grid gap-10 lg:grid-cols-2 lg:gap-14 max-w-5xl">
+          <div className="pl-1">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">
+              Humantic Digital &middot; Riyadh
+            </p>
+            <div className="mt-3 flex items-center gap-2">
+              <span className="h-px w-6 bg-emerald-400/50" />
+              <span className="text-emerald-400 text-xs font-semibold uppercase tracking-widest">Who We Are</span>
+            </div>
+            <h2 className="mt-4 font-serif text-2xl sm:text-4xl font-bold leading-tight tracking-tight text-white">
+              17 years turning
+              <span className="block bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
+                behavioural science into policy.
+              </span>
+            </h2>
+            <p className="mt-5 text-sm sm:text-base leading-relaxed text-slate-300">
+              Built on a 12-year foundation of international strategic joint ventures across the United Kingdom
+              and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the British
+              College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian and
+              development division into <span className="font-semibold text-white">Humantic Digital</span>: a
+              sovereign medical-digital entity dedicated to Behaviorometric Engineering, Bio-Organizational
+              Development, and British-accredited people, leadership and management education.
+            </p>
+            <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-300">
+              Led by <span className="font-semibold text-white">Dr. Sherina Abraham</span> &mdash; Medical
+              Doctor, Investor, C-Suite Executive, and Chair, CSO &amp; CEO of Humantic Digital (MISA approved).
+            </p>
           </div>
-          <h2 className="mt-4 font-serif text-2xl sm:text-4xl font-bold leading-tight tracking-tight text-white">
-            17 years turning
-            <span className="block bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
-              behavioural science into policy.
-            </span>
-          </h2>
-          <p className="mt-5 text-sm sm:text-base leading-relaxed text-slate-300">
-            Built on a 12-year foundation of international strategic joint ventures across the United Kingdom
-            and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the British
-            College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian and
-            development division into <span className="font-semibold text-white">Humantic Digital</span>: a
-            sovereign medical-digital entity dedicated to Behaviorometric Engineering, Bio-Organizational
-            Development, and British-accredited people, leadership and management education.
-          </p>
-          <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-300">
-            Led by <span className="font-semibold text-white">Dr. Sherina Abraham</span> &mdash; Medical
-            Doctor, Investor, C-Suite Executive, and Chair, CSO &amp; CEO of Humantic Digital (MISA approved).
-          </p>
+
+          {/* Summary card — condensed from the fuller Vision 2030 Contribution reference (proven
+              record, Royal Commission for AlUla, Healthcare Partnerships, closing endorsement). */}
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-7 self-start">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">
+              2023&ndash;2026
+            </p>
+            <h3 className="mt-2 font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
+              Vision 2030 Contribution
+            </h3>
+            <p className="mt-1 text-emerald-400 text-[11px] font-semibold uppercase tracking-widest">
+              Initiative Implementation, Kingdom-Wide
+            </p>
+            <ul className="mt-5 space-y-4 text-sm leading-relaxed text-slate-300">
+              <li>
+                <span className="font-semibold text-white">Proven Track Record</span> &mdash; led the
+                fully-funded Saudi Career Development Program, awarding British-accredited certifications
+                to 70+ nationals at King Saud bin Abdulaziz University for Health Sciences.
+              </li>
+              <li>
+                <span className="font-semibold text-white">Royal Commission for AlUla</span> &mdash;
+                delivered educational programs equipping national talent to lead within AlUla&rsquo;s
+                touristic sites.
+              </li>
+              <li>
+                <span className="font-semibold text-white">Healthcare Partnerships</span> &mdash; bespoke
+                programs on health, safety and wellbeing across National Guard Health Affairs, King Salman
+                Hospital, King Abdulaziz Medical City, King Salman Specialist Children&rsquo;s Hospital, and
+                King Abdullah Medical City.
+              </li>
+            </ul>
+            <p className="mt-5 pt-5 border-t border-white/10 text-xs leading-relaxed text-slate-400">
+              Rooted in Vision 2030&rsquo;s pillars and commended by His Highness Prince Mohammed bin
+              Salman &mdash; directly supporting the Human Capability Development Program, Quality of Life
+              2030, and the National Strategy for Data &amp; AI.
+            </p>
+          </div>
         </div>
       </div>
 
