@@ -274,15 +274,15 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                 <details className="group">
                   <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                     <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
-                      Human Capability Development
+                      Royal Commission for AlUla
                     </span>
                     <span className="line-clamp-2 group-open:hidden">
-                      Led the fully-funded Saudi Career Development Program, awarding British-accredited
-                      certifications to 70+ nationals at King Saud bin Abdulaziz University for Health Sciences.
+                      Delivered educational programs equipping national talent to lead within AlUla&rsquo;s
+                      touristic sites.
                     </span>
                     <span className="hidden group-open:inline">
-                      Led the fully-funded Saudi Career Development Program, awarding British-accredited
-                      certifications to 70+ nationals at King Saud bin Abdulaziz University for Health Sciences.
+                      Delivered educational programs equipping national talent to lead within AlUla&rsquo;s
+                      touristic sites.
                     </span>
                     <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
                   </summary>
@@ -292,15 +292,15 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                 <details className="group">
                   <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                     <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
-                      AlUla &middot; Tourism
+                      Human Capability Development
                     </span>
                     <span className="line-clamp-2 group-open:hidden">
-                      Delivered educational programs equipping national talent to lead within AlUla&rsquo;s
-                      touristic sites.
+                      Led the fully-funded Saudi Career Development Program, awarding British-accredited
+                      certifications to 70+ nationals at King Saud bin Abdulaziz University for Health Sciences.
                     </span>
                     <span className="hidden group-open:inline">
-                      Delivered educational programs equipping national talent to lead within AlUla&rsquo;s
-                      touristic sites.
+                      Led the fully-funded Saudi Career Development Program, awarding British-accredited
+                      certifications to 70+ nationals at King Saud bin Abdulaziz University for Health Sciences.
                     </span>
                     <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
                   </summary>
