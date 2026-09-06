@@ -18,6 +18,11 @@ const sectors = [
   'Federal Government Agencies', 'Information Technology', 'Telecom', 'Recruitment and HR', 'Investment and Contracting',
 ];
 
+const markets = [
+  'UK', 'Germany', 'Panama', 'Russia', 'Turkey', 'Saudi Arabia', 'UAE', 'Kuwait', 'Bahrain', 'Iraq',
+  'Qatar', 'China', 'Japan', 'USA', 'Brazil',
+];
+
 const credentials = [
   {
     icon: GraduationCap,
@@ -141,6 +146,18 @@ const Founder: React.FC = () => {
         education with global job market demands, directly supporting the Human Capability Development
         Program, Quality of Life 2030, and the National Strategy for Data &amp; AI.
       </p>
+
+      {/* 15 Markets across 5 continents — just the country list, placed right above Trusted Across. */}
+      <div className="mt-10">
+        <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">15 Markets across 5 continents</p>
+        <div className="flex flex-wrap gap-2">
+          {markets.map((m) => (
+            <span key={m} className="text-xs font-medium text-slate-300 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-full transition-all duration-200 hover:border-emerald-400/40 hover:text-white hover:bg-emerald-400/10">
+              {m}
+            </span>
+          ))}
+        </div>
+      </div>
 
       {/* Closing element of the bio, set apart with its own top border + spacing so it reads as
           the section's final beat rather than crowding the credentials above it. */}
