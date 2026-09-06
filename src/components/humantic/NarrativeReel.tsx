@@ -224,27 +224,27 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                 behavioural science into policy.
               </span>
             </h2>
-            <details className="group mt-5">
-              <summary className="flex list-none cursor-pointer items-center gap-1.5 text-sm font-semibold text-emerald-400 [&::-webkit-details-marker]:hidden">
-                <span className="text-base leading-none transition-transform group-open:rotate-45">+</span>
-                Learn More
-              </summary>
-              <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-300">
-                Built on a 12-year foundation of international strategic joint ventures across the United Kingdom
-                and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the British
-                College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian and
-                development division into <span className="font-semibold text-white">Humantic Digital</span>: a
-                sovereign medical-digital entity dedicated to Behaviorometric Engineering, Bio-Organizational
-                Development, and British-accredited people, leadership and management education.
-              </p>
-            </details>
+            <p className="mt-5 text-sm sm:text-base leading-relaxed text-slate-300">
+              Built on a 12-year foundation of international strategic joint ventures across the United Kingdom
+              and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the British
+              College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian and
+              development division into <span className="font-semibold text-white">Humantic Digital</span>: a
+              sovereign medical-digital entity dedicated to Behaviorometric Engineering, Bio-Organizational
+              Development, and British-accredited people, leadership and management education.
+            </p>
             <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-300">
               Led by <span className="font-semibold text-white">Dr. Sherina Abraham</span> &mdash; Medical
               Doctor, Investor, and Chair &amp; CEO of Humantic Digital (MISA approved).
             </p>
-            <p className="mt-5 font-serif text-base sm:text-lg font-semibold italic text-white/90">
-              These 17 years are what made Humantic Digital what it is today.
-            </p>
+            <details className="group mt-4">
+              <summary className="flex list-none cursor-pointer items-center gap-1.5 text-sm font-semibold text-emerald-400 [&::-webkit-details-marker]:hidden">
+                <span className="text-base leading-none transition-transform group-open:rotate-45">+</span>
+                Learn More
+              </summary>
+              <p className="mt-3 font-serif text-base sm:text-lg font-semibold italic text-white/90">
+                These 17 years are what made Humantic Digital what it is today.
+              </p>
+            </details>
           </div>
 
           {/* Summary card — condensed from the fuller Vision 2030 Contribution reference (proven
@@ -259,35 +259,69 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             <p className="mt-1 text-emerald-400 text-[11px] font-semibold uppercase tracking-widest">
               Initiative Implementation, Kingdom-Wide
             </p>
-            <details className="group mt-5">
-              <summary className="flex list-none cursor-pointer items-center gap-1.5 text-sm font-semibold text-emerald-400 [&::-webkit-details-marker]:hidden">
-                <span className="text-base leading-none transition-transform group-open:rotate-45">+</span>
-                Learn More
-              </summary>
-              <ul className="mt-4 space-y-4 text-sm leading-relaxed text-slate-300">
-                <li>
-                  <span className="font-semibold text-white">Proven Track Record</span> &mdash; led the
-                  fully-funded Saudi Career Development Program, awarding British-accredited certifications
-                  to 70+ nationals at King Saud bin Abdulaziz University for Health Sciences.
-                </li>
-                <li>
-                  <span className="font-semibold text-white">Royal Commission for AlUla</span> &mdash;
-                  delivered educational programs equipping national talent to lead within AlUla&rsquo;s
-                  touristic sites.
-                </li>
-                <li>
-                  <span className="font-semibold text-white">Healthcare Partnerships</span> &mdash; bespoke
-                  programs on health, safety and wellbeing across National Guard Health Affairs, King Salman
-                  Hospital, King Abdulaziz Medical City, King Salman Specialist Children&rsquo;s Hospital, and
-                  King Abdullah Medical City.
-                </li>
-              </ul>
-              <p className="mt-5 pt-5 border-t border-white/10 text-xs leading-relaxed text-slate-400">
-                Rooted in Vision 2030&rsquo;s pillars and ministries&rsquo; mandates, commanded by Crown
-                Prince Mohammed bin Salman &mdash; directly supporting the Human Capability Development
-                Program, Quality of Life 2030, and the National Strategy for Data &amp; AI.
-              </p>
-            </details>
+            <ul className="mt-5 space-y-5 text-sm leading-relaxed text-slate-300">
+              <li>
+                <details className="group">
+                  <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                    <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+                      Proven Track Record
+                    </span>
+                    <span className="line-clamp-2 group-open:hidden">
+                      Led the fully-funded Saudi Career Development Program, awarding British-accredited
+                      certifications to 70+ nationals at King Saud bin Abdulaziz University for Health Sciences.
+                    </span>
+                    <span className="hidden group-open:inline">
+                      Led the fully-funded Saudi Career Development Program, awarding British-accredited
+                      certifications to 70+ nationals at King Saud bin Abdulaziz University for Health Sciences.
+                    </span>
+                    <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
+                  </summary>
+                </details>
+              </li>
+              <li>
+                <details className="group">
+                  <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                    <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+                      Royal Commission for AlUla
+                    </span>
+                    <span className="line-clamp-2 group-open:hidden">
+                      Delivered educational programs equipping national talent to lead within AlUla&rsquo;s
+                      touristic sites.
+                    </span>
+                    <span className="hidden group-open:inline">
+                      Delivered educational programs equipping national talent to lead within AlUla&rsquo;s
+                      touristic sites.
+                    </span>
+                    <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
+                  </summary>
+                </details>
+              </li>
+              <li>
+                <details className="group">
+                  <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                    <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+                      Healthcare Partnerships
+                    </span>
+                    <span className="line-clamp-2 group-open:hidden">
+                      Bespoke programs on health, safety and wellbeing across National Guard Health Affairs, King
+                      Salman Hospital, King Abdulaziz Medical City, King Salman Specialist Children&rsquo;s
+                      Hospital, and King Abdullah Medical City.
+                    </span>
+                    <span className="hidden group-open:inline">
+                      Bespoke programs on health, safety and wellbeing across National Guard Health Affairs, King
+                      Salman Hospital, King Abdulaziz Medical City, King Salman Specialist Children&rsquo;s
+                      Hospital, and King Abdullah Medical City.
+                    </span>
+                    <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
+                  </summary>
+                </details>
+              </li>
+            </ul>
+            <p className="mt-5 pt-5 border-t border-white/10 text-xs leading-relaxed text-slate-400">
+              Rooted in Vision 2030&rsquo;s pillars and ministries&rsquo; mandates, commanded by Crown
+              Prince Mohammed bin Salman &mdash; directly supporting the Human Capability Development
+              Program, Quality of Life 2030, and the National Strategy for Data &amp; AI.
+            </p>
           </div>
         </div>
       </div>
