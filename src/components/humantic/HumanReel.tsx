@@ -298,13 +298,14 @@ const HumanReel: React.FC = () => {
           className="overflow-hidden"
           style={{
             position: 'absolute',
-            left: 0,
-            right: 0,
+            // left:0/right:0 + margin:auto centering was landing off-center on some laptops --
+            // likely 100vw (used below) not matching this container's actual rendered width one
+            // to one on every browser/OS. left:50% + translateX(-50%) centers off this element's
+            // own box instead, so it can't drift from the container's true center.
+            left: '50%',
             // Anchored to the bottom of the section's flex-1 space instead of vertically centered,
             // so the word sits as low as this container allows.
             bottom: 0,
-            marginLeft: 'auto',
-            marginRight: 'auto',
             // Bounded by both dimensions so it can never blow out the section's height on a tall,
             // narrow window. The gap seen at the edges wasn't this box being too small -- it's the
             // SVG text's own margin inside its 1400x480 canvas, fixed below by shrinking that margin
@@ -315,7 +316,7 @@ const HumanReel: React.FC = () => {
             aspectRatio: '1400 / 480',
             cursor: 'none',
             opacity: loaded ? 1 : 0,
-            transform: loaded ? 'scale(1)' : 'scale(0.94)',
+            transform: loaded ? 'translateX(-50%) scale(1)' : 'translateX(-50%) scale(0.94)',
             transition: 'opacity .9s ease .2s, transform .9s ease .2s',
             isolation: 'isolate',
           }}
