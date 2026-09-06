@@ -112,11 +112,11 @@ const HumanReel: React.FC = () => {
   // mask's letter strokes on every side. Whatever is producing the thin line at the top/bottom edge --
   // baked into the source frame, or a compositing seam from the CSS mask itself -- this pushes it
   // outside the visible letterform area instead of trying to paint over it after the fact.
-  const renderVideo = (withAudio = false) => (
+  const renderVideo = (withAudio = false, position = 'center center') => (
     <video
       className="absolute inset-0 h-full w-full object-cover"
       style={{
-        objectPosition: 'center center',
+        objectPosition: position,
         transform: withAudio ? undefined : 'scale(1.08)',
       }}
       src={HUMAN_VIDEO}
@@ -338,7 +338,7 @@ const HumanReel: React.FC = () => {
               transform: 'translateZ(0)',
             }}
           >
-            {renderVideo()}
+            {renderVideo(false, 'left center')}
           </div>
           {/* Feathered cover fades: CONFIRMED by the user zooming in on the live site that the top
               line is genuinely baked into the source video frame (not a CSS/compositing artifact --
