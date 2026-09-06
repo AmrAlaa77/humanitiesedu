@@ -277,8 +277,13 @@ const HumanReel: React.FC = () => {
         }}
       />
 
-      {/* The word HUMAN — video visible only inside the letterforms */}
-      <div className="relative z-10 flex flex-1 items-center justify-center px-2">
+      {/* The word HUMAN — video visible only inside the letterforms.
+          overflow-hidden: bottom-anchoring the word (below) means its aspect-ratio-driven height
+          can exceed this flex-1 area's actual space, pushing its top edge up past this container
+          and behind the intro text -- without a clip, that overflow shows as a disconnected sliver
+          of letter-tops floating above the tagline. Clipping it here keeps a single clean edge
+          instead. */}
+      <div className="relative z-10 flex flex-1 items-center justify-center overflow-hidden px-2">
         <div
           onMouseEnter={() => !playing && setHovering(true)}
           onMouseLeave={() => setHovering(false)}
