@@ -234,7 +234,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             </p>
             <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-300">
               Led by <span className="font-semibold text-white">Dr. Sherina Abraham</span> &mdash; Medical
-              Doctor, Investor, C-Suite Executive, and Chair, CSO &amp; CEO of Humantic Digital (MISA approved).
+              Doctor, Investor, and Chair &amp; CEO of Humantic Digital (MISA approved).
             </p>
           </div>
 
