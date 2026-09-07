@@ -199,7 +199,7 @@ const HumanReel: React.FC = () => {
               lengthAdjust="spacingAndGlyphs"
               fill="white"
             >
-              HUMAN
+              HUMANTIC
             </text>
           </mask>
         </defs>
