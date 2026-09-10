@@ -3,6 +3,7 @@ import Navbar from '@/components/humantic/Navbar';
 import HumanReel from '@/components/humantic/HumanReel';
 import AwarenessJourney from '@/components/humantic/AwarenessJourney';
 import NarrativeReel from '@/components/humantic/NarrativeReel';
+import ExperienceLink from '@/components/humantic/ExperienceLink';
 import Hero from '@/components/humantic/Hero';
 import Features from '@/components/humantic/Features';
 
@@ -46,6 +47,7 @@ const AppLayout: React.FC = () => {
               screenshots, not Hero. AwarenessJourney and Hero follow after. */}
           <HumanReel />
           <NarrativeReel onCta={() => setModalOpen(true)} />
+          <ExperienceLink />
           <AwarenessJourney />
           <Hero onCta={() => setModalOpen(true)} />
 

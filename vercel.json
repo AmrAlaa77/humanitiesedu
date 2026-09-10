@@ -1,7 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/experience",
+      "destination": "/experience/index.html"
+    },
+    {
+      "source": "/((?!experience).*)",
       "destination": "/index.html"
     }
   ]
