@@ -106,6 +106,17 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
         style={{ background: 'linear-gradient(to bottom, transparent 0%, #020617 10%, #020617 90%, transparent 100%)' }}
       />
 
+      {/* Cinematic frame: soft edge vignette + thin letterbox bars top and bottom, so this hero
+          reads as a film frame rather than a flat section. Purely decorative, above the ambient
+          layers but below the content. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{ boxShadow: 'inset 0 0 220px 60px rgba(2,6,23,0.75)' }}
+      />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[7vh] z-[1] bg-gradient-to-b from-black/80 to-transparent" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[7vh] z-[1] bg-gradient-to-t from-black/80 to-transparent" />
+
       {/* Subtle grid lines — drifts gently with the cursor */}
       <div
         ref={gridRef}
