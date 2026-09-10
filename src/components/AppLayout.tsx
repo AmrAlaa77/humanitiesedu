@@ -24,6 +24,7 @@ import GlowCursor from '@/components/humantic/GlowCursor';
 import Reveal from '@/components/humantic/Reveal';
 import ScrollProgress from '@/components/humantic/ScrollProgress';
 import AmbientBackground from '@/components/humantic/AmbientBackground';
+import IntroSequence from '@/components/humantic/IntroSequence';
 
 const AppLayout: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -32,6 +33,7 @@ const AppLayout: React.FC = () => {
     <div className="relative min-h-screen bg-slate-950 text-white antialiased selection:bg-emerald-400/30 md:cursor-none">
       <style>{`@keyframes progress{0%{width:0%}50%{width:70%}100%{width:100%}}`}</style>
 
+      <IntroSequence />
       <AmbientBackground />
       <GlowCursor />
       <ScrollProgress />
