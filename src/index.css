@@ -303,20 +303,28 @@ section[id] {
    gentle/short so it never feels glitchy. */
 .ao-reveal {
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.6s ease;
+  /* Cinematic pass: every reveal now enters from a slightly deeper offset, softly blurred, and
+     slightly scaled back -- and, because these sections use repeat, they RECEDE the same way as
+     they leave the viewport, so scrolling reads like scenes resolving into focus and drifting
+     back out rather than a quick snap. Durations lengthened and eased for weight. Blur kept
+     light (4px) on the base -- only the dedicated .ao-v-blur variant goes heavier -- and filter
+     is deliberately left out of will-change to avoid keeping 14 filter layers alive. */
+  transform: translateY(34px) scale(0.965);
+  filter: blur(4px);
+  transition: opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.9s ease;
   will-change: opacity, transform;
 }
 
 /* Directional / style variants — only change the *hidden* starting pose. */
-.ao-reveal.ao-v-up      { transform: translateY(24px); }
-.ao-reveal.ao-v-down    { transform: translateY(-24px); }
-.ao-reveal.ao-v-left    { transform: translateX(-32px); }
-.ao-reveal.ao-v-right   { transform: translateX(32px); }
-.ao-reveal.ao-v-zoom    { transform: scale(0.92); }
-.ao-reveal.ao-v-blur    { transform: translateY(16px); filter: blur(10px); }
-.ao-reveal.ao-v-flip    { transform: perspective(900px) rotateX(18deg) translateY(20px); }
+.ao-reveal.ao-v-up      { transform: translateY(44px) scale(0.965); }
+.ao-reveal.ao-v-down    { transform: translateY(-44px) scale(0.965); }
+.ao-reveal.ao-v-left    { transform: translateX(-52px) scale(0.965); }
+.ao-reveal.ao-v-right   { transform: translateX(52px) scale(0.965); }
+.ao-reveal.ao-v-zoom    { transform: scale(0.9); }
+.ao-reveal.ao-v-blur    { transform: translateY(28px) scale(0.965); filter: blur(14px); }
+.ao-reveal.ao-v-flip    { transform: perspective(900px) rotateX(16deg) translateY(30px) scale(0.965); }
 
 /* Every variant collapses to the SAME clean resting state. */
 .ao-reveal.is-visible {
