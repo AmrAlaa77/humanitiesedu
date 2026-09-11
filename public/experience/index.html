@@ -535,30 +535,55 @@ const sparkleMat = new THREE.ShaderMaterial({
 });
 brainGroup.add(new THREE.Points(sparkleGeo, sparkleMat));
 
-// thin glowing filaments reaching inward from the cortex -- short jagged dendrite-like threads
-// growing toward the core from scattered surface points, roughly along the inward normal with
-// organic jitter (signal converging into the tissue, not spiking out past it).
-const filVerts = [];
+// thin glowing filaments reaching inward from the cortex -- curling, woven threads (a persistent
+// direction nudged gently each step, not re-randomised from scratch, so they read as curving
+// strands rather than jagged straight sticks) converging toward the core. Only some of them
+// "fire" -- a sharp, infrequent brightness spike on a per-strand phase -- the rest stay near-
+// invisible, for a scattered neural-firing feel rather than a uniform glow.
+const filVerts = [], filSeed = [], filFire = [], filSpeed = [];
 for(let i=0;i<CONFIG.filamentCount;i++){
   const { v: base } = brainPoint(1.0);
-  const inward = base.clone().normalize().multiplyScalar(-1);
+  let dir = base.clone().normalize().multiplyScalar(-1);
   let cur = base.clone();
-  const segs = 4 + (Math.random()*4|0);
-  const stepLen = 0.12 + Math.random()*0.11;
+  const segs = 5 + (Math.random()*5|0);
+  const stepLen = 0.10 + Math.random()*0.09;
+  const seed = Math.random()*10;
+  const speed = 0.5 + Math.random()*1.8;
+  const fireAmp = Math.random() < 0.32 ? 0.65 + Math.random()*0.35 : Math.random()*0.1;
   for(let s=0;s<segs;s++){
-    const dir = inward.clone()
-      .add(new THREE.Vector3((Math.random()-0.5)*0.7,(Math.random()-0.5)*0.7,(Math.random()-0.5)*0.7))
-      .normalize().multiplyScalar(stepLen);
-    const nxt = cur.clone().add(dir);
+    dir = dir.clone().add(new THREE.Vector3((Math.random()-0.5),(Math.random()-0.5),(Math.random()-0.5)).multiplyScalar(0.45)).normalize();
+    const nxt = cur.clone().add(dir.clone().multiplyScalar(stepLen));
     filVerts.push(cur.x,cur.y,cur.z, nxt.x,nxt.y,nxt.z);
+    filSeed.push(seed,seed); filFire.push(fireAmp,fireAmp); filSpeed.push(speed,speed);
     cur = nxt;
   }
 }
 const filGeo = new THREE.BufferGeometry();
 filGeo.setAttribute('position', new THREE.Float32BufferAttribute(filVerts,3));
-brainGroup.add(new THREE.LineSegments(filGeo, new THREE.LineBasicMaterial({
-  color:new THREE.Color(CONFIG.mid), transparent:true, opacity:0.2, blending:THREE.AdditiveBlending, depthWrite:false
-})));
+filGeo.setAttribute('seed', new THREE.Float32BufferAttribute(filSeed,1));
+filGeo.setAttribute('fireAmp', new THREE.Float32BufferAttribute(filFire,1));
+filGeo.setAttribute('fireSpeed', new THREE.Float32BufferAttribute(filSpeed,1));
+const filMat = new THREE.ShaderMaterial({
+  transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+  uniforms:{ uTime:{value:0}, uColor:{value:new THREE.Color(CONFIG.mid)}, uBright:{value:new THREE.Color(CONFIG.bright)} },
+  vertexShader:`
+    attribute float seed; attribute float fireAmp; attribute float fireSpeed;
+    varying float vFire;
+    uniform float uTime;
+    void main(){
+      float pulse = pow(0.5+0.5*sin(uTime*fireSpeed + seed*6.28), 9.0); // sharp, infrequent spike
+      vFire = pulse * fireAmp;
+      gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0);
+    }`,
+  fragmentShader:`
+    uniform vec3 uColor; uniform vec3 uBright; varying float vFire;
+    void main(){
+      vec3 col = mix(uColor, uBright, vFire);
+      float a = 0.035 + vFire*0.75;
+      gl_FragColor = vec4(col, a);
+    }`,
+});
+brainGroup.add(new THREE.LineSegments(filGeo, filMat));
 
 /* --- soft volumetric halo behind the whole brain --- */
 const halo = new THREE.Mesh(
@@ -649,6 +674,7 @@ function frame(){
 
   brainMat.uniforms.uTime.value = t;
   sparkleMat.uniforms.uTime.value = t;
+  filMat.uniforms.uTime.value = t;
   starMat.uniforms.uTime.value += dt;
 
   composer.render();
