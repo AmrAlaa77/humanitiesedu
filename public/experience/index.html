@@ -407,9 +407,13 @@ const R0 = CONFIG.brainRadius;
 function brainDisp(n){
   const folds = (ridged5(n.x*2.5+11, n.y*2.5, n.z*2.5) - 0.52) * 0.5
               + (ridged5(n.x*5.4+3, n.y*5.4, n.z*5.4) - 0.5) * 0.14;
-  const topMask = THREE.MathUtils.clamp(n.y*1.4 + 0.55, 0, 1);
-  const fissure = Math.exp(-Math.pow(n.x/0.07,2)) * 0.17 * topMask;
-  const sylv = Math.exp(-Math.pow((Math.abs(n.x)-0.55)/0.12,2)) * Math.exp(-Math.pow(n.y/0.28,2)) * 0.07;
+  // longitudinal fissure -- deeper and reaching further down, so the two-hemisphere split
+  // actually reads from the front, not just a faint top groove
+  const topMask = THREE.MathUtils.clamp(n.y*1.1 + 0.7, 0, 1);
+  const fissure = Math.exp(-Math.pow(n.x/0.06,2)) * 0.27 * topMask;
+  // Sylvian fissure -- deepened into a real groove that separates the temporal lobe (below)
+  // from the frontal/parietal mass (above)
+  const sylv = Math.exp(-Math.pow((Math.abs(n.x)-0.58)/0.11,2)) * Math.exp(-Math.pow((n.y-0.02)/0.16,2)) * 0.16;
   const flat = Math.max(0, -n.y-0.5) * 0.3;
   return folds - fissure - sylv - flat;
 }
@@ -421,6 +425,14 @@ function brainPoint(radialScale){
   const v = new THREE.Vector3(n.x*CONFIG.brainStretch[0], n.y*CONFIG.brainStretch[1], n.z*CONFIG.brainStretch[2]).multiplyScalar(rad);
   const cb = Math.exp(-((v.x*v.x)/1.7 + Math.pow(v.y+1.45,2)/0.8 + Math.pow(v.z+1.5,2)/1.0)); // cerebellum bulge
   v.multiplyScalar(1 + cb*0.17);
+  // temporal lobes -- pull the lower-side mass down and out into the hanging lobes that make a
+  // silhouette actually read as "brain" rather than a folded egg
+  const side = Math.min(1, Math.abs(n.x)/0.82);
+  const lowness = THREE.MathUtils.clamp(-n.y*1.25 + 0.18, 0, 1);
+  const temporal = side*side * lowness;
+  v.y -= temporal * 0.34;
+  v.x *= 1 + temporal * 0.12;
+  v.z *= 1 + temporal * 0.07;
   const weight = THREE.MathUtils.clamp(disp*3.0 + 0.5, 0, 1); // 0 sulcus (sparse/dim) .. 1 gyrus (dense/bright)
   return { v, weight };
 }
@@ -531,8 +543,8 @@ for(let i=0;i<CONFIG.filamentCount;i++){
   const { v: base } = brainPoint(1.0);
   const inward = base.clone().normalize().multiplyScalar(-1);
   let cur = base.clone();
-  const segs = 2 + (Math.random()*3|0);
-  const stepLen = 0.07 + Math.random()*0.07;
+  const segs = 4 + (Math.random()*4|0);
+  const stepLen = 0.12 + Math.random()*0.11;
   for(let s=0;s<segs;s++){
     const dir = inward.clone()
       .add(new THREE.Vector3((Math.random()-0.5)*0.7,(Math.random()-0.5)*0.7,(Math.random()-0.5)*0.7))
