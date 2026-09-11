@@ -124,6 +124,36 @@ const RotatingBrainCloud: React.FC<{ className?: string }> = ({ className = '' }
       brainGroup.rotation.y = 2.07;
       scene.add(brainGroup);
 
+      // a nearly-transparent gentle-glow shell tracing the same silhouette the cloud samples --
+      // the particle field stays exactly as it is (colour/detail unchanged), this just gives it a
+      // defined boundary to sit inside instead of reading as free-floating points.
+      {
+        const shellGeo = new THREE.IcosahedronGeometry(R0, 5);
+        const sp = shellGeo.attributes.position;
+        const sn = new THREE.Vector3();
+        for (let i = 0; i < sp.count; i++) {
+          sn.fromBufferAttribute(sp, i);
+          const n = sn.clone().normalize();
+          const v = brainSurface(n, 1.0, brainDisp(n));
+          sp.setXYZ(i, v.x, v.y, v.z);
+        }
+        shellGeo.computeVertexNormals();
+        const shellMat = new THREE.ShaderMaterial({
+          transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending,
+          uniforms: { uColor: { value: new THREE.Color('#3fc2c9') }, uRim: { value: new THREE.Color('#eafffa') } },
+          vertexShader: `varying vec3 vN; varying vec3 vView;
+            void main(){ vec4 mv=modelViewMatrix*vec4(position,1.0); vView=-mv.xyz; vN=normalize(normalMatrix*normal); gl_Position=projectionMatrix*mv; }`,
+          fragmentShader: `varying vec3 vN; varying vec3 vView; uniform vec3 uColor; uniform vec3 uRim;
+            void main(){
+              vec3 nd=normalize(vN), vd=normalize(vView);
+              float fres = pow(1.0-abs(dot(nd,vd)), 2.4);
+              vec3 col = mix(uColor, uRim, fres*0.5);
+              gl_FragColor = vec4(col, fres*0.22);
+            }`,
+        });
+        brainGroup.add(new THREE.Mesh(shellGeo, shellMat));
+      }
+
       // scaled down for a background ornament, not the full-page hero
       const PARTICLES = 16000, DEPTH = 260, STEM = 700, SPARKLE = 16, FIRESPOT = 6;
       const total = PARTICLES + DEPTH + STEM;
