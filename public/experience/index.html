@@ -405,48 +405,42 @@ brainGroup.rotation.z = CONFIG.tilt;
 worldGroup.add(brainGroup);
 
 const R0 = CONFIG.brainRadius;
-// base shape (fissures, lobe asymmetry) -- shared by the particle field AND the clear outer
-// frame below, so the frame always matches the cloud's true envelope
-function brainBaseDisp(n){
+function brainDisp(n){
+  const folds = (ridged5(n.x*2.5+11, n.y*2.5, n.z*2.5) - 0.52) * 0.5
+              + (ridged5(n.x*5.4+3, n.y*5.4, n.z*5.4) - 0.5) * 0.14
+              + (ridged5(n.x*9.5+7, n.y*9.5, n.z*9.5) - 0.5) * 0.045; // fine contour-line texture
+  // longitudinal fissure -- deeper and reaching further down, so the two-hemisphere split
+  // actually reads from the front, not just a faint top groove
   const topMask = THREE.MathUtils.clamp(n.y*1.1 + 0.7, 0, 1);
   const fissure = Math.exp(-Math.pow(n.x/0.06,2)) * 0.27 * topMask;
+  // Sylvian fissure -- deepened into a real groove that separates the temporal lobe (below)
+  // from the frontal/parietal mass (above)
   const sylv = Math.exp(-Math.pow((Math.abs(n.x)-0.58)/0.11,2)) * Math.exp(-Math.pow((n.y-0.02)/0.16,2)) * 0.16;
   const flat = Math.max(0, -n.y-0.5) * 0.3;
+  // frontal lobe fuller/rounder (n.z>0 = front), occipital lobe narrower & slightly pointed
+  // (n.z<0 = back) -- an even front/back egg reads as a blob; a real brain profile doesn't
   const frontBulge = Math.max(0, n.z) * 0.11 * THREE.MathUtils.clamp(1-Math.abs(n.x)*0.6,0,1);
   const occipitalTaper = Math.max(0, -n.z) * 0.14 * THREE.MathUtils.clamp(1-n.y*0.4,0,1);
-  return -fissure - sylv - flat + frontBulge - occipitalTaper;
-}
-// fine gyri/sulci texture -- particle field only (kept off the smooth outer frame so the frame
-// stays a clean, unambiguous boundary rather than a faceted/noisy one)
-function brainFolds(n){
-  return (ridged5(n.x*2.5+11, n.y*2.5, n.z*2.5) - 0.52) * 0.5
-       + (ridged5(n.x*5.4+3, n.y*5.4, n.z*5.4) - 0.5) * 0.14
-       + (ridged5(n.x*9.5+7, n.y*9.5, n.z*9.5) - 0.5) * 0.045;
-}
-function brainDisp(n){ return brainBaseDisp(n) + brainFolds(n); }
-// shared lobe shaping (cerebellum bulge + hanging temporal lobes) applied to an already-displaced
-// point -- used by both the particle field and the outer frame
-function shapeLobes(v, n){
-  const cb = Math.exp(-((v.x*v.x)/1.05 + Math.pow(v.y+1.6,2)/0.5 + Math.pow(v.z+1.55,2)/0.65));
-  v.multiplyScalar(1 + cb*0.24);
-  const side = Math.min(1, Math.abs(n.x)/0.78);
-  const lowness = THREE.MathUtils.clamp(-n.y*1.15 + 0.22, 0, 1);
-  const temporal = Math.pow(side,1.4) * lowness;
-  v.y -= temporal * 0.44;
-  v.x *= 1 + temporal * 0.17;
-  v.z += temporal * 0.12;
-  return v;
-}
-function brainSurface(n, radialScale, disp){
-  const rad = R0 * (1+disp) * radialScale;
-  const v = new THREE.Vector3(n.x*CONFIG.brainStretch[0], n.y*CONFIG.brainStretch[1], n.z*CONFIG.brainStretch[2]).multiplyScalar(rad);
-  return shapeLobes(v, n);
+  return folds - fissure - sylv - flat + frontBulge - occipitalTaper;
 }
 function brainPoint(radialScale){
   const z = Math.random()*2-1, theta = Math.random()*Math.PI*2, rr = Math.sqrt(Math.max(0,1-z*z));
   const n = new THREE.Vector3(rr*Math.cos(theta), z, rr*Math.sin(theta));
   const disp = brainDisp(n);
-  const v = brainSurface(n, radialScale, disp);
+  const rad = R0 * (1+disp) * radialScale;
+  const v = new THREE.Vector3(n.x*CONFIG.brainStretch[0], n.y*CONFIG.brainStretch[1], n.z*CONFIG.brainStretch[2]).multiplyScalar(rad);
+  // cerebellum -- a smaller, tighter, more distinct round bump tucked under the back, so it
+  // reads as its own lobe rather than a smooth blend into the main mass
+  const cb = Math.exp(-((v.x*v.x)/1.05 + Math.pow(v.y+1.6,2)/0.5 + Math.pow(v.z+1.55,2)/0.65));
+  v.multiplyScalar(1 + cb*0.24);
+  // temporal lobes -- a stronger, more separated pull into hanging almond-shaped lobes, angled
+  // slightly forward like real anatomy -- the single biggest "this is a brain" silhouette cue
+  const side = Math.min(1, Math.abs(n.x)/0.78);
+  const lowness = THREE.MathUtils.clamp(-n.y*1.15 + 0.22, 0, 1);
+  const temporal = Math.pow(side,1.4) * lowness;
+  v.y -= temporal * 0.44;
+  v.x *= 1 + temporal * 0.17;
+  v.z += temporal * 0.12; // lean slightly toward the front
   const weight = THREE.MathUtils.clamp(disp*3.0 + 0.5, 0, 1); // 0 sulcus (sparse/dim) .. 1 gyrus (dense/bright)
   return { v, weight };
 }
@@ -517,42 +511,11 @@ const brainMat = new THREE.ShaderMaterial({
       float core = smoothstep(0.5,0.0,l);
       vec3 col = mix(uDim, uMid, clamp(vW*1.3,0.0,1.0));
       col = mix(col, uBright, pow(vW,3.0)*0.55);
-      float a = core * (0.16 + vW*0.5) * (0.75+0.25*vTw);
+      float a = core * (0.3 + vW*0.68) * (0.75+0.25*vTw);
       gl_FragColor = vec4(col, a);
     }`,
 });
 brainGroup.add(new THREE.Points(brainGeo, brainMat));
-
-// a clear outer frame -- a smooth (fold-free) translucent shell in the true brain silhouette,
-// glowing only at grazing angles (fresnel), so the particle field above reads as structure
-// contained *inside* an unambiguous brain-shaped boundary rather than a diffuse cloud.
-const frameGeo = new THREE.IcosahedronGeometry(1, 5);
-{
-  const fp = frameGeo.attributes.position;
-  const fn = new THREE.Vector3();
-  for(let i=0;i<fp.count;i++){
-    fn.fromBufferAttribute(fp,i);
-    const n = fn.clone().normalize();
-    const v = brainSurface(n, 1.045, brainBaseDisp(n));
-    fp.setXYZ(i, v.x, v.y, v.z);
-  }
-  frameGeo.computeVertexNormals();
-}
-const frameMat = new THREE.ShaderMaterial({
-  transparent:true, depthWrite:false, side:THREE.DoubleSide, blending:THREE.AdditiveBlending,
-  uniforms:{ uColor:{value:new THREE.Color(CONFIG.mid)}, uTime:{value:0} },
-  vertexShader:`varying vec3 vN; varying vec3 vView;
-    void main(){ vec4 mv=modelViewMatrix*vec4(position,1.0); vView=-mv.xyz; vN=normalize(normalMatrix*normal); gl_Position=projectionMatrix*mv; }`,
-  fragmentShader:`varying vec3 vN; varying vec3 vView; uniform vec3 uColor; uniform float uTime;
-    void main(){
-      vec3 nd=normalize(vN), vd=normalize(vView);
-      float fres = pow(1.0-abs(dot(nd,vd)), 2.3);
-      float p = 0.82+0.18*sin(uTime*1.05);
-      gl_FragColor = vec4(uColor, fres*0.5*p);
-    }`,
-});
-const frameMesh = new THREE.Mesh(frameGeo, frameMat);
-brainGroup.add(frameMesh);
 
 // sparkle accents -- a handful of brighter, slower-twinkling "hero" points scattered across the
 // field, like stars caught mid-field -- matching the reference's scattered bright points.
@@ -701,7 +664,6 @@ function frame(){
   brainMat.uniforms.uTime.value = t;
   sparkleMat.uniforms.uTime.value = t;
   fireMat.uniforms.uTime.value = t;
-  frameMat.uniforms.uTime.value = t;
   starMat.uniforms.uTime.value += dt;
 
   composer.render();
