@@ -125,21 +125,21 @@ const RotatingBrainCloud: React.FC<{ className?: string }> = ({ className = '' }
       scene.add(brainGroup);
 
       // scaled down for a background ornament, not the full-page hero
-      const PARTICLES = 9000, DEPTH = 1400, STEM = 700, SPARKLE = 16, FIRESPOT = 6;
+      const PARTICLES = 16000, DEPTH = 260, STEM = 700, SPARKLE = 16, FIRESPOT = 6;
       const total = PARTICLES + DEPTH + STEM;
       const bpos = new Float32Array(total * 3);
       const bseed = new Float32Array(total);
       const bweight = new Float32Array(total);
       let bi = 0;
       for (let i = 0; i < PARTICLES; i++) {
-        const { v, weight } = brainPoint(1.0 + (Math.random() - 0.5) * 0.01);
+        const { v, weight } = brainPoint(1.0 + (Math.random() - 0.5) * 0.005);
         bpos[bi * 3] = v.x; bpos[bi * 3 + 1] = v.y; bpos[bi * 3 + 2] = v.z;
         bweight[bi] = weight; bseed[bi] = Math.random() * 10; bi++;
       }
       for (let i = 0; i < DEPTH; i++) {
-        const { v, weight } = brainPoint(0.9 + Math.random() * 0.07);
+        const { v, weight } = brainPoint(0.94 + Math.random() * 0.04);
         bpos[bi * 3] = v.x; bpos[bi * 3 + 1] = v.y; bpos[bi * 3 + 2] = v.z;
-        bweight[bi] = weight * 0.28; bseed[bi] = Math.random() * 10; bi++;
+        bweight[bi] = weight * 0.16; bseed[bi] = Math.random() * 10; bi++;
       }
       {
         const stemHeight = 2.05, stemTopR = 0.46, stemBottomR = 0.13;
@@ -177,7 +177,7 @@ const RotatingBrainCloud: React.FC<{ className?: string }> = ({ className = '' }
             vW = weight;
             vTw = 0.55 + 0.45*sin(uTime*0.8 + seed*6.28);
             vec4 mv = modelViewMatrix*vec4(position,1.0);
-            float base = 1.15 + weight*2.3;
+            float base = 0.8 + pow(weight,2.0)*3.2;
             gl_PointSize = max(base*vTw*uRes.y/900.0*(6.0/max(-mv.z,1.0)), 1.0);
             gl_Position = projectionMatrix*mv;
           }`,
@@ -187,8 +187,8 @@ const RotatingBrainCloud: React.FC<{ className?: string }> = ({ className = '' }
             vec2 p=gl_PointCoord-0.5; float l=length(p); if(l>0.5) discard;
             float core = smoothstep(0.5,0.0,l);
             vec3 col = mix(uDim, uMid, clamp(vW*1.3,0.0,1.0));
-            col = mix(col, uBright, pow(vW,3.0)*0.55);
-            float a = core * (0.17 + vW*0.5) * (0.75+0.25*vTw);
+            col = mix(col, uBright, pow(vW,3.0)*0.6);
+            float a = core * (0.06 + pow(vW,2.1)*0.95) * (0.75+0.25*vTw);
             gl_FragColor = vec4(col, a);
           }`,
       });
