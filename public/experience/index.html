@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Humantic Digital — an immersive neural brain and DNA helix experience. Where behaviour becomes data, and data becomes capability.">
+<meta name="description" content="Humantic Digital — an immersive neural brain experience. Where behaviour becomes data, and data becomes capability.">
 <style>*{box-sizing:border-box}html,body{margin:0;background:#04060f}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Humantic Digital — The Human Engine</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -328,12 +328,12 @@ if (!REDUCED){
   } catch(e){ /* smooth scroll optional */ }
 }
 
-/* ---------- WebGL scene: revolving brain + DNA helix ---------- */
+/* ---------- WebGL scene: high-resolution brain + neuron network ---------- */
 const CONFIG = {
-  bg:'#04060f', accent:'#5df0a8', accentDeep:'#2fd38a', glow:'#3a6cff', rim:'#c1faff',
-  brainRadius:1.9, brainDetail:4, brainStretch:[1.32,0.92,1.06], spin:0.055, tilt:0.34,
-  helixTurns:5, helixNodes:120, helixRadius:0.9, helixSpan:9.5, helixSpin:0.22,
-  starCount:1400, starSize:1.6, moteCount:300,
+  bg:'#04060f', accent:'#5df0a8', accentDeep:'#1f9e6e', synapse:'#dafff2', deep:'#0c2f70', glow:'#2f6bff', rim:'#c1faff',
+  brainRadius:1.9, brainDetail:6, brainStretch:[1.34,0.94,1.12], spin:0.05, tilt:0.30,
+  neuronCount:300, neuronLinks:3, neuronLinkDist:1.55, pulseCount:1200,
+  starCount:1400, starSize:1.6,
 };
 const STOPS_X = [{p:0,v:0},{p:0.32,v:-3.0},{p:0.64,v:3.1},{p:1,v:0}];
 const STOPS_Y = [{p:0,v:-4.2},{p:0.32,v:0.5},{p:0.64,v:0.4},{p:1,v:0.1}];
@@ -370,140 +370,320 @@ worldGroup.position.set(STOPS_X[0].v, STOPS_Y[0].v, 0);
 worldGroup.scale.setScalar(STOPS_S[0].v);
 scene.add(worldGroup);
 
-/* --- simplex-ish value noise for brain displacement (JS side) --- */
+/* --- value-noise + ridged fractal for anatomical gyri / sulci (JS, runs once) --- */
 function hash(x,y,z){ let n=Math.sin(x*127.1+y*311.7+z*74.7)*43758.5453; return n-Math.floor(n); }
 function vnoise(x,y,z){
   const xi=Math.floor(x),yi=Math.floor(y),zi=Math.floor(z);
-  const xf=x-xi,yf=y-yi,zf=z-zi;
+  let xf=x-xi,yf=y-yi,zf=z-zi;
   const u=xf*xf*(3-2*xf),v=yf*yf*(3-2*yf),w=zf*zf*(3-2*zf);
-  const lerp=(a,b,t)=>a+(b-a)*t;
-  return lerp(
-    lerp(lerp(hash(xi,yi,zi),hash(xi+1,yi,zi),u), lerp(hash(xi,yi+1,zi),hash(xi+1,yi+1,zi),u), v),
-    lerp(lerp(hash(xi,yi,zi+1),hash(xi+1,yi,zi+1),u), lerp(hash(xi,yi+1,zi+1),hash(xi+1,yi+1,zi+1),u), v),
+  const L=(a,b,t)=>a+(b-a)*t;
+  return L(
+    L(L(hash(xi,yi,zi),hash(xi+1,yi,zi),u), L(hash(xi,yi+1,zi),hash(xi+1,yi+1,zi),u), v),
+    L(L(hash(xi,yi,zi+1),hash(xi+1,yi,zi+1),u), L(hash(xi,yi+1,zi+1),hash(xi+1,yi+1,zi+1),u), v),
   w);
 }
-function fbm(x,y,z){ let s=0,a=0.5,f=1; for(let i=0;i<4;i++){ s+=a*(vnoise(x*f,y*f,z*f)*2-1); f*=2.1; a*=0.5; } return s; }
+// ridged multi-octave: sharp raised ridges with deep grooves between -> convolution look
+function ridged(x,y,z){
+  let sum=0, amp=0.55, freq=1.0, norm=0;
+  for(let o=0;o<5;o++){
+    let n = vnoise(x*freq+o*17.3, y*freq-o*9.1, z*freq+o*4.7)*2-1;
+    n = 1.0 - Math.abs(n);
+    n = n*n;
+    sum += n*amp; norm += amp;
+    freq *= 2.02; amp *= 0.5;
+  }
+  return sum/norm; // ~0..1
+}
 
-/* --- the brain: displaced icosphere, rendered as glowing wireframe + nodes --- */
+/* --- the brain: displaced high-res icosphere with realistic folds --- */
 const brainGroup = new THREE.Group();
 brainGroup.rotation.z = CONFIG.tilt;
 worldGroup.add(brainGroup);
 
-const ico = new THREE.IcosahedronGeometry(CONFIG.brainRadius, CONFIG.brainDetail);
+const R0 = CONFIG.brainRadius;
+const ico = new THREE.IcosahedronGeometry(R0, CONFIG.brainDetail);
 const pos = ico.attributes.position;
+const foldAttr = new Float32Array(pos.count);
 const v = new THREE.Vector3();
 for(let i=0;i<pos.count;i++){
   v.fromBufferAttribute(pos,i);
   const n = v.clone().normalize();
-  // brain-like proportions + two hemispheres groove down the middle
-  const groove = Math.exp(-Math.pow(n.x*3.4,2)) * 0.16;
-  const wrinkle = fbm(n.x*3.1+10, n.y*3.1, n.z*3.1) * 0.19 + fbm(n.x*7+3, n.y*7, n.z*7)*0.07;
-  const r = CONFIG.brainRadius * (1 + wrinkle - groove);
+
+  // convolutions
+  const folds = (ridged(n.x*2.5+11, n.y*2.5, n.z*2.5) - 0.52) * 0.5
+              + (ridged(n.x*5.4+3, n.y*5.4, n.z*5.4) - 0.5) * 0.14;
+  // deep longitudinal fissure down the sagittal midline, strong on top & front, fades underneath
+  const topMask = THREE.MathUtils.clamp(n.y*1.4 + 0.55, 0, 1);
+  const fissure = Math.exp(-Math.pow(n.x/0.055,2)) * 0.20 * topMask;
+  // slight lateral (Sylvian) fissures
+  const sylv = Math.exp(-Math.pow((Math.abs(n.x)-0.55)/0.10,2)) * Math.exp(-Math.pow(n.y/0.28,2)) * 0.09;
+  // flatten the underside a touch (skull base)
+  const flat = Math.max(0, -n.y-0.5) * 0.32;
+
+  const disp = folds - fissure - sylv - flat;
+  const r = R0 * (1 + disp);
+  foldAttr[i] = THREE.MathUtils.clamp(disp*3.0 + 0.5, 0, 1); // 0 = deep sulcus, 1 = raised gyrus
+
   v.set(n.x*CONFIG.brainStretch[0], n.y*CONFIG.brainStretch[1], n.z*CONFIG.brainStretch[2]).multiplyScalar(r);
+
+  // cerebellum bulge, lower-rear
+  const cb = Math.exp(-((v.x*v.x)/1.7 + Math.pow(v.y+1.45,2)/0.8 + Math.pow(v.z+1.5,2)/1.0));
+  v.multiplyScalar(1 + cb*0.17);
+  // brain-stem taper straight down at the very base
+  const stem = Math.max(0, -(v.y+1.7)) * 0.5;
+  v.x *= (1 - stem*0.5); v.z *= (1 - stem*0.5);
+
   pos.setXYZ(i, v.x, v.y, v.z);
 }
+ico.setAttribute('aFold', new THREE.BufferAttribute(foldAttr,1));
 ico.computeVertexNormals();
 
-// translucent shell with fresnel rim
-const shellMat = new THREE.ShaderMaterial({
-  transparent:true, depthWrite:false, side:THREE.FrontSide, blending:THREE.AdditiveBlending,
-  uniforms:{ uAccent:{value:new THREE.Color(CONFIG.accent)}, uRim:{value:new THREE.Color(CONFIG.rim)}, uTime:{value:0} },
-  vertexShader:`varying vec3 vN; varying vec3 vView;
-    void main(){ vec4 mv = modelViewMatrix*vec4(position,1.0); vView=-mv.xyz; vN=normalize(normalMatrix*normal); gl_Position=projectionMatrix*mv; }`,
-  fragmentShader:`varying vec3 vN; varying vec3 vView; uniform vec3 uAccent; uniform vec3 uRim; uniform float uTime;
+// solid tissue surface: lit, fresnel rim, sulci tinted deep blue, gyri lit mint
+const brainMat = new THREE.ShaderMaterial({
+  transparent:true, depthWrite:true,
+  uniforms:{
+    uAccent:{value:new THREE.Color(CONFIG.accent)},
+    uDeep:{value:new THREE.Color(CONFIG.deep)},
+    uRim:{value:new THREE.Color(CONFIG.rim)},
+    uTime:{value:0},
+  },
+  vertexShader:`
+    attribute float aFold; varying float vFold; varying vec3 vN; varying vec3 vView; varying vec3 vLocal;
+    void main(){
+      vFold=aFold; vLocal=position;
+      vec4 mv=modelViewMatrix*vec4(position,1.0);
+      vView=-mv.xyz; vN=normalize(normalMatrix*normal);
+      gl_Position=projectionMatrix*mv;
+    }`,
+  fragmentShader:`
+    varying float vFold; varying vec3 vN; varying vec3 vView; varying vec3 vLocal;
+    uniform vec3 uAccent; uniform vec3 uDeep; uniform vec3 uRim; uniform float uTime;
     void main(){
       vec3 nd=normalize(vN), vd=normalize(vView);
-      float fres=pow(1.0-max(dot(nd,vd),0.0), 2.2);
-      float pulse=0.6+0.4*sin(uTime*1.4);
-      vec3 col=mix(uAccent*0.25, uRim, fres);
-      gl_FragColor=vec4(col*(0.35+fres*1.4*pulse), fres*0.9+0.08);
+      vec3 L1=normalize(vec3(-0.5,0.8,0.6)), L2=normalize(vec3(0.7,-0.3,-0.4));
+      float diff = 0.32 + 0.32*max(dot(nd,L1),0.0) + 0.12*max(dot(nd,L2),0.0);
+      float fres = pow(1.0-max(dot(nd,vd),0.0), 3.2);
+      float sulcus = smoothstep(0.55,0.05,vFold);           // 1 deep in the grooves
+      float travel = 0.5+0.5*sin(uTime*1.6 - vLocal.y*3.0 - vLocal.x*2.0); // signal wash
+      vec3 tissue = mix(uAccent*0.55, uDeep*0.65, sulcus);
+      tissue *= diff;
+      tissue += uAccent * travel * 0.05 * (1.0-sulcus);
+      vec3 col = tissue + uRim * fres * 0.35;
+      float a = 0.94 + fres*0.06;
+      gl_FragColor = vec4(col, a);
     }`,
 });
-const shell = new THREE.Mesh(ico, shellMat);
-brainGroup.add(shell);
+const brainMesh = new THREE.Mesh(ico, brainMat);
+brainGroup.add(brainMesh);
 
-// wireframe of the neural mesh
-const wire = new THREE.LineSegments(
-  new THREE.WireframeGeometry(ico),
-  new THREE.LineBasicMaterial({ color:new THREE.Color(CONFIG.accent), transparent:true, opacity:0.22, blending:THREE.AdditiveBlending, depthWrite:false })
-);
-brainGroup.add(wire);
+// faint outer glow shell (fresnel only) for atmosphere
+const glowMat = new THREE.ShaderMaterial({
+  transparent:true, depthWrite:false, side:THREE.BackSide, blending:THREE.AdditiveBlending,
+  uniforms:{ uColor:{value:new THREE.Color(CONFIG.glow)}, uTime:{value:0} },
+  vertexShader:`varying vec3 vN; varying vec3 vView;
+    void main(){ vec4 mv=modelViewMatrix*vec4(position,1.0); vView=-mv.xyz; vN=normalize(normalMatrix*normal); gl_Position=projectionMatrix*mv; }`,
+  fragmentShader:`varying vec3 vN; varying vec3 vView; uniform vec3 uColor; uniform float uTime;
+    void main(){ vec3 nd=normalize(vN), vd=normalize(vView);
+      float f=pow(1.0-max(dot(nd,vd),0.0),4.0);
+      float p=0.75+0.25*sin(uTime*1.2);
+      gl_FragColor=vec4(uColor*f*0.55*p, f*0.38); }`,
+});
+const glowMesh = new THREE.Mesh(ico.clone(), glowMat);
+glowMesh.scale.setScalar(1.1);
+brainGroup.add(glowMesh);
 
-// glowing nodes at every vertex + a few bright "firing" ones
-const nodeGeo = new THREE.BufferGeometry();
-const npos = [], nseed = [];
-for(let i=0;i<pos.count;i++){ npos.push(pos.getX(i),pos.getY(i),pos.getZ(i)); nseed.push(Math.random()*10); }
-nodeGeo.setAttribute('position', new THREE.Float32BufferAttribute(npos,3));
-nodeGeo.setAttribute('seed', new THREE.Float32BufferAttribute(nseed,1));
-const nodeMat = new THREE.ShaderMaterial({
+// brain stem + top of the spinal cord, hanging from the underside
+const stemGeo = new THREE.CylinderGeometry(0.46, 0.13, 2.05, 28, 16, true);
+{
+  const sp = stemGeo.attributes.position;
+  const sv = new THREE.Vector3();
+  for(let i=0;i<sp.count;i++){
+    sv.fromBufferAttribute(sp,i);
+    const t = (sv.y + 1.025) / 2.05; // 0 at bottom .. 1 at top
+    const pons = Math.exp(-Math.pow((t-0.8)/0.10,2)) * 0.11;       // pons bulge near the top
+    const medulla = Math.exp(-Math.pow((t-0.55)/0.12,2)) * 0.045;  // subtle medulla swell
+    const wobble = (vnoise(sv.x*3+1, sv.y*3, sv.z*3+7)-0.5) * 0.05;
+    const scale = 1 + pons + medulla + wobble;
+    sv.x *= scale; sv.z *= scale;
+    sv.z -= Math.pow(Math.max(0, 0.6-t), 1.4) * 0.4; // curves back as it descends
+    sp.setXYZ(i, sv.x, sv.y, sv.z);
+  }
+  stemGeo.computeVertexNormals();
+}
+const stemMat = new THREE.ShaderMaterial({
+  transparent:true, depthWrite:true,
+  uniforms:{ uAccent:{value:new THREE.Color(CONFIG.accent)}, uDeep:{value:new THREE.Color(CONFIG.deep)}, uRim:{value:new THREE.Color(CONFIG.rim)} },
+  vertexShader:`varying vec3 vN; varying vec3 vView;
+    void main(){ vec4 mv=modelViewMatrix*vec4(position,1.0); vView=-mv.xyz; vN=normalize(normalMatrix*normal); gl_Position=projectionMatrix*mv; }`,
+  fragmentShader:`varying vec3 vN; varying vec3 vView; uniform vec3 uAccent; uniform vec3 uDeep; uniform vec3 uRim;
+    void main(){
+      vec3 nd=normalize(vN), vd=normalize(vView);
+      vec3 L1=normalize(vec3(-0.5,0.8,0.6));
+      float diff=0.30+0.35*max(dot(nd,L1),0.0);
+      float fres=pow(1.0-max(dot(nd,vd),0.0),3.2);
+      vec3 tissue=mix(uDeep*0.68, uAccent*0.5, 0.42)*diff;
+      vec3 col = tissue + uRim*fres*0.3;
+      gl_FragColor=vec4(col, 0.95);
+    }`,
+});
+const stemMesh = new THREE.Mesh(stemGeo, stemMat);
+stemMesh.position.set(0.02, -1.82, -0.22);
+brainGroup.add(stemMesh);
+
+// a shimmer of surface "cells" — decimated vertex points riding the folds
+const cellGeo = new THREE.BufferGeometry();
+const cpos=[], cseed=[];
+for(let i=0;i<pos.count;i+=3){ cpos.push(pos.getX(i),pos.getY(i),pos.getZ(i)); cseed.push(Math.random()*10); }
+cellGeo.setAttribute('position', new THREE.Float32BufferAttribute(cpos,3));
+cellGeo.setAttribute('seed', new THREE.Float32BufferAttribute(cseed,1));
+const cellMat = new THREE.ShaderMaterial({
   transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
-  uniforms:{ uTime:{value:0}, uColor:{value:new THREE.Color(CONFIG.accent)}, uRes:{value:new THREE.Vector2(innerWidth,innerHeight)} },
+  uniforms:{ uTime:{value:0}, uColor:{value:new THREE.Color(CONFIG.synapse)}, uRes:{value:new THREE.Vector2(innerWidth,innerHeight)} },
   vertexShader:`attribute float seed; uniform float uTime; uniform vec2 uRes; varying float vT;
     void main(){ vec4 mv=modelViewMatrix*vec4(position,1.0);
-      float fire=pow(0.5+0.5*sin(uTime*2.0+seed*6.28), 8.0);
-      vT=0.25+fire;
-      gl_PointSize=max((2.0+fire*7.0)*uRes.y/900.0*(6.0/max(-mv.z,1.0)),1.5);
+      float fire=pow(0.5+0.5*sin(uTime*2.2+seed*6.28),10.0);
+      vT=0.12+fire;
+      gl_PointSize=max((1.4+fire*6.0)*uRes.y/900.0*(6.0/max(-mv.z,1.0)),1.0);
       gl_Position=projectionMatrix*mv; }`,
   fragmentShader:`uniform vec3 uColor; varying float vT;
     void main(){ vec2 p=gl_PointCoord-0.5; float l=length(p); if(l>0.5) discard;
       gl_FragColor=vec4(uColor, smoothstep(0.5,0.0,l)*vT); }`,
 });
-const nodes = new THREE.Points(nodeGeo, nodeMat);
-brainGroup.add(nodes);
+const cells = new THREE.Points(cellGeo, cellMat);
+brainGroup.add(cells);
 
-/* --- DNA double helix (chromosome) --- */
-const helixGroup = new THREE.Group();
-helixGroup.rotation.z = -0.5;
-worldGroup.add(helixGroup);
+/* --- neuron network: cell bodies hovering just off the cortex, wired to neighbours --- */
+const neuronGroup = new THREE.Group();
+brainGroup.add(neuronGroup);
 
-function buildHelix(){
-  const g = new THREE.Group();
-  const rungMat = new THREE.MeshBasicMaterial({ color:new THREE.Color(CONFIG.accentDeep), transparent:true, opacity:0.5, blending:THREE.AdditiveBlending, depthWrite:false });
-  const nodeM = new THREE.MeshBasicMaterial({ color:new THREE.Color(CONFIG.accent), transparent:true, opacity:0.9, blending:THREE.AdditiveBlending, depthWrite:false });
-  const sphere = new THREE.SphereGeometry(0.055, 10, 10);
-  const N = CONFIG.helixNodes, span = CONFIG.helixSpan, R = CONFIG.helixRadius, turns = CONFIG.helixTurns;
-  for(let i=0;i<N;i++){
-    const t = i/(N-1);
-    const ang = t*turns*Math.PI*2;
-    const y = (t-0.5)*span;
-    const a = new THREE.Vector3(Math.cos(ang)*R, y, Math.sin(ang)*R);
-    const b = new THREE.Vector3(Math.cos(ang+Math.PI)*R, y, Math.sin(ang+Math.PI)*R);
-    const sa = new THREE.Mesh(sphere, nodeM); sa.position.copy(a); g.add(sa);
-    const sb = new THREE.Mesh(sphere, nodeM); sb.position.copy(b); g.add(sb);
-    if(i % 3 === 0){
-      const mid = a.clone().add(b).multiplyScalar(0.5);
-      const len = a.distanceTo(b);
-      const rung = new THREE.Mesh(new THREE.CylinderGeometry(0.014,0.014,len,6), rungMat);
-      rung.position.copy(mid);
-      rung.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), b.clone().sub(a).normalize());
-      g.add(rung);
+// approximate surface radius along a direction (ellipsoid + mean fold)
+function surfaceR(n){
+  const e = Math.sqrt(1/( (n.x*n.x)/(CONFIG.brainStretch[0]*CONFIG.brainStretch[0])
+                        + (n.y*n.y)/(CONFIG.brainStretch[1]*CONFIG.brainStretch[1])
+                        + (n.z*n.z)/(CONFIG.brainStretch[2]*CONFIG.brainStretch[2]) ));
+  return R0 * e * 1.0;
+}
+const nP = [];
+for(let i=0;i<CONFIG.neuronCount;i++){
+  // even-ish sphere distribution (fibonacci) with jitter
+  const gr = (Math.sqrt(5)+1)/2;
+  const t = i/CONFIG.neuronCount;
+  const lon = 2*Math.PI*i/gr;
+  const lat = Math.acos(1-2*(i+0.5)/CONFIG.neuronCount);
+  const n = new THREE.Vector3(Math.sin(lat)*Math.cos(lon), Math.cos(lat), Math.sin(lat)*Math.sin(lon));
+  n.x += (Math.random()-0.5)*0.15; n.y += (Math.random()-0.5)*0.15; n.z += (Math.random()-0.5)*0.15;
+  n.normalize();
+  const r = surfaceR(n) * (1.06 + Math.random()*0.26);
+  nP.push(new THREE.Vector3(n.x*r, n.y*r, n.z*r));
+}
+// links to nearest neighbours
+const linkPairs = [];
+for(let i=0;i<nP.length;i++){
+  const d = [];
+  for(let j=0;j<nP.length;j++){ if(i===j) continue; const dist=nP[i].distanceTo(nP[j]); if(dist<CONFIG.neuronLinkDist) d.push([dist,j]); }
+  d.sort((a,b)=>a[0]-b[0]);
+  for(let k=0;k<Math.min(CONFIG.neuronLinks,d.length);k++){ const j=d[k][1]; if(i<j) linkPairs.push([i,j]); else if(!linkPairs.some(pp=>pp[0]===j&&pp[1]===i)) linkPairs.push([j,i]); }
+}
+// dendrite spikes (short jagged filaments off each neuron)
+const dendVerts = [];
+for(let i=0;i<nP.length;i++){
+  const base = nP[i];
+  const spikes = 2 + (Math.random()*3|0);
+  for(let s=0;s<spikes;s++){
+    let cur = base.clone();
+    const dir = new THREE.Vector3(Math.random()-0.5,Math.random()-0.5,Math.random()-0.5).normalize().multiplyScalar(0.16);
+    const segs = 2 + (Math.random()*2|0);
+    for(let g=0;g<segs;g++){
+      const nxt = cur.clone().add(dir).add(new THREE.Vector3((Math.random()-0.5)*0.08,(Math.random()-0.5)*0.08,(Math.random()-0.5)*0.08));
+      dendVerts.push(cur.x,cur.y,cur.z, nxt.x,nxt.y,nxt.z);
+      cur = nxt;
     }
   }
-  return g;
 }
-const helix = buildHelix();
-helix.position.set(3.2, 0, -1.5);
-helix.scale.setScalar(0.62);
-helixGroup.add(helix);
-const helix2 = buildHelix();
-helix2.position.set(-3.6, 0.5, -2.2);
-helix2.scale.setScalar(0.42);
-helix2.rotation.z = 0.9;
-helixGroup.add(helix2);
+const dendGeo = new THREE.BufferGeometry();
+dendGeo.setAttribute('position', new THREE.Float32BufferAttribute(dendVerts,3));
+neuronGroup.add(new THREE.LineSegments(dendGeo, new THREE.LineBasicMaterial({
+  color:new THREE.Color(CONFIG.accent), transparent:true, opacity:0.28, blending:THREE.AdditiveBlending, depthWrite:false
+})));
 
-/* --- atmosphere halo behind the brain --- */
+// axon connections
+const linkVerts = [];
+linkPairs.forEach(([a,b])=>{ linkVerts.push(nP[a].x,nP[a].y,nP[a].z, nP[b].x,nP[b].y,nP[b].z); });
+const linkGeo = new THREE.BufferGeometry();
+linkGeo.setAttribute('position', new THREE.Float32BufferAttribute(linkVerts,3));
+neuronGroup.add(new THREE.LineSegments(linkGeo, new THREE.LineBasicMaterial({
+  color:new THREE.Color(CONFIG.accentDeep), transparent:true, opacity:0.34, blending:THREE.AdditiveBlending, depthWrite:false
+})));
+
+// neuron cell bodies (glowing points, occasional bright fire)
+const somaGeo = new THREE.BufferGeometry();
+const somaPos=[], somaSeed=[];
+nP.forEach(p=>{ somaPos.push(p.x,p.y,p.z); somaSeed.push(Math.random()*10); });
+somaGeo.setAttribute('position', new THREE.Float32BufferAttribute(somaPos,3));
+somaGeo.setAttribute('seed', new THREE.Float32BufferAttribute(somaSeed,1));
+const somaMat = new THREE.ShaderMaterial({
+  transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+  uniforms:{ uTime:{value:0}, uColor:{value:new THREE.Color(CONFIG.accent)}, uHot:{value:new THREE.Color(CONFIG.synapse)}, uRes:{value:new THREE.Vector2(innerWidth,innerHeight)} },
+  vertexShader:`attribute float seed; uniform float uTime; uniform vec2 uRes; varying float vFire;
+    void main(){ vec4 mv=modelViewMatrix*vec4(position,1.0);
+      vFire=pow(0.5+0.5*sin(uTime*1.7+seed*6.28),6.0);
+      gl_PointSize=max((3.0+vFire*10.0)*uRes.y/900.0*(6.0/max(-mv.z,1.0)),2.0);
+      gl_Position=projectionMatrix*mv; }`,
+  fragmentShader:`uniform vec3 uColor; uniform vec3 uHot; varying float vFire;
+    void main(){ vec2 p=gl_PointCoord-0.5; float l=length(p); if(l>0.5) discard;
+      vec3 c=mix(uColor,uHot,vFire);
+      float core=smoothstep(0.5,0.0,l);
+      gl_FragColor=vec4(c, core*(0.4+vFire*0.6)); }`,
+});
+neuronGroup.add(new THREE.Points(somaGeo, somaMat));
+
+// travelling signal pulses that ride the axons
+const pulseGeo = new THREE.BufferGeometry();
+const paA=[], paB=[], paPhase=[], paSpeed=[];
+for(let i=0;i<CONFIG.pulseCount;i++){
+  const lp = linkPairs[i % linkPairs.length];
+  paA.push(nP[lp[0]].x,nP[lp[0]].y,nP[lp[0]].z);
+  paB.push(nP[lp[1]].x,nP[lp[1]].y,nP[lp[1]].z);
+  paPhase.push(Math.random());
+  paSpeed.push(0.25 + Math.random()*0.6);
+}
+pulseGeo.setAttribute('position', new THREE.Float32BufferAttribute(new Float32Array(CONFIG.pulseCount*3),3));
+pulseGeo.setAttribute('aA', new THREE.Float32BufferAttribute(paA,3));
+pulseGeo.setAttribute('aB', new THREE.Float32BufferAttribute(paB,3));
+pulseGeo.setAttribute('aPhase', new THREE.Float32BufferAttribute(paPhase,1));
+pulseGeo.setAttribute('aSpeed', new THREE.Float32BufferAttribute(paSpeed,1));
+const pulseMat = new THREE.ShaderMaterial({
+  transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+  uniforms:{ uTime:{value:0}, uColor:{value:new THREE.Color(CONFIG.synapse)}, uRes:{value:new THREE.Vector2(innerWidth,innerHeight)} },
+  vertexShader:`attribute vec3 aA; attribute vec3 aB; attribute float aPhase; attribute float aSpeed;
+    uniform float uTime; uniform vec2 uRes; varying float vA;
+    void main(){
+      float f=fract(uTime*aSpeed + aPhase);
+      vec3 p=mix(aA,aB,f);
+      vA=sin(f*3.14159);                        // bright mid-run, dim at ends
+      vec4 mv=modelViewMatrix*vec4(p,1.0);
+      gl_PointSize=max(3.2*uRes.y/900.0*(6.0/max(-mv.z,1.0)),1.5);
+      gl_Position=projectionMatrix*mv;
+    }`,
+  fragmentShader:`uniform vec3 uColor; varying float vA;
+    void main(){ vec2 p=gl_PointCoord-0.5; float l=length(p); if(l>0.5) discard;
+      gl_FragColor=vec4(uColor, smoothstep(0.5,0.0,l)*vA); }`,
+});
+neuronGroup.add(new THREE.Points(pulseGeo, pulseMat));
+
+/* --- soft volumetric halo behind the whole brain --- */
 const halo = new THREE.Mesh(
   new THREE.PlaneGeometry(2,2),
   new THREE.ShaderMaterial({
     transparent:true, depthWrite:false, blending:THREE.AdditiveBlending, side:THREE.DoubleSide,
-    uniforms:{ uGlow:{value:new THREE.Color(CONFIG.glow)}, uI:{value:2.6} },
+    uniforms:{ uGlow:{value:new THREE.Color(CONFIG.glow)}, uI:{value:0.9} },
     vertexShader:`varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
     fragmentShader:`uniform vec3 uGlow; uniform float uI; varying vec2 vUv;
-      void main(){ float d=length(vUv-0.5)*2.0; float a=pow(clamp(1.0-d,0.0,1.0),2.4);
-        gl_FragColor=vec4(uGlow*a*uI, a*0.9); }`,
+      void main(){ float d=length(vUv-0.5)*2.0; float a=pow(clamp(1.0-d,0.0,1.0),3.2);
+        gl_FragColor=vec4(uGlow*a*uI, a*0.45); }`,
   })
 );
-halo.scale.setScalar(CONFIG.brainRadius*2.6);
+halo.scale.setScalar(CONFIG.brainRadius*3.0);
 worldGroup.add(halo);
 
 /* --- starfield --- */
@@ -534,38 +714,15 @@ const stars = new THREE.Points(starGeo, starMat);
 stars.frustumCulled = false;
 scene.add(stars);
 
-/* --- drifting motes --- */
-const moteGeo = new THREE.BufferGeometry();
-const mp=[], msz=[];
-for(let i=0;i<CONFIG.moteCount;i++){ mp.push((Math.random()*2-1)*7,(Math.random()*2-1)*7,(Math.random()*2-1)*7); msz.push(6+Math.random()*14); }
-moteGeo.setAttribute('position', new THREE.Float32BufferAttribute(mp,3));
-moteGeo.setAttribute('size', new THREE.Float32BufferAttribute(msz,1));
-const moteMat = new THREE.ShaderMaterial({
-  transparent:true, depthWrite:false, depthTest:false, blending:THREE.AdditiveBlending,
-  uniforms:{ uTime:{value:0}, uColor:{value:new THREE.Color('#9fc4ff')}, uRes:{value:new THREE.Vector2(innerWidth,innerHeight)} },
-  vertexShader:`attribute float size; uniform float uTime; uniform vec2 uRes; varying float vA;
-    void main(){ vec3 pp=position; pp.y+=sin(uTime*0.2+position.x)*0.4; pp.x+=cos(uTime*0.15+position.z)*0.4;
-      vec4 mv=modelViewMatrix*vec4(pp,1.0);
-      vA=1.0-smoothstep(4.0,8.0,length(pp));
-      gl_PointSize=max(size*uRes.y/900.0/-mv.z,1.0);
-      gl_Position=projectionMatrix*mv; }`,
-  fragmentShader:`uniform vec3 uColor; varying float vA;
-    void main(){ vec2 p=gl_PointCoord-0.5; float l=length(p); if(l>0.5) discard;
-      gl_FragColor=vec4(uColor, smoothstep(0.5,0.0,l)*vA*0.5); }`,
-});
-const motes = new THREE.Points(moteGeo, moteMat);
-motes.frustumCulled = false;
-scene.add(motes);
-
 /* --- composer + bloom --- */
 const composer = new EffectComposer(renderer);
 composer.addPass(new RenderPass(scene, camera));
-const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight), 0.85, 0.55, 0.0);
+const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight), 0.55, 0.45, 0.18);
 composer.addPass(bloom);
 composer.addPass(new OutputPass());
 
 /* --- scroll choreography --- */
-let curP=0, curX=STOPS_X[0].v, curY=STOPS_Y[0].v, curS=STOPS_S[0].v, spinPhase=0, helixPhase=0;
+let curP=0, curX=STOPS_X[0].v, curY=STOPS_Y[0].v, curS=STOPS_S[0].v, spinPhase=0;
 let entryStart = performance.now();
 const ENTRY_DUR=1.9, ENTRY_START_Y=-6.5;
 
@@ -596,19 +753,17 @@ function frame(){
   worldGroup.scale.setScalar(curS);
 
   spinPhase += dt*CONFIG.spin;
-  helixPhase += dt*CONFIG.helixSpin;
   brainGroup.rotation.y = 2.07 + spinPhase + curP*Math.PI*1.6;
-  brainGroup.rotation.x = Math.sin(t*0.15)*0.06;
-  helix.rotation.y = helixPhase;
-  helix2.rotation.y = -helixPhase*1.3;
-  helixGroup.rotation.y = -curP*0.6;
+  brainGroup.rotation.x = Math.sin(t*0.15)*0.06 + curP*0.12;
 
   halo.quaternion.copy(camera.quaternion);
 
-  shellMat.uniforms.uTime.value = t;
-  nodeMat.uniforms.uTime.value = t;
+  brainMat.uniforms.uTime.value = t;
+  glowMat.uniforms.uTime.value = t;
+  cellMat.uniforms.uTime.value = t;
+  somaMat.uniforms.uTime.value = t;
+  pulseMat.uniforms.uTime.value = t;
   starMat.uniforms.uTime.value += dt;
-  moteMat.uniforms.uTime.value = t;
 
   composer.render();
   requestAnimationFrame(frame);
@@ -621,7 +776,8 @@ addEventListener('resize', ()=>{
   composer.setSize(innerWidth, innerHeight);
   bloom.setSize(innerWidth, innerHeight);
   const r = new THREE.Vector2(innerWidth, innerHeight);
-  nodeMat.uniforms.uRes.value = r; starMat.uniforms.uRes.value = r; moteMat.uniforms.uRes.value = r;
+  cellMat.uniforms.uRes.value = r; somaMat.uniforms.uRes.value = r;
+  pulseMat.uniforms.uRes.value = r; starMat.uniforms.uRes.value = r;
 }, { passive:true });
 </script>
 
