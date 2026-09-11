@@ -330,9 +330,14 @@ if (!REDUCED){
 
 /* ---------- WebGL scene: high-resolution brain + neuron network ---------- */
 const CONFIG = {
-  bg:'#04060f', accent:'#5df0a8', accentDeep:'#1f9e6e', synapse:'#dafff2', deep:'#0c2f70', glow:'#2f6bff', rim:'#c1faff',
+  bg:'#04060f',
+  // tissue = the brain itself: a warm, human, clinical grey-rose -- deliberately NOT the brand
+  // mint, so the organic brain reads as organic. The mint/cyan family is reserved for the
+  // "digital intelligence" layer laid over it (neurons, synapses, pulses).
+  tissue:'#cdb2b6', tissueDeep:'#3c2a30', rim:'#f4ece6',
+  accent:'#6ee7c8', accentDeep:'#22b893', synapse:'#e8fff6', glow:'#3a5fb8',
   brainRadius:1.9, brainDetail:6, brainStretch:[1.34,0.94,1.12], spin:0.05, tilt:0.30,
-  neuronCount:300, neuronLinks:3, neuronLinkDist:1.55, pulseCount:1200,
+  neuronCount:230, neuronLinks:2, neuronLinkDist:1.5, pulseCount:800,
   starCount:1400, starSize:1.6,
 };
 const STOPS_X = [{p:0,v:0},{p:0.32,v:-3.0},{p:0.64,v:3.1},{p:1,v:0}];
@@ -382,17 +387,48 @@ function vnoise(x,y,z){
     L(L(hash(xi,yi,zi+1),hash(xi+1,yi,zi+1),u), L(hash(xi,yi+1,zi+1),hash(xi+1,yi+1,zi+1),u), v),
   w);
 }
-// ridged multi-octave: sharp raised ridges with deep grooves between -> convolution look
+// gentle multi-octave fbm: smooth, rounded convolutions (organic, not faceted) -- three octaves
+// only, moderate frequency, so the folds stay soft and roll into one another like real tissue.
+function fbm3(x,y,z){
+  let s=0, amp=0.5, freq=1.0;
+  for(let o=0;o<3;o++){ s += amp*(vnoise(x*freq+o*17.3, y*freq-o*9.1, z*freq+o*4.7)*2-1); freq*=2.05; amp*=0.5; }
+  return s; // roughly -1..1, smooth
+}
+// a softened ridge for shallow secondary creasing -- squared but low-amplitude, so it reads as a
+// crease, not a crystal edge
 function ridged(x,y,z){
-  let sum=0, amp=0.55, freq=1.0, norm=0;
-  for(let o=0;o<5;o++){
-    let n = vnoise(x*freq+o*17.3, y*freq-o*9.1, z*freq+o*4.7)*2-1;
-    n = 1.0 - Math.abs(n);
-    n = n*n;
-    sum += n*amp; norm += amp;
-    freq *= 2.02; amp *= 0.5;
+  const n = 1.0 - Math.abs(vnoise(x,y,z)*2-1);
+  return n*n;
+}
+// one Laplacian relaxation pass over the displaced mesh -- rounds the low-poly base off into
+// smooth, rolling organic tissue instead of a faceted/crystalline surface.
+function laplacianSmooth(geo, iterations, strength){
+  const index = geo.index.array;
+  const position = geo.attributes.position;
+  const count = position.count;
+  const neighbors = new Array(count);
+  for(let i=0;i<count;i++) neighbors[i] = new Set();
+  for(let i=0;i<index.length;i+=3){
+    const a=index[i], b=index[i+1], c=index[i+2];
+    neighbors[a].add(b); neighbors[a].add(c);
+    neighbors[b].add(a); neighbors[b].add(c);
+    neighbors[c].add(a); neighbors[c].add(b);
   }
-  return sum/norm; // ~0..1
+  for(let it=0; it<iterations; it++){
+    const src = position.array.slice();
+    for(let i=0;i<count;i++){
+      const nb = neighbors[i]; if(!nb.size) continue;
+      let sx=0, sy=0, sz=0;
+      nb.forEach(j=>{ sx+=src[j*3]; sy+=src[j*3+1]; sz+=src[j*3+2]; });
+      const inv = 1/nb.size;
+      position.setXYZ(i,
+        src[i*3]   + (sx*inv - src[i*3])  *strength,
+        src[i*3+1] + (sy*inv - src[i*3+1])*strength,
+        src[i*3+2] + (sz*inv - src[i*3+2])*strength
+      );
+    }
+  }
+  position.needsUpdate = true;
 }
 
 /* --- the brain: displaced high-res icosphere with realistic folds --- */
@@ -409,16 +445,17 @@ for(let i=0;i<pos.count;i++){
   v.fromBufferAttribute(pos,i);
   const n = v.clone().normalize();
 
-  // convolutions
-  const folds = (ridged(n.x*2.5+11, n.y*2.5, n.z*2.5) - 0.52) * 0.5
-              + (ridged(n.x*5.4+3, n.y*5.4, n.z*5.4) - 0.5) * 0.14;
+  // convolutions -- smooth rolling fbm for the big gyri, a very shallow ridge overlay for
+  // secondary creasing (kept low-amplitude so it reads as a crease, not a facet)
+  const folds = fbm3(n.x*1.7+11, n.y*1.7, n.z*1.7) * 0.15
+              + (ridged(n.x*3.6+3, n.y*3.6, n.z*3.6) - 0.5) * 0.05;
   // deep longitudinal fissure down the sagittal midline, strong on top & front, fades underneath
   const topMask = THREE.MathUtils.clamp(n.y*1.4 + 0.55, 0, 1);
-  const fissure = Math.exp(-Math.pow(n.x/0.055,2)) * 0.20 * topMask;
+  const fissure = Math.exp(-Math.pow(n.x/0.07,2)) * 0.17 * topMask;
   // slight lateral (Sylvian) fissures
-  const sylv = Math.exp(-Math.pow((Math.abs(n.x)-0.55)/0.10,2)) * Math.exp(-Math.pow(n.y/0.28,2)) * 0.09;
+  const sylv = Math.exp(-Math.pow((Math.abs(n.x)-0.55)/0.12,2)) * Math.exp(-Math.pow(n.y/0.28,2)) * 0.07;
   // flatten the underside a touch (skull base)
-  const flat = Math.max(0, -n.y-0.5) * 0.32;
+  const flat = Math.max(0, -n.y-0.5) * 0.3;
 
   const disp = folds - fissure - sylv - flat;
   const r = R0 * (1 + disp);
@@ -436,14 +473,17 @@ for(let i=0;i<pos.count;i++){
   pos.setXYZ(i, v.x, v.y, v.z);
 }
 ico.setAttribute('aFold', new THREE.BufferAttribute(foldAttr,1));
+laplacianSmooth(ico, 2, 0.55);
 ico.computeVertexNormals();
 
-// solid tissue surface: lit, fresnel rim, sulci tinted deep blue, gyri lit mint
+// solid organic tissue surface: soft lit shading, warm rose-grey with darker crevices, a
+// gentle cool rim -- the mint "digital" tone only threads faintly through the gyri.
 const brainMat = new THREE.ShaderMaterial({
   transparent:true, depthWrite:true,
   uniforms:{
+    uTissue:{value:new THREE.Color(CONFIG.tissue)},
+    uCrevice:{value:new THREE.Color(CONFIG.tissueDeep)},
     uAccent:{value:new THREE.Color(CONFIG.accent)},
-    uDeep:{value:new THREE.Color(CONFIG.deep)},
     uRim:{value:new THREE.Color(CONFIG.rim)},
     uTime:{value:0},
   },
@@ -457,19 +497,19 @@ const brainMat = new THREE.ShaderMaterial({
     }`,
   fragmentShader:`
     varying float vFold; varying vec3 vN; varying vec3 vView; varying vec3 vLocal;
-    uniform vec3 uAccent; uniform vec3 uDeep; uniform vec3 uRim; uniform float uTime;
+    uniform vec3 uTissue; uniform vec3 uCrevice; uniform vec3 uAccent; uniform vec3 uRim; uniform float uTime;
     void main(){
       vec3 nd=normalize(vN), vd=normalize(vView);
       vec3 L1=normalize(vec3(-0.5,0.8,0.6)), L2=normalize(vec3(0.7,-0.3,-0.4));
-      float diff = 0.32 + 0.32*max(dot(nd,L1),0.0) + 0.12*max(dot(nd,L2),0.0);
-      float fres = pow(1.0-max(dot(nd,vd),0.0), 3.2);
-      float sulcus = smoothstep(0.55,0.05,vFold);           // 1 deep in the grooves
-      float travel = 0.5+0.5*sin(uTime*1.6 - vLocal.y*3.0 - vLocal.x*2.0); // signal wash
-      vec3 tissue = mix(uAccent*0.55, uDeep*0.65, sulcus);
+      float diff = 0.42 + 0.34*max(dot(nd,L1),0.0) + 0.1*max(dot(nd,L2),0.0);
+      float fres = pow(1.0-max(dot(nd,vd),0.0), 3.4);
+      float sulcus = smoothstep(0.55,0.1,vFold);             // 1 deep in the grooves
+      float travel = 0.5+0.5*sin(uTime*1.4 - vLocal.y*2.4 - vLocal.x*1.6); // faint neural wash
+      vec3 tissue = mix(uTissue, uCrevice, sulcus*0.85);
       tissue *= diff;
-      tissue += uAccent * travel * 0.05 * (1.0-sulcus);
-      vec3 col = tissue + uRim * fres * 0.35;
-      float a = 0.94 + fres*0.06;
+      tissue += uAccent * travel * 0.035 * (1.0-sulcus);
+      vec3 col = tissue + uRim * fres * 0.3;
+      float a = 0.96 + fres*0.04;
       gl_FragColor = vec4(col, a);
     }`,
 });
@@ -512,17 +552,17 @@ const stemGeo = new THREE.CylinderGeometry(0.46, 0.13, 2.05, 28, 16, true);
 }
 const stemMat = new THREE.ShaderMaterial({
   transparent:true, depthWrite:true,
-  uniforms:{ uAccent:{value:new THREE.Color(CONFIG.accent)}, uDeep:{value:new THREE.Color(CONFIG.deep)}, uRim:{value:new THREE.Color(CONFIG.rim)} },
+  uniforms:{ uTissue:{value:new THREE.Color(CONFIG.tissue)}, uCrevice:{value:new THREE.Color(CONFIG.tissueDeep)}, uRim:{value:new THREE.Color(CONFIG.rim)} },
   vertexShader:`varying vec3 vN; varying vec3 vView;
     void main(){ vec4 mv=modelViewMatrix*vec4(position,1.0); vView=-mv.xyz; vN=normalize(normalMatrix*normal); gl_Position=projectionMatrix*mv; }`,
-  fragmentShader:`varying vec3 vN; varying vec3 vView; uniform vec3 uAccent; uniform vec3 uDeep; uniform vec3 uRim;
+  fragmentShader:`varying vec3 vN; varying vec3 vView; uniform vec3 uTissue; uniform vec3 uCrevice; uniform vec3 uRim;
     void main(){
       vec3 nd=normalize(vN), vd=normalize(vView);
       vec3 L1=normalize(vec3(-0.5,0.8,0.6));
-      float diff=0.30+0.35*max(dot(nd,L1),0.0);
+      float diff=0.38+0.32*max(dot(nd,L1),0.0);
       float fres=pow(1.0-max(dot(nd,vd),0.0),3.2);
-      vec3 tissue=mix(uDeep*0.68, uAccent*0.5, 0.42)*diff;
-      vec3 col = tissue + uRim*fres*0.3;
+      vec3 tissue=mix(uTissue, uCrevice, 0.5)*diff;
+      vec3 col = tissue + uRim*fres*0.25;
       gl_FragColor=vec4(col, 0.95);
     }`,
 });
