@@ -342,7 +342,7 @@ const CONFIG = {
 // kept modest and low on screen so the brain stays clear of card/text content instead of
 // wandering behind it -- it rises in, settles low-centre, and only drifts gently side to side.
 const STOPS_X = [{p:0,v:0},{p:0.32,v:-1.1},{p:0.64,v:1.2},{p:1,v:0}];
-const STOPS_Y = [{p:0,v:-4.2},{p:0.32,v:-1.3},{p:0.64,v:-1.5},{p:1,v:-1.7}];
+const STOPS_Y = [{p:0,v:-4.2},{p:0.32,v:-0.35},{p:0.64,v:-0.45},{p:1,v:-0.55}];
 const STOPS_S = [{p:0,v:1.7},{p:0.32,v:0.8},{p:0.64,v:0.74},{p:1,v:0.82}];
 
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
@@ -357,6 +357,7 @@ function sample(stops,p){
   return stops[stops.length-1].v;
 }
 
+const pageEl = document.getElementById('top');
 const canvas = document.getElementById('scene');
 const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
@@ -695,6 +696,13 @@ function frame(){
   const ts = sample(STOPS_S, curP);
   const k = Math.min(1, dt*3.2);
   curX += (tx-curX)*k; curY += (ty-curY)*k; curS += (ts-curS)*k;
+
+  // nudge the page content the OPPOSITE way the brain currently sits, so cards/copy stay clear
+  // of it instead of the two drifting into each other
+  if (pageEl && !REDUCED && innerWidth > 640){
+    const shift = clamp(-curX*30, -64, 64);
+    pageEl.style.transform = `translateX(${shift.toFixed(1)}px)`;
+  }
 
   let entryY = 0;
   if (!REDUCED){
