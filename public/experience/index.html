@@ -445,6 +445,55 @@ function brainPoint(radialScale){
   return { v, weight };
 }
 
+// a solid, pale anatomical shell -- the same silhouette the cloud samples, now filled in as real
+// tissue (soft lit, mostly opaque) so the glowing cloud reads as structure sitting ON/IN a real
+// brain rather than free-floating points. Same geometry family already proven to render (the
+// earlier faceted teal mesh), just recoloured pale/light and layered under the particle field.
+const meshGeo = new THREE.IcosahedronGeometry(R0, 6);
+{
+  const mp = meshGeo.attributes.position;
+  const mFold = new Float32Array(mp.count);
+  const mn = new THREE.Vector3();
+  for(let i=0;i<mp.count;i++){
+    mn.fromBufferAttribute(mp,i);
+    const n = mn.clone().normalize();
+    // same displacement + lobe shaping brainPoint() applies, at radialScale 1.0 exactly (no
+    // jitter) -- kept inline rather than factored out, matching how brainPoint itself works
+    const disp = brainDisp(n);
+    const rad = R0 * (1+disp);
+    const v = new THREE.Vector3(n.x*CONFIG.brainStretch[0], n.y*CONFIG.brainStretch[1], n.z*CONFIG.brainStretch[2]).multiplyScalar(rad);
+    const cb = Math.exp(-((v.x*v.x)/1.05 + Math.pow(v.y+1.6,2)/0.5 + Math.pow(v.z+1.55,2)/0.65));
+    v.multiplyScalar(1 + cb*0.24);
+    const side = Math.min(1, Math.abs(n.x)/0.78);
+    const lowness = THREE.MathUtils.clamp(-n.y*1.15 + 0.22, 0, 1);
+    const temporal = Math.pow(side,1.4) * lowness;
+    v.y -= temporal * 0.44;
+    v.x *= 1 + temporal * 0.17;
+    v.z += temporal * 0.12;
+    mp.setXYZ(i, v.x, v.y, v.z);
+    mFold[i] = THREE.MathUtils.clamp(disp*3.0 + 0.5, 0, 1);
+  }
+  meshGeo.setAttribute('aFold', new THREE.BufferAttribute(mFold,1));
+  meshGeo.computeVertexNormals();
+}
+const meshMat = new THREE.ShaderMaterial({
+  // nearly transparent -- just a gentle fresnel glow tracing the true anatomical shell, so the
+  // particle cloud (unchanged colour/detail) reads as structure contained inside it, not a solid
+  // opaque brain.
+  transparent:true, depthWrite:false, side:THREE.DoubleSide, blending:THREE.AdditiveBlending,
+  uniforms:{ uColor:{value:new THREE.Color(CONFIG.mid)}, uRim:{value:new THREE.Color(CONFIG.bright)} },
+  vertexShader:`varying vec3 vN; varying vec3 vView;
+    void main(){ vec4 mv=modelViewMatrix*vec4(position,1.0); vView=-mv.xyz; vN=normalize(normalMatrix*normal); gl_Position=projectionMatrix*mv; }`,
+  fragmentShader:`varying vec3 vN; varying vec3 vView; uniform vec3 uColor; uniform vec3 uRim;
+    void main(){
+      vec3 nd=normalize(vN), vd=normalize(vView);
+      float fres = pow(1.0-abs(dot(nd,vd)), 2.4);
+      vec3 col = mix(uColor, uRim, fres*0.5);
+      gl_FragColor = vec4(col, fres*0.22);
+    }`,
+});
+brainGroup.add(new THREE.Mesh(meshGeo, meshMat));
+
 const totalMain = CONFIG.particleCount + CONFIG.depthCount + CONFIG.stemCount;
 const bpos = new Float32Array(totalMain*3);
 const bseed = new Float32Array(totalMain);
