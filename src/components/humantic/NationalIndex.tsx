@@ -1,7 +1,7 @@
 import React from 'react';
 import { Gauge, Brain, ScrollText, TrendingUp, Layers, Target } from 'lucide-react';
 import { useInView } from '@/hooks/use-in-view';
-import RotatingBrain from './RotatingBrain';
+import RotatingBrainCloud from './RotatingBrainCloud';
 
 const features = [
   { icon: Gauge, title: 'National Wellbeing Index', desc: 'A single, standardized score tracking student wellbeing across every participating institution.' },
@@ -21,7 +21,7 @@ const NationalIndex: React.FC = () => {
 
   return (
   <section id="national-index" className="relative py-24 text-center overflow-hidden">
-    <RotatingBrain className="absolute -right-16 top-10 w-[26rem] h-[26rem] opacity-[0.12] sm:opacity-[0.16] z-0" />
+    <RotatingBrainCloud className="absolute -right-16 top-10 w-[26rem] h-[26rem] opacity-[0.22] sm:opacity-[0.3] z-0" />
     <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8">
       <span className="text-emerald-400 text-sm font-semibold uppercase tracking-widest">What Your Website Should Say</span>
       <h2 className="mt-4 text-3xl sm:text-5xl font-bold text-white tracking-tight max-w-3xl mx-auto">
