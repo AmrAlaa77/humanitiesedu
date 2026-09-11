@@ -334,8 +334,9 @@ const CONFIG = {
   // a stippled cloud of glowing points, not a solid mesh -- deep teal/cyan, matching the
   // reference: "eighty-six billion neurons, one quiet field."
   dim:'#0e3a4a', mid:'#3fc2c9', bright:'#eafffa', glow:'#1f5f66',
+  fireSpot:'#ff8fe0', // magenta/pink firing hot-spots, contrasting against the cyan field
   brainRadius:1.9, brainStretch:[1.34,0.94,1.12], spin:0.05, tilt:0.30,
-  particleCount:36000, depthCount:6000, stemCount:2800, sparkleCount:46, filamentCount:130,
+  particleCount:36000, depthCount:6000, stemCount:2800, sparkleCount:46, filamentCount:130, fireSpotCount:12,
   starCount:1400, starSize:1.6,
 };
 const STOPS_X = [{p:0,v:0},{p:0.32,v:-3.0},{p:0.64,v:3.1},{p:1,v:0}];
@@ -415,7 +416,11 @@ function brainDisp(n){
   // from the frontal/parietal mass (above)
   const sylv = Math.exp(-Math.pow((Math.abs(n.x)-0.58)/0.11,2)) * Math.exp(-Math.pow((n.y-0.02)/0.16,2)) * 0.16;
   const flat = Math.max(0, -n.y-0.5) * 0.3;
-  return folds - fissure - sylv - flat;
+  // frontal lobe fuller/rounder (n.z>0 = front), occipital lobe narrower & slightly pointed
+  // (n.z<0 = back) -- an even front/back egg reads as a blob; a real brain profile doesn't
+  const frontBulge = Math.max(0, n.z) * 0.11 * THREE.MathUtils.clamp(1-Math.abs(n.x)*0.6,0,1);
+  const occipitalTaper = Math.max(0, -n.z) * 0.14 * THREE.MathUtils.clamp(1-n.y*0.4,0,1);
+  return folds - fissure - sylv - flat + frontBulge - occipitalTaper;
 }
 function brainPoint(radialScale){
   const z = Math.random()*2-1, theta = Math.random()*Math.PI*2, rr = Math.sqrt(Math.max(0,1-z*z));
@@ -423,16 +428,18 @@ function brainPoint(radialScale){
   const disp = brainDisp(n);
   const rad = R0 * (1+disp) * radialScale;
   const v = new THREE.Vector3(n.x*CONFIG.brainStretch[0], n.y*CONFIG.brainStretch[1], n.z*CONFIG.brainStretch[2]).multiplyScalar(rad);
-  const cb = Math.exp(-((v.x*v.x)/1.7 + Math.pow(v.y+1.45,2)/0.8 + Math.pow(v.z+1.5,2)/1.0)); // cerebellum bulge
-  v.multiplyScalar(1 + cb*0.17);
-  // temporal lobes -- pull the lower-side mass down and out into the hanging lobes that make a
-  // silhouette actually read as "brain" rather than a folded egg
-  const side = Math.min(1, Math.abs(n.x)/0.82);
-  const lowness = THREE.MathUtils.clamp(-n.y*1.25 + 0.18, 0, 1);
-  const temporal = side*side * lowness;
-  v.y -= temporal * 0.34;
-  v.x *= 1 + temporal * 0.12;
-  v.z *= 1 + temporal * 0.07;
+  // cerebellum -- a smaller, tighter, more distinct round bump tucked under the back, so it
+  // reads as its own lobe rather than a smooth blend into the main mass
+  const cb = Math.exp(-((v.x*v.x)/1.05 + Math.pow(v.y+1.6,2)/0.5 + Math.pow(v.z+1.55,2)/0.65));
+  v.multiplyScalar(1 + cb*0.24);
+  // temporal lobes -- a stronger, more separated pull into hanging almond-shaped lobes, angled
+  // slightly forward like real anatomy -- the single biggest "this is a brain" silhouette cue
+  const side = Math.min(1, Math.abs(n.x)/0.78);
+  const lowness = THREE.MathUtils.clamp(-n.y*1.15 + 0.22, 0, 1);
+  const temporal = Math.pow(side,1.4) * lowness;
+  v.y -= temporal * 0.44;
+  v.x *= 1 + temporal * 0.17;
+  v.z += temporal * 0.12; // lean slightly toward the front
   const weight = THREE.MathUtils.clamp(disp*3.0 + 0.5, 0, 1); // 0 sulcus (sparse/dim) .. 1 gyrus (dense/bright)
   return { v, weight };
 }
@@ -534,6 +541,37 @@ const sparkleMat = new THREE.ShaderMaterial({
     }`,
 });
 brainGroup.add(new THREE.Points(sparkleGeo, sparkleMat));
+
+// firing hot-spots -- a handful of fixed points that flash magenta/pink against the cyan field,
+// like distinct neurons caught mid-fire (contrast colour per reference). Each has its own phase
+// and speed so they pop independently rather than in unison.
+const fireGeo = new THREE.BufferGeometry();
+const fpos=[], fseed=[], fspeed=[];
+for(let i=0;i<CONFIG.fireSpotCount;i++){
+  const { v } = brainPoint(1.01);
+  fpos.push(v.x,v.y,v.z); fseed.push(Math.random()*10); fspeed.push(0.35+Math.random()*0.55);
+}
+fireGeo.setAttribute('position', new THREE.Float32BufferAttribute(fpos,3));
+fireGeo.setAttribute('seed', new THREE.Float32BufferAttribute(fseed,1));
+fireGeo.setAttribute('fspeed', new THREE.Float32BufferAttribute(fspeed,1));
+const fireMat = new THREE.ShaderMaterial({
+  transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+  uniforms:{ uTime:{value:0}, uColor:{value:new THREE.Color(CONFIG.fireSpot)}, uRes:{value:new THREE.Vector2(innerWidth,innerHeight)} },
+  vertexShader:`attribute float seed; attribute float fspeed; uniform float uTime; uniform vec2 uRes; varying float vTw;
+    void main(){ vec4 mv=modelViewMatrix*vec4(position,1.0);
+      vTw = pow(0.5+0.5*sin(uTime*fspeed+seed*6.28), 10.0);            // sharp, infrequent flash
+      gl_PointSize = max((5.0+vTw*20.0)*uRes.y/900.0*(6.0/max(-mv.z,1.0)), 1.5);
+      gl_Position = projectionMatrix*mv; }`,
+  fragmentShader:`uniform vec3 uColor; varying float vTw;
+    void main(){
+      vec2 p=(gl_PointCoord-0.5)*2.0; float ax=abs(p.x), ay=abs(p.y);
+      float cross = max(smoothstep(0.95,0.0, ay*6.0+ax*0.2), smoothstep(0.95,0.0, ax*6.0+ay*0.2));
+      float core = smoothstep(0.5,0.0, length(p));
+      float a = max(cross*0.85, core) * vTw;
+      gl_FragColor = vec4(uColor, a);
+    }`,
+});
+brainGroup.add(new THREE.Points(fireGeo, fireMat));
 
 // thin glowing filaments reaching inward from the cortex -- curling, woven threads (a persistent
 // direction nudged gently each step, not re-randomised from scratch, so they read as curving
@@ -674,6 +712,7 @@ function frame(){
 
   brainMat.uniforms.uTime.value = t;
   sparkleMat.uniforms.uTime.value = t;
+  fireMat.uniforms.uTime.value = t;
   filMat.uniforms.uTime.value = t;
   starMat.uniforms.uTime.value += dt;
 
