@@ -334,9 +334,9 @@ const CONFIG = {
   // a stippled cloud of glowing points, not a solid mesh -- deep teal/cyan, matching the
   // reference: "eighty-six billion neurons, one quiet field."
   dim:'#0e3a4a', mid:'#3fc2c9', bright:'#eafffa', glow:'#1f5f66',
-  fireSpot:'#ff8fe0', // magenta/pink firing hot-spots, contrasting against the cyan field
+  fireSpot:'#ffd57a', // warm golden-white firing hot-spots
   brainRadius:1.9, brainStretch:[1.34,0.94,1.12], spin:0.05, tilt:0.30,
-  particleCount:36000, depthCount:6000, stemCount:2800, sparkleCount:46, filamentCount:130, fireSpotCount:12,
+  particleCount:44000, depthCount:4200, stemCount:2800, sparkleCount:46, fireSpotCount:14,
   starCount:1400, starSize:1.6,
 };
 const STOPS_X = [{p:0,v:0},{p:0.32,v:-3.0},{p:0.64,v:3.1},{p:1,v:0}];
@@ -407,7 +407,8 @@ worldGroup.add(brainGroup);
 const R0 = CONFIG.brainRadius;
 function brainDisp(n){
   const folds = (ridged5(n.x*2.5+11, n.y*2.5, n.z*2.5) - 0.52) * 0.5
-              + (ridged5(n.x*5.4+3, n.y*5.4, n.z*5.4) - 0.5) * 0.14;
+              + (ridged5(n.x*5.4+3, n.y*5.4, n.z*5.4) - 0.5) * 0.14
+              + (ridged5(n.x*9.5+7, n.y*9.5, n.z*9.5) - 0.5) * 0.045; // fine contour-line texture
   // longitudinal fissure -- deeper and reaching further down, so the two-hemisphere split
   // actually reads from the front, not just a faint top groove
   const topMask = THREE.MathUtils.clamp(n.y*1.1 + 0.7, 0, 1);
@@ -451,7 +452,7 @@ const bweight = new Float32Array(totalMain);
 let bi = 0;
 // outer shell -- the visible cortex stipple
 for(let i=0;i<CONFIG.particleCount;i++){
-  const { v, weight } = brainPoint(1.0 + (Math.random()-0.5)*0.012);
+  const { v, weight } = brainPoint(1.0 + (Math.random()-0.5)*0.006);
   bpos[bi*3]=v.x; bpos[bi*3+1]=v.y; bpos[bi*3+2]=v.z;
   bweight[bi]=weight; bseed[bi]=Math.random()*10; bi++;
 }
@@ -499,7 +500,7 @@ const brainMat = new THREE.ShaderMaterial({
       vW = weight;
       vTw = 0.55 + 0.45*sin(uTime*0.8 + seed*6.28);
       vec4 mv = modelViewMatrix*vec4(position,1.0);
-      float base = 1.5 + weight*2.8;
+      float base = 1.15 + weight*2.3;
       gl_PointSize = max(base*vTw*uRes.y/900.0*(6.0/max(-mv.z,1.0)), 1.2);
       gl_Position = projectionMatrix*mv;
     }`,
@@ -560,7 +561,7 @@ const fireMat = new THREE.ShaderMaterial({
   vertexShader:`attribute float seed; attribute float fspeed; uniform float uTime; uniform vec2 uRes; varying float vTw;
     void main(){ vec4 mv=modelViewMatrix*vec4(position,1.0);
       vTw = pow(0.5+0.5*sin(uTime*fspeed+seed*6.28), 10.0);            // sharp, infrequent flash
-      gl_PointSize = max((5.0+vTw*20.0)*uRes.y/900.0*(6.0/max(-mv.z,1.0)), 1.5);
+      gl_PointSize = max((9.0+vTw*34.0)*uRes.y/900.0*(6.0/max(-mv.z,1.0)), 2.0);
       gl_Position = projectionMatrix*mv; }`,
   fragmentShader:`uniform vec3 uColor; varying float vTw;
     void main(){
@@ -572,56 +573,6 @@ const fireMat = new THREE.ShaderMaterial({
     }`,
 });
 brainGroup.add(new THREE.Points(fireGeo, fireMat));
-
-// thin glowing filaments reaching inward from the cortex -- curling, woven threads (a persistent
-// direction nudged gently each step, not re-randomised from scratch, so they read as curving
-// strands rather than jagged straight sticks) converging toward the core. Only some of them
-// "fire" -- a sharp, infrequent brightness spike on a per-strand phase -- the rest stay near-
-// invisible, for a scattered neural-firing feel rather than a uniform glow.
-const filVerts = [], filSeed = [], filFire = [], filSpeed = [];
-for(let i=0;i<CONFIG.filamentCount;i++){
-  const { v: base } = brainPoint(1.0);
-  let dir = base.clone().normalize().multiplyScalar(-1);
-  let cur = base.clone();
-  const segs = 5 + (Math.random()*5|0);
-  const stepLen = 0.10 + Math.random()*0.09;
-  const seed = Math.random()*10;
-  const speed = 0.5 + Math.random()*1.8;
-  const fireAmp = Math.random() < 0.32 ? 0.65 + Math.random()*0.35 : Math.random()*0.1;
-  for(let s=0;s<segs;s++){
-    dir = dir.clone().add(new THREE.Vector3((Math.random()-0.5),(Math.random()-0.5),(Math.random()-0.5)).multiplyScalar(0.45)).normalize();
-    const nxt = cur.clone().add(dir.clone().multiplyScalar(stepLen));
-    filVerts.push(cur.x,cur.y,cur.z, nxt.x,nxt.y,nxt.z);
-    filSeed.push(seed,seed); filFire.push(fireAmp,fireAmp); filSpeed.push(speed,speed);
-    cur = nxt;
-  }
-}
-const filGeo = new THREE.BufferGeometry();
-filGeo.setAttribute('position', new THREE.Float32BufferAttribute(filVerts,3));
-filGeo.setAttribute('seed', new THREE.Float32BufferAttribute(filSeed,1));
-filGeo.setAttribute('fireAmp', new THREE.Float32BufferAttribute(filFire,1));
-filGeo.setAttribute('fireSpeed', new THREE.Float32BufferAttribute(filSpeed,1));
-const filMat = new THREE.ShaderMaterial({
-  transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
-  uniforms:{ uTime:{value:0}, uColor:{value:new THREE.Color(CONFIG.mid)}, uBright:{value:new THREE.Color(CONFIG.bright)} },
-  vertexShader:`
-    attribute float seed; attribute float fireAmp; attribute float fireSpeed;
-    varying float vFire;
-    uniform float uTime;
-    void main(){
-      float pulse = pow(0.5+0.5*sin(uTime*fireSpeed + seed*6.28), 9.0); // sharp, infrequent spike
-      vFire = pulse * fireAmp;
-      gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0);
-    }`,
-  fragmentShader:`
-    uniform vec3 uColor; uniform vec3 uBright; varying float vFire;
-    void main(){
-      vec3 col = mix(uColor, uBright, vFire);
-      float a = 0.035 + vFire*0.75;
-      gl_FragColor = vec4(col, a);
-    }`,
-});
-brainGroup.add(new THREE.LineSegments(filGeo, filMat));
 
 /* --- soft volumetric halo behind the whole brain --- */
 const halo = new THREE.Mesh(
@@ -669,7 +620,7 @@ scene.add(stars);
 /* --- composer + bloom --- */
 const composer = new EffectComposer(renderer);
 composer.addPass(new RenderPass(scene, camera));
-const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight), 0.8, 0.5, 0.08);
+const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight), 0.75, 0.32, 0.1);
 composer.addPass(bloom);
 composer.addPass(new OutputPass());
 
@@ -713,7 +664,6 @@ function frame(){
   brainMat.uniforms.uTime.value = t;
   sparkleMat.uniforms.uTime.value = t;
   fireMat.uniforms.uTime.value = t;
-  filMat.uniforms.uTime.value = t;
   starMat.uniforms.uTime.value += dt;
 
   composer.render();
