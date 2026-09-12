@@ -1872,34 +1872,68 @@ const Deliverables: React.FC = () => {
         }
       `}</style>
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-          <div className="max-w-xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/5 px-4 py-1.5 text-emerald-400 text-sm font-semibold">
-              <Clock className="w-4 h-4" /> Initiatives
-            </span>
-            <h2 className="mt-4 text-3xl sm:text-5xl font-bold tracking-tight leading-tight">
-              <span className="text-white">Three programmes.</span>
-              <br />
-              <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">One human-centred system.</span>
-            </h2>
-            <p className="mt-4 text-slate-400 text-lg">
-              Built on the same neuroscience-and-behavioural-science foundation that started at the wellhead, now mapped to Vision 2030.
-            </p>
-          </div>
-          <div className="flex items-center gap-2 flex-wrap">
-            {categories.map((c) => (
-              <button
-                key={c.key}
-                onClick={() => setActive(c.key)}
-                className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 active:scale-95 ${
-                  active === c.key
-                    ? 'bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 shadow-lg shadow-emerald-500/25 scale-105'
-                    : 'border border-white/15 text-slate-300 hover:bg-white/5 hover:border-white/30'
-                }`}
-              >
-                <c.icon className="w-3.5 h-3.5" /> {c.label}
-              </button>
-            ))}
+        <div className="max-w-xl mb-8">
+          <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/5 px-4 py-1.5 text-emerald-400 text-sm font-semibold">
+            <Clock className="w-4 h-4" /> Initiatives
+          </span>
+          <h2 className="mt-4 text-3xl sm:text-5xl font-bold tracking-tight leading-tight">
+            <span className="text-white">Three programmes.</span>
+            <br />
+            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">One human-centred system.</span>
+          </h2>
+          <p className="mt-4 text-slate-400 text-lg">
+            Built on the same neuroscience-and-behavioural-science foundation that started at the wellhead, now mapped to Vision 2030.
+          </p>
+        </div>
+
+        {/* category picker -- cards on a helix, not a flat grid: they orbit a shared vertical
+            axis and spiral downward as they go around, auto-rotating (pauses on hover so it can
+            actually be clicked). Clicking one reveals its full detail below, same as before. */}
+        <style>{`
+          @keyframes spiralSpin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+          .spiral-ring { animation: spiralSpin 26s linear infinite; transform-style: preserve-3d; }
+          .spiral-ring:hover, .spiral-ring:focus-within { animation-play-state: paused; }
+          @media (prefers-reduced-motion: reduce) { .spiral-ring { animation: none; } }
+        `}</style>
+        <div
+          className="relative mb-14 mx-auto"
+          style={{ perspective: '1500px', height: '360px', maxWidth: '620px' }}
+        >
+          <div className="spiral-ring absolute inset-0" style={{ transformStyle: 'preserve-3d' }}>
+            {categories.map((c, i) => {
+              const angle = (360 / categories.length) * i;
+              const radius = 240;
+              const ySpread = (categories.length - 1) * 24;
+              const yOffset = i * 48 - ySpread;
+              return (
+                <button
+                  key={c.key}
+                  onClick={() => setActive(c.key)}
+                  aria-pressed={active === c.key}
+                  style={{
+                    position: 'absolute', left: '50%', top: '50%', width: '176px',
+                    transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(${radius}px) translateY(${yOffset}px)`,
+                  }}
+                  className={`group text-left rounded-2xl border p-4 backdrop-blur-md transition-colors duration-300 ${
+                    active === c.key
+                      ? 'border-emerald-400/40 bg-gradient-to-br from-emerald-400/25 to-cyan-500/15 shadow-lg shadow-emerald-500/20'
+                      : 'border-white/10 bg-slate-900/80 hover:border-white/25 hover:bg-slate-900/95'
+                  }`}
+                >
+                  <div
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center mb-3 transition-colors ${
+                      active === c.key ? 'bg-emerald-400/20 text-emerald-300' : 'bg-white/5 text-slate-300 group-hover:text-white'
+                    }`}
+                  >
+                    <c.icon className="w-4 h-4" />
+                  </div>
+                  <p className={`text-sm font-semibold ${active === c.key ? 'text-white' : 'text-slate-200'}`}>{c.label}</p>
+                  <p className="mt-0.5 text-xs text-slate-500">
+                    {c.items.length} programme{c.items.length !== 1 ? 's' : ''}
+                  </p>
+                </button>
+              );
+            })}
           </div>
         </div>
 
