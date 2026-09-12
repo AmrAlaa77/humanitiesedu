@@ -486,15 +486,20 @@ const meshMat = new THREE.ShaderMaterial({
   // particle cloud (unchanged colour/detail) reads as structure contained inside it, not a solid
   // opaque brain.
   transparent:true, depthWrite:false, side:THREE.DoubleSide, blending:THREE.AdditiveBlending,
-  uniforms:{ uColor:{value:new THREE.Color(CONFIG.mid)}, uRim:{value:new THREE.Color(CONFIG.bright)} },
-  vertexShader:`varying vec3 vN; varying vec3 vView;
-    void main(){ vec4 mv=modelViewMatrix*vec4(position,1.0); vView=-mv.xyz; vN=normalize(normalMatrix*normal); gl_Position=projectionMatrix*mv; }`,
-  fragmentShader:`varying vec3 vN; varying vec3 vView; uniform vec3 uColor; uniform vec3 uRim;
+  uniforms:{ uColor:{value:new THREE.Color(CONFIG.mid)}, uRim:{value:new THREE.Color(CONFIG.bright)}, uDim:{value:new THREE.Color(CONFIG.dim)} },
+  vertexShader:`attribute float aFold; varying float vFold; varying vec3 vN; varying vec3 vView;
+    void main(){ vFold=aFold; vec4 mv=modelViewMatrix*vec4(position,1.0); vView=-mv.xyz; vN=normalize(normalMatrix*normal); gl_Position=projectionMatrix*mv; }`,
+  fragmentShader:`varying float vFold; varying vec3 vN; varying vec3 vView; uniform vec3 uColor; uniform vec3 uRim; uniform vec3 uDim;
     void main(){
       vec3 nd=normalize(vN), vd=normalize(vView);
       float fres = pow(1.0-abs(dot(nd,vd)), 2.4);
-      vec3 col = mix(uColor, uRim, fres*0.5);
-      gl_FragColor = vec4(col, fres*0.22);
+      // trace the same gyri/sulci pattern the cloud follows -- ridges glow a touch brighter,
+      // grooves stay dimmer, so the shell itself reads as a wrinkled anatomical surface
+      float sulcus = smoothstep(0.55,0.1,vFold);
+      vec3 base = mix(uColor, uDim, sulcus*0.5);
+      vec3 col = mix(base, uRim, fres*0.5);
+      float ridgeGlow = mix(0.7, 1.15, vFold);
+      gl_FragColor = vec4(col, fres*0.22*ridgeGlow);
     }`,
 });
 brainGroup.add(new THREE.Mesh(meshGeo, meshMat));
@@ -505,6 +510,7 @@ brainGroup.add(new THREE.Mesh(meshGeo, meshMat));
   const stemHeight=2.05, stemTopR=0.46, stemBottomR=0.13;
   const stemShellGeo = new THREE.CylinderGeometry(stemTopR, stemBottomR, stemHeight, 28, 14, true);
   const ssp = stemShellGeo.attributes.position;
+  const ssFold = new Float32Array(ssp.count);
   const ssv = new THREE.Vector3();
   for(let i=0;i<ssp.count;i++){
     ssv.fromBufferAttribute(ssp,i);
@@ -515,7 +521,9 @@ brainGroup.add(new THREE.Mesh(meshGeo, meshMat));
     ssv.x *= scale; ssv.z *= scale;
     ssv.z -= Math.pow(Math.max(0, 0.6-t), 1.4) * 0.4;
     ssp.setXYZ(i, ssv.x, ssv.y, ssv.z);
+    ssFold[i] = THREE.MathUtils.clamp((pons+medulla)*3.0 + 0.5, 0, 1);
   }
+  stemShellGeo.setAttribute('aFold', new THREE.BufferAttribute(ssFold,1));
   stemShellGeo.computeVertexNormals();
   const stemShellMesh = new THREE.Mesh(stemShellGeo, meshMat);
   stemShellMesh.position.set(0.02, -1.82, -0.22);
