@@ -499,6 +499,29 @@ const meshMat = new THREE.ShaderMaterial({
 });
 brainGroup.add(new THREE.Mesh(meshGeo, meshMat));
 
+// same gentle-glow shell, wrapped around the stem too -- reuses meshMat exactly, so the stem
+// reads with identical structure/treatment to the rest of the brain instead of being cloud-only.
+{
+  const stemHeight=2.05, stemTopR=0.46, stemBottomR=0.13;
+  const stemShellGeo = new THREE.CylinderGeometry(stemTopR, stemBottomR, stemHeight, 28, 14, true);
+  const ssp = stemShellGeo.attributes.position;
+  const ssv = new THREE.Vector3();
+  for(let i=0;i<ssp.count;i++){
+    ssv.fromBufferAttribute(ssp,i);
+    const t = (ssv.y + stemHeight/2) / stemHeight; // 0 bottom .. 1 top
+    const pons = Math.exp(-Math.pow((t-0.8)/0.10,2)) * 0.11;
+    const medulla = Math.exp(-Math.pow((t-0.55)/0.12,2)) * 0.045;
+    const scale = 1 + pons + medulla;
+    ssv.x *= scale; ssv.z *= scale;
+    ssv.z -= Math.pow(Math.max(0, 0.6-t), 1.4) * 0.4;
+    ssp.setXYZ(i, ssv.x, ssv.y, ssv.z);
+  }
+  stemShellGeo.computeVertexNormals();
+  const stemShellMesh = new THREE.Mesh(stemShellGeo, meshMat);
+  stemShellMesh.position.set(0.02, -1.82, -0.22);
+  brainGroup.add(stemShellMesh);
+}
+
 const totalMain = CONFIG.particleCount + CONFIG.depthCount + CONFIG.stemCount;
 const bpos = new Float32Array(totalMain*3);
 const bseed = new Float32Array(totalMain);
