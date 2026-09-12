@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, FileText, X, Globe, Users, Heart, Activity, TrendingUp, FlaskConical } from 'lucide-react';
+import { Clock, GraduationCap, HeartPulse, Brain, User, Building2, ChevronDown, CalendarDays, MapPin, FileText, X, Globe, Users, Heart, Activity, TrendingUp, FlaskConical, Plus } from 'lucide-react';
 import { useInView } from '@/hooks/use-in-view';
 
 type CourseDay = { title: string; points: string[] };
@@ -1626,59 +1626,46 @@ const InitiativeBanner: React.FC<{ initiative: Initiative }> = ({ initiative }) 
 
 const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverable) => void }> = ({ item, onOutline }) => {
   const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const hasDetails = Boolean(item.spec || item.requirements || item.awarded);
   const { ref: cardRef, inView } = useInView<HTMLDivElement>({ once: false, threshold: 0.15 });
 
   return (
     <div
       ref={cardRef}
-      className={`group rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden transition-all duration-700 ease-out hover:bg-white/[0.06] hover:border-emerald-400/30 hover:-translate-y-1 ${
+      className={`group relative rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden transition-all duration-700 ease-out hover:bg-white/[0.06] hover:border-emerald-400/30 hover:-translate-y-1 ${
         inView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-[0.97]'
       }`}
     >
+      <button
+        onClick={() => setExpanded((v) => !v)}
+        aria-label={expanded ? 'Hide details' : 'Show details'}
+        aria-expanded={expanded}
+        className="absolute top-5 right-5 z-10 flex items-center justify-center w-7 h-7 rounded-full border border-white/15 bg-white/5 text-slate-300 hover:text-white hover:border-emerald-400/40 hover:bg-emerald-400/10 transition-all duration-300"
+      >
+        <Plus className={`w-3.5 h-3.5 transition-transform duration-300 ${expanded ? 'rotate-45' : ''}`} />
+      </button>
       <div className="p-6">
-        <h3 className="text-white font-semibold leading-snug">{item.title}</h3>
+        <h3 className="text-white font-semibold leading-snug pr-8">{item.title}</h3>
         <p className="mt-2 text-slate-400 text-sm leading-relaxed">{item.hook}</p>
 
-        {(item.format || item.delivery || item.spec) && (
-          <div className="mt-3 flex flex-col gap-1.5">
-            {item.format && (
-              <span className="flex items-center gap-1.5 text-xs text-slate-400">
-                <CalendarDays className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> {item.format}
-              </span>
-            )}
-            {item.delivery && (
-              <span className="flex items-center gap-1.5 text-xs text-slate-400">
-                <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> {item.delivery}
-              </span>
-            )}
-            {!item.format && item.spec && (
-              <div className="flex flex-wrap gap-2">
-                {item.spec.map((s) => (
-                  <span key={s} className="text-[11px] font-semibold text-slate-200 bg-white/5 border border-white/10 px-2.5 py-1 rounded-lg">
-                    {s}
+        {/* tags, format/delivery, and the outline link stay hidden until the + is pressed --
+            collapsed cards show only the title and one-line hook */}
+        <div className={`grid transition-all duration-300 ease-out ${expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+          <div className="overflow-hidden">
+            {(item.format || item.delivery || item.spec) && (
+              <div className="mt-3 flex flex-col gap-1.5">
+                {item.format && (
+                  <span className="flex items-center gap-1.5 text-xs text-slate-400">
+                    <CalendarDays className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> {item.format}
                   </span>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {item.pills && (
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {item.pills.map((p) => (
-              <span key={p} className="text-[10px] font-semibold text-emerald-300 bg-emerald-400/10 border border-emerald-400/25 px-2.5 py-1 rounded-full">
-                {p}
-              </span>
-            ))}
-          </div>
-        )}
-
-        {hasDetails && (
-          <div className={`grid transition-all duration-300 ease-out ${open ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0'}`}>
-            <div className="overflow-hidden">
-              <div className="pt-4 border-t border-white/10 space-y-3">
-                {item.format && item.spec && (
+                )}
+                {item.delivery && (
+                  <span className="flex items-center gap-1.5 text-xs text-slate-400">
+                    <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> {item.delivery}
+                  </span>
+                )}
+                {!item.format && item.spec && (
                   <div className="flex flex-wrap gap-2">
                     {item.spec.map((s) => (
                       <span key={s} className="text-[11px] font-semibold text-slate-200 bg-white/5 border border-white/10 px-2.5 py-1 rounded-lg">
@@ -1687,31 +1674,59 @@ const DeliverableCard: React.FC<{ item: Deliverable; onOutline: (item: Deliverab
                     ))}
                   </div>
                 )}
-
-                {item.requirements && <p className="text-slate-500 text-xs">Requirements: {item.requirements}</p>}
-
-                {item.awarded && <p className="text-slate-400 text-xs italic">Awarded: {item.awarded}</p>}
               </div>
+            )}
+
+            {item.pills && (
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {item.pills.map((p) => (
+                  <span key={p} className="text-[10px] font-semibold text-emerald-300 bg-emerald-400/10 border border-emerald-400/25 px-2.5 py-1 rounded-full">
+                    {p}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {hasDetails && (
+              <div className={`grid transition-all duration-300 ease-out ${open ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0'}`}>
+                <div className="overflow-hidden">
+                  <div className="pt-4 border-t border-white/10 space-y-3">
+                    {item.format && item.spec && (
+                      <div className="flex flex-wrap gap-2">
+                        {item.spec.map((s) => (
+                          <span key={s} className="text-[11px] font-semibold text-slate-200 bg-white/5 border border-white/10 px-2.5 py-1 rounded-lg">
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {item.requirements && <p className="text-slate-500 text-xs">Requirements: {item.requirements}</p>}
+
+                    {item.awarded && <p className="text-slate-400 text-xs italic">Awarded: {item.awarded}</p>}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div className="mt-4 flex items-center gap-4">
+              {hasDetails && (
+                <button
+                  onClick={() => setOpen((v) => !v)}
+                  className="inline-flex items-center gap-1 text-emerald-400 text-xs font-semibold hover:underline"
+                >
+                  {open ? 'Show less' : 'Learn More'}
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+                </button>
+              )}
+              <button
+                onClick={() => onOutline(item)}
+                className="inline-flex items-center gap-1 text-slate-300 text-xs font-semibold hover:text-white hover:underline"
+              >
+                <FileText className="w-3.5 h-3.5" /> Outline
+              </button>
             </div>
           </div>
-        )}
-
-        <div className="mt-4 flex items-center gap-4">
-          {hasDetails && (
-            <button
-              onClick={() => setOpen((v) => !v)}
-              className="inline-flex items-center gap-1 text-emerald-400 text-xs font-semibold hover:underline"
-            >
-              {open ? 'Show less' : 'Learn More'}
-              <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
-            </button>
-          )}
-          <button
-            onClick={() => onOutline(item)}
-            className="inline-flex items-center gap-1 text-slate-300 text-xs font-semibold hover:text-white hover:underline"
-          >
-            <FileText className="w-3.5 h-3.5" /> Outline
-          </button>
         </div>
       </div>
     </div>
