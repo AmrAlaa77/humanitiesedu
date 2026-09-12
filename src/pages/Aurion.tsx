@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import AurionHero from '@/components/aurion/AurionHero';
 import AurionIntel from '@/components/aurion/AurionIntel';
 import VitalMonitoring from '@/components/humantic/VitalMonitoring';
+import AurionFeatures from '@/components/aurion/AurionFeatures';
 import AurionShowcase from '@/components/aurion/AurionShowcase';
 import Footer from '@/components/humantic/Footer';
 import AccessModal from '@/components/humantic/AccessModal';
@@ -35,6 +36,7 @@ const Aurion: React.FC = () => {
         <AurionHero onCta={open} />
         <AurionIntel />
         <VitalMonitoring />
+        <AurionFeatures />
         <AurionShowcase onCta={open} />
       </main>
 

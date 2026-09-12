@@ -5,10 +5,8 @@ import AwarenessJourney from '@/components/humantic/AwarenessJourney';
 import NarrativeReel from '@/components/humantic/NarrativeReel';
 import ExperienceLink from '@/components/humantic/ExperienceLink';
 import Hero from '@/components/humantic/Hero';
-import Features from '@/components/humantic/Features';
 
 import Assessment from '@/components/humantic/Assessment';
-import Insights from '@/components/humantic/Insights';
 import Deliverables from '@/components/humantic/Deliverables';
 import Pillar from '@/components/humantic/Pillar';
 import LivingMatrix from '@/components/humantic/LivingMatrix';
@@ -57,14 +55,6 @@ const AppLayout: React.FC = () => {
 
           <Reveal variant="blur" repeat>
             <Assessment />
-          </Reveal>
-
-          <Reveal variant="up" repeat>
-            <Features />
-          </Reveal>
-
-          <Reveal variant="zoom" repeat>
-            <Insights />
           </Reveal>
 
           <Reveal variant="up" repeat>

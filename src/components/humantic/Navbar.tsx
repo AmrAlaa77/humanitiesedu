@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import { Activity, Menu, X } from 'lucide-react';
 
 const links = [
-  { label: 'Platform', href: '#platform' },
   { label: 'Assessment', href: '#assessment' },
-  { label: 'Insights', href: '#insights' },
   { label: 'Deliverables', href: '#deliverables' },
   { label: 'Journey', href: '#journey' },
 ];

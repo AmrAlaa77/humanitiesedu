@@ -11,7 +11,7 @@ const features = [
   { icon: Stethoscope, title: 'Clinician Dashboard', desc: 'Share validated reports with your care team for collaborative, data-led decisions.' },
 ];
 
-const Features: React.FC = () => {
+const AurionFeatures: React.FC = () => {
   const header = useInView<HTMLDivElement>({ once: false });
   const grid = useInView<HTMLDivElement>({ once: false });
   const strip = useInView<HTMLDivElement>({ once: false });
@@ -94,4 +94,4 @@ const Features: React.FC = () => {
   );
 };
 
-export default Features;
+export default AurionFeatures;
