@@ -9,32 +9,8 @@ import React from 'react';
 const Vision2030Contribution: React.FC = () => (
   <section className="relative py-16 sm:py-20">
     <div className="max-w-3xl mx-auto px-5 sm:px-8">
-      <div className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-7 overflow-hidden">
-        {/* Tilted 3D silhouette of Saudi Arabia — purely decorative, sits behind the content */}
-        <svg
-          aria-hidden
-          viewBox="0 0 300 300"
-          className="pointer-events-none absolute -right-10 -top-6 -z-10 h-56 w-56 sm:h-72 sm:w-72 opacity-[0.16]"
-          style={{
-            transform: 'perspective(600px) rotateX(35deg) rotateZ(-8deg)',
-            filter: 'drop-shadow(0 24px 26px rgba(16,185,129,0.35))',
-          }}
-        >
-          <defs>
-            <linearGradient id="saudiMapGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#6ee7b7" />
-              <stop offset="100%" stopColor="#0891b2" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M148,20 L168,15 L195,25 L215,45 L230,70 L245,100 L255,135 L260,170 L255,205 L240,235 L215,255 L185,265 L155,260 L130,245 L110,220 L95,190 L85,155 L80,120 L85,85 L100,55 L120,35 Z"
-            fill="url(#saudiMapGradient)"
-            stroke="#a7f3d0"
-            strokeWidth="2"
-          />
-        </svg>
-
-        <p className="relative font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">2023&ndash;2026</p>
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-7">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">2023&ndash;2026</p>
         <h3 className="mt-2 font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
           Vision 2030 Contribution
         </h3>
