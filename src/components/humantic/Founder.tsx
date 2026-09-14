@@ -134,6 +134,17 @@ const Founder: React.FC = () => {
         ))}
       </div>
 
+      <div className="mt-6 flex flex-wrap gap-2">
+        {['Behavioral Analysis', 'One-on-One Counseling', '10+ Years Behavioral Counseling & Executive Advising'].map((tag) => (
+          <span
+            key={tag}
+            className="text-[11px] font-semibold text-emerald-300 bg-emerald-400/10 border border-emerald-400/25 px-3 py-1.5 rounded-full"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+
       {/* Paragraph now sits right under the credentials above. */}
       <p
         ref={rooted.ref}
