@@ -50,6 +50,9 @@ html.lenis,html.lenis body{height:auto}
 /* hero */
 .hero{min-height:100vh;display:flex;flex-direction:column;background:radial-gradient(125% 62% at 50% -10%, rgba(4,6,15,.82) 0%, rgba(4,6,15,.28) 44%, transparent 68%)}
 .nav{width:100%;max-width:var(--maxw);margin:0 auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-left{display:flex;align-items:center;gap:20px}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-size:14px;font-weight:500;transition:color .2s ease;text-shadow:0 1px 3px rgba(0,0,0,.9),0 2px 16px rgba(0,0,0,.8)}
+.back-link:hover{color:var(--ink)}
 .brand{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:19px;letter-spacing:.16em}
 .brand-mark{color:var(--accent);font-size:14px;transform:translateY(-1px)}
 .nav-links{display:flex;gap:30px;font-size:14.5px;color:var(--muted);text-shadow:0 1px 3px rgba(0,0,0,.9),0 2px 16px rgba(0,0,0,.8)}
@@ -154,9 +157,11 @@ html.lenis,html.lenis body{height:auto}
   <!-- SECTION 1 · HERO -->
   <header class="hero">
     <nav class="nav">
-      <a class="brand" href="/" title="Back to Humantic"><span class="brand-mark">&#9650;</span>HUMANTIC</a>
+      <div class="nav-left">
+        <a class="back-link" href="/">&#8592; Back to Humantic</a>
+        <a class="brand" href="/"><span class="brand-mark">&#9650;</span>HUMANTIC</a>
+      </div>
       <div class="nav-links">
-        <a href="/">&#8592; Back to Humantic</a>
         <a href="#features">Method</a>
         <a href="#solutions">The Index</a>
         <a href="#cta">Partner</a>
