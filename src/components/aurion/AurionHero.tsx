@@ -49,7 +49,7 @@ const AurionHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               onClick={onCta}
               className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-teal-300 to-cyan-400 text-slate-950 font-semibold shadow-lg shadow-teal-400/25 hover:opacity-90 transition"
             >
-              Reserve AURION ONE
+              Join as Incubator · Vision 2030
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition" />
             </button>
             <button
