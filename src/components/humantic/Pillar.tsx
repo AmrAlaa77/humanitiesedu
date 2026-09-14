@@ -65,7 +65,7 @@ const Pillar: React.FC = () => {
               href="#assessment"
               className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition-transform duration-150 ease-out hover:opacity-90"
             >
-              Get Your Behavioral Assessment
+              Get Your Organizational Development Metrics
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
             </a>
           </div>
