@@ -39,7 +39,7 @@ const Pillar: React.FC = () => {
             Platform Pillar · Sociophysiology &amp; Bio-Neurometrics
           </span>
 
-          <h2 className="mt-5 text-4xl sm:text-6xl font-bold text-white tracking-tight leading-[1.05]">
+          <h2 className="mt-5 text-3xl sm:text-6xl font-bold text-white tracking-tight leading-tight">
             Where biology meets
             <span className="block bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
               organisational strategy.
