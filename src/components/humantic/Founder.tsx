@@ -193,7 +193,7 @@ const Founder: React.FC = () => {
                 {[...row, ...row].map((p, i) => (
                   <span
                     key={`${p}-${i}`}
-                    className="shrink-0 text-xs sm:text-sm font-normal text-teal-300 tracking-tight whitespace-nowrap border border-teal-400/20 rounded-full px-4 py-2 transition-colors hover:text-teal-200 hover:border-teal-400/40"
+                    className="shrink-0 text-xs sm:text-sm font-normal text-teal-300 tracking-tight whitespace-nowrap px-4 py-2 transition-colors hover:text-teal-200"
                   >
                     {p}
                   </span>
