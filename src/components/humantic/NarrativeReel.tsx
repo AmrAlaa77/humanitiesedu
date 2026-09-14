@@ -178,7 +178,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               <span className="text-emerald-400 text-xs font-semibold uppercase tracking-widest">Who We Are</span>
             </div>
             <h2 className="mt-4 font-serif text-2xl sm:text-4xl font-bold leading-tight tracking-tight text-white">
-              Seventeen years in human health and development
+              Seventeen years in human capital
               <span className="block bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
                 made Humantic Digital what it is today.
               </span>
@@ -207,9 +207,9 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               </summary>
             </details>
             <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-300">
-              Led by <span className="font-semibold text-white">Dr. Sherina Abraham</span> &mdash; Medical
-              Doctor, Entrepreneurial Investor, and Chair &amp; CEO of Humantic Digital, approved by the
-              Ministry of Investment Saudi Arabia.
+              Led by <span className="font-semibold text-white">Dr. Abraham</span> &mdash; Medical
+              Doctor, Entrepreneurial Investor, partner at the British College in Oxford, and Chair
+              &amp; CEO of Humantic Digital, approved by the Ministry of Investment Saudi Arabia.
             </p>
           </div>
 
@@ -226,6 +226,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               {[
                 'Organizational Behavior & Team Dynamics Assessment',
                 'Behavioral Risk & Productivity Metrics',
+                'Global Alliances',
               ].map((label) => (
                 <a
                   key={label}
