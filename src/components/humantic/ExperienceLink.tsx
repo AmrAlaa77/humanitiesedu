@@ -4,8 +4,11 @@ import { useInView } from '@/hooks/use-in-view';
 
 /**
  * A quiet, cinematic doorway that sits right after the Humantic intro pages and invites the
- * visitor into the standalone immersive scene (a revolving neural brain + DNA helix) served
- * from /experience. Opens in a new tab so the main narrative is never lost.
+ * visitor into the standalone immersive scene (a luminous point-cloud brain) served from
+ * /experience. Opens in a new tab so the main narrative is never lost. Copy goes straight to the
+ * "Where behaviour becomes data..." line itself rather than describing the visual -- the DNA
+ * helix that used to be part of that scene is gone, so the old "revolving neural brain and
+ * living DNA helix" description no longer matched what's actually there.
  */
 const ExperienceLink: React.FC = () => {
   const { ref, inView } = useInView<HTMLDivElement>({ once: false });
@@ -36,11 +39,11 @@ const ExperienceLink: React.FC = () => {
                 Human + Digital Intelligence
               </p>
               <h3 className="mt-3 text-2xl sm:text-4xl font-bold text-white tracking-tight max-w-xl">
-                Step inside the human engine
+                Where behaviour becomes data.{' '}
+                <span className="text-emerald-300">And data becomes capability.</span>
               </h3>
               <p className="mt-3 text-slate-400 max-w-lg leading-relaxed">
-                A revolving neural brain and living DNA helix &mdash; an immersive way to see how
-                behaviour becomes data, and data becomes capability.
+                Step inside the human engine &mdash; a luminous, living brain rendered in real time.
               </p>
             </div>
             <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-6 py-3 text-sm font-semibold text-emerald-200 transition-transform duration-300 group-hover:translate-x-1">
