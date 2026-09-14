@@ -14,7 +14,6 @@ const AmbientBackground: React.FC = () => {
   const b1 = useRef<HTMLDivElement>(null);
   const b2 = useRef<HTMLDivElement>(null);
   const b3 = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
   const raf = useRef<number>();
 
   useEffect(() => {
@@ -26,7 +25,6 @@ const AmbientBackground: React.FC = () => {
       if (b1.current) b1.current.style.transform = `translate3d(0, ${y * 0.12}px, 0)`;
       if (b2.current) b2.current.style.transform = `translate3d(0, ${y * -0.06}px, 0)`;
       if (b3.current) b3.current.style.transform = `translate3d(0, ${y * 0.09}px, 0)`;
-      if (gridRef.current) gridRef.current.style.transform = `translate3d(0, ${y * 0.03}px, 0)`;
     };
     const onScroll = () => {
       if (raf.current === undefined) raf.current = requestAnimationFrame(update);
@@ -46,17 +44,6 @@ const AmbientBackground: React.FC = () => {
       <div ref={b1} className="absolute -top-32 -left-24 h-[34rem] w-[34rem] rounded-full bg-emerald-500/10 blur-[90px] will-change-transform" />
       <div ref={b2} className="absolute top-1/3 -right-32 h-[40rem] w-[40rem] rounded-full bg-cyan-500/10 blur-[90px] will-change-transform" />
       <div ref={b3} className="absolute bottom-0 left-1/4 h-[30rem] w-[30rem] rounded-full bg-indigo-500/10 blur-[90px] will-change-transform" />
-
-      {/* Faint grid */}
-      <div
-        ref={gridRef}
-        className="absolute -inset-y-32 inset-x-0 opacity-[0.02] will-change-transform"
-        style={{
-          backgroundImage:
-            'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
-          backgroundSize: '64px 64px',
-        }}
-      />
     </div>
   );
 };
