@@ -16,7 +16,7 @@ const steps = [
     icon: Lightbulb,
     kicker: 'First, awareness.',
     title: 'Hybrid Awareness Classes',
-    sub: 'In-Person + Digital',
+    sub: 'In-Person + Digital · Wellbeing & Illbeing Awareness Education',
     desc: 'One clear picture drawn from three sciences — how people function under pressure, over time, and alongside each other — made teachable for every age.',
   },
   {
