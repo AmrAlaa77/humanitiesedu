@@ -10,7 +10,6 @@ import Assessment from '@/components/humantic/Assessment';
 import Deliverables from '@/components/humantic/Deliverables';
 import Pillar from '@/components/humantic/Pillar';
 import LivingMatrix from '@/components/humantic/LivingMatrix';
-import WhoWeAre from '@/components/humantic/WhoWeAre';
 import JourneyLink from '@/components/humantic/JourneyLink';
 import QualityOfLifeLink from '@/components/humantic/QualityOfLifeLink';
 import NationalIndex from '@/components/humantic/NationalIndex';
@@ -50,10 +49,6 @@ const AppLayout: React.FC = () => {
               We listen beyond the data &mdash; to understand the human behind it.
             </p>
           </section>
-
-          <Reveal variant="up" repeat>
-            <WhoWeAre />
-          </Reveal>
 
           <NarrativeReel onCta={() => setModalOpen(true)} />
 
