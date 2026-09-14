@@ -35,6 +35,10 @@ const QualityOfLife: React.FC = () => {
   return (
   <section id="quality-of-life" className="relative py-24">
     <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <p className="font-serif italic text-xl sm:text-2xl leading-snug text-slate-100 max-w-3xl mb-8">
+        What happens when quality of life is not only measured by what surrounds us &mdash; but by
+        what happens within us?
+      </p>
       <span className="text-emerald-400 text-sm font-semibold uppercase tracking-widest">UN Habitat Quality of Life &middot; One Human at a Time</span>
       <h2 className="mt-4 text-3xl sm:text-5xl font-bold text-white tracking-tight">
         Measurable. <span className="text-emerald-400">Human.</span><br />City. Country. Continent.
