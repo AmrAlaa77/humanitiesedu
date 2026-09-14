@@ -13,7 +13,6 @@ import LivingMatrix from '@/components/humantic/LivingMatrix';
 import JourneyLink from '@/components/humantic/JourneyLink';
 import QualityOfLifeLink from '@/components/humantic/QualityOfLifeLink';
 import NationalIndex from '@/components/humantic/NationalIndex';
-import Pledge from '@/components/humantic/Pledge';
 import Footer from '@/components/humantic/Footer';
 import AccessModal from '@/components/humantic/AccessModal';
 import GlowCursor from '@/components/humantic/GlowCursor';
@@ -83,10 +82,6 @@ const AppLayout: React.FC = () => {
 
           <Reveal variant="zoom" repeat>
             <QualityOfLifeLink />
-          </Reveal>
-
-          <Reveal variant="zoom" repeat>
-            <Pledge />
           </Reveal>
         </main>
         <Footer />

@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Instagram, Dribbble } from 'lucide-react';
+import Vision2030Contribution from './Vision2030Contribution';
+import Pledge from './Pledge';
 
 /**
  * Editorial dark-navy hero matching the reference design, made interactive:
@@ -265,6 +267,13 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               Program, Quality of Life 2030, and the National Strategy for Data &amp; AI.
             </p>
           </div>
+        </div>
+
+        {/* Vision 2030 Contribution + Pledge — sits between Who We Are and the bio-vitality title,
+            still on this same glowing/twinkling section */}
+        <div className="mb-20">
+          <Vision2030Contribution />
+          <Pledge />
         </div>
 
         {/* Headline — sized to match the rest of the site's section headings */}
