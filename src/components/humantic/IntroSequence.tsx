@@ -67,14 +67,21 @@ const IntroSequence: React.FC = () => {
   const isOut = phase === 'out';
 
   return (
-    <div
-      aria-hidden
-      className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden bg-black transition-opacity duration-[1100ms] ease-in"
-      style={{ opacity: isOut ? 0 : 1, pointerEvents: isOut ? 'none' : 'auto' }}
-    >
+    <div aria-hidden className="fixed inset-0 z-[200] overflow-hidden" style={{ pointerEvents: isOut ? 'none' : 'auto' }}>
+      {/* Two black panels that slide apart on 'out', like doors opening onto the hero
+          underneath -- a literal opening instead of a zoom/fade. */}
       <div
-        className="flex flex-col items-center gap-4 transition-transform duration-[1500ms] ease-in"
-        style={{ transform: isOut ? 'scale(5)' : 'scale(1)' }}
+        className="absolute inset-x-0 top-0 h-1/2 bg-black transition-transform duration-[1200ms] ease-[cubic-bezier(0.65,0,0.35,1)]"
+        style={{ transform: isOut ? 'translateY(-100%)' : 'translateY(0)' }}
+      />
+      <div
+        className="absolute inset-x-0 bottom-0 h-1/2 bg-black transition-transform duration-[1200ms] ease-[cubic-bezier(0.65,0,0.35,1)]"
+        style={{ transform: isOut ? 'translateY(100%)' : 'translateY(0)' }}
+      />
+
+      <div
+        className="absolute inset-0 flex flex-col items-center justify-center gap-4 transition-opacity duration-500 ease-out"
+        style={{ opacity: isOut ? 0 : 1 }}
       >
         <span
           className="font-serif text-3xl sm:text-5xl font-extrabold tracking-tight text-white transition-all duration-[1200ms] ease-out"
@@ -88,7 +95,7 @@ const IntroSequence: React.FC = () => {
         </span>
         <span
           className="block h-px bg-gradient-to-r from-transparent via-emerald-400/80 to-transparent transition-[width] duration-[1700ms] ease-out"
-          style={{ width: phase === 'in' ? '58vw' : phase === 'out' ? '135vw' : '0vw' }}
+          style={{ width: phase === 'in' ? '58vw' : phase === 'out' ? '100vw' : '0vw' }}
         />
       </div>
     </div>
