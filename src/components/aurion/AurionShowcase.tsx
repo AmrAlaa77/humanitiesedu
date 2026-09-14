@@ -89,6 +89,9 @@ const AurionShowcase: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               Start understanding it.
             </span>
           </h2>
+          <p className="relative mt-4 text-sm uppercase tracking-[0.3em] text-teal-300">
+            Medical-grade signals, hidden in luxury.
+          </p>
           <p className="relative mt-5 text-slate-300 max-w-xl mx-auto">
             Be among the first to wear AURION ONE and unlock your personal wellbeing intelligence.
           </p>
