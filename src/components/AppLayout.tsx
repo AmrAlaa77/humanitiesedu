@@ -52,11 +52,12 @@ const AppLayout: React.FC = () => {
 
           <NarrativeReel onCta={() => setModalOpen(true)} />
 
+          <ExperienceLink />
+
           <Reveal variant="left" repeat>
             <LivingMatrix />
           </Reveal>
 
-          <ExperienceLink />
           <AwarenessJourney />
           <HeroLink />
 
