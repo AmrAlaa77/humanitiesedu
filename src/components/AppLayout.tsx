@@ -18,6 +18,7 @@ import GlowCursor from '@/components/humantic/GlowCursor';
 import Reveal from '@/components/humantic/Reveal';
 import ScrollProgress from '@/components/humantic/ScrollProgress';
 import AmbientBackground from '@/components/humantic/AmbientBackground';
+import TwinklingStarfield from '@/components/humantic/TwinklingStarfield';
 import IntroSequence from '@/components/humantic/IntroSequence';
 
 const AppLayout: React.FC = () => {
@@ -29,6 +30,7 @@ const AppLayout: React.FC = () => {
 
       <IntroSequence />
       <AmbientBackground />
+      <TwinklingStarfield />
       <GlowCursor />
       <ScrollProgress />
 
