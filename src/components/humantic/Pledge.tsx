@@ -12,7 +12,7 @@ const pledgeItems = [
       "National Priority Alignment — the approval process requires demonstrating how the enterprise directly advances Vision 2030 pillars, specifically the Human Capability Development Program and the Health, Wellbeing and Quality of Life Initiatives, by modernizing human capital and organizational behavioral infrastructure. An enterprise officially sanctioned to pioneer high-impact sectors within the Kingdom.",
   },
   {
-    label: 'Accreditation',
+    label: 'Accreditation · Certification & Professional Development',
     desc:
       'UK-aligned academic validation frameworks. Our programmes carry the rigour of renowned British awarding and accreditation bodies — whose recognition speaks to the standards we uphold and of which we are proud members. Exclusive for Saudi nationals — through B2G, B2B and B2C, we offer semi/fully funded British certification programmes.',
   },
