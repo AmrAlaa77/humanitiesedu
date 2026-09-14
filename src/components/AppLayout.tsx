@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/humantic/Navbar';
 import HumanReel from '@/components/humantic/HumanReel';
-import AwarenessJourney from '@/components/humantic/AwarenessJourney';
 import NarrativeReel from '@/components/humantic/NarrativeReel';
 import HeroLink from '@/components/humantic/HeroLink';
+import AwarenessJourneyLink from '@/components/humantic/AwarenessJourneyLink';
 
 import Assessment from '@/components/humantic/Assessment';
 import Deliverables from '@/components/humantic/Deliverables';
@@ -47,8 +47,6 @@ const AppLayout: React.FC = () => {
             <Pillar />
           </Reveal>
 
-          <AwarenessJourney />
-
           <Reveal variant="right" repeat>
             <NationalIndex />
           </Reveal>
@@ -67,6 +65,7 @@ const AppLayout: React.FC = () => {
                 <HeroLink />
                 <QualityOfLifeLink />
                 <JourneyLink />
+                <AwarenessJourneyLink />
               </div>
             </section>
           </Reveal>

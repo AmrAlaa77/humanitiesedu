@@ -4,6 +4,7 @@ import { ArrowLeft, ChevronDown } from 'lucide-react';
 import AurionHero from '@/components/aurion/AurionHero';
 import AurionIntel from '@/components/aurion/AurionIntel';
 import Hero from '@/components/humantic/Hero';
+import AwarenessJourney from '@/components/humantic/AwarenessJourney';
 import VitalMonitoring from '@/components/humantic/VitalMonitoring';
 import AurionFeatures from '@/components/aurion/AurionFeatures';
 import AurionShowcase from '@/components/aurion/AurionShowcase';
@@ -43,6 +44,7 @@ const Aurion: React.FC = () => {
             default so the page reads short -- See More expands it inline, no navigation away */}
         <div className={`grid transition-[grid-template-rows] duration-500 ease-out ${showMore ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
           <div className="overflow-hidden">
+            <AwarenessJourney />
             <VitalMonitoring />
             <AurionFeatures />
             <AurionShowcase onCta={open} />
