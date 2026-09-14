@@ -114,7 +114,10 @@ const NextGenPage: React.FC = () => (
             A true UN SDG 3 contribution &mdash; preventative science engineered in Saudi labs, gifted to the world.
           </p>
 
-          <p className="mt-6 font-serif italic text-2xl sm:text-3xl leading-snug text-slate-100 max-w-2xl">
+          <p className="mt-6 text-emerald-400 text-xs font-semibold uppercase tracking-widest">
+            Designed to Disappear
+          </p>
+          <p className="mt-2 font-serif italic text-2xl sm:text-3xl leading-snug text-slate-100 max-w-2xl">
             Jewellery on the outside. A lab on the inside.
           </p>
 
