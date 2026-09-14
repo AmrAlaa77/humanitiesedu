@@ -15,7 +15,7 @@ import Evolution from '@/components/humantic/Evolution';
 import QualityOfLife from '@/components/humantic/QualityOfLife';
 import NationalIndex from '@/components/humantic/NationalIndex';
 import SDGAlignment from '@/components/humantic/SDGAlignment';
-import Founder from '@/components/humantic/Founder';
+import FounderLink from '@/components/humantic/FounderLink';
 import Pledge from '@/components/humantic/Pledge';
 import Footer from '@/components/humantic/Footer';
 import AccessModal from '@/components/humantic/AccessModal';
@@ -86,7 +86,7 @@ const AppLayout: React.FC = () => {
           </Reveal>
 
           <Reveal variant="up" repeat>
-            <Founder />
+            <FounderLink />
           </Reveal>
 
           <Reveal variant="zoom" repeat>

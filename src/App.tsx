@@ -8,6 +8,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Admin from "./pages/Admin";
 import Aurion from "./pages/Aurion";
+import FounderPage from "./pages/FounderPage";
 import CPPIAssessment from "./pages/CPPIAssessment";
 import NotFound from "./pages/NotFound";
 
@@ -25,6 +26,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/aurion" element={<Aurion />} />
+              <Route path="/founder" element={<FounderPage />} />
               <Route path="/survey" element={<CPPIAssessment />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
