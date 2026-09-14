@@ -4,7 +4,7 @@ import HumanReel from '@/components/humantic/HumanReel';
 import AwarenessJourney from '@/components/humantic/AwarenessJourney';
 import NarrativeReel from '@/components/humantic/NarrativeReel';
 import ExperienceLink from '@/components/humantic/ExperienceLink';
-import Hero from '@/components/humantic/Hero';
+import HeroLink from '@/components/humantic/HeroLink';
 
 import Assessment from '@/components/humantic/Assessment';
 import Deliverables from '@/components/humantic/Deliverables';
@@ -44,7 +44,7 @@ const AppLayout: React.FC = () => {
           <NarrativeReel onCta={() => setModalOpen(true)} />
           <ExperienceLink />
           <AwarenessJourney />
-          <Hero onCta={() => setModalOpen(true)} />
+          <HeroLink />
 
           <Reveal variant="right" repeat>
             <NationalIndex />

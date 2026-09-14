@@ -218,9 +218,11 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           </button>
         </div>
 
-        {/* Who We Are + Vision 2030 Contribution — fills the empty lower half of this full-height
-            hero, side by side on wider screens. */}
-        <div className="mt-20 grid gap-10 lg:grid-cols-2 lg:gap-14 max-w-5xl">
+        {/* Who We Are — fills the empty lower half of this full-height hero. (The "Vision 2030
+            Contribution" card that used to sit alongside this in a two-column grid now lives on
+            its own, consolidated with the rest of the Vision 2030 content on the QoL 2030
+            Initiative page.) */}
+        <div className="mt-20 max-w-2xl">
           <div className="pl-1">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">
               Humantic Digital &middot; Riyadh
@@ -271,82 +273,6 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               Prince Mohammed bin Salman &mdash; directly supporting the Human Capability Development
               Program, Quality of Life 2030, and the National Strategy for Data &amp; AI.
             </p>
-          </div>
-
-          {/* Summary card — condensed from the fuller Vision 2030 Contribution reference (proven
-              record, Royal Commission for AlUla, Healthcare Partnerships, closing endorsement). */}
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-7 self-start">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">
-              2023&ndash;2026
-            </p>
-            <h3 className="mt-2 font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
-              Vision 2030 Contribution
-            </h3>
-            <p className="mt-1 text-emerald-400 text-[11px] font-semibold uppercase tracking-widest">
-              Initiative Implementation, Kingdom-Wide
-            </p>
-            <ul className="mt-5 space-y-5 text-sm leading-relaxed text-slate-300">
-              <li>
-                <details className="group">
-                  <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                    <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
-                      Human Capability Development
-                    </span>
-                    <span className="line-clamp-2 group-open:hidden">
-                      Led the fully-funded Saudi Career Development Program, awarding British-accredited
-                      certifications to 70+ nationals at King Saud bin Abdulaziz University for Health Sciences.
-                    </span>
-                    <span className="hidden group-open:inline">
-                      Led the fully-funded Saudi Career Development Program, awarding British-accredited
-                      certifications to 70+ nationals at King Saud bin Abdulaziz University for Health Sciences.
-                    </span>
-                    <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
-                  </summary>
-                </details>
-              </li>
-              <li>
-                <details className="group">
-                  <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                    <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
-                      Tourism &amp; Quality of Life 2030
-                    </span>
-                    <span className="line-clamp-2 group-open:hidden">
-                      Delivered educational programs equipping national talent to lead within the Royal
-                      Commission for AlUla&rsquo;s touristic sites, aligned with Quality of Life 2030 and the
-                      UN&rsquo;s Sustainable Development Goal domains &mdash; building Saudi, a country one can
-                      call home.
-                    </span>
-                    <span className="hidden group-open:inline">
-                      Delivered educational programs equipping national talent to lead within the Royal
-                      Commission for AlUla&rsquo;s touristic sites, aligned with Quality of Life 2030 and the
-                      UN&rsquo;s Sustainable Development Goal domains &mdash; building Saudi, a country one can
-                      call home.
-                    </span>
-                    <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
-                  </summary>
-                </details>
-              </li>
-              <li>
-                <details className="group">
-                  <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                    <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
-                      A Call to Serve &middot; Healthcare
-                    </span>
-                    <span className="line-clamp-2 group-open:hidden">
-                      Bespoke programs on health, safety and wellbeing across National Guard Health Affairs, King
-                      Salman Hospital, King Abdulaziz Medical City, King Salman Specialist Children&rsquo;s
-                      Hospital, and King Abdullah Medical City.
-                    </span>
-                    <span className="hidden group-open:inline">
-                      Bespoke programs on health, safety and wellbeing across National Guard Health Affairs, King
-                      Salman Hospital, King Abdulaziz Medical City, King Salman Specialist Children&rsquo;s
-                      Hospital, and King Abdullah Medical City.
-                    </span>
-                    <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
-                  </summary>
-                </details>
-              </li>
-            </ul>
           </div>
         </div>
       </div>

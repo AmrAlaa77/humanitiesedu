@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import QualityOfLife from '@/components/humantic/QualityOfLife';
+import Vision2030Contribution from '@/components/humantic/Vision2030Contribution';
 import SDGAlignment from '@/components/humantic/SDGAlignment';
 import Footer from '@/components/humantic/Footer';
 import AmbientBackground from '@/components/humantic/AmbientBackground';
@@ -32,6 +33,7 @@ const QoLPage: React.FC = () => (
 
       <main>
         <QualityOfLife />
+        <Vision2030Contribution />
         <SDGAlignment />
       </main>
 

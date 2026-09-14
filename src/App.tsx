@@ -11,6 +11,7 @@ import Aurion from "./pages/Aurion";
 import FounderPage from "./pages/FounderPage";
 import JourneyPage from "./pages/JourneyPage";
 import QoLPage from "./pages/QoLPage";
+import WellbeingIndexPage from "./pages/WellbeingIndexPage";
 import CPPIAssessment from "./pages/CPPIAssessment";
 import NotFound from "./pages/NotFound";
 
@@ -31,6 +32,7 @@ const App = () => (
               <Route path="/founder" element={<FounderPage />} />
               <Route path="/journey" element={<JourneyPage />} />
               <Route path="/qol-2030" element={<QoLPage />} />
+              <Route path="/wellbeing-index" element={<WellbeingIndexPage />} />
               <Route path="/survey" element={<CPPIAssessment />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
