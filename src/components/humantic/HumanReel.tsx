@@ -138,7 +138,7 @@ const HumanReel: React.FC = () => {
   );
 
   return (
-    <section id="top" className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-[#0D0D0D] text-white">
+    <section id="top" className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-[#020617] text-white">
       {/* Top-left: brand + counter */}
       <div className="absolute top-6 left-6 sm:left-10 z-30 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80">
         HUMAN <span className="text-white/40">®</span> / 01
@@ -225,7 +225,7 @@ const HumanReel: React.FC = () => {
             // it was just adding space. Pulling it down brings the tagline visually closer to the
             // sentence above it.
             height: '2mm',
-            backgroundColor: '#0D0D0D',
+            backgroundColor: '#020617',
             position: 'relative',
             zIndex: 20,
           }}
@@ -259,7 +259,7 @@ const HumanReel: React.FC = () => {
           display: 'block',
           width: '100%',
           height: '10mm',
-          backgroundColor: '#0D0D0D',
+          backgroundColor: '#020617',
           position: 'relative',
           zIndex: 20,
         }}
@@ -331,21 +331,21 @@ const HumanReel: React.FC = () => {
               on large screens) -- pushed well past where that artifact sits. */}
           <div
             className="pointer-events-none absolute inset-x-0 top-0"
-            style={{ height: '9%', background: 'linear-gradient(to bottom, #0D0D0D 0%, #0D0D0D 55%, transparent 100%)' }}
+            style={{ height: '9%', background: 'linear-gradient(to bottom, #020617 0%, #020617 55%, transparent 100%)' }}
           />
           <div
             className="pointer-events-none absolute inset-x-0 bottom-0 h-6"
-            style={{ background: 'linear-gradient(to top, #0D0D0D 0%, #0D0D0D 35%, transparent 100%)' }}
+            style={{ background: 'linear-gradient(to top, #020617 0%, #020617 35%, transparent 100%)' }}
           />
           {/* Same seam confirmed live on the left/right edges too (DOM-inspected on the deployed site --
               no bordered element sits there, so it's this same compositing seam, just on the other axis). */}
           <div
             className="pointer-events-none absolute inset-y-0 left-0 w-6"
-            style={{ background: 'linear-gradient(to right, #0D0D0D 0%, #0D0D0D 35%, transparent 100%)' }}
+            style={{ background: 'linear-gradient(to right, #020617 0%, #020617 35%, transparent 100%)' }}
           />
           <div
             className="pointer-events-none absolute inset-y-0 right-0 w-6"
-            style={{ background: 'linear-gradient(to left, #0D0D0D 0%, #0D0D0D 35%, transparent 100%)' }}
+            style={{ background: 'linear-gradient(to left, #020617 0%, #020617 35%, transparent 100%)' }}
           />
         </div>
       </div>

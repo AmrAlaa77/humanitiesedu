@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, ArrowUpRight, Instagram, Dribbble } from 'lucide-react';
 import Vision2030Contribution from './Vision2030Contribution';
+import Pledge from './Pledge';
 import LivingMatrix from './LivingMatrix';
 
 /**
@@ -244,10 +245,10 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           </div>
         </div>
 
-        {/* Vision 2030 Contribution — sits between Who We Are and the bio-vitality title,
-            still on this same glowing/twinkling section. Pledge moved out, now sits right
-            after the Pillar section instead. */}
-        <div className="mb-20">
+        {/* Pledge + Vision 2030 Contribution, side by side — still on this same
+            glowing/twinkling section, between Who We Are and the bio-vitality title */}
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start mb-20">
+          <Pledge />
           <Vision2030Contribution />
         </div>
 

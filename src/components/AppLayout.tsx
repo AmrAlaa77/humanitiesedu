@@ -8,7 +8,6 @@ import HeroLink from '@/components/humantic/HeroLink';
 import Assessment from '@/components/humantic/Assessment';
 import Deliverables from '@/components/humantic/Deliverables';
 import Pillar from '@/components/humantic/Pillar';
-import Pledge from '@/components/humantic/Pledge';
 import JourneyLink from '@/components/humantic/JourneyLink';
 import QualityOfLifeLink from '@/components/humantic/QualityOfLifeLink';
 import NationalIndex from '@/components/humantic/NationalIndex';
@@ -46,10 +45,6 @@ const AppLayout: React.FC = () => {
 
           <Reveal variant="flip" repeat>
             <Pillar />
-          </Reveal>
-
-          <Reveal variant="up" repeat>
-            <Pledge />
           </Reveal>
 
           <AwarenessJourney />
