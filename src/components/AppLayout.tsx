@@ -10,8 +10,7 @@ import Assessment from '@/components/humantic/Assessment';
 import Deliverables from '@/components/humantic/Deliverables';
 import Pillar from '@/components/humantic/Pillar';
 import LivingMatrix from '@/components/humantic/LivingMatrix';
-import Journey from '@/components/humantic/Journey';
-import Evolution from '@/components/humantic/Evolution';
+import JourneyLink from '@/components/humantic/JourneyLink';
 import QualityOfLife from '@/components/humantic/QualityOfLife';
 import NationalIndex from '@/components/humantic/NationalIndex';
 import SDGAlignment from '@/components/humantic/SDGAlignment';
@@ -70,11 +69,7 @@ const AppLayout: React.FC = () => {
           </Reveal>
 
           <Reveal variant="right" repeat>
-            <Journey onCta={() => setModalOpen(true)} />
-          </Reveal>
-
-          <Reveal variant="left" repeat>
-            <Evolution />
+            <JourneyLink />
           </Reveal>
 
           <Reveal variant="zoom" repeat>

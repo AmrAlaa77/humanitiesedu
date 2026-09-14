@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import Admin from "./pages/Admin";
 import Aurion from "./pages/Aurion";
 import FounderPage from "./pages/FounderPage";
+import JourneyPage from "./pages/JourneyPage";
 import CPPIAssessment from "./pages/CPPIAssessment";
 import NotFound from "./pages/NotFound";
 
@@ -27,6 +28,7 @@ const App = () => (
               <Route path="/admin" element={<Admin />} />
               <Route path="/aurion" element={<Aurion />} />
               <Route path="/founder" element={<FounderPage />} />
+              <Route path="/journey" element={<JourneyPage />} />
               <Route path="/survey" element={<CPPIAssessment />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

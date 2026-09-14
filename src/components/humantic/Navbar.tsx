@@ -5,7 +5,6 @@ import { Activity, Menu, X } from 'lucide-react';
 const links = [
   { label: 'Assessment', href: '#assessment' },
   { label: 'Deliverables', href: '#deliverables' },
-  { label: 'Journey', href: '#journey' },
 ];
 
 const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
@@ -107,6 +106,12 @@ const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           >
             Experience
           </a>
+          <Link to="/journey" className="text-sm font-medium text-slate-300 hover:text-white transition">
+            Journey
+          </Link>
+          <Link to="/founder" className="text-sm font-medium text-slate-300 hover:text-white transition">
+            Founder
+          </Link>
           <Link to="/aurion" className="text-sm font-medium bg-gradient-to-r from-teal-200 to-cyan-300 bg-clip-text text-transparent hover:opacity-80 transition">
             AURION ONE
           </Link>
@@ -155,6 +160,12 @@ const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           >
             Experience
           </a>
+          <Link to="/journey" onClick={() => setOpen(false)} className="block w-full text-left py-1.5 text-slate-200">
+            Journey
+          </Link>
+          <Link to="/founder" onClick={() => setOpen(false)} className="block w-full text-left py-1.5 text-slate-200">
+            Founder
+          </Link>
           <Link to="/aurion" onClick={() => setOpen(false)} className="block w-full text-left py-1.5 font-medium bg-gradient-to-r from-teal-200 to-cyan-300 bg-clip-text text-transparent">
             AURION ONE
           </Link>
