@@ -49,12 +49,7 @@ const SDGAlignment: React.FC = () => {
         Good Health &amp; Wellbeing &mdash; our clinical foundation and global mandate.
       </p>
 
-      <p className="mt-10 text-white font-medium text-lg leading-relaxed max-w-2xl">
-        Adaptation and self-management to changes and challenges in the environment, as well as the ability to
-        develop satisfactory relationships with other people.
-      </p>
-
-      <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-8 max-w-3xl transition-colors duration-300 hover:bg-white/[0.06] hover:border-white/20">
+      <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.04] p-8 max-w-3xl transition-colors duration-300 hover:bg-white/[0.06] hover:border-white/20">
         <p className="text-white font-semibold text-lg">
           Despite progress across some of the SDG 3 goals, overall, the region is largely off-track.
         </p>
