@@ -44,6 +44,11 @@ const SDGAlignment: React.FC = () => {
         ))}
       </div>
 
+      <p className="mt-6 text-emerald-400 text-xs font-bold uppercase tracking-widest">UN SDG 3 &middot; UN Habitat</p>
+      <p className="mt-2 text-slate-300 text-sm leading-relaxed max-w-2xl">
+        Good Health &amp; Wellbeing &mdash; our clinical foundation and global mandate.
+      </p>
+
       <p className="mt-10 text-white font-medium text-lg leading-relaxed max-w-2xl">
         Adaptation and self-management to changes and challenges in the environment, as well as the ability to
         develop satisfactory relationships with other people.

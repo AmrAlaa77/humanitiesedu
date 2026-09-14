@@ -11,8 +11,6 @@ const pledgeItems = [
     desc:
       "National Priority Alignment — the approval process requires demonstrating how the enterprise directly advances Vision 2030 pillars, specifically the Human Capability Development Program and the Health, Wellbeing and Quality of Life Initiatives, by modernizing human capital and organizational behavioral infrastructure. An enterprise officially sanctioned to pioneer high-impact sectors within the Kingdom.",
   },
-  { label: 'UN SDG 3 · UN Habitat', desc: 'Good Health & Wellbeing — our clinical foundation and global mandate' },
-  { label: 'Our Pledge', desc: 'Designing the future. As humanly possible. One human at a time.' },
   {
     label: 'Accreditation',
     desc:
@@ -54,6 +52,11 @@ const Pledge: React.FC = () => (
           </div>
         ))}
       </div>
+
+      <p className="mt-10 text-emerald-400 text-xs font-bold uppercase tracking-widest">Our Pledge</p>
+      <p className="mt-2 text-slate-300 text-base leading-relaxed max-w-2xl">
+        Designing the future. As humanly possible. One human at a time.
+      </p>
 
       <p className="mt-10 font-serif italic text-slate-500 text-base">Essence over output. Always.</p>
     </div>
