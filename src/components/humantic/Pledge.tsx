@@ -25,23 +25,35 @@ const Pledge: React.FC = () => (
         MISA Approved &middot; HCDP Aligned &middot; Vision 2030 Portal
       </span>
 
-      <p className="mt-8 font-serif italic text-3xl sm:text-4xl leading-snug text-slate-100 max-w-3xl">
-        &ldquo;While the world watches the bottom line, we watch the{' '}
-        <span className="text-emerald-400">baseline of human health.</span>&rdquo;
-      </p>
-
-      <p className="mt-6 text-slate-400 max-w-2xl leading-relaxed">
-        Conventional business analytics tell you what happened &mdash; the human baseline tells you why. We surface
-        the human signals beneath organisational performance, connecting neurophysiology, behaviour and digital
-        intelligence to build healthier, more sustainable ways of working. Aligned with Saudi Vision 2030&rsquo;s
-        Quality of Life goals, we make growth not only measurable and sustainable, but deeply human.
-      </p>
-
-      <div className="mt-14">
+      <div className="mt-8">
         <span className="text-emerald-400 text-xs font-semibold uppercase tracking-widest">The Humantic Edge</span>
         <h3 className="mt-3 font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight max-w-2xl">
           Strategy, science and humanity &mdash; brought together differently.
         </h3>
+
+        <details className="group mt-6">
+          <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+            <p className="font-serif italic text-2xl sm:text-3xl leading-snug text-slate-100 max-w-3xl">
+              &ldquo;While the world watches the bottom line, we watch the{' '}
+              <span className="text-emerald-400">baseline of human health.</span>&rdquo;
+            </p>
+            <p className="mt-4 text-slate-400 max-w-2xl leading-relaxed line-clamp-2 group-open:hidden">
+              Conventional business analytics tell you what happened &mdash; the human baseline tells you why. We
+              surface the human signals beneath organisational performance, connecting neurophysiology, behaviour
+              and digital intelligence to build healthier, more sustainable ways of working.
+            </p>
+            <p className="mt-4 hidden text-slate-400 max-w-2xl leading-relaxed group-open:block">
+              Conventional business analytics tell you what happened &mdash; the human baseline tells you why. We
+              surface the human signals beneath organisational performance, connecting neurophysiology, behaviour
+              and digital intelligence to build healthier, more sustainable ways of working. Aligned with Saudi
+              Vision 2030&rsquo;s Quality of Life goals, we make growth not only measurable and sustainable, but
+              deeply human.
+            </p>
+            <span className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-emerald-400 group-open:hidden">
+              <span className="text-base leading-none">+</span> Read more
+            </span>
+          </summary>
+        </details>
       </div>
 
       <div className="mt-8 grid gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
