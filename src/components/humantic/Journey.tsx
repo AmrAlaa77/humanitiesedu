@@ -261,6 +261,9 @@ const NextPanel: React.FC<{ onCta: () => void }> = ({ onCta }) => (
       <Rocket className="w-7 h-7 text-emerald-300" />
     </div>
     <h3 className="text-2xl sm:text-3xl font-bold text-white">The next chapter is being written now.</h3>
+    <p className="mt-4 text-emerald-300 font-semibold leading-relaxed">
+      An incubator gifting wearable R&amp;D from Saudi land to humanity.
+    </p>
     <p className="mt-4 text-slate-300 leading-relaxed">
       We’re working on predictive wellbeing — gentle nudges that arrive <em>before</em> stress, burnout or illness
       do. Open APIs for researchers. And a promise to stay quiet, kind and human as we grow.
