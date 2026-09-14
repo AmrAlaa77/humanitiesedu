@@ -11,10 +11,8 @@ import Deliverables from '@/components/humantic/Deliverables';
 import Pillar from '@/components/humantic/Pillar';
 import LivingMatrix from '@/components/humantic/LivingMatrix';
 import JourneyLink from '@/components/humantic/JourneyLink';
-import QualityOfLife from '@/components/humantic/QualityOfLife';
+import QualityOfLifeLink from '@/components/humantic/QualityOfLifeLink';
 import NationalIndex from '@/components/humantic/NationalIndex';
-import SDGAlignment from '@/components/humantic/SDGAlignment';
-import FounderLink from '@/components/humantic/FounderLink';
 import Pledge from '@/components/humantic/Pledge';
 import Footer from '@/components/humantic/Footer';
 import AccessModal from '@/components/humantic/AccessModal';
@@ -73,15 +71,7 @@ const AppLayout: React.FC = () => {
           </Reveal>
 
           <Reveal variant="zoom" repeat>
-            <QualityOfLife />
-          </Reveal>
-
-          <Reveal variant="left" repeat>
-            <SDGAlignment />
-          </Reveal>
-
-          <Reveal variant="up" repeat>
-            <FounderLink />
+            <QualityOfLifeLink />
           </Reveal>
 
           <Reveal variant="zoom" repeat>

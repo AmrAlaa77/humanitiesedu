@@ -112,6 +112,9 @@ const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           <Link to="/founder" className="text-sm font-medium text-slate-300 hover:text-white transition">
             Founder
           </Link>
+          <Link to="/qol-2030" className="text-sm font-medium text-slate-300 hover:text-white transition">
+            QoL 2030
+          </Link>
           <Link to="/aurion" className="text-sm font-medium bg-gradient-to-r from-teal-200 to-cyan-300 bg-clip-text text-transparent hover:opacity-80 transition">
             AURION ONE
           </Link>

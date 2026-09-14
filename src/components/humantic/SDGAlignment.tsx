@@ -26,7 +26,7 @@ const SDGAlignment: React.FC = () => {
   return (
   <section id="sdg-alignment" className="relative py-24">
     <div className="max-w-7xl mx-auto px-5 sm:px-8">
-      <span className="text-emerald-400 text-sm font-semibold uppercase tracking-widest">Aligned to the UN SDGs</span>
+      <span className="text-emerald-400 text-sm font-semibold uppercase tracking-widest">Aligned to the UN Sustainable Development Goals</span>
       <h2 className="mt-4 text-4xl sm:text-5xl font-bold text-emerald-400 tracking-tight">Social</h2>
 
       <div ref={tiles.ref} className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-2xl">

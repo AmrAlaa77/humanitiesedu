@@ -1,23 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import Founder from '@/components/humantic/Founder';
+import QualityOfLife from '@/components/humantic/QualityOfLife';
+import SDGAlignment from '@/components/humantic/SDGAlignment';
 import Footer from '@/components/humantic/Footer';
 import AmbientBackground from '@/components/humantic/AmbientBackground';
 import GlowCursor from '@/components/humantic/GlowCursor';
 import ScrollProgress from '@/components/humantic/ScrollProgress';
 
 /**
- * Standalone page for the Founder section -- moved off the homepage per the site's
- * "minimal text, click through for detail" pattern (same move already made for Aurion's
- * Platform features). Founder.tsx itself is unchanged; this page just gives it its own
- * header/back-link/footer, matching how Aurion.tsx wraps its own content.
- *
- * Carries the same ambient motion layers the main site uses (parallax background blobs, the
- * cursor-follow glow, the scroll-progress bar) so it doesn't read as static/flat next to the
- * homepage -- per feedback.
+ * Standalone page for the UN Habitat Quality of Life section -- moved off the homepage, titled
+ * "QoL 2030 Initiative" per feedback. QualityOfLife.tsx itself is unchanged. Same ambient motion
+ * layers as FounderPage/JourneyPage/Aurion so it doesn't read as static next to the homepage.
  */
-const FounderPage: React.FC = () => (
+const QoLPage: React.FC = () => (
   <div className="relative min-h-screen bg-slate-950 text-white antialiased selection:bg-emerald-400/30 md:cursor-none">
     <AmbientBackground />
     <GlowCursor />
@@ -29,13 +25,14 @@ const FounderPage: React.FC = () => (
           <Link to="/" className="inline-flex items-center gap-2 text-slate-300 hover:text-white transition text-sm">
             <ArrowLeft className="w-4 h-4" /> Back to Humantic
           </Link>
-          <span className="text-white font-semibold tracking-[0.3em] text-sm">FOUNDER</span>
+          <span className="text-white font-semibold tracking-[0.3em] text-sm">QOL 2030 INITIATIVE</span>
           <span className="w-[132px]" aria-hidden />
         </div>
       </header>
 
       <main>
-        <Founder />
+        <QualityOfLife />
+        <SDGAlignment />
       </main>
 
       <Footer />
@@ -43,4 +40,4 @@ const FounderPage: React.FC = () => (
   </div>
 );
 
-export default FounderPage;
+export default QoLPage;

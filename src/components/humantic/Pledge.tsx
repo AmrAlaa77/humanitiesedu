@@ -11,7 +11,7 @@ const Pledge: React.FC = () => (
   <section id="pledge" className="relative py-24">
     <div className="max-w-7xl mx-auto px-5 sm:px-8">
       <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 px-4 py-1.5 text-emerald-300 text-xs font-semibold uppercase tracking-widest">
-        MISA Approved &middot; HCDP Aligned &middot; Vision 2030 Partner
+        MISA Approved &middot; HCDP Aligned &middot; Vision 2030 Portal
       </span>
 
       <p className="mt-8 font-serif italic text-3xl sm:text-4xl leading-snug text-slate-100 max-w-3xl">
