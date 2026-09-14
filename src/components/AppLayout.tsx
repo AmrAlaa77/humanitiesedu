@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import Navbar from '@/components/humantic/Navbar';
 import HumanReel from '@/components/humantic/HumanReel';
 import NarrativeReel from '@/components/humantic/NarrativeReel';
-import HeroLink from '@/components/humantic/HeroLink';
-import AwarenessJourneyLink from '@/components/humantic/AwarenessJourneyLink';
+import TeaserTabs from '@/components/humantic/TeaserTabs';
 
 import Assessment from '@/components/humantic/Assessment';
 import Deliverables from '@/components/humantic/Deliverables';
 import Pillar from '@/components/humantic/Pillar';
-import JourneyLink from '@/components/humantic/JourneyLink';
-import QualityOfLifeLink from '@/components/humantic/QualityOfLifeLink';
 import NationalIndex from '@/components/humantic/NationalIndex';
 import Footer from '@/components/humantic/Footer';
 import AccessModal from '@/components/humantic/AccessModal';
@@ -61,11 +58,8 @@ const AppLayout: React.FC = () => {
 
           <Reveal variant="up" repeat>
             <section className="relative py-20 sm:py-28">
-              <div className="max-w-7xl mx-auto grid gap-6 px-5 sm:px-8">
-                <HeroLink />
-                <QualityOfLifeLink />
-                <JourneyLink />
-                <AwarenessJourneyLink />
+              <div className="max-w-7xl mx-auto px-5 sm:px-8">
+                <TeaserTabs />
               </div>
             </section>
           </Reveal>
