@@ -62,12 +62,13 @@ const WhoWeAre: React.FC = () => (
           'Organizational Behavior & Team Dynamics Assessment',
           'Behavioral Risk & Productivity Metrics',
         ].map((label) => (
-          <span
+          <a
             key={label}
-            className="text-[11px] font-semibold text-emerald-300 bg-emerald-400/10 border border-emerald-400/25 px-2.5 py-1 rounded-full"
+            href="#assessment"
+            className="text-[11px] font-semibold text-emerald-300 bg-emerald-400/10 border border-emerald-400/25 px-2.5 py-1 rounded-full transition-colors hover:bg-emerald-400/20 hover:border-emerald-400/40"
           >
             {label}
-          </span>
+          </a>
         ))}
       </div>
       <p className="mt-4 text-xs leading-relaxed text-slate-400">
