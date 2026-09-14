@@ -131,7 +131,7 @@ const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             onMouseLeave={onCtaLeave}
             className="px-5 py-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 text-sm font-semibold hover:opacity-90 transition-[opacity,transform] duration-150 ease-out will-change-transform shadow-lg shadow-emerald-500/20"
           >
-            Request Customization Meeting
+            Book a Meeting
           </button>
         </div>
 
@@ -182,7 +182,7 @@ const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             AURION ONE
           </Link>
           <button onClick={() => { setOpen(false); onCta(); }} className="w-full mt-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 text-slate-950 font-semibold transition active:scale-[0.97]">
-            Request Customization Meeting
+            Book a Meeting
           </button>
         </div>
       </div>

@@ -27,6 +27,8 @@ type Deliverable = {
 
 type InitiativeStat = { icon: React.ComponentType<{ className?: string }>; value: string; label: string };
 
+type InitiativePhase = { label: string; description: string };
+
 type Initiative = {
   eyebrow?: string;
   title: string;
@@ -35,6 +37,7 @@ type Initiative = {
   featuresLabel?: string;
   features?: string[];
   quote?: string;
+  phases?: { title: string; subtitle?: string; items: InitiativePhase[] };
 };
 
 const categories: { key: string; label: string; icon: React.ComponentType<{ className?: string }>; items: Deliverable[] }[] = [
@@ -1514,6 +1517,22 @@ const initiatives: Record<string, Initiative> = {
       { icon: Users, value: '140M', label: 'young people aged 10–24 across MENA' },
       { icon: Heart, value: '50 / 75%', label: 'of lifetime wellbeing issues begin by age 14 / 24' },
     ],
+    phases: {
+      title: 'Phases Of The Initiative',
+      subtitle: 'Quality of Life, On Campus and Beyond',
+      items: [
+        {
+          label: 'Phase 1 · Year 1 & 2',
+          description:
+            'Humantic Digital serves a diverse ecosystem: institutions advancing preventative care, Quality of Life Program 2030 pillars, and UN-Habitat QoL benchmarks; providers delivering better outcomes; insurers reducing costs; and government entities advancing Vision 2030 education and healthcare goals.',
+        },
+        {
+          label: 'Digital + AI-Integrated Assessment · Year 2',
+          description:
+            "Year 2 founding phase in which this definitive national dataset carries an incubator institution's name — establishing its first-mover status as the definitive voice in real-time wellbeing analytics, and positioning health and wellbeing education as a new national strategic imperative.",
+        },
+      ],
+    },
   },
   health: {
     eyebrow: 'Initiative 2 · Preventive Health',
@@ -1599,6 +1618,23 @@ const InitiativeBanner: React.FC<{ initiative: Initiative }> = ({ initiative }) 
             </li>
           ))}
         </ul>
+      </div>
+    )}
+
+    {initiative.phases && (
+      <div className="mt-8">
+        <p className="text-white text-lg font-bold">{initiative.phases.title}</p>
+        {initiative.phases.subtitle && (
+          <p className="mt-1 text-emerald-400 text-xs font-semibold uppercase tracking-widest">{initiative.phases.subtitle}</p>
+        )}
+        <div className="mt-4 space-y-4">
+          {initiative.phases.items.map((phase) => (
+            <div key={phase.label} className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+              <p className="text-emerald-400 text-xs font-bold uppercase tracking-widest mb-2">{phase.label}</p>
+              <p className="text-slate-300 text-sm leading-relaxed">{phase.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     )}
 
