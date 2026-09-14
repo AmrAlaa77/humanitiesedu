@@ -29,7 +29,14 @@ const Pledge: React.FC = () => (
         profitable — and as humanly possible as it is grand.
       </p>
 
-      <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
+      <div className="mt-14">
+        <span className="text-emerald-400 text-xs font-semibold uppercase tracking-widest">The Humantic Edge</span>
+        <h3 className="mt-3 font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight max-w-2xl">
+          Strategy, science and humanity &mdash; brought together differently.
+        </h3>
+      </div>
+
+      <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
         {pledgeItems.map((p) => (
           <div key={p.label} className="bg-white/[0.05] p-6 transition-colors duration-300 hover:bg-emerald-500/[0.08]">
             <p className="text-emerald-400 text-xs font-bold uppercase tracking-widest mb-2">{p.label}</p>
