@@ -118,6 +118,9 @@ const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           <Link to="/wellbeing-index" className="text-sm font-medium text-slate-300 hover:text-white transition">
             Wellbeing Index
           </Link>
+          <Link to="/nextgen-2030" className="text-sm font-medium text-slate-300 hover:text-white transition">
+            NextGen 2030
+          </Link>
           <Link to="/aurion" className="text-sm font-medium bg-gradient-to-r from-teal-200 to-cyan-300 bg-clip-text text-transparent hover:opacity-80 transition">
             AURION ONE
           </Link>
@@ -177,6 +180,9 @@ const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           </Link>
           <Link to="/wellbeing-index" onClick={() => setOpen(false)} className="block w-full text-left py-1.5 text-slate-200">
             Wellbeing Index
+          </Link>
+          <Link to="/nextgen-2030" onClick={() => setOpen(false)} className="block w-full text-left py-1.5 text-slate-200">
+            NextGen 2030
           </Link>
           <Link to="/aurion" onClick={() => setOpen(false)} className="block w-full text-left py-1.5 font-medium bg-gradient-to-r from-teal-200 to-cyan-300 bg-clip-text text-transparent">
             AURION ONE
