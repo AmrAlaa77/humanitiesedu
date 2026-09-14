@@ -39,7 +39,7 @@ const ExperienceLink: React.FC = () => {
                 Human + Digital Intelligence
               </p>
               <h3 className="mt-3 text-2xl sm:text-4xl font-bold text-white tracking-tight max-w-xl">
-                Where behaviour becomes data.{' '}
+                Digital intelligence. Deeply human.{' '}
                 <span className="text-emerald-300">And data becomes capability.</span>
               </h3>
               <p className="mt-3 text-slate-400 max-w-lg leading-relaxed">

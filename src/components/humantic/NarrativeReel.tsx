@@ -268,6 +268,11 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             <p className="mt-4 font-serif text-base sm:text-lg font-semibold italic text-white/90">
               Where Biology, Behavioral Science and Business Collide.
             </p>
+            <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-300">
+              We converge education, behavioural science and organisational-behaviour metrics into a
+              single operating model &mdash; engineering safer, more human-centred institutions across
+              how people live, work, and belong.
+            </p>
             <p className="mt-4 text-xs leading-relaxed text-slate-400">
               Rooted in Vision 2030&rsquo;s pillars and ministries&rsquo; mandates, commanded by Crown
               Prince Mohammed bin Salman &mdash; directly supporting the Human Capability Development
