@@ -48,7 +48,6 @@ const AppLayout: React.FC = () => {
           </Reveal>
 
           <AwarenessJourney />
-          <HeroLink />
 
           <Reveal variant="right" repeat>
             <NationalIndex />
@@ -62,12 +61,14 @@ const AppLayout: React.FC = () => {
             <Deliverables />
           </Reveal>
 
-          <Reveal variant="right" repeat>
-            <JourneyLink />
-          </Reveal>
-
-          <Reveal variant="zoom" repeat>
-            <QualityOfLifeLink />
+          <Reveal variant="up" repeat>
+            <section className="relative py-20 sm:py-28">
+              <div className="max-w-5xl mx-auto grid gap-6 px-5 sm:grid-cols-2 sm:px-8">
+                <HeroLink />
+                <QualityOfLifeLink />
+                <JourneyLink />
+              </div>
+            </section>
           </Reveal>
         </main>
         <Footer />

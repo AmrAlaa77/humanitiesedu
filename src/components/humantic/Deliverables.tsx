@@ -1891,8 +1891,12 @@ const Deliverables: React.FC = () => {
             <GraduationCap className="w-5 h-5 text-emerald-300" />
           </div>
           <div>
-            <p className="text-white font-semibold text-lg">British Certification for All</p>
+            <p className="text-white font-semibold text-lg">British Certification</p>
             <p className="mt-1 text-slate-300 text-sm sm:text-base leading-relaxed">
+              Our programmes carry the rigour of renowned British awarding and accreditation bodies
+              &mdash; whose recognition speaks to the standards we uphold and of which we are proud members.
+            </p>
+            <p className="mt-2 text-slate-300 text-sm sm:text-base leading-relaxed">
               Book more than 40 development days and every participant receives a British certification.
             </p>
           </div>
