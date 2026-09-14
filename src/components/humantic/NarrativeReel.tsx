@@ -59,14 +59,12 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
       eased.current.x += (mouse.current.x - eased.current.x) * 0.06;
       eased.current.y += (mouse.current.y - eased.current.y) * 0.06;
       const { x, y } = eased.current;
-      const t = scrollT.current;
 
       if (gridRef.current) gridRef.current.style.transform = `translate3d(${x * 8}px, ${y * 8}px, 0)`;
       if (glowRef.current) glowRef.current.style.transform = `translate3d(calc(-50% + ${x * 34}px), ${y * 34}px, 0)`;
       if (starsRef.current) starsRef.current.style.transform = `translate3d(${x * 16}px, ${y * 16}px, 0)`;
       if (contentRef.current) {
-        contentRef.current.style.transform = `translate3d(${x * 6}px, ${y * 6 - t * 60}px, 0)`;
-        contentRef.current.style.opacity = `${1 - t * 1.1}`;
+        contentRef.current.style.transform = `translate3d(${x * 6}px, ${y * 6}px, 0)`;
       }
 
       raf.current = requestAnimationFrame(tick);
@@ -182,13 +180,6 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           MISA APPROVED
         </span>
       </div>
-
-      {/* Top-right nav */}
-      <nav className="absolute top-8 right-6 sm:right-10 z-30 hidden md:flex items-center gap-9 text-sm font-semibold tracking-[0.12em]">
-        <a href="#top" className="text-white/90 transition hover:text-white">HOME</a>
-        <a href="#platform" className="text-slate-400 transition hover:text-white">PLATFORM</a>
-        <a href="#assessment" className="text-slate-400 transition hover:text-white">HEALTHCONSULTING</a>
-      </nav>
 
       {/* Section label + headline + CTA — drifts + fades with scroll, opposite the background layers for depth */}
       <div ref={contentRef} className="relative z-20 mx-auto max-w-6xl px-6 pt-48 sm:pt-56 will-change-transform">
