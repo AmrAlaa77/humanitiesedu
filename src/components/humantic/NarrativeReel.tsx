@@ -273,6 +273,21 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               single operating model &mdash; engineering safer, more human-centred institutions across
               how people live, work, and belong.
             </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {[
+                'Organizational Behavior & Productivity Assessment',
+                'Behavioral Risk & Safety Assessment',
+                'Leadership & Team Dynamics Assessment',
+                'Wellbeing & Resilience Index',
+              ].map((label) => (
+                <span
+                  key={label}
+                  className="text-[11px] font-semibold text-emerald-300 bg-emerald-400/10 border border-emerald-400/25 px-2.5 py-1 rounded-full"
+                >
+                  {label}
+                </span>
+              ))}
+            </div>
             <p className="mt-4 text-xs leading-relaxed text-slate-400">
               Rooted in Vision 2030&rsquo;s pillars and ministries&rsquo; mandates, commanded by Crown
               Prince Mohammed bin Salman &mdash; directly supporting the Human Capability Development
