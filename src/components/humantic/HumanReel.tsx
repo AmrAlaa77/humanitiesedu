@@ -277,6 +277,13 @@ const HumanReel: React.FC = () => {
           onMouseEnter={() => !playing && setHovering(true)}
           onMouseLeave={() => setHovering(false)}
           onClick={openReel}
+          onTouchEnd={(e) => {
+            // Mobile browsers often treat the mouseenter handler above as a "hover" state,
+            // eating the first tap and requiring a second one to fire onClick. Handling
+            // touchend directly opens the reel on the very first tap instead.
+            e.preventDefault();
+            openReel();
+          }}
           className="overflow-hidden"
           style={{
             position: 'absolute',
