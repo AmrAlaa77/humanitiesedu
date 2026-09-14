@@ -275,10 +275,8 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {[
-                'Organizational Behavior & Productivity Assessment',
-                'Behavioral Risk & Safety Assessment',
-                'Leadership & Team Dynamics Assessment',
-                'Wellbeing & Resilience Index',
+                'Organizational Behavior & Team Dynamics Assessment',
+                'Behavioral Risk & Productivity Metrics',
               ].map((label) => (
                 <span
                   key={label}

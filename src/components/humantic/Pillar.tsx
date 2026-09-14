@@ -1,5 +1,5 @@
 import React from 'react';
-import { Brain, Activity, Waves, GitBranch, Users, Gauge } from 'lucide-react';
+import { Brain, Activity, Waves, GitBranch, Users, Gauge, ArrowRight } from 'lucide-react';
 import { useInView } from '@/hooks/use-in-view';
 
 const metrics = [
@@ -54,11 +54,20 @@ const Pillar: React.FC = () => {
             operational momentum.
           </p>
 
-          <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5">
-            <Brain className="w-4 h-4 text-emerald-300" />
-            <span className="text-slate-300 text-sm font-medium tracking-wide uppercase">
-              Organisational behavior
-            </span>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5">
+              <Brain className="w-4 h-4 text-emerald-300" />
+              <span className="text-slate-300 text-sm font-medium tracking-wide uppercase">
+                Organisational behavior
+              </span>
+            </div>
+            <a
+              href="#assessment"
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition-transform duration-150 ease-out hover:opacity-90"
+            >
+              Get Your Behavioral Assessment
+              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+            </a>
           </div>
           </div>
 
