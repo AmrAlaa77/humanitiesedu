@@ -14,7 +14,7 @@ const pledgeItems = [
   {
     label: 'Accreditation · Certification & Professional Development',
     desc:
-      'UK-aligned academic validation frameworks. Our programmes carry the rigour of a London-based certified professional development awarding body, and its recognition speaks to the standards we uphold and of which we are proud members. Exclusive for Saudi nationals — through B2G, B2B and B2C, we offer semi/fully funded British certification programmes.',
+      'UK-aligned academic validation frameworks. We formed joint ventures and partnerships with British colleges and organisations that are members of leading British accreditation bodies, whose recognition speaks to the standards we uphold. Exclusive for Saudi nationals — through B2G, B2B and B2C, we offer semi/fully funded British certification programmes.',
   },
 ];
 
