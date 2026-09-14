@@ -189,7 +189,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
       </nav>
 
       {/* Section label + headline + CTA — drifts + fades with scroll, opposite the background layers for depth */}
-      <div ref={contentRef} className="relative z-20 mx-auto max-w-6xl px-6 pt-32 sm:pt-36 will-change-transform">
+      <div ref={contentRef} className="relative z-20 mx-auto max-w-6xl px-6 pt-48 sm:pt-56 will-change-transform">
         {/* Headline — sized to match the rest of the site's section headings */}
         <h1 className="font-serif text-3xl sm:text-5xl font-bold leading-tight tracking-tight text-slate-100">
           Let&rsquo;s realign{' '}
