@@ -51,14 +51,14 @@ const AppLayout: React.FC = () => {
             </p>
           </section>
 
+          <Reveal variant="up" repeat>
+            <WhoWeAre />
+          </Reveal>
+
           <NarrativeReel onCta={() => setModalOpen(true)} />
 
           <Reveal variant="left" repeat>
             <LivingMatrix />
-          </Reveal>
-
-          <Reveal variant="up" repeat>
-            <WhoWeAre />
           </Reveal>
 
           <ExperienceLink />
