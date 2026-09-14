@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowRight, Instagram, Dribbble } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Instagram, Dribbble } from 'lucide-react';
 import Vision2030Contribution from './Vision2030Contribution';
 import Pledge from './Pledge';
 
@@ -294,6 +294,41 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
           </button>
         </div>
+
+        {/* Experience card — merged in from the standalone ExperienceLink section */}
+        <a
+          href="/experience"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative mt-20 block overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 via-slate-950 to-black p-8 sm:p-12 transition-all duration-700 ease-out hover:border-emerald-400/40"
+        >
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-emerald-400/10 blur-3xl transition-opacity duration-500 group-hover:opacity-100 opacity-60"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -left-16 bottom-0 h-56 w-56 rounded-full bg-cyan-400/10 blur-3xl"
+          />
+          <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-emerald-400 text-xs font-semibold uppercase tracking-[0.2em]">
+                Human + Digital Intelligence
+              </p>
+              <h3 className="mt-3 text-2xl sm:text-4xl font-bold text-white tracking-tight max-w-xl">
+                Digital intelligence. Deeply human.{' '}
+                <span className="text-emerald-300">And data becomes capability.</span>
+              </h3>
+              <p className="mt-3 text-slate-400 max-w-lg leading-relaxed">
+                Step inside the human engine &mdash; a luminous, living brain rendered in real time.
+              </p>
+            </div>
+            <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-6 py-3 text-sm font-semibold text-emerald-200 transition-transform duration-300 group-hover:translate-x-1">
+              Enter the experience
+              <ArrowUpRight className="h-4 w-4" />
+            </span>
+          </div>
+        </a>
 
       </div>
 

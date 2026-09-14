@@ -3,7 +3,6 @@ import Navbar from '@/components/humantic/Navbar';
 import HumanReel from '@/components/humantic/HumanReel';
 import AwarenessJourney from '@/components/humantic/AwarenessJourney';
 import NarrativeReel from '@/components/humantic/NarrativeReel';
-import ExperienceLink from '@/components/humantic/ExperienceLink';
 import HeroLink from '@/components/humantic/HeroLink';
 
 import Assessment from '@/components/humantic/Assessment';
@@ -42,8 +41,6 @@ const AppLayout: React.FC = () => {
           <HumanReel />
 
           <NarrativeReel onCta={() => setModalOpen(true)} />
-
-          <ExperienceLink />
 
           <Reveal variant="left" repeat>
             <LivingMatrix />
