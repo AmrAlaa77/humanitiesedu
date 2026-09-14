@@ -40,6 +40,12 @@ const initiatives = [
     title: 'Global Knowledge Integration',
     desc: 'We spanned 5 continents, significantly expanding our reach — dedicated to improving productivity and wellbeing, we delivered our awareness programmes to prominent multinational organisations like Microsoft, Unilever, Shell, Mubadala and Mars across diverse regions (UAE, Korea, KSA, Qatar, Japan, Brazil and the USA), adopting a people-first approach that recognises the intrinsic value of individuals and prioritises their wellbeing as a strategic business imperative.',
   },
+  {
+    icon: Compass,
+    year: '2023–2026',
+    title: 'Vision 2030 Contribution',
+    desc: 'GCC Vision 2030-focused: our holistic human development strategy — integrating cognitive, emotional, social and somatic aspects alongside business management principles — addresses real human needs with evidence-based solutions for the modern market. We drive meaningful change through the Saudi Career Development Programme (SCDP) and Talent Incubation Programme, alongside science-backed wellbeing partnerships with UAE ruling-family-chaired companies, built on scientific research and practical experience across more than 120 organisations on five continents.',
+  },
 ];
 
 const accreditations = [
