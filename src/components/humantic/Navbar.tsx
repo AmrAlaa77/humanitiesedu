@@ -99,6 +99,14 @@ const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               />
             </button>
           ))}
+          <a
+            href="/experience"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-emerald-300 hover:text-emerald-200 transition"
+          >
+            Experience
+          </a>
           <Link to="/aurion" className="text-sm font-medium bg-gradient-to-r from-teal-200 to-cyan-300 bg-clip-text text-transparent hover:opacity-80 transition">
             AURION ONE
           </Link>
@@ -138,6 +146,15 @@ const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               {l.label}
             </button>
           ))}
+          <a
+            href="/experience"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="block w-full text-left py-1.5 font-medium text-emerald-300"
+          >
+            Experience
+          </a>
           <Link to="/aurion" onClick={() => setOpen(false)} className="block w-full text-left py-1.5 font-medium bg-gradient-to-r from-teal-200 to-cyan-300 bg-clip-text text-transparent">
             AURION ONE
           </Link>
