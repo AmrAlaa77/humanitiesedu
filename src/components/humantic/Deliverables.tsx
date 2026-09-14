@@ -1886,22 +1886,6 @@ const Deliverables: React.FC = () => {
           </p>
         </div>
 
-        <div className="mb-10 flex items-start gap-4 rounded-2xl border border-emerald-400/25 bg-gradient-to-r from-emerald-400/10 to-cyan-500/5 p-5 sm:p-6">
-          <div className="shrink-0 w-11 h-11 rounded-xl bg-emerald-400/15 border border-emerald-400/25 flex items-center justify-center">
-            <GraduationCap className="w-5 h-5 text-emerald-300" />
-          </div>
-          <div>
-            <p className="text-white font-semibold text-lg">British Certification</p>
-            <p className="mt-1 text-slate-300 text-sm sm:text-base leading-relaxed">
-              Our programmes carry the rigour of renowned British awarding and accreditation bodies
-              &mdash; whose recognition speaks to the standards we uphold and of which we are proud members.
-            </p>
-            <p className="mt-2 text-slate-300 text-sm sm:text-base leading-relaxed">
-              Book more than 40 development days and every participant receives a British certification.
-            </p>
-          </div>
-        </div>
-
         {/* category picker -- cards on a helix, not a flat grid: they orbit a shared vertical
             axis and spiral downward as they go around, auto-rotating (pauses on hover so it can
             actually be clicked). Clicking one reveals its full detail below, same as before. */}

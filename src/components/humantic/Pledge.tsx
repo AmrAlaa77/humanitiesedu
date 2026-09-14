@@ -1,10 +1,23 @@
 import React from 'react';
 
 const pledgeItems = [
-  { label: 'MISA Approved', desc: 'Fully licensed by the Ministry of Investment of Saudi Arabia' },
-  { label: 'Saudi Vision 2030', desc: 'Quality of Life · Health Transformation · Human Capability Development' },
+  {
+    label: 'MISA Approved',
+    desc:
+      'National & Regulatory Frameworks — officially approved through MISA (Ministry of Investment) and the Saudi Business Center, and via the Saudi Vision 2030 portal (Invest Saudi).',
+  },
+  {
+    label: 'Saudi Vision 2030',
+    desc:
+      "National Priority Alignment — the approval process requires demonstrating how the enterprise directly advances Vision 2030 pillars, specifically the Human Capability Development Program and the Health, Wellbeing and Quality of Life Initiatives, by modernizing human capital and organizational behavioral infrastructure. An enterprise officially sanctioned to pioneer high-impact sectors within the Kingdom.",
+  },
   { label: 'UN SDG 3 · UN Habitat', desc: 'Good Health & Wellbeing — our clinical foundation and global mandate' },
   { label: 'Our Pledge', desc: 'Designing the future. As humanly possible. One human at a time.' },
+  {
+    label: 'Accreditation',
+    desc:
+      'UK-aligned academic validation frameworks. Our programmes carry the rigour of renowned British awarding and accreditation bodies — whose recognition speaks to the standards we uphold and of which we are proud members. Book more than 40 development days and every participant receives a British certification.',
+  },
 ];
 
 const Pledge: React.FC = () => (
