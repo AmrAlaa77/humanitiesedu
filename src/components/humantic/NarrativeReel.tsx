@@ -43,7 +43,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   const raf = useRef<number>();
 
   const yearsCount = useInView<HTMLSpanElement>({ once: false });
-  const years = useCountUp(17, yearsCount.inView);
+  const years = useCountUp(17, yearsCount.inView, 4500);
 
   useEffect(() => {
     const onMove = (e: PointerEvent) => {
