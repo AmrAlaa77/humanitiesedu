@@ -149,11 +149,6 @@ const HumanReel: React.FC = () => {
         <LondonClock />
       </div>
 
-      {/* Bottom-left: location */}
-      <div className="absolute bottom-6 left-6 sm:left-10 z-30 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">
-        LONDON — EST. 2026
-      </div>
-
       {/* Bottom-right: scroll marquee */}
       <div className="absolute bottom-6 right-6 sm:right-10 z-30 w-40 overflow-hidden sm:w-56">
         <div className="flex whitespace-nowrap font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-white/50" style={{ animation: 'humanMarquee 9s linear infinite' }}>
