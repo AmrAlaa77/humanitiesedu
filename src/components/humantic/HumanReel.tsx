@@ -139,6 +139,16 @@ const HumanReel: React.FC = () => {
 
   return (
     <section id="top" className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-[#020617] text-white">
+      {/* Same ambient glow as the rest of the page, rendered locally here since this section's
+          own opaque background would otherwise block the fixed AmbientBackground/TwinklingStarfield
+          layers behind it -- without this, the boundary where this section ends reads as a visible
+          seam (flat black here, glowing everywhere else). */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute -top-32 -left-24 h-[34rem] w-[34rem] rounded-full bg-emerald-500/10 blur-[90px]" />
+        <div className="absolute top-1/3 -right-32 h-[40rem] w-[40rem] rounded-full bg-cyan-500/10 blur-[90px]" />
+        <div className="absolute bottom-0 left-1/4 h-[30rem] w-[30rem] rounded-full bg-indigo-500/10 blur-[90px]" />
+      </div>
+
       {/* Top-left: brand + counter */}
       <div className="absolute top-6 left-6 sm:left-10 z-30 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80">
         HUMAN <span className="text-white/40">®</span> / 01
