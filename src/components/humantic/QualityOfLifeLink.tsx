@@ -27,20 +27,20 @@ const QualityOfLifeLink: React.FC = () => {
         aria-hidden
         className="pointer-events-none absolute -left-16 bottom-0 h-56 w-56 rounded-full bg-cyan-400/10 blur-3xl"
       />
-      <div className="relative flex flex-col gap-6">
+      <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-[0.2em]">
             UN Habitat Quality of Life
           </p>
-          <h3 className="mt-3 text-2xl sm:text-4xl font-bold text-white tracking-tight">
+          <h3 className="mt-3 text-2xl sm:text-4xl font-bold text-white tracking-tight max-w-xl">
             QoL 2030 Initiative
           </h3>
-          <p className="mt-3 text-slate-400 leading-relaxed">
+          <p className="mt-3 text-slate-400 max-w-lg leading-relaxed">
             Measurable. Human. City. Country. Continent. &mdash; how one assessed individual
             becomes a national baseline.
           </p>
         </div>
-        <span className="inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-6 py-3 text-sm font-semibold text-emerald-200 transition-transform duration-300 group-hover:translate-x-1">
+        <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-6 py-3 text-sm font-semibold text-emerald-200 transition-transform duration-300 group-hover:translate-x-1">
           See the initiative
           <ArrowUpRight className="h-4 w-4" />
         </span>

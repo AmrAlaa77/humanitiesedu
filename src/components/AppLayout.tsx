@@ -61,7 +61,7 @@ const AppLayout: React.FC = () => {
 
           <Reveal variant="up" repeat>
             <section className="relative py-20 sm:py-28">
-              <div className="max-w-5xl mx-auto grid gap-6 px-5 sm:grid-cols-2 sm:px-8">
+              <div className="max-w-7xl mx-auto grid gap-6 px-5 sm:px-8">
                 <HeroLink />
                 <QualityOfLifeLink />
                 <JourneyLink />
