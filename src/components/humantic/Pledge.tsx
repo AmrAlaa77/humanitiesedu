@@ -14,7 +14,7 @@ const pledgeItems = [
   {
     label: 'Accreditation',
     desc:
-      'UK-aligned academic validation frameworks. Our programmes carry the rigour of renowned British awarding and accreditation bodies — whose recognition speaks to the standards we uphold and of which we are proud members. Book more than 40 development days and every participant receives a British certification.',
+      'UK-aligned academic validation frameworks. Our programmes carry the rigour of renowned British awarding and accreditation bodies — whose recognition speaks to the standards we uphold and of which we are proud members. Exclusive for Saudi nationals — through B2G, B2B and B2C, we offer semi/fully funded British certification programmes.',
   },
 ];
 
