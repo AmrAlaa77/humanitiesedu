@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { ArrowRight, ArrowUpRight, Instagram, Dribbble } from 'lucide-react';
 import Vision2030Contribution from './Vision2030Contribution';
 import Pledge from './Pledge';
+import LivingMatrix from './LivingMatrix';
 
 /**
  * Editorial dark-navy hero matching the reference design, made interactive:
@@ -96,26 +97,9 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
       ref={sectionRef}
       className="relative min-h-[100svh] w-full overflow-hidden text-white"
     >
-      {/* Background as a gradient layer (not a flat bg- class) so it fades to transparent at the
-          very top and very bottom instead of cutting hard into the fixed AmbientBackground glow
-          sitting behind every section -- that glow is what was showing through as a hairline-then-
-          teal seam right where this opaque section ended and the next (transparent) one began. */}
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10"
-        style={{ background: 'linear-gradient(to bottom, transparent 0%, #020617 10%, #020617 90%, transparent 100%)' }}
-      />
-
-      {/* Cinematic frame: soft edge vignette + thin letterbox bars top and bottom, so this hero
-          reads as a film frame rather than a flat section. Purely decorative, above the ambient
-          layers but below the content. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1]"
-        style={{ boxShadow: 'inset 0 0 220px 60px rgba(2,6,23,0.75)' }}
-      />
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[7vh] z-[1] bg-gradient-to-b from-black/80 to-transparent" />
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[7vh] z-[1] bg-gradient-to-t from-black/80 to-transparent" />
+      {/* No local background/vignette layer here -- this section now shares the same fixed
+          AmbientBackground + TwinklingStarfield glow as every other section on the page, so there's
+          no seam where this section's own background used to end and the next one began. */}
 
       {/* Subtle grid lines — drifts gently with the cursor */}
       <div
@@ -293,6 +277,11 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             Get Your Behavioral Assessment
             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
           </button>
+        </div>
+
+        {/* Living Matrix — merged in, right after the bio-vitality title/CTA */}
+        <div className="mt-20">
+          <LivingMatrix />
         </div>
 
         {/* Experience card — merged in from the standalone ExperienceLink section */}
