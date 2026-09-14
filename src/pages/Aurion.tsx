@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, ChevronDown } from 'lucide-react';
 import AurionHero from '@/components/aurion/AurionHero';
 import AurionIntel from '@/components/aurion/AurionIntel';
+import Hero from '@/components/humantic/Hero';
 import VitalMonitoring from '@/components/humantic/VitalMonitoring';
 import AurionFeatures from '@/components/aurion/AurionFeatures';
 import AurionShowcase from '@/components/aurion/AurionShowcase';
@@ -35,6 +36,7 @@ const Aurion: React.FC = () => {
 
       <main>
         <AurionHero onCta={open} />
+        <Hero onCta={open} />
         <AurionIntel />
 
         {/* the rest of the page (monitoring detail, feature grid, showcase) stays collapsed by
