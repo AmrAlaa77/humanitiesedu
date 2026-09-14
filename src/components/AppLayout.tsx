@@ -41,14 +41,6 @@ const AppLayout: React.FC = () => {
               screenshots, not Hero. AwarenessJourney and Hero follow after. */}
           <HumanReel />
 
-          <section className="relative py-12 sm:py-16">
-            <p className="max-w-2xl mx-auto px-5 text-center italic text-base sm:text-lg leading-relaxed text-slate-300">
-              Every human has a story.
-              <br />
-              We listen beyond the data &mdash; to understand the human behind it.
-            </p>
-          </section>
-
           <NarrativeReel onCta={() => setModalOpen(true)} />
 
           <ExperienceLink />
