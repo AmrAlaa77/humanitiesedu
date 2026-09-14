@@ -20,9 +20,10 @@ const Pledge: React.FC = () => (
       </p>
 
       <p className="mt-6 text-slate-400 max-w-2xl leading-relaxed">
-        By uncovering the socio-behavioral and neurophysiological drivers of your organisation, we align your business with the Saudi
-        Vision 2030 Quality of Life goals. This ensures that the Kingdom&apos;s growth is as sustainable as it is
-        profitable — and as humanly possible as it is grand.
+        Conventional business analytics tell you what happened &mdash; the human baseline tells you why. We surface
+        the human signals beneath organisational performance, connecting neurophysiology, behaviour and digital
+        intelligence to build healthier, more sustainable ways of working. Aligned with Saudi Vision 2030&rsquo;s
+        Quality of Life goals, we make growth not only measurable and sustainable, but deeply human.
       </p>
 
       <div className="mt-14">
