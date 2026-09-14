@@ -34,8 +34,8 @@ const QoLPage: React.FC = () => (
 
       <main>
         <QualityOfLife />
-        <Vision2030Contribution />
         <Pledge />
+        <Vision2030Contribution />
         <SDGAlignment />
       </main>
 

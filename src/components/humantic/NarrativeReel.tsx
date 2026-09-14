@@ -263,8 +263,8 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
         {/* Vision 2030 Contribution + Pledge — sits between Who We Are and the bio-vitality title,
             still on this same glowing/twinkling section */}
         <div className="mb-20">
-          <Vision2030Contribution />
           <Pledge />
+          <Vision2030Contribution />
         </div>
 
         {/* Headline — sized to match the rest of the site's section headings */}
