@@ -42,6 +42,11 @@ const AppLayout: React.FC = () => {
               screenshots, not Hero. AwarenessJourney and Hero follow after. */}
           <HumanReel />
           <NarrativeReel onCta={() => setModalOpen(true)} />
+
+          <Reveal variant="left" repeat>
+            <LivingMatrix />
+          </Reveal>
+
           <ExperienceLink />
           <AwarenessJourney />
           <HeroLink />
@@ -60,10 +65,6 @@ const AppLayout: React.FC = () => {
 
           <Reveal variant="flip" repeat>
             <Pillar />
-          </Reveal>
-
-          <Reveal variant="left" repeat>
-            <LivingMatrix />
           </Reveal>
 
           <Reveal variant="right" repeat>
