@@ -149,20 +149,7 @@ const HumanReel: React.FC = () => {
         <LondonClock />
       </div>
 
-      {/* Bottom-right: scroll marquee */}
-      <div className="absolute bottom-6 right-6 sm:right-10 z-30 w-40 overflow-hidden sm:w-56">
-        <div className="flex whitespace-nowrap font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-white/50" style={{ animation: 'humanMarquee 9s linear infinite' }}>
-          <span className="pr-8">SCROLL TO EXPLORE →</span>
-          <span className="pr-8">SCROLL TO EXPLORE →</span>
-          <span className="pr-8">SCROLL TO EXPLORE →</span>
-        </div>
-      </div>
-
       <style>{`
-        @keyframes humanMarquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-33.333%); }
-        }
         @keyframes faceZoomTurn {
           0%   { transform: scale(1)    rotate(0deg); }
           35%  { transform: scale(1.32) rotate(-2.5deg); }
