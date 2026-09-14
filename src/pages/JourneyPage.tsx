@@ -28,8 +28,8 @@ const JourneyPage: React.FC = () => {
       </header>
 
       <main>
-        <Journey onCta={() => setModalOpen(true)} />
         <Evolution />
+        <Journey onCta={() => setModalOpen(true)} />
       </main>
 
       <Footer />
