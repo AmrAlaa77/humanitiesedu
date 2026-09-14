@@ -43,6 +43,10 @@ const AppLayout: React.FC = () => {
 
           <NarrativeReel onCta={() => setModalOpen(true)} />
 
+          <Reveal variant="flip" repeat>
+            <Pillar />
+          </Reveal>
+
           <AwarenessJourney />
           <HeroLink />
 
@@ -56,10 +60,6 @@ const AppLayout: React.FC = () => {
 
           <Reveal variant="up" repeat>
             <Deliverables />
-          </Reveal>
-
-          <Reveal variant="flip" repeat>
-            <Pillar />
           </Reveal>
 
           <Reveal variant="right" repeat>
