@@ -7,7 +7,6 @@ import TeaserTabs from '@/components/humantic/TeaserTabs';
 import Assessment from '@/components/humantic/Assessment';
 import Deliverables from '@/components/humantic/Deliverables';
 import Pillar from '@/components/humantic/Pillar';
-import NationalIndex from '@/components/humantic/NationalIndex';
 import Footer from '@/components/humantic/Footer';
 import AccessModal from '@/components/humantic/AccessModal';
 import GlowCursor from '@/components/humantic/GlowCursor';
@@ -42,10 +41,6 @@ const AppLayout: React.FC = () => {
 
           <Reveal variant="flip" repeat>
             <Pillar />
-          </Reveal>
-
-          <Reveal variant="right" repeat>
-            <NationalIndex />
           </Reveal>
 
           <Reveal variant="blur" repeat>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import Hero from '@/components/humantic/Hero';
+import NationalIndex from '@/components/humantic/NationalIndex';
 import Assessment from '@/components/humantic/Assessment';
 import Footer from '@/components/humantic/Footer';
 import AccessModal from '@/components/humantic/AccessModal';
@@ -36,6 +37,7 @@ const WellbeingIndexPage: React.FC = () => {
 
         <main>
           <Hero onCta={() => setModalOpen(true)} />
+          <NationalIndex />
           <Assessment />
         </main>
 
