@@ -106,14 +106,6 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           AmbientBackground + TwinklingStarfield glow as every other section on the page, so there's
           no seam where this section's own background used to end and the next one began. */}
 
-      {/* Semi-transparent fade at the very top, matching HumanReel's background color, so the
-          transition from that section blends smoothly instead of cutting hard into this one. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-40 sm:h-56 z-0"
-        style={{ background: 'linear-gradient(to bottom, #0f172a 0%, transparent 100%)' }}
-      />
-
       {/* Subtle grid lines — drifts gently with the cursor */}
       <div
         ref={gridRef}
