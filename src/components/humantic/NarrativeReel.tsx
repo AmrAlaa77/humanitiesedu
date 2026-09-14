@@ -3,6 +3,8 @@ import { ArrowRight, ArrowUpRight, Instagram, Dribbble } from 'lucide-react';
 import Vision2030Contribution from './Vision2030Contribution';
 import Pledge from './Pledge';
 import LivingMatrix from './LivingMatrix';
+import { useInView } from '@/hooks/use-in-view';
+import { useCountUp } from '@/hooks/use-count-up';
 
 /**
  * Editorial dark-navy hero matching the reference design, made interactive:
@@ -39,6 +41,9 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   const eased = useRef({ x: 0, y: 0 });
   const scrollT = useRef(0); // 0..1 progress through the hero's own height
   const raf = useRef<number>();
+
+  const yearsCount = useInView<HTMLSpanElement>({ once: false });
+  const years = useCountUp(17, yearsCount.inView);
 
   useEffect(() => {
     const onMove = (e: PointerEvent) => {
@@ -178,7 +183,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               <span className="text-emerald-400 text-xs font-semibold uppercase tracking-widest">Who We Are</span>
             </div>
             <h2 className="mt-4 font-serif text-2xl sm:text-4xl font-bold leading-tight tracking-tight text-white">
-              Seventeen years in human capital
+              <span ref={yearsCount.ref} className="tabular-nums">{years}</span> years in human capital
               <span className="block bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
                 made Humantic Digital what it is today.
               </span>

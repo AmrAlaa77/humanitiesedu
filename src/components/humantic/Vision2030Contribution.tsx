@@ -1,4 +1,12 @@
 import React from 'react';
+import { GraduationCap, Compass, HeartPulse } from 'lucide-react';
+
+const onSpotlightMove = (e: React.MouseEvent<HTMLElement>) => {
+  const el = e.currentTarget;
+  const r = el.getBoundingClientRect();
+  el.style.setProperty('--sx', `${e.clientX - r.left}px`);
+  el.style.setProperty('--sy', `${e.clientY - r.top}px`);
+};
 
 /**
  * The "Vision 2030 Contribution" card -- moved out of NarrativeReel's homepage hero (where it
@@ -9,7 +17,17 @@ import React from 'react';
 const Vision2030Contribution: React.FC = () => (
   <section className="relative py-16 sm:py-20">
     <div className="max-w-3xl mx-auto px-5 sm:px-8">
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-7">
+      <div
+        onMouseMove={onSpotlightMove}
+        style={{ '--sx': '50%', '--sy': '50%' } as React.CSSProperties}
+        className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-7"
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 hover:opacity-100"
+          style={{ background: 'radial-gradient(320px circle at var(--sx) var(--sy), rgba(56,189,248,0.10), transparent 70%)' }}
+        />
+        <div className="relative">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">2023&ndash;2026</p>
         <h3 className="mt-2 font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
           Vision 2030 Contribution
@@ -21,7 +39,8 @@ const Vision2030Contribution: React.FC = () => (
           <li>
             <details className="group">
               <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+                <span className="mb-1.5 inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+                  <GraduationCap className="h-3 w-3" />
                   Human Capability Development
                 </span>
                 <span className="line-clamp-2 group-open:hidden">
@@ -39,7 +58,8 @@ const Vision2030Contribution: React.FC = () => (
           <li>
             <details className="group">
               <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+                <span className="mb-1.5 inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+                  <Compass className="h-3 w-3" />
                   Tourism &amp; Quality of Life 2030
                 </span>
                 <span className="line-clamp-2 group-open:hidden">
@@ -61,7 +81,8 @@ const Vision2030Contribution: React.FC = () => (
           <li>
             <details className="group">
               <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                <span className="mb-1.5 inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+                <span className="mb-1.5 inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+                  <HeartPulse className="h-3 w-3" />
                   A Call to Serve &middot; Healthcare
                 </span>
                 <span className="line-clamp-2 group-open:hidden">
@@ -79,6 +100,7 @@ const Vision2030Contribution: React.FC = () => (
             </details>
           </li>
         </ul>
+        </div>
       </div>
     </div>
   </section>
