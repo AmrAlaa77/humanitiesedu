@@ -279,12 +279,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           </button>
         </div>
 
-        {/* Living Matrix — merged in, right after the bio-vitality title/CTA */}
-        <div className="mt-20">
-          <LivingMatrix />
-        </div>
-
-        {/* Experience card — merged in from the standalone ExperienceLink section */}
+        {/* Experience card — pushed higher, right after the bio-vitality title/CTA */}
         <a
           href="/experience"
           target="_blank"
@@ -318,6 +313,11 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             </span>
           </div>
         </a>
+
+        {/* Living Matrix */}
+        <div className="mt-20">
+          <LivingMatrix />
+        </div>
 
       </div>
 
