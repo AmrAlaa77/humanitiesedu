@@ -19,11 +19,7 @@ const Pledge: React.FC = () => (
         <span className="text-emerald-400">baseline of human health.</span>&rdquo;
       </p>
 
-      <p className="mt-6 text-emerald-300 font-semibold max-w-2xl leading-relaxed">
-        Seventeen years in human health and development made Humantic Digital what it is today.
-      </p>
-
-      <p className="mt-4 text-slate-400 max-w-2xl leading-relaxed">
+      <p className="mt-6 text-slate-400 max-w-2xl leading-relaxed">
         By uncovering the neurophysiological drivers of your organisation, we align your business with the Saudi
         Vision 2030 Quality of Life goals. This ensures that the Kingdom&apos;s growth is as sustainable as it is
         profitable — and as humanly possible as it is grand.

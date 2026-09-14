@@ -194,9 +194,9 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
               <span className="text-emerald-400 text-xs font-semibold uppercase tracking-widest">Who We Are</span>
             </div>
             <h2 className="mt-4 font-serif text-2xl sm:text-4xl font-bold leading-tight tracking-tight text-white">
-              These 17 years are
+              Seventeen years in human health and development
               <span className="block bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
-                what made Humantic Digital what it is today.
+                made Humantic Digital what it is today.
               </span>
             </h2>
             <details className="group mt-5">
