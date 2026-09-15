@@ -40,7 +40,7 @@ const AmbientBackground: React.FC = () => {
   }, []);
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#020617]">
       <div ref={b1} className="absolute -top-32 -left-24 h-[34rem] w-[34rem] rounded-full bg-emerald-500/10 blur-[90px] will-change-transform" />
       <div ref={b2} className="absolute top-1/3 -right-32 h-[40rem] w-[40rem] rounded-full bg-cyan-500/10 blur-[90px] will-change-transform" />
       <div ref={b3} className="absolute bottom-0 left-1/4 h-[30rem] w-[30rem] rounded-full bg-indigo-500/10 blur-[90px] will-change-transform" />
