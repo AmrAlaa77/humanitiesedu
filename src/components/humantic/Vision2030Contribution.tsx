@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraduationCap, Compass, HeartPulse, Building2 } from 'lucide-react';
+import { GraduationCap, Compass, HeartPulse, Building2, Users } from 'lucide-react';
 
 const onSpotlightMove = (e: React.MouseEvent<HTMLElement>) => {
   const el = e.currentTarget;
@@ -130,6 +130,27 @@ const Vision2030Contribution: React.FC = () => (
                   Participants learn to implement powerful psychological models, empowering them to
                   effectively connect, design, and integrate business and leadership strategies that
                   yield sustainable results.
+                </span>
+                <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
+              </summary>
+            </details>
+          </li>
+          <li>
+            <details className="group">
+              <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span className="mb-1.5 inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+                  <Users className="h-3 w-3" />
+                  GCC Team Building &amp; Executive Retreats
+                </span>
+                <span className="line-clamp-2 group-open:hidden">
+                  Across the UAE, Saudi Arabia and Kuwait, we design team building and executive retreats
+                  that anchor strategic annual goal-setting in behavioural science.
+                </span>
+                <span className="hidden group-open:inline">
+                  Across the UAE, Saudi Arabia and Kuwait, we design team building and executive retreats
+                  that anchor strategic annual goal-setting in behavioural science &mdash; aligning
+                  leadership teams around shared priorities while strengthening the human connections
+                  that make those priorities achievable.
                 </span>
                 <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
               </summary>
