@@ -3,6 +3,7 @@ import Navbar from '@/components/humantic/Navbar';
 import HumanReel from '@/components/humantic/HumanReel';
 import NarrativeReel from '@/components/humantic/NarrativeReel';
 import TeaserTabs from '@/components/humantic/TeaserTabs';
+import TrustedAcross from '@/components/humantic/TrustedAcross';
 
 import Assessment from '@/components/humantic/Assessment';
 import Deliverables from '@/components/humantic/Deliverables';
@@ -57,6 +58,13 @@ const AppLayout: React.FC = () => {
                 <TeaserTabs />
               </div>
             </section>
+          </Reveal>
+
+          {/* "Trusted Across" partner rail -- moved here from the Founder page per request, so
+              it closes out the homepage right after the teaser tabs instead of being buried on
+              a sub-page. */}
+          <Reveal variant="up" repeat>
+            <TrustedAcross />
           </Reveal>
         </main>
         <Footer />
