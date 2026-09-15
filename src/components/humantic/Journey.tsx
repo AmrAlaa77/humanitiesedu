@@ -35,6 +35,12 @@ const initiatives = [
     desc: 'On the rigs and sites of Saudi Aramco, we reframed safety from a slogan into a promise — every worker returning home in one piece, every shift.',
   },
   {
+    icon: Lightbulb,
+    year: '2010–2014',
+    title: 'We learned a new approach',
+    desc: 'Humanmetrics, not psychometrics.',
+  },
+  {
     icon: GraduationCap,
     year: '2016–2023',
     title: 'Global Knowledge Integration',
