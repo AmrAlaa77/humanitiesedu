@@ -199,9 +199,6 @@ const GlobalPanel: React.FC = () => (
         These partnerships were inspected and held membership across leading British awarding bodies —
         an assurance that our humanity-first philosophy now carried the weight of recognised standards.
       </p>
-      <blockquote className="mt-6 border-l-2 border-cyan-400/60 pl-4 text-slate-200 italic">
-        “A promise made on the field became a qualification the world could recognise.”
-      </blockquote>
     </div>
     <div className="space-y-4">
       <p className="text-xs font-semibold tracking-widest text-cyan-300 uppercase">
