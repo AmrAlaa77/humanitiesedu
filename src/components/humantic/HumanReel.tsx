@@ -142,11 +142,11 @@ const HumanReel: React.FC = () => {
       id="top"
       className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-[#020617] text-white"
       style={{
-        // Fades this section's own opacity out over its last ~14% so the fixed ambient glow
-        // behind it (visible everywhere else on the page) blends in gradually instead of the
-        // hard "opaque HumanReel ends, glow starts" line that showed at the section boundary.
-        WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 86%, transparent 100%)',
-        maskImage: 'linear-gradient(to bottom, black 0%, black 86%, transparent 100%)',
+        // Fades this section's own opacity out over roughly its bottom half so the fixed ambient
+        // glow behind it (visible everywhere else on the page) blends in very gradually instead
+        // of the hard "opaque HumanReel ends, glow starts" line that showed at the section boundary.
+        WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 45%, transparent 100%)',
+        maskImage: 'linear-gradient(to bottom, black 0%, black 45%, transparent 100%)',
       }}
     >
       {/* Top-left: brand + counter */}
@@ -369,8 +369,10 @@ const HumanReel: React.FC = () => {
 
       <div className="h-16 sm:h-20" />
 
-      {/* Gradient blend into the next page's background instead of a hard cut */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-slate-950/80 to-slate-950" />
+      {/* Gradient blend into the next page's background instead of a hard cut -- tall and soft so
+          it ramps in well before the outer mask-image fade above takes over, instead of the two
+          effects meeting at a visible seam of their own. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[32rem] bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950/90" />
 
       {/* Full-page reel: zooms out from behind the word to cover the whole page, and back */}
       {playing && (
