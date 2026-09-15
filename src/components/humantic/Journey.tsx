@@ -30,9 +30,9 @@ const tabs: { key: PanelKey; label: string; icon: React.ComponentType<{ classNam
 const initiatives = [
   {
     icon: HeartHandshake,
-    year: '2007–2014',
+    year: '2010–2024',
     title: 'Safety as a Promise',
-    desc: 'On the rigs and sites of Saudi Aramco, we reframed safety from a slogan into a promise — every worker returning home in one piece, every shift.',
+    desc: 'On the rigs and sites of Saudi Aramco, Nabors Drilling, Ma’aden and more, we reframed safety from a slogan into a promise — every worker returning home in one piece, every shift.',
   },
   {
     icon: Lightbulb,
