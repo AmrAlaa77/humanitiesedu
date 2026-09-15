@@ -66,7 +66,7 @@ const TrustedAcross: React.FC = () => {
                 {[...row, ...row].map((p, i) => (
                   <span
                     key={`${p}-${i}`}
-                    className="shrink-0 text-xs sm:text-sm font-normal text-teal-300 tracking-tight whitespace-nowrap px-4 py-2 transition-colors hover:text-teal-200"
+                    className="shrink-0 bg-gradient-to-r from-teal-200 to-cyan-300 bg-clip-text text-xs sm:text-sm font-normal text-transparent tracking-tight whitespace-nowrap px-4 py-2 transition-opacity hover:opacity-80"
                   >
                     {p}
                   </span>
