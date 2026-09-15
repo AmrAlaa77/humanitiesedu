@@ -46,6 +46,12 @@ const initiatives = [
     title: 'Vision 2030 Contribution',
     desc: 'GCC Vision 2030-focused: our holistic human development strategy — integrating cognitive, emotional, social and somatic aspects alongside business management principles — addresses real human needs with evidence-based solutions for the modern market. We drive meaningful change through the Saudi Career Development Programme (SCDP) and Talent Incubation Programme, alongside science-backed wellbeing partnerships with UAE ruling-family-chaired companies, built on scientific research and practical experience across more than 120 organisations on five continents.',
   },
+  {
+    icon: Rocket,
+    year: '2026',
+    title: 'National Development Initiatives',
+    desc: 'Humantic Digital launches National Development Initiatives and funded certification programmes for Saudi nationals.',
+  },
 ];
 
 const accreditations = [
