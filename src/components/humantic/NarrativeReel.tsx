@@ -164,9 +164,9 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           HumanticDigital
         </span>
         <span className="hidden sm:inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" />
-        <span className="hidden sm:flex items-center gap-2 rounded-md border border-emerald-400/30 px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-emerald-300">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-          MISA APPROVED
+        <span className="hidden sm:flex items-center gap-2 whitespace-nowrap rounded-md border border-emerald-400/30 px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-emerald-300">
+          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
+          MINISTRY OF INVESTMENT SAUDI ARABIA APPROVED
         </span>
       </div>
 
