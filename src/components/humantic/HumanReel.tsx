@@ -369,10 +369,12 @@ const HumanReel: React.FC = () => {
 
       <div className="h-16 sm:h-20" />
 
-      {/* Gradient blend into the next page's background instead of a hard cut -- tall and soft so
-          it ramps in well before the outer mask-image fade above takes over, instead of the two
-          effects meeting at a visible seam of their own. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[32rem] bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950/90" />
+      {/* No separate gradient-blend layer here anymore -- a second gradient div stacked on top of
+          the outer mask-image fade below was itself producing a visible hairline where its own
+          "transparent" edge sat (same class of compositing-boundary artifact fought elsewhere in
+          this file), just masked from view at the page edges by the ambient glow blobs sitting
+          there and exposed everywhere plain (center, over the letters/badge). One single fade —
+          the section's own mask-image below -- has no second edge to catch the light. */}
 
       {/* Full-page reel: zooms out from behind the word to cover the whole page, and back */}
       {playing && (
