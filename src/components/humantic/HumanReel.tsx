@@ -138,7 +138,17 @@ const HumanReel: React.FC = () => {
   );
 
   return (
-    <section id="top" className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-[#020617] text-white">
+    <section
+      id="top"
+      className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-[#020617] text-white"
+      style={{
+        // Fades this section's own opacity out over its last ~14% so the fixed ambient glow
+        // behind it (visible everywhere else on the page) blends in gradually instead of the
+        // hard "opaque HumanReel ends, glow starts" line that showed at the section boundary.
+        WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 86%, transparent 100%)',
+        maskImage: 'linear-gradient(to bottom, black 0%, black 86%, transparent 100%)',
+      }}
+    >
       {/* Top-left: brand + counter */}
       <div className="absolute top-6 left-6 sm:left-10 z-30 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80">
         HUMAN <span className="text-white/40">®</span> / 01

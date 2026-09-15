@@ -220,7 +220,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
 
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
             <p className="font-serif text-base sm:text-lg font-semibold italic text-white/90">
-              Where Biology, Behavioral Science and Business Collide.
+              Where Biology, Behavioral Science and Business Combine.
             </p>
             <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-300">
               We converge education, behavioural science and organisational-behaviour metrics into a
