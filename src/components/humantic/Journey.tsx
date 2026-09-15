@@ -38,7 +38,7 @@ const initiatives = [
     icon: Lightbulb,
     year: '2010–2014',
     title: 'We learned a new approach',
-    desc: 'Humanmetrics, not psychometrics.',
+    desc: 'Humanmetrics, not psychometrics. Rooted in core behavioural psychology principles and behavioural science, our programmes equip your people with practical, actionable strategies to enhance behavioural change and cultural transformation through understanding their very being.',
   },
   {
     icon: GraduationCap,
