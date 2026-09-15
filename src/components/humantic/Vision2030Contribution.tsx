@@ -150,7 +150,9 @@ const Vision2030Contribution: React.FC = () => (
                   Across the UAE, Saudi Arabia and Kuwait, we design team building and executive retreats
                   that anchor strategic annual goal-setting in behavioural science &mdash; aligning
                   leadership teams around shared priorities while strengthening the human connections
-                  that make those priorities achievable.
+                  that make those priorities achievable. Alongside these group retreats, we offer
+                  one-to-one executive advising, giving individual leaders a dedicated space to work
+                  through their own behavioural patterns and decision-making under pressure.
                 </span>
                 <span className="mt-1 block text-[11px] font-semibold text-cyan-400 group-open:hidden">+ Read more</span>
               </summary>
