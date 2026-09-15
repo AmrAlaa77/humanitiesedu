@@ -38,7 +38,7 @@ const initiatives = [
     icon: GraduationCap,
     year: '2016–2023',
     title: 'Global Knowledge Integration',
-    desc: 'We spanned 5 continents, significantly expanding our reach — dedicated to improving productivity and wellbeing, we delivered our awareness programmes to prominent multinational organisations like Microsoft, Unilever, Shell, Mubadala and Mars across diverse regions (UAE, Korea, KSA, Qatar, Japan, Brazil and the USA), adopting a people-first approach that recognises the intrinsic value of individuals and prioritises their wellbeing as a strategic business imperative.',
+    desc: 'We spanned 5 continents, significantly expanding our reach — dedicated to improving productivity and wellbeing, we delivered our awareness programmes to prominent multinational organisations like Microsoft, Unilever, Shell, Mubadala and Mars across diverse regions (UAE, Korea, KSA, Qatar, Japan, Brazil and the USA), adopting a people-first approach that recognises the intrinsic value of individuals and prioritises their wellbeing as a strategic business imperative — making workplaces a safer place for all.',
   },
   {
     icon: Compass,
