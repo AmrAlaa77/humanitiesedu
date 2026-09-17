@@ -18,7 +18,7 @@ import React, { useEffect, useRef, useState } from 'react';
 const HUMAN_VIDEO = '/videos/human-hero.mp4';
 
 const HEADLINE_MAIN =
-  'Digital intelligence, deeply human — we bring neuroscience, medicine and behavioural science together to advance preventative medicine and human awareness.';
+  'Digital intelligence, deeply human — we bring medical, neuro and behavioral sciences together to advance preventative medicine and human awareness.';
 const HEADLINE_WORDS = HEADLINE_MAIN.split(' ');
 const HEADLINE_TAGLINE_1 = 'Health and wellbeing for all.';
 const HEADLINE_TAGLINE_2 = 'Hope, grounded in science.';
