@@ -13,8 +13,19 @@ const pledgeItems = [
   },
   {
     label: 'Accreditation · Certification & Professional Development',
-    desc:
-      'UK-aligned academic validation frameworks. We formed joint ventures and partnerships with British colleges and organisations that are members of leading British accreditation bodies, whose recognition speaks to the standards we uphold. Exclusive for Saudi nationals — through B2G, B2B and B2C, we offer semi/fully funded British certification programmes.',
+    desc: (
+      <>
+        UK-aligned academic validation frameworks. We formed joint ventures and partnerships with British
+        colleges and organisations that are members of leading British accreditation bodies, whose
+        recognition speaks to the standards we uphold.
+        <br />
+        <br />
+        <span className="font-semibold text-white">
+          Exclusive for Saudi nationals — through B2G, B2B and B2C, we offer semi/fully funded British
+          certification programmes.
+        </span>
+      </>
+    ),
   },
 ];
 
