@@ -214,7 +214,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             </details>
             <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-300">
               Led by <span className="font-semibold text-white">Dr. Abraham</span> &mdash; Medical
-              Doctor, Entrepreneurial Investor, partner at the British College in Oxford, and Chair
+              Doctor, Entrepreneurial Investor, former partner at the British College in Oxford, and Chair
               &amp; CEO of Humantic Digital, approved by the Ministry of Investment Saudi Arabia.
             </p>
           </div>
