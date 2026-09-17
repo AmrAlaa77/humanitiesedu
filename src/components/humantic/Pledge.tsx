@@ -22,7 +22,7 @@ const pledgeItems = [
         <br />
         <span className="font-semibold text-white">
           Exclusive for Saudi nationals — through B2G, B2B and B2C, we offer semi/fully funded British
-          certification programmes.
+          certification programmes throughout 2025–2026.
         </span>
       </>
     ),
