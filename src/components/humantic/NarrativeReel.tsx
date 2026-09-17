@@ -196,7 +196,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                   British College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian
                   and development division into Humantic Digital: a sovereign medical-digital entity dedicated
                   to Behaviorometric Engineering, Bio-Organizational Development, and British-accredited Executive,
-                  People and Culture education.
+                  People and Culture education, with direct affiliation to the Saudi Vision 2030 portal (Invest Saudi).
                 </span>
                 <span className="hidden text-sm sm:text-base leading-relaxed text-slate-300 group-open:inline">
                   Built on a 17-year foundation of international strategic joint ventures across the United
@@ -204,7 +204,8 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
                   British College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian
                   and development division into <span className="font-semibold text-white">Humantic Digital</span>:
                   a sovereign medical-digital entity dedicated to Behaviorometric Engineering, Bio-Organizational
-                  Development, and British-accredited Executive, People and Culture education.
+                  Development, and British-accredited Executive, People and Culture education, with direct
+                  affiliation to the Saudi Vision 2030 portal (Invest Saudi).
                 </span>
                 <span className="mt-1.5 flex items-center gap-1.5 text-sm font-semibold text-emerald-400 group-open:hidden">
                   <span className="text-base leading-none">+</span> Learn More
