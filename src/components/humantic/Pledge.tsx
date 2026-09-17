@@ -2,9 +2,9 @@ import React from 'react';
 
 const pledgeItems = [
   {
-    label: 'MISA Approved',
+    label: 'MISA Licensed',
     desc:
-      'National & Regulatory Frameworks — officially approved through MISA (Ministry of Investment) and the Saudi Business Centre, and via the Saudi Vision 2030 portal (Invest Saudi).',
+      'National & Regulatory Frameworks — officially licensed through MISA (Ministry of Investment) and the Saudi Business Centre, and via the Saudi Vision 2030 portal (Invest Saudi).',
   },
   {
     label: 'Saudi Vision 2030',
@@ -33,7 +33,7 @@ const Pledge: React.FC = () => (
   <section id="pledge" className="relative py-24">
     <div className="max-w-7xl mx-auto px-5 sm:px-8">
       <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 px-4 py-1.5 text-emerald-300 text-xs font-semibold uppercase tracking-widest">
-        MISA Approved &middot; HCDP Aligned &middot; Vision 2030 Portal
+        MISA Licensed &middot; HCDP Aligned &middot; Vision 2030 Portal
       </span>
 
       <div className="mt-8">
