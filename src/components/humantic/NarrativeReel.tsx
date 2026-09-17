@@ -166,7 +166,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
         <span className="hidden sm:inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" />
         <span className="hidden sm:flex items-center gap-2 whitespace-nowrap rounded-md border border-emerald-400/30 px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-emerald-300">
           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
-          MINISTRY OF INVESTMENT SAUDI ARABIA APPROVED
+          MINISTRY OF INVESTMENT SAUDI ARABIA LICENSED
         </span>
       </div>
 
@@ -215,7 +215,7 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-300">
               Led by <span className="font-semibold text-white">Dr. Abraham</span> &mdash; Medical
               Doctor, Entrepreneurial Investor, former partner at the British College in Oxford, and Chair
-              &amp; CEO of Humantic Digital, approved by the Ministry of Investment Saudi Arabia.
+              &amp; CEO of Humantic Digital, licensed by the Ministry of Investment Saudi Arabia.
             </p>
           </div>
 

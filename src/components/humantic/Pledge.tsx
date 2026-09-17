@@ -4,7 +4,7 @@ const pledgeItems = [
   {
     label: 'MISA Approved',
     desc:
-      'National & Regulatory Frameworks — officially approved through MISA (Ministry of Investment) and the Saudi Business Center, and via the Saudi Vision 2030 portal (Invest Saudi).',
+      'National & Regulatory Frameworks — officially approved through MISA (Ministry of Investment) and the Saudi Business Centre, and via the Saudi Vision 2030 portal (Invest Saudi).',
   },
   {
     label: 'Saudi Vision 2030',
