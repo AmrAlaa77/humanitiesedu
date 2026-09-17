@@ -231,7 +231,8 @@ const NarrativeReel: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-300">
               We blend corporate business principles and insights with practical psychology (the science
               of the self) and physiology (the medical science of how the human body works), through
-              proprietary intellectual property exclusively developed and owned by our founder.
+              proprietary intellectual property &mdash; UK-accredited content and assessments &mdash;
+              exclusively developed and owned by our founder.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {[
