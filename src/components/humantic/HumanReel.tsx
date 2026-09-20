@@ -139,7 +139,7 @@ const HumanReel: React.FC = () => {
 
   return (
     <section
-      id="top"
+      id="reel"
       className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-[#020617] text-white"
       style={{
         // Fades this section's own opacity out over roughly its bottom half so the fixed ambient

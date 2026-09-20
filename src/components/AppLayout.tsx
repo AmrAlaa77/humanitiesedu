@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/humantic/Navbar';
+import TealHero from '@/components/humantic/TealHero';
 import HumanReel from '@/components/humantic/HumanReel';
 import NarrativeReel from '@/components/humantic/NarrativeReel';
 import TeaserTabs from '@/components/humantic/TeaserTabs';
@@ -36,6 +37,8 @@ const AppLayout: React.FC = () => {
           {/* HumanReel is the first page; NarrativeReel (the "Let's realign bio-vitality" / Who We
               Are section) sits directly after it -- that's the one matching the reference
               screenshots, not Hero. AwarenessJourney and Hero follow after. */}
+          <TealHero />
+
           <HumanReel />
 
           <NarrativeReel onCta={() => setModalOpen(true)} />
