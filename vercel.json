@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/assessment",
+      "destination": "https://humantic-online-functional-v2.vercel.app",
+      "permanent": false
+    },
+    {
+      "source": "/assessment/:path*",
+      "destination": "https://humantic-online-functional-v2.vercel.app/:path*",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/experience",
