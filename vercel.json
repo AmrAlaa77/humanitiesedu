@@ -17,7 +17,11 @@
       "destination": "/experience/index.html"
     },
     {
-      "source": "/((?!experience).*)",
+      "source": "/amex-proposal",
+      "destination": "/amex-proposal/index.html"
+    },
+    {
+      "source": "/((?!experience|amex-proposal).*)",
       "destination": "/index.html"
     }
   ]
