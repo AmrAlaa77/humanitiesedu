@@ -25,7 +25,11 @@
       "destination": "/game-on-kits/index.html"
     },
     {
-      "source": "/((?!experience|amex-proposal|game-on-kits).*)",
+      "source": "/zero-inbox",
+      "destination": "/zero-inbox/index.html"
+    },
+    {
+      "source": "/((?!experience|amex-proposal|game-on-kits|zero-inbox).*)",
       "destination": "/index.html"
     }
   ]
