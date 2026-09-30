@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zero Inbox Methodology</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:Segoe UI,Arial,sans-serif;color:#132238;background:#e7edf5}button{font:inherit}
+.app{height:100vh;display:grid;grid-template-rows:48px 74px 1fr 28px;background:#f6f8fb}
+.title{background:#086fbd;color:#fff;display:grid;grid-template-columns:auto 1fr 370px auto;align-items:center;gap:14px;padding:0 14px}
+.title b{font-size:21px}.search{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);padding:9px 14px;border-radius:7px;color:#eaf4ff}
+.win{display:flex;gap:14px;font-size:20px}.quick{font-size:20px}
+.ribbon{background:#fff;border-bottom:1px solid #d7dee8;display:flex;align-items:center;gap:14px;padding:8px 14px;overflow:hidden}
+.rbtn{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:70px;color:#33445a;font-size:12px}.rbtn i{font-style:normal;font-size:23px}
+.spacer{flex:1}.action{border:0;border-radius:9px;padding:10px 14px;font-weight:800;color:#fff;cursor:pointer}.reset{background:#ba3f34}.shuffle{background:#48586c}.full{background:#0b72c1}
+.main{min-height:0;display:grid;grid-template-columns:205px 440px 1fr 430px}
+.side,.list,.read,.process{min-width:0;min-height:0;border-right:1px solid #d7dee8;background:#fff}.process{border-right:0;background:#f9fbfd}
+.side h3{margin:0;padding:14px;border-bottom:1px solid #d7dee8}.folders{padding:10px}.folder{display:flex;justify-content:space-between;padding:9px 10px;border-radius:8px;font-size:17px}.folder.active{background:#dceafb;font-weight:800}.folder small{font-weight:900;color:#126eb7}
+.list{display:grid;grid-template-rows:auto auto 1fr}.lh{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid #d7dee8}.lh strong{font-size:28px}.count{font-size:22px;color:#0b72c1;font-weight:900}
+.progressline{display:flex;align-items:center;gap:10px;padding:9px 14px;background:#f7fbff;border-bottom:1px solid #d7dee8}.track{height:12px;background:#dfe7f1;border-radius:20px;overflow:hidden;flex:1}.fill{height:100%;background:linear-gradient(90deg,#0b72c1,#2ea869);width:0}
+.mails{overflow:auto;padding:12px;background:#fafcff}.mail{background:#fff;border:1px solid #d5deea;border-radius:20px;min-height:126px;margin-bottom:12px;padding:16px 18px;display:grid;grid-template-columns:62px 1fr auto;gap:15px;align-items:center;box-shadow:0 6px 16px rgba(22,45,72,.06);cursor:grab}.mail.sel{outline:4px solid #70b4f3}.avatar{width:58px;height:58px;border-radius:50%;background:#4d5f78;color:#fff;display:grid;place-items:center;font-size:30px;font-weight:900}.sender{font-size:23px;font-weight:900}.subject{font-size:19px;margin-top:6px}.preview{font-size:16px;color:#657286;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.age{font-size:17px;color:#66758a}
+.read{display:grid;grid-template-rows:auto 1fr auto}.rh{padding:14px 16px;border-bottom:1px solid #d7dee8;display:flex;justify-content:space-between;align-items:center}.rh strong{font-size:20px}.mini{border:1px solid #cfd9e6;background:#fff;border-radius:8px;padding:7px 10px;font-weight:700}.message{padding:20px;overflow:auto}.card{height:100%;border:1px solid #d8e1ec;border-radius:20px;background:#fff;padding:24px;box-shadow:0 7px 18px rgba(22,45,72,.06)}.card h1{font-size:32px;margin:0 0 16px}.meta{font-size:18px;line-height:1.6;color:#4e5f74}.body{font-size:22px;line-height:1.55;border-top:1px solid #e2e9f2;margin-top:16px;padding-top:18px;white-space:pre-line}.tip{padding:10px 14px;border-top:1px solid #d7dee8;background:#f8fbff;color:#58697f;font-weight:700}
+.process{display:grid;grid-template-rows:auto auto 1fr;overflow:hidden}.ph{padding:15px 18px;background:#fff;border-bottom:1px solid #d7dee8}.ph h2{font-size:29px;margin:0}.ph p{font-size:17px;color:#657286;margin:3px 0}.rule{margin-top:10px;padding:12px 14px;border:1px solid #cfe1f5;background:#f1f8ff;border-radius:13px}.rule b{font-size:22px}.rule span{display:block;color:#52657a;margin-top:3px}
+.gauges{padding:13px 18px;border-bottom:1px solid #d7dee8;background:#f8fbfe}.gauges h3{margin:0 0 9px;font-size:19px}.g{display:grid;grid-template-columns:130px 1fr 36px;gap:9px;align-items:center;margin:7px 0;font-size:17px;font-weight:800}.gt{height:15px;background:#e0e7ef;border-radius:20px;overflow:hidden}.gf{height:100%;width:0;transition:.3s}.destwrap{overflow:auto;padding:16px}.dest{min-height:164px;border-radius:26px;border:3px dashed #aab7c8;margin-bottom:13px;padding:20px 22px;display:grid;grid-template-columns:56px 1fr auto;gap:14px;align-items:start;cursor:pointer}.dest h3{font-size:38px;margin:0;line-height:1}.dest p{font-size:22px;color:#506278;margin:10px 0 0}.ico{font-size:39px}.badge{min-width:48px;height:48px;background:#fff;border-radius:50px;display:grid;place-items:center;font-size:22px;font-weight:900;box-shadow:0 2px 9px #0001}
+.commit{background:#eefaf2;border-color:#78cf9a}.doit{background:#fff9e8;border-color:#efc65f}.wait{background:#fff0f2;border-color:#f09aa4}.inc{background:#f2f0ff;border-color:#c8bfff}.readlater{background:#eef8ff;border-color:#91cbf4}.sent{background:#f8f1ff;border-color:#c7a5eb}.archive{background:#f4f5f7;border-color:#bdc5cf}.trash{background:#fff4ec;border-color:#ffbb91}
+.status{display:flex;justify-content:space-between;align-items:center;padding:0 12px;background:#eef2f7;border-top:1px solid #d3dce8;font-size:14px;color:#4c5c70}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,12px);background:#132943;color:#fff;padding:12px 16px;border-radius:11px;opacity:0;transition:.2s;z-index:50}.toast.show{opacity:1;transform:translate(-50%,0)}
+.fly{position:fixed;z-index:80;pointer-events:none;transition:all .55s cubic-bezier(.2,.8,.2,1);box-shadow:0 12px 30px #0002}
+.celebrate{position:fixed;inset:0;background:#10243db8;display:none;place-items:center;z-index:100}.celebrate.show{display:grid}.celebrate div{background:#fff;border-radius:24px;padding:36px 44px;text-align:center}.celebrate h2{font-size:40px;margin:10px}.celebrate p{font-size:20px;color:#5f6d80}
+@media(max-width:1500px){.main{grid-template-columns:190px 390px 1fr 380px}.dest h3{font-size:32px}.dest p{font-size:19px}.mail{min-height:112px}.sender{font-size:20px}.subject{font-size:17px}.preview{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="title"><div class="quick">↶ ↷</div><b>Zero Inbox Methodology - training.demo@humantic.sa</b><div class="search">🔎 Search mailbox</div><div class="win">— ▢ ✕</div></div>
+<div class="ribbon"><div class="rbtn"><i>📥</i>Current Mailbox</div><div class="rbtn"><i>↩️</i>Reply</div><div class="rbtn"><i>↪️</i>Forward</div><div class="rbtn"><i>🏷️</i>Categorize</div><div class="rbtn"><i>⭐</i>Flag</div><div class="spacer"></div><button class="action shuffle" id="shuffle">Shuffle</button><button class="action reset" id="reset">Reset</button><button class="action full" id="full">Fullscreen</button></div>
+<div class="main">
+<aside class="side"><h3>Mail Folders</h3><div class="folders">
+<div class="folder active"><span>Inbox</span><small id="fInbox">20</small></div>
+<div class="folder"><span>Sent Items</span><small id="fSent">0</small></div>
+<div class="folder"><span>Commitments</span><small id="fCommit">0</small></div>
+<div class="folder"><span>Waiting For</span><small id="fWait">0</small></div>
+<div class="folder"><span>Read Later</span><small id="fRead">0</small></div>
+<div class="folder"><span>Incubate</span><small id="fInc">0</small></div>
+<div class="folder"><span>Archive</span><small id="fArchive">0</small></div>
+<div class="folder"><span>Trash</span><small id="fTrash">0</small></div>
+</div></aside>
+<section class="list"><div class="lh"><strong>Inbox</strong><span class="count" id="counter">20 emails</span></div><div class="progressline"><span>Inbox cleared</span><div class="track"><div class="fill" id="progress"></div></div><b id="pct">0%</b></div><div class="mails" id="mails"></div></section>
+<section class="read"><div class="rh"><strong>Reading Pane</strong><button class="mini" id="focus">Focus first email</button></div><div class="message" id="message"></div><div class="tip">Drag an email to a destination — or select it, then click a destination.</div></section>
+<section class="process"><div class="ph"><h2>Process to Destination</h2><p>Inbox is a capture point, not storage.</p><div class="rule"><b>⏱ 2 minutes?</b><span>If it takes less than 2 minutes, process it now and move it out.</span></div></div>
+<div class="gauges"><h3>Visual Gauge</h3>
+<div class="g"><span>Commitments</span><div class="gt"><div class="gf" id="gCommit" style="background:#2fb36d"></div></div><b id="nCommit">0</b></div>
+<div class="g"><span>Follow-Ups</span><div class="gt"><div class="gf" id="gWait" style="background:#e1525c"></div></div><b id="nWait">0</b></div>
+<div class="g"><span>Do it now</span><div class="gt"><div class="gf" id="gDo" style="background:#f0b429"></div></div><b id="nDo">0</b></div>
+<div class="g"><span>Read Later</span><div class="gt"><div class="gf" id="gRead" style="background:#54aef0"></div></div><b id="nRead">0</b></div>
+</div>
+<div class="destwrap">
+<div class="dest commit" data-dest="Commitments"><div class="ico">📗</div><div><h3>Commitments</h3><p>Needs action, project work, or a next step.</p></div><div class="badge">0</div></div>
+<div class="dest doit" data-dest="Do it now"><div class="ico">⚡</div><div><h3>Do it now</h3><p>Complete it quickly, then move on.</p></div><div class="badge">0</div></div>
+<div class="dest wait" data-dest="Waiting For"><div class="ico">🔴</div><div><h3>Waiting For</h3><p>Someone else owes you a reply or update.</p></div><div class="badge">0</div></div>
+<div class="dest inc" data-dest="Incubate"><div class="ico">🧊</div><div><h3>Incubate</h3><p>Maybe / someday. Review in the future.</p></div><div class="badge">0</div></div>
+<div class="dest readlater" data-dest="Read Later"><div class="ico">📘</div><div><h3>Read Later</h3><p>Useful material, but not for now.</p></div><div class="badge">0</div></div>
+<div class="dest sent" data-dest="Sent Items"><div class="ico">📨</div><div><h3>Sent Items</h3><p>Reply or forward is done; then track the follow-up.</p></div><div class="badge">0</div></div>
+<div class="dest archive" data-dest="Archive"><div class="ico">🗂️</div><div><h3>Archive</h3><p>No action needed. Keep it as reference.</p></div><div class="badge">0</div></div>
+<div class="dest trash" data-dest="Trash"><div class="ico">🗑️</div><div><h3>Trash</h3><p>No action, no value, no need to keep.</p></div><div class="badge">0</div></div>
+</div></section>
+</div>
+<div class="status"><span id="status">Ready for processing</span><span id="processed">0 / 20 processed</span></div>
+</div>
+<div class="toast" id="toast"></div>
+<div class="celebrate" id="celebrate"><div><div style="font-size:70px">🎉</div><h2>Inbox Zero</h2><p>All 20 emails have been processed into trusted destinations.</p><button class="action full" id="close">Continue</button></div></div>
+<script>
+const src=[
+["Maha Alotaibi","Approve final workshop agenda for Riyadh session","Please confirm the final sequence before 11:00 AM.","2 min","Dear Amr,\n\nCould you please approve the final workshop agenda for tomorrow's Riyadh session? We need your go-ahead before sending it to participants.\n\nThanks,\nMaha","Commitments"],
+["Travel Desk","RUH → JED flight confirmed for Thursday","Your booking is issued. Ticket attached for your records.","6 min","Your Riyadh to Jeddah flight is confirmed. Please retain the itinerary and booking reference.","Archive"],
+["Omar Alharbi","Waiting for client confirmation - Al Khobar program","I will update you once the client answers on the dates.","11 min","Salam Dr. Amr,\n\nI am still waiting for the client confirmation regarding the Al Khobar program dates. I will update you as soon as they reply.","Waiting For"],
+["HR Newsletter","September learning digest - 5 useful articles","Good reading, but no immediate action is required.","18 min","Here is this week's HR and L&D reading digest. Nothing urgent — useful material to read later.","Read Later"],
+["Mona Alqahtani","Quick yes/no: circle seating layout?","Can we use the circle format with two chairs in the middle?","24 min","Quick check: are we using the circle seating layout with two role-play chairs in the middle for the coaching session?","Do it now"],
+["STC Business","Invoice copy for your records","Paid invoice attached. No further action needed.","29 min","Please find attached the paid invoice for your STC Business line. This message is for your records only.","Archive"],
+["Saudi Aramco Contact","Please send proposal revision by tomorrow","We need the updated scope and pricing by end of day tomorrow.","35 min","Could you revise the proposal with the updated scope, audience, and pricing, and send it by tomorrow?","Commitments"],
+["Promo Mailer","Flash sale on office chairs - ends tonight","Limited-time ad with no relevance to your current work.","42 min","Huge weekend flash sale! Save 40% on selected office chairs and accessories.","Trash"],
+["Abeer - P&C","Participant list attached for Salehiya workshop","Please review the names and flag any edits needed.","51 min","Attached is the participant list for the Salehiya workshop. Please review and let me know if grouping adjustments are needed.","Commitments"],
+["Google Workspace","Security alert on your account","Unusual sign-in was blocked. Review the notification.","1 hr","A sign-in attempt was blocked from a new device. Review the alert and keep the email as reference.","Archive"],
+["Zainab Alenezi","Idea for Q1 women leadership breakfast","No urgency — maybe something for next quarter.","1 hr","An idea for a women leadership breakfast event in Q1. Not urgent, but worth considering later.","Incubate"],
+["Nesma Supplier","Can you share the PO number?","We cannot issue the materials until we receive the PO.","1 hr","Could you please share the PO number so we can proceed with issuing the materials?","Commitments"],
+["Sara Alghamdi","Draft message approved - you can send it","Please reply to the client with the final note.","1 hr","The draft message is approved. Please send the final reply to the client and keep the sent record.","Sent Items"],
+["Mubadala Contact","Awaiting legal review before sign-off","We are reviewing internally and will revert by next week.","1 hr","We are still waiting for legal review before final sign-off. We will revert next week.","Waiting For"],
+["LinkedIn Learning","Top courses on data storytelling","Useful recommendations to explore later.","2 hr","Recommended courses on data storytelling, Excel dashboards, and facilitation. Save for later reading.","Read Later"],
+["Admin Office","Reply needed: confirm visitor parking pass","Please send the plate number so we can issue the pass.","2 hr","Please reply with the visitor plate number to issue the parking pass for tomorrow morning.","Do it now"],
+["Bank Alinma","Monthly statement available","Your business account statement is ready for download.","2 hr","Your monthly statement is available and can be retained as a record.","Archive"],
+["Rana - Marketing","Could this become a public webinar later?","No immediate action — exploring a future possibility.","3 hr","Could the AI for office work topic become a public webinar later this year? No action now — just planting the idea.","Incubate"],
+["Prince Sultan University","Please review draft MoU notes","A draft is attached and needs your review comments.","3 hr","Please review the attached draft notes for the MoU discussion and add your comments.","Commitments"],
+["WhatsApp Business","Community digest and promo tips","Generic tips and updates; no action required.","4 hr","This is a generic tips email about improving engagement in business communities.","Trash"]
+];
+let mails=[],selected=null,counts={};const $=id=>document.getElementById(id),dest=[...document.querySelectorAll(".dest")];
+function id(){return Math.random().toString(36).slice(2)}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function ding(){try{const A=window.AudioContext||window.webkitAudioContext,a=new A(),o=a.createOscillator(),g=a.createGain();o.frequency.setValueAtTime(880,a.currentTime);o.frequency.exponentialRampToValueAtTime(1320,a.currentTime+.12);g.gain.setValueAtTime(.18,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.45);o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+.46)}catch(e){}}
+function seed(){mails=src.map(x=>({id:id(),sender:x[0],subject:x[1],preview:x[2],age:x[3],body:x[4],dest:x[5]}));selected=mails[0].id;counts={"Commitments":0,"Do it now":0,"Waiting For":0,"Incubate":0,"Read Later":0,"Sent Items":0,"Archive":0,"Trash":0};$("celebrate").classList.remove("show");render()}
+function toast(t){$("toast").textContent=t;$("toast").classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>$("toast").classList.remove("show"),1500)}
+function render(){
+$("mails").innerHTML=mails.length?"":'<div style="padding:60px;text-align:center;font-size:28px">✅<br><b>Inbox is clear</b></div>';
+mails.forEach(m=>{const e=document.createElement("div");e.className="mail"+(m.id===selected?" sel":"");e.draggable=true;e.dataset.id=m.id;e.innerHTML='<div class="avatar">'+esc(m.sender[0])+'</div><div><div class="sender">'+esc(m.sender)+'</div><div class="subject">'+esc(m.subject)+'</div><div class="preview">'+esc(m.preview)+'</div></div><div class="age">'+esc(m.age)+'</div>';e.onclick=()=>{selected=m.id;render()};e.ondragstart=ev=>{selected=m.id;ev.dataTransfer.setData("text/plain",m.id)};$("mails").appendChild(e)});
+const m=mails.find(x=>x.id===selected);$("message").innerHTML=m?'<div class="card"><h1>'+esc(m.subject)+'</h1><div class="meta"><b>From:</b> '+esc(m.sender)+'<br><b>Received:</b> '+esc(m.age)+'</div><div class="body">'+esc(m.body)+'</div></div>':'<div class="card" style="display:grid;place-items:center"><b style="font-size:28px">Pick an email to read</b></div>';
+const done=20-mails.length,p=Math.round(done/20*100);$("counter").textContent=mails.length+" email"+(mails.length===1?"":"s");$("fInbox").textContent=mails.length;$("progress").style.width=p+"%";$("pct").textContent=p+"%";$("processed").textContent=done+" / 20 processed";
+dest.forEach(d=>d.querySelector(".badge").textContent=counts[d.dataset.dest]||0);
+$("fSent").textContent=counts["Sent Items"];$("fCommit").textContent=counts["Commitments"];$("fWait").textContent=counts["Waiting For"];$("fRead").textContent=counts["Read Later"];$("fInc").textContent=counts["Incubate"];$("fArchive").textContent=counts["Archive"];$("fTrash").textContent=counts["Trash"];
+const max=Math.max(1,...Object.values(counts));[["gCommit","nCommit","Commitments"],["gWait","nWait","Waiting For"],["gDo","nDo","Do it now"],["gRead","nRead","Read Later"]].forEach(x=>{$(x[0]).style.width=((counts[x[2]]||0)/max*100)+"%";$(x[1]).textContent=counts[x[2]]||0})
+}
+function fly(from,to,label){if(!from||!to)return;const a=from.getBoundingClientRect(),b=to.getBoundingClientRect(),f=document.createElement("div");f.className="fly";f.style.cssText="left:"+a.left+"px;top:"+a.top+"px;width:"+a.width+"px;background:white;border:2px solid #8eb4d8;border-radius:18px;padding:14px;font-size:18px;font-weight:800";f.innerHTML="📨 "+esc(label);document.body.appendChild(f);requestAnimationFrame(()=>{f.style.left=(b.left+b.width/2-a.width/2)+"px";f.style.top=(b.top+b.height/2-a.height/2)+"px";f.style.transform="scale(.35) rotate(3deg)";f.style.opacity="0"});setTimeout(()=>f.remove(),650)}
+function move(mid,choice,de){const m=mails.find(x=>x.id===mid);if(!m)return;if(m.dest!==choice){toast("Try again — wrong destination.");$("status").textContent="Incorrect destination selected";return}const source=document.querySelector('.mail[data-id="'+mid+'"]');fly(source,de,m.subject);mails=mails.filter(x=>x.id!==mid);counts[choice]++;ding();toast("Correct → "+choice);$("status").textContent="Processed correctly to "+choice;selected=mails[0]?.id||null;render();if(choice==="Sent Items"){setTimeout(()=>{const se=document.querySelector('[data-dest="Sent Items"]'),we=document.querySelector('[data-dest="Waiting For"]');fly(se,we,"Now waiting for a reply");counts["Sent Items"]=Math.max(0,counts["Sent Items"]-1);counts["Waiting For"]++;render();toast("Sent → automatically moved to Waiting For");$("status").textContent="Sent email moved automatically to Waiting For"},720)}if(!mails.length)setTimeout(()=>$("celebrate").classList.add("show"),choice==="Sent Items"?1500:650)}
+dest.forEach(d=>{d.ondragover=e=>e.preventDefault();d.ondrop=e=>{e.preventDefault();move(e.dataTransfer.getData("text/plain"),d.dataset.dest,d)};d.onclick=()=>selected?move(selected,d.dataset.dest,d):toast("Select an email first")});
+$("reset").onclick=seed;$("shuffle").onclick=()=>{mails.sort(()=>Math.random()-.5);selected=mails[0]?.id||null;render();toast("Inbox shuffled")};$("focus").onclick=()=>{if(mails.length){selected=mails[0].id;render()}};$("full").onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()};$("close").onclick=()=>$("celebrate").classList.remove("show");seed();
+</script>
+</body></html>
