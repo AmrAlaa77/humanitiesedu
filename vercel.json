@@ -21,7 +21,11 @@
       "destination": "/amex-proposal/index.html"
     },
     {
-      "source": "/((?!experience|amex-proposal).*)",
+      "source": "/game-on-kits",
+      "destination": "/game-on-kits/index.html"
+    },
+    {
+      "source": "/((?!experience|amex-proposal|game-on-kits).*)",
       "destination": "/index.html"
     }
   ]
