@@ -9,6 +9,11 @@
       "source": "/assessment/:path*",
       "destination": "https://humantic-online-functional-v2.vercel.app/:path*",
       "permanent": false
+    },
+    {
+      "source": "/amex-proposal",
+      "destination": "/amex-proposal/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -17,7 +22,7 @@
       "destination": "/experience/index.html"
     },
     {
-      "source": "/amex-proposal",
+      "source": "/amex-proposal/",
       "destination": "/amex-proposal/index.html"
     },
     {
