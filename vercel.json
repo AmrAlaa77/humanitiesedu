@@ -30,7 +30,11 @@
       "destination": "/game-on-kits/index.html"
     },
     {
-      "source": "/((?!experience|amex-proposal|game-on-kits).*)",
+      "source": "/who-we-are",
+      "destination": "/who-we-are/index.html"
+    },
+    {
+      "source": "/((?!experience|amex-proposal|game-on-kits|who-we-are).*)",
       "destination": "/index.html"
     }
   ]

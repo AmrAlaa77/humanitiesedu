@@ -1,0 +1,1085 @@
+<title>Who We Are &amp; Affiliation Accreditations</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #f5f7f6;
+    --surface: #ffffff;
+    --surface-2: #eef2f1;
+    --border: rgba(11,18,32,0.12);
+    --border-soft: rgba(11,18,32,0.07);
+    --text: #0b1220;
+    --text-dim: #46536b;
+    --text-faint: #6b7688;
+    --emerald: #0d9488;
+    --cyan: #0e7490;
+    --grad-a: #0d9488;
+    --grad-b: #0891b2;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #020617;
+      --surface: #0b1220;
+      --surface-2: #0e1626;
+      --border: rgba(255,255,255,0.12);
+      --border-soft: rgba(255,255,255,0.07);
+      --text: #f1f5f9;
+      --text-dim: #a3b0c2;
+      --text-faint: #6b7688;
+      --emerald: #2dd4bf;
+      --cyan: #22d3ee;
+      --grad-a: #2dd4bf;
+      --grad-b: #22d3ee;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #020617;
+    --surface: #0b1220;
+    --surface-2: #0e1626;
+    --border: rgba(255,255,255,0.12);
+    --border-soft: rgba(255,255,255,0.07);
+    --text: #f1f5f9;
+    --text-dim: #a3b0c2;
+    --text-faint: #6b7688;
+    --emerald: #2dd4bf;
+    --cyan: #22d3ee;
+    --grad-a: #2dd4bf;
+    --grad-b: #22d3ee;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding-inline: 24px;
+    padding-block: 56px;
+  }
+
+  .sheet {
+    max-width: 836px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  p { margin: 0; }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mark svg { width: 20px; height: 20px; }
+  .wordmark-text { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 19px; line-height: 1.1; }
+  .wordmark-sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.24em; color: var(--emerald); margin-top: 2px; }
+  .masthead-doc { text-align: right; }
+  .masthead-doc .eyebrow { margin-bottom: 4px; }
+  .masthead-doc .doc-title { font-size: 13px; color: var(--text-dim); }
+
+  /* ---------- Hero statement (always visible) ---------- */
+  .hero {
+    padding-block: 44px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 {
+    font-size: clamp(28px, 4.4vw, 40px);
+    line-height: 1.12;
+    max-width: 15ch;
+  }
+  .hero-taglines {
+    margin-top: 18px;
+    font-size: 15px;
+    color: var(--text-dim);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .hero-taglines strong { color: var(--text); font-weight: 600; }
+  .badge-row {
+    margin-top: 22px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--emerald);
+    border: 1px solid color-mix(in srgb, var(--emerald) 40%, transparent);
+    background: color-mix(in srgb, var(--emerald) 10%, transparent);
+    padding: 7px 12px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+  }
+  .badge::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--emerald);
+    flex-shrink: 0;
+  }
+
+  /* ---------- Section: framed title, always open, no toggle ---------- */
+  .section {
+    padding-block: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-of-type { border-bottom: none; }
+  .section-label {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+  }
+  .section-label .eyebrow { color: var(--text-faint); }
+  .section-label h2 {
+    margin-top: 8px;
+    font-size: 21px;
+    line-height: 1.25;
+  }
+  .section-body p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-dim);
+    max-width: 62ch;
+  }
+  .section-body p + p { margin-top: 14px; }
+  .section-body strong { color: var(--text); font-weight: 600; }
+
+  .stat-line {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .stat-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 34px;
+    font-weight: 600;
+    background: linear-gradient(90deg, var(--grad-a), var(--grad-b));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 17px;
+    color: var(--text);
+    max-width: 24ch;
+    line-height: 1.3;
+  }
+
+  /* ---------- Pull quote (philosophy / Fortune 500) ---------- */
+  .pullquote {
+    margin-top: 4px;
+    padding: 26px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+  }
+  .pullquote p.lede {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--text);
+    line-height: 1.4;
+    max-width: 44ch;
+  }
+  .pullquote .section-body { margin-top: 16px; }
+  .chip-row { margin-top: 18px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--emerald);
+    background: color-mix(in srgb, var(--emerald) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--emerald) 25%, transparent);
+    padding: 6px 11px;
+    border-radius: 999px;
+  }
+
+  /* ---------- Stat grid (NextGen 2030) ---------- */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .stat-card {
+    padding: 16px;
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    background: var(--surface);
+  }
+  .stat-card .num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-card .cap {
+    margin-top: 4px;
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: var(--text-faint);
+  }
+  .subitem-list { margin-top: 18px; display: flex; flex-direction: column; gap: 12px; }
+  .subitem { padding: 14px 16px; border: 1px solid var(--border-soft); border-radius: 10px; }
+  .subitem .subitem-title { font-family: 'Fraunces', Georgia, serif; font-size: 14.5px; color: var(--text); font-weight: 600; }
+  .subitem .subitem-body { margin-top: 4px; font-size: 13px; line-height: 1.55; color: var(--text-dim); font-weight: 400; }
+  .subitem .subitem-body ul { margin: 6px 0 0; padding-left: 18px; }
+  .subitem .subitem-body li { margin-top: 4px; }
+
+  @media (max-width: 640px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ---------- Trusted Across (partner rail) ---------- */
+  .partner-chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .partner-chip {
+    font-size: 12px;
+    color: var(--text-dim);
+    border: 1px solid var(--border-soft);
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+
+  /* ---------- Mandate strip ---------- */
+  .mandate {
+    margin-top: 2px;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--text-faint);
+    border-left: 2px solid var(--emerald);
+    padding-left: 14px;
+  }
+
+  /* ---------- "+" toggles that live with the content, not the title frame ---------- */
+  details summary { cursor: pointer; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+  .learn-more {
+    float: right;
+    margin-left: 10px;
+    width: 26px;
+    height: 26px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    color: var(--text-faint);
+  }
+  .learn-more::before { content: '+'; }
+  details[open] > summary .learn-more::before { content: '\2212'; }
+  details[open] > summary .learn-more { background: var(--surface-2); }
+
+  /* ---------- Labeled item list (accreditation / Vision 2030 items), each with its own + ---------- */
+  .item-list { display: flex; flex-direction: column; gap: 20px; }
+  .item-block .item-label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--emerald);
+    margin-bottom: 6px;
+  }
+  .item-block p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--text-dim);
+    max-width: 62ch;
+  }
+  .item-block .clamp { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+  .item-block details[open] .clamp { display: none; }
+  .item-block .full { display: none; }
+  .item-block details[open] .full { display: block; }
+  .eyebrow-pill {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--emerald);
+    border: 1px solid color-mix(in srgb, var(--emerald) 35%, transparent);
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    margin-top: 36px;
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer .eyebrow { line-height: 1.8; }
+  .footer-approval {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+  }
+  .footer-approval strong { color: var(--emerald); display: block; font-size: 11px; letter-spacing: 0.12em; }
+
+  @media (max-width: 640px) {
+    .masthead-doc { text-align: left; }
+    .footer { flex-direction: column; align-items: flex-start; }
+    .footer-approval { text-align: left; }
+  }
+
+  /* ---------- Video hero under a teal gradient ---------- */
+  .hero.hero-media {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-radius: 18px;
+    border-bottom: 0;
+    margin-top: 8px;
+    padding: 64px 32px 56px;
+    color: #fff;
+    background: #0e3a6e;
+  }
+  .hero-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -3; }
+  .hm-wash {
+    position: absolute; inset: 0; z-index: -2;
+    background:
+      radial-gradient(60% 70% at 8% 95%, rgba(94,234,212,0.35) 0%, rgba(94,234,212,0) 70%),
+      linear-gradient(115deg, rgba(45,212,191,0.55) 0%, rgba(20,184,166,0.52) 36%, rgba(8,145,178,0.58) 64%, rgba(14,58,110,0.75) 100%);
+  }
+  .hm-lines { position: absolute; top: 24px; left: 0; width: 100%; height: 120px; z-index: -1; opacity: 0.5; }
+  .hm-content { position: relative; }
+  .hero-media h1 { color: #fff; max-width: none; font-size: clamp(30px, 5vw, 46px); line-height: 1.12; text-shadow: 0 1px 12px rgba(2,6,23,0.18); }
+  .hero-media h1 .aqua { color: #22f1cc; }
+  .hero-media .hero-taglines { color: rgba(255,255,255,0.92); }
+  .hero-media .hero-taglines strong { color: #fff; }
+  .hero-media .badge { color: #fff; border-color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.12); }
+  .hero-media .badge::before { background: #22f1cc; }
+  /* phones: logo sits in its own band above the text so nothing overlaps */
+  @media (max-width: 719px) {
+    .hero.hero-media { padding-top: 170px; }
+  }
+  @media (min-width: 720px) {
+    .hero.hero-media { padding: 76px 40px 64px; }
+    .hm-lines { top: 0; bottom: 0; width: 36%; height: 100%; }
+    .hm-content { width: 60%; margin-left: auto; }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero-media video { display: none; } }
+
+  @media print {
+    .hero-media video { display: none; }
+    body { padding: 0; background: var(--bg); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .sheet { max-width: none; padding: 32px; }
+    .learn-more { display: none !important; }
+    .item-block .clamp { display: none !important; }
+    .item-block .full { display: block !important; }
+    details > summary + * , details .full { display: block !important; }
+  }
+
+  /* ---------- Learning approach: 5 steps + methodology list ---------- */
+  .section-body p.lm-banner { background: var(--surface-2); color: var(--text); border: 1px solid var(--border-soft); padding: 14px 18px; border-radius: 8px; font-size: 14px; line-height: 1.7; max-width: none; }
+  .lm-steps { margin-top: 14px; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; border: 1px solid var(--border-soft); }
+  .lm-row { display: grid; grid-template-columns: 56px 150px 1fr; }
+  .lm-n { background: color-mix(in srgb, var(--emerald) 50%, #fff); color: var(--text); font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 13px; display: grid; place-items: center; padding: 14px 0; }
+  .lm-t { background: var(--surface-2); color: var(--text); font-weight: 700; font-size: 13px; letter-spacing: 0.04em; display: flex; align-items: center; padding: 14px; }
+  .lm-d { background: var(--surface-2); color: var(--text-dim); font-size: 14px; line-height: 1.65; padding: 14px 18px; display: flex; align-items: center; }
+  .section-body p.lm-h { margin-top: 24px; font-weight: 700; font-size: 16px; color: var(--text); max-width: none; }
+  ul.lm-list { margin: 8px 0 0; padding-inline-start: 22px; color: var(--text-dim); font-size: 14.5px; line-height: 1.95; }
+  [dir="rtl"] .lm-t { letter-spacing: 0; font-size: 15px; }
+  [dir="rtl"] .lm-n { font-size: 15px; }
+  @media (max-width: 640px) {
+    .lm-row { grid-template-columns: 44px 1fr; }
+    .lm-d { grid-column: 1 / -1; }
+  }
+</style>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="wordmark">
+      <div class="mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 12h4l2-7 4 14 3-9 2 4h5" stroke="#020617" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <div class="wordmark-text">Humantic Digital</div>
+        <div class="wordmark-sub">DIGITAL &middot; RIYADH</div>
+      </div>
+    </div>
+    <div class="masthead-doc">
+      <div class="eyebrow">Who We Are, Affiliation Accreditations</div>
+    </div>
+  </header>
+
+  <section class="hero hero-media">
+    <video src="/videos/hero-teal.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+    <div class="hm-wash" aria-hidden="true"></div>
+    <svg class="hm-lines" aria-hidden="true" viewBox="0 0 640 900" preserveAspectRatio="none" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="translate(-71 -321) scale(30.3 64.3)" stroke-width="1.4">
+        <path d="M3.4 12h4l2-7 4 14 3-9 2 4h5" transform="translate(0.33 -0.155)" vector-effect="non-scaling-stroke"/>
+        <path d="M3.4 12h4l2-7 4 14 3-9 2 4h5" transform="translate(-0.33 0.155)" vector-effect="non-scaling-stroke"/>
+      </g>
+    </svg>
+    <div class="hm-content">
+      <h1>Digital intelligence, <span class="aqua">deeply human</span> &mdash; <span style="font-size:21px; line-height:1.3; display:inline-block;">we bring medical, neuro and behavioral sciences together to advance preventative medicine and human awareness.</span></h1>
+      <div class="hero-taglines">
+        <span><strong>Health and wellbeing for all.</strong></span>
+        <span>&middot;</span>
+        <span>Hope, preached through science.</span>
+      </div>
+      <div class="badge-row">
+        <span class="badge">Ministry of Investment Saudi Arabia Approved</span>
+        <span class="badge">CPD London Certified</span>
+        <span class="badge">Saudi Vision 2030 Portal</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:36px;">
+    <div class="section-label">
+      <div class="eyebrow">Our Approach</div>
+    </div>
+    <div class="section-body">
+      <details>
+        <summary style="display:flex; align-items:flex-start; gap:14px;">
+          <p style="margin:0;">
+            Our multidisciplinary Saudi-British team brings together expertise in medicine, physiology, neuroscience, learning, researching and developing, HSE, and certified behavioural analysis &mdash;
+            <strong>backed by a distinguished global network of collaborators, including Fortune 500
+            organisations, Royal-owned entities, and leading British accreditation bodies across
+            London and Scotland.</strong>
+          </p>
+          <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:1cm;"></span>
+        </summary>
+        <p class="full" style="display:block; margin-top:10px;">
+          We draw on neurobiology, cognitive science and sociophysiology to understand the
+          human experience in full &mdash; thoughts, perceptions, emotions, relationships and behaviour
+          alike.
+        </p>
+        <p class="full" style="display:block; margin-top:14px;">
+          Through board advisory, executive education, personalised counselling and awareness, we turn
+          that depth of understanding into meaningful, lasting change across organisations, educational
+          institutions and communities.
+        </p>
+      </details>
+    </div>
+  </section>
+
+<section class="section">
+    <div class="section-label">
+      <div class="eyebrow">Who We Are</div>
+      <h2>17 years in human capital made Humantic Digital what it is today.</h2>
+    </div>
+    <div class="section-body">
+      <details>
+        <summary>
+          <div class="stat-line">
+            <span class="stat-num">17</span>
+            <span class="stat-label">years of international strategic joint ventures across the UK and GCC</span>
+            <span class="learn-more" style="float:none; margin-left:auto; margin-right:1cm; align-self:center;"></span>
+          </div>
+        </summary>
+        <div class="full" style="display:block;">
+          <p>
+            Built on a 17-year foundation of international strategic joint ventures across the United
+            Kingdom and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the
+            British College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian
+            and development division into <strong>Humantic Digital</strong>: a sovereign medical-behavioral-digital
+            entity dedicated to Behaviorometric Engineering, Bio-Organizational Development, and
+            British-accredited Executive, People and Culture education.
+          </p>
+          <p style="margin-top:14px;">
+            Led by <strong>Dr. S. Abraham</strong> &mdash; Medical Doctor, Entrepreneurial Investor (MISA Approved),
+            recipient of the Saudi Ministry of Human Resources &amp; Social Development&rsquo;s Badge of
+            Recognition for content aligned with Vision 2030, former partner at the British College in Oxford,
+            and our Chair &amp; CEO; Humantic Digital is licensed by the Ministry of Investment Saudi Arabia.
+          </p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">
+      <div class="eyebrow">Our Philosophy</div>
+      <h2>Where biology, behavioral science and business interwind.</h2>
+    </div>
+    <div class="section-content">
+      <div class="pullquote">
+        <details>
+          <summary style="display:flex; align-items:flex-start; gap:14px;">
+            <p style="margin:0;">
+              We blend corporate business principles and insights with practical psychology and human
+              psychology (the science of the self) and physiology (the medical science of how the human
+              body works), through
+              proprietary intellectual property &mdash; UK-accredited content and assessments &mdash;
+              exclusively developed and owned by our founder.
+            </p>
+            <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:calc(1cm - 28px);"></span>
+          </summary>
+          <div class="full" style="display:block; margin-top:14px;">
+            <p style="margin:0 0 14px; font-size:15px; line-height:1.7; color:var(--text-dim); max-width:62ch;">We make the invisible human factors of performance visible, discussable and actionable. Applying behavioural science and workplace psychology, we help organisations understand how their people think, communicate, respond under pressure and make decisions, so they can reflect, connect and align.</p>
+            <div class="chip-row">
+              <span class="chip">Organizational Behavior &amp; Team Dynamics Assessment</span>
+              <span class="chip">Behavioral Risk &amp; Productivity Metrics</span>
+              <span class="chip">Global Alliances</span>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">
+      <div class="eyebrow">Title, Affiliation &amp; Accreditation</div>
+      <h2>Strategy, science and humanity &mdash; brought together differently.</h2>
+    </div>
+    <div class="section-body">
+      <span class="eyebrow-pill">MISA Licensed &middot; HCDP Aligned &middot; Vision 2030 Portal</span>
+      <div class="item-list">
+        <div class="item-block">
+          <p class="item-label">MISA Licensed</p>
+          <details>
+            <summary style="display:flex; align-items:flex-start; gap:14px;">
+              <p class="clamp" style="margin:0;">
+                National &amp; Regulatory Frameworks &mdash; officially licensed through MISA (Ministry of
+                Investment) and the Saudi Business Center, and meticulously aligned with Saudi Ministries&rsquo; initiatives.
+              </p>
+              <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:1cm;"></span>
+            </summary>
+            <p class="full">
+              National &amp; Regulatory Frameworks &mdash; officially licensed through MISA (Ministry of
+              Investment) and the Saudi Business Center, and meticulously aligned with Saudi Ministries&rsquo; initiatives.
+            </p>
+          </details>
+        </div>
+        <div class="item-block">
+          <p class="item-label">Saudi Vision 2030 Portal</p>
+          <details>
+            <summary style="display:flex; align-items:flex-start; gap:14px;">
+              <p class="clamp" style="margin:0;">
+                National Priority Alignment &mdash; the approval process requires demonstrating how the
+                enterprise directly advances Vision 2030 pillars, specifically the Human Capability Development
+                Program and the Health, Wellbeing and Quality of Life Initiatives, by modernizing human capital
+                and organizational behavioral infrastructure. An enterprise officially sanctioned to pioneer
+                high-impact sectors within the Kingdom, with direct portal affiliation to Saudi Vision 2030
+                (Invest Saudi).
+              </p>
+              <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:1cm;"></span>
+            </summary>
+            <p class="full">
+              National Priority Alignment &mdash; the approval process requires demonstrating how the
+              enterprise directly advances Vision 2030 pillars, specifically the Human Capability Development
+              Program and the Health, Wellbeing and Quality of Life Initiatives, by modernizing human capital
+              and organizational behavioral infrastructure. An enterprise officially sanctioned to pioneer
+              high-impact sectors within the Kingdom, with direct portal affiliation to Saudi Vision 2030
+              (Invest Saudi).
+            </p>
+          </details>
+        </div>
+        <div class="item-block">
+          <p class="item-label">Accreditation &middot; Certification &amp; Professional Development</p>
+          <details>
+            <summary style="display:flex; align-items:flex-start; gap:14px;">
+              <p class="clamp" style="margin:0;">
+                UK-aligned academic validation frameworks. We formed joint ventures and partnerships with
+                British colleges and organisations that are members of leading British accreditation bodies
+                &mdash; including CPD (Certification Service of Professional Development) London,
+                Qualifications Scotland Approved Centre, and the Career Transition Partnership (CTP)
+                Preferred Supplier UK &mdash; whose recognition speaks to the standards we uphold. Exclusive
+                for Saudi nationals &mdash; through B2G, B2B and B2C, we offer semi/fully funded British
+                certification programmes throughout 2026&ndash;2027.
+              </p>
+              <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:1cm;"></span>
+            </summary>
+            <p class="full">
+              UK-aligned academic validation frameworks. We formed joint ventures and partnerships with
+              British colleges and organisations that are members of leading British accreditation bodies
+              &mdash; including CPD (Certification Service of Professional Development) London,
+              Qualifications Scotland Approved Centre, and the Career Transition Partnership (CTP) Preferred
+              Supplier UK &mdash; whose recognition speaks to the standards we uphold.
+            </p>
+            <p class="full" style="margin-top:10px; font-weight:600; color:var(--text);">
+              Exclusive for Saudi nationals &mdash; through B2G, B2B and B2C, we offer semi/fully funded
+              British certification programmes throughout 2026&ndash;2027.
+            </p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">
+      <div class="eyebrow">2023&ndash;2026</div>
+      <h2>GCC Vision 2030 Contribution</h2>
+    </div>
+    <div class="section-body">
+      <div class="item-list" style="margin-top:20px;">
+        <div class="item-block">
+          <p class="item-label">Human Capability Development</p>
+          <details>
+            <summary style="display:flex; align-items:flex-start; gap:14px;">
+              <p class="clamp" style="margin:0;">
+                We are proud to drive meaningful change through the Saudi Career Development Programme (SCDP)
+                &mdash; a strategic expansion of our fully sponsored British certifications integrated with a
+                robust Saudization initiative. Through our Talent Incubation Programme, we nurture innate
+                talents and address the inner derailers that dim their power, shaping a generation prepared
+                to lead, innovate, and contribute meaningfully to the Kingdom&rsquo;s future.
+              </p>
+              <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:1cm;"></span>
+            </summary>
+            <p class="full">
+              We are proud to drive meaningful change through the Saudi Career Development Programme (SCDP)
+              &mdash; a strategic expansion of our fully sponsored British certifications integrated with a
+              robust Saudization initiative. Through our Talent Incubation Programme, we nurture innate
+              talents and address the inner derailers that dim their power, shaping a generation prepared
+              to lead, innovate, and contribute meaningfully to the Kingdom&rsquo;s future.
+            </p>
+          </details>
+        </div>
+        <div class="item-block">
+          <p class="item-label">Tourism &amp; Quality of Life 2030</p>
+          <details>
+            <summary style="display:flex; align-items:flex-start; gap:14px;">
+              <p class="clamp" style="margin:0;">
+                Delivered educational programs equipping national talent to lead within the Royal Commission
+                for AlUla&rsquo;s touristic sites, aligned with Quality of Life 2030 and the UN&rsquo;s
+                Sustainable Development Goal domains &mdash; building Saudi, a country one can call home.
+              </p>
+              <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:1cm;"></span>
+            </summary>
+            <p class="full">
+              Delivered educational programs equipping national talent to lead within the Royal Commission
+              for AlUla&rsquo;s touristic sites, aligned with Quality of Life 2030 and the UN&rsquo;s
+              Sustainable Development Goal domains &mdash; building Saudi, a country one can call home.
+            </p>
+          </details>
+        </div>
+        <div class="item-block">
+          <p class="item-label">A Call to Serve &middot; Healthcare</p>
+          <details>
+            <summary style="display:flex; align-items:flex-start; gap:14px;">
+              <p class="clamp" style="margin:0;">
+                Bespoke programs on health, safety and wellbeing across National Guard Health Affairs, King
+                Salman Hospital, King Abdulaziz Medical City, King Salman Specialist Children&rsquo;s Hospital,
+                and King Abdullah Medical City.
+              </p>
+              <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:1cm;"></span>
+            </summary>
+            <p class="full">
+              Bespoke programs on health, safety and wellbeing across National Guard Health Affairs, King
+              Salman Hospital, King Abdulaziz Medical City, King Salman Specialist Children&rsquo;s Hospital,
+              and King Abdullah Medical City.
+            </p>
+          </details>
+        </div>
+        <div class="item-block">
+          <p class="item-label">UAE Corporate Wellbeing &middot; 2023</p>
+          <details>
+            <summary style="display:flex; align-items:flex-start; gap:14px;">
+              <p class="clamp" style="margin:0;">
+                We specialise in crafting science-backed wellbeing plans for companies, including those chaired
+                by the UAE&rsquo;s ruling Al Nahyan family, that we have been collaborating with for the past 4
+                years &mdash; and, continuing through our ongoing partnership, we&rsquo;ve provided solutions
+                specifically tailored to the Emirati workforce. Participants learn to implement powerful
+                psychological models, empowering them to effectively connect, design, and integrate business
+                and leadership strategies that yield sustainable results.
+              </p>
+              <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:1cm;"></span>
+            </summary>
+            <p class="full">
+              We specialise in crafting science-backed wellbeing plans for companies, including those chaired
+              by the UAE&rsquo;s ruling Al Nahyan family, that we have been collaborating with for the past 4
+              years &mdash; and, continuing through our ongoing partnership, we&rsquo;ve provided solutions
+              specifically tailored to the Emirati workforce. Participants learn to implement powerful
+              psychological models, empowering them to effectively connect, design, and integrate business
+              and leadership strategies that yield sustainable results.
+            </p>
+          </details>
+        </div>
+        <div class="item-block">
+          <p class="item-label">GCC Team Building &amp; Executive Retreats</p>
+          <details>
+            <summary style="display:flex; align-items:flex-start; gap:14px;">
+              <p class="clamp" style="margin:0;">
+                Across the UAE, Saudi Arabia and Kuwait, we design team building and executive retreats that
+                anchor strategic annual goal-setting in behavioural science &mdash; aligning leadership teams
+                around shared priorities while strengthening the human connections that make those priorities
+                achievable. Alongside these group retreats, we offer one-to-one executive advising, giving
+                individual leaders a dedicated space to work through their own behavioural patterns, team
+                challenges, and decision-making under pressure. Insights from these sessions feed back
+                into the group work, so individual growth and collective performance reinforce each other.
+              </p>
+              <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:1cm;"></span>
+            </summary>
+            <p class="full">
+              Across the UAE, Saudi Arabia and Kuwait, we design team building and executive retreats that
+              anchor strategic annual goal-setting in behavioural science &mdash; aligning leadership teams
+              around shared priorities while strengthening the human connections that make those priorities
+              achievable. Alongside these group retreats, we offer one-to-one executive advising, giving
+              individual leaders a dedicated space to work through their own behavioural patterns, team
+              challenges, and decision-making under pressure. Insights from these sessions feed back into
+              the group work, so individual growth and collective performance reinforce each other.
+            </p>
+          </details>
+        </div>
+        <div class="item-block">
+          <p class="item-label">Strategies &amp; Culture Dynamics</p>
+          <details>
+            <summary style="display:flex; align-items:flex-start; gap:14px;">
+              <p class="clamp" style="margin:0;">
+                20+ years of market research applied at three levels &mdash; organisational, team,
+                individual &mdash; top-down and bottom-up, adopting reactive, proactive, and preventative
+                measures in light of the results of our proprietary culture and individual assessments.
+              </p>
+              <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:1cm;"></span>
+            </summary>
+            <p class="full">
+              20+ years of market research applied at three levels &mdash; organisational, team,
+              individual &mdash; top-down and bottom-up, adopting reactive, proactive, and preventative
+              measures in light of the results of our proprietary culture and individual assessments.
+            </p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">
+      <div class="eyebrow">Initiative Implementation, GCC-Wide</div>
+      <h2>Our Methodology</h2>
+    </div>
+    <div class="section-body">
+      <div class="pullquote">
+      <p>
+        Our methodology is education, not training: we build lasting understanding, not one-off skills. We empower your people by gaining a deep
+        understanding of what truly drives them, so they learn to decode the patterns behind their
+        behaviour, awareness, and reactions. We customise and contextualise education around your
+        people, your environment, and the challenges that matter most, so we genuinely connect,
+        making every intervention relevant, applicable, and built to translate into action.
+      </p>
+      <details style="margin-top:14px;">
+        <summary style="display:flex; align-items:flex-start; gap:14px;">
+          <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:calc(1cm - 28px);"></span>
+        </summary>
+        <p style="margin-top:10px;">
+          We converge executive education, human sciences and organisational-behaviour metrics into a
+          single operating model &mdash; engineering safer, more human-centred institutions across how
+          people live, work, and belong.
+        </p>
+      </details>
+      <p class="lede" style="margin-top:22px;">Why Conventional Training Falls Short</p>
+      <div class="item-list" style="margin-top:16px;">
+        <div class="item-block">
+          <details>
+            <summary style="display:flex; align-items:center; gap:14px;">
+              <p class="item-label" style="margin:0;">Generic Learning</p>
+              <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:calc(1cm - 28px);"></span>
+            </summary>
+            <p class="full" style="margin-top:6px;">
+              One-off programmes and off-the-shelf learning disconnected from real organisational
+              challenges quickly lose their impact. Ours are tailored to your people&rsquo;s unique
+              biology. These programmes just click, as they speak to their individual stress triggers,
+              specific productivity and communication challenges, and innate physiological responses, and
+              are designed to provide continuous support long after initial delivery, ensuring your
+              people&rsquo;s ongoing growth and development.
+            </p>
+          </details>
+        </div>
+        <div class="item-block">
+          <details>
+            <summary style="display:flex; align-items:center; gap:14px;">
+              <p class="item-label" style="margin:0;">The Novelty Spike</p>
+              <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:calc(1cm - 28px);"></span>
+            </summary>
+            <p class="full" style="margin-top:6px;">
+              Conventional training can generate an initial surge of motivation, partly involving the
+              brain&rsquo;s reward systems &mdash; but without reinforcement and continued feedback, that
+              momentum fades before new behaviours take hold.
+            </p>
+          </details>
+        </div>
+        <div class="item-block">
+          <details>
+            <summary style="display:flex; align-items:center; gap:14px;">
+              <p class="item-label" style="margin:0;">The Transition Gap</p>
+              <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:calc(1cm - 28px);"></span>
+            </summary>
+            <p class="full" style="margin-top:6px;">
+              Without gauging progress, identifying gaps and providing guided transformation, particularly
+              customised to our unique biology, &ldquo;unlearning&rdquo; old habits becomes
+              overwhelmingly hard. This is when people revert to old frameworks.
+            </p>
+          </details>
+        </div>
+        <div class="item-block">
+          <details>
+            <summary style="display:flex; align-items:center; gap:14px;">
+              <p class="item-label" style="margin:0;">The ROI Drain</p>
+              <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:calc(1cm - 28px);"></span>
+            </summary>
+            <p class="full" style="margin-top:6px;">
+              The investment of time, resources and budget delivers no clear return in organisational
+              performance when the workforce reverts to baseline behaviours within days.
+            </p>
+          </details>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">
+      <div class="eyebrow">From understanding to sustained change</div>
+      <h2>Our Learning Approach</h2>
+    </div>
+    <div class="section-body">
+      <p class="lm-banner">Understand first. Design around people. Deliver for application. Reinforce for sustained change.</p>
+      <div class="lm-steps">
+        <div class="lm-row"><div class="lm-n">1</div><div class="lm-t">Understand</div><div class="lm-d">Business need, audience, context and expected outcomes.</div></div>
+        <div class="lm-row"><div class="lm-n">2</div><div class="lm-t">Diagnose</div><div class="lm-d">Knowledge, capability, behaviour and human-factor requirements.</div></div>
+        <div class="lm-row"><div class="lm-n">3</div><div class="lm-t">Design</div><div class="lm-d">Customised content, cases, simulations, activities and tools.</div></div>
+        <div class="lm-row"><div class="lm-n">4</div><div class="lm-t">Deliver</div><div class="lm-d">Interactive learning focused on practice, reflection and application.</div></div>
+        <div class="lm-row"><div class="lm-n">5</div><div class="lm-t">Reinforce</div><div class="lm-d">One-on-one advising, focus groups, follow-up, assessment, action plans and workplace transfer, for sustained change.</div></div>
+      </div>
+      <p class="lm-h">Learning methodology</p>
+      <ul class="lm-list">
+        <li>Experiential learning and facilitated discovery</li>
+        <li>Case studies and workplace scenarios</li>
+        <li>Simulations, gamification and team challenges</li>
+        <li>Role plays, one-on-one advising conversations, focus groups and reflection</li>
+        <li>Hands-on practice with business tools and data</li>
+        <li>Action planning and workplace application</li>
+        <li>Bilingual delivery in English and Arabic where required</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">
+      <div class="eyebrow">National Alignment</div>
+      <h2>Rooted in the Kingdom&rsquo;s Vision 2030 mandate.</h2>
+    </div>
+    <div class="mandate">
+      Rooted in Vision 2030&rsquo;s pillars and ministries&rsquo; mandates, commanded by Crown Prince
+      Mohammed bin Salman &mdash; directly supporting the Human Capability Development Program,
+      Quality of Life 2030, and the National Strategy for Data &amp; AI.
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">
+      <div class="eyebrow">2026&ndash;2027 Initiative</div>
+      <h2>Safer Workplace for All</h2>
+    </div>
+    <div class="section-body">
+      <div class="chip-row">
+        <span class="chip">Microsoft</span>
+        <span class="chip">Saudi Aramco</span>
+        <span class="chip">Google</span>
+        <span class="chip">PepsiCo</span>
+      </div>
+      <details style="margin-top:14px;">
+        <summary style="display:flex; align-items:flex-start; gap:14px;">
+          <p style="margin:0;">
+            By distilling two decades of industry expertise &mdash; honed through partnerships with the
+            organisations below and many more &mdash; we build safer workplaces through the sciences of
+            behaviour and productivity, purpose-built around SDG 3 (Good Health and Wellbeing) and SDG 8
+            (Decent Work and Economic Growth).
+          </p>
+          <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:1cm;"></span>
+        </summary>
+        <div class="full" style="display:block; margin-top:10px;">
+          <ul style="padding-left:18px;">
+            <li style="margin-top:6px;">Gamified, simulation-based solutions to set and align executive priorities</li>
+            <li style="margin-top:6px;">Productivity derailers assessed before they cost you talent</li>
+            <li style="margin-top:6px;">Progress gauged and personalised every step of the way</li>
+            <li style="margin-top:6px;">Sustained through a 2-month period of one-to-one executive advising sessions and focus groups</li>
+          </ul>
+          <div class="chip-row" style="margin-top:14px;">
+            <span class="chip">OD</span>
+            <span class="chip">OB</span>
+            <span class="chip">Human Capital Development</span>
+            <span class="chip">B2B</span>
+            <span class="chip">B2G</span>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">
+      <div class="eyebrow">NextGen 2030 &middot; UK&ndash;KSA Collaboration</div>
+      <h2>The &frac14; Billion Opportunity: Nurturing Hi-Potential Leaders</h2>
+    </div>
+    <div class="section-body">
+      <p style="font-style:italic; color:var(--text-dim);">
+        Through the Vision 2030 Portal, our entrepreneurial investment: we are launching &mdash; a
+        &frac14; Billion Opportunity initiative, gifted from Saudi Land to the World.
+      </p>
+      <p style="margin-top:14px;">
+        For business excellence, sustainable value, and holistic wellbeing across MENA &mdash; a
+        Campus-to-Career initiative for Gen Z.
+      </p>
+      <p style="margin-top:14px; font-weight:600; color:var(--text);">Our NextGen 2030 promise: the unwritten rules that separate a newly hired employee who merely graduated from one who is genuinely employable.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num">~30%</div><div class="cap">of the global workforce is Gen Z by 2030</div></div>
+        <div class="stat-card"><div class="num">140M</div><div class="cap">young people aged 10&ndash;24 across MENA</div></div>
+        <div class="stat-card"><div class="num">17</div><div class="cap">years building Humantic Digital</div></div>
+        <div class="stat-card"><div class="num">20,000</div><div class="cap">certification programmes delivered for GCC nationals, 2026&ndash;2027</div></div>
+      </div>
+
+      <p style="margin-top:26px; font-weight:600; color:var(--text);">Where This Programme Has Been Delivered</p>
+      <p style="margin-top:4px;">
+        Designed and led internship and new-hire development programmes for young Arabs, directly
+        within these preeminent institutions.
+      </p>
+      <div class="chip-row" style="margin-top:12px;">
+        <span class="chip">The Saudi Ministry of National Guard Health Affairs</span>
+        <span class="chip">King Salman Specialized Hospital</span>
+        <span class="chip">Saudi Labour Attach&eacute;</span>
+        <span class="chip">King Abdulaziz Medical City</span>
+        <span class="chip">The US Embassy</span>
+        <span class="chip">The German International Cooperation</span>
+        <span class="chip">Saudi Aramco</span>
+        <span class="chip">Royal Commission for AlUla</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">
+      <div class="eyebrow">Trusted Across</div>
+      <h2>One shared standard &mdash; continents wide, sectors wide.</h2>
+    </div>
+    <div class="partner-chip-row">
+      <span class="partner-chip">Saudi Aramco</span>
+      <span class="partner-chip">Ma&rsquo;aden</span>
+      <span class="partner-chip">King Salman Hospital</span>
+      <span class="partner-chip">King Abdullah Medical City</span>
+      <span class="partner-chip">National Guard Health Affairs</span>
+      <span class="partner-chip">Royal Commission for AlUla</span>
+      <span class="partner-chip">U.S. Embassy</span>
+      <span class="partner-chip">Embassy of Saudi Arabia</span>
+      <span class="partner-chip">Mubadala</span>
+      <span class="partner-chip">PepsiCo</span>
+      <span class="partner-chip">Unilever</span>
+      <span class="partner-chip">Nestl&eacute;</span>
+      <span class="partner-chip">Mars Incorporated</span>
+      <span class="partner-chip">Google</span>
+      <span class="partner-chip">Siemens</span>
+      <span class="partner-chip">GIZ German Cooperation</span>
+      <span class="partner-chip">Alnafitha IT</span>
+      <span class="partner-chip">BG Group</span>
+      <span class="partner-chip">SGS Aviation Services</span>
+      <span class="partner-chip">Saudi Amad for Airport Services &amp; Transport Support (SAAS)</span>
+      <span class="partner-chip">King Saud bin Abdulaziz University for Health Sciences</span>
+      <span class="partner-chip">BP</span>
+      <span class="partner-chip">Maersk Drilling</span>
+      <span class="partner-chip">King Fahd University of Petroleum and Minerals</span>
+      <span class="partner-chip">Roads &amp; Transport Authority, Dubai</span>
+      <span class="partner-chip">Valeo</span>
+      <span class="partner-chip">Kuwait Energy</span>
+      <span class="partner-chip">Philip Morris International</span>
+      <span class="partner-chip">Shell</span>
+      <span class="partner-chip">Nabors</span>
+      <span class="partner-chip">Umm Al Qura for Development and Construction</span>
+      <span class="partner-chip">Abdul Latif Jameel Alsalehiya</span>
+    </div>
+
+    <div class="pullquote" style="margin-top:24px;">
+        <p class="item-label" style="margin-bottom:8px;">Fortune 500s</p>
+        <p class="lede">We&rsquo;ve Sat at Their Table.</p>
+        <div class="section-body">
+          <p>
+            Two decades inside Fortune 500 boardrooms &mdash; Saudi Aramco, Microsoft, Google, PepsiCo,
+            Nestl&eacute; and more &mdash; not studied from a case study, but lived: the SDG strategies and
+            the excellence-driven cultures. That is the wisdom and practice your
+            people gain access to here &mdash; decoded, structured, and handed directly to them, not
+            filtered through a textbook years after it mattered.
+          </p>
+        </div>
+                <p style="margin-top:18px; font-weight:600; color:var(--text);">So what your people learn is first-hand, and ready to use from day one.</p>
+        <div class="subitem-list">
+          <div class="subitem">
+            <p class="subitem-title">Strategies &amp; Culture Dynamics</p>
+            <p class="subitem-body">20+ years of market research applied at three levels &mdash; organisational, team, individual &mdash; top-down and bottom-up, adopting reactive, proactive, and preventative measures in light of the results of our proprietary culture and individual assessments. Wellbeing indexes, responsible performance markers and productivity metrics, all guided by data that connect.</p>
+          </div>
+          <div class="subitem">
+            <p class="subitem-title">Corporate Intelligence from the Top 500s</p>
+            <p class="subitem-body">We share with your people insights from inside the Top Fortune 500 companies &mdash; their best practices, their operating playbooks, and the findings from our 17+ years of market research. Experience-led learning that helps every person recognise their own innate talents and derailers.</p>
+          </div>
+          <div class="subitem">
+            <p class="subitem-title">Funded Certifications for GCC Nationals</p>
+            <p class="subitem-body">20,000 certification programmes delivered for GCC nationals, 2026&ndash;2027 &mdash; the same national commitment underpinning the Campus-to-Career pathway, internship, youth leadership and development programmes.<br>Gain in-demand expertise through rigorous British continuing education and development programmes, endorsed and quality-assured by leading UK awarding bodies that both inspect us and of which we are official members.</p>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <footer class="footer">
+    <div>
+      <div class="eyebrow">humanitiesedu.uk</div>
+      <div class="eyebrow">Who We Are &amp; Affiliation Accreditations</div>
+    </div>
+    <div class="footer-approval">
+      <strong>MISA Licensed &middot; 2026</strong>
+      Ministry of Investment Saudi Arabia
+    </div>
+  </footer>
+
+</div>
+
