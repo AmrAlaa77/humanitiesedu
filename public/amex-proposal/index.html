@@ -455,6 +455,13 @@
     '<p>The best closers aren&rsquo;t the ones with the best pitch &mdash; they&rsquo;re the ones who actually hear what&rsquo;s being asked. Read what&rsquo;s driving the moment before you respond, and objections stop being obstacles and start being the map to the close.</p>' +
     '</div>' +
     '</div>';
+  var ZERO_INBOX_PANEL =
+    '<div class="panel wide" id="service-zi"><h3>Zero Inbox Methodology</h3>' +
+    '<p>Every open case is a promise. The Zero Inbox methodology treats each customer touchpoint like an item in an inbox &mdash; it isn&rsquo;t closed until it&rsquo;s actually resolved, so nothing falls through the cracks and no follow-up opportunity gets missed.</p>' +
+    '<div class="rc"><div class="eyebrow">Plan With Confidence</div><h4>Simplify your follow-ups</h4>' +
+    '<p>Make the most of every case. Schedule follow-up dates, see the week&rsquo;s outstanding conversations at a glance, and set recurring check-ins &mdash; so a promised call-back never waits on memory alone.</p>' +
+    '</div>' +
+    '</div>';
   var rows = '', blocks = '';
   P.forEach(function (p, i) {
     var delivery = p.fmt === 'onsite'
@@ -477,6 +484,7 @@
         (p.ai ? '<button type="button" class="chip-ai" data-target="ai-' + p.id + '"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>' + AI_CONFIG[p.id].chipNote + '</small><b>' + esc(AI_CONFIG[p.id].title) + '</b></span></button>' : '') +
         (p.id === 'team' ? '<button type="button" class="chip-ai" data-target="team-toolkits"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>Included &middot; customised to your people and culture</small><b>UK-Engineered Toolkits</b></span></button>' : '') +
         (p.id === 'selling' ? '<button type="button" class="chip-ai" data-target="selling-ta"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>Included &middot; kinda read people</small><b>Transactional Analysis Assessment</b></span></button>' : '') +
+        (p.id === 'service' ? '<button type="button" class="chip-ai" data-target="service-zi"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>Included &middot; nothing falls through the cracks</small><b>Zero Inbox Methodology</b></span></button>' : '') +
         '<button type="button" class="more" aria-expanded="false" aria-controls="body-' + p.id + '"><span class="ico" aria-hidden="true">+</span><span class="lbl">Learn more</span></button></div>' +
       '</div></div><div class="hero-fade top"></div><div class="hero-fade"></div></div>' +
       '<div class="prog-body" id="body-' + p.id + '" hidden><div class="wrap"><div class="prog-cols">' +
@@ -485,6 +493,7 @@
         (p.ai ? buildAiPanel(p.id) : '') +
         (p.id === 'leadership' ? LEADERSHIP_PANEL : '') +
         (p.id === 'selling' ? SERVICE_PANEL : '') +
+        (p.id === 'service' ? ZERO_INBOX_PANEL : '') +
         (p.photo ? '<div class="panel photo" id="team-toolkits"><img src="' + p.photo + '" alt="Participants building a shared structure from modular parts during a Humantic team-building challenge" loading="lazy"><div class="photo-cap"><h3>Game On&trade;</h3><p>Game On&trade; doesn&rsquo;t tell them how to work. It lets them discover how to win &mdash; together.</p></div></div>' : '') +
       '</div></div></div></article>';
   });
