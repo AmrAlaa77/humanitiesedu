@@ -484,6 +484,15 @@
     '<p>A quick, shared workspace for the conversation itself &mdash; what was agreed and what&rsquo;s still outstanding sits in one place, so nobody loses an afternoon digging back through email chains to find where things actually stand.</p>' +
     '</div>' +
     '</div>';
+  var TEAM_PANEL =
+    '<div class="panel wide" id="team-toolkits"><h3>UK-Engineered Toolkits</h3>' +
+    '<p>Every challenge is engineered in the UK, then customised to your people and culture. The same build runs at three levels, so the challenge always matches who is actually in the room.</p>' +
+    '<div class="rc-grid">' +
+      '<div><h5>Digital</h5><p>A mostly digital build for distributed and hybrid teams &mdash; the same collaborative dynamics, run online.</p></div>' +
+      '<div><h5>Signature</h5><p>Our best-seller. The full in-person challenge, tuned for teams who work together day to day.</p></div>' +
+      '<div><h5>Executive</h5><p>A sharper, higher-stakes version of the same build, designed for senior and executive-level teams.</p></div>' +
+    '</div>' +
+    '</div>';
   var rows = '', blocks = '';
   P.forEach(function (p, i) {
     var delivery = p.fmt === 'onsite'
@@ -519,7 +528,8 @@
         (p.id === 'leadership' ? ADVISORY_PANEL : '') +
         (p.id === 'selling' ? SERVICE_PANEL : '') +
         (p.id === 'service' ? ZERO_INBOX_PANEL : '') +
-        (p.photo ? '<div class="panel photo" id="team-toolkits"><img src="' + p.photo + '" alt="Participants building a shared structure from modular parts during a Humantic team-building challenge" loading="lazy"><div class="photo-cap"><h3>Game On&trade;</h3><p>It&rsquo;s not a game &mdash; it&rsquo;s the inner game, revealed. Game On&trade; doesn&rsquo;t tell them how to work. It lets them discover how to win &mdash; together.</p></div></div>' : '') +
+        (p.id === 'team' ? TEAM_PANEL : '') +
+        (p.photo ? '<div class="panel photo"><img src="' + p.photo + '" alt="Participants building a shared structure from modular parts during a Humantic team-building challenge" loading="lazy"><div class="photo-cap"><h3>Game On&trade;</h3><p>It&rsquo;s not a game &mdash; it&rsquo;s the inner game, revealed. Game On&trade; doesn&rsquo;t tell them how to work. It lets them discover how to win &mdash; together.</p></div></div>' : '') +
       '</div></div></div></article>';
   });
   document.getElementById('rows').innerHTML = rows;
