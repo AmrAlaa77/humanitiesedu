@@ -368,7 +368,7 @@
       out: ['Deliver exceptional customer service experiences.','Handle customer inquiries and complaints professionally.','Build trust and long-term customer relationships.','Apply service excellence standards in daily interactions.','Enhance customer satisfaction and loyalty.'],
       del: 'Includes role plays, customer interaction simulations, real-life case studies, and practical service scenarios.' },
     { id: 'leadership', t: 'Building Influence & Leadership Mindset', type: 'Leadership & Soft Skills', aud: 'All Employees – All Departments & Levels, including Hi-Po Leaders', fmt: 'cv', video: 'videos/leadership.mp4',
-      out: ['Develop a leadership mindset and demonstrate ownership and accountability.','Build influence and credibility across different levels of the organization.','Communicate ideas confidently and gain stakeholder buy-in.','Strengthen decision-making, initiative, and problem-solving skills.','Apply leadership behaviors to positively influence teams and workplace outcomes.'],
+      out: ['Develop a leadership mindset and demonstrate ownership and accountability.','Build influence and credibility across different levels of the organization.','Communicate ideas confidently and gain stakeholder buy-in.','Strengthen decision-making, initiative, and problem-solving skills.','Apply leadership behaviors to positively influence teams and workplace outcomes.','Confidently navigate complex scenarios — difficult conversations, team conflicts, and organizational challenges — head-on.','Turn organizational opportunities into strategic wins that help shape a winning culture.','Translate what you learn into practical, real-world impact back on the job.'],
       del: 'Includes interactive discussions, leadership scenarios, role plays, case studies, and practical workplace exercises.' },
     { id: 'excel', t: 'Excel for Business Reporting & Data Analysis', type: 'Technical & Analytical Skills', aud: 'All Employees – All Departments & Levels', fmt: 'cv', video: 'videos/excel.mp4',
       out: ['Develop practical Excel skills for preparing and analyzing business reports.','Organize, clean, and analyze data efficiently to support decision-making.','Use formulas, functions, PivotTables, charts, and dashboards to generate meaningful insights.','Improve KPI tracking, reporting accuracy, and operational efficiency.','Reduce manual effort by applying Excel best practices and automation techniques.'],
@@ -441,6 +441,17 @@
     '<div class="rc"><div class="eyebrow">Why This Matters</div><h4>Unaddressed, it becomes more than stress</h4>' +
     '<p>Internal battles &mdash; self-doubt, emotional fatigue, unspoken struggles &mdash; are common among leaders. Left unaddressed, that depletion can quietly develop into burnout, anxiety, or chronic health conditions. Most leaders carry it. Awareness is where it starts.</p></div>' +
     '</div>';
+  var TALENT_PANEL =
+    '<div class="panel wide"><h3>Why Invest In Leadership Now</h3>' +
+    '<p>Established leaders already know how to run the business. This programme is about protecting what happens next &mdash; building the bench, and the resilience, that keep a leadership team from cracking under strain.</p>' +
+    '<div class="rc"><div class="eyebrow">Protect The Pipeline</div><h4>Avoid tomorrow&rsquo;s talent crisis</h4>' +
+    '<p>A leadership bench that&rsquo;s strong only at the very top is one resignation away from a crisis. Strengthening the layer of leaders just below the C-suite &mdash; not only those already in it &mdash; is what prevents the panic hiring and costly recruitment mistakes that follow when succession was never actually planned.</p>' +
+    '<div class="eyebrow" style="margin-top:22px">The Wellbeing Number</div><h4>What wellbeing has to do with the bottom line</h4>' +
+    '<p>Almost everything. The cost of poor wellbeing shows up as teams that never quite click, high performers pushed out without anyone noticing, and talent lost to quiet quitting &mdash; or worse, quiet cracking, where someone stays in the seat long after they&rsquo;ve checked out.</p>' +
+    '<div class="eyebrow" style="margin-top:22px">The Inner Game</div><h4>Lead from a settled nervous system</h4>' +
+    '<p>Beneath the frameworks, this programme works on the inner game of leadership &mdash; building the resilience to stay secure and clear-headed under pressure, at a nervous system level, not just a mindset one.</p>' +
+    '</div>' +
+    '</div>';
   var ADVISORY_PANEL =
     '<div class="panel wide" id="leadership-advisory"><h3>One-on-One Advisory</h3>' +
     '<p>Alongside the group programme, participants get a dedicated space to work through their own behavioural patterns and decision-making under pressure &mdash; one-to-one, not in front of the room.</p>' +
@@ -503,6 +514,7 @@
         '<div class="panel"><h3>Learning outcomes</h3><ul>' + p.out.map(function (o) { return '<li>' + esc(o) + '</li>'; }).join('') + '</ul></div>' +
         '<div class="panel"><h3>Delivery methodology</h3><p>' + esc(delivery) + '</p></div>' +
         (p.ai ? buildAiPanel(p.id) : '') +
+        (p.id === 'leadership' ? TALENT_PANEL : '') +
         (p.id === 'leadership' ? LEADERSHIP_PANEL : '') +
         (p.id === 'leadership' ? ADVISORY_PANEL : '') +
         (p.id === 'selling' ? SERVICE_PANEL : '') +
