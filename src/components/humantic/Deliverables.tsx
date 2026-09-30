@@ -37,7 +37,8 @@ type Initiative = {
   quote?: string;
 };
 
-const categories: { key: string; label: string; icon: React.ComponentType<{ className?: string }>; items: Deliverable[] }[] = [
+// cardVideo: optional looping clip shown in the video area at the top of the category's ring card.
+const categories: { key: string; label: string; icon: React.ComponentType<{ className?: string }>; cardVideo?: string; items: Deliverable[] }[] = [
   {
     key: 'nextgen',
     label: 'NextGen 2030',
@@ -1886,55 +1887,54 @@ const Deliverables: React.FC = () => {
           </p>
         </div>
 
-        {/* category picker -- cards on a helix, not a flat grid: they orbit a shared vertical
-            axis and spiral downward as they go around, auto-rotating (pauses on hover so it can
-            actually be clicked). Clicking one reveals its full detail below, same as before. */}
-        <style>{`
-          @keyframes spiralSpin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
-          .spiral-ring { animation: spiralSpin 26s linear infinite; transform-style: preserve-3d; }
-          .spiral-ring:hover, .spiral-ring:focus-within { animation-play-state: paused; }
-          @media (prefers-reduced-motion: reduce) { .spiral-ring { animation: none; } }
-        `}</style>
-        <div
-          className="relative mb-14 mx-auto"
-          style={{ perspective: '1500px', height: '360px', maxWidth: '620px' }}
-        >
-          <div className="spiral-ring absolute inset-0" style={{ transformStyle: 'preserve-3d' }}>
-            {categories.map((c, i) => {
-              const angle = (360 / categories.length) * i;
-              const radius = 240;
-              const ySpread = (categories.length - 1) * 24;
-              const yOffset = i * 48 - ySpread;
-              return (
-                <button
-                  key={c.key}
-                  onClick={() => setActive(c.key)}
-                  aria-pressed={active === c.key}
-                  style={{
-                    position: 'absolute', left: '50%', top: '50%', width: '176px',
-                    transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(${radius}px) translateY(${yOffset}px)`,
-                  }}
-                  className={`group text-left rounded-2xl border p-4 backdrop-blur-md transition-colors duration-300 ${
-                    active === c.key
-                      ? 'border-emerald-400/40 bg-gradient-to-br from-emerald-400/25 to-cyan-500/15 shadow-lg shadow-emerald-500/20'
-                      : 'border-white/10 bg-slate-900/80 hover:border-white/25 hover:bg-slate-900/95'
+        {/* category picker -- a plain static grid. Clicking one reveals its full detail below. */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-14">
+          {categories.map((c) => (
+            <button
+              key={c.key}
+              onClick={() => setActive(c.key)}
+              aria-pressed={active === c.key}
+              className={`group text-left overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${
+                active === c.key
+                  ? 'border-white/60 bg-gradient-to-br from-teal-300 via-teal-400 to-cyan-500 shadow-lg shadow-teal-400/40'
+                  : 'border-teal-200/30 bg-gradient-to-br from-teal-500/90 via-teal-600/90 to-cyan-800/90 hover:border-white/50'
+              }`}
+            >
+              {/* video area */}
+              <div className="relative h-[120px] w-full overflow-hidden bg-gradient-to-br from-teal-700 via-teal-800 to-cyan-900">
+                {c.cardVideo ? (
+                  <video
+                    src={c.cardVideo}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center text-white/25">
+                    <c.icon className="w-10 h-10" />
+                  </div>
+                )}
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-teal-900/70 to-transparent" />
+              </div>
+              <div className="p-4">
+                <div
+                  className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 transition-colors ${
+                    active === c.key ? 'bg-white/30 text-teal-950' : 'bg-white/15 text-white'
                   }`}
                 >
-                  <div
-                    className={`w-9 h-9 rounded-xl flex items-center justify-center mb-3 transition-colors ${
-                      active === c.key ? 'bg-emerald-400/20 text-emerald-300' : 'bg-white/5 text-slate-300 group-hover:text-white'
-                    }`}
-                  >
-                    <c.icon className="w-4 h-4" />
-                  </div>
-                  <p className={`text-sm font-semibold ${active === c.key ? 'text-white' : 'text-slate-200'}`}>{c.label}</p>
-                  <p className="mt-0.5 text-xs text-slate-500">
-                    {c.items.length} programme{c.items.length !== 1 ? 's' : ''}
-                  </p>
-                </button>
-              );
-            })}
-          </div>
+                  <c.icon className="w-4 h-4" />
+                </div>
+                <p className={`text-sm font-semibold leading-snug ${active === c.key ? 'text-teal-950' : 'text-white'}`}>{c.label}</p>
+                <p className={`mt-1 text-xs ${active === c.key ? 'text-teal-900/80' : 'text-teal-50/75'}`}>
+                  {c.items.length} programme{c.items.length !== 1 ? 's' : ''}
+                </p>
+              </div>
+            </button>
+          ))}
         </div>
 
         {initiatives[active] && <InitiativeBanner initiative={initiatives[active]} />}
