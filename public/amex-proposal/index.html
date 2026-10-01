@@ -520,6 +520,8 @@
     '<p>Insights are shared through one-on-one sessions to proactively surface behavioural dynamics, talent gaps, and alignment opportunities &mdash; enabling targeted action that drives measurable impact.</p>' +
     '</div>' +
     '</div>';
+  var MODULE2_PHOTO =
+    '<div class="panel photo"><img src="images/strengths-oneones.webp" alt="A Humantic advisory expert leading a one-on-one debrief with a participant" loading="lazy"><div class="photo-cap"><h3>Hands-On Mentoring, In The Room</h3><p>Personalised one-on-one debriefs where CliftonStrengths insights become decisive, practical action.</p></div></div>';
   var TEAM_PANEL =
     '<div class="panel wide" id="team-toolkits"><h3>UK-Engineered Toolkits</h3>' +
     '<p>Every challenge is engineered in the UK, then customised to your people and culture. The same build runs at three levels, so the challenge always matches who is actually in the room.</p>' +
@@ -571,6 +573,7 @@
         (p.id === 'excel' ? EXCEL_PANEL : '') +
         (p.id === 'strengths-edge' ? MODULE1_PANEL : '') +
         (p.id === 'strengths-edge' ? MODULE2_PANEL : '') +
+        (p.id === 'strengths-edge' ? MODULE2_PHOTO : '') +
         (p.id === 'team' ? TEAM_PANEL : '') +
         (p.photo ? '<div class="panel photo"><img src="' + p.photo + '" alt="Participants building a shared structure from modular parts during a Humantic team-building challenge" loading="lazy"><div class="photo-cap"><h3>Game On&trade;</h3><p>It&rsquo;s not a game &mdash; it&rsquo;s the inner game, revealed. Game On&trade; doesn&rsquo;t tell them how to work. It lets them discover how to win &mdash; together.</p></div></div>' : '') +
       '</div></div></div></article>';
