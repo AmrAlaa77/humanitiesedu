@@ -548,10 +548,10 @@
       ? 'A Collective Strengths in Action Workshop, followed by individual Sustaining Collective Strength one-on-ones. ' + p.del
       : 'Two consecutive days of classroom delivery, with the full curriculum covered across both days. ' + p.del;
     var durationText = '10:00 AM &ndash; 4:00 PM';
-    var kickerText = p.id === 'strengths-edge' ? 'Optional Addition' : 'Programme ' + (++coreIdx) + ' of ' + CORE_COUNT;
+    var kickerText = p.id === 'strengths-edge' ? '' : 'Programme ' + (++coreIdx) + ' of ' + CORE_COUNT;
     if (p.id === 'strengths-edge') {
-      sustainBox = '<div class="panel" style="margin-top:20px"><div class="eyebrow">Optional Addition</div>' +
-        '<h3 style="margin-top:10px;font:700 1.3rem var(--serif);color:#fff;text-transform:none;letter-spacing:0"><a href="#' + p.id + '" style="color:inherit;text-decoration:none">' + esc(p.t) + '</a></h3>' +
+      sustainBox = '<div class="panel" style="margin-top:20px">' +
+        '<h3 style="margin-top:0;font:700 1.3rem var(--serif);color:#fff;text-transform:none;letter-spacing:0"><a href="#' + p.id + '" style="color:inherit;text-decoration:none">' + esc(p.t) + '</a></h3>' +
         '<p style="margin-top:10px">' + esc(p.aud) + ' &middot; Arabic / English &middot; ' + durationText + '</p>' +
         '<p>' + esc(delivery) + '</p></div>';
     } else {
