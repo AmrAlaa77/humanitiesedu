@@ -238,6 +238,7 @@
   <div class="wrap">
     <div class="hero-grid">
       <div class="vslot" data-src="videos/intro.mp4" data-controls data-label="Introduction video">
+        <video src="videos/intro.mp4" autoplay muted loop playsinline aria-label="Introduction video"></video>
         <span class="play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
         <span class="cap"><span>Introduction video</span><span>Humantic Digital</span></span>
       </div>
@@ -621,18 +622,25 @@
   document.querySelectorAll('.vslot').forEach(function (el) {
     var src = el.getAttribute('data-src');
     if (!src) return;
-    // Guard against this script running more than once against the same page (e.g. a hot
-    // republish that re-executes it without a full reload) -- without this, a repeat run
-    // insertBefore()s another <video> on top of the one already there instead of replacing it,
-    // which is what produced the stacked/duplicate video frames. Clearing any prior video
-    // first makes this idempotent no matter how many times it fires.
-    el.querySelectorAll('video').forEach(function (old) { old.remove(); });
     var scrollPlay = el.hasAttribute('data-scroll-play');
-    var v = document.createElement('video');
-    v.src = src; v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'metadata';
-    v.setAttribute('aria-label', el.getAttribute('data-label') || 'Video');
-    v.autoplay = !scrollPlay;
-    el.insertBefore(v, el.firstChild);
+    // A <video autoplay muted> declared straight in the page markup is honoured far more
+    // reliably across browsers than one created and inserted by script -- if this vslot
+    // already has a matching video (pre-declared in markup, e.g. the intro), reuse it
+    // instead of tearing it down and racing a fresh autoplay attempt against it.
+    var v = el.querySelector('video');
+    if (!v || v.getAttribute('src') !== src) {
+      // Guard against this script running more than once against the same page (e.g. a hot
+      // republish that re-executes it without a full reload) -- without this, a repeat run
+      // insertBefore()s another <video> on top of the one already there instead of replacing it,
+      // which is what produced the stacked/duplicate video frames. Clearing any prior video
+      // first makes this idempotent no matter how many times it fires.
+      el.querySelectorAll('video').forEach(function (old) { old.remove(); });
+      v = document.createElement('video');
+      v.src = src; v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'metadata';
+      v.setAttribute('aria-label', el.getAttribute('data-label') || 'Video');
+      v.autoplay = !scrollPlay;
+      el.insertBefore(v, el.firstChild);
+    }
     if (el.hasAttribute('data-controls')) v.controls = true;
     // Setting the autoplay IDL property on a video created and inserted dynamically (as opposed
     // to one parsed straight from markup) isn't reliably honoured by every browser -- calling
