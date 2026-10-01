@@ -376,7 +376,7 @@
     { id: 'team', t: 'Team Building & Collaboration', type: 'Team Building', aud: 'All Employees – All Departments & Levels', fmt: 'onsite', photo: 'images/team-building.webp', video: 'videos/team-building.mp4',
       out: ['Strengthen collaboration and trust among team members.','Improve communication and problem-solving through interactive challenges.','Foster teamwork, engagement, and cross-functional collaboration.','Build stronger workplace relationships and a positive team culture.','Enhance employee motivation and overall team performance.'],
       del: 'Includes collaborative challenges, problem-solving activities, experiential learning exercises, and facilitated group discussions.' },
-    { id: 'strengths-edge', t: 'StrengthsEdge', type: 'Sustainability Phase', aud: 'Leaders & Their Teams', fmt: 'advanced', video: 'videos/team-building.mp4',
+    { id: 'strengths-edge', t: 'Sustainability Phase', type: 'Team Development', aud: 'Leaders & Their Teams', fmt: 'advanced', video: 'videos/team-building.mp4',
       out: ['Unlock the intrinsic strengths within your team, shifting the focus from fixing deficits to growing what already works.','Build a collective-strengths philosophy where team members understand, appreciate, and actively leverage one another’s strengths.','Identify Complementary Partnerships so one person’s Shadow Side is covered by another’s dominant strength.','Apply Strengths Mapping and experiential simulations to sharpen role clarity and leadership effectiveness.','Sustain performance through structured one-on-ones that build self-awareness and realign behaviour with strengths.','Translate strengths insights into decisive organizational action through personalised debriefs and advisory sessions.','Surface behavioural dynamics, talent gaps, and alignment opportunities early enough to act on them.'],
       del: 'Module 1 is a facilitated group workshop; Module 2 is delivered as individual one-on-ones for each participant.' }
   ];
@@ -463,18 +463,18 @@
     '<div class="eyebrow" style="margin-top:22px">Internal, Not External</div><h4>Know your derailers</h4>' +
     '<p>Most leaders never realise that their barriers to influence are internal, not external. In a safe, confidential space a classroom can&rsquo;t provide, you get to know your own derailers directly &mdash; limiting patterns, unhelpful thoughts, unconscious bias, communication gaps, and emotional-regulation challenges.</p>' +
     '<div class="eyebrow" style="margin-top:22px">Who You&rsquo;ll Work With</div><h4>Your Leadership Growth, Tangible And Validated</h4>' +
-    '<p>It works because of who holds the space. Our advisory expert brings business acumen as an executive across the UK and GCC, behavioural expertise from her academic background, and neurobiological insight from her Cambridge certification in biology &mdash; the combination that lets leaders feel genuinely comfortable being themselves, so the growth that follows is tangible and validated.</p>' +
+    '<p>It works because of who holds the space. Dr. S. Abraham brings business acumen as an executive across the UK and GCC, behavioural expertise from her academic background, and neurobiological insight from her Cambridge certification in biology &mdash; the combination that lets leaders feel genuinely comfortable being themselves, so the growth that follows is tangible and validated.</p>' +
     '</div>' +
     '</div>';
   var ADVISORY_PHOTO =
     '<div class="panel photo"><img src="images/leadership-oneones.webp" alt="A one-on-one advisory conversation between a Humantic advisor and a leader" loading="lazy"><div class="photo-cap"><h3>A Space To Think Out Loud</h3><p>No audience, no agenda but yours &mdash; just a confidential conversation with someone paying attention to you alone.</p></div></div>';
   var SERVICE_PANEL =
     '<div class="panel wide" id="selling-ta"><h3>Transactional Analysis Assessment</h3>' +
-    '<p>Every interaction is a transaction between ego states. Transactional Analysis gives your team a fast, practical way to read which state a customer is speaking from, and to choose which state to answer from.</p>' +
+    '<p>Transactional Analysis (TA) provides your team with a rapid, practical framework to identify which state a client is communicating from &mdash; and to intentionally select the optimal state from which to respond.</p>' +
     '<div class="rc"><div class="eyebrow">The TA Model</div>' +
-    '<p>In a close, the objection you hear is rarely the real message. Through the lens of Transactional Analysis, sometimes people need reassurance, not more data &mdash; sometimes they need rapport, not pressure &mdash; and the sale turns on knowing which one you&rsquo;re facing.</p>' +
+    '<p>In high-stakes conversations and closing scenarios, the stated objection is rarely the true message. Sometimes a prospect needs reassurance over data &mdash; safety and validation rather than more technical specification. Sometimes a deal needs rapport over pressure &mdash; relational alignment rather than aggressive closing tactics. Recognizing the active state in real time lets you address the real psychological driver of the interaction.</p>' +
     '<div class="eyebrow" style="margin-top:22px">Direct Sales Application</div>' +
-    '<p>The best closers aren&rsquo;t the ones with the best pitch &mdash; they&rsquo;re the ones who actually hear what&rsquo;s being asked. Read what&rsquo;s driving the moment before you respond, and objections stop being obstacles and start being the map to the close.</p>' +
+    '<p>Top closers don&rsquo;t win on pitch quality alone &mdash; they win on acute situational listening. Diagnose what&rsquo;s genuinely driving the moment before you respond, and objections stop being roadblocks and become the direct roadmap to the close.</p>' +
     '</div>' +
     '</div>';
   var ZERO_INBOX_PANEL =
@@ -539,10 +539,10 @@
     var delivery = p.fmt === 'onsite'
       ? 'One interactive team-building session conducted onsite/outdoors. ' + p.del
       : p.fmt === 'advanced'
-      ? 'A one-day Collective Strengths in Action Workshop, followed by individual Sustaining Collective Strength one-on-ones. ' + p.del
+      ? 'A Collective Strengths in Action Workshop, followed by individual Sustaining Collective Strength one-on-ones. ' + p.del
       : 'Two consecutive days of classroom delivery, with the full curriculum covered across both days. ' + p.del;
     var durationText = '10:00 AM &ndash; 4:00 PM';
-    var kickerText = p.id === 'strengths-edge' ? 'Sustainability Phase &middot; Optional Addition' : 'Programme ' + (++coreIdx) + ' of ' + CORE_COUNT;
+    var kickerText = p.id === 'strengths-edge' ? 'Optional Addition' : 'Programme ' + (++coreIdx) + ' of ' + CORE_COUNT;
     rows += '<tr><td><a href="#' + p.id + '">' + esc(p.t) + '</a></td><td>' + esc(p.aud) + '</td><td>Arabic / English</td><td>' + esc(delivery) + '</td><td>' + durationText + '</td></tr>';
     blocks +=
       '<article id="' + p.id + '">' +
