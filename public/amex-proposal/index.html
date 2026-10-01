@@ -248,10 +248,10 @@
         </div>
         <p class="kicker" style="margin-top:34px">Proposal &middot; Riyadh &middot; 2026</p>
         <h1>Annual Human Capital Development<em>Programmes.</em></h1>
-        <p class="lead">Prepared for <strong>American Express Saudi Arabia</strong> &mdash; six 2-day programmes, a 1-day team-building programme, and an advanced team-development add-on for People Development &amp; Culture, delivered in Arabic and English.</p>
+        <p class="lead">Prepared for <strong>American Express Saudi Arabia</strong> &mdash; six 2-day programmes and a 1-day team-building programme for People Development &amp; Culture, plus an optional Sustainability Phase for leaders and their teams, delivered in Arabic and English.</p>
         <div class="metas">
-          <div class="chip"><small>Programmes</small><span>8</span></div>
-          <div class="chip"><small>Sessions</small><span>14</span></div>
+          <div class="chip"><small>Programmes</small><span>7</span></div>
+          <div class="chip"><small>Sessions</small><span>13</span></div>
           <div class="chip"><small>Language</small><span>Arabic / English</span></div>
         </div>
         <a class="cta-pill" href="#portfolio">View the portfolio &darr;</a>
@@ -317,7 +317,7 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">The Portfolio</div>
-      <h2>Eight programmes, one standard of delivery.</h2>
+      <h2>Seven programmes, one standard of delivery.</h2>
     </div>
     <div class="tbl">
       <table>
@@ -339,7 +339,7 @@
       <h2>To confirm the annual calendar, we need three decisions.</h2>
     </div>
     <div class="steps">
-      <div><span class="mono">Scope</span><h4>Programme selection</h4><p>Confirm which of the eight programmes to run and the cohort sizes for each.</p></div>
+      <div><span class="mono">Scope</span><h4>Programme selection</h4><p>Confirm which of the seven programmes to run and the cohort sizes for each, plus whether to add the optional Sustainability Phase.</p></div>
       <div><span class="mono">Calendar</span><h4>Dates &amp; format</h4><p>Agree dates for the 2-day classroom programmes and the onsite team-building session across the year.</p></div>
       <div><span class="mono">Language</span><h4>Arabic or English</h4><p>Choose the delivery language for each cohort. Content is identical in both.</p></div>
     </div>
@@ -376,7 +376,7 @@
     { id: 'team', t: 'Team Building & Collaboration', type: 'Team Building', aud: 'All Employees – All Departments & Levels', fmt: 'onsite', photo: 'images/team-building.webp', video: 'videos/team-building.mp4',
       out: ['Strengthen collaboration and trust among team members.','Improve communication and problem-solving through interactive challenges.','Foster teamwork, engagement, and cross-functional collaboration.','Build stronger workplace relationships and a positive team culture.','Enhance employee motivation and overall team performance.'],
       del: 'Includes collaborative challenges, problem-solving activities, experiential learning exercises, and facilitated group discussions.' },
-    { id: 'strengths-edge', t: 'StrengthsEdge', type: 'Advanced Team Development', aud: 'Intact Teams & Their Leaders', fmt: 'advanced', video: 'videos/team-building.mp4',
+    { id: 'strengths-edge', t: 'StrengthsEdge', type: 'Sustainability Phase', aud: 'Leaders & Their Teams', fmt: 'advanced', video: 'videos/team-building.mp4',
       out: ['Unlock the intrinsic strengths within your team, shifting the focus from fixing deficits to growing what already works.','Build a collective-strengths philosophy where team members understand, appreciate, and actively leverage one another’s strengths.','Identify Complementary Partnerships so one person’s Shadow Side is covered by another’s dominant strength.','Apply Strengths Mapping and experiential simulations to sharpen role clarity and leadership effectiveness.','Sustain performance through structured one-on-ones that build self-awareness and realign behaviour with strengths.','Translate strengths insights into decisive organizational action through personalised debriefs and advisory sessions.','Surface behavioural dynamics, talent gaps, and alignment opportunities early enough to act on them.'],
       del: 'Module 1 is a facilitated group workshop; Module 2 is delivered as individual one-on-ones for each participant.' }
   ];
@@ -533,6 +533,8 @@
     '</div>' +
     '</div>';
   var rows = '', blocks = '';
+  var CORE_COUNT = P.filter(function (p) { return p.id !== 'strengths-edge'; }).length;
+  var coreIdx = 0;
   P.forEach(function (p, i) {
     var delivery = p.fmt === 'onsite'
       ? 'One interactive team-building session conducted onsite/outdoors. ' + p.del
@@ -540,13 +542,14 @@
       ? 'A one-day Collective Strengths in Action Workshop, followed by individual Sustaining Collective Strength one-on-ones. ' + p.del
       : 'Two consecutive days of classroom delivery, with the full curriculum covered across both days. ' + p.del;
     var durationText = '10:00 AM &ndash; 4:00 PM';
+    var kickerText = p.id === 'strengths-edge' ? 'Sustainability Phase &middot; Optional Addition' : 'Programme ' + (++coreIdx) + ' of ' + CORE_COUNT;
     rows += '<tr><td><a href="#' + p.id + '">' + esc(p.t) + '</a></td><td>' + esc(p.aud) + '</td><td>Arabic / English</td><td>' + esc(delivery) + '</td><td>' + durationText + '</td></tr>';
     blocks +=
       '<article id="' + p.id + '">' +
       '<div class="hero">' + LINES +
       '<div class="wrap"><div class="hero-grid">' +
         '<div class="vslot" data-src="' + (p.video || '') + '"' + (p.video ? ' data-controls' : '') + (p.scrollPlay ? ' data-scroll-play' : '') + ' data-label="' + esc(p.t) + '">' + PLAY + '<span class="cap"><span>Programme video</span><span>' + esc(p.type) + '</span></span></div>' +
-        '<div><p class="kicker">Programme ' + (i + 1) + ' of ' + P.length + '</p>' +
+        '<div><p class="kicker">' + kickerText + '</p>' +
         '<h2>' + esc(p.t) + '</h2>' +
         '<div class="metas">' +
           '<div class="chip"><small>Audience</small><span>' + esc(p.aud) + '</span></div>' +
