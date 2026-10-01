@@ -459,6 +459,8 @@
     '<p>Some patterns only surface in private &mdash; the hesitation before a hard call, the habit that undercuts your own authority. A confidential one-to-one session gives a leader room to name it and work through it directly, with someone paying attention to them alone.</p>' +
     '<div class="eyebrow" style="margin-top:22px">Internal, Not External</div><h4>Know your derailers</h4>' +
     '<p>Most leaders never realise that their barriers to influence are internal, not external. In a safe, confidential space a classroom can&rsquo;t provide, you get to know your own derailers directly &mdash; limiting patterns, unhelpful thoughts, unconscious bias, communication gaps, and emotional-regulation challenges.</p>' +
+    '<div class="eyebrow" style="margin-top:22px">Who You&rsquo;ll Work With</div><h4>Your Leadership Growth, Tangible And Validated</h4>' +
+    '<p>It works because of who holds the space. Our advisory expert brings business acumen as an executive across the UK and GCC, behavioural expertise from her academic background, and neurobiological insight from her Cambridge certification in biology &mdash; the combination that lets leaders feel genuinely comfortable being themselves, so the growth that follows is tangible and validated.</p>' +
     '</div>' +
     '</div>';
   var SERVICE_TA = [
@@ -486,6 +488,13 @@
     '<p>A quick, shared workspace for the conversation itself &mdash; what was agreed and what&rsquo;s still outstanding sits in one place, so nobody loses an afternoon digging back through email chains to find where things actually stand.</p>' +
     '<div class="eyebrow" style="margin-top:22px">Launch Offer</div><h4>Two months free, on us</h4>' +
     '<p>Book the Zero Inbox Alignment platform across two or more cohorts and get two months of the subscription free &mdash; our way of keeping it as zero-clutter to start as it is to run.</p>' +
+    '</div>' +
+    '</div>';
+  var EXCEL_PANEL =
+    '<div class="panel wide" id="excel-productivity"><h3>The Psychological Lens on Productivity</h3>' +
+    '<p>Addressing stress, perfectionism, procrastination, and what it actually takes to sustain high performance.</p>' +
+    '<div class="rc"><div class="eyebrow">Our Edge</div><h4>Know the why behind it</h4>' +
+    '<p>Most productivity training stops at the tool. We go one layer deeper &mdash; reading the psychological patterns, like perfectionism and procrastination, that quietly limit output no matter how strong the technical skill is.</p>' +
     '</div>' +
     '</div>';
   var TEAM_PANEL =
@@ -517,6 +526,7 @@
           '<div class="chip"><small>Language</small><span>Arabic / English</span></div>' +
         '</div>' +
         (p.ai ? '<button type="button" class="chip-ai" data-target="ai-' + p.id + '"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>' + AI_CONFIG[p.id].chipNote + '</small><b>' + esc(AI_CONFIG[p.id].title) + '</b></span></button>' : '') +
+        (p.id === 'excel' ? '<button type="button" class="chip-ai" data-target="excel-productivity"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>Included &middot; know the why behind the numbers</small><b>The Psychological Lens on Productivity</b></span></button>' : '') +
         (p.id === 'team' ? '<button type="button" class="chip-ai" data-target="team-toolkits"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>Included &middot; customised to your people and culture</small><b>UK-Engineered Toolkits</b></span></button>' : '') +
         (p.id === 'selling' ? '<button type="button" class="chip-ai" data-target="selling-ta"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>Included &middot; kinda read people</small><b>Transactional Analysis Assessment</b></span></button>' : '') +
         (p.id === 'service' ? '<button type="button" class="chip-ai" data-target="service-zi"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>Included &middot; nothing falls through the cracks</small><b>Zero Inbox Alignment</b></span></button>' : '') +
@@ -532,6 +542,7 @@
         (p.id === 'leadership' ? ADVISORY_PANEL : '') +
         (p.id === 'selling' ? SERVICE_PANEL : '') +
         (p.id === 'service' ? ZERO_INBOX_PANEL : '') +
+        (p.id === 'excel' ? EXCEL_PANEL : '') +
         (p.id === 'team' ? TEAM_PANEL : '') +
         (p.photo ? '<div class="panel photo"><img src="' + p.photo + '" alt="Participants building a shared structure from modular parts during a Humantic team-building challenge" loading="lazy"><div class="photo-cap"><h3>Game On&trade;</h3><p>It&rsquo;s not a game &mdash; it&rsquo;s the inner game, revealed. Game On&trade; doesn&rsquo;t tell them how to work. It lets them discover how to win &mdash; together.</p></div></div>' : '') +
       '</div></div></div></article>';
