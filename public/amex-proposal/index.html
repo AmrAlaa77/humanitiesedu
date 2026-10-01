@@ -636,6 +636,13 @@
     // actual clip even before anyone presses play.
     v.addEventListener('loadedmetadata', function () {
       try { v.currentTime = Math.min(0.1, (v.duration || 1) / 2); } catch (e) {}
+      // The very first play() call (fired before the browser has any data queued) can get
+      // silently rejected on some hosts; retrying once metadata has actually loaded is what
+      // makes autoplay land reliably instead of leaving the clip paused on frame one.
+      if (!scrollPlay && v.paused) v.play().catch(function () {});
+    });
+    v.addEventListener('canplay', function () {
+      if (!scrollPlay && v.paused) v.play().catch(function () {});
     });
     var pl = el.querySelector('.play');
     var cap = el.querySelector('.cap');
