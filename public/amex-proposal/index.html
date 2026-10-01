@@ -326,6 +326,7 @@
         <tbody id="rows"></tbody>
       </table>
     </div>
+    <div id="sustain-box"></div>
   </div>
 </section>
 
@@ -340,7 +341,7 @@
       <h2>To confirm the annual calendar, we need three decisions.</h2>
     </div>
     <div class="steps">
-      <div><span class="mono">Scope</span><h4>Programme selection</h4><p>Confirm which of the seven programmes to run and the cohort sizes for each, plus whether to add the optional Sustainability Phase.</p></div>
+      <div><span class="mono">Scope</span><h4>Programme selection</h4><p>Confirm which of the seven programmes to run and the cohort sizes for each.</p></div>
       <div><span class="mono">Calendar</span><h4>Dates &amp; format</h4><p>Agree dates for the 2-day classroom programmes and the onsite team-building session across the year.</p></div>
       <div><span class="mono">Language</span><h4>Arabic or English</h4><p>Choose the delivery language for each cohort. Content is identical in both.</p></div>
     </div>
@@ -464,7 +465,7 @@
     '<div class="eyebrow" style="margin-top:22px">Internal, Not External</div><h4>Know your derailers</h4>' +
     '<p>Most leaders never realise that their barriers to influence are internal, not external. In a safe, confidential space a classroom can&rsquo;t provide, you get to know your own derailers directly &mdash; limiting patterns, unhelpful thoughts, unconscious bias, communication gaps, and emotional-regulation challenges.</p>' +
     '<div class="eyebrow" style="margin-top:22px">Who You&rsquo;ll Work With</div><h4>Your Leadership Growth, Tangible And Validated</h4>' +
-    '<p>It works because of who holds the space. Dr. S. Abraham brings business acumen as an executive across the UK and GCC, behavioural expertise from her academic background, and neurobiological insight from her Cambridge certification in biology &mdash; the combination that lets leaders feel genuinely comfortable being themselves, so the growth that follows is tangible and validated.</p>' +
+    '<p>It works because of who holds the space &mdash; with Dr. S. Abraham, an expert who simply brings business acumen as an executive across the UK and GCC, behavioural expertise from her academic background, and neurobiological insight from her Cambridge certification in biology &mdash; the combination that lets leaders feel genuinely comfortable being themselves, so the growth that follows is tangible and validated.</p>' +
     '</div>' +
     '</div>';
   var ADVISORY_PHOTO =
@@ -535,7 +536,7 @@
       '<div><h5>Executive</h5><p>Built around UK-engineered tools specially imported for your team &mdash; a sharper, higher-stakes version for senior and executive-level teams.</p></div>' +
     '</div>' +
     '</div>';
-  var rows = '', blocks = '';
+  var rows = '', blocks = '', sustainBox = '';
   var CORE_COUNT = P.filter(function (p) { return p.id !== 'strengths-edge'; }).length;
   var coreIdx = 0;
   P.forEach(function (p, i) {
@@ -546,7 +547,14 @@
       : 'Two consecutive days of classroom delivery, with the full curriculum covered across both days. ' + p.del;
     var durationText = '10:00 AM &ndash; 4:00 PM';
     var kickerText = p.id === 'strengths-edge' ? 'Optional Addition' : 'Programme ' + (++coreIdx) + ' of ' + CORE_COUNT;
-    rows += '<tr><td><a href="#' + p.id + '">' + esc(p.t) + '</a></td><td>' + esc(p.aud) + '</td><td>Arabic / English</td><td>' + esc(delivery) + '</td><td>' + durationText + '</td></tr>';
+    if (p.id === 'strengths-edge') {
+      sustainBox = '<div class="panel" style="margin-top:20px"><div class="eyebrow">Optional Addition</div>' +
+        '<h3 style="margin-top:10px;font:700 1.3rem var(--serif);color:#fff;text-transform:none;letter-spacing:0"><a href="#' + p.id + '" style="color:inherit;text-decoration:none">' + esc(p.t) + '</a></h3>' +
+        '<p style="margin-top:10px">' + esc(p.aud) + ' &middot; Arabic / English &middot; ' + durationText + '</p>' +
+        '<p>' + esc(delivery) + '</p></div>';
+    } else {
+      rows += '<tr><td><a href="#' + p.id + '">' + esc(p.t) + '</a></td><td>' + esc(p.aud) + '</td><td>Arabic / English</td><td>' + esc(delivery) + '</td><td>' + durationText + '</td></tr>';
+    }
     blocks +=
       '<article id="' + p.id + '">' +
       '<div class="hero">' + LINES +
@@ -587,6 +595,7 @@
       '</div></div></div></article>';
   });
   document.getElementById('rows').innerHTML = rows;
+  document.getElementById('sustain-box').innerHTML = sustainBox;
   document.getElementById('programmes').innerHTML = blocks;
 
   // Trusted-across rail: the track is the name list rendered twice back to back, so translating
@@ -610,12 +619,14 @@
       if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
-  // jumping to a programme from the portfolio table opens its details
-  document.getElementById('rows').addEventListener('click', function (e) {
+  // jumping to a programme from the portfolio table (or the Sustainability Phase box) opens its details
+  var jumpToDetails = function (e) {
     var a = e.target.closest('a'); if (!a) return;
     var btn = document.querySelector(a.getAttribute('href') + ' .more');
     if (btn) setOpen(btn, true);
-  });
+  };
+  document.getElementById('rows').addEventListener('click', jumpToDetails);
+  document.getElementById('sustain-box').addEventListener('click', jumpToDetails);
 
   // video space: set data-src="your-clip.mp4" on any .vslot to play it in place.
   // data-scroll-play makes it hold off and only play while it is actually visible on screen,
