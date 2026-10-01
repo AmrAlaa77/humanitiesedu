@@ -388,7 +388,7 @@
   var AI_CONFIG = {
     storytelling: {
       title: 'Presence AI-Assessment',
-      chipNote: 'Included &middot; assesses presence, confidence &amp; security',
+      chipNote: 'Additional fee &middot; assesses presence, confidence &amp; security',
       intro: 'Presence AI-Assessment is Humantic&rsquo;s own AI-based assessment platform, reading presence, confidence and security through the lens of socio-neurobiology &mdash; not body language, but what is actually happening in a presenter&rsquo;s nervous system while they present. Participants are put through live questioning, and the platform reads how composure holds and where nervousness is limiting real performance, giving every participant a personalised performance-gap report.',
       features: ['Live assessment during real presentations, including impromptu questioning from the room', 'Composure testing under pressure — reads how presence holds up when challenged live, not on paper', 'Vocal confidence tracking — tone, pace and steadiness under pressure', 'Nervousness-to-performance mapping — reads where nerves are actually limiting performance indicators', 'Socio-neurobiological benchmarking', 'Personalised performance-gap report'],
       rcEyebrow: 'Root Causes',
@@ -404,7 +404,7 @@
     },
     communication: {
       title: 'Organizational Behavior Assessment',
-      chipNote: 'Included &middot; uncovers internal barriers',
+      chipNote: 'Additional fee &middot; uncovers internal barriers',
       intro: 'Many people never realise that their barriers to influence are internal, not external. Humantic&rsquo;s AI-based platform helps each participant see what is actually in the way, in a safe, non-evaluative space, before working on it in the room.',
       features: ['Organizational Behavior & Team Dynamics Assessment', 'Uncover limiting patterns and unhelpful thought habits', 'Surface unconscious bias in how you read colleagues', 'Map communication gaps between intent and impact', 'Assess emotional-regulation challenges under pressure', 'Preliminary assessment grounded in socio-behavioural science'],
       rcEyebrow: 'Internal Barriers',
@@ -421,7 +421,7 @@
   };
   function buildAiPanel(id) {
     var c = AI_CONFIG[id];
-    return '<div class="panel ai" id="ai-' + id + '"><div class="ai-head"><h3>' + esc(c.title) + '</h3><span class="fmt">Added to this programme</span></div>' +
+    return '<div class="panel ai" id="ai-' + id + '"><div class="ai-head"><h3>' + esc(c.title) + '</h3><span class="fmt">Available at additional fee</span></div>' +
       '<p>' + c.intro + '</p>' +
       '<ul>' + c.features.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>' +
       '<div class="rc"><div class="eyebrow">' + esc(c.rcEyebrow) + '</div><h4>' + esc(c.rcTitle) + '</h4>' +
@@ -573,7 +573,7 @@
         (p.id === 'excel' ? '<button type="button" class="chip-ai" data-target="excel-productivity"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>Included &middot; know the why behind the numbers</small><b>The Psychological Lens on Productivity</b></span></button>' : '') +
         (p.id === 'team' ? '<button type="button" class="chip-ai" data-target="team-toolkits"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>Included &middot; customised to your people and culture</small><b>UK-Engineered Toolkits</b></span></button>' : '') +
         (p.id === 'strengths-edge' ? '<button type="button" class="chip-ai" data-target="strengths-edge-oneones"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>Included &middot; strengths-based</small><b>Derailers One-on-Ones</b></span></button>' : '') +
-        (p.id === 'selling' ? '<button type="button" class="chip-ai" data-target="selling-ta"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>Included &middot; kinda read people</small><b>Transactional Analysis Assessment</b></span></button>' : '') +
+        (p.id === 'selling' ? '<button type="button" class="chip-ai" data-target="selling-ta"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>Additional fee &middot; kinda read people</small><b>Transactional Analysis Assessment</b></span></button>' : '') +
         (p.id === 'service' ? '<button type="button" class="chip-ai" data-target="service-zi"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>Included &middot; nothing falls through the cracks</small><b>Zero Inbox Alignment</b></span></button>' : '') +
         (p.id === 'leadership' ? '<button type="button" class="chip-ai" data-target="leadership-advisory"><span class="ai-dot" aria-hidden="true"></span><span class="ai-txt"><small>Included &middot; confidential, one-to-one</small><b>One-on-One Advisory</b></span></button>' : '') +
         '<button type="button" class="more" aria-expanded="false" aria-controls="body-' + p.id + '"><span class="ico" aria-hidden="true">+</span><span class="lbl">Learn more</span></button></div>' +
