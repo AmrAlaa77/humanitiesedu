@@ -626,6 +626,10 @@
     v.autoplay = !scrollPlay;
     el.insertBefore(v, el.firstChild);
     if (el.hasAttribute('data-controls')) v.controls = true;
+    // Setting the autoplay IDL property on a video created and inserted dynamically (as opposed
+    // to one parsed straight from markup) isn't reliably honoured by every browser -- calling
+    // play() explicitly is what actually starts it.
+    if (!scrollPlay) v.play().catch(function () {});
     // Some hosts only ever preload metadata (duration/dimensions), not a decoded frame, which is
     // why a paused video can render as a flat black rectangle. Nudging the playhead a hair once
     // metadata is in forces the browser to decode and paint that frame, so the box shows the
