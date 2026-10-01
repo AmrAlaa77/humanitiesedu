@@ -358,7 +358,7 @@
     { id: 'storytelling', t: 'Business Storytelling & Data Presentation Skills', type: 'Communication & Presentation Skills', aud: 'All Employees – All Departments & Levels', fmt: 'cv', ai: true, video: 'videos/storytelling.mp4',
       out: ['Transform data into compelling business stories and actionable insights.','Present reports and dashboards with clarity and confidence.','Structure presentations to influence stakeholders and decision-makers.','Enhance visual communication and presentation delivery skills.','Tailor messages effectively for different audiences.'],
       del: 'Includes presentation practice, storytelling frameworks, real business case studies, and hands-on exercises.' },
-    { id: 'communication', t: 'Professional Communication & Workplace Influence', type: 'Soft Skills', aud: 'All Employees – All Departments & Levels', fmt: 'cv', ai: true, video: 'videos/communication.mp4', scrollPlay: true,
+    { id: 'communication', t: 'Professional Communication & Workplace Influence', type: 'Soft Skills', aud: 'All Employees – All Departments & Levels', fmt: 'cv', ai: true, video: 'videos/communication.mp4',
       out: ['Strengthen communication and interpersonal effectiveness.','Build self-awareness and relationship management skills.','Enhance collaboration and teamwork across the organization.','Improve influencing, active listening, and stakeholder communication.','Communicate confidently in challenging workplace situations.'],
       del: 'Includes experiential-based learning, interactive discussions, role plays, communication exercises, and workplace scenarios.' },
     { id: 'selling', t: 'Consultative Selling Skills', type: 'Sales & Business Development', aud: 'Sales & Customer-Facing Employees', fmt: 'cv', video: 'videos/selling.mp4',
@@ -548,7 +548,7 @@
       '<article id="' + p.id + '">' +
       '<div class="hero">' + LINES +
       '<div class="wrap"><div class="hero-grid">' +
-        '<div class="vslot" data-src="' + (p.video || '') + '"' + (p.video ? ' data-controls' : '') + (p.scrollPlay ? ' data-scroll-play' : '') + ' data-label="' + esc(p.t) + '">' + PLAY + '<span class="cap"><span>Programme video</span><span>' + esc(p.type) + '</span></span></div>' +
+        '<div class="vslot" data-src="' + (p.video || '') + '"' + (p.video ? ' data-controls' : '') + (p.video ? ' data-scroll-play' : '') + ' data-label="' + esc(p.t) + '">' + PLAY + '<span class="cap"><span>Programme video</span><span>' + esc(p.type) + '</span></span></div>' +
         '<div><p class="kicker">' + kickerText + '</p>' +
         '<h2>' + esc(p.t) + '</h2>' +
         '<div class="metas">' +
