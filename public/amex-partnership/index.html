@@ -145,9 +145,16 @@
 
   footer { margin-top: 72px; padding-block: 28px 40px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--dim); }
   footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+  /* AESA part divider */
+  .part { margin-top: 88px; padding: 28px 24px; border-radius: 18px; border: 1px solid var(--aqua); background: linear-gradient(115deg, rgba(34,241,204,.14), rgba(8,145,178,.10)); }
+  .part h2 { margin-top: 10px; font-family: var(--serif); font-weight: 700; font-size: clamp(1.7rem, 4vw, 2.5rem); line-height: 1.15; }
+  .part .chips { margin-top: 20px; }
+  .part + .status { margin-top: 16px; }
+  .record { margin-top: 24px; border: 1px solid var(--line); background: var(--glass); border-radius: 16px; padding: 22px 24px; max-width: 46rem; }
+  .record p { margin: 6px 0 0; font-size: 14.5px; }
 </style>
 
-<div class="pin-bar"><span>AESA Strategic Partnership Plan</span><small>Commercial &middot; Confidential</small></div>
+<div class="pin-bar"><span>Humantic Strategic Co-Investment Programme</span><small>Commercial &middot; Confidential</small></div>
 
 <header class="cover">
   <div class="wrap">
@@ -155,21 +162,93 @@
       <div class="mark"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
       <div><b>Humantic</b><span>Digital</span></div>
     </div>
-    <p class="kicker">Commercial Plan &middot; Riyadh &middot; October 2026</p>
+    <p class="kicker">Commercial Framework &middot; Riyadh &middot; October 2026</p>
     <h1>24-Day Minimum Partnership <em>Full Co-Investment</em></h1>
-    <p class="lead">A long-term partnership plan for American Express Saudi Arabia. It follows the 13-day Strategic Account Entry and places a minimum of 24 further programme days on Humantic's Fully Funded co-investment tier, the highest standing support available under the programme rate card.</p>
+    <p class="lead">Humantic Digital is a MISA-licensed investment entity operating a dedicated, Vision 2030-aligned KSA enablement programme. We co-fund strategic organisational capability programmes across key institutions in the Kingdom of Saudi Arabia.</p>
     <div class="chips">
-      <div class="chip"><small>Account</small><span>American Express Saudi Arabia</span></div>
-      <div class="chip"><small>Classification</small><span>Tier 1 Strategic Account</span></div>
+      <div class="chip"><small>Licence</small><span>MISA-licensed investment entity</span></div>
+      <div class="chip"><small>Alignment</small><span>Vision 2030</span></div>
+      <div class="chip"><small>Market</small><span>Kingdom of Saudi Arabia</span></div>
+      <div class="chip"><small>Programmes</small><span>Non-AI and AI-Enabled</span></div>
       <div class="chip"><small>Minimum commitment</small><span>24 programme days</span></div>
-      <div class="chip"><small>Funding model</small><span>Fully Funded co-investment</span></div>
-      <div class="chip"><small>Standard value <small>Standard programme value</small>middot; 24-day minimum</small><span class="num">SAR 288,000</span></div>
-      <div class="chip"><small>Humantic co-investment <small>Humantic co-investment</small>middot; from</small><span class="num">SAR 96,000</span></div>
     </div>
   </div>
 </header>
 
 <main class="wrap">
+
+  <section id="framework">
+    <p class="eyebrow">How co-investment works</p>
+    <h2>A governed framework, not a discount</h2>
+    <div class="prose">
+      <p>We do not apply arbitrary commercial discounts, and the programme does not imply entitlement to a government subsidy. Each institution is classified on its statutory credentials: incorporation, ownership, regulatory oversight and participation in Vision Realization Programmes. The classification sets the funding tier, and the funding tier sets the daily rate and Humantic's contribution.</p>
+      <p>Fully Funded partnerships run for a minimum of 24 programme days. Every additional day carries the same rate and the same Humantic contribution.</p>
+    </div>
+    <div class="record">
+      <p class="eyebrow">Investment record</p>
+      <p>Humantic Digital has run a fully funded engagement of <b>140 programme days over seven months</b> across five healthcare institutions under the Ministry of National Guard Health Affairs and hospitals owned by His Majesty King Salman.</p>
+    </div>
+  </section>
+
+  <section id="qualification">
+    <p class="eyebrow">Schedule A &middot; Master qualification matrix</p>
+    <h2>How institutions qualify for co-investment</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Customer category</th><th>Eligibility / qualification basis</th><th>Commercial funding model</th><th class="r">Standard approved rate</th><th class="r">Humantic contribution</th></tr></thead>
+        <tbody>
+          <tr><td>Non-Saudi / International Entity</td><td>Foreign entity without local KSA incorporation or qualifying domestic structure</td><td>Customer-Funded</td><td class="r">SAR 12,000 / day</td><td class="r">&mdash;</td></tr>
+          <tr><td>Saudi Entity Outside Criteria</td><td>KSA presence without the qualifying programme criteria</td><td>Customer-Funded</td><td class="r">SAR 12,000 / day</td><td class="r">&mdash;</td></tr>
+          <tr><td>Strategic / Royal-Associated Entity</td><td>Approved strategic national growth mandate or specialised sector</td><td>Strategic Co-Investment</td><td class="r">SAR 10,000 / day</td><td class="r">SAR 2,000 / day</td></tr>
+          <tr><td>Qualifying Vision 2030 Participant</td><td>Documented participation in qualifying Vision Realization Programmes</td><td>Strategic Co-Investment</td><td class="r">SAR 8,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
+          <tr><td>Saudi Government / Sovereign Body</td><td>Recognised institutional, ministry or public-sector status</td><td>Approved Co-Investment</td><td class="r">SAR 8,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="rate-card">
+    <p class="eyebrow">Schedule B &middot; Programme rate architecture</p>
+    <h2>Non-AI and AI-Enabled programme tiers</h2>
+    <p class="intro">The full commercial rate architecture, shown separately for each programme type.</p>
+
+    <h3 style="margin-top:32px;font-size:17px">Non-AI programmes</h3>
+    <div class="tbl" style="margin-top:12px">
+      <table>
+        <thead><tr><th>Funding tier</th><th>Customer funding classification</th><th class="r">Standard rate</th><th class="r">Approved programme floor</th><th class="r">Humantic contribution</th></tr></thead>
+        <tbody>
+          <tr><td>Non-Funded</td><td>Customer-funded baseline</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 12,000 / day</td><td class="r">Baseline rate card</td></tr>
+          <tr><td>Semi-Funded</td><td>Strategic co-investment tier</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 10,000 / day</td><td class="r">SAR 2,000 / day</td></tr>
+          <tr><td>Fully Funded</td><td>Approved Strategic Account floor</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 8,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:32px;font-size:17px">AI-Enabled programmes</h3>
+    <div class="tbl" style="margin-top:12px">
+      <table>
+        <thead><tr><th>Funding tier</th><th>Customer funding classification</th><th class="r">Standard rate</th><th class="r">Approved programme floor</th><th class="r">Humantic contribution</th></tr></thead>
+        <tbody>
+          <tr><td>Non-Funded</td><td>Customer-funded, international or non-qualifying</td><td class="r">SAR 16,000 / day</td><td class="r">SAR 16,000 / day</td><td class="r">Baseline rate card</td></tr>
+          <tr><td>Semi-Funded</td><td>Strategic co-investment / Vision 2030 participant</td><td class="r">SAR 16,000 / day</td><td class="r">SAR 14,000 / day</td><td class="r">SAR 2,000 / day</td></tr>
+          <tr><td>Fully Funded</td><td>Approved strategic co-investment tier</td><td class="r">SAR 16,000 / day</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="part" id="aesa">
+    <p class="eyebrow">Prepared for American Express Saudi Arabia</p>
+    <h2>AESA Strategic Partnership Plan</h2>
+    <p class="intro">This plan follows the 13-day Strategic Account Entry and places a minimum of 24 further programme days on Humantic's Fully Funded co-investment tier, the highest standing support available under the programme rate card.</p>
+    <div class="chips">
+      <div class="chip"><small>Account</small><span>American Express Saudi Arabia</span></div>
+      <div class="chip"><small>Classification</small><span>Tier 1 Strategic Account</span></div>
+      <div class="chip"><small>Funding model</small><span>Fully Funded co-investment</span></div>
+      <div class="chip"><small>Standard value &middot; 24-day minimum</small><span class="num">SAR 288,000</span></div>
+      <div class="chip"><small>Humantic co-investment &middot; from</small><span class="num">SAR 96,000</span></div>
+    </div>
+  </div>
 
   <div class="status" aria-label="Executive status and governance summary">
     <div><small>Programme qualification</small><strong class="ok">Approved &mdash; Tier 1 Strategic Account</strong></div>
@@ -182,9 +261,54 @@
     <p class="eyebrow">Executive summary</p>
     <h2>From a 13-day entry to a long-term institutional partnership</h2>
     <div class="prose">
-      <p>Humantic Digital is a MISA-licensed investment entity operating a dedicated, Vision 2030-aligned KSA enablement programme. We co-fund strategic leadership alignment, neuro-behavioural diagnostics and organisational capability across key institutions in the Kingdom of Saudi Arabia.</p>
-      <p>We do not apply arbitrary commercial discounts, and the programme does not imply entitlement to a government subsidy. It runs on a governed co-investment framework. American Express Saudi Arabia is classified as a <b>Tier 1 Strategic Account</b> on its statutory credentials: Saudi Closed Joint Stock incorporation, SAMA regulatory oversight, Riyadh headquarters, and 50% domestic equity ownership through The Saudi Investment Bank (SAIB).</p>
+      <p>American Express Saudi Arabia is classified as a <b>Tier 1 Strategic Account</b> on its statutory credentials: Saudi Closed Joint Stock incorporation, SAMA regulatory oversight, Riyadh headquarters, and 50% domestic equity ownership through The Saudi Investment Bank (SAIB).</p>
       <p>The 13-day Executive Exception established the relationship. This plan sets out the next stage: a partnership with a <b>24-day minimum commitment</b> in which Humantic contributes <b>SAR 4,000 for every programme day</b>, at least <b class="num">SAR 96,000</b> in strategic co-investment across the term.</p>
+    </div>
+  </section>
+
+  <section id="aesa-rates">
+    <p class="eyebrow">Schedule C &middot; AESA on the rate card</p>
+    <h2>AESA's classification and Non-AI rates</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Customer category</th><th>Eligibility / qualification basis</th><th>Commercial funding model</th><th class="r">Standard approved rate</th><th class="r">Humantic contribution</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>American Express Saudi Arabia &mdash; Standard</td><td>Saudi closed joint-stock company, qualifying Saudi institutional ownership, SAMA-regulated</td><td>Approved Co-Investment</td><td class="r">SAR 8,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
+          <tr class="ex"><td>AESA &mdash; 13-Day Executive Exception</td><td>Initial 13-day engagement only, special strategic entry</td><td>Executive Strategic Exception</td><td class="r">SAR 5,500 / day</td><td class="r">SAR 6,500 / day</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 style="margin-top:32px;font-size:17px">Non-AI programmes &middot; AESA</h3>
+    <div class="tbl" style="margin-top:12px">
+      <table>
+        <thead><tr><th>Funding tier</th><th>Customer funding classification</th><th class="r">Standard rate</th><th class="r">Approved programme floor</th><th class="r">Humantic contribution</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>Fully Funded</td><td>Approved Strategic Account floor</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 8,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
+          <tr class="ex"><td>AESA 13-Day Executive Exception</td><td>Executive Strategic Account Entry (closed)</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 5,500 / day</td><td class="r">SAR 6,500 / day</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="audit">
+    <p class="eyebrow">Schedule D &middot; Eligibility verification audit</p>
+    <h2>AESA statutory credentials</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Audit parameter</th><th>Official AESA credential</th><th>Legal &amp; economic significance</th><th>Verification</th></tr></thead>
+        <tbody>
+          <tr><td>Legal entity name</td><td>American Express Saudi Arabia</td><td>Officially registered entity within KSA jurisdiction</td><td><span class="pill v">Verified</span></td></tr>
+          <tr><td>Corporate structure</td><td>Saudi Closed Joint Stock Company</td><td>High-tier local corporate status under the Ministry of Commerce</td><td><span class="pill v">Verified</span></td></tr>
+          <tr><td>Commercial Registration</td><td>CR <code>1010183222</code></td><td>Active commercial registration in KSA</td><td><span class="pill v">Verified</span></td></tr>
+          <tr><td>Unified National Number</td><td>UNN <code>7001453476</code></td><td>Statutory recognition in the Saudi business register</td><td><span class="pill v">Verified</span></td></tr>
+          <tr><td>Chamber of Commerce No.</td><td><code>130053</code></td><td>Registered member of the Riyadh Chamber of Commerce</td><td><span class="pill v">Verified</span></td></tr>
+          <tr><td>Regulatory authority</td><td>Saudi Central Bank (SAMA)</td><td>Licensed finance company under SAMA oversight</td><td><span class="pill v">Verified</span></td></tr>
+          <tr><td>Corporate headquarters</td><td>Riyadh, Kingdom of Saudi Arabia</td><td>Local economic substance and physical headquarters</td><td><span class="pill v">Verified</span></td></tr>
+          <tr><td>Domestic equity partner</td><td>50% &mdash; The Saudi Investment Bank</td><td>Major Saudi institutional bank equity (SAIB)</td><td><span class="pill v">Qualified</span></td></tr>
+          <tr><td>Foreign equity partner</td><td>50% &mdash; Amex (Middle East) B.S.C.</td><td>Regional strategic shareholder</td><td><span class="pill n">N/A &middot; Joint venture</span></td></tr>
+          <tr class="hl"><td>Programme qualification status</td><td>Approved &mdash; Tier 1 Strategic Account</td><td>Approved for maximum strategic co-investment</td><td><span class="pill v">Approved</span></td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
@@ -200,7 +324,7 @@
       </div>
       <div class="phase now">
         <span class="tag">Stage 2 &middot; This plan</span>
-        <h3>Strategic Partnership 24-Day Strategic Partnershipmiddot; 24-Day Minimum</h3>
+        <h3>Strategic Partnership &middot; 24-Day Minimum</h3>
         <div class="rate num">SAR 8,000 <small>/ day &middot; Non-AI</small></div>
         <p>Full co-investment at the approved Strategic Account floor, with an AI-Enabled option at SAR 12,000 / day. Humantic contributes at least SAR 96,000, and SAR 4,000 more for every additional day.</p>
       </div>
@@ -214,13 +338,13 @@
   </section>
 
   <section id="economics">
-    <p class="eyebrow">Schedule A &middot; commercial economics at the 24-day minimum</p>
+    <p class="eyebrow">Schedule E &middot; Commercial economics at the 24-day minimum</p>
     <h2>Two deployment options, both fully co-invested</h2>
     <p class="intro">Both options carry the same Humantic contribution of SAR 4,000 per day. They differ in whether the programme includes Humantic's AI-enabled diagnostics and analytics layer. Figures are shown at the 24-day minimum. Every additional day carries the same rate and the same SAR 4,000 Humantic contribution.</p>
     <div class="opts">
       <article class="opt lead-opt">
         <header><h3>Option 1 &middot; Non-AI Programme</h3><span class="pill v">Fully Funded</span></header>
-        <div class="big num">SAR 192,000<small>AESA investment AESA investment &middot; 24 daysmiddot; 24-day minimum &times; SAR 8,000</small></div>
+        <div class="big num">SAR 192,000<small>AESA investment &middot; 24-day minimum &times; SAR 8,000</small></div>
         <div class="bar" role="img" aria-label="AESA pays 66.67 percent, Humantic contributes 33.33 percent"><span class="c" style="width:66.67%"></span><span class="h" style="width:33.33%"></span></div>
         <div class="legend"><span><i style="background:var(--cyan)"></i>AESA 66.67%</span><span><i style="background:var(--emerald)"></i>Humantic 33.33%</span></div>
         <dl class="kv">
@@ -235,7 +359,7 @@
       </article>
       <article class="opt">
         <header><h3>Option 2 &middot; AI-Enabled Programme</h3><span class="pill v">Fully Funded</span></header>
-        <div class="big num">SAR 288,000<small>AESA investment AESA investment &middot; 24 daysmiddot; 24-day minimum &times; SAR 12,000</small></div>
+        <div class="big num">SAR 288,000<small>AESA investment &middot; 24-day minimum &times; SAR 12,000</small></div>
         <div class="bar" role="img" aria-label="AESA pays 75 percent, Humantic contributes 25 percent"><span class="c" style="width:75%"></span><span class="h" style="width:25%"></span></div>
         <div class="legend"><span><i style="background:var(--cyan)"></i>AESA 75.00%</span><span><i style="background:var(--emerald)"></i>Humantic 25.00%</span></div>
         <dl class="kv">
@@ -275,7 +399,7 @@
   </section>
 
   <section id="relationship">
-    <p class="eyebrow">Schedule B &middot; Total relationship value</p>
+    <p class="eyebrow">Schedule F &middot; Total relationship value</p>
     <h2>Stage 1 and Stage 2 combined: 37 programme days at minimum</h2>
     <div class="tbl">
       <table>
@@ -292,78 +416,6 @@
     <p class="note">The Stage 1 exception rate applies only to the initial 13 days. It is shown here for the full relationship picture and does not carry into Stage 2.</p>
   </section>
 
-  <section id="rate-card">
-    <p class="eyebrow">Schedule C &middot; Programme rate architecture</p>
-    <h2>Non-AI and AI-Enabled programme tiers</h2>
-    <p class="intro">The full commercial rate architecture, shown separately for each programme type. The rows that apply to AESA are highlighted.</p>
-
-    <h3 style="margin-top:32px;font-size:17px">Non-AI programmes</h3>
-    <div class="tbl" style="margin-top:12px">
-      <table>
-        <thead><tr><th>Funding tier</th><th>Customer funding classification</th><th class="r">Standard rate</th><th class="r">Approved programme floor</th><th class="r">Humantic contribution</th></tr></thead>
-        <tbody>
-          <tr><td>Non-Funded</td><td>Customer-funded baseline</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 12,000 / day</td><td class="r">Baseline rate card</td></tr>
-          <tr><td>Semi-Funded</td><td>Strategic co-investment tier</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 10,000 / day</td><td class="r">SAR 2,000 / day</td></tr>
-          <tr class="hl"><td>Fully Funded</td><td>Approved Strategic Account floor</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 8,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
-          <tr class="ex"><td>AESA 13-Day Executive Exception</td><td>Executive Strategic Account Entry (closed)</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 5,500 / day</td><td class="r">SAR 6,500 / day</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3 style="margin-top:32px;font-size:17px">AI-Enabled programmes</h3>
-    <div class="tbl" style="margin-top:12px">
-      <table>
-        <thead><tr><th>Funding tier</th><th>Customer funding classification</th><th class="r">Standard rate</th><th class="r">Approved programme floor</th><th class="r">Humantic contribution</th></tr></thead>
-        <tbody>
-          <tr><td>Non-Funded</td><td>Customer-funded, international or non-qualifying</td><td class="r">SAR 16,000 / day</td><td class="r">SAR 16,000 / day</td><td class="r">Baseline rate card</td></tr>
-          <tr><td>Semi-Funded</td><td>Strategic co-investment / Vision 2030 participant</td><td class="r">SAR 16,000 / day</td><td class="r">SAR 14,000 / day</td><td class="r">SAR 2,000 / day</td></tr>
-          <tr class="hl"><td>Fully Funded</td><td>Approved strategic co-investment tier</td><td class="r">SAR 16,000 / day</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="qualification">
-    <p class="eyebrow">Schedule D &middot; Master qualification matrix</p>
-    <h2>How customers qualify for co-investment</h2>
-    <div class="tbl">
-      <table>
-        <thead><tr><th>Customer category</th><th>Eligibility / qualification basis</th><th>Commercial funding model</th><th class="r">Standard approved rate</th><th class="r">Humantic contribution</th></tr></thead>
-        <tbody>
-          <tr><td>Non-Saudi / International Entity</td><td>Foreign entity without local KSA incorporation or qualifying domestic structure</td><td>Customer-Funded</td><td class="r">SAR 12,000 / day</td><td class="r">&mdash;</td></tr>
-          <tr><td>Saudi Entity Outside Criteria</td><td>KSA presence without the qualifying programme criteria</td><td>Customer-Funded</td><td class="r">SAR 12,000 / day</td><td class="r">&mdash;</td></tr>
-          <tr><td>Strategic / Royal-Associated Entity</td><td>Approved strategic national growth mandate or specialised sector</td><td>Strategic Co-Investment</td><td class="r">SAR 10,000 / day</td><td class="r">SAR 2,000 / day</td></tr>
-          <tr><td>Qualifying Vision 2030 Participant</td><td>Documented participation in qualifying Vision Realization Programmes</td><td>Strategic Co-Investment</td><td class="r">SAR 8,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
-          <tr><td>Saudi Government / Sovereign Body</td><td>Recognised institutional, ministry or public-sector status</td><td>Approved Co-Investment</td><td class="r">SAR 8,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
-          <tr class="hl"><td>American Express Saudi Arabia &mdash; Standard</td><td>Saudi closed joint-stock company, qualifying Saudi institutional ownership, SAMA-regulated</td><td>Approved Co-Investment</td><td class="r">SAR 8,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
-          <tr class="ex"><td>AESA &mdash; 13-Day Executive Exception</td><td>Initial 13-day engagement only, special strategic entry</td><td>Executive Strategic Exception</td><td class="r">SAR 5,500 / day</td><td class="r">SAR 6,500 / day</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="audit">
-    <p class="eyebrow">Schedule E &middot; Eligibility verification audit</p>
-    <h2>AESA statutory credentials</h2>
-    <div class="tbl">
-      <table>
-        <thead><tr><th>Audit parameter</th><th>Official AESA credential</th><th>Legal &amp; economic significance</th><th>Verification</th></tr></thead>
-        <tbody>
-          <tr><td>Legal entity name</td><td>American Express Saudi Arabia</td><td>Officially registered entity within KSA jurisdiction</td><td><span class="pill v">Verified</span></td></tr>
-          <tr><td>Corporate structure</td><td>Saudi Closed Joint Stock Company</td><td>High-tier local corporate status under the Ministry of Commerce</td><td><span class="pill v">Verified</span></td></tr>
-          <tr><td>Commercial Registration</td><td>CR <code>1010183222</code></td><td>Active commercial registration in KSA</td><td><span class="pill v">Verified</span></td></tr>
-          <tr><td>Unified National Number</td><td>UNN <code>7001453476</code></td><td>Statutory recognition in the Saudi business register</td><td><span class="pill v">Verified</span></td></tr>
-          <tr><td>Chamber of Commerce No.</td><td><code>130053</code></td><td>Registered member of the Riyadh Chamber of Commerce</td><td><span class="pill v">Verified</span></td></tr>
-          <tr><td>Regulatory authority</td><td>Saudi Central Bank (SAMA)</td><td>Licensed finance company under SAMA oversight</td><td><span class="pill v">Verified</span></td></tr>
-          <tr><td>Corporate headquarters</td><td>Riyadh, Kingdom of Saudi Arabia</td><td>Local economic substance and physical headquarters</td><td><span class="pill v">Verified</span></td></tr>
-          <tr><td>Domestic equity partner</td><td>50% &mdash; The Saudi Investment Bank</td><td>Major Saudi institutional bank equity (SAIB)</td><td><span class="pill v">Qualified</span></td></tr>
-          <tr><td>Foreign equity partner</td><td>50% &mdash; Amex (Middle East) B.S.C.</td><td>Regional strategic shareholder</td><td><span class="pill n">N/A &middot; Joint venture</span></td></tr>
-          <tr class="hl"><td>Programme qualification status</td><td>Approved &mdash; Tier 1 Strategic Account</td><td>Approved for maximum strategic co-investment</td><td><span class="pill v">Approved</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
   <section id="justification">
     <p class="eyebrow">Strategic justification</p>
     <h2>Why Humantic co-invests at least SAR 96,000 in this partnership</h2>
@@ -376,7 +428,7 @@
       </div>
       <div>
         <h3><span>2</span>Building on proven value</h3>
-        <p>The 13-day entry engagement let AESA leadership experience the methodology, evaluate behavioural alignment and generate internal efficacy data. Forty days gives enough depth to turn those early findings into measurable organisational capability.</p>
+        <p>The 13-day entry engagement let AESA leadership experience the methodology, evaluate behavioural alignment and generate internal efficacy data. A minimum of 24 days gives enough depth to turn those early findings into measurable organisational capability.</p>
         <p class="impl">Stage 2 extends a validated approach rather than starting a new pilot.</p>
       </div>
       <div>
@@ -444,7 +496,7 @@
 <footer>
   <div class="wrap">
     <span>Humantic Digital &middot; MISA-licensed &middot; Riyadh, Kingdom of Saudi Arabia</span>
-    <span>Prepared for American Express Saudi Arabia &middot; Commercial in confidence</span>
+    <span>Commercial in confidence</span>
   </div>
 </footer>
 
