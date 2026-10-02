@@ -189,6 +189,9 @@
     #humantic-investment .opt .big { align-self: start; }
   }
   .teal-note { margin: 12px 0 0; font-size: 13.5px; color: var(--aqua); }
+  .tier-opts { display: grid; gap: 8px; margin-top: 10px; }
+  .tier-opts span { display: block; padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(34,241,204,.25); background: rgba(34,241,204,.06); font-size: 13.5px; }
+  .tier-opts span b { display: block; margin-bottom: 2px; color: var(--aqua); }
   .record { margin-top: 24px; border: 1px solid var(--line); background: var(--glass); border-radius: 16px; padding: 22px 24px; max-width: 46rem; }
   .record p { margin: 6px 0 0; font-size: 14.5px; }
   .record-list { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 14.5px; }
@@ -444,7 +447,12 @@
       <li><b>Eligibility</b>The Semi and Full Co-Investment partnership terms apply exclusively to Saudi national institutions.</li>
       <li><b>Minimum commitment</b>The terms apply to a minimum of 26 programme days. Additional Stage 2 days carry the same partnership rate and the same SAR 4,000 / day Humantic contribution.</li>
       <li><b>Floor-protected</b>SAR 8,000 / day (Non-AI) and SAR 12,000 / day (AI-Enabled) are the approved floors. No further reduction applies within this tier.</li>
-      <li><b>Entry stage</b>The Executive Exception applies to the entry stage only. Stage 2 continues under the Full Co-Investment tier.</li>
+      <li><b>Semi vs Full Co-Investment, bounded to agreed days</b>The co-investment tier follows the number of programme days agreed: Semi Co-Investment from 24 days, Full Co-Investment from 72 days. For AmexSA Stage 2:
+        <span class="tier-opts">
+          <span><b>Semi &middot; 26-day minimum</b>SAR 260,000 Non-AI &middot; SAR 364,000 AI-Enabled &middot; Humantic SAR 52,000</span>
+          <span><b>Full &middot; 72-day minimum</b>SAR 576,000 Non-AI &middot; SAR 864,000 AI-Enabled &middot; Humantic SAR 288,000</span>
+        </span>
+      </li>
       <li><b>Non-transferable</b>The terms do not establish a permanent discount, a new rate card, or a benchmark for other entities or later phases.</li>
       <li><b>Scope-dependent</b>The terms are subject to the agreed scope, deliverables and commercial terms of the Stage 2 programme.</li>
     </ul>
