@@ -151,6 +151,16 @@
   .part .chips { margin-top: 20px; }
   .part + .status { margin-top: 16px; }
   .qualifies { margin: 16px 0 0; max-width: 46rem; padding: 14px 18px; border-left: 3px solid var(--aqua); background: rgba(10,67,104,.45); border-radius: 0 12px 12px 0; font-size: 1.05rem; font-weight: 600; line-height: 1.5; color: var(--text); }
+  .grad { background: linear-gradient(90deg, var(--emerald-2), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .exception { position: relative; margin-top: 22px; padding: 26px 24px; border-radius: 18px; background: linear-gradient(var(--ink-2), var(--ink-2)) padding-box, linear-gradient(115deg, var(--emerald), var(--cyan), var(--aqua)) border-box; border: 2px solid transparent; box-shadow: 0 0 0 6px rgba(34,241,204,.06), 0 24px 48px -24px rgba(34,241,204,.45); }
+  .exc-tag { margin: 0; display: inline-block; font: 700 10.5px var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--ink); background: linear-gradient(90deg, var(--emerald-2), var(--cyan)); padding: 5px 12px; border-radius: 999px; }
+  .exception h3 { margin-top: 14px; font-weight: 800; letter-spacing: -.02em; font-size: clamp(1.35rem, 3.2vw, 2rem); line-height: 1.15; }
+  .exc-sub { margin: 8px 0 0; color: var(--body); font-size: 14.5px; }
+  .exc-figs { display: grid; gap: 12px; margin-top: 20px; }
+  @media (min-width: 640px) { .exc-figs { grid-template-columns: repeat(3, 1fr); } }
+  .exc-figs > div { min-width: 0; padding: 14px 16px; border-radius: 12px; background: rgba(34,241,204,.07); border: 1px solid rgba(34,241,204,.25); }
+  .exc-figs strong { display: block; font-size: clamp(1.5rem, 3.4vw, 2rem); font-weight: 800; line-height: 1.1; }
+  .exc-figs span { display: block; margin-top: 6px; font: 600 10px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
   .record { margin-top: 24px; border: 1px solid var(--line); background: var(--glass); border-radius: 16px; padding: 22px 24px; max-width: 46rem; }
   .record p { margin: 6px 0 0; font-size: 14.5px; }
   .record-list { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 14.5px; }
@@ -212,6 +222,16 @@
           <tr><td>Saudi Government / Sovereign Body</td><td>Recognised institutional, ministry or public-sector status</td><td>Approved Co-Investment</td><td class="r">SAR 8,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
         </tbody>
       </table>
+    </div>
+    <div class="exception" id="aesa-entry-exception">
+      <p class="exc-tag">Specific entry exception</p>
+      <h3 class="grad">American Express Saudi Arabia &middot; 13-Day Executive Exception</h3>
+      <p class="exc-sub">Initial 13-day engagement only. A special strategic entry approved exclusively for AESA.</p>
+      <div class="exc-figs">
+        <div><strong class="grad num">SAR 5,500</strong><span>AESA rate / day</span></div>
+        <div><strong class="grad num">SAR 6,500</strong><span>Humantic contribution / day</span></div>
+        <div><strong class="grad num">54.17%</strong><span>Humantic co-investment</span></div>
+      </div>
     </div>
   </section>
 
