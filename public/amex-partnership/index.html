@@ -172,6 +172,10 @@
   .terms-grid span { display: block; margin-top: 6px; font-size: 13.5px; color: var(--body); }
   td.pct { color: var(--aqua); font-weight: 700; }
   .vat-note { margin: 56px 0 0; padding: 14px 18px; border-left: 3px solid var(--aqua); background: var(--glass); border-radius: 0 12px 12px 0; font-size: 14px; color: var(--text); }
+  .feat { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 13.5px; line-height: 1.45; color: var(--aqua); }
+  .feat li { position: relative; padding-left: 16px; }
+  .feat li::before { content: ""; position: absolute; left: 0; top: .55em; width: 6px; height: 6px; border-radius: 50%; background: var(--aqua); }
+  .feat b { color: var(--aqua); font-weight: 700; }
   .record { margin-top: 24px; border: 1px solid var(--line); background: var(--glass); border-radius: 16px; padding: 22px 24px; max-width: 46rem; }
   .record p { margin: 6px 0 0; font-size: 14.5px; }
   .record-list { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 14.5px; }
@@ -254,6 +258,10 @@
     <div class="opts">
       <article class="opt lead-opt">
         <header><h3>Option 1 &middot; Non-AI &middot; 13-Day Strategic Account Entry</h3><span class="pill v">Tier 1 Strategic Account</span></header>
+        <ul class="feat">
+          <li>Assessments charged per participant, SAR 185&ndash;1,500 each depending on the assessment</li>
+          <li>Assessment cost rises with every participant</li>
+        </ul>
         <div class="big num" style="color:var(--emerald-2)">SAR 84,500<small>Humantic co-investment &middot; 13 days &times; SAR 6,500</small></div>
         <div class="bar" role="img" aria-label="Humantic contributes 54.17 percent, AmexSA pays 45.83 percent"><span class="h" style="width:54.17%"></span><span class="c" style="width:45.83%"></span></div>
         <div class="legend"><span><i style="background:var(--emerald)"></i>Humantic 54.17%</span><span><i style="background:var(--cyan)"></i>AmexSA 45.83%</span></div>
@@ -269,6 +277,12 @@
       </article>
       <article class="opt">
         <header><h3>Option 2 &middot; AI-Enabled &middot; 19-Day Strategic Entry Exception</h3><span class="pill v">Tier 1 Strategic Account</span></header>
+        <ul class="feat">
+          <li><b>Included:</b> assessments in a single lump-sum programme price</li>
+          <li><b>Fixed:</b> no per-participant fees</li>
+          <li><b>Proprietary AI analytics:</b> dashboards and productivity indicators for all participants</li>
+          <li><b>Continuous:</b> progress tracked from baseline across the full term</li>
+        </ul>
         <div class="big num" style="color:var(--emerald-2)">SAR 161,500<small>Humantic co-investment &middot; 19 days &times; SAR 8,500</small></div>
         <div class="bar" role="img" aria-label="Humantic contributes 53.13 percent, AmexSA pays 46.88 percent"><span class="h" style="width:53.13%"></span><span class="c" style="width:46.87%"></span></div>
         <div class="legend"><span><i style="background:var(--emerald)"></i>Humantic 53.13%</span><span><i style="background:var(--cyan)"></i>AmexSA 46.88%</span></div>
