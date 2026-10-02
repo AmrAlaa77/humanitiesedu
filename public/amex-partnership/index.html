@@ -163,6 +163,12 @@
   .exc-figs > div { min-width: 0; padding: 14px 16px; border-radius: 12px; background: rgba(34,241,204,.07); border: 1px solid rgba(34,241,204,.25); }
   .exc-figs strong { display: block; font-size: clamp(1.5rem, 3.4vw, 2rem); font-weight: 800; line-height: 1.1; }
   .exc-figs span { display: block; margin-top: 6px; font: 600 10px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+  .terms { margin-top: 20px; padding: 22px 24px; border-radius: 16px; border: 1px solid var(--line); background: var(--glass); }
+  .terms-grid { display: grid; gap: 12px; margin-top: 14px; }
+  @media (min-width: 640px) { .terms-grid { grid-template-columns: repeat(3, 1fr); } }
+  .terms-grid > div { min-width: 0; padding: 14px 16px; border-radius: 12px; border: 1px solid rgba(34,241,204,.25); background: rgba(34,241,204,.06); }
+  .terms-grid strong { display: block; font-size: 1.6rem; font-weight: 800; color: var(--aqua); line-height: 1.1; }
+  .terms-grid span { display: block; margin-top: 6px; font-size: 13.5px; color: var(--body); }
   .record { margin-top: 24px; border: 1px solid var(--line); background: var(--glass); border-radius: 16px; padding: 22px 24px; max-width: 46rem; }
   .record p { margin: 6px 0 0; font-size: 14.5px; }
   .record-list { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 14.5px; }
@@ -274,6 +280,15 @@
           <dt>AmexSA investment</dt><dd>SAR 24,000</dd>
         </dl>
       </article>
+    </div>
+    <div class="terms" id="entry-terms">
+      <p class="eyebrow">Entry stage payment and scheduling</p>
+      <div class="terms-grid">
+        <div><strong class="num">50%</strong><span>Pre-payment to book programme days</span></div>
+        <div><strong class="num">50%</strong><span>Balance due after the last programme day</span></div>
+        <div><strong class="num">30&ndash;45 days</strong><span>Preferred window to complete all scheduled programme days</span></div>
+      </div>
+      <p class="note">Option 1: SAR 35,750 on booking and SAR 35,750 after the final day. Option 2: SAR 12,000 on booking and SAR 12,000 after the final day, per 3-day programme.</p>
     </div>
   </section>
 
