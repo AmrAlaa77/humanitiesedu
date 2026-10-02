@@ -14,6 +14,11 @@
       "source": "/amex-proposal",
       "destination": "/amex-proposal/",
       "permanent": false
+    },
+    {
+      "source": "/amex-partnership",
+      "destination": "/amex-partnership/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -26,6 +31,10 @@
       "destination": "/amex-proposal/index.html"
     },
     {
+      "source": "/amex-partnership/",
+      "destination": "/amex-partnership/index.html"
+    },
+    {
       "source": "/game-on-kits",
       "destination": "/game-on-kits/index.html"
     },
@@ -34,7 +43,7 @@
       "destination": "/who-we-are/index.html"
     },
     {
-      "source": "/((?!experience|amex-proposal|game-on-kits|who-we-are).*)",
+      "source": "/((?!experience|amex-proposal|amex-partnership|game-on-kits|who-we-are).*)",
       "destination": "/index.html"
     }
   ]

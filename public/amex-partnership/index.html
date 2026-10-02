@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>AESA Strategic Partnership Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: single dark brand page -- cover, governance strip, then numbered commercial schedules read top to bottom like a term sheet. */
+  :root {
+    color-scheme: dark;
+    --ink: #0a4368;          /* Humantic brand ground */
+    --ink-2: #083a5e;
+    --ink-3: #062f4d;
+    --line: rgba(255,255,255,0.12);
+    --glass: rgba(255,255,255,0.035);
+    --text: #f1f5f9;
+    --body: #cbd5e1;
+    --dim: #9fb4cc;
+    --emerald: #34d399;
+    --emerald-2: #6ee7b7;
+    --cyan: #67e8f9;
+    --aqua: #22f1cc;
+    --gold: #fcd34d;
+    --paper: #ffffff;
+    --paper-ink: #0a4368;
+    --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --serif: Georgia, 'Times New Roman', serif;
+    --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--ink); color: var(--body); font: 400 15px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  :focus-visible { outline: 2px solid var(--aqua); outline-offset: 3px; }
+  .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding-inline: 20px; }
+  h1, h2, h3 { text-wrap: balance; margin: 0; color: var(--text); }
+  b, strong { color: var(--text); font-weight: 600; }
+  .num { font-variant-numeric: tabular-nums; }
+
+  .pin-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--paper); color: var(--paper-ink); padding: 12px 20px; font: 600 14px var(--sans); border-bottom: 3px solid var(--aqua); }
+  .pin-bar small { font: 600 10.5px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: #64748b; }
+
+  /* cover */
+  .cover { position: relative; isolation: isolate; overflow: hidden; padding-block: 64px 56px; }
+  .cover::before { content: ""; position: absolute; inset: 0; z-index: -2; background: linear-gradient(115deg, rgba(45,212,191,.94) 0%, rgba(20,184,166,.86) 34%, rgba(8,145,178,.80) 62%, rgba(14,58,110,.92) 100%); }
+  .cover::after { content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 160px; z-index: -1; background: linear-gradient(to bottom, rgba(10,67,104,0), var(--ink)); }
+  .brand { display: flex; align-items: center; gap: 12px; color: var(--text); }
+  .brand .mark { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--paper); }
+  .brand .mark svg { width: 22px; height: 22px; stroke: var(--paper-ink); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .brand b { display: block; font-size: 19px; line-height: 1.1; }
+  .brand span { display: block; font-size: 10.5px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: rgba(255,255,255,.85); }
+  .kicker { margin: 36px 0 14px; font: 600 11px var(--mono); letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.9); }
+  .cover h1 { font-weight: 800; letter-spacing: -.03em; line-height: 1.04; font-size: clamp(2.1rem, 6vw, 3.9rem); max-width: 16ch; }
+  .cover h1 em { font-style: normal; color: var(--ink); display: block; }
+  .cover .lead { margin: 20px 0 0; max-width: 40rem; font-size: 1.06rem; color: rgba(255,255,255,.95); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+  .chip { display: inline-flex; flex-direction: column; gap: 1px; padding: 9px 14px; border-radius: 14px; background: rgba(10,67,104,.32); border: 1px solid rgba(255,255,255,.4); }
+  .chip small { font: 600 9.5px var(--mono); letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.78); }
+  .chip span { font-size: 13.5px; font-weight: 600; color: var(--text); }
+
+  /* governance strip */
+  .status { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; margin-top: -8px; }
+  @media (min-width: 760px) { .status { grid-template-columns: repeat(4, 1fr); } }
+  .status > div { background: var(--ink-2); padding: 18px 20px; min-width: 0; }
+  .status small { display: block; font: 600 10px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--dim); }
+  .status strong { display: block; margin-top: 6px; font-size: 14.5px; line-height: 1.35; }
+  .status .ok { color: var(--emerald-2); }
+  .status .floor { color: var(--gold); }
+
+  section { padding-block: 64px 8px; }
+  .eyebrow { display: flex; align-items: center; gap: 10px; font: 600 11px var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--emerald); }
+  .eyebrow::before { content: ""; width: 24px; height: 1px; background: rgba(52,211,153,.55); }
+  section h2 { margin-top: 12px; font-family: var(--serif); font-weight: 700; font-size: clamp(1.6rem, 3.6vw, 2.3rem); line-height: 1.18; }
+  .intro { margin: 14px 0 0; max-width: 44rem; }
+  .prose p { max-width: 44rem; margin: 14px 0 0; }
+
+  /* pathway */
+  .path { display: grid; gap: 14px; margin-top: 28px; }
+  @media (min-width: 900px) { .path { grid-template-columns: repeat(3, 1fr); } }
+  .phase { border: 1px solid var(--line); background: var(--glass); border-radius: 16px; padding: 22px; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+  .phase.now { border-color: var(--aqua); background: rgba(34,241,204,.07); }
+  .phase .tag { align-self: flex-start; font: 600 10px var(--mono); letter-spacing: .16em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--dim); }
+  .phase.now .tag { color: var(--ink); background: var(--aqua); border-color: var(--aqua); }
+  .phase h3 { font-size: 18px; }
+  .phase .rate { font: 700 22px var(--sans); color: var(--text); }
+  .phase .rate small { font: 500 12px var(--sans); color: var(--dim); }
+  .phase p { margin: 0; font-size: 14px; }
+
+  /* tables */
+  .tbl { overflow-x: auto; margin-top: 24px; border: 1px solid var(--line); border-radius: 14px; }
+  table { width: 100%; border-collapse: collapse; min-width: 720px; font-size: 13.5px; }
+  th { text-align: left; font: 600 10.5px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); background: var(--ink-3); padding: 12px 14px; vertical-align: bottom; }
+  td { padding: 13px 14px; border-top: 1px solid var(--line); vertical-align: top; }
+  td:first-child { color: var(--text); font-weight: 600; }
+  td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.hl td { background: rgba(34,241,204,.08); }
+  tr.hl td:first-child { box-shadow: inset 3px 0 0 var(--aqua); }
+  tr.ex td { background: rgba(252,211,77,.06); }
+  .pill { display: inline-block; font: 600 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+  .pill.v { color: var(--emerald-2); background: rgba(52,211,153,.12); border: 1px solid rgba(52,211,153,.3); }
+  .pill.n { color: var(--dim); border: 1px solid var(--line); }
+  .pill.g { color: var(--gold); background: rgba(252,211,77,.1); border: 1px solid rgba(252,211,77,.3); }
+  code { font: 500 12.5px var(--mono); color: var(--cyan); }
+  .note { margin-top: 10px; font-size: 12.5px; color: var(--dim); }
+
+  /* 24-day economics */
+  .opts { display: grid; gap: 16px; margin-top: 28px; }
+  @media (min-width: 900px) { .opts { grid-template-columns: 1fr 1fr; } }
+  .opt { border: 1px solid var(--line); border-radius: 18px; padding: 24px; background: var(--ink-2); min-width: 0; }
+  .opt.lead-opt { border-color: var(--aqua); }
+  .opt header { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .opt h3 { font-size: 18px; }
+  .opt .big { margin-top: 18px; font: 800 clamp(1.9rem, 4vw, 2.5rem)/1 var(--sans); color: var(--text); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+  .opt .big small { display: block; margin-top: 8px; font: 600 10.5px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+  .bar { display: flex; height: 14px; border-radius: 999px; overflow: hidden; margin-top: 20px; background: var(--ink-3); }
+  .bar .c { background: var(--cyan); }
+  .bar .h { background: var(--emerald); }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; font-size: 12px; color: var(--dim); }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .kv { display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; margin-top: 20px; font-size: 14px; }
+  .kv dt { color: var(--body); }
+  .kv dd { margin: 0; text-align: right; color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .kv .sep { grid-column: 1 / -1; height: 1px; background: var(--line); }
+
+  /* pillars + boundaries */
+  .pillars { display: grid; gap: 1px; margin-top: 28px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  @media (min-width: 760px) { .pillars { grid-template-columns: 1fr 1fr; } }
+  .pillars > div { background: var(--ink-2); padding: 24px; min-width: 0; }
+  .pillars h3 { font-size: 16px; display: flex; gap: 10px; align-items: baseline; }
+  .pillars h3 span { font: 600 12px var(--mono); color: var(--emerald); }
+  .pillars p { margin: 10px 0 0; font-size: 14px; }
+  .pillars .impl { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); font-size: 13px; color: var(--emerald-2); }
+  .bounds { display: grid; gap: 12px; margin-top: 24px; padding: 0; list-style: none; }
+  @media (min-width: 760px) { .bounds { grid-template-columns: 1fr 1fr; } }
+  .bounds li { border-left: 2px solid var(--aqua); padding: 4px 0 4px 16px; font-size: 14px; }
+  .bounds li b { display: block; margin-bottom: 2px; }
+
+  .steps { display: grid; gap: 12px; margin-top: 24px; counter-reset: s; padding: 0; list-style: none; }
+  @media (min-width: 900px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+  .steps li { counter-increment: s; border: 1px solid var(--line); border-radius: 14px; padding: 18px; background: var(--glass); font-size: 14px; min-width: 0; }
+  .steps li::before { content: "Step " counter(s); display: block; font: 600 10.5px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--emerald); margin-bottom: 8px; }
+
+  footer { margin-top: 72px; padding-block: 28px 40px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--dim); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+</style>
+
+<div class="pin-bar"><span>AESA Strategic Partnership Plan</span><small>Commercial &middot; Confidential</small></div>
+
+<header class="cover">
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <div><b>Humantic</b><span>Digital</span></div>
+    </div>
+    <p class="kicker">Commercial Plan &middot; Riyadh &middot; October 2026</p>
+    <h1>24-Day Strategic Partnership <em>Full Co-Investment</em></h1>
+    <p class="lead">A long-term partnership plan for American Express Saudi Arabia. It follows the 13-day Strategic Account Entry and places the next 24 programme days on Humantic's Fully Funded co-investment tier, the highest standing support available under the programme rate card.</p>
+    <div class="chips">
+      <div class="chip"><small>Account</small><span>American Express Saudi Arabia</span></div>
+      <div class="chip"><small>Classification</small><span>Tier 1 Strategic Account</span></div>
+      <div class="chip"><small>Partnership term</small><span>24 programme days</span></div>
+      <div class="chip"><small>Funding model</small><span>Fully Funded co-investment</span></div>
+      <div class="chip"><small>Standard programme value</small><span class="num">SAR 288,000</span></div>
+      <div class="chip"><small>Humantic co-investment</small><span class="num">SAR 96,000</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="status" aria-label="Executive status and governance summary">
+    <div><small>Programme qualification</small><strong class="ok">Approved &mdash; Tier 1 Strategic Account</strong></div>
+    <div><small>Commercial eligibility</small><strong>Approved for maximum strategic co-investment</strong></div>
+    <div><small>Partnership tier</small><strong>Fully Funded &mdash; SAR 4,000 / day Humantic contribution</strong></div>
+    <div><small>Commercial boundary</small><strong class="floor">SAR 8,000 / day &mdash; approved programme floor</strong></div>
+  </div>
+
+  <section id="summary">
+    <p class="eyebrow">Executive summary</p>
+    <h2>From a 13-day entry to a long-term institutional partnership</h2>
+    <div class="prose">
+      <p>Humantic Digital is a MISA-licensed investment entity operating a dedicated, Vision 2030-aligned KSA enablement programme. We co-fund strategic leadership alignment, neuro-behavioural diagnostics and organisational capability across key institutions in the Kingdom of Saudi Arabia.</p>
+      <p>We do not apply arbitrary commercial discounts, and the programme does not imply entitlement to a government subsidy. It runs on a governed co-investment framework. American Express Saudi Arabia is classified as a <b>Tier 1 Strategic Account</b> on its statutory credentials: Saudi Closed Joint Stock incorporation, SAMA regulatory oversight, Riyadh headquarters, and 50% domestic equity ownership through The Saudi Investment Bank (SAIB).</p>
+      <p>The 13-day Executive Exception established the relationship. This plan sets out the next stage: a <b>24-day partnership</b> in which Humantic contributes <b>SAR 4,000 for every programme day</b>, a total of <b class="num">SAR 96,000</b> in strategic co-investment across the term.</p>
+    </div>
+  </section>
+
+  <section id="pathway">
+    <p class="eyebrow">Partnership pathway</p>
+    <h2>Three stages of the relationship</h2>
+    <div class="path">
+      <div class="phase">
+        <span class="tag">Stage 1 &middot; Entry</span>
+        <h3>13-Day Executive Exception</h3>
+        <div class="rate num">SAR 5,500 <small>/ day</small></div>
+        <p>A bounded proof-of-value engagement. Humantic absorbs SAR 84,500 (54.17%). It is closed, non-recurring and non-precedential.</p>
+      </div>
+      <div class="phase now">
+        <span class="tag">Stage 2 &middot; This plan</span>
+        <h3>24-Day Strategic Partnership</h3>
+        <div class="rate num">SAR 8,000 <small>/ day &middot; Non-AI</small></div>
+        <p>Full co-investment at the approved Strategic Account floor, with an AI-Enabled option at SAR 12,000 / day. Humantic contributes SAR 96,000 across the term.</p>
+      </div>
+      <div class="phase">
+        <span class="tag">Stage 3 &middot; Scale</span>
+        <h3>Enterprise Deployment</h3>
+        <div class="rate">By agreement</div>
+        <p>Multi-departmental rollout across AESA business units, priced under the standard programme architecture and AESA's Tier 1 classification.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="economics">
+    <p class="eyebrow">Schedule A &middot; 24-day commercial economics</p>
+    <h2>Two deployment options, both fully co-invested</h2>
+    <p class="intro">Both options carry the same Humantic contribution of SAR 4,000 per day. They differ in whether the programme includes Humantic's AI-enabled diagnostics and analytics layer.</p>
+    <div class="opts">
+      <article class="opt lead-opt">
+        <header><h3>Option 1 &middot; Non-AI Programme</h3><span class="pill v">Fully Funded</span></header>
+        <div class="big num">SAR 192,000<small>AESA investment &middot; 24 days &times; SAR 8,000</small></div>
+        <div class="bar" role="img" aria-label="AESA pays 66.67 percent, Humantic contributes 33.33 percent"><span class="c" style="width:66.67%"></span><span class="h" style="width:33.33%"></span></div>
+        <div class="legend"><span><i style="background:var(--cyan)"></i>AESA 66.67%</span><span><i style="background:var(--emerald)"></i>Humantic 33.33%</span></div>
+        <dl class="kv">
+          <dt>Standard rate</dt><dd>SAR 12,000 / day</dd>
+          <dt>Approved partnership rate</dt><dd>SAR 8,000 / day</dd>
+          <dt>Humantic contribution</dt><dd>SAR 4,000 / day</dd>
+          <div class="sep"></div>
+          <dt>Standard programme value</dt><dd>SAR 288,000</dd>
+          <dt>Humantic co-investment</dt><dd>SAR 96,000</dd>
+          <dt>AESA investment</dt><dd>SAR 192,000</dd>
+        </dl>
+      </article>
+      <article class="opt">
+        <header><h3>Option 2 &middot; AI-Enabled Programme</h3><span class="pill v">Fully Funded</span></header>
+        <div class="big num">SAR 288,000<small>AESA investment &middot; 24 days &times; SAR 12,000</small></div>
+        <div class="bar" role="img" aria-label="AESA pays 75 percent, Humantic contributes 25 percent"><span class="c" style="width:75%"></span><span class="h" style="width:25%"></span></div>
+        <div class="legend"><span><i style="background:var(--cyan)"></i>AESA 75.00%</span><span><i style="background:var(--emerald)"></i>Humantic 25.00%</span></div>
+        <dl class="kv">
+          <dt>Standard rate</dt><dd>SAR 16,000 / day</dd>
+          <dt>Approved partnership rate</dt><dd>SAR 12,000 / day</dd>
+          <dt>Humantic contribution</dt><dd>SAR 4,000 / day</dd>
+          <div class="sep"></div>
+          <dt>Standard programme value</dt><dd>SAR 384,000</dd>
+          <dt>Humantic co-investment</dt><dd>SAR 96,000</dd>
+          <dt>AESA investment</dt><dd>SAR 288,000</dd>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section id="humantic-investment">
+    <p class="eyebrow">Humantic's investment in AESA</p>
+    <h2>SAR 180,500 committed to American Express Saudi Arabia</h2>
+    <p class="intro">Across the 13-day entry and the 24-day partnership, Humantic invests its own capital in every programme day delivered to AESA. The contribution is the same under both options.</p>
+    <div class="opts">
+      <article class="opt lead-opt">
+        <header><h3>AESA &middot; Non-AI Relationship</h3><span class="pill v">Tier 1 Strategic Account</span></header>
+        <div class="big num" style="color:var(--emerald-2)">SAR 180,500<small>Humantic co-investment &middot; 37 programme days</small></div>
+        <div class="bar" role="img" aria-label="Humantic contributes 40.65 percent, AESA pays 59.35 percent"><span class="h" style="width:40.65%"></span><span class="c" style="width:59.35%"></span></div>
+        <div class="legend"><span><i style="background:var(--emerald)"></i>Humantic 40.65%</span><span><i style="background:var(--cyan)"></i>AESA 59.35%</span></div>
+        <dl class="kv">
+          <dt>Stage 1 &middot; 13 days &times; SAR 6,500</dt><dd>SAR 84,500</dd>
+          <dt>Stage 2 &middot; 24 days &times; SAR 4,000</dt><dd>SAR 96,000</dd>
+          <dt>Humantic co-investment</dt><dd>SAR 180,500</dd>
+          <div class="sep"></div>
+          <dt>Standard programme value</dt><dd>SAR 444,000</dd>
+          <dt>AESA investment</dt><dd>SAR 263,500</dd>
+        </dl>
+      </article>
+      <article class="opt">
+        <header><h3>AESA &middot; AI-Enabled Relationship</h3><span class="pill v">Tier 1 Strategic Account</span></header>
+        <div class="big num" style="color:var(--emerald-2)">SAR 180,500<small>Humantic co-investment &middot; 37 programme days</small></div>
+        <div class="bar" role="img" aria-label="Humantic contributes 33.43 percent, AESA pays 66.57 percent"><span class="h" style="width:33.43%"></span><span class="c" style="width:66.57%"></span></div>
+        <div class="legend"><span><i style="background:var(--emerald)"></i>Humantic 33.43%</span><span><i style="background:var(--cyan)"></i>AESA 66.57%</span></div>
+        <dl class="kv">
+          <dt>Stage 1 &middot; 13 days &times; SAR 6,500</dt><dd>SAR 84,500</dd>
+          <dt>Stage 2 &middot; 24 days &times; SAR 4,000</dt><dd>SAR 96,000</dd>
+          <dt>Humantic co-investment</dt><dd>SAR 180,500</dd>
+          <div class="sep"></div>
+          <dt>Standard programme value</dt><dd>SAR 540,000</dd>
+          <dt>AESA investment</dt><dd>SAR 359,500</dd>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section id="relationship">
+    <p class="eyebrow">Schedule B &middot; Total relationship value</p>
+    <h2>Stage 1 and Stage 2 combined: 37 programme days</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Commercial parameter</th><th class="r">Stage 1 &middot; 13 days</th><th class="r">Stage 2 &middot; 24 days Non-AI</th><th class="r">Combined &middot; Non-AI</th><th class="r">Stage 2 &middot; 24 days AI</th><th class="r">Combined &middot; AI</th></tr></thead>
+        <tbody>
+          <tr><td>Daily rate</td><td class="r">SAR 5,500</td><td class="r">SAR 8,000</td><td class="r">&mdash;</td><td class="r">SAR 12,000</td><td class="r">&mdash;</td></tr>
+          <tr><td>Standard programme value</td><td class="r">SAR 156,000</td><td class="r">SAR 288,000</td><td class="r">SAR 444,000</td><td class="r">SAR 384,000</td><td class="r">SAR 540,000</td></tr>
+          <tr><td>Humantic co-investment</td><td class="r">SAR 84,500</td><td class="r">SAR 96,000</td><td class="r">SAR 180,500</td><td class="r">SAR 96,000</td><td class="r">SAR 180,500</td></tr>
+          <tr class="hl"><td>AESA investment</td><td class="r">SAR 71,500</td><td class="r">SAR 192,000</td><td class="r">SAR 263,500</td><td class="r">SAR 288,000</td><td class="r">SAR 359,500</td></tr>
+          <tr><td>Humantic share of value</td><td class="r">54.17%</td><td class="r">33.33%</td><td class="r">40.65%</td><td class="r">25.00%</td><td class="r">33.43%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">The Stage 1 exception rate applies only to the initial 13 days. It is shown here for the full relationship picture and does not carry into Stage 2.</p>
+  </section>
+
+  <section id="rate-card">
+    <p class="eyebrow">Schedule C &middot; Programme rate architecture</p>
+    <h2>AI-Enabled and Non-AI programme tiers</h2>
+    <p class="intro">The full commercial rate architecture across programme deployments. The rows that apply to this partnership are highlighted.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Programme deployment tier</th><th>Customer funding classification</th><th class="r">Standard rate</th><th class="r">Approved programme floor</th><th class="r">Humantic contribution</th></tr></thead>
+        <tbody>
+          <tr><td>AI-Enabled &mdash; Non-Funded</td><td>Customer-funded, international or non-qualifying</td><td class="r">SAR 16,000 / day</td><td class="r">SAR 16,000 / day</td><td class="r">Baseline rate card</td></tr>
+          <tr><td>AI-Enabled &mdash; Semi-Funded</td><td>Strategic co-investment / Vision 2030 participant</td><td class="r">SAR 16,000 / day</td><td class="r">SAR 14,000 / day</td><td class="r">SAR 2,000 / day</td></tr>
+          <tr class="hl"><td>AI-Enabled &mdash; Fully Funded</td><td>Approved strategic co-investment tier</td><td class="r">SAR 16,000 / day</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
+          <tr><td>Non-AI &mdash; Non-Funded</td><td>Customer-funded baseline</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 12,000 / day</td><td class="r">Baseline rate card</td></tr>
+          <tr><td>Non-AI &mdash; Semi-Funded</td><td>Strategic co-investment tier</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 10,000 / day</td><td class="r">SAR 2,000 / day</td></tr>
+          <tr class="hl"><td>Non-AI &mdash; Fully Funded</td><td>Approved Strategic Account floor</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 8,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
+          <tr class="ex"><td>AESA 13-Day Executive Exception</td><td>Executive Strategic Account Entry (closed)</td><td class="r">SAR 12,000 / day</td><td class="r">SAR 5,500 / day</td><td class="r">SAR 6,500 / day</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="qualification">
+    <p class="eyebrow">Schedule D &middot; Master qualification matrix</p>
+    <h2>How customers qualify for co-investment</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Customer category</th><th>Eligibility / qualification basis</th><th>Commercial funding model</th><th class="r">Standard approved rate</th><th class="r">Humantic contribution</th></tr></thead>
+        <tbody>
+          <tr><td>Non-Saudi / International Entity</td><td>Foreign entity without local KSA incorporation or qualifying domestic structure</td><td>Customer-Funded</td><td class="r">SAR 12,000 / day</td><td class="r">&mdash;</td></tr>
+          <tr><td>Saudi Entity Outside Criteria</td><td>KSA presence without the qualifying programme criteria</td><td>Customer-Funded</td><td class="r">SAR 12,000 / day</td><td class="r">&mdash;</td></tr>
+          <tr><td>Strategic / Royal-Associated Entity</td><td>Approved strategic national growth mandate or specialised sector</td><td>Strategic Co-Investment</td><td class="r">SAR 10,000 / day</td><td class="r">SAR 2,000 / day</td></tr>
+          <tr><td>Qualifying Vision 2030 Participant</td><td>Documented participation in qualifying Vision Realization Programmes</td><td>Strategic Co-Investment</td><td class="r">SAR 10,000 / day</td><td class="r">SAR 2,000 / day</td></tr>
+          <tr><td>100% Wholly Saudi-Owned Entity</td><td>100% domestic equity and active local Commercial Registration</td><td>Approved Co-Investment</td><td class="r">SAR 8,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
+          <tr><td>Saudi Government / Sovereign Body</td><td>Recognised institutional, ministry or public-sector status</td><td>Approved Co-Investment</td><td class="r">SAR 8,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
+          <tr class="hl"><td>American Express Saudi Arabia &mdash; Standard</td><td>Saudi closed joint-stock company, qualifying Saudi institutional ownership, SAMA-regulated</td><td>Approved Co-Investment</td><td class="r">SAR 8,000 / day</td><td class="r">SAR 4,000 / day</td></tr>
+          <tr class="ex"><td>AESA &mdash; 13-Day Executive Exception</td><td>Initial 13-day engagement only, special strategic entry</td><td>Executive Strategic Exception</td><td class="r">SAR 5,500 / day</td><td class="r">SAR 6,500 / day</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="audit">
+    <p class="eyebrow">Schedule E &middot; Eligibility verification audit</p>
+    <h2>AESA statutory credentials</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Audit parameter</th><th>Official AESA credential</th><th>Legal &amp; economic significance</th><th>Verification</th></tr></thead>
+        <tbody>
+          <tr><td>Legal entity name</td><td>American Express Saudi Arabia</td><td>Officially registered entity within KSA jurisdiction</td><td><span class="pill v">Verified</span></td></tr>
+          <tr><td>Corporate structure</td><td>Saudi Closed Joint Stock Company</td><td>High-tier local corporate status under the Ministry of Commerce</td><td><span class="pill v">Verified</span></td></tr>
+          <tr><td>Commercial Registration</td><td>CR <code>1010183222</code></td><td>Active commercial registration in KSA</td><td><span class="pill v">Verified</span></td></tr>
+          <tr><td>Unified National Number</td><td>UNN <code>7001453476</code></td><td>Statutory recognition in the Saudi business register</td><td><span class="pill v">Verified</span></td></tr>
+          <tr><td>Chamber of Commerce No.</td><td><code>130053</code></td><td>Registered member of the Riyadh Chamber of Commerce</td><td><span class="pill v">Verified</span></td></tr>
+          <tr><td>Regulatory authority</td><td>Saudi Central Bank (SAMA)</td><td>Licensed finance company under SAMA oversight</td><td><span class="pill v">Verified</span></td></tr>
+          <tr><td>Corporate headquarters</td><td>Riyadh, Kingdom of Saudi Arabia</td><td>Local economic substance and physical headquarters</td><td><span class="pill v">Verified</span></td></tr>
+          <tr><td>Domestic equity partner</td><td>50% &mdash; The Saudi Investment Bank</td><td>Major Saudi institutional bank equity (SAIB)</td><td><span class="pill v">Qualified</span></td></tr>
+          <tr><td>Foreign equity partner</td><td>50% &mdash; Amex (Middle East) B.S.C.</td><td>Regional strategic shareholder</td><td><span class="pill n">N/A &middot; Joint venture</span></td></tr>
+          <tr class="hl"><td>Programme qualification status</td><td>Approved &mdash; Tier 1 Strategic Account</td><td>Approved for maximum strategic co-investment</td><td><span class="pill v">Approved</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="justification">
+    <p class="eyebrow">Strategic justification</p>
+    <h2>Why Humantic co-invests SAR 96,000 in this partnership</h2>
+    <p class="intro">The SAR 4,000 per day contribution across 24 days is an investment decision, not a repricing decision. It rests on four pillars.</p>
+    <div class="pillars">
+      <div>
+        <h3><span>1</span>Long-term institutional partnership</h3>
+        <p>American Express Saudi Arabia is a premier financial-sector institution in the Kingdom, backed by 50% equity from The Saudi Investment Bank. The 24-day term moves the relationship from a single entry engagement to a sustained partnership with room for multi-departmental deployment.</p>
+        <p class="impl">Humantic commits a fixed share of every programme day for the full term.</p>
+      </div>
+      <div>
+        <h3><span>2</span>Building on proven value</h3>
+        <p>The 13-day entry engagement let AESA leadership experience the methodology, evaluate behavioural alignment and generate internal efficacy data. Forty days gives enough depth to turn those early findings into measurable organisational capability.</p>
+        <p class="impl">Stage 2 extends a validated approach rather than starting a new pilot.</p>
+      </div>
+      <div>
+        <h3><span>3</span>Established Saudi institutional investment philosophy</h3>
+        <p>The partnership is consistent with Humantic Digital's practice of investing alongside strategically important Saudi organisations. This includes a fully funded engagement of <b>140 programme days over seven months</b> across five healthcare institutions under the Ministry of National Guard Health Affairs and hospitals owned by His Majesty King Salman.</p>
+        <p class="impl">AESA's tier reflects an established Saudi-market investment philosophy, not a sales concession.</p>
+      </div>
+      <div>
+        <h3><span>4</span>Scope and term certainty</h3>
+        <p>The Fully Funded rate is tied to the agreed 24-day scope. It sits on Humantic's published rate architecture, so both parties have a clear and stable commercial basis for the term and for any later stage.</p>
+        <p class="impl">Humantic contributes SAR 96,000 while the SAR 8,000 / day floor stays intact.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="governance">
+    <p class="eyebrow">Governance boundaries</p>
+    <h2>Terms that protect programme governance and fund compliance</h2>
+    <ul class="bounds">
+      <li><b>Entity-specific</b>The Fully Funded partnership terms apply exclusively to American Express Saudi Arabia.</li>
+      <li><b>Term-bounded</b>The terms apply to the agreed 24 programme days. Additional days are priced under the rate architecture in force at the time.</li>
+      <li><b>Floor-protected</b>SAR 8,000 / day (Non-AI) and SAR 12,000 / day (AI-Enabled) are the approved floors. No further reduction applies within this tier.</li>
+      <li><b>Exception closed</b>The SAR 5,500 / day 13-Day Executive Exception was entry-only and does not extend into this partnership.</li>
+      <li><b>Non-transferable</b>The terms do not establish a permanent discount, a new rate card, or a benchmark for other entities or later phases.</li>
+      <li><b>Scope-dependent</b>The terms are subject to the agreed scope, deliverables and commercial terms of the 24-day programme.</li>
+    </ul>
+  </section>
+
+  <section id="rate-questions">
+    <p class="eyebrow">Questions about the partnership rate</p>
+    <h2>How the rate is set</h2>
+    <div class="pillars">
+      <div>
+        <h3>Can the Stage 1 rate continue?</h3>
+        <p>The SAR 5,500 rate was an entry investment. Humantic funded 54.17% of those 13 days so AESA could see results at very low risk. The partnership rate uses the Fully Funded tier, the highest standing co-investment the programme offers any organisation.</p>
+      </div>
+      <div>
+        <h3>Is there flexibility on the daily rate?</h3>
+        <p>The floor is set by programme governance, and every qualifying institution gets the same floor. That is what keeps the co-investment fair and auditable. Within the floor, we are glad to discuss how the 24 days are structured: phasing, scheduling across business units and the payment schedule.</p>
+      </div>
+      <div>
+        <h3>Why does the AI-Enabled option cost more?</h3>
+        <p>It adds Humantic's AI diagnostics and analytics layer to every programme day. Humantic's contribution is the same SAR 4,000 per day under both options.</p>
+      </div>
+      <div>
+        <h3>What does the 24-day commitment add over Stage 1?</h3>
+        <p>Enough depth to move from a leadership pilot to measurable change across teams. The data gathered in Stage 1 becomes the baseline, so progress can be tracked over the full term.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="next">
+    <p class="eyebrow">Next steps</p>
+    <h2>Moving to agreement</h2>
+    <ol class="steps">
+      <li>AESA confirms the deployment option: Non-AI or AI-Enabled.</li>
+      <li>Both teams agree the 24-day scope, deliverables and scheduling across business units.</li>
+      <li>Humantic issues the partnership agreement and co-investment schedule.</li>
+      <li>Signature and programme mobilisation.</li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Humantic Digital &middot; MISA-licensed &middot; Riyadh, Kingdom of Saudi Arabia</span>
+    <span>Prepared for American Express Saudi Arabia &middot; Commercial in confidence</span>
+  </div>
+</footer>
+
+</html>
