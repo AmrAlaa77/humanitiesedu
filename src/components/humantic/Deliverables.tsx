@@ -523,7 +523,6 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
           'English language courses for employees and/or their families',
           'Healthy lifestyle subsidies',
           'Wellness / counselling advising sessions',
-          'Personalised individual Gallup CliftonStrengths® report & debrief',
         ],
         audience: ['Organisations wanting participation, not just completion, from their teams', 'Wellness Ambassadors and champions embedded across departments', 'HR leaders building a genuine, sponsor-backed culture of recognition'],
       },
