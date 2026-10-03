@@ -44,8 +44,9 @@
   /* Pinned title bar -- stays fixed to the top of the viewport while scrolling. */
   .pin-bar { position: sticky; top: 0; z-index: 200; display: flex; align-items: center; gap: 8px; background: #fff; color: var(--ink); padding: 13px 24px; font: 600 14px var(--sans); border-bottom: 3px solid var(--aqua); box-shadow: 0 6px 16px rgba(2,20,33,.18); }
   .pin-bar .chev { font-size: 11px; color: #64748b; }
-  .pin-bar { flex-wrap: wrap; row-gap: 2px; }
-  .pin-bar .pin-ai { color: #0d9488; font-weight: 700; }
+  .pin-bar { padding-top: 9px; padding-bottom: 9px; }
+  .pin-bar .pin-stack { display: flex; flex-direction: column; line-height: 1.25; }
+  .pin-bar .pin-ai { color: #0d9488; font-weight: 700; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; }
 
   /* ambient glow behind the dark pages, same blobs as the site */
   .dark-page { position: relative; overflow: hidden; padding-block: 88px; isolation: isolate; }
@@ -225,7 +226,7 @@
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 
-<div class="pin-bar">American Express Saudi Proposal <span class="pin-ai">&mdash; Intelligence &middot; AI-Implemented</span> <span class="chev">&#9662;</span></div>
+<div class="pin-bar"><div class="pin-stack"><span class="pin-ai">Intelligence &middot; AI-Implemented</span><span class="pin-title">American Express Saudi Proposal</span></div> <span class="chev">&#9662;</span></div>
 
 <!-- ================= COVER ================= -->
 <header class="hero" id="top">
