@@ -24,6 +24,11 @@
       "source": "/amex-partnership/ar",
       "destination": "/amex-partnership/ar/",
       "permanent": false
+    },
+    {
+      "source": "/amex-partnership/preview",
+      "destination": "/amex-partnership/preview/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -42,6 +47,10 @@
     {
       "source": "/amex-partnership/ar/",
       "destination": "/amex-partnership/ar/index.html"
+    },
+    {
+      "source": "/amex-partnership/preview/",
+      "destination": "/amex-partnership/preview/index.html"
     },
     {
       "source": "/game-on-kits",
