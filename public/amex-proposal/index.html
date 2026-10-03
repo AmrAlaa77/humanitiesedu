@@ -78,12 +78,17 @@
   .hero .wrap { position: relative; z-index: 1; }
   @media (min-width: 900px) {
     .hero-grid { grid-template-columns: 1fr 1fr; gap: 56px; padding-block: 96px; }
-    .hero-grid .vslot { order: 0; }
     /* Every programme page (not the cover) stacks title above video instead of side-by-side. */
     article .hero-grid { grid-template-columns: 1fr; }
   }
   article .hero-grid > .vslot { order: 2; }
   article .hero-grid > div:not(.vslot) { order: 1; }
+  /* Cover: text on the left, hero video on the right (stacks with the video first below 720px). */
+  @media (min-width: 720px) {
+    #top .hero-grid { grid-template-columns: 1fr 1fr; }
+    #top .hero-grid > .vslot { order: 2; }
+    #top .hero-grid > div:not(.vslot) { order: 1; }
+  }
 
   /* video space -- drop a clip in by setting data-src */
   .vslot {
