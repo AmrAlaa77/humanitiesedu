@@ -210,6 +210,9 @@
   table.qm td.r, table.qm th.r { white-space: normal; }
   .tbl-cont { margin-top: 8px; }
   .tbl-cont tr:first-child td { border-top: 0; }
+  .plist { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 14px; }
+  .plist li { position: relative; padding-left: 16px; }
+  .plist li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
   .record { margin-top: 24px; border: 1px solid var(--line); background: var(--glass); border-radius: 16px; padding: 22px 24px; max-width: 46rem; }
   .record p { margin: 6px 0 0; font-size: 14.5px; }
   .record-list { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 14.5px; }
@@ -444,7 +447,13 @@
         <span class="tag">Stage 1 &middot; Now</span>
         <h3>Strategic Account Entry</h3>
         <div class="rate num">from SAR 5,500 <small>/ day &middot; Core</small></div>
-        <p>A focused proof-of-value engagement: 13 days Core at SAR 5,500 / day, or 19 days Intelligence at SAR 8,000 / day. Humantic invests up to SAR 190,000 to launch the partnership. It is designed as a one-time entry stage: closed, non-recurring and non-precedential.</p>
+        <ul class="plist">
+          <li>Focused proof-of-value engagement</li>
+          <li><b>Core:</b> 13 days at SAR 5,500 / day</li>
+          <li><b>Intelligence:</b> 19 days at SAR 8,000 / day</li>
+          <li>Humantic invests up to <b>SAR 190,000</b></li>
+          <li>One-time entry stage: closed, non-recurring and non-precedential</li>
+        </ul>
       </div>
       <div class="phase">
         <span class="tag">Stage 2 &middot; Next</span>
