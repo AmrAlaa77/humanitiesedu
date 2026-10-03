@@ -272,7 +272,7 @@ const categories: { key: string; label: string; icon: React.ComponentType<{ clas
             ],
           },
         ],
-        models: 'GALLUP+ Strengths & Derailers.',
+        models: 'Strengths & Derailers.',
         benefitsLabel: 'Programme features',
         benefits: [
           'Grounded in strengths-based research, not deficit-fixing',
