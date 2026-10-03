@@ -47,7 +47,7 @@
   /* cover */
   .cover { position: relative; isolation: isolate; overflow: hidden; padding-block: 64px 56px; }
   .cover::before { content: ""; position: absolute; inset: 0; z-index: -2; background: linear-gradient(115deg, rgba(45,212,191,.94) 0%, rgba(20,184,166,.86) 34%, rgba(8,145,178,.80) 62%, rgba(14,58,110,.92) 100%); }
-  .cover::after { content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 160px; z-index: -1; background: linear-gradient(to bottom, rgba(10,67,104,0), var(--ink)); }
+  .cover::after { content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 70%; z-index: -1; background: linear-gradient(to bottom, rgba(10,67,104,0) 0%, rgba(10,67,104,.08) 18%, rgba(10,67,104,.22) 36%, rgba(10,67,104,.42) 54%, rgba(10,67,104,.64) 70%, rgba(10,67,104,.84) 85%, var(--ink) 100%); }
   .brand { display: flex; align-items: center; gap: 12px; color: var(--text); }
   .brand .mark { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--paper); }
   .brand .mark svg { width: 22px; height: 22px; stroke: var(--paper-ink); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
