@@ -238,8 +238,8 @@
   <div class="wrap">
     <div class="hero-grid">
       <div class="vslot" data-src="videos/intro.mp4" data-controls data-label="Introduction video">
-        <video src="videos/intro.mp4" autoplay muted loop playsinline aria-label="Introduction video"></video>
-        <span class="play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
+        <video src="videos/intro.mp4" poster="images/intro-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Introduction video"></video>
+        <span class="play" hidden><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
         <span class="cap"><span>Introduction video</span><span>Humantic Digital</span></span>
       </div>
       <div>
@@ -685,6 +685,13 @@
     var conceal = function () { if (pl) pl.hidden = false; };
     v.addEventListener('playing', reveal);
     v.addEventListener('pause', conceal);
+    // Eager (hero) videos start with no overlay at all so nothing looks like it is loading; the
+    // play button only appears if the browser genuinely refused to autoplay.
+    if (!scrollPlay) {
+      v.addEventListener('canplay', function () {
+        setTimeout(function () { if (v.paused && pl) pl.hidden = false; }, 600);
+      });
+    }
     // Autoplay (immediate or scroll-triggered) can be blocked by the host; the play button
     // stays clickable the whole time as a fallback so the video is never a dead end.
     var startPlaying = function () { v.play().catch(function () {}); };
