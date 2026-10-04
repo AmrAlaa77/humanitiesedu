@@ -1,68 +1,70 @@
 {
-  "redirects": [
-    {
-      "source": "/assessment",
-      "destination": "https://humantic-online-functional-v2.vercel.app",
-      "permanent": false
-    },
-    {
-      "source": "/assessment/:path*",
-      "destination": "https://humantic-online-functional-v2.vercel.app/:path*",
-      "permanent": false
-    },
-    {
-      "source": "/amex-proposal",
-      "destination": "/amex-proposal/",
-      "permanent": false
-    },
-    {
-      "source": "/amex-partnership",
-      "destination": "/amex-partnership/",
-      "permanent": false
-    },
-    {
-      "source": "/amex-partnership/ar",
-      "destination": "/amex-partnership/ar/",
-      "permanent": false
-    },
-    {
-      "source": "/amex-partnership/preview",
-      "destination": "/amex-partnership/preview/",
-      "permanent": false
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/experience",
-      "destination": "/experience/index.html"
-    },
-    {
-      "source": "/amex-proposal/",
-      "destination": "/amex-proposal/index.html"
-    },
-    {
-      "source": "/amex-partnership/",
-      "destination": "/amex-partnership/index.html"
-    },
-    {
-      "source": "/amex-partnership/ar/",
-      "destination": "/amex-partnership/ar/index.html"
-    },
-    {
-      "source": "/amex-partnership/preview/",
-      "destination": "/amex-partnership/preview/index.html"
-    },
-    {
-      "source": "/game-on-kits",
-      "destination": "/game-on-kits/index.html"
-    },
-    {
-      "source": "/who-we-are",
-      "destination": "/who-we-are/index.html"
-    },
-    {
-      "source": "/((?!experience|amex-proposal|amex-partnership|game-on-kits|who-we-are).*)",
-      "destination": "/index.html"
-    }
-  ]
+    "redirects":  [
+                      {
+                          "source":  "/assessment",
+                          "destination":  "https://humantic-online-functional-v2.vercel.app",
+                          "permanent":  false
+                      },
+                      {
+                          "source":  "/assessment/:path*",
+                          "destination":  "https://humantic-online-functional-v2.vercel.app/:path*",
+                          "permanent":  false
+                      },
+                      {
+                          "source":  "/amex-proposal",
+                          "destination":  "/amex-proposal/",
+                          "permanent":  false
+                      },
+                      {
+                          "source":  "/amex-partnership/preview",
+                          "destination":  "/amex-partnership/preview/",
+                          "permanent":  false
+                      },
+                      {
+                          "source":  "/amex-partnership",
+                          "destination":  "/amex-partnership/preview/",
+                          "permanent":  false
+                      },
+                      {
+                          "source":  "/amex-partnership/",
+                          "destination":  "/amex-partnership/preview/",
+                          "permanent":  false
+                      },
+                      {
+                          "source":  "/amex-partnership/ar",
+                          "destination":  "/amex-partnership/preview/",
+                          "permanent":  false
+                      },
+                      {
+                          "source":  "/amex-partnership/ar/",
+                          "destination":  "/amex-partnership/preview/",
+                          "permanent":  false
+                      }
+                  ],
+    "rewrites":  [
+                     {
+                         "source":  "/experience",
+                         "destination":  "/experience/index.html"
+                     },
+                     {
+                         "source":  "/amex-proposal/",
+                         "destination":  "/amex-proposal/index.html"
+                     },
+                     {
+                         "source":  "/amex-partnership/preview/",
+                         "destination":  "/amex-partnership/preview/index.html"
+                     },
+                     {
+                         "source":  "/game-on-kits",
+                         "destination":  "/game-on-kits/index.html"
+                     },
+                     {
+                         "source":  "/who-we-are",
+                         "destination":  "/who-we-are/index.html"
+                     },
+                     {
+                         "source":  "/((?!experience|amex-proposal|amex-partnership|game-on-kits|who-we-are).*)",
+                         "destination":  "/index.html"
+                     }
+                 ]
 }
