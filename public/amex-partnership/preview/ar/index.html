@@ -222,6 +222,19 @@
   .record p { margin: 6px 0 0; font-size: 14.5px; }
   .record-list { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 14.5px; }
   .record-list li::marker { color: var(--aqua); }
+  /* Vision Circle 2030 tiers */
+  .vc-tiers { display: grid; gap: 12px; margin-top: 16px; }
+  @media (min-width: 900px) { .vc-tiers { grid-template-columns: repeat(3, 1fr); } }
+  .vc-tier { min-width: 0; border-radius: 14px; padding: 18px; border: 1px solid var(--line); border-top: 3px solid; background: rgba(255,255,255,.03); }
+  .vc-tier.gold { border-top-color: #e8c46a; }
+  .vc-tier.platinum { border-top-color: #d6dde6; }
+  .vc-tier.diamond { border-top-color: #9be7f7; background: linear-gradient(160deg, rgba(155,231,247,.11), rgba(255,255,255,.03)); box-shadow: 0 0 0 1px rgba(155,231,247,.28); }
+  .vc-name { margin: 0; font-weight: 700; font-size: 16px; }
+  .gold .vc-name { color: #f0cf7a; } .platinum .vc-name { color: #e4eaf1; } .diamond .vc-name { color: #a8eefc; }
+  .vc-name span { display: inline-block; margin-inline-start: 8px; font: 600 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; border: 1px solid rgba(168,238,252,.5); color: #a8eefc; vertical-align: middle; }
+  .vc-req { margin: 4px 0 0; font-size: 13px; color: var(--dim); }
+  .vc-desc { margin: 10px 0 0; font-size: 14px; }
+  .vc-tier .record-list { font-size: 14px; }
   .lang-link { color: var(--paper-ink); text-decoration: underline; text-underline-offset: 3px; text-transform: none; letter-spacing: 0; font-family: system-ui, sans-serif; font-size: 13px; }
   /* Arabic RTL overrides */
   :root { --sans: 'Tajawal', 'Inter', system-ui, sans-serif; --serif: 'Tajawal', Georgia, serif; --mono: 'Tajawal', 'JetBrains Mono', monospace; }
@@ -355,18 +368,45 @@
     </div>
     <p class="intro" style="max-width:none">تبدأ شراكات الاستثمار المشترك بحد أدنى قدره 32 يوماً من أيام البرامج. ويستمر كل يوم إضافي بالسعر نفسه وبمساهمة هيومانتك نفسها. <a class="sched-link" href="#rate-card">راجع تسعير المرحلة الثانية &larr;</a></p>
     <div class="record wide" id="alliance-2030">
-      <p class="eyebrow">دائرة رؤية 2030 &middot; شارة شراكة 2030 المخصصة</p>
-      <p><b>الجهات التي تعزّز التعاون المشترك</b> بين هيومانتك وشركاتها الشقيقة أو الجهات الراعية لها أو الجهات التنظيمية تُكرَّم بـ<b>شارة شراكة 2030 مخصصة</b> وتنضم إلى <b>دائرة رؤية 2030</b>.</p>
-      <ul class="record-list">
-        <li><b>سعر القمة المشترك:</b> سعر تفضيلي يُثبَّت في الاتفاقية الموقّعة، يتجاوز مستويات الاستثمار المشترك القائمة</li>
-        <li><b>تمويل إضافي للاستثمار المشترك</b> للبرنامج المشترك مع AmexSA</li>
-        <li><b>شارة شراكة 2030 المخصصة:</b> شارة رقمية تحمل اسم جهتكم وشركائها، تقديراً للتعاون ضمن رؤية 2030</li>
-        <li><b>أولوية الجدولة</b> للمجموعات التدريبية عبر شبكة الشركاء</li>
-        <li><b>التطوير المهني المستمر</b> للكفاءات الواعدة في AmexSA</li>
-        <li><b>حلول مخصصة</b> خلال مرحلة الاستدامة</li>
-        <li><b>مجموعات تركيز مجانية</b> مع فرق الشركاء</li>
-        <li><b>دعوات إلى طاولة القيادات المستديرة</b> وتكريم في منتدى هيومانتك السنوي لرؤية 2030</li>
-      </ul>
+      <p class="eyebrow">دائرة رؤية 2030 &middot; الذهبية &middot; البلاتينية &middot; الماسية</p>
+      <p>تكرّم دائرة رؤية 2030 الشركاء عبر ثلاث فئات، من الذهبية إلى الماسية. <b>وتشمل كل فئة جميع مزايا الفئة التي تسبقها.</b></p>
+      <div class="vc-tiers">
+        <div class="vc-tier gold">
+          <p class="vc-name">الشراكة الذهبية</p>
+          <p class="vc-req">50 يوماً فأكثر من أيام البرامج &middot; استثمار مشترك كامل</p>
+          <ul class="record-list">
+            <li><b>عضوية دائرة رؤية 2030</b> مع شارة شراكة 2030 الرقمية</li>
+            <li><b>جلسة متابعة جماعية مجانية</b> للمشاركين الذين حضروا البرامج</li>
+            <li><b>تقرير أثر بعد التنفيذ،</b> مبني على بيانات البرامج الموثّقة والتجربة الفعلية للمشاركين</li>
+            <li><b>دعوة</b> إلى منتدى هيومانتك السنوي لرؤية 2030</li>
+          </ul>
+        </div>
+        <div class="vc-tier platinum">
+          <p class="vc-name">الشراكة البلاتينية</p>
+          <p class="vc-req">72 يوماً فأكثر من أيام البرامج &middot; استثمار مشترك كامل</p>
+          <ul class="record-list">
+            <li>جميع مزايا الفئة الذهبية، إضافةً إلى:</li>
+            <li><b>شهادات بريطانية ممولة بالكامل</b> لجميع المشاركين</li>
+            <li><b>التطوير المهني المستمر</b> للكفاءات الواعدة في AmexSA</li>
+            <li><b>حلول مخصصة</b> خلال مرحلة الاستدامة</li>
+            <li><b>مسؤول شراكة مخصص</b> من هيومانتك</li>
+            <li><b>دعوات إلى طاولة القيادات المستديرة</b></li>
+          </ul>
+        </div>
+        <div class="vc-tier diamond">
+          <p class="vc-name">الشراكة الماسية <span>أعلى مستويات التقدير</span></p>
+          <p class="vc-req">قيادة التعاون المشترك مع الجهات التنظيمية الوطنية أو جهات التمويل الريادي أو الحاضنات ومسرّعات الأعمال</p>
+          <p class="vc-desc">أعلى مستويات التقدير في برنامج شراكات هيومانتك، مخصصة للجهات التي تقود التعاون المشترك بين هيومانتك والجهات التنظيمية الوطنية أو جهات التمويل الريادي أو الحاضنات ومسرّعات الأعمال.</p>
+          <ul class="record-list">
+            <li>جميع مزايا الفئة البلاتينية، إضافةً إلى:</li>
+            <li><b>سعر القمة المشترك:</b> سعر تفضيلي يُثبَّت في الاتفاقية الموقّعة، يتجاوز مستويات الاستثمار المشترك القائمة</li>
+            <li><b>شارة شراكة 2030 مخصصة</b> تحمل اسم جهتكم وشركائها</li>
+            <li><b>أولوية الجدولة</b> للمجموعات التدريبية عبر شبكة الشركاء</li>
+            <li><b>تمويل إضافي للاستثمار المشترك</b> للبرنامج المشترك مع AmexSA</li>
+            <li><b>لقاء تنفيذي</b> مع قيادة هيومانتك، وتكريم في منتدى رؤية 2030 السنوي</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -490,7 +530,6 @@
     <!-- PERMANENT: qualifying-beneficiary statement (Arabic translation of the protected English text). Never remove or reword without the owner's explicit instruction. -->
     <p class="qualifies" id="qualifying-beneficiary">تُعدّ AmexSA جهة مستفيدة مؤهلة ضمن برنامج هيومانتك ديجيتال.</p>
     <p class="intro">صُنّفت أمريكان إكسبريس السعودية <b>حساباً استراتيجياً من الفئة الأولى</b> بناءً على مستنداتها النظامية: التأسيس كشركة مساهمة سعودية مقفلة، والخضوع لرقابة البنك المركزي السعودي، والحضور التشغيلي الراسخ في المملكة، وملكية محلية بنسبة 50% عبر البنك السعودي للاستثمار.</p>
-    <p class="intro">تبدأ هذه الخطة بانطلاقة الحساب الاستراتيجي. وعند بلوغ 32 يوماً من أيام البرامج إجمالاً (بما فيها أيام الانطلاقة)، تتأهل AmexSA للاستثمار المشترك الجزئي، وعند 50 يوماً للاستثمار المشترك الكامل، وهو أعلى مستوى تقدّمه هيومانتك.</p>
     <div class="chips">
       <div class="chip"><small>الحساب</small><span>أمريكان إكسبريس السعودية</span></div>
       <div class="chip"><small>التصنيف</small><span>حساب استراتيجي من الفئة الأولى</span></div>
