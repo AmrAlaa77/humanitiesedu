@@ -317,6 +317,8 @@
   .learn-more::before { content: '+'; }
   details[open] > summary .learn-more::before { content: '\2212'; }
   details[open] > summary .learn-more { background: var(--surface-2); }
+  /* visible-then-fade preview: shows the first lines, fades out, opens fully on + */
+  details:not([open]) > summary .peek-fade { max-height: 3.3em; overflow: hidden; -webkit-mask-image: linear-gradient(#000 35%, transparent); mask-image: linear-gradient(#000 35%, transparent); }
 
   /* ---------- Labeled item list (accreditation / Vision 2030 items), each with its own + ---------- */
   .item-list { display: flex; flex-direction: column; gap: 20px; }
@@ -536,16 +538,14 @@
       </p>
       <details style="margin-top:14px;">
         <summary style="display:flex; align-items:flex-start; gap:14px;">
+          <p class="peek-fade" style="margin:0;">
+            Led by <strong>Dr. S. Abraham</strong> &mdash; Medical Doctor, Entrepreneurial Investor (MISA Approved),
+            recipient of the Saudi Ministry of Human Resources &amp; Social Development&rsquo;s Badge of
+            Recognition for content aligned with Vision 2030, former partner at the British College in Oxford,
+            and our Chair &amp; CEO; Humantic Digital is licensed by the Ministry of Investment Saudi Arabia.
+          </p>
           <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:calc(1cm - 28px);"></span>
         </summary>
-        <div class="full" style="display:block; margin-top:10px;">
-        <p style="margin:0;">
-          Led by <strong>Dr. S. Abraham</strong> &mdash; Medical Doctor, Entrepreneurial Investor (MISA Approved),
-          recipient of the Saudi Ministry of Human Resources &amp; Social Development&rsquo;s Badge of
-          Recognition for content aligned with Vision 2030, former partner at the British College in Oxford,
-          and our Chair &amp; CEO; Humantic Digital is licensed by the Ministry of Investment Saudi Arabia.
-        </p>
-        </div>
       </details>
     </div>
   </section>
