@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Check, ShieldCheck, Sparkles, Lock } from 'lucide-react';
+import { ArrowRight, Check, Sparkles, Lock } from 'lucide-react';
 import PaymentModal from '@/components/humantic/PaymentModal';
 import { useInView } from '@/hooks/use-in-view';
 
@@ -141,7 +141,6 @@ const Assessment: React.FC = () => {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs text-slate-500">
-            <span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-400" /> MISA approved instrument</span>
             <span className="inline-flex items-center gap-2"><Sparkles className="h-4 w-4 text-cyan-400" /> Read through the lens of socio-neurobiology</span>
           </div>
         </div>

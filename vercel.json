@@ -11,13 +11,8 @@
                           "permanent":  false
                       },
                       {
-                          "source":  "/amex-proposal/intelligence-ai-implemented/",
-                          "destination":  "/amex-proposal/intelligence-ai-implemented",
-                          "permanent":  false
-                      },
-                      {
-                          "source":  "/amex-proposal/Intelligence-AI-Implemented",
-                          "destination":  "/amex-proposal/intelligence-ai-implemented",
+                          "source":  "/amex-proposal/IntelligenceAI/",
+                          "destination":  "/amex-proposal/IntelligenceAI",
                           "permanent":  false
                       },
                       {
@@ -62,7 +57,11 @@
                          "destination":  "/experience/index.html"
                      },
                      {
-                         "source":  "/amex-proposal/intelligence-ai-implemented",
+                         "source":  "/amex-proposal/IntelligenceAI",
+                         "destination":  "/amex-proposal/index.html"
+                     },
+                     {
+                         "source":  "/amex-proposal/intelligenceai",
                          "destination":  "/amex-proposal/index.html"
                      },
                      {
