@@ -232,14 +232,22 @@
   #assessment-comparison .entry-note { margin-top: 18px; }
   .cover .chip:has(> small:only-child), .cover .chips > .chip:nth-child(5) { display: none !important; }
   .cover::before { background: linear-gradient(100deg, rgba(45,212,191,.78) 0%, rgba(20,184,166,.66) 32%, rgba(8,145,178,.42) 55%, rgba(14,58,110,.2) 80%, rgba(14,58,110,.12) 100%); }
-  .page-globe { position: absolute; top: 8vw; left: 32vw; width: 108vw; height: 70vw; overflow: hidden; z-index: -1; pointer-events: none;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.25) 12%, rgba(0,0,0,.7) 24%, #000 36%), linear-gradient(to bottom, transparent 0%, #000 14%, #000 56%, rgba(0,0,0,.9) 66%, rgba(0,0,0,.7) 77%, rgba(0,0,0,.42) 88%, transparent 100%);
-    -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.25) 12%, rgba(0,0,0,.7) 24%, #000 36%), linear-gradient(to bottom, transparent 0%, #000 14%, #000 56%, rgba(0,0,0,.9) 66%, rgba(0,0,0,.7) 77%, rgba(0,0,0,.42) 88%, transparent 100%); mask-composite: intersect; }
+  .page-globe { position: absolute; top: 8vw; left: 32vw; width: 108vw; height: 84vw; overflow: hidden; z-index: -1; pointer-events: none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.25) 12%, rgba(0,0,0,.7) 24%, #000 36%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 62%, rgba(0,0,0,.92) 72%, rgba(0,0,0,.75) 82%, rgba(0,0,0,.5) 91%, transparent 100%);
+    -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.25) 12%, rgba(0,0,0,.7) 24%, #000 36%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 62%, rgba(0,0,0,.92) 72%, rgba(0,0,0,.75) 82%, rgba(0,0,0,.5) 91%, transparent 100%); mask-composite: intersect; }
   .page-globe video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
   .cover::before { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, rgba(0,0,0,.7) 62%, rgba(0,0,0,.35) 80%, rgba(0,0,0,.1) 93%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 45%, rgba(0,0,0,.7) 62%, rgba(0,0,0,.35) 80%, rgba(0,0,0,.1) 93%, transparent 100%); }
   body { position: relative; overflow-x: hidden; }
   .cover::after { background: none; }
   @media (max-width: 760px) { .page-globe { left: 0; width: 100%; height: 900px; opacity: .5; -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 100%); mask-image: linear-gradient(to bottom, #000 40%, transparent 100%); } }
+  @media (min-width: 900px) { #humantic-investment .opts { grid-template-rows: repeat(6, auto) !important; } #humantic-investment .opt { grid-row: span 6 !important; } }
+  details.more { margin-top: 18px; }
+  details.more > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--aqua); color: var(--aqua); font: 500 22px/1 var(--sans); transition: background .2s; }
+  details.more > summary::-webkit-details-marker { display: none; }
+  details.more > summary:hover { background: rgba(34,241,204,.12); }
+  details.more .plus { display: inline-block; transition: transform .25s; }
+  details.more[open] .plus { transform: rotate(45deg); }
+  details.more .kv { margin-top: 14px; }
 </style>
 
 <div class="page-globe" aria-hidden="true"><video autoplay muted loop playsinline preload="auto" poster="cover-globe.jpg"><source src="cover-globe.mp4" type="video/mp4"></video></div>
@@ -369,14 +377,10 @@
       <article class="opt lead-opt">
         <p class="eyebrow">Schedule B</p>
         <header><h3>Option 1 &middot; Core &middot; 13-Day Strategic Account Entry</h3><span class="pill v">Tier 1 Strategic Account</span></header>
-        <ul class="feat">
-          <li>Assessments charged per participant, SAR 275&ndash;1,500 each depending on the assessment</li>
-          <li>Cost rises with headcount</li>
-        </ul>
         <div class="big num" style="color:var(--emerald-2)">SAR 110,500<small>Humantic co-investment &middot; 13 days &times; SAR 8,500</small></div>
         <div class="bar" role="img" aria-label="Humantic contributes 60.71 percent, AmexSA pays 39.29 percent"><span class="h" style="width:60.71%"></span><span class="c" style="width:39.29%"></span></div>
         <div class="legend"><span><i style="background:var(--emerald)"></i>Humantic 60.71%</span><span><i style="background:var(--cyan)"></i>AmexSA 39.29%</span></div>
-        <dl class="kv">
+        <details class="more"><summary aria-label="Show details" title="Show details"><span class="plus" aria-hidden="true">+</span></summary><dl class="kv">
           <dt>Standard rate</dt><dd>SAR 14,000 / day</dd>
           <dt>AmexSA entry rate</dt><dd>SAR 5,500 / day</dd>
           <dt>Humantic contribution</dt><dd>SAR 8,500 / day</dd>
@@ -385,19 +389,15 @@
           <dt>Standard programme value</dt><dd>SAR 182,000</dd>
           <dt>Humantic co-investment</dt><dd>SAR 110,500</dd>
           <dt>AmexSA investment (excluding assessments)</dt><dd>SAR 71,500</dd>
-        </dl>
+        </dl></details>
       </article>
       <article class="opt">
         <p class="eyebrow">Schedule C</p>
         <header><h3>Option 2 &middot; Core &middot; 13-Day Standard Vision 2030 Rate</h3><span class="pill v">Vision 2030 Rate</span></header>
-        <ul class="feat">
-          <li>The same 13-day Core programme at the standard Vision 2030 rate, without the entry exception</li>
-          <li>Assessments charged per participant, SAR 275&ndash;1,500 each depending on the assessment</li>
-        </ul>
         <div class="big num" style="color:var(--emerald-2)">SAR 78,000<small>Humantic co-investment &middot; 13 days &times; SAR 6,000</small></div>
         <div class="bar" role="img" aria-label="Humantic contributes 42.86 percent, AmexSA pays 57.14 percent"><span class="h" style="width:42.86%"></span><span class="c" style="width:57.14%"></span></div>
         <div class="legend"><span><i style="background:var(--emerald)"></i>Humantic 42.86%</span><span><i style="background:var(--cyan)"></i>AmexSA 57.14%</span></div>
-        <dl class="kv">
+        <details class="more"><summary aria-label="Show details" title="Show details"><span class="plus" aria-hidden="true">+</span></summary><dl class="kv">
           <dt>Standard rate</dt><dd>SAR 14,000 / day</dd>
           <dt>Vision 2030 rate</dt><dd>SAR 8,000 / day</dd>
           <dt>Humantic contribution</dt><dd>SAR 6,000 / day</dd>
@@ -406,7 +406,7 @@
           <dt>Standard programme value</dt><dd>SAR 182,000</dd>
           <dt>Humantic co-investment</dt><dd>SAR 78,000</dd>
           <dt>AmexSA investment (excluding assessments)</dt><dd>SAR 104,000</dd>
-        </dl>
+        </dl></details>
       </article>
     </div>
   </section>
@@ -421,9 +421,9 @@
         <colgroup><col style="width:22%"><col style="width:36%"><col style="width:42%"></colgroup>
         <thead><tr><th>Assessment &amp; tracking</th><th>Core &middot; Human-led by UK-certified subject matter experts</th><th>Intelligence &middot; Human + AI</th></tr></thead>
         <tbody>
-          <tr><td>Assessments</td><td>Charged per participant, SAR 275&ndash;1,500 each depending on the assessment</td><td><b>Included</b> in a single lump-sum programme price</td></tr>
+          <tr><td>Assessments &amp; analytics</td><td>Charged per participant, from SAR 275 to SAR 1,500 depending on the assessment selected</td><td><b>AI-based assessments and analytics</b>, included in a single lump-sum programme price</td></tr>
           <tr><td>Assessment cost</td><td>Rises with headcount</td><td><b>Fixed:</b> no per-participant fees</td></tr>
-          <tr><td>Analytics</td><td>Expert observation and end-of-programme feedback</td><td><b>Proprietary AI analytics:</b> dashboards and productivity indicators for all participants</td></tr>
+          <tr><td>Analytics</td><td>Expert observation and end-of-programme feedback</td><td><b>Proprietary AI analytics:</b> dashboards and productivity indicators for all participants, and <b>Collective Strength Mapping</b> for teams</td></tr>
           <tr><td>Progress tracking</td><td>Per programme</td><td><b>Continuous:</b> tracked from baseline across the full term</td></tr>
           <tr><td>Programme days</td><td>13 days: 6 &times; 2-day programmes + 1 team-building day, extendable to 31 days at the entry rate</td><td>19 days: 6 &times; 3-day programmes + 1 team-building day, extendable to 31 days at the entry rate</td></tr>
           <tr class="hl"><td>AmexSA entry rate</td><td>SAR 5,500 / day</td><td>SAR 8,000 / day</td></tr>
@@ -458,9 +458,7 @@
     <div class="chips">
       <div class="chip"><small>Account</small><span>American Express Saudi Arabia</span></div>
       <div class="chip"><small>Classification</small><span>Tier 1 Strategic Account</span></div>
-      <div class="chip"><small>Funding model</small><span>Semi or Full Co-Investment</span></div>
       <div class="chip"><small>AmexSA investment &middot; from</small><span class="num">SAR 71,500</span></div>
-      <div class="chip"><small>Humantic co-investment &middot; Core entry, up to</small><span class="num">SAR 263,500</span></div>
     </div>
   </div>
 
@@ -528,7 +526,7 @@
         <h3>32-Day Minimum Partnership<span style="display:block;margin-top:4px;font-size:14px;font-weight:600;color:var(--emerald-2)">Unlocks Semi / Full Co-Investment</span></h3>
         <p class="teal-inline" style="margin-top:0"><a class="sched-link" href="#rate-card">See Schedules D &amp; E: Phase 2 pricing &rarr;</a></p>
         <ul class="plist">
-          <li><b>Flexible entry:</b> entry days still count toward the total. Extend the partnership to 32+ days (Semi), 50+ days (Full) or 72+ days (Full with funded British certificates) and get the benefits of each co-investment level.</li>
+          <li><b>Flexible entry:</b> entry days still count toward the total. Extend the partnership to 32+ days (Semi) or 50+ days (Full) and get the benefits of each co-investment level.</li>
           <li><b>Book now</b> to secure the maximum Humantic co-investment, and <b>start within 45 days:</b> your co-investment level is confirmed at booking.</li>
         </ul>
       </div>
@@ -538,7 +536,7 @@
         <div class="rate">By agreement</div>
         <ul class="plist">
           <li>Multi-departmental rollout across AmexSA business units</li>
-          <li><b>Full Co-Investment</b> at 72+ programme days, <b>with full funding for British certificates granted to all participants (up to 20 per cohort for Intelligence / up to 25 per cohort for Core)</b></li>
+          <li><b>Full Co-Investment</b> at 72+ programme days, <b>with full funding for British certificates granted to all participants</b> (up to 20 per cohort for Intelligence / up to 25 per cohort for Core)</li>
           <li>Priced under the standard programme architecture and AmexSA's Tier 1 classification</li>
           <li><a class="sched-link" href="#scale-stage">See Stage 3 in practice &rarr;</a></li>
         </ul>
@@ -614,7 +612,7 @@
       <li>AmexSA confirms the deployment route: Core or Intelligence, and the number of entry days.</li>
       <li>AmexSA shares cohort details for each programme: number of cohorts, number of participants and participant job titles.</li>
       <li>Humantic issues the partnership agreement and co-investment schedule.</li>
-      <li>Signature and programme mobilisation, starting with participant surveys and cultural assessments.</li>
+      <li>Signature and programme mobilisation, starting with surveys and cultural assessments.</li>
     </ol>
     <div class="terms" id="entry-terms">
       <p class="eyebrow">Entry stage payment and scheduling</p>
