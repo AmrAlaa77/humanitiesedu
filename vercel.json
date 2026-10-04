@@ -39,6 +39,11 @@
                           "source":  "/amex-partnership/ar/",
                           "destination":  "/amex-partnership/preview/",
                           "permanent":  false
+                      },
+                      {
+                          "source":  "/amex-partnership/preview/ar",
+                          "destination":  "/amex-partnership/preview/ar/",
+                          "permanent":  false
                       }
                   ],
     "rewrites":  [
@@ -61,6 +66,10 @@
                      {
                          "source":  "/who-we-are",
                          "destination":  "/who-we-are/index.html"
+                     },
+                     {
+                         "source":  "/amex-partnership/preview/ar/",
+                         "destination":  "/amex-partnership/preview/ar/index.html"
                      },
                      {
                          "source":  "/((?!experience|amex-proposal|amex-partnership|game-on-kits|who-we-are).*)",
