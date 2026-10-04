@@ -11,6 +11,16 @@
                           "permanent":  false
                       },
                       {
+                          "source":  "/amex-proposal/intelligence-ai-implemented/",
+                          "destination":  "/amex-proposal/intelligence-ai-implemented",
+                          "permanent":  false
+                      },
+                      {
+                          "source":  "/amex-proposal/Intelligence-AI-Implemented",
+                          "destination":  "/amex-proposal/intelligence-ai-implemented",
+                          "permanent":  false
+                      },
+                      {
                           "source":  "/amex-proposal",
                           "destination":  "/amex-proposal/",
                           "permanent":  false
@@ -50,6 +60,10 @@
                      {
                          "source":  "/experience",
                          "destination":  "/experience/index.html"
+                     },
+                     {
+                         "source":  "/amex-proposal/intelligence-ai-implemented",
+                         "destination":  "/amex-proposal/index.html"
                      },
                      {
                          "source":  "/amex-proposal/",
