@@ -374,7 +374,7 @@
   @media (max-width: 640px) {
     .masthead-doc { text-align: left; }
     .footer { flex-direction: column; align-items: flex-start; }
-    .footer-approval { text-align: left; }
+    .footer-approval { align-self: flex-end; }
   }
 
   /* ---------- Video hero under a teal gradient ---------- */
@@ -388,6 +388,9 @@
     padding: 64px 32px 56px;
     color: #fff;
     background: #0e3a6e;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
   .hero-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -3; }
   .hm-wash {
@@ -400,6 +403,9 @@
   .hm-content { position: relative; }
   .hero-media h1 { color: #fff; max-width: none; font-size: clamp(30px, 5vw, 46px); line-height: 1.12; text-shadow: 0 1px 12px rgba(2,6,23,0.18); }
   .hero-media h1 .aqua { color: #22f1cc; }
+  .hm-subtitle { color: #fff; font-size: 18px; line-height: 1.35; font-weight: 400; margin: 0; text-shadow: 0 1px 12px rgba(2,6,23,0.18); }
+  .hm-split { display: flex; flex-direction: column; gap: 24px; }
+  .hm-left h1 { margin: 0; }
   .hero-media .hero-taglines { color: rgba(255,255,255,0.92); }
   .hero-media .hero-taglines strong { color: #fff; }
   .hero-media .badge { color: #fff; border-color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.12); }
@@ -411,7 +417,10 @@
   @media (min-width: 720px) {
     .hero.hero-media { padding: 76px 40px 64px; }
     .hm-lines { top: 0; bottom: 0; width: 36%; height: 100%; }
-    .hm-content { width: 60%; margin-left: auto; }
+    .hm-content { width: 100%; }
+    .hm-split { flex-direction: row; justify-content: space-between; align-items: flex-end; gap: 32px; }
+    .hm-left { max-width: 34%; }
+    .hm-right { max-width: 54%; }
   }
   @media (prefers-reduced-motion: reduce) { .hero-media video { display: none; } }
 
@@ -451,7 +460,7 @@
       </div>
       <div>
         <div class="wordmark-text">Humantic Digital</div>
-        <div class="wordmark-sub">DIGITAL &middot; RIYADH</div>
+        <div class="wordmark-sub">HUMAN + DIGITAL INTELLIGENCE</div>
       </div>
     </div>
     <div class="masthead-doc">
@@ -460,7 +469,7 @@
   </header>
 
   <section class="hero hero-media">
-    <video src="/videos/hero-teal.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+    <video src="/videos/hero-new2.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
     <div class="hm-wash" aria-hidden="true"></div>
     <svg class="hm-lines" aria-hidden="true" viewBox="0 0 640 900" preserveAspectRatio="none" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
       <g transform="translate(-71 -321) scale(30.3 64.3)" stroke-width="1.4">
@@ -469,16 +478,20 @@
       </g>
     </svg>
     <div class="hm-content">
-      <h1>Digital intelligence, <span class="aqua">deeply human</span> &mdash; <span style="font-size:21px; line-height:1.3; display:inline-block;">we bring medical, neuro and behavioral sciences together to advance preventative medicine and human awareness.</span></h1>
-      <div class="hero-taglines">
-        <span><strong>Health and wellbeing for all.</strong></span>
-        <span>&middot;</span>
-        <span>Hope, preached through science.</span>
-      </div>
-      <div class="badge-row">
-        <span class="badge">Ministry of Investment Saudi Arabia Licensed</span>
-        <span class="badge">CPD London Certified</span>
-        <span class="badge">Saudi Vision 2030 Portal</span>
+      <div class="hm-split">
+        <div class="hm-left"><h1>Digital intelligence, <span class="aqua">deeply human</span> &mdash;</h1></div>
+        <div class="hm-right">
+          <div class="badge-row" style="margin-top:0;">
+            <span class="badge">Ministry of Investment Saudi Arabia Licensed</span>
+            <span class="badge">CPD London Member</span>
+            <span class="badge">Saudi Vision 2030 Portal</span>
+          </div>
+          <p class="hm-subtitle" style="margin-top:14px;">we bring medical, neuro and behavioral sciences together to advance preventative medicine and human awareness.</p>
+          <div class="hero-taglines" style="margin-top:14px;">
+            <span><strong>Health and wellbeing for all.</strong></span>
+            <span>Hope, preached through science.</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -499,11 +512,6 @@
           <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:1cm;"></span>
         </summary>
         <p class="full" style="display:block; margin-top:10px;">
-          We draw on neurobiology, cognitive science and sociophysiology to understand the
-          human experience in full &mdash; thoughts, perceptions, emotions, relationships and behaviour
-          alike.
-        </p>
-        <p class="full" style="display:block; margin-top:14px;">
           Through board advisory, executive education, personalised counselling and awareness, we turn
           that depth of understanding into meaningful, lasting change across organisations, educational
           institutions and communities.
@@ -518,29 +526,25 @@
       <h2>17 years in human capital made Humantic Digital what it is today.</h2>
     </div>
     <div class="section-body">
-      <details>
-        <summary>
-          <div class="stat-line">
-            <span class="stat-num">17</span>
-            <span class="stat-label">years of international strategic joint ventures across the UK and GCC</span>
-            <span class="learn-more" style="float:none; margin-left:auto; margin-right:1cm; align-self:center;"></span>
-          </div>
+      <p>
+        Built on a 17-year foundation of international strategic joint ventures across the United
+        Kingdom and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the
+        British College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian
+        and development division into <strong>Humantic Digital</strong>: a sovereign medical-behavioral-digital
+        entity dedicated to Behaviorometric Engineering, Bio-Organizational Development, and
+        British-accredited Executive, People and Culture education.
+      </p>
+      <details style="margin-top:14px;">
+        <summary style="display:flex; align-items:flex-start; gap:14px;">
+          <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:calc(1cm - 28px);"></span>
         </summary>
-        <div class="full" style="display:block;">
-          <p>
-            Built on a 17-year foundation of international strategic joint ventures across the United
-            Kingdom and the GCC &mdash; including our legacy as the exclusive MENA educational arm for the
-            British College City Oxford &mdash; we are transitioning from the college&rsquo;s humanitarian
-            and development division into <strong>Humantic Digital</strong>: a sovereign medical-behavioral-digital
-            entity dedicated to Behaviorometric Engineering, Bio-Organizational Development, and
-            British-accredited Executive, People and Culture education.
-          </p>
-          <p style="margin-top:14px;">
-            Led by <strong>Dr. S. Abraham</strong> &mdash; Medical Doctor, Entrepreneurial Investor (MISA Approved),
-            recipient of the Saudi Ministry of Human Resources &amp; Social Development&rsquo;s Badge of
-            Recognition for content aligned with Vision 2030, former partner at the British College in Oxford,
-            and our Chair &amp; CEO; Humantic Digital is licensed by the Ministry of Investment Saudi Arabia.
-          </p>
+        <div class="full" style="display:block; margin-top:10px;">
+        <p style="margin:0;">
+          Led by <strong>Dr. S. Abraham</strong> &mdash; Medical Doctor, Entrepreneurial Investor (MISA Approved),
+          recipient of the Saudi Ministry of Human Resources &amp; Social Development&rsquo;s Badge of
+          Recognition for content aligned with Vision 2030, former partner at the British College in Oxford,
+          and our Chair &amp; CEO; Humantic Digital is licensed by the Ministry of Investment Saudi Arabia.
+        </p>
         </div>
       </details>
     </div>
@@ -556,7 +560,7 @@
         <details>
           <summary style="display:flex; align-items:flex-start; gap:14px;">
             <p style="margin:0;">
-              We blend corporate business principles and insights with practical psychology and human
+              We blend corporate business principles and insights with human
               psychology (the science of the self) and physiology (the medical science of how the human
               body works), through
               proprietary intellectual property &mdash; UK-accredited content and assessments &mdash;
@@ -565,7 +569,7 @@
             <span class="learn-more" style="flex-shrink:0; margin-left:auto; margin-right:calc(1cm - 28px);"></span>
           </summary>
           <div class="full" style="display:block; margin-top:14px;">
-            <p style="margin:0 0 14px; font-size:15px; line-height:1.7; color:var(--text-dim); max-width:62ch;">We make the invisible human factors of performance visible, discussable and actionable. Applying behavioural science and workplace psychology, we help organisations understand how their people think, communicate, respond under pressure and make decisions, so they can reflect, connect and align.</p>
+            <p style="margin:0 0 14px; font-size:15px; line-height:1.7; color:var(--text-dim); max-width:62ch;">We bring the hidden human factors behind performance into the open, so they can be discussed and acted on. Applying behavioural science and workplace psychology, we help organisations understand how their people think, communicate, respond under pressure and make decisions, so they can reflect, connect and align.</p>
             <div class="chip-row">
               <span class="chip">Organizational Behavior &amp; Team Dynamics Assessment</span>
               <span class="chip">Behavioral Risk &amp; Productivity Metrics</span>
@@ -802,7 +806,7 @@
     <div class="section-body">
       <div class="pullquote">
       <p>
-        Our methodology is education, not training: we build lasting understanding, not one-off skills. We empower your people by gaining a deep
+        Our methodology is education, not training: we build understanding that endures, not one-off skills. We empower your people by gaining a deep
         understanding of what truly drives them, so they learn to decode the patterns behind their
         behaviour, awareness, and reactions. We customise and contextualise education around your
         people, your environment, and the challenges that matter most, so we genuinely connect,
@@ -895,6 +899,7 @@
       </div>
       <p class="lm-h">Learning methodology</p>
       <ul class="lm-list">
+        <li>AI-based learning, diagnostics and behavioural analysis</li>
         <li>Experiential learning and facilitated discovery</li>
         <li>Case studies and workplace scenarios</li>
         <li>Simulations, gamification and team challenges</li>
@@ -973,7 +978,7 @@
         For business excellence, sustainable value, and holistic wellbeing across MENA &mdash; a
         Campus-to-Career initiative for Gen Z.
       </p>
-      <p style="margin-top:14px; font-weight:600; color:var(--text);">Our NextGen 2030 promise: the unwritten rules that separate a newly hired employee who merely graduated from one who is genuinely employable.</p>
+      <p style="margin-top:14px; font-weight:600; color:var(--text);">Our NextGen 2030 promise: from merely graduated to genuinely employable.</p>
 
       <div class="stat-grid">
         <div class="stat-card"><div class="num">~30%</div><div class="cap">of the global workforce is Gen Z by 2030</div></div>
@@ -1093,6 +1098,11 @@
     <div class="footer-approval">
       <strong>MISA Licensed &middot; 2026</strong>
       Ministry of Investment Saudi Arabia
+      <div style="margin-top:10px; font-size:10px; line-height:1.7; letter-spacing:0.02em;">
+        Investment Registration No. 24926249749 &middot; Entity ID 1538690<br>
+        Commercial Registration No. 7053718800 &middot; Humantic Digital Company<br>
+        King Abdulaziz Rd, Al Sahafah Dist., Riyadh &middot; National Address RASB7930
+      </div>
     </div>
   </footer>
 
