@@ -123,6 +123,7 @@
 
   /* ---------- Who we are + affiliations ---------- */
   .who { display: grid; gap: 40px; align-items: start; }
+  .who > * { min-width: 0; }
   @media (min-width: 900px) { .who { grid-template-columns: 1fr 1fr; gap: 56px; } }
   .who h2 { margin-top: 16px; font-family: var(--serif); font-weight: 700; font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.15; letter-spacing: -.01em; color: #fff; }
   .who h2 .grad { display: block; }
@@ -233,43 +234,6 @@
 
 <div class="pin-bar"><div class="pin-stack"><span class="pin-ai">Intelligence &middot; AI-Implemented</span><span class="pin-title">American Express Saudi Proposal</span></div> <span class="chev">&#9662;</span></div>
 
-<!-- ================= COVER ================= -->
-<header class="hero" id="top">
-  <svg viewBox="0 0 1600 900" preserveAspectRatio="xMinYMid slice" fill="none" stroke="#fff" stroke-opacity=".15" aria-hidden="true">
-    <path d="M230 150 H385 L750 900" vector-effect="non-scaling-stroke" stroke-width="1.3"/>
-    <path d="M230 150 L560 900" vector-effect="non-scaling-stroke" stroke-width="1.3"/>
-    <path d="M0 305 H87 L400 900" vector-effect="non-scaling-stroke" stroke-width="1.3"/>
-    <path d="M0 420 L215 900" vector-effect="non-scaling-stroke" stroke-width="1.3"/>
-    <path d="M200 430 H355 L520 900" vector-effect="non-scaling-stroke" stroke-width="1.3"/>
-    <path d="M200 430 L390 900" vector-effect="non-scaling-stroke" stroke-width="1.3"/>
-  </svg>
-  <div class="wrap">
-    <div class="hero-grid">
-      <div class="vslot" data-src="videos/intro.mp4" data-controls data-label="Introduction video">
-        <video src="videos/intro.mp4" poster="images/intro-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Introduction video"></video>
-        <span class="play" hidden><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
-        <span class="cap"><span>Introduction video</span><span>Humantic Digital</span></span>
-      </div>
-      <div>
-        <div class="brand">
-          <div class="mark"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-          <div><b>Humantic</b><span>Digital</span></div>
-        </div>
-        <p class="kicker" style="margin-top:34px">Proposal &middot; Riyadh &middot; 2026</p>
-        <h1>Annual Human Capital Development<em>Programmes.</em></h1>
-        <p class="lead">Prepared for <strong>American Express Saudi Arabia</strong> &mdash; six 3-day programmes and a 1-day team-building programme for People Development &amp; Culture, plus an optional Sustainability Phase for leaders and their teams, delivered in Arabic and English.</p>
-        <div class="metas">
-          <div class="chip"><small>Programmes</small><span>7</span></div>
-          <div class="chip"><small>Sessions</small><span>19</span></div>
-          <div class="chip"><small>Language</small><span>Arabic / English</span></div>
-        </div>
-        <a class="cta-pill" href="#portfolio">View the portfolio &darr;</a>
-      </div>
-    </div>
-  </div>
-  <div class="hero-fade"></div>
-</header>
-
 <!-- ================= WHO WE ARE + AFFILIATIONS ================= -->
 <section class="dark-page" id="who">
   <div class="wrap">
@@ -320,6 +284,44 @@
     </div>
   </div>
 </section>
+
+<!-- ================= COVER ================= -->
+<header class="hero" id="top">
+  <svg viewBox="0 0 1600 900" preserveAspectRatio="xMinYMid slice" fill="none" stroke="#fff" stroke-opacity=".15" aria-hidden="true">
+    <path d="M230 150 H385 L750 900" vector-effect="non-scaling-stroke" stroke-width="1.3"/>
+    <path d="M230 150 L560 900" vector-effect="non-scaling-stroke" stroke-width="1.3"/>
+    <path d="M0 305 H87 L400 900" vector-effect="non-scaling-stroke" stroke-width="1.3"/>
+    <path d="M0 420 L215 900" vector-effect="non-scaling-stroke" stroke-width="1.3"/>
+    <path d="M200 430 H355 L520 900" vector-effect="non-scaling-stroke" stroke-width="1.3"/>
+    <path d="M200 430 L390 900" vector-effect="non-scaling-stroke" stroke-width="1.3"/>
+  </svg>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="vslot" data-src="videos/intro.mp4" data-controls data-label="Introduction video">
+        <video src="videos/intro.mp4" poster="images/intro-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Introduction video"></video>
+        <span class="play" hidden><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
+        <span class="cap"><span>Introduction video</span><span>Humantic Digital</span></span>
+      </div>
+      <div>
+        <div class="brand">
+          <div class="mark"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <div><b>Humantic</b><span>Digital</span></div>
+        </div>
+        <p class="kicker" style="margin-top:34px">Proposal &middot; Riyadh &middot; 2026</p>
+        <h1>Annual Human Capital Development<em>Programmes.</em></h1>
+        <p class="lead">Prepared for <strong>American Express Saudi Arabia</strong> &mdash; six 3-day programmes and a 1-day team-building programme for People Development &amp; Culture, plus an optional Sustainability Phase for leaders and their teams, delivered in Arabic and English.</p>
+        <div class="metas">
+          <div class="chip"><small>Programmes</small><span>7</span></div>
+          <div class="chip"><small>Sessions</small><span>19</span></div>
+          <div class="chip"><small>Language</small><span>Arabic / English</span></div>
+        </div>
+        <a class="cta-pill" href="#portfolio">View the portfolio &darr;</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-fade top"></div>
+  <div class="hero-fade"></div>
+</header>
 
 <!-- ================= PORTFOLIO ================= -->
 <section class="dark-page" id="portfolio" style="padding-top:24px">
@@ -378,7 +380,7 @@
       out: ['Deliver exceptional customer service experiences.','Handle customer inquiries and complaints professionally.','Build trust and long-term customer relationships.','Apply service excellence standards in daily interactions.','Enhance customer satisfaction and loyalty.'],
       del: 'Includes role plays, customer interaction simulations, real-life case studies, and practical service scenarios.' },
     { id: 'leadership', t: 'Building Influence & Leadership Mindset', type: 'Leadership & Soft Skills', aud: 'All Employees – All Departments & Levels, including Hi-Po Leaders', fmt: 'cv', video: 'videos/leadership.mp4',
-      out: ['Develop a leadership mindset and demonstrate ownership and accountability.','Build influence and credibility across different levels of the organization.','Communicate ideas confidently and gain stakeholder buy-in.','Strengthen decision-making, initiative, and problem-solving skills.','Apply leadership behaviors to positively influence teams and workplace outcomes.','Confidently navigate complex scenarios — difficult conversations, team conflicts, and organizational challenges — head-on.','Turn organizational opportunities into strategic wins that help shape a winning culture.','Translate what you learn into practical, real-world impact back on the job.','Behavioral Leadership Fundamentals — understand the hidden barriers to influence: limiting thoughts, unconscious bias, and emotional-regulation challenges.','Strengths-Based Leadership — unlock your innate talents and apply them to real challenges.','Neuroscience & Organizational Behavior — strengthen decision-making, adaptability, and build thriving teams.'],
+      out: ['Develop a leadership mindset and demonstrate ownership and accountability.','Build influence and credibility across different levels of the organization.','Get your message across with confidence that speaks, and gain stakeholder buy-in.','Strengthen decision-making, initiative, and problem-solving skills.','Apply leadership behaviors to positively influence teams and workplace outcomes.','Confidently navigate complex scenarios — difficult conversations, team conflicts, and organizational challenges — head-on.','Turn organizational opportunities into strategic wins that help shape a winning culture.','Translate what you learn into practical, real-world impact back on the job.','Behavioral Leadership Fundamentals — understand the hidden barriers to influence: limiting thoughts, unconscious bias, and emotional-regulation challenges.','Strengths-Based Leadership — unlock your innate talents and apply them to real challenges.','Neuroscience & Organizational Behavior — strengthen decision-making, adaptability, and build thriving teams.'],
       del: 'Includes interactive discussions, leadership scenarios, role plays, case studies, and practical workplace exercises.' },
     { id: 'excel', t: 'Excel for Business Reporting & Data Analysis', type: 'Technical & Analytical Skills', aud: 'All Employees – All Departments & Levels', fmt: 'cv', video: 'videos/excel.mp4',
       out: ['Develop practical Excel skills for preparing and analyzing business reports.','Organize, clean, and analyze data efficiently to support decision-making.','Use formulas, functions, PivotTables, charts, and dashboards to generate meaningful insights.','Improve KPI tracking, reporting accuracy, and operational efficiency.','Reduce manual effort by applying Excel best practices and automation techniques.'],
@@ -400,8 +402,8 @@
       intro: 'Presence AI-Assessment is Humantic&rsquo;s own AI-based assessment platform, reading presence, confidence and security through the lens of socio-neurobiology &mdash; not body language, but what is actually happening in a presenter&rsquo;s nervous system while they present. Participants are put through live questioning, and the platform reads how composure holds and where nervousness is limiting real performance, giving every participant a personalised performance-gap report.',
       features: ['Live assessment during real presentations, including impromptu questioning from the room', 'Composure testing under pressure — reads how presence holds up when challenged live, not on paper', 'Vocal confidence tracking — tone, pace and steadiness under pressure', 'Nervousness-to-performance mapping — reads where nerves are actually limiting performance indicators', 'Socio-neurobiological benchmarking', 'Personalised performance-gap report'],
       rcEyebrow: 'Root Causes',
-      rcTitle: 'The psychology behind low confidence',
-      rcIntro: 'Low confidence when presenting is rarely a skills problem alone. Five root causes sit underneath it. The assessment report is read against them, so the programme coaches the driver, not the symptom.',
+      rcTitle: 'Get your message across with confidence that speaks',
+      rcIntro: 'As a leader, your message lands only as well as your confidence carries it, and low confidence when presenting is rarely a skills problem alone. Five root causes sit underneath it. The assessment report is read against them, so the programme coaches the driver, not the symptom.',
       rcItems: [
         ['Fear of negative evaluation', 'The brain reads an audience as social threat. The stress response that follows (racing heart, dry mouth) is then taken as proof of incompetence.'],
         ['Low self-efficacy', 'Confidence follows past mastery. With few remembered successes, belief stays low however strong the skill actually is.'],
@@ -417,7 +419,7 @@
       features: ['Organizational Behavior & Team Dynamics Assessment', 'Uncover limiting patterns and unhelpful thought habits', 'Surface unconscious bias in how you read colleagues', 'Map communication gaps between intent and impact', 'Assess emotional-regulation challenges under pressure', 'Preliminary assessment grounded in socio-behavioural science'],
       rcEyebrow: 'Internal Barriers',
       rcTitle: 'What is really getting in the way of your influence',
-      rcIntro: 'Identify your interpersonal derailers in a safe space. You will receive a preliminary assessment based on socio-behavioural science, read against five internal barriers rather than external circumstances.',
+      rcIntro: 'As a leader, your influence depends on getting your message across with confidence that speaks. Identify your interpersonal derailers in a safe space. You will receive a preliminary assessment based on socio-behavioural science, read against five internal barriers rather than external circumstances.',
       rcItems: [
         ['Limiting patterns', 'Habitual responses formed early on, that quietly repeat under pressure whether or not they still serve you.'],
         ['Unhelpful thoughts', 'Automatic self-talk that shrinks confidence and options before a difficult conversation even starts.'],
