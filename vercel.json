@@ -81,11 +81,19 @@
                          "destination":  "/who-we-are/index.html"
                      },
                      {
+                         "source":  "/b2b-b2g",
+                         "destination":  "/b2b-b2g/index.html"
+                     },
+                     {
+                         "source":  "/b2b-b2g/",
+                         "destination":  "/b2b-b2g/index.html"
+                     },
+                     {
                          "source":  "/amex-partnership/preview/ar/",
                          "destination":  "/amex-partnership/preview/ar/index.html"
                      },
                      {
-                         "source":  "/((?!experience|amex-proposal|amex-partnership|game-on-kits|who-we-are).*)",
+                         "source":  "/((?!experience|amex-proposal|amex-partnership|game-on-kits|who-we-are|b2b-b2g).*)",
                          "destination":  "/index.html"
                      }
                  ]
