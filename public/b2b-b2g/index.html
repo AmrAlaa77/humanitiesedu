@@ -181,6 +181,14 @@ h1 .grad { color: var(--aqua); }
 .who-stats div { background: #1387a5; padding: 0.9rem 0.75rem; }
 .who-stats strong { display: block; font: 700 1.6rem/1 'Inter', sans-serif; color: var(--text); font-variant-numeric: tabular-nums; }
 .who-stats span { display: block; margin-top: 0.4rem; font: 500 0.62rem 'JetBrains Mono', monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); }
+/* mobile: let the grid items shrink to the screen so the framed card is never wider than the page */
+.who > * { min-width: 0; }
+@media (max-width: 480px) {
+  .who-panel { padding: 1.25rem; }
+  .who-stats strong { font-size: 1.35rem; }
+  .who-stats div { padding: 0.8rem 0.55rem; }
+  .who-stats span { font-size: 0.52rem; letter-spacing: 0.05em; }
+}
 
 .affil { margin-top: 4rem; }
 .affil-grid { display: grid; gap: 1px; margin-top: 1.25rem; background: var(--border); border: 1px solid var(--border); border-radius: 1rem; overflow: hidden; }
