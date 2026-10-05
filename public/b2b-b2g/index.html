@@ -156,9 +156,10 @@ h1 .grad { color: var(--aqua); }
 .who-expand .who-rest { display: none; }
 .who-copy.open .fade-words { background: none; -webkit-text-fill-color: currentColor; color: inherit; }
 .who-copy.open .who-rest { display: inline; }
-.who-plus { display: inline-grid; place-items: center; width: 1.7rem; height: 1.7rem; margin-left: 1.1rem; vertical-align: middle; padding: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.45); background: rgba(255,255,255,0.12); color: #fff; cursor: pointer; transition: background 0.2s ease, transform 0.25s ease; }
+.who-expand { position: relative; padding-right: 3rem; }
+.who-plus { position: absolute; right: 0; bottom: 0.2rem; display: inline-grid; place-items: center; width: 1.7rem; height: 1.7rem; padding: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.45); background: rgba(255,255,255,0.12); color: #fff; cursor: pointer; transition: background 0.2s ease, transform 0.25s ease; }
 /* the "Led by" paragraph shows one faded line until the + is opened */
-.who-copy:not(.open) .who-lead { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,0.12) 100%); mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,0.12) 100%); }
+.who-copy:not(.open) .who-lead { display: none; }
 .who-plus::before { content: '+'; font-size: 1.05rem; line-height: 1; }
 .who-plus:hover { background: rgba(255,255,255,0.25); }
 .who-copy.open .who-plus { transform: rotate(45deg); }
@@ -412,7 +413,8 @@ h1 .grad { color: var(--aqua); }
   .about .who-panel p:not([class]) { color: var(--text-muted); }
   .about::before { display: none; }
   .who-expand .who-rest { display: inline; }
-  .who-copy .who-lead { display: block; -webkit-line-clamp: unset; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .who-copy .who-lead { display: block; }
+  .who-expand { padding-right: 0; }
   .who-expand .fade-words { background: none; -webkit-text-fill-color: currentColor; color: inherit; }
   .who-plus { display: none; }
   .about .eyebrow { color: var(--emerald); }
