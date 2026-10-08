@@ -831,7 +831,7 @@ function renderCard(c) {
 
   card.innerHTML = `
     <div class="card-bar"></div>
-    ${c.image ? `<div class="card-media"><img src="${c.image}" alt="${esc(c.title)}" loading="lazy">${c.imageCaption ? `<span class="card-media-cap">${esc(c.imageCaption)}</span>` : ''}</div>` : ''}
+    ${c.image ? `<div class="card-media"><img src="${c.image}" alt="${esc(c.title)}">${c.imageCaption ? `<span class="card-media-cap">${esc(c.imageCaption)}</span>` : ''}</div>` : ''}
     <div class="card-body">
       <div class="card-eyebrow">
         <span class="mono card-num">${String(c.n).padStart(2, '0')}</span>
