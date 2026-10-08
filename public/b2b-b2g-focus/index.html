@@ -507,7 +507,6 @@ h1 .grad { color: var(--aqua); }
       </div>
 
       <div class="hero-side">
-        <p class="hero-for">Prepared for <b>Al majed oud</b></p>
         <div class="hero-media">
           <video class="hero-video" src="/b2b-b2g/hero.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
         </div>
@@ -805,8 +804,8 @@ overview: 'The goal is not simply to keep people. It is to create an organisatio
   const featured = [
     Object.assign(byTitle('Leadership, Rewired For 2030'), { image: '/b2b-b2g-focus/leadership.jpg' }),
     Object.assign(byTitle('Hi-Po Leaders. Spot Their Innate Strengths. Grow Them.'), { image: '/b2b-b2g-focus/hipo.jpg' }),
-    Object.assign(byTitle('Productivity, Decoded By Your Brain'), { title: 'Productivity, Decoded By Brain Science', image: '/b2b-b2g-focus/productivity.jpg', imageCaption: 'Your new personal assistant' }),
-    byTitle('Organisational Intelligence: The Psychology Behind Workplace Behavior'),
+    Object.assign(byTitle('Productivity, Decoded By Your Brain'), { title: 'Productivity, Decoded By Brain Science', image: '/b2b-b2g-focus/productivity-assistant.jpg', imageCaption: 'Your new personal assistant' }),
+    Object.assign(byTitle('Organisational Intelligence: The Psychology Behind Workplace Behavior'), { image: '/b2b-b2g-focus/organisational.jpg' }),
     byTitle('Executive Presence'),
   ];
   COURSES.splice(0, COURSES.length, ...featured);
@@ -938,8 +937,14 @@ function levelCardRows() {
     return c.offsetHeight - panel.offsetHeight - parseFloat(getComputedStyle(panel).marginTop);
   });
   for (let i = 0; i < cards.length; i += cols) {
-    const rowMax = Math.max(...heights.slice(i, i + cols));
-    cards.slice(i, i + cols).forEach(c => { c.style.minHeight = rowMax + 'px'; });
+    const row = cards.slice(i, i + cols);
+    const hs = heights.slice(i, i + cols);
+    [true, false].forEach(kind => {
+      const idx = row.map((c, k) => k).filter(k => !!row[k].querySelector(".card-media") === kind);
+      if (!idx.length) return;
+      const kindMax = Math.max(...idx.map(k => hs[k]));
+      idx.forEach(k => { row[k].style.minHeight = kindMax + "px"; });
+    });
   }
   levelWidth = grid.clientWidth;
 }
