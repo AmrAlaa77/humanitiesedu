@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Business Storytelling &amp; Data Presentation Skills</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: one programme read top to bottom: thesis + data-to-story chart, film, outcomes as a story arc, method, optional assessment, decisions. */
+  :root {
+    --ink: #0a4368;
+    --ink-2: #083a5e;
+    --ink-3: #062f4d;
+    --text: #f1f5f9;
+    --body: #cbd5e1;
+    --dim: #9fb4cc;
+    --line: rgba(255,255,255,.11);
+    --glass: rgba(255,255,255,.035);
+    --emerald: #34d399;
+    --cyan: #67e8f9;
+    --aqua: #22f1cc;
+    --paper: #eef4f6;
+    --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+    --sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--ink); color: var(--body); font: 400 16px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  h1, h2, h3, h4 { margin: 0; color: var(--text); text-wrap: balance; font-family: var(--display); }
+  p { margin: 0; }
+  :focus-visible { outline: 2px solid var(--aqua); outline-offset: 3px; }
+  .wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding-inline: 20px; }
+  .eyebrow { display: flex; align-items: center; gap: 10px; font: 600 11px var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--emerald); }
+  .eyebrow::before { content: ""; width: 24px; height: 1px; background: rgba(52,211,153,.55); }
+  .grad { background: linear-gradient(90deg, #6ee7b7, #67e8f9); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  section { position: relative; padding-block: 84px; }
+  .sec-head { display: grid; gap: 14px; max-width: 46rem; margin-bottom: 40px; }
+  .sec-head h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 700; line-height: 1.12; letter-spacing: -.02em; }
+  .sec-head p { color: var(--body); max-width: 62ch; }
+
+  /* ---------- top strip ---------- */
+  .strip { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--paper); color: var(--ink); border-bottom: 3px solid var(--aqua); }
+  .strip .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 18px; padding-block: 10px; }
+  .strip b { font: 700 14px var(--sans); }
+  .strip span { font: 600 10.5px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: #0d7f70; }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; isolation: isolate; overflow: hidden; padding-block: 80px 72px; }
+  .hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background: linear-gradient(118deg, rgba(45,212,191,.92) 0%, rgba(20,184,166,.80) 30%, rgba(8,145,178,.72) 58%, var(--ink) 92%); }
+  .hero::after { content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 200px; z-index: -1; background: linear-gradient(to bottom, rgba(10,67,104,0), var(--ink)); }
+  .hero-grid { display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 940px) { .hero-grid { grid-template-columns: 1.05fr .95fr; gap: 64px; } }
+  .kicker { font: 600 11.5px var(--mono); letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.9); }
+  .kicker.brow { display: inline-flex; align-items: center; gap: 12px; font-size: 13px; letter-spacing: .24em; color: #fff; }
+  .kicker.brow::before { content: ""; width: 28px; height: 2px; background: var(--aqua); }
+  .hero h1 { margin-top: 18px; font-size: clamp(2.4rem, 5.6vw, 4.3rem); font-weight: 800; line-height: 1.02; letter-spacing: -.035em; color: #fff; }
+  .hero h1 em { display: block; font-style: normal; font-weight: 500; color: rgba(255,255,255,.82); }
+  .hero .lead { margin-top: 22px; max-width: 34rem; font-size: 1.08rem; color: rgba(255,255,255,.92); }
+  .hero .lead-2 { margin-top: 18px; }
+  .hero .lead-kfupm { margin-top: 22px; margin-bottom: 4px; font-weight: 600; color: #fff; }
+  .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 34px; max-width: 34rem; background: rgba(255,255,255,.22); border: 1px solid rgba(255,255,255,.22); border-radius: 16px; overflow: hidden; }
+  .facts div { background: rgba(6,47,77,.55); padding: 14px 16px; min-width: 0; }
+  .facts small { display: block; font: 600 10px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--cyan); }
+  .facts span { display: block; margin-top: 4px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+
+  /* data-to-story chart */
+  .chart { position: relative; background: rgba(6,47,77,.62); border: 1px solid rgba(255,255,255,.2); border-radius: 22px; padding: 22px 22px 18px; box-shadow: 0 30px 60px -30px rgba(2,20,33,.8); }
+  .chart-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .chart-top b { font: 700 15px var(--sans); color: #fff; }
+  .chart-top span { font: 500 10.5px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+  .chart svg { display: block; width: 100%; height: auto; margin-top: 10px; }
+  .chart .axis { stroke: rgba(255,255,255,.18); }
+  .chart .grid { stroke: rgba(255,255,255,.07); }
+  .chart .lbl { fill: var(--dim); font: 500 11px var(--mono); }
+  .chart .bar { fill: rgba(203,213,225,.28); }
+  .chart .bar.key { fill: var(--aqua); }
+  .chart .note { fill: #fff; font: 700 13px var(--sans); }
+  .chart .note-sub { fill: var(--cyan); font: 500 11px var(--mono); letter-spacing: .06em; }
+  .chart .lead-line { stroke: var(--aqua); stroke-width: 1.4; stroke-dasharray: 3 4; fill: none; }
+  .chart-foot { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .chart-foot span { font: 600 10.5px var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,.18); color: var(--body); }
+  .chart-foot span.on { background: var(--aqua); border-color: var(--aqua); color: var(--ink-3); }
+  @media (prefers-reduced-motion: no-preference) {
+    .chart .bar { transform-box: fill-box; transform-origin: bottom; animation: rise .9s cubic-bezier(.2,.8,.2,1) both; }
+    .chart .bar:nth-of-type(2) { animation-delay: .08s; } .chart .bar:nth-of-type(3) { animation-delay: .16s; }
+    .chart .bar:nth-of-type(4) { animation-delay: .24s; } .chart .bar:nth-of-type(5) { animation-delay: .32s; }
+    .chart .bar:nth-of-type(6) { animation-delay: .40s; }
+    @keyframes rise { from { transform: scaleY(.15); } to { transform: scaleY(1); } }
+  }
+
+  /* ---------- film ---------- */
+  .film-grid { display: grid; gap: 36px; align-items: center; }
+  @media (min-width: 900px) { .film-grid { grid-template-columns: 1.2fr .8fr; gap: 56px; } }
+  .film { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); background: var(--ink-3); aspect-ratio: 16 / 9; max-width: 100%; }
+  .film video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .film-copy h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; line-height: 1.15; letter-spacing: -.02em; margin-top: 14px; }
+  .film-copy p { margin-top: 16px; }
+
+  /* ---------- outcomes arc ---------- */
+  .arc { display: grid; gap: 14px; counter-reset: step; }
+  @media (min-width: 760px) { .arc { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1080px) { .arc { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .arc li { list-style: none; position: relative; display: grid; align-content: start; gap: 10px; padding: 22px 20px 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--glass); min-width: 0; }
+  .arc li::before { counter-increment: step; content: "0" counter(step); font: 600 12px var(--mono); letter-spacing: .1em; color: var(--emerald); }
+  .arc .stage { font: 600 10.5px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--cyan); }
+  .arc h3 { font-size: 1.12rem; font-weight: 700; line-height: 1.3; }
+  /* "+ Learn more": inline roll-out under a card */
+  .more { margin-top: 4px; }
+  .more summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; font: 700 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--aqua); }
+  .more summary::-webkit-details-marker { display: none; }
+  .more summary::before { content: "+"; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(34,241,204,.6); font: 700 15px/1 var(--sans); }
+  .more[open] summary::before { content: "\2212"; background: var(--aqua); color: var(--ink-3); }
+  .more summary:focus-visible { outline: 2px solid var(--aqua); outline-offset: 3px; border-radius: 999px; }
+  .more p { margin-top: 10px; font-size: 14.5px; color: var(--body); max-width: 70ch; }
+  @media print { .more { display: none !important; } }
+  .arc ol { margin: 0; padding: 0; }
+  .arc-rail { display: none; }
+  @media (min-width: 1080px) {
+    .arc-rail { display: block; height: 2px; margin: 0 0 18px; border-radius: 2px; background: linear-gradient(90deg, rgba(203,213,225,.25) 0%, var(--emerald) 55%, var(--cyan) 100%); }
+  }
+
+  /* ---------- method ---------- */
+  .method { display: grid; gap: 28px; }
+  @media (min-width: 900px) { .method { grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; } }
+  .method-lead p + p { margin-top: 14px; }
+  .schedule { margin-top: 26px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  .schedule div { display: flex; justify-content: space-between; gap: 16px; padding: 13px 18px; border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+  .schedule div:first-child { border-top: 0; }
+  .schedule small { font: 600 10.5px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+  .schedule span { color: var(--text); font-weight: 600; text-align: right; }
+  .tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  @media (max-width: 520px) { .tools { grid-template-columns: 1fr; } }
+  .tools div { background: var(--ink-2); padding: 22px 22px 24px; min-width: 0; }
+  .tools .ai-tile { background: linear-gradient(180deg, rgba(34,241,204,.12), var(--ink-2) 70%); }
+  .tools .tag { display: inline-block; margin-bottom: 10px; font: 700 10px var(--mono); letter-spacing: .16em; padding: 4px 8px; border-radius: 6px; background: var(--aqua); color: var(--ink-3); }
+  .tools h4 { font-size: 1.05rem; font-weight: 700; }
+  .tools p { margin-top: 8px; font-size: 14.5px; }
+
+  /* ---------- assessment ---------- */
+  .assess { position: relative; border: 1px solid rgba(103,232,249,.35); border-radius: 24px; padding: clamp(24px, 4vw, 44px); background: linear-gradient(180deg, rgba(103,232,249,.08), rgba(255,255,255,.015)); overflow: hidden; }
+  .assess::before { content: ""; position: absolute; inset-inline: 0; top: 0; height: 3px; background: linear-gradient(90deg, var(--emerald), var(--cyan)); }
+  .assess-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+  .assess-head h2 { font-size: clamp(1.6rem, 3.2vw, 2.3rem); font-weight: 800; letter-spacing: -.02em; }
+  .pill { font: 700 10.5px var(--mono); letter-spacing: .14em; text-transform: uppercase; padding: 7px 12px; border-radius: 999px; background: var(--paper); color: var(--ink); }
+  .assess-intro { margin-top: 18px; max-width: 68ch; }
+  .assess-cols { display: grid; gap: 32px; margin-top: 32px; }
+  @media (min-width: 900px) { .assess-cols { grid-template-columns: .85fr 1.15fr; gap: 44px; } }
+  .feat { margin: 0; padding: 0; display: grid; gap: 10px; }
+  .feat li { list-style: none; display: grid; grid-template-columns: 12px 1fr; gap: 14px; align-items: baseline; color: var(--text); font-size: 15px; }
+  .feat li::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--aqua); box-shadow: 0 0 0 4px rgba(34,241,204,.2); transform: translateY(-1px); }
+  .rc-title { font-size: 1.25rem; font-weight: 700; margin-top: 10px; }
+  .rc-intro { margin-top: 10px; font-size: 14.5px; }
+  .rc { display: grid; gap: 1px; margin-top: 18px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  @media (min-width: 620px) { .rc { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .rc div { background: var(--ink-2); padding: 16px 18px; min-width: 0; }
+  .rc h5 { margin: 0 0 6px; font: 700 14px var(--sans); color: var(--cyan); }
+  .rc p { font-size: 13.5px; line-height: 1.6; }
+
+  /* ---------- decisions ---------- */
+  .steps { display: grid; gap: 14px; }
+  @media (min-width: 820px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .steps div { border-top: 2px solid var(--emerald); padding: 18px 4px 0; }
+  .steps small { font: 600 10.5px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--dim); }
+  .steps h4 { margin-top: 8px; font-size: 1.15rem; font-weight: 700; }
+  .steps p { margin-top: 8px; font-size: 14.5px; }
+  .note { margin-top: 30px; font-size: 14px; color: var(--dim); }
+
+  .ai-chip { display: flex; align-items: center; gap: 14px; width: 100%; max-width: 34rem; margin-top: 18px; padding: 14px 18px; border-radius: 16px; background: var(--paper); color: var(--ink); text-decoration: none; box-shadow: 0 14px 30px -14px rgba(2,20,33,.8); }
+  .ai-chip:hover { background: #ddecec; }
+  .ai-chip .ai-dot { flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--aqua); box-shadow: 0 0 0 5px rgba(34,241,204,.3); }
+  .ai-chip span:last-child { display: grid; gap: 2px; }
+  .ai-chip small { font: 700 10px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: #0b7d6e; }
+  .ai-chip small { background: linear-gradient(90deg, #0d9488, #0891b2 50%, #6d28d9); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800; }
+  .ai-chip b { font: 800 17px var(--sans); color: var(--ink); }
+  .trig { display: grid; gap: 14px; }
+  @media (min-width: 680px) { .trig { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .trig div { display: grid; align-content: start; gap: 8px; padding: 22px 22px 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--glass); min-width: 0; }
+  .trig-group { display: grid; gap: 18px; }
+  .trig-group + .trig-group { margin-top: 48px; }
+  .trig-head { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+  .trig-head h3 { font-size: 1.35rem; font-weight: 700; }
+  .trig-head p { margin-top: 4px; font-size: 14.5px; max-width: 60ch; }
+  .trig-head > div { flex: 1; min-width: 0; }
+  .side { flex: none; font: 700 10.5px var(--mono); letter-spacing: .16em; text-transform: uppercase; padding: 7px 12px; border-radius: 999px; background: var(--aqua); color: var(--ink-3); margin-top: 4px; }
+  .ext .side { background: transparent; color: var(--cyan); border: 1px solid var(--cyan); }
+  .ext .trig div { background: var(--ink-2); border-style: dashed; border-color: rgba(103,232,249,.3); }
+  .trig b { font: 700 1.15rem/1.3 var(--display); color: var(--text); }
+  .trig q { font: 700 1.2rem/1.3 var(--display); color: var(--text); letter-spacing: -.01em; }
+  .trig small { font: 600 10.5px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--cyan); }
+  .trig p { font-size: 14.5px; }
+  @media (min-width: 680px) { .trig > div:last-child:nth-child(odd) { grid-column: 1 / -1; } }
+  .days { display: grid; gap: 16px; }
+  .bridge { display: grid; gap: 6px; padding: 20px; border-radius: 18px; border: 1px dashed rgba(34,241,204,.5); text-align: center; min-width: 0; }
+  .bridge small { font: 700 10.5px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--aqua); }
+  .bridge h4 { font-size: 1.1rem; font-weight: 700; }
+  .bridge p { font-size: 14px; }
+  .bridge::before { content: "↓"; font: 700 1.6rem var(--display); color: var(--aqua); }
+  .day { border: 1px solid var(--line); border-radius: 20px; padding: 26px 26px 28px; background: var(--glass); min-width: 0; }
+  .day-2 { border-color: rgba(34,241,204,.4); background: linear-gradient(180deg, rgba(34,241,204,.10), rgba(255,255,255,.02) 60%); }
+  .day-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .day-n { font: 800 2.2rem/1 var(--display); letter-spacing: -.03em; color: var(--text); }
+  .day-k { font: 700 10.5px var(--mono); letter-spacing: .16em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--cyan); color: var(--cyan); }
+  .day-2 .day-k { background: var(--aqua); border-color: var(--aqua); color: var(--ink-3); }
+  .day h3 { margin-top: 14px; font-size: 1.25rem; font-weight: 700; }
+  .day ul { margin: 16px 0 0; padding: 0; display: grid; gap: 10px; }
+  .day li { list-style: none; display: grid; grid-template-columns: 10px 1fr; gap: 12px; align-items: baseline; font-size: 15px; }
+  .day li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--emerald); transform: translateY(-2px); }
+  .ai-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; padding: 8px 14px 8px 12px; border-radius: 999px; background: rgba(6,47,77,.6); border: 1px solid var(--aqua); color: #fff; font: 700 12px var(--mono); letter-spacing: .16em; text-transform: uppercase; }
+  .ai-badge .ai-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--aqua); box-shadow: 0 0 0 4px rgba(34,241,204,.3); }
+  .ai-flow { margin: 0; padding: 0; display: grid; gap: 14px; }
+  @media (min-width: 700px) { .ai-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1040px) { .ai-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .ai-flow li { list-style: none; display: grid; align-content: start; gap: 8px; padding: 22px; border-radius: 18px; border: 1px solid rgba(34,241,204,.35); background: linear-gradient(180deg, rgba(34,241,204,.09), rgba(255,255,255,.02)); min-width: 0; }
+  .ai-flow small { font: 700 10.5px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--aqua); }
+  .ai-flow h3 { font-size: 1.15rem; font-weight: 700; }
+  .ai-flow p { font-size: 14.5px; }
+  .calm { margin-top: 48px; display: grid; gap: 18px; }
+  .calm .side { background: var(--emerald); color: var(--ink-3); }
+  .calm-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  @media (min-width: 680px) { .calm-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1020px) { .calm-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .calm-grid div { background: var(--ink-2); padding: 20px 22px 22px; min-width: 0; }
+  .calm-grid h4 { font-size: 1.05rem; font-weight: 700; color: var(--emerald); }
+  .calm-grid p { margin-top: 6px; font-size: 14.5px; }
+  .handle { margin-top: 48px; display: grid; gap: 18px; }
+  .handle .side { background: var(--paper); color: var(--ink); }
+  .abcr { margin: 0; padding: 0; display: grid; gap: 12px; }
+  @media (min-width: 680px) { .abcr { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1020px) { .abcr { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .abcr li { list-style: none; padding: 20px; border-radius: 16px; background: var(--paper); color: var(--ink); min-width: 0; display: grid; gap: 6px; align-content: start; }
+  .abcr small { font: 700 10.5px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: #0b7d6e; }
+  .abcr h4 { color: var(--ink); font-size: 1.05rem; font-weight: 700; }
+  .abcr p { font-size: 14px; color: #24445e; }
+  .tips-title { margin-top: 10px; font-size: 1.1rem; font-weight: 700; }
+  .tips { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  @media (min-width: 680px) { .tips { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tips div:last-child { grid-column: 1 / -1; } }
+  @media (min-width: 1020px) { .tips { grid-template-columns: repeat(3, minmax(0, 1fr)); } .tips div:last-child { grid-column: auto; } }
+  .tips div { background: var(--ink-2); padding: 16px 18px; min-width: 0; }
+  .tips b { color: var(--cyan); font-size: 14.5px; }
+  .tips p { margin-top: 4px; font-size: 14px; }
+  .privacy { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--dim); max-width: 80ch; }
+  .privacy b { color: var(--text); }
+  .block { margin-top: 16px; }
+  .block-t { display: block; font: 700 10.5px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--cyan); margin-bottom: 8px; }
+  .block ul { margin-top: 0 !important; }
+  .block-p { margin: 0 0 8px; font-size: 14px; color: var(--dim); }
+  .li-note { display: block; margin-top: 3px; font-size: 13.5px; color: var(--dim); line-height: 1.5; }
+  .run { margin: 16px 0 0; padding: 0; display: grid; gap: 10px; counter-reset: r; }
+  .run li { list-style: none; display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: baseline; font-size: 15px; }
+  .run li::before { counter-increment: r; content: counter(r); display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--aqua); color: var(--ink-3); font: 700 11px var(--mono); }
+  .tt { margin: 16px 0 0; padding: 0; display: grid; gap: 0; }
+  .tt li { list-style: none; display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 14px; padding: 12px 0; border-top: 1px solid var(--line); }
+  .tt li:first-child { border-top: 0; padding-top: 4px; }
+  .tt time { font: 700 13px var(--mono); color: var(--aqua); font-variant-numeric: tabular-nums; padding-top: 2px; }
+  .tt b { display: block; color: var(--text); font-size: 15px; }
+  .tt span { display: block; margin-top: 4px; font-size: 14px; }
+  .tt .brk b { color: var(--dim); font-weight: 600; }
+  .day .tt li { grid-template-columns: 58px minmax(0, 1fr); align-items: start; }
+  .day .tt li::before { content: none; }
+  @media (min-width: 900px) {
+    .day:not(.day-2) { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 32px; align-items: start; }
+    .day:not(.day-2) > .day-top, .day:not(.day-2) > h3 { grid-column: 1 / -1; }
+    .day.one { display: block; }
+    .day.one ul { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+    .day.pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .day .tt time { font-size: 14px; }
+  }
+  .showcase { display: grid; gap: 16px; }
+  @media (min-width: 900px) { .showcase { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .showcase figure { margin: 0; border-radius: 18px; overflow: hidden; border: 1px solid rgba(34,241,204,.35); background: var(--ink-3); box-shadow: 0 24px 50px -28px rgba(2,20,33,.9); }
+  .showcase img { display: block; width: 100%; height: auto; border-radius: 14px; }
+  .showcase figcaption { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 10px 8px 14px; min-height: 44px; font: 600 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+  .showcase-note { margin-top: 12px; font-size: 13px; color: var(--dim); }
+  /* Humantic Digital mark beside the showcase title, as on the board */
+  .sc-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 20px 32px; }
+  .sc-head .sec-head { flex: 1 1 32rem; }
+  .brandbox { display: grid; justify-items: end; gap: 10px; margin-top: 0; }
+  .brand { display: flex; align-items: center; gap: 12px; color: #fff; }
+  .brand-brow { font: 600 11px var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--emerald); line-height: 1.65; }
+  .brand .logo { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: #fff; box-shadow: 0 10px 24px -10px rgba(0,0,0,.45); }
+  .brand .logo svg { width: 22px; height: 22px; stroke: var(--ink); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .brand b { display: block; font: 700 19px/1.1 var(--sans); letter-spacing: -.01em; }
+  .brand span { display: block; font: 600 10.5px var(--sans); letter-spacing: .24em; text-transform: uppercase; color: rgba(255,255,255,.85); }
+  .vibe { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; font: 800 13px var(--display); letter-spacing: .01em; color: #fff; background: var(--ink-3); isolation: isolate; }
+  .vibe::before { content: ""; position: absolute; inset: -2px; z-index: -1; border-radius: inherit; background: linear-gradient(90deg, var(--aqua), #a78bfa, #f472b6, var(--aqua)); background-size: 300% 100%; }
+  .vibe::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: var(--ink-3); }
+  .vibe i { font-style: normal; color: var(--aqua); }
+  @media (prefers-reduced-motion: no-preference) { .vibe::before { animation: vibe 4s linear infinite; } @keyframes vibe { to { background-position: 300% 0; } } }
+  @media (max-width: 700px) { .brandbox { justify-items: start; margin-top: 0; } }
+  /* "+" button on each board view: opens that presenter's video */
+  .showcase figure { position: relative; }
+  .vid-btn { flex: none; display: inline-flex; align-items: center; gap: 7px; padding: 4px 12px 4px 4px; border: 0; border-radius: 999px; background: var(--aqua); color: var(--ink-3); font: 700 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
+  .vid-btn b { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--ink-3); color: var(--aqua); font: 700 16px/1 var(--sans); }
+  .vid-btn:hover, .vid-btn:focus-visible { background: #fff; outline: none; }
+  .vid-dlg { width: min(960px, calc(100vw - 32px)); padding: 0; border: 1px solid rgba(34,241,204,.35); border-radius: 18px; background: var(--ink-3); color: var(--text); }
+  .vid-dlg::backdrop { background: rgba(2,20,33,.8); }
+  .vid-dlg video { display: block; width: 100%; max-height: 75vh; background: #000; }
+  .vid-dlg .vid-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; font: 600 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+  .vid-dlg button { border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--text); padding: 6px 12px; font: 600 12px var(--sans); cursor: pointer; }
+  .vid-soon { display: none; padding: 60px 20px; text-align: center; color: var(--body); }
+  .vid-dlg.missing video { display: none; }
+  .vid-dlg.missing .vid-soon { display: block; }
+  @media print { .vid-btn, .vid-dlg { display: none !important; } }
+  #board-showcase { padding-block: 48px 40px; background: linear-gradient(180deg, var(--ink-3), var(--ink)); }
+  .hero .hero-photo { margin: 40px 0 8px; }
+  .hero .hero-after .lead { max-width: 52rem; }
+  .hero-photo { margin: 0; border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,.25); box-shadow: 0 30px 60px -30px rgba(2,20,33,.8); }
+  .hero-photo img, .hero-photo video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+  .facts-end .facts { margin-top: 32px; max-width: none; }
+  @media (min-width: 820px) { .facts-end .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .alt { background: var(--ink-2); }
+  footer { border-top: 1px solid var(--line); padding-block: 26px; font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; }
+  /* package: Excel + Storytelling, one dataset end to end */
+  .pkg { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 15px; }
+  .pkg th { text-align: left; padding: 0 14px 12px; font: 600 10.5px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--dim); border-bottom: 1px solid var(--line); }
+  .pkg td { padding: 16px 14px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--body); }
+  .pkg td:first-child { color: var(--text); font-weight: 700; white-space: nowrap; }
+  .pkg td:first-child span { display: inline-block; min-width: 1.6em; color: var(--emerald); font-family: var(--mono); }
+  .pkg .tag { display: inline-block; padding: 3px 10px; border-radius: 999px; font: 600 11px var(--mono); letter-spacing: .08em; border: 1px solid var(--line); color: var(--text); white-space: nowrap; }
+  .pkg .tag.st { border-color: var(--emerald); color: var(--emerald); }
+  @media (max-width: 680px) {
+    .pkg thead { display: none; }
+    .pkg tr { display: grid; gap: 6px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .pkg td { padding: 0; border: 0; }
+  }
+  .pkg-pair { display: grid; gap: 14px; margin-top: 28px; }
+  @media (min-width: 820px) { .pkg-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .pkg-pair div { border-top: 2px solid var(--emerald); padding: 16px 4px 0; }
+  .pkg-pair small { font: 600 10.5px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--dim); }
+  .pkg-pair h4 { margin-top: 8px; font-size: 1.1rem; font-weight: 700; }
+  .pkg-pair p { margin-top: 6px; font-size: 14.5px; }
+</style>
+</head>
+<body>
+
+<div class="strip">
+  <div class="wrap">
+    <b>Business Storytelling &amp; Data Presentation Skills &middot; AI-Implemented</b>
+    <span>American Express Saudi Arabia</span>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="kicker brow">Present with Intelligence</p>
+      <h1>Business Storytelling<em>&amp; Data Presentation Skills</em></h1>
+      <span class="ai-badge"><span class="ai-dot" aria-hidden="true"></span>AI-Implemented</span>
+      <p class="lead">For teams who build reports and dashboards and need them to lead to a decision. Paired with Excel for Business Reporting &amp; Data Analysis: one dataset, from spreadsheet to recommendation.</p>
+    </div>
+
+    <figure class="hero-photo"><video src="/amex-storytelling/media/hero-video.mp4" poster="/amex-storytelling/media/hero-video-poster.jpg" autoplay muted loop playsinline aria-label="A presenter on stage in front of rising data charts, watched by an audience"></video></figure>
+
+    <div class="hero-after">
+      <p class="lead lead-kfupm">The Excel programme makes the numbers right, and storytelling makes the numbers count. Most data training stops at the dashboard. This package carries the same data all the way to a decision.</p>
+      <p class="lead"><b style="color:#fff">One dataset, end to end.</b> What they build in the first programme is what they present in the second.</p>
+      <a class="ai-chip" href="#assessment"><span class="ai-dot" aria-hidden="true"></span><span><small>Included</small><b>Present with Intelligence platform</b></span></a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= PACKAGE ================= -->
+<section id="package" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Best taken together</div>
+      <h2>From Data to Decision: <span class="grad">one dataset, end to end.</span></h2>
+      <p>Two programmes, run separately or as one package. Each participant brings one real report or dataset. It is cleaned and analysed in Excel, then presented as a recommendation in Storytelling.</p>
+    </div>
+    <table class="pkg">
+      <thead><tr><th>Stage</th><th>Programme</th><th>What happens to the numbers</th></tr></thead>
+      <tbody>
+        <tr><td><span>1</span>Prepare</td><td><span class="tag">Excel</span></td><td>Organise and clean the data so the numbers can be trusted.</td></tr>
+        <tr><td><span>2</span>Analyse</td><td><span class="tag">Excel</span></td><td>Formulas, PivotTables and KPIs to find what changed and why.</td></tr>
+        <tr><td><span>3</span>Visualise</td><td><span class="tag">Excel</span> <span class="tag st">Storytelling</span></td><td>Charts and a dashboard, then cut down to the one chart that matters.</td></tr>
+        <tr><td><span>4</span>Find the insight</td><td><span class="tag st">Storytelling</span></td><td>From &ldquo;here is the data&rdquo; to &ldquo;here is what it means&rdquo;.</td></tr>
+        <tr><td><span>5</span>Present</td><td><span class="tag st">Storytelling</span></td><td>Lead with the answer, then the evidence, then handle questions on the numbers.</td></tr>
+        <tr><td><span>6</span>Be evaluated</td><td><span class="tag st">Storytelling &middot; Day 3</span></td><td>Present the dashboard as a recommendation, with live AI evaluation and an expert debrief.</td></tr>
+      </tbody>
+    </table>
+    <div class="pkg-pair">
+      <div><small>Programme 1 &middot; 2 days</small><h4>Excel for Business Reporting &amp; Data Analysis</h4><p>Makes the numbers right: clean data, sound analysis and a dashboard people can trust.</p><details class="more"><summary>Learn more</summary><p>Practical Excel for preparing and analysing business reports: organising and cleaning data, formulas and functions, PivotTables, charts and dashboards, KPI tracking, and best practices that cut manual effort.</p></details></div>
+      <div><small>Programme 2 &middot; 3 days</small><h4>Business Storytelling &amp; Data Presentation Skills</h4><p>Makes the numbers count: one clear insight, presented as a recommendation and evaluated live.</p><details class="more"><summary>Learn more</summary><p>Day 1 covers the presenter and the room, including role-play. Day 2 covers storytelling with data, rehearsed on random datasets with feedback. On Day 3, each participant presents their own report to the jury, with AI questions and an expert debrief, followed by a focus group debrief.</p></details></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BOARD SHOWCASE ================= -->
+<section id="board-showcase">
+  <div class="wrap">
+    <div class="sc-head">
+    <div class="sec-head">
+      <div class="eyebrow">Present with Intelligence</div>
+      <h2>How every presentation is evaluated, live.</h2>
+      <p>Each participant presents on the Present with Intelligence board: the presenter at the centre, every evaluation point linked to what the audience sees and hears, with the live score and AI evaluation alongside.</p>
+      <p>Over three days, participants work on their own reports and dashboards, ideally the ones built in the Excel programme, so what they practise is what they present next.</p>
+    </div>
+    <div class="brandbox"><span class="brand-brow">Created by</span><div class="brand">
+<span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><div><b>Humantic</b><span>Digital</span></div></div><span class="vibe"><i aria-hidden="true">&#10022;</i>AI that gets your vibe</span></div>
+    </div>
+
+    <div class="showcase">
+      <figure><img src="/amex-storytelling/media/board-1.jpg" alt="The Present with Intelligence evaluation board with a female presenter at the centre, linked to Confidence and presence, Voice, Gesture and movement, Story and data, and Body language panels"><figcaption><span>Board view, female presenter</span><button type="button" class="vid-btn" data-video="/amex-storytelling/media/video-woman.mp4" data-label="Board view, female presenter" aria-label="Watch the female presenter video"><b aria-hidden="true">+</b>Watch</button></figcaption></figure>
+      <figure><img src="/amex-storytelling/media/board-2.jpg" alt="The Present with Intelligence evaluation board with a male presenter at the centre, linked to the same evaluation panels, with the live score and AI evaluation panel on the right"><figcaption><span>Board view, male presenter</span><button type="button" class="vid-btn" data-video="/amex-storytelling/media/video-man.mp4" data-label="Board view, male presenter" aria-label="Watch the male presenter video"><b aria-hidden="true">+</b>Watch</button></figcaption></figure>
+    </div>
+    <p class="showcase-note">Illustrative views of the board. Panel content is shown blurred.</p>
+    <dialog class="vid-dlg" id="vidDlg" aria-label="Presenter video">
+      <video id="vidEl" controls playsinline preload="none"></video>
+      <p class="vid-soon">This video is coming soon.</p>
+      <div class="vid-bar"><span id="vidLabel"></span><button type="button" id="vidClose">Close</button></div>
+    </dialog>
+    <script>
+      (function () {
+        var dlg = document.getElementById('vidDlg'), v = document.getElementById('vidEl'), lab = document.getElementById('vidLabel');
+        function close() { v.pause(); v.removeAttribute('src'); v.load(); dlg.close(); }
+        v.addEventListener('error', function () { dlg.classList.add('missing'); });
+        document.querySelectorAll('.vid-btn').forEach(function (b) {
+          b.addEventListener('click', function () {
+            dlg.classList.remove('missing'); lab.textContent = b.dataset.label;
+            v.src = b.dataset.video; dlg.showModal(); v.play().catch(function () {});
+          });
+        });
+        document.getElementById('vidClose').addEventListener('click', close);
+        dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); });
+        dlg.addEventListener('cancel', function (e) { e.preventDefault(); close(); });
+      })();
+    </script>
+  </div>
+</section>
+
+
+<!-- ================= FILM ================= -->
+<section>
+  <div class="wrap film-grid">
+    <div class="film">
+      <video src="/amex-storytelling/media/why-video.mp4" poster="/amex-storytelling/media/why-video-poster.jpg" autoplay muted loop playsinline aria-label="A presenter walking a mixed panel through data charts in a meeting room"></video>
+
+    </div>
+    <div class="film-copy">
+      <div class="eyebrow">Why this programme</div>
+      <h2>Reports and dashboards only matter when someone acts on them.</h2>
+      <p>Most teams already have the data. What decides whether a recommendation is approved is how clearly it is framed, how well it fits the audience, and how calmly it is delivered when questions start.</p>
+      <p>Participants learn to find the insight in the data, build the story around it, and present it with clarity and confidence. AI is built into the practice day: every participant is evaluated live by AI on the Present with Intelligence platform and receives a personalised performance-gap report.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OUTCOMES ================= -->
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Learning outcomes</div>
+      <h2>From raw numbers to a message <span class="grad">people act on.</span></h2>
+      <p>The six outcomes follow the path a presentation takes, from the data to the room, and end with the presenter.</p>
+    </div>
+    <div class="arc-rail" aria-hidden="true"></div>
+    <ol class="arc">
+      <li><span class="stage">Data</span><h3>Find the one insight in a spreadsheet.</h3></li>
+      <li><span class="stage">Clarity</span><h3>Turn a dashboard into one clear point.</h3></li>
+      <li><span class="stage">Structure</span><h3>Lead with the answer, then the evidence.</h3></li>
+      <li><span class="stage">Delivery</span><h3>Hold attention from the first word in a distracted age.</h3></li>
+      <li><span class="stage">Audience dynamics</span><h3>The same numbers for a manager, a peer and senior leadership.</h3></li>
+      <li><span class="stage">Self-belief</span><h3>Understand the inner critic and present your insights with authority.</h3>
+</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= AI IMPLEMENTED ================= -->
+<section id="ai">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">AI-Implemented</div>
+      <h2>Where AI is built into the programme.</h2>
+      <p>AI is part of how every participant practises and is assessed. Participants don't take it as a separate module.</p>
+    </div>
+    <ol class="ai-flow">
+      <li><small>Rehearse</small><h3>AI rehearsal</h3><p>Participants rehearse their own presentation with AI before presenting their dashboard to the room, followed by 2 minutes with their instructor.</p></li>
+      <li><small>Deepen</small><h3>Questions that go deeper</h3><p>Mid-presentation, the AI asks the questions a curious panel would, so participants learn to think on their feet and take their answers further.</p></li>
+      <li><small>Assess</small><h3>Present with Intelligence platform</h3><p>Composure, vocal confidence and nervousness are read during the live presentation.</p></li>
+      <li><small>Report</small><h3>Performance-gap report</h3><p>Every participant receives a personalised report showing where to improve next.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= TWO DAYS ================= -->
+<section id="days" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Programme structure</div>
+      <h2>Three days: <span class="grad">learn it, then practise it.</span></h2>
+      <p>Days 1 and 2 are taught. At home, each participant crafts one 8-minute presentation on their own report or dashboard. Day 3 is The Jury: each participant presents the presentation they crafted at home, with questions from the AI mid-presentation and an expert debrief, then a focus group debrief on the most common patterns found in the AI review. A separate presenter's guide sets out each trigger and how to handle it.</p>
+    </div>
+    <div class="days">
+      <article class="day pair">
+        <div class="day-top"><span class="day-n">Day 1</span><span class="day-k">Lecture &amp; role-play</span></div>
+        <h3>The presenter and the room</h3>
+        <div class="block"><span class="block-t">The science of the presenter</span><p class="block-p">Grounded in three human sciences.</p><ul>
+          <li>Limitations of self-confidence: where they come from and how to loosen them</li>
+          <li>Barriers to influence: why a strong message can still fail to land</li>
+          <li>Calm when pressure hits: what happens in the body under stress, and how to get back to regulation when triggered</li>
+          <li>The power of internal self-talk</li>
+          <li>From overthinking to readiness: when high standards and self-doubt slow preparation, and how to turn them into confident delivery</li>
+          <li>Know what trips you up: the root causes of the habits that hold strong presenters back</li>
+        </ul></div>
+        <div class="block"><span class="block-t">The room</span><ul>
+          <li>What the room can do to your presentation: the most common situations and audience dynamics</li>
+          <li>Welcoming questions and handling interruptions: turning a challenge into a chance to go deeper</li>
+          <li>Defend your numbers: handling &ldquo;where does this figure come from?&rdquo; and &ldquo;this doesn't match my report&rdquo;</li>
+          <li>Role-play: audience vs presenter</li>
+        </ul></div>
+      </article>
+      <article class="day one">
+        <div class="day-top"><span class="day-n">Day 2</span><span class="day-k">Lecture, rehearsals &amp; feedback</span></div>
+        <h3>Storytelling with data, rehearsed on random data</h3>
+        <div class="block"><span class="block-t">Storytelling</span><ul>
+          <li><span>Make one number human: a story behind the statistic<small class="li-note">Data becomes memorable when it's made human.</small></span></li>
+          <li><span>Start with why: lead with purpose before the data<small class="li-note">Before showing any numbers, tell the audience why the topic matters to them. People only pay attention to data once they know what it's for.</small></span></li>
+          <li><span>Lead with the answer, then the evidence<small class="li-note">Give your conclusion first, then the proof. Managers and senior leaders want the point straight away.</small></span></li>
+          <li><span>Command the room: the delivery skills the best speakers rely on<small class="li-note">How you deliver decides whether people listen.</small></span></li>
+          <li><span>The three ways to persuade: credibility, emotion and logic<small class="li-note">People are convinced by who you are, how you make them feel, and whether your reasoning holds.</small></span></li>
+          <li><span>Less is more: designing for attention span<small class="li-note">The less you put on a slide, the more the audience remembers.</small></span></li>
+        </ul></div>
+        <div class="block"><span class="block-t">Rehearsals and feedback</span><ul>
+          <li><span>Random data rehearsals: each participant draws an unseen dataset, finds the one insight and presents it as a short story<small class="li-note">Practising on numbers they have never seen builds the habit of finding the story fast.</small></span></li>
+          <li><span>Feedback after every rehearsal: from the instructor and the room<small class="li-note">Each participant leaves Day 2 knowing what to keep and what to sharpen before crafting their own presentation.</small></span></li>
+
+        </ul></div>
+
+      </article>
+      <div class="bridge"><small>At home</small><h4>Craft an 8-minute presentation</h4><p>Each participant prepares and rehearses one 8-minute presentation on their own report or dashboard, ideally the one built in the Excel programme, ready for Day 3.</p></div>
+      <article class="day day-2">
+        <div class="day-top"><span class="day-n">Day 3</span><span class="day-k">Practice &amp; focus group</span></div>
+        <h3>The Jury: the presentation crafted at home, presented with AI, then a focus group debrief</h3>
+
+        <p class="block-p" style="margin-top:6px">Timed for a full cohort of 15 participants, so every participant presents to the jury and is evaluated on the day.</p>
+        <ol class="tt">
+          <li><time>09:00</time><div><b>Warm-up and running order</b><span>10 minutes</span></div></li>
+          <li><time>09:10</time><div><b>The Jury, first half</b><span>8 participants, 12 minutes each: an 8-minute presentation of their report or dashboard as a recommendation, about 2 minutes of impromptu questions from the AI on the numbers, then a 2-minute expert debrief.</span></div></li>
+          <li><time>10:50</time><div><b>The Jury, second half</b><span>7 participants, 12 minutes each, in the same format.</span></div></li>
+          <li class="brk"><time>12:15</time><div><b>Prayer and lunch break</b></div></li>
+          <li><time>13:00</time><div><b>Focus group debrief and close</b><span>2 hours, ending at 15:00: the most common patterns across the cohort, based on the AI review of every presentation, such as what held presence back and how questions were handled, discussed as a group with the instructor, with next steps. A personalised performance-gap report, read against six root causes of low confidence, is issued to every participant by the end of the day. Each participant sees only their own report; American Express receives a team summary only.</span></div></li>
+        </ol>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METHOD ================= -->
+<section>
+  <div class="wrap method">
+    <div class="method-lead">
+      <div class="eyebrow">Delivery methodology</div>
+      <h2 style="font-size:clamp(1.7rem,3.2vw,2.3rem);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-top:14px">Two days to learn, one day to practise.</h2>
+      <p style="margin-top:16px">Three days of classroom delivery: the first two taught, the third given over to practice. The sessions are built around practice: participants rehearse on Day 2 and get feedback, then present to the jury on Day 3. Live presentations are read by the Present with Intelligence platform, so development points come from the AI and the instructor's expert debrief, and the room gives positive feedback.</p>
+      <div class="schedule">
+        <div><small>Duration</small><span>3 days, 18 hours in total</span></div>
+        <div><small>Hours</small><span>09:00 &ndash; 15:00 daily (6 hours a day)</span></div>
+        <div><small>Setting</small><span>Classroom</span></div>
+
+      </div>
+    </div>
+    <div class="tools">
+      <div class="ai-tile"><span class="tag">AI</span><h4>Presentation practice with AI</h4><p>Participants rehearse with AI before presenting in the room. Mid-presentation, the AI asks the questions a curious senior audience would, and evaluates how each participant takes their answers deeper. Feedback is immediate, so each run-through is sharper than the last.</p></div>
+      <div><h4>Storytelling frameworks</h4><p>Practical structures for opening, building and closing a business case so the key message lands.</p></div>
+      <div><h4>Real business case studies</h4><p>Reports, dashboards and decisions drawn from real business settings, worked through as a group.</p></div>
+      <div><h4>Hands-on exercises</h4><p>Short, applied tasks that turn each framework into a habit before the programme ends.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ASSESSMENT ================= -->
+<section class="alt" id="assessment">
+  <div class="wrap">
+    <div class="assess">
+      <div class="assess-head">
+        <div>
+          <div class="eyebrow">Built into the programme</div>
+          <h2 style="margin-top:10px">Present with Intelligence platform</h2>
+        </div>
+        <span class="pill">Included</span>
+      </div>
+      <p class="assess-intro">AI and experts: human and machine intelligence, working together to guide you through. The platform reads presence and confidence through how presenters connect with their audience and hold up under pressure. It looks past body language to how a presenter responds to the audience and to pressure while they present. The AI introduces questions mid-presentation, and the platform reads how composure holds and where nervousness is limiting performance. Every participant receives a personalised performance-gap report.</p>
+      <div class="assess-cols" style="grid-template-columns:1fr">
+        <div>
+          <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:16px">What it assesses</h3>
+          <ul class="feat">
+            <li>AI questions mid-presentation, evaluating how presenters think on their feet and deepen their answers in real time</li>
+            <li>Live assessment in real-time presentations, including impromptu questions from the AI</li>
+            <li>Composure under pressure, read live as the presenter is challenged</li>
+            <li>Vocal confidence: tone, pace and steadiness under pressure</li>
+            <li>Where nerves are holding performance back, and by how much</li>
+            <li>Personalised performance-gap report</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEXT ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Next steps</div>
+      <h2>Three decisions to schedule the first cohort.</h2>
+    </div>
+    <div class="steps">
+      <div><small>Cohorts</small><h4>Participants &amp; group size</h4><p>Confirm the teams taking part, which of them also join the Excel programme, and cohorts of up to 15 participants.</p></div>
+      <div><small>Calendar</small><h4>Dates</h4><p>Agree the three days for each cohort, and whether Storytelling runs straight after Excel.</p></div>
+      <div><small>Language</small><h4>Arabic or English</h4><p>Choose the delivery language for each cohort. Content and the performance-gap report are identical in both.</p></div>
+    </div>
+    <div class="facts-end">
+      <div class="facts">
+        <div><small>Format</small><span>3 days: 2 lecture + 1 practice</span></div>
+        <div><small>Daily hours</small><span>09:00 &ndash; 15:00: 6 hours a day, 18 hours in total</span></div>
+
+        <div><small>Audience</small><span>Up to 15 participants per cohort</span></div>
+        <div><small>Evaluation</small><span>AI and expert, live</span></div>
+        <div style="grid-column:span 2"><small>Package</small><span>Best taken together with Excel for Business Reporting &amp; Data Analysis (2 days)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Business Storytelling &amp; Data Presentation Skills &middot; AI-Implemented</span>
+    <span>Prepared for American Express Saudi Arabia</span>
+
+  </div>
+</footer>
+
+</body>
+</html>
