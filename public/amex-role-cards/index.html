@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Role-Play Cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: one 16:9 card on screen at a time for projecting in the room; controls sit under the card. */
+  :root {
+    --ink: #0a4368;
+    --ink-2: #083a5e;
+    --ink-3: #062f4d;
+    --text: #f1f5f9;
+    --body: #cbd5e1;
+    --dim: #9fb4cc;
+    --line: rgba(255,255,255,.14);
+    --emerald: #34d399;
+    --cyan: #67e8f9;
+    --aqua: #22f1cc;
+    --paper: #eef4f6;
+    --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+    --sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--ink-3); color: var(--body); font: 400 15px/1.5 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  .app { min-height: 100%; display: grid; grid-template-rows: 1fr auto; gap: 14px; padding: 16px; }
+  .stage-wrap { display: grid; place-items: center; min-height: 0; }
+  .stage { position: relative; width: min(100%, calc((100vh - 120px) * 16 / 9)); max-width: 100%; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; background: linear-gradient(125deg, rgba(45,212,191,.9) 0%, rgba(8,145,178,.7) 30%, var(--ink) 72%); container-type: inline-size; box-shadow: 0 30px 70px -30px rgba(0,0,0,.7); }
+  .card { position: absolute; inset: 0; padding: 5.5cqw 6cqw; display: grid; grid-template-rows: auto 1fr auto; gap: 2cqw; }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 2cqw; }
+  .kick { font: 600 1.35cqw var(--mono); letter-spacing: .2em; text-transform: uppercase; color: #fff; }
+  .count { font: 600 1.35cqw var(--mono); letter-spacing: .12em; color: rgba(255,255,255,.85); }
+  .mid { align-self: center; display: grid; gap: 2.2cqw; }
+  .tag { justify-self: start; font: 700 1.3cqw var(--mono); letter-spacing: .18em; text-transform: uppercase; padding: .7cqw 1.4cqw; border-radius: 999px; background: var(--ink-3); color: var(--aqua); border: 1px solid var(--aqua); }
+  h1 { margin: 0; font: 800 6.2cqw/1 var(--display); letter-spacing: -.035em; color: #fff; text-wrap: balance; max-width: 80%; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2cqw; }
+  .box { border-radius: 1.6cqw; padding: 2cqw 2.2cqw; min-width: 0; }
+  .box.play { background: var(--paper); color: #24445e; }
+  .box.prac { background: rgba(6,47,77,.75); border: 1px solid var(--line); color: var(--text); }
+  .box small { display: block; font: 700 1.15cqw var(--mono); letter-spacing: .16em; text-transform: uppercase; margin-bottom: .8cqw; }
+  .box.play small { color: #0b7d6e; }
+  .box.prac small { color: var(--aqua); }
+  .box p { margin: 0; font: 600 2.05cqw/1.35 var(--sans); }
+  .foot { font: 500 1.2cqw var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); display: flex; justify-content: space-between; gap: 2cqw; }
+  /* title card */
+  .card.title .mid h1 { font-size: 7.4cqw; max-width: 90%; }
+  .card.title .lead { font: 500 2.2cqw/1.4 var(--sans); color: rgba(255,255,255,.92); max-width: 70%; margin: 0; }
+  .rules { display: flex; gap: 1.2cqw; flex-wrap: wrap; }
+  .rules span { font: 600 1.5cqw var(--sans); padding: 1cqw 1.6cqw; border-radius: 999px; background: rgba(6,47,77,.7); border: 1px solid var(--line); color: #fff; }
+
+  .controls { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; }
+  button { font: 700 13px var(--sans); color: var(--text); background: var(--ink-2); border: 1px solid var(--line); border-radius: 999px; padding: 10px 16px; cursor: pointer; }
+  button:hover { background: var(--ink); }
+  button.primary { background: var(--aqua); color: var(--ink-3); border-color: var(--aqua); }
+  .dots { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+  .dots button { width: 10px; height: 10px; padding: 0; border-radius: 50%; background: rgba(255,255,255,.25); border: 0; }
+  .dots button[aria-current="true"] { background: var(--aqua); }
+  .hint { width: 100%; text-align: center; font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+  .stage:fullscreen { width: 100vw; height: 100vh; border-radius: 0; aspect-ratio: auto; }
+  @media (prefers-reduced-motion: no-preference) { .card { animation: in .35s ease both; } @keyframes in { from { opacity: .4; transform: translateY(8px); } to { opacity: 1; transform: none; } } }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <div class="stage-wrap">
+    <div class="stage" id="stage" aria-live="polite"></div>
+  </div>
+  <div class="controls">
+    <button type="button" id="prev" aria-label="Previous card">&larr; Previous</button>
+    <button type="button" id="draw" class="primary">Draw a random card</button>
+    <button type="button" id="next" aria-label="Next card">Next &rarr;</button>
+    <button type="button" id="fs">Full screen</button>
+    <div class="dots" id="dots" aria-label="Cards"></div>
+    <p class="hint">Arrow keys to move &middot; R to draw at random &middot; F for full screen</p>
+  </div>
+</div>
+
+<script>
+  var CARDS = [
+    { tag: 'Public disagreement', t: 'The colleague who contradicts', play: 'Politely correct one point, or offer a different reading of the data, in front of the room.', prac: 'Not defending in public, and parking the disagreement for after.' },
+    { tag: 'Authority', t: 'The senior manager who takes over', play: 'Cut in, move the topic on, or answer a question on the presenter’s behalf.', prac: 'Letting them finish, following their lead, then linking back to the structure.' },
+    { tag: 'Disengagement', t: 'Side conversations and phones', play: 'Two players talk quietly at the back, or check their phones through the middle section.', prac: 'Changing pace or asking the room a question, without calling anyone out.' },
+    { tag: 'Know-it-all', t: 'The expert in the audience', play: 'Turn a question into a long speech of your own, correcting and teaching from your seat.', prac: 'Finding the overlap, opening the floor, and offering to continue after the session.' },
+    { tag: 'Knowledge gap', t: 'The detail hunter', play: 'Ask for a figure, a breakdown or a comparison that is not in the deck.', prac: 'Acknowledge, Bridge, Commit, Return. No guessing.' },
+    { tag: 'Challenge', t: 'The hostile questioner', play: 'Ask a loaded question meant to corner the presenter, for example “Isn’t this a waste of time?”', prac: 'Restating it neutrally, then answering briefly and calmly.' },
+    { tag: 'Derailment', t: 'The off-topic commenter', play: 'Make a throwaway or silly remark that pulls the room onto a tangent.', prac: 'Acknowledging it lightly, then bridging back to the message.' },
+    { tag: 'Sarcasm', t: 'The joker', play: 'Make a light joke at the presenter’s expense and get the room laughing.', prac: 'Smiling, letting the laugh land, and continuing warmly.' },
+    { tag: 'Arabic / English', t: 'The language switcher', play: 'Ask the presenter to explain the key point in the other language.', prac: 'Switching for the key point only, then checking which language to continue in.' },
+    { tag: 'Trainer only', t: 'The technology failure', play: 'Trainer: turn off the screen or close the file in the middle of the presentation.', prac: 'Carrying on without slides: “Let me talk you through it.”' }
+  ];
+  var TOTAL = CARDS.length + 1, i = 0;
+  var stage = document.getElementById('stage'), dots = document.getElementById('dots');
+  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function render() {
+    if (i === 0) {
+      stage.innerHTML = '<div class="card title"><div class="top"><span class="kick">Day 1 &middot; Role-play</span><span class="count">' + CARDS.length + ' cards</span></div>' +
+        '<div class="mid"><span class="tag">Audience vs presenter</span><h1>Role-Play Cards</h1><p class="lead">Each audience player draws one card and plays it during a short presentation. The presenter doesn’t see the card.</p>' +
+        '<div class="rules"><span>Stay in role, stay respectful</span><span>One card per player</span><span>Debrief after each round</span></div></div>' +
+        '<div class="foot"><span>Business Storytelling &amp; Data Presentation Skills</span><span>Press &rarr; to start</span></div></div>';
+    } else {
+      var c = CARDS[i - 1];
+      stage.innerHTML = '<div class="card"><div class="top"><span class="kick">Role card</span><span class="count">' + i + ' / ' + CARDS.length + '</span></div>' +
+        '<div class="mid"><span class="tag">' + esc(c.tag) + '</span><h1>' + esc(c.t) + '</h1>' +
+        '<div class="cols"><div class="box play"><small>Play it</small><p>' + esc(c.play) + '</p></div><div class="box prac"><small>Presenter practises</small><p>' + esc(c.prac) + '</p></div></div></div>' +
+        '<div class="foot"><span>Audience vs presenter</span><span>Debrief: what worked, what to try next</span></div></div>';
+    }
+    Array.prototype.forEach.call(dots.children, function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+  }
+  for (var k = 0; k < TOTAL; k++) {
+    (function (k) {
+      var b = document.createElement('button'); b.type = 'button';
+      b.setAttribute('aria-label', k === 0 ? 'Title card' : 'Card ' + k);
+      b.addEventListener('click', function () { i = k; render(); });
+      dots.appendChild(b);
+    })(k);
+  }
+  function go(d) { i = (i + d + TOTAL) % TOTAL; render(); }
+  function draw() { var n; do { n = 1 + Math.floor(Math.random() * CARDS.length); } while (n === i && CARDS.length > 1); i = n; render(); }
+  function fs() { var el = stage; try { if (document.fullscreenElement) document.exitFullscreen(); else if (el.requestFullscreen) el.requestFullscreen().catch(function () {}); } catch (e) {} }
+  document.getElementById('prev').addEventListener('click', function () { go(-1); });
+  document.getElementById('next').addEventListener('click', function () { go(1); });
+  document.getElementById('draw').addEventListener('click', draw);
+  document.getElementById('fs').addEventListener('click', fs);
+  stage.addEventListener('click', function () { go(1); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); go(1); }
+    else if (e.key === 'ArrowLeft') go(-1);
+    else if (e.key === 'r' || e.key === 'R') draw();
+    else if (e.key === 'f' || e.key === 'F') fs();
+  });
+  render();
+</script>
+
+</body>
+</html>

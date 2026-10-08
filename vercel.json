@@ -53,6 +53,22 @@
                   ],
     "rewrites":  [
                      {
+                         "source":  "/AmEx-Role-Cards",
+                         "destination":  "/amex-role-cards/index.html"
+                     },
+                     {
+                         "source":  "/AmEx-Role-Cards/",
+                         "destination":  "/amex-role-cards/index.html"
+                     },
+                     {
+                         "source":  "/amex-role-cards",
+                         "destination":  "/amex-role-cards/index.html"
+                     },
+                     {
+                         "source":  "/amex-role-cards/",
+                         "destination":  "/amex-role-cards/index.html"
+                     },
+                     {
                          "source":  "/AmEx-Storytelling",
                          "destination":  "/amex-storytelling/index.html"
                      },
@@ -133,7 +149,7 @@
                          "destination":  "/amex-partnership/preview/ar/index.html"
                      },
                      {
-                         "source":  "/((?!experience|amex-storytelling|AmEx-Storytelling|amex-proposal|amex-partnership|game-on-kits|who-we-are|b2b-b2g|B2B-B2G).*)",
+                         "source":  "/((?!experience|amex-role-cards|AmEx-Role-Cards|amex-storytelling|AmEx-Storytelling|amex-proposal|amex-partnership|game-on-kits|who-we-are|b2b-b2g|B2B-B2G).*)",
                          "destination":  "/index.html"
                      }
                  ]
