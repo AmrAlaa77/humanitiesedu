@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>B2B &amp; B2G Corporate Portfolio</title>
+<style>
+
+:root {
+  --bg: #0a4368;
+  --bg-soft: #083a5e;
+  --surface: rgba(255,255,255,0.03);
+  --surface-hover: rgba(255,255,255,0.06);
+  --surface-active: rgba(255,255,255,0.09);
+  --border: rgba(255,255,255,0.10);
+  --border-hover: rgba(34,241,204,0.35);
+  --text: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-dim: #9fb4cc;
+  --emerald: #22f1cc;
+  --emerald-soft: rgba(34,241,204,0.12);
+  --emerald-line: rgba(34,241,204,0.28);
+  --cyan: #22d3ee;
+  --aqua: #22f1cc;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--bg); }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+.wrap { position: relative; z-index: 1; max-width: 78rem; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+
+.mono { font-family: 'JetBrains Mono', 'SFMono-Regular', Menlo, monospace; }
+
+/* ---------- hero ---------- */
+
+.hero {
+  position: relative;
+  background: none;
+  color: #fff;
+}
+/* narrow screens: the copy spans the full width, so keep the turquoise at the top and the deep blue behind the text */
+@media (max-width: 1023px) {
+  .band { background: linear-gradient(200deg, #18b0ab 0%, #139aa6 25%, #0e78a1 55%, #0b5a8e 100%); }
+}
+/* eased fade into the page colour: many small steps, so there is no visible edge or banding */
+.hero-fade {
+  display: none; position: absolute; inset-inline: 0; bottom: 0; height: 11rem; z-index: 0; pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgba(10,67,104,0) 0%, rgba(10,67,104,0.02) 10%, rgba(10,67,104,0.07) 20%, rgba(10,67,104,0.16) 30%,
+    rgba(10,67,104,0.30) 40%, rgba(10,67,104,0.48) 50%, rgba(10,67,104,0.66) 60%, rgba(10,67,104,0.81) 70%,
+    rgba(10,67,104,0.92) 80%, rgba(10,67,104,0.98) 90%, #0a4368 100%);
+}
+.hero-inner { position: relative; z-index: 1; max-width: 78rem; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
+.hero-grid { display: grid; gap: 2.5rem; align-items: center; }
+@media (min-width: 1024px) { .hero-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 3.5rem; } }
+.hero-copy, .hero-side { min-width: 0; }
+.hero-for { text-align: left; margin: 0 0 1rem; font-size: 1.15rem; line-height: 1.3; color: rgba(255,255,255,0.88); }
+.hero-for b { font-weight: 700; color: #fff; }
+.hero-media {
+  border-radius: 1.4rem; overflow: hidden; aspect-ratio: 16 / 9;
+  background: rgba(6,47,77,0.35);
+  box-shadow: 0 30px 60px -28px rgba(6,47,77,0.6);
+}
+.hero-video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- header ---------- */
+
+.brand-row { display: flex; align-items: center; margin-bottom: 2.25rem; }
+.brand { display: flex; align-items: center; gap: 1rem; }
+.brand-mark { display: grid; place-items: center; width: 3.6rem; height: 3.6rem; border-radius: 1.05rem; background: linear-gradient(145deg, #46dcc4 0%, #1fb3b0 48%, #0d83a8 100%); border: 1px solid rgba(255,255,255,0.28); box-shadow: 0 14px 28px -12px rgba(6,47,77,0.6), inset 0 1px 0 rgba(255,255,255,0.35); flex-shrink: 0; }
+.brand-mark svg { width: 1.9rem; height: 1.9rem; stroke: #fff; fill: none; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+.brand-name { display: block; font-weight: 700; letter-spacing: -0.02em; font-size: 1.85rem; line-height: 1; }
+.brand-sub { margin-top: 0.4rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.32em; color: rgba(255,255,255,0.88); font-weight: 600; }
+
+.hero-eyebrow { margin: 0 0 1rem; font: 600 0.72rem 'JetBrains Mono', monospace; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.92); }
+
+h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.7rem, 3.1vw, 2.6rem);
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+  margin: 0 0 1.25rem;
+  text-wrap: balance;
+}
+h1 .grad { color: var(--aqua); }
+
+.lede { color: rgba(255,255,255,0.95); font-size: 1.08rem; line-height: 1.65; max-width: 38rem; margin: 0; }
+.lede b { font-weight: 700; color: #fff; }
+/* ---------- who we are ---------- */
+
+.about { position: relative; z-index: 1; padding: 0.5rem 0 3.5rem; }
+/* Who We Are sits on a fuller turquoise, fading in from the hero and out before the programmes */
+.about::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(250deg, #1aa7b0 0%, #1189aa 35%, #0d6ea5 70%, #0b5a8e 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 72%, transparent 100%);
+}
+/* hero and Who We Are share one turquoise gradient, easing into the page navy at the bottom */
+.band { position: relative; background: linear-gradient(250deg, #2ccdb8 0%, #20bdb0 14%, #15a6a6 30%, #0f8ca5 48%, #0c70a0 66%, #0b5a8e 84%, #0a4a78 100%); }
+.band::after {
+  content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 14rem; z-index: 0; pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgba(10,67,104,0) 0%, rgba(10,67,104,0.02) 10%, rgba(10,67,104,0.07) 20%, rgba(10,67,104,0.16) 30%,
+    rgba(10,67,104,0.30) 40%, rgba(10,67,104,0.48) 50%, rgba(10,67,104,0.66) 60%, rgba(10,67,104,0.81) 70%,
+    rgba(10,67,104,0.92) 80%, rgba(10,67,104,0.98) 90%, #0a4368 100%);
+}
+.about .affil-grid h4, .about .affil-grid p { color: #fff; }
+.about .who-copy p, .affil-grid p, .who-panel p { color: rgba(255,255,255,0.92); }
+.about .who-stats span { color: rgba(255,255,255,0.8); }
+.about .who h2 .grad { background: none; -webkit-text-fill-color: currentColor; color: var(--aqua); }
+.about .rail-track span { background: none; -webkit-text-fill-color: currentColor; color: #fff; }
+.about-inner { max-width: 78rem; margin: 0 auto; padding: 0 1.5rem; }
+.mono-label { margin: 0; font: 600 0.82rem 'JetBrains Mono', monospace; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); }
+.eyebrow {
+  display: flex; align-items: center; gap: 0.6rem; margin: 0;
+  font: 600 0.82rem 'JetBrains Mono', monospace; letter-spacing: 0.18em; text-transform: uppercase; color: var(--emerald);
+}
+.eyebrow::before { content: ''; width: 1.9rem; height: 1px; background: rgba(34,241,204,0.55); }
+.cred-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+.cred {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font: 500 0.66rem 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: #fff;
+  border: 1px solid rgba(255,255,255,0.45); background: rgba(255,255,255,0.12);
+  padding: 0.5rem 0.85rem; border-radius: 999px; white-space: nowrap;
+}
+.cred::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--aqua); flex-shrink: 0; }
+@media (max-width: 640px) { .cred { white-space: normal; } }
+.who { display: grid; gap: 2.5rem; align-items: start; }
+@media (min-width: 900px) { .who { grid-template-columns: 1fr 1fr; gap: 3.5rem; } }
+.who .eyebrow { margin-top: 0.9rem; }
+.who h2 {
+  margin: 1rem 0 0; font-family: Georgia, 'Times New Roman', serif; font-weight: 700;
+  font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.15; letter-spacing: -0.01em; color: var(--text); text-wrap: balance;
+}
+.who h2 .grad { display: block; background: linear-gradient(90deg, #6ee7b7, #67e8f9); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.who-copy p { margin: 1.1rem 0 0; max-width: 34rem; color: var(--text-muted); line-height: 1.65; }
+.who-copy p b { color: var(--text); font-weight: 600; }
+/* collapsed: the sentence fades out after "digital entity", with a + to read the rest */
+.who-expand .fade-words { background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.12) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+.who-expand .who-rest { display: none; }
+.who-copy.open .fade-words { background: none; -webkit-text-fill-color: currentColor; color: inherit; }
+.who-copy.open .who-rest { display: inline; }
+.who-expand { position: relative; padding-right: 3rem; }
+.who-plus { position: absolute; right: 0; bottom: 0.2rem; display: inline-grid; place-items: center; width: 1.7rem; height: 1.7rem; padding: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.45); background: rgba(255,255,255,0.12); color: #fff; cursor: pointer; transition: background 0.2s ease, transform 0.25s ease; }
+/* the "Led by" paragraph shows one faded line until the + is opened */
+.who-copy:not(.open) .who-lead { display: none; }
+.who-plus::before { content: '+'; font-size: 1.05rem; line-height: 1; }
+.who-plus:hover { background: rgba(255,255,255,0.25); }
+.who-copy.open .who-plus { transform: rotate(45deg); }
+.who-panel { position: relative; border: 1px solid transparent; background: rgba(255,255,255,0.07); border-radius: 1.1rem; padding: 1.75rem; box-shadow: 0 18px 40px -22px rgba(6,47,77,0.55); }
+/* multicolour frame: a gradient ring cut out of a pseudo-element */
+.who-panel::before {
+  content: ''; position: absolute; inset: -1px; padding: 2px; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(135deg, #22f1cc 0%, #38bdf8 28%, #a78bfa 52%, #2dd4bf 76%, #22f1cc 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+}
+@media (min-width: 900px) { .who-panel { margin-top: 3.9rem; } } /* drops the panel level with the "17 years" heading */
+.who-panel .quote { margin: 0; font: italic 600 1.15rem/1.45 Georgia, 'Times New Roman', serif; color: var(--text); }
+.who-panel p { margin: 0.9rem 0 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+.who-panel .quote + p { margin-top: 0.9rem; }
+.about .who-panel p:not([class]) { color: #fff; }
+.who-panel .who-tagline { margin-top: 1rem; font-size: 0.95rem; font-weight: 600; line-height: 1.5; color: #fff; }
+.who-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 1.5rem; border: 1px solid var(--border); border-radius: 0.75rem; overflow: hidden; background: var(--border); }
+.who-stats div { background: #1387a5; padding: 0.9rem 0.75rem; }
+.who-stats strong { display: block; font: 700 1.6rem/1 'Inter', sans-serif; color: var(--text); font-variant-numeric: tabular-nums; }
+.who-stats span { display: block; margin-top: 0.4rem; font: 500 0.62rem 'JetBrains Mono', monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); }
+/* mobile: let the grid items shrink to the screen so the framed card is never wider than the page */
+.who > * { min-width: 0; }
+@media (max-width: 480px) {
+  .who-panel { padding: 1.25rem; }
+  .who-stats strong { font-size: 1.35rem; }
+  .who-stats div { padding: 0.8rem 0.55rem; }
+  .who-stats span { font-size: 0.52rem; letter-spacing: 0.05em; }
+}
+
+.affil { margin-top: 4rem; }
+.affil-grid { display: grid; gap: 1px; margin-top: 1.25rem; background: var(--border); border: 1px solid var(--border); border-radius: 1rem; overflow: hidden; }
+@media (min-width: 900px) { .affil-grid { grid-template-columns: repeat(3, 1fr); } }
+.affil-grid > div { background: rgba(255,255,255,0.05); padding: 1.6rem; }
+.affil-grid h4 { margin: 0 0 0.5rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--emerald); }
+.affil-grid p { margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.75rem; }
+.tag { font-size: 0.7rem; font-weight: 600; color: #6ee7b7; background: rgba(34,241,204,0.10); border: 1px solid rgba(34,241,204,0.25); padding: 0.3rem 0.75rem; border-radius: 999px; }
+.trusted { margin-top: 2.75rem; }
+.rail {
+  position: relative; overflow: hidden; margin-top: 0.9rem;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+.rail-track { display: flex; width: max-content; align-items: center; gap: 2.5rem; animation: railScroll 32s linear infinite; }
+.rail:hover .rail-track { animation-play-state: paused; }
+.rail-track span { flex: none; font-size: 0.95rem; font-weight: 600; white-space: nowrap; background: linear-gradient(90deg, #99f6e4, #67e8f9); -webkit-background-clip: text; background-clip: text; color: transparent; }
+@keyframes railScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+
+.vision { margin-top: 3.5rem; }
+.vision h3 { margin: 0; font-family: Georgia, 'Times New Roman', serif; font-weight: 700; font-size: clamp(1.4rem, 3vw, 1.9rem); line-height: 1.2; letter-spacing: -0.01em; color: #fff; }
+.vision-list { margin-top: 1.4rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.15rem; align-items: start; }
+@media (max-width: 980px) { .vision-list { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .vision-list { grid-template-columns: 1fr; } }
+.vision-item { border: 1px solid rgba(255,255,255,0.28); background: rgba(255,255,255,0.08); border-radius: 1.1rem; transition: background 0.25s ease, border-color 0.25s ease; }
+.vision-item:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.42); }
+.vision-item summary { list-style: none; cursor: pointer; display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem 1.3rem; }
+.vision-item summary::-webkit-details-marker { display: none; }
+.vision-text { flex: 1; min-width: 0; }
+.vision-label { margin: 0 0 0.35rem; font-size: 0.98rem; font-weight: 700; color: var(--aqua); }
+/* collapsed: line one reads clearly, line two fades away, inviting the click */
+.vision-desc { margin: 0; font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.92); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 1.45em, rgba(0,0,0,0.12) 3.2em); mask-image: linear-gradient(to bottom, #000 0, #000 1.45em, rgba(0,0,0,0.12) 3.2em); }
+.vision-item[open] .vision-desc { display: block; -webkit-line-clamp: unset; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+.vision-plus { flex: none; width: 2.1rem; height: 2.1rem; margin-top: 0.7rem; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); display: grid; place-items: center; transition: background 0.2s ease, transform 0.25s ease; }
+.vision-plus::before { content: '+'; color: #fff; font-size: 1.15rem; line-height: 1; }
+.vision-item summary:hover .vision-plus { background: rgba(255,255,255,0.22); }
+.vision-item[open] .vision-plus { transform: rotate(45deg); }
+.programmes-head { margin: 0 0 1.25rem; }
+
+/* ---------- grid & cards ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.15rem;
+  align-items: start; /* each card keeps its own height, so opening one never resizes its neighbours */
+}
+@media (max-width: 980px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+.card {
+  position: relative;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  transition: border-color 0.35s ease, background 0.35s ease, transform 0.35s ease;
+  display: flex; flex-direction: column;
+}
+.card:hover { border-color: var(--border-hover); background: var(--surface-hover); transform: translateY(-3px); }
+.card[hidden] { display: none; }
+
+.card-bar { height: 0.28rem; background: linear-gradient(100deg, var(--emerald), var(--cyan)); opacity: 0.85; }
+
+/* programme images */
+.card-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: rgba(6,47,77,0.4); }
+.card-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.card-media-cap {
+  position: absolute; left: 0.9rem; bottom: 0.8rem;
+  font: 600 0.7rem 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: #fff;
+  background: rgba(10,67,104,0.82); border: 1px solid rgba(34,241,204,0.5); padding: 0.35rem 0.7rem; border-radius: 999px;
+}
+
+.card-body { padding: 1.5rem 1.5rem 1.35rem; display: flex; flex-direction: column; flex: 1; }
+
+.card-eyebrow { display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.85rem; }
+.card-num { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.card-format {
+  font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--cyan); background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.22);
+  padding: 0.2rem 0.55rem; border-radius: 0.4rem;
+}
+
+.card-title { font-size: 1.14rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.28; margin: 0 0 0.55rem; }
+.card-hook { font-size: 0.87rem; color: var(--text-muted); line-height: 1.55; margin: 0 0 0.95rem; flex: 0; }
+
+.pill-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.1rem; }
+.pill {
+  font-size: 0.68rem; font-weight: 600; color: var(--emerald);
+  background: var(--emerald-soft); border: 1px solid var(--emerald-line);
+  padding: 0.22rem 0.6rem; border-radius: 999px;
+}
+
+.more-panel {
+  display: grid; grid-template-rows: 0fr; opacity: 0;
+  transition: grid-template-rows 0.32s ease, opacity 0.28s ease, margin 0.32s ease;
+  margin-top: 0;
+}
+.more-panel.open { grid-template-rows: 1fr; opacity: 1; margin-top: 0.2rem; }.more-panel-inner { overflow: hidden; }
+.more-block { padding-top: 1.05rem; border-top: 1px solid var(--border); margin-top: 0.2rem; }
+.more-block + .more-block { padding-top: 0.95rem; }
+.more-label {
+  font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--emerald); margin: 0 0 0.55rem;
+}
+.more-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.more-list li { font-size: 0.8rem; color: #cbd5e1; line-height: 1.45; display: flex; gap: 0.5rem; }
+.more-list li::before { content: '\2022'; color: var(--emerald); flex-shrink: 0; }
+.chip-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.chip-list li { font-size: 0.8rem; color: #cbd5e1; line-height: 1.45; display: flex; gap: 0.5rem; }
+.chip-list li::before { content: '\2022'; color: var(--emerald); flex-shrink: 0; }
+.req-text { font-size: 0.76rem; color: var(--text-dim); line-height: 1.5; margin: 0; }
+
+.card-actions {
+  margin-top: auto; padding-top: 1.25rem;
+  display: flex; align-items: center; gap: 1.1rem;
+}
+.btn-link {
+  font: inherit; cursor: pointer; background: none; border: none; padding: 0;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.78rem; font-weight: 700;
+}
+.btn-see-more { color: var(--emerald); }
+.btn-see-more:hover { text-decoration: underline; }
+.btn-see-more svg { width: 0.85rem; height: 0.85rem; transition: transform 0.25s ease; }
+.btn-see-more.open svg { transform: rotate(180deg); }
+
+.btn-outline {
+  color: var(--text-muted);
+}
+.btn-outline:hover { color: var(--text); text-decoration: underline; }
+.btn-outline svg { width: 0.85rem; height: 0.85rem; }
+
+/* ---------- modal ---------- */
+
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(6,47,77,0.82); backdrop-filter: blur(6px);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 4vh 1.25rem; overflow-y: auto;
+}
+.modal-overlay[hidden] { display: none; }
+
+.modal {
+  width: 100%; max-width: 42rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 1.75rem;
+  padding: 2.5rem 2.25rem 2.75rem;
+  position: relative;
+  box-shadow: 0 40px 100px -30px rgba(0,0,0,0.7);
+}
+@media (max-width: 640px) { .modal { padding: 2rem 1.4rem 2.25rem; } }
+
+.modal-close {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  width: 2.1rem; height: 2.1rem; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text-muted); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-close:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
+.modal-close svg { width: 1rem; height: 1rem; }
+
+.modal-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  color: var(--emerald); font-size: 0.68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.9rem;
+}
+.modal-eyebrow svg { width: 0.85rem; height: 0.85rem; }
+.modal h2 { font-size: 1.55rem; font-weight: 750; letter-spacing: -0.015em; margin: 0 0 0.4rem; line-height: 1.2; padding-right: 2rem; }
+.modal-meta { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
+.modal-hook { font-size: 0.93rem; color: #cbd5e1; line-height: 1.6; margin: 1.1rem 0 0; }
+
+.modal-section { margin-top: 1.9rem; }
+.modal-section-label {
+  font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--emerald); margin: 0 0 0.85rem;
+}
+.day-card { border: 1px solid var(--border); background: var(--surface); border-radius: 1rem; padding: 1.05rem 1.15rem; }
+.day-card + .day-card { margin-top: 0.65rem; }
+.day-title { font-size: 0.88rem; font-weight: 700; color: var(--text); margin: 0 0 0.55rem; }
+.day-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.32rem; }
+.day-points li { font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; display: flex; gap: 0.5rem; }
+.day-points li::before { content: '\2022'; color: var(--emerald); flex-shrink: 0; }
+
+.models-block {
+  border-left: 2px solid var(--emerald-line); padding-left: 0.9rem;
+  font-size: 0.78rem; color: var(--text-dim); line-height: 1.55; font-style: italic;
+}
+.models-block b { color: #cbd5e1; font-style: normal; font-weight: 600; }
+
+.modal-foot { margin-top: 2rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+.modal-foot p { margin: 0 0 0.4rem; font-size: 0.76rem; color: var(--text-dim); }
+.modal-foot .award { color: var(--emerald); font-weight: 600; }
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .more-panel, .btn-see-more svg { transition: none !important; }
+  .rail-track { animation: none; }
+}
+
+/* ---------- print-only expanded detail ---------- */
+.print-detail { display: none; }
+
+@media print {
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f8fafc;
+    --surface: #f8fafc;
+    --surface-hover: #f8fafc;
+    --border: #e2e8f0;
+    --border-hover: #e2e8f0;
+    --text: #0f172a;
+    --text-muted: #475569;
+    --text-dim: #64748b;
+    --emerald: #0f8a5f;
+    --emerald-soft: #e6f7f0;
+    --emerald-line: #b7e6d3;
+    --cyan: #0e7490;
+  }
+  html, body { background: #ffffff; }
+  .card-actions { display: none !important; }
+  .who h2 .grad, .rail-track span { background: none; -webkit-text-fill-color: currentColor; color: var(--emerald); }
+  .rail { -webkit-mask-image: none; mask-image: none; overflow: visible; }
+  .rail-track { animation: none; width: auto; flex-wrap: wrap; gap: 0.35rem 1.5rem; }
+  .rail-track .dup { display: none; }
+  .tag, .cred { color: var(--emerald); background: var(--emerald-soft); border-color: var(--emerald-line); }
+  .cred::before { background: var(--emerald); }
+  .affil-grid > div { background: var(--surface); }
+  .hero-media, .hero-fade, .band::after { display: none !important; }
+  .band { background: none; }
+  .who-stats div { background: var(--bg-soft); }
+  .who-panel { margin-top: 0; border-color: var(--border); background: var(--surface); box-shadow: none; }
+  .who-panel::before { display: none; }
+  .who-panel .who-tagline { color: var(--text); }
+  .about .who-panel p:not([class]) { color: var(--text-muted); }
+  .about::before { display: none; }
+  .who-expand .who-rest { display: inline; }
+  .who-copy .who-lead { display: block; }
+  .who-expand { padding-right: 0; }
+  .who-expand .fade-words { background: none; -webkit-text-fill-color: currentColor; color: inherit; }
+  .who-plus { display: none; }
+  .about .eyebrow { color: var(--emerald); }
+  .vision h3 { color: var(--text); }
+  .vision-label { color: var(--emerald); }
+  .vision-desc { color: var(--text-muted); display: block; -webkit-line-clamp: unset; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .vision-plus { display: none; }
+  .vision-list { display: block; }
+  .vision-item { border-color: var(--border); background: var(--surface); margin-bottom: 0.6rem; }
+  .vision-item { break-inside: avoid; min-height: 0 !important; }
+  .about .eyebrow::before { background: var(--emerald-line); }
+  .about .mono-label, .about .who-stats span { color: var(--text-dim); }
+  .about .who-copy p, .affil-grid p, .who-panel p { color: var(--text-muted); }
+  .about .affil-grid h4 { color: var(--emerald); }
+  .about .affil-grid p { color: var(--text-muted); }
+  .about .who h2 .grad, .about .rail-track span { color: var(--emerald); }
+  .hero-for, .hero-for b { color: var(--text-muted); }
+  .hero { background: #ffffff; color: var(--text); }
+  .hero-inner { padding: 0 0.25rem 0.75rem; }
+  .brand-mark { background: none; box-shadow: none; border: 1px solid var(--border); }
+  .brand-mark svg { stroke: var(--text); }
+  .brand-sub, .lede, .hero-eyebrow { color: var(--text-muted); }
+  .lede b { color: var(--text); }
+  h1 .grad { color: var(--emerald); }
+  .wrap { max-width: 100%; padding: 0.5rem 0.25rem; }
+  .grid { display: block; }
+  .card {
+    display: block;
+    overflow: visible;
+    min-height: 0 !important;
+    border: 1px solid var(--border);
+    box-shadow: none;
+    transform: none !important;
+    margin-bottom: 0.9rem;
+  }
+  .card-body { display: block; }
+  .card:hover { transform: none; background: var(--surface); border-color: var(--border); }
+  .card-bar { opacity: 1; }
+  .pill { color: #0f8a5f; background: #e6f7f0; border-color: #b7e6d3; }
+  .print-detail { display: block; margin-top: 1.1rem; padding-top: 1.1rem; border-top: 1px solid var(--border); }
+  .print-detail .more-block { padding-top: 0; border-top: none; margin-top: 0; break-inside: avoid; page-break-inside: avoid; }
+  .print-detail .more-block + .more-block { margin-top: 0.9rem; }
+  .print-detail .day-card { break-inside: avoid; page-break-inside: avoid; }
+  .print-detail .more-list li, .print-detail .chip-list li, .print-detail .day-points li {
+    break-inside: avoid; page-break-inside: avoid; orphans: 3; widows: 3;
+  }
+  .badge, .who-panel, .affil-grid > div { break-inside: avoid; }
+  a[href]::after { content: none !important; }
+}
+</style>
+
+</head>
+<body>
+<div class="band">
+<header class="hero" id="top">
+
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="brand-row">
+          <div class="brand">
+            <div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <div>
+              <span class="brand-name">Humantic</span>
+              <div class="brand-sub">Digital</div>
+            </div>
+          </div>
+        </div>
+
+        <h1>Customised to your people and culture.<br><span class="grad">Not just education. An experience that hits.</span></h1>
+
+        <p class="lede">Leadership programmes grounded in behavioural science, delivered as gamified, hands-on experiences with British-engineered toolkits, not lectures. Every programme is tailored to your organisation's culture.</p>
+      </div>
+
+      <div class="hero-side">
+        <p class="hero-for">Prepared for <b>Al majed oud</b></p>
+        <div class="hero-media">
+          <video class="hero-video" src="/b2b-b2g/hero.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-fade" aria-hidden="true"></div>
+</header>
+
+</div>
+
+<div class="wrap">
+
+  <div class="eyebrow programmes-head">Deliverables</div>
+
+  <div class="grid" id="grid"></div>
+
+</div>
+
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" id="modalClose" aria-label="Close outline">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const COURSES = [
+  {
+    n: 1, track: 'flagship', title: 'Leadership, Rewired For 2030', format: '4-Day Flagship Programme',
+    topics: ['Leadership', 'Management', 'People Skills'],
+    hook: 'Integrates behavioural science, neuroscience, relational intelligence, organisational psychology and human performance to reveal what is happening beneath the surface of leadership, and turn those insights into measurable organisational outcomes.',
+    overview: 'It moves beyond traditional leadership development to examine the human operating system behind performance: how leaders respond under pressure, how teams communicate, where friction accumulates, how psychological safety is built without lowering standards, and how behavioural risk ultimately affects retention, execution and the P&L.',
+    learn: [
+      'Read the human system behind performance: decode behavioural patterns, communication dynamics and relational signals that influence decision-making, trust, accountability and execution',
+      'Understand leadership under pressure: apply neuroscience-informed principles of stress response, cognitive load and fatigue to see how pressure alters judgement, communication and performance',
+      'Diagnose behavioural and relational risk: deploy proprietary behavioural and relational diagnostics to identify friction, misalignment, communication breakdowns, psychological safety gaps and emerging human-capital risk',
+      'Build psychological safety without diluting standards: create environments where challenge, candour and dissent are safe, while maintaining clear expectations, accountability and non-negotiable performance standards',
+      'Turn human data into executive intelligence: establish behavioural baselines and interpret human-system indicators alongside business metrics to find where people dynamics create hidden organisational cost',
+      'Connect human capital to commercial performance: examine the relationship between behavioural health, retention, alignment, productivity, execution and financial performance, moving the conversation from people initiatives to business value',
+      "Lead from a coherent personal narrative: clarify your leadership narrative, behavioural signature and decision principles, and align them with institutional purpose and strategic direction",
+      'Intervene where it matters most: identify high-leverage behavioural interventions that reduce friction, strengthen alignment and improve the quality and speed of execution',
+      'Convert insight into action: build a practical 30-Day Executive Action Plan that turns diagnostic findings into targeted interventions, measurable outcomes and cultural ROI',
+    ],
+    includes: ['4-Day Leadership Experience', 'Behavioural & Relational Diagnostics', 'Behavioural Baseline & Human-Data Interpretation', 'Leadership Under Pressure Simulations', 'Psychological Safety Challenge', 'Personal Leadership Narrative Workshop', 'High-Leverage Intervention Design', '30-Day Executive Action Plan', 'Face-to-Face or Live Virtual Delivery', 'Certificate of Completion'],
+    days: [
+      { t: 'Day 1 — Read the Human System', p: ['The human operating system behind performance', 'Behavioural patterns and communication dynamics', 'Relational signals that shape trust, accountability and execution', 'Leadership under pressure: stress response, cognitive load and fatigue', 'How pressure alters judgement, communication and performance'] },
+      { t: 'Day 2 — Diagnose the Risk', p: ['Behavioural and relational diagnostics', 'Friction, misalignment and communication breakdowns', 'Psychological safety gaps and emerging human-capital risk', 'Building psychological safety without lowering standards', 'Candour, challenge and dissent with clear accountability'] },
+      { t: 'Day 3 — Turn Human Data Into Business Value', p: ['Behavioural baselines and human-system indicators', 'Reading human data alongside business metrics', 'Hidden organisational cost of people dynamics', 'Behavioural health, retention, alignment and execution', 'From people initiatives to commercial performance'] },
+      { t: 'Day 4 — Lead and Intervene', p: ['Your personal leadership narrative and behavioural signature', 'Decision principles aligned to purpose and strategy', 'High-leverage behavioural interventions', 'Improving the quality and speed of execution', 'Your 30-Day Executive Action Plan: interventions, outcomes and cultural ROI'] },
+    ],
+    models: 'Situational Leadership, Self-Determination Theory, Psychological Safety, Emotional Intelligence, Locus of Control, Cognitive Biases.',
+    audience: ['Managers', 'Team leaders', 'Supervisors', 'Department heads', 'High-potential employees', 'Professionals moving into leadership'],
+    requirements: 'No previous leadership qualification required. Experience working with others is helpful. Participants are encouraged to bring real leadership challenges.',
+    awarded: 'British Certification from CPD-London.',
+  },
+  {
+    n: 2, track: 'practical', title: 'Talent Retention', format: '4-Day Practical Workshop',
+    topics: ['Talent Management', 'Engagement', 'Leadership'],
+    hook: 'Learn how to identify disengagement before resignation happens and create an environment your best people choose to stay in.',
+overview: 'The goal is not simply to keep people. It is to create an organisation that exceptional people have compelling reasons to stay in.',
+    learn: ['Understand the real drivers of employee retention and voluntary turnover', 'Identify the difference between visible engagement and genuine commitment', 'Recognise early behavioural signals of disengagement, withdrawal and flight risk', 'Understand why high performers can become retention risks even when they appear successful', 'Diagnose the relationship between leadership behaviour, employee experience and retention', 'Identify what different individuals need to remain motivated, valued and committed', 'Conduct high-quality Stay Conversations before employees reach the point of resignation', 'Build meaningful career conversations around aspiration, capability and opportunity', 'Develop and retain high-potential and critical-role talent', 'Create differentiated retention strategies rather than applying one solution to everyone', 'Strengthen recognition, belonging and perceived organisational value', 'Identify the hidden organisational costs of regrettable turnover', 'Connect retention risk to productivity, continuity, capability and P&L', 'Build practical, measurable retention interventions at manager, team and organisational level'],
+    includes: ['4-Day Talent Retention Workshop', 'Retention Risk Diagnostic', 'Motivation Mapping Exercise', 'Stay Interview Practice', 'High-Potential Employee Cases', 'Career Conversation Role Plays', 'Recognition Strategy Exercise', 'Individual Retention Plan', 'Manager Retention Toolkit', 'Face-to-Face or Live Virtual Delivery'],
+    days: [
+      { t: 'Day 1 — Why People Leave', p: ['The real causes of employee turnover', 'Engagement versus disengagement', 'Motivation beyond money', 'Fairness, recognition and belonging', 'Identifying retention risk'] },
+      { t: 'Day 2 — Why People Stay', p: ['Stay interviews', 'Career conversations', 'Mentoring high potentials', 'Development opportunities', 'Individual retention strategies'] },
+      { t: 'Day 3 — Keep Your Best', p: ['Retention risk analysis for your own team', 'Recognition and reward that genuinely motivate', 'Onboarding and early-tenure engagement', 'Manager-employee relationship and trust', 'Handling resignation and counter-offer conversations'] },
+      { t: 'Day 4 — Build the Retention Plan', p: ['Team retention heatmap', 'Retention action planning workshop', 'Manager retention toolkit practice', 'Tracking turnover, engagement and stay signals', 'Presenting your retention plan'] },
+    ],
+    models: 'Self-Determination Theory, Equity Theory, Job Embeddedness, Leader-Member Exchange, Job Characteristics Model.',
+    audience: ['Managers', 'HR professionals', 'Talent managers', 'Department heads', 'Leaders responsible for key employees'],
+    requirements: 'No HR qualification is required.',
+    awarded: 'British Certification from CPD-London.',
+  },
+  {
+    n: 3, track: 'practical', title: 'Productivity, Decoded By Your Brain', format: '3-Day Practical Workshop',
+    topics: ['Productivity', 'Focus', 'Time Management'],
+    hook: 'Turn fragmented attention, digital overload and constant busyness into sustained, high-value productivity.',
+    overview: 'This framework tackles the hidden physiological, behavioural and neurological bottlenecks that fragment human focus and stall organisational momentum. We target the root causes of workplace inertia rather than merely managing the visible symptoms, enabling professionals to perform at peak capacity consistently, not episodically.\n\nMost management system programmes tell you to clear your mind. None of them tell you how. That gap, between the instruction and the ability, is precisely where performance collapses. Professionals leave workshops motivated but unequipped. The noise returns. The overwhelm returns. And with it, the same patterns that hindered performance in the first place.\n\nThis programme examines why the brain struggles to do it consistently. It brings together neuroscience, behavioural science and real-world productivity to address the invisible cognitive load behind scattered attention, unfinished commitments, digital distraction and reactive working.\n\nParticipants learn how attention is won and lost, how behaviour is shaped under pressure, and how invisible internal barriers quietly hurt the performance of even the most capable professionals.',
+    learn: ['Clear mental clutter by externalising open tasks, commitments and follow-ups rather than carrying them mentally', 'Distinguish activity from impact: stop confusing being busy with doing meaningful work', 'Understand cognitive overload and recognise when too much information, switching and unfinished work are degrading performance', 'Reduce attention fragmentation by identifying the triggers that repeatedly pull the brain away from high-value work', 'Break the multitasking cycle and protect cognitive bandwidth for work requiring judgement, creativity and complex thinking', 'Manage digital distraction by designing boundaries around notifications, communication and information flow', 'Protect deep-work capacity by matching demanding work to periods of highest cognitive readiness', 'Close cognitive loops so unfinished decisions, follow-ups and commitments stop consuming mental bandwidth', 'Prioritise with neurological intelligence: direct attention towards what creates the greatest value rather than what simply feels urgent', 'Build sustainable productivity rhythms that protect concentration, recovery and long-term performance', 'Create team alignment so information, decisions and responsibilities do not become fragmented across conversations and channels', 'Reduce the hidden friction of work by identifying where unnecessary communication, duplication, waiting and switching are consuming productive capacity', 'Measure behavioural productivity through observable changes in focus, decision-making, follow-through and execution'],
+    includes: ['3-Day Productivity Lab', 'Personal Distraction Audit', 'Multitasking Brain Experiment', 'Attention Challenges', 'Digital Overload Assessment', 'Priority Mapping Exercise', 'Calendar Redesign', 'Habit Design Lab', 'Personal Focus System', 'Zero Inbox Alignment Platform (optional add-on)', 'Live Virtual or Face-to-Face Delivery'],
+    days: [
+      { t: 'Day 1 — The Distracted Brain', p: ['Why focus is becoming harder', 'Multitasking versus task switching', 'Cognitive overload', 'Attention residue', 'Personal productivity leaks'] },
+      { t: 'Day 2 — Designing Focus', p: ['Deep versus shallow work', 'Managing interruptions', 'Email and notification control', 'Priority management', 'Team alignment: a shared task view and productivity check-ins', 'Building a personal focus system'] },
+      { t: 'Day 3 — Sustaining Focus', p: ['Habit design for lasting change', 'Team norms for meetings, messaging and response times', 'Recovery and energy for sustained output', 'Testing and refining your personal focus system', '30-day productivity commitment'] },
+    ],
+    models: 'Cognitive Load Theory, Attention Residue, Habit Loop, Implementation Intentions, Zeigarnik Effect.',
+    audience: ['Knowledge workers', 'Managers', 'Professionals dealing with information overload', 'Employees working in interruption-heavy environments'],
+    requirements: 'No prior productivity training required.',
+    awarded: 'British Certification from CPD-London.',
+  },
+  {
+    n: 4, track: 'practical', title: 'Employee Wellbeing and Organizational Loyalty', format: '4-Day Practical Workshop',
+    topics: ['Wellbeing', 'Engagement', 'Leadership'],
+    hook: 'Move beyond superficial wellbeing initiatives and understand the workplace conditions that create sustainable human performance.',
+    learn: ['Distinguish healthy pressure from harmful stress', 'Recognize burnout warning signs', 'Identify workplace drivers of poor wellbeing', 'Understand the impact of workload and control', 'Conduct supportive conversations', 'Improve team recovery and energy', 'Build psychological safety', 'Support sustainable performance'],
+    includes: ['4-Day Wellbeing Experience', 'Wellbeing & Burnout Diagnostic', 'Energy Management Exercises', 'Workload Risk Mapping', 'Manager Wellbeing Conversations', 'Psychological Safety Cases', 'Recovery Planning', 'Team Wellbeing Action Plan', 'Sustainable Performance Toolkit'],
+    days: [
+      { t: 'Day 1 — Understand Wellbeing', p: ['Wellbeing versus happiness', 'Stress and burnout', 'Workplace risk factors', 'Energy and recovery', 'Psychological safety'] },
+      { t: 'Day 2 — Lead Wellbeing', p: ['Workload management', 'Manager behaviour', 'Supportive conversations', 'Boundaries and recovery', 'Team wellbeing practices'] },
+      { t: 'Day 3 — Build Belonging and Loyalty', p: ['What drives loyalty beyond pay', 'Belonging, recognition and fairness', 'Trust between employees and the organisation', 'Psychological safety in everyday team routines', 'Connecting wellbeing to retention and commitment'] },
+      { t: 'Day 4 — Embed It', p: ['Wellbeing action planning for your team', 'Manager wellbeing conversation practice', 'Building recovery and boundaries into team routines', 'Measuring wellbeing and loyalty signals', 'Team wellbeing and loyalty commitment plan'] },
+    ],
+    models: 'Job Demands-Resources Model, Maslach Burnout Framework, PERMA, Conservation of Resources, Psychological Safety.',
+    audience: ['Managers', 'Team leaders', 'HR professionals', 'Wellbeing champions'],
+    requirements: 'No previous wellbeing knowledge required.',
+    awarded: 'British Certification from CPD-London.',
+  },
+  {
+    n: 5, track: 'flagship', title: 'Hi-Po Leaders. Spot Their Innate Strengths. Grow Them.', format: '4-Day Flagship Programme',
+    topics: ['Succession', 'Talent Development', 'Leadership'],
+    hook: 'Stop waiting until promotion to discover whether someone can lead. Identify, test and develop leadership potential before the role becomes vacant.',
+    learn: ['Distinguish performance from leadership potential', 'Identify future leaders earlier', 'Assess leadership readiness', 'Identify developmental gaps', 'Design stretch assignments', 'Mentor high-potential employees', 'Build stronger successors', 'Create practical development plans', 'Unlock the intrinsic strengths within your team, shifting the focus from fixing deficits to growing what already works', "Build a collective-strengths philosophy where team members understand, appreciate and actively leverage one another's strengths", "Identify complementary partnerships so one person's shadow side is covered by another's dominant strength", 'Use strengths mapping and experiential simulations to sharpen role clarity and leadership effectiveness', 'Sustain performance through structured one-on-ones that build self-awareness and realign behaviour with strengths', 'Surface behavioural dynamics, talent gaps and alignment opportunities early enough to act on them'],
+    includes: ['4-Day Talent Development Lab', 'Performance-vs-Potential Diagnostic', 'Leadership Readiness Assessment', 'High-Potential Identification Cases', 'Assessment-Centre Simulations', 'Collective Strengths in Action Workshop', 'Strengths Mapping & Experiential Simulations', 'Stretch Assignment Design', 'Developmental Mentoring Practice', 'Shine & Shadow One-on-One Debriefs', 'Collective Strengths Focus Groups', 'Succession Planning Exercise', '90-Day Talent Development Plan'],
+    days: [
+      { t: 'Day 1 — Spot Potential', p: ['Performance versus potential', 'Leadership readiness', 'Learning agility', 'Behavioural indicators', 'Talent assessment', 'Collective strengths: from fixing deficits to growing what already works', 'Strengths mapping across the team'] },
+      { t: 'Day 2 — Test Potential', p: ['Leadership simulations', 'Decision scenarios', 'Problem-solving under pressure', 'Feedback interpretation', 'Development gaps', "Complementary partnerships: covering one person's shadow side with another's strength"] },
+      { t: 'Day 3 — Grow Potential', p: ['Stretch assignments', 'Mentoring', 'Succession planning', 'Developmental feedback', 'Shine & Shadow one-on-ones: naming strengths and derailers', 'Collective strengths focus group', 'Individual development planning'] },
+      { t: 'Day 4 — Build the Pipeline', p: ['Talent review conversations and calibration', 'Collective strengths in action: a team simulation', 'Retaining your high potentials', 'Succession pipeline review', 'Presenting your 90-day talent development plan'] },
+    ],
+    models: 'Learning Agility, Growth Mindset, Deliberate Practice, Self-Efficacy Theory, Experiential Learning.',
+    audience: ['Senior managers', 'Talent managers', 'HR business partners', 'Leaders responsible for succession planning'],
+    requirements: 'Experience managing or developing employees is recommended.',
+    awarded: 'British Certification from CPD-London.',
+  },
+  {
+    n: 6, track: 'practical', title: 'Wellbeing Is The New KPI', format: '4 or 3-Day Strategic Workshop',
+    topics: ['Wellbeing Strategy', 'HR Analytics', 'OD'],
+    hook: 'Understand where your organization really stands before investing in another wellbeing initiative.',
+    learn: ['Measure workplace wellbeing using AI intelligence', 'Identify psychosocial risks', 'Diagnose root causes of stress', 'Separate symptoms from systemic problems', 'Interpret wellbeing indicators', 'Prioritize interventions', 'Measure intervention effectiveness', 'Build an organizational wellbeing roadmap'],
+    includes: ['4 or 3 Day Organizational Wellbeing Lab', 'Workplace Wellbeing Diagnostic', 'Psychosocial Risk Mapping', 'Employee Experience Heatmap', 'Root-Cause Analysis Workshop', 'Wellbeing Data Interpretation', 'Intervention Prioritization', 'Wellbeing Roadmap Template'],
+    days: [
+      { t: 'Day 1 — Diagnose', p: ['What should organizations measure?', 'Workload and role clarity', 'Control and autonomy', 'Psychological safety', 'Burnout and engagement indicators'] },
+      { t: 'Day 2 — Improve', p: ['Root causes', 'Risk prioritization', 'Intervention design', 'Measuring impact', 'Building the wellbeing roadmap'] },
+      { t: 'Day 3 — Act on the Data', p: ['Interpreting AI-assisted wellbeing results', 'Employee experience heatmap walkthrough', 'Selecting and sequencing interventions', 'Building leadership buy-in', 'Roadmap review and refinement'] },
+      { t: 'Day 4 (4-Day Option) — Sustain and Measure', p: ['Setting wellbeing KPIs for the organisation', 'Measuring intervention effectiveness over time', 'Reporting wellbeing to the board', 'Embedding wellbeing into management routines', 'Final roadmap presentation'] },
+    ],
+    models: 'Job Demands-Resources, Maslach, PERMA, Conservation of Resources, 5 Whys.',
+    audience: ['HR leaders', 'Wellbeing teams', 'Organizational development professionals', 'Senior managers'],
+    requirements: 'Basic organizational experience is useful.',
+    awarded: 'British Certification from CPD-London.',
+  },
+  {
+    n: 7, track: 'practical', title: 'Lead at Your Peak: Know Your Derailers', format: '4-Day Practical Workshop',
+    topics: ['Performance', 'Psychology', 'Productivity'],
+    hook: 'Use behavioural science to lead at your peak without depending on longer hours and constant pressure, and learn to spot the derailers that quietly cap your impact as a leader.',
+    learn: ['Understand how the brain performs under pressure', 'Create conditions for deep concentration', 'Understand flow', 'Reduce cognitive overload', 'Improve recovery', 'Build high-performance habits', 'Design your personal performance system', 'Know your derailers: identify the internal barriers (limiting patterns, unhelpful thoughts, unconscious bias, communication gaps and emotional-regulation challenges) that quietly cap your performance', 'Work in your Genius Zone: intentionally invest in your natural talents to sustain peak performance', 'Name your shadow and keep your shine: see where your strengths shine brightest and where your derailers cast a shadow over them', 'Recognise when self-doubt, emotional fatigue and unspoken strain are quietly draining you, before they become burnout', 'Stay clear-headed and composed under pressure, so your team reads steadiness before they hear a word'],
+    includes: ['4-Day Performance Lab', 'Peak Performance Diagnostic', 'Cognitive Performance Experiments', 'Flow-State Challenge', 'Energy & Recovery Audit', 'Focus Experiments', 'Habit Architecture Lab', 'Genius Zone Strengths Mapping', 'Shine & Shadow One-on-One Debrief', 'Internal Barriers Assessment: AI-based, grounded in socio-behavioural science (optional add-on)', 'One-to-One Executive Advisory Session (optional add-on)', 'Personal Performance Operating System'],
+    days: [
+      { t: 'Day 1 — The Performance Brain', p: ['Attention', 'Cognitive capacity', 'Flow', 'Stress and performance', 'Energy and recovery', 'Know your derailers: limiting patterns, unhelpful thoughts and emotional regulation under pressure'] },
+      { t: 'Day 2 — Performance by Design', p: ['Deliberate practice', 'Habit architecture', 'Decision energy', 'Focus routines', 'Personal performance system'] },
+      { t: 'Day 3 — Stress-Test Your Performance', p: ['Performance under pressure simulations', 'Know your derailers: practising new responses in the moment', 'Recovery and resilience routines', 'Managing energy across the working week', 'Shine and shadow: naming your strengths and your derailers', 'Peer feedback on performance patterns'] },
+      { t: 'Day 4 — Lock It In', p: ['Working in your Genius Zone: investing in natural talents', 'Habit stacking and environment design', 'Building and refining your Personal Performance Operating System', 'Accountability and review routines', 'Handling setbacks and slipping back into old patterns', '90-day performance plan'] },
+    ],
+    models: 'Flow Theory, Yerkes-Dodson Law, Deliberate Practice, Cognitive Load Theory, Habit Loop.',
+    audience: ['Senior leaders and executives', 'Managers and team leaders', 'Department heads and decision-makers', 'Emerging and newly promoted leaders', 'Leaders operating under sustained pressure'],
+    requirements: 'No psychology background required.',
+    awarded: 'British Certification from CPD-London.',
+  },
+  {
+    n: 8, track: 'flagship', title: 'Accelerated Development Programme', format: '3-Day Intensive Programme',
+    topics: ['Leadership Development', 'Mentoring', 'Management'],
+    hook: 'Three intensive days that distil years of lived leadership experience into experiential practice, real-world challenges, expert feedback and reflection—bringing proven leadership practices and hard-won lessons from inside Fortune 50 organisations into the room.',
+    learn: ['Accelerate your transition into leadership by distilling years of lived experience into three intensive days', 'Practise leadership through experiential exercises rather than simply studying it', 'Work through real-world leadership challenges and receive expert feedback in the moment', 'Bring proven leadership practices and hard-won lessons from inside Fortune 50 organisations into your own role', 'Delegate effectively', 'Mentor employees', 'Give developmental feedback', 'Manage conflict', 'Influence others', 'Improve decision-making', 'Reflect on your leadership patterns and turn them into a personal development plan'],
+    includes: ['3-Day Leadership Intensive', 'Leadership Capability Diagnostic', 'Experiential Leadership Practice', 'Real-World Leadership Challenges', 'Rapid-Fire Management Scenarios', 'Delegation Challenge', 'Mentoring Practice Lab', 'Feedback Simulations', 'Conflict & Influence Challenges', 'Expert Feedback Sessions', 'Peer Observation', 'Leadership Decision Rooms', 'Guided Reflection', '30-60-90 Development Plan'],
+    days: [
+      { t: 'Day 1 — Manage Yourself', p: ['Leadership transition', 'Self-awareness', 'Emotional intelligence', 'Leadership mindset', 'Personal effectiveness', 'Hard-won lessons from inside Fortune 50 organisations'] },
+      { t: 'Day 2 — Manage People', p: ['Delegation', 'Mentoring', 'Feedback', 'Difficult conversations', 'Conflict', 'Expert feedback on live practice'] },
+      { t: 'Day 3 — Lead Performance', p: ['Influence', 'Decision-making', 'Team performance', 'Real-world leadership challenges and simulations', 'Guided reflection and personal takeaways', '30-60-90 plan'] },
+    ],
+    models: 'Kolb Experiential Learning, GROW Mentoring, Deliberate Practice, Psychological Safety, Reflective Practice.',
+    audience: ['Newly promoted managers', 'Emerging leaders', 'High potentials', 'Managers requiring accelerated development'],
+    requirements: 'Current or upcoming leadership responsibility is recommended.',
+    awarded: 'British Certification from CPD-London.',
+  },
+  {
+    n: 9, track: 'practical', title: 'Executive Presence', format: '4-Day Executive Workshop',
+    topics: ['Communication', 'Influence', 'Leadership'],
+    hook: 'As a leader, get your message across with confidence that speaks, and be heard, trusted and followed when the stakes are high.',
+    learn: ['Communicate with greater confidence and authority', 'Structure concise executive messages', 'Build credibility', 'Influence senior stakeholders', 'Manage nervousness', 'Handle challenging questions', 'Present ideas at executive level', 'Transform data into compelling business stories and actionable insights', 'Present reports and dashboards with clarity and confidence', 'Structure presentations to influence stakeholders and decision-makers', 'Enhance visual communication and presentation delivery', 'Tailor messages effectively for different audiences', "Understand why a leader's confidence drops when presenting, and work the driver, not just the symptom", 'Close the gap between what you mean to say and what actually lands with your audience', 'Stay composed under pressure: colleagues read it before they hear a single word'],
+    includes: ['4-Day Executive Communication Lab', 'Executive Presence Diagnostic', 'Live Presentation Practice', 'Storytelling Frameworks', 'Real Business Case Studies', 'Boardroom Communication Simulation', 'Impromptu Speaking Challenges', 'Difficult Question Practice', 'Stakeholder Influence Exercise', 'Individual Presentation Feedback', 'Presence AI-Assessment with Personalised Performance-Gap Report (optional add-on)', 'Executive Messaging Toolkit'],
+    days: [
+      { t: 'Day 1 — Presence', p: ['First impressions', 'Confidence', 'Credibility', 'Executive messaging', "The psychology behind a leader's low confidence when presenting"] },
+      { t: 'Day 2 — Influence', p: ['Executive storytelling', 'Data storytelling: turning reports and dashboards into insight', 'Visual communication and presentation delivery', 'Tailoring messages for different audiences', 'Stakeholder communication', 'Challenging questions, including impromptu questioning from the room', 'Closing the gap between what you mean to say and what lands', 'Executive presentation challenge'] },
+      { t: 'Day 3 — Present Under Pressure', p: ['Live presentations with individual video feedback', 'Boardroom communication simulation', 'Handling hostile and unexpected questions', 'Staying composed under scrutiny', 'Peer and facilitator feedback rounds'] },
+      { t: 'Day 4 — Lead the Room', p: ['Presenting to senior stakeholders and boards', 'Personalising your executive messaging toolkit', 'Influence strategy for your key relationships', 'Final executive presentation with individual feedback', 'Personal presence action plan'] },
+    ],
+    models: "Cialdini's Influence Principles, Processing Fluency, Emotional Regulation, Ethos-Pathos-Logos.",
+    audience: ['Managers', 'Senior leaders', 'Consultants', 'Professionals presenting to senior stakeholders'],
+    requirements: 'Participants are encouraged to bring a real business message or presentation.',
+    awarded: 'British Certification from CPD-London.',
+  },
+  {
+    n: 10, track: 'flagship', title: 'Neuro-Self Lead', format: '5-Day Flagship Programme',
+    topics: ['People Management', 'Emotional Intelligence', 'Leadership'],
+    hook: 'Build the self-awareness and self-regulation to hold your composure under pressure — without puffing up or shrinking down.',
+    learn: ['Recognize your own emotional triggers before they leak into how you lead', 'Regulate your reactions to stay trusted under pressure', 'Understand how unmanaged triggers quietly erode followship', 'Rebuild credibility and followship after a triggered reaction', 'Uncover limiting patterns: habitual responses formed early on that quietly repeat under pressure', 'Spot unhelpful thought habits that shrink confidence and options before a difficult conversation starts', 'Surface unconscious bias in how you read colleagues', 'Map the communication gap between what you intend and what actually lands', 'Assess your emotional-regulation challenges under pressure, in a safe, non-evaluative space', 'Improve emotional intelligence', 'Understand what drives employee behaviour', 'Motivate different people differently', 'Build trust', 'Give feedback without creating defensiveness', 'Manage conflict', 'Hold people accountable', 'Conduct difficult conversations', 'Create stronger team relationships'],
+    includes: ['5-Day Neuro-Self Lead Experience', 'Motivation Diagnostic', 'Emotional Intelligence Exercises', 'Trust & Psychological Safety Lab', 'Employee Persona Cases', 'Feedback Conversation Practice', 'Conflict Simulations', 'Accountability Role Plays', 'Difficult Employee Scenarios', 'Internal Barriers Assessment (optional add-on)', 'Manager Conversation Toolkit'],
+    days: [
+      { t: 'Day 1 — Know Yourself', p: ['Human behaviour at work', 'Emotional intelligence', 'Self-awareness under pressure', 'Your personal pattern map: limiting patterns and unhelpful thought habits', 'Internal barriers to influence: unconscious bias, communication gaps and emotional-regulation challenges'] },
+      { t: 'Day 2 — Regulate and Rebuild', p: ['Recognising your emotional triggers before they leak into how you lead', 'How unmanaged triggers quietly erode followship', 'Regulating your reactions to stay trusted under pressure', 'Rebuilding credibility and followship after a triggered reaction', 'Holding your composure: neither puffing up nor shrinking down'] },
+      { t: 'Day 3 — Communicate With People', p: ['Listening', 'Feedback without defensiveness', 'Closing the gap between intent and impact', 'Difficult conversations', 'Trigger-response practice in realistic scenarios'] },
+      { t: 'Day 4 — Lead People', p: ['Motivation differences', 'Trust and psychological safety', 'Accountability', 'Delegation', 'Team dynamics', 'Conflict'] },
+      { t: 'Day 5 — Embed Self-Leadership', p: ['Self-regulation routines for high-pressure moments', 'Mentoring and feedback practice', 'Your self-leadership action plan'] },
+    ],
+    models: 'Self-Determination Theory, Emotional Intelligence, Psychological Safety, Thomas-Kilmann, SBI Feedback, Locus of Control.',
+    audience: ['Managers', 'Supervisors', 'Team leaders', 'New people managers'],
+    requirements: 'Experience managing people is useful but not essential.',
+    awarded: 'British Certification from CPD-London.',
+  },
+  {
+    n: 13, track: 'flagship', title: 'Organisational Intelligence: The Psychology Behind Workplace Behavior', format: '3-Day Experiential Programme',
+    topics: ['Psychology', 'Communication', 'Leadership'],
+    hook: 'Understand what is really happening underneath resistance, conflict and disengagement — and learn how to change the interaction rather than repeat it.',
+    learn: ['Understand what drives workplace behaviour', 'Recognize behavioural patterns that repeat under pressure', 'Identify emotional triggers', 'Reduce defensiveness', 'Move conversations toward calmer, more constructive interaction', 'Improve emotional regulation', 'Interrupt repeated dysfunctional patterns', 'Identify the internal barriers to influence: limiting patterns, unhelpful thoughts, unconscious bias, communication gaps and emotional-regulation challenges'],
+    includes: ['3-Day Behavioural Leadership Lab', 'Behavioural Pattern Diagnostic', 'Emotional Trigger Mapping', 'Workplace Psychological Games', 'Trigger Recognition Exercises', 'Constructive Conversation Practice', 'Behaviour Observation Challenges', 'Difficult Relationship Cases', 'Organisational Behavior Toolkit'],
+    days: [
+      { t: 'Day 1 — Decode Behaviour', p: ['Behaviour beneath behaviour', 'Emotional triggers and behavioural patterns', 'Recognition and validation', 'Reading behaviour under pressure'] },
+      { t: 'Day 2 — Understand Dysfunction', p: ['Emotional triggers', 'Psychological games', 'Recurring relationship patterns', 'Internal barriers: limiting patterns, unhelpful thoughts and unconscious bias', 'Locus of control'] },
+      { t: 'Day 3 — Change the Pattern', p: ['Constructive, direct communication', 'Emotional regulation', 'Responding rather than reacting', 'Difficult relationship simulations', 'Behavioural leadership plan'] },
+    ],
+    audience: ['Managers', 'Leaders', 'HR professionals', 'Mentors', 'Professionals managing difficult relationships'],
+    requirements: 'No psychology background required.',
+    awarded: 'British Certification from CPD-London.',
+  },
+  {
+    n: 15, track: 'flagship', title: "Mentoring the Kingdom's Next Generation of Leaders", format: '3-Day Early-Career Programme',
+    topics: ['Early Careers', 'Employability', 'Mentoring'],
+    hook: 'A holistic development journey that takes interns and fresh graduates from just graduated to genuinely employable: confident at work, clear on their path, and supported by mentors who show them the way.',
+    learn: ['Move from academic habits to professional ones: ownership, reliability and follow-through', 'Understand how workplaces really run, from unwritten rules and hierarchy to meetings and etiquette', 'Communicate clearly in person, in writing and on screen', 'Ask for, receive and act on feedback without taking it personally', 'Work well with your first manager and build relationships across teams', 'Build resilience for the pressure, setbacks and self-doubt of a first role', 'Look after your energy, wellbeing and routines as the demands of working life begin', 'Build a mentor circle: choose mentors, prepare for each conversation and make the most of it', 'Show employers and reviewers the value you bring', 'Turn your first 100 days into a plan for your next career move'],
+    includes: ['3-Day From Graduate to Employable Experience', 'Employability Readiness Diagnostic', 'Unwritten Workplace Rules Cases', 'Professional Communication Practice', 'First Manager Simulation', 'Resilience & Energy Plan', 'Mentor Circle Mapping', 'Personal Employability Portfolio', '100-Day Career Plan', 'Face-to-Face or Live Virtual Delivery'],
+    days: [
+      { t: 'Day 1 — From Graduate to Professional', p: ['The shift from classroom to workplace', 'Professional identity and reputation', 'Ownership, reliability and follow-through', 'Etiquette and the unwritten rules', 'Reading how your organisation really works'] },
+      { t: 'Day 2 — Work Well With Others', p: ['Meetings, email and chat that land well', 'Asking for and acting on feedback', 'Managing up: your first manager', 'Relationships across teams', 'Finding the right mentors'] },
+      { t: 'Day 3 — Build Your Path', p: ['Resilience, setbacks and self-doubt', 'Energy, wellbeing and routines', 'Presenting the value you bring', 'Matching your strengths to a direction', 'Your 100-day plan'] },
+    ],
+    audience: ['Fresh graduates entering their first professional role', 'Interns and trainees', 'Early-career employees in their first year', 'Organisations onboarding graduate and intern cohorts', 'Managers and mentors supporting new joiners'],
+    requirements: 'No previous work experience required.',
+    awarded: 'British Certification from CPD-London.',
+  },
+  {
+    n: 16, track: 'flagship', title: 'Certified Professional in Office Management', format: '5-Day Certified Programme',
+    topics: ['Certified', 'Office Management', 'Operational Excellence'],
+    hook: 'A certified standard for running a modern executive office — organisation, discretion and operational excellence.',
+    learn: ['Establish a certified standard for running a modern executive office', 'Build practical skills in organisation and prioritisation', 'Build a reliable capture-and-delivery system for commitments and approvals', 'Ensure deadlines are met with no mental energy wasted on memory retention', 'Maintain discipline in closing loops on incident reports, logs and audit trails', 'Ensure no balls are dropped', 'Build a trusted workflow system for emails, approvals and tasks', 'Develop psychological resilience to resist reactivity, procrastination and perfectionism', 'Structure diaries, correspondence and stakeholder communication', 'Coordinate cross-functional requests without losing oversight', 'Handle high-pressure requests with composure and discretion', 'Build resilience and sound judgement under pressure', 'Build a recognised credential for career progression'],
+    includes: ['5-Day Office Management Certification', 'Executive Office Diagnostic', 'Confidentiality & Discretion Case Studies', 'Diary & Correspondence Management Lab', 'Stakeholder Communication Practice', 'Pressure & Priority Simulation', 'Personal Office Management Toolkit', 'Certification Examination', 'Face-to-Face or Live Virtual Delivery'],
+    days: [
+      { t: 'Day 1 — Foundations of Office Management', p: ['Role of the modern executive office', 'Organisation and prioritisation systems', 'Confidentiality and discretion', 'Professional communication standards', 'Managing competing priorities'] },
+      { t: 'Day 2 — Diary, Correspondence & Information Management', p: ['Diary and calendar management', 'Correspondence and inbox management', 'Document and information management', 'Meeting and travel coordination', 'Record-keeping and confidentiality'] },
+      { t: 'Day 3 — Stakeholder & Executive Communication', p: ['Stakeholder mapping', 'Executive communication standards', 'Cross-functional coordination', 'Difficult conversations', 'Representing the executive office'] },
+      { t: 'Day 4 — Operational Excellence Under Pressure', p: ['Handling pressure and competing deadlines', 'Crisis and contingency planning', 'Problem-solving under pressure', 'Building resilience', 'Continuous improvement in office operations'] },
+      { t: 'Day 5 — Certification', p: ['Personal operating system design', 'Case study assessment', 'Peer review and feedback', 'Certification examination', 'Career development planning'] },
+    ],
+    audience: ['Executive assistants and office managers formalising their skillset', 'Organisations standardising office-management practice', 'Professionals seeking a certified credential for career advancement'],
+    requirements: 'No previous office-management qualification required.',
+    awarded: 'British Certification from CPD-London.',
+  },
+  {
+    n: 17, track: 'flagship', title: 'She Reigns', format: '3-Day Flagship Programme',
+    topics: ['Women in Leadership', 'Empowerment', 'Executive Presence'],
+    hook: 'A flagship leadership programme built to help women claim space, authority and influence — without waiting for permission.',
+    learn: ['Build confidence and executive presence', 'Overcome imposter syndrome and self-doubt', 'Negotiate pay, promotion and scope with composure and confidence', 'Navigate bias and double standards without losing yourself', 'Build a brand of authority and influence', 'Lead with authenticity rather than borrowed authority', 'Build sponsorship and strategic networks', 'Balance ambition with sustainable wellbeing', 'Identify the internal barriers to your influence: limiting patterns, unhelpful thoughts and emotional-regulation challenges under pressure'],
+    includes: ['3-Day She Reigns Experience', 'Confidence & Presence Diagnostic', 'Imposter Syndrome Workshop', 'Negotiation Practice Lab', 'Bias Navigation Case Studies', 'Brand & Influence Lab', 'Sponsorship & Network Mapping', 'Personal Leadership Manifesto'],
+    days: [
+      { t: 'Day 1 — Claim Your Space', p: ['Confidence and executive presence', 'Imposter syndrome', 'Authentic authority', 'Self-advocacy', 'Brand', 'Internal barriers to influence: limiting patterns and unhelpful thoughts'] },
+      { t: 'Day 2 — Navigate The System', p: ['Bias and double standards', 'Negotiation', 'Sponsorship versus mentorship', 'Strategic networking', 'Political savvy'] },
+      { t: 'Day 3 — Lead And Sustain', p: ['Leading with authenticity', 'Building coalitions', 'Sustainable ambition and wellbeing', 'Personal leadership manifesto', 'Action plan'] },
+    ],
+    models: 'Self-Efficacy Theory, Imposter Phenomenon Research, Social Identity Theory, Psychological Safety, Growth Mindset.',
+    audience: ['Women in leadership or aspiring to leadership roles', 'High-potential women preparing for their next step', 'Organisations building a female leadership pipeline'],
+    requirements: 'No previous leadership qualification required.',
+    awarded: 'British Certification from CPD-London.',
+  },
+  {
+    n: 18, track: 'practical', title: "One Team, One Language: The Leader's Retreat", format: '1 or 2-Day Team Retreat',
+    topics: ['Team Building', 'Leadership', 'Collaboration'],
+    hook: 'Make what your leaders learn a common language across the whole team. Bring your team together for a retreat or team-building event that turns shared challenges into trust, collaboration and momentum.',
+    learn: ['Give leaders and teams a shared language for how they communicate, solve problems and work together', 'Strengthen collaboration and trust among team members', 'Improve communication and problem-solving through interactive challenges', 'Foster teamwork, engagement and cross-functional collaboration', 'Build stronger workplace relationships and a positive team culture', 'Enhance employee motivation and overall team performance'],
+    includes: ['1 or 2-Day Team Retreat or Team-Building Event', 'Collaborative Challenges', 'Problem-Solving Activities', 'Experiential Learning Exercises', 'Facilitated Group Discussions', 'UK-Engineered Toolkits, customised to your people and culture', 'Onsite or Outdoor Delivery', 'Delivered in Arabic or English'],
+    days: [
+      { t: 'The Session — 10:00 AM to 4:00 PM, each day', p: ['Collaborative challenges', 'Problem-solving activities', 'Experiential learning exercises', 'Facilitated group discussions', 'A toolkit level matched to who is in the room'] },
+      { t: 'UK-Engineered Toolkits — Three Levels', p: ['Digital: purely gamified and fully digital, run entirely online for distributed teams', 'Signature: a hybrid build that blends the digital challenge with in-person moments, tuned for teams who work together day to day', 'Executive: tools specially engineered in the UK for your team, a sharper, higher-stakes version for senior and executive-level teams'] },
+    ],
+    audience: ['All employees, all departments and levels', 'Leaders bringing their team together for a retreat', 'Senior and executive teams (Executive toolkit)', 'Organisations planning a team-building event'],
+    requirements: 'Choose the toolkit level (Digital, Signature or Executive) and the delivery language (Arabic or English) for your team.',
+    awarded: '',
+  },
+];
+/* featured programmes only, in display order, with their images */
+(function () {
+  const byTitle = t => COURSES.find(c => c.title === t);
+  const featured = [
+    Object.assign(byTitle('Leadership, Rewired For 2030'), { image: '/b2b-b2g-focus/leadership.jpg' }),
+    Object.assign(byTitle('Hi-Po Leaders. Spot Their Innate Strengths. Grow Them.'), { image: '/b2b-b2g-focus/hipo.jpg' }),
+    Object.assign(byTitle('Productivity, Decoded By Your Brain'), { title: 'Productivity, Decoded By Brain Science', image: '/b2b-b2g-focus/productivity.jpg', imageCaption: 'Your new personal assistant' }),
+    byTitle('Organisational Intelligence: The Psychology Behind Workplace Behavior'),
+    byTitle('Executive Presence'),
+  ];
+  COURSES.splice(0, COURSES.length, ...featured);
+})();
+COURSES.forEach((c, i) => { c.n = i + 1; });
+
+const grid = document.getElementById('grid');
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+/* optional programme overview: paragraphs separated by a blank line */
+function overviewParas(text, cls, style) {
+  return text.split('\n\n').map(p => `<p class="${cls}" style="${style}">${esc(p)}</p>`).join('');
+}
+
+function renderCard(c) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.dataset.track = c.track;
+
+  card.innerHTML = `
+    <div class="card-bar"></div>
+    ${c.image ? `<div class="card-media"><img src="${c.image}" alt="${esc(c.title)}" loading="lazy">${c.imageCaption ? `<span class="card-media-cap">${esc(c.imageCaption)}</span>` : ''}</div>` : ''}
+    <div class="card-body">
+      <div class="card-eyebrow">
+        <span class="mono card-num">${String(c.n).padStart(2, '0')}</span>
+        <span class="card-format">${esc(c.format)}</span>
+      </div>
+      <h3 class="card-title">${esc(c.title)}</h3>
+      <p class="card-hook">${esc(c.hook)}</p>
+      <div class="pill-row">
+        ${c.topics.map(t => `<span class="pill">${esc(t)}</span>`).join('')}
+      </div>
+      <div class="more-panel">
+        <div class="more-panel-inner">
+${c.overview ? `<div class="more-block">${overviewParas(c.overview, 'req-text', 'margin-bottom:0.55rem;')}</div>` : ''}
+          <div class="more-block">
+            <p class="more-label">What You'll Learn</p>
+            <ul class="more-list">${c.learn.map(l => `<li>${esc(l)}</li>`).join('')}</ul>
+          </div>
+          <div class="more-block">
+            <p class="more-label">This Course Includes</p>
+            <ul class="chip-list">${c.includes.map(i => `<li>${esc(i)}</li>`).join('')}</ul>
+          </div>
+          <div class="more-block">
+            <p class="more-label">Who This Course Is For</p>
+            <ul class="chip-list">${c.audience.map(a => `<li>${esc(a)}</li>`).join('')}</ul>
+          </div>
+          <div class="more-block">
+            <p class="more-label">Requirements</p>
+            <p class="req-text">${esc(c.requirements)}</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn-link btn-see-more" type="button">
+          <span class="label">See More</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <button class="btn-link btn-outline" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6M9 9h1"/></svg>
+          Outline
+        </button>
+      </div>
+
+      <div class="print-detail">
+${c.overview ? `<div class="more-block">${overviewParas(c.overview, 'req-text', 'margin-bottom:0.55rem;')}</div>` : ''}
+        <div class="more-block">
+          <p class="more-label">What You'll Learn</p>
+          <ul class="more-list">${c.learn.map(l => `<li>${esc(l)}</li>`).join('')}</ul>
+        </div>
+        <div class="more-block">
+          <p class="more-label">This Course Includes</p>
+          <ul class="chip-list">${c.includes.map(i => `<li>${esc(i)}</li>`).join('')}</ul>
+        </div>
+        <div class="more-block">
+          <p class="more-label">Course Content</p>
+          ${c.days.map(d => `
+            <div class="day-card">
+              <p class="day-title">${esc(d.t)}</p>
+              <ul class="day-points">${d.p.map(p => `<li>${esc(p)}</li>`).join('')}</ul>
+            </div>
+          `).join('')}
+        </div>
+        ${c.models ? `<div class="more-block"><p class="models-block"><b>Models &amp; Psychology:</b> ${esc(c.models)}</p></div>` : ''}
+        <div class="more-block">
+          <p class="more-label">Who This Course Is For</p>
+          <ul class="chip-list">${c.audience.map(a => `<li>${esc(a)}</li>`).join('')}</ul>
+        </div>
+        <div class="more-block">
+          <p class="more-label">Requirements</p>
+          <p class="req-text">${esc(c.requirements)}</p>
+          ${c.awarded ? `<p class="req-text" style="margin-top:0.4rem;"><b>Awarded:</b> ${esc(c.awarded)}</p>` : ''}
+        </div>
+      </div>
+    </div>
+  `;
+
+  const seeMoreBtn = card.querySelector('.btn-see-more');
+  const panel = card.querySelector('.more-panel');
+  seeMoreBtn.addEventListener('click', () => {
+    const willOpen = !panel.classList.contains('open');
+    panel.classList.toggle('open', willOpen);
+    seeMoreBtn.classList.toggle('open', willOpen);
+    seeMoreBtn.querySelector('.label').textContent = willOpen ? 'Show Less' : 'See More';
+  });
+
+  card.querySelector('.btn-outline').addEventListener('click', () => openOutline(c));
+
+  return card;
+}
+
+COURSES.forEach(c => grid.appendChild(renderCard(c)));
+
+/* ---------- level the card rows ----------
+   Every card in a row takes the height of the tallest collapsed card in that row, so rows line up
+   when closed. Opening a card only grows that card; its neighbours keep their own height. */
+let levelWidth = 0;
+let levelTimer;
+function levelCardRows() {
+  const cards = [...grid.children];
+  cards.forEach(c => { c.style.minHeight = ''; });
+  const cols = getComputedStyle(grid).gridTemplateColumns.split(' ').length;
+  const heights = cards.map(c => {
+    // an open card is measured without its expanded panel, so it still counts as collapsed
+    const panel = c.querySelector('.more-panel');
+    return c.offsetHeight - panel.offsetHeight - parseFloat(getComputedStyle(panel).marginTop);
+  });
+  for (let i = 0; i < cards.length; i += cols) {
+    const rowMax = Math.max(...heights.slice(i, i + cols));
+    cards.slice(i, i + cols).forEach(c => { c.style.minHeight = rowMax + 'px'; });
+  }
+  levelWidth = grid.clientWidth;
+}
+levelCardRows();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(levelCardRows);
+window.addEventListener('resize', () => {
+  if (grid.clientWidth === levelWidth) return; // height-only resizes (mobile address bar) don't change the layout
+  clearTimeout(levelTimer);
+  levelTimer = setTimeout(levelCardRows, 120);
+});
+
+/* ---------- outline modal ---------- */
+const overlay = document.getElementById('modalOverlay');
+const modalBody = document.getElementById('modalBody');
+
+function openOutline(c) {
+  modalBody.innerHTML = `
+    <span class="modal-eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6M9 9h1"/></svg>
+      Course Outline
+    </span>
+    <h2>${esc(c.title)}</h2>
+    <p class="modal-meta">${esc(c.format)}</p>
+    <p class="modal-hook">${esc(c.hook)}</p>
+    ${c.overview ? overviewParas(c.overview, 'modal-hook', 'margin-top:0.8rem;') : ''}
+
+    <div class="modal-section">
+      <p class="modal-section-label">Course Content</p>
+      ${c.days.map(d => `
+        <div class="day-card">
+          <p class="day-title">${esc(d.t)}</p>
+          <ul class="day-points">${d.p.map(p => `<li>${esc(p)}</li>`).join('')}</ul>
+        </div>
+      `).join('')}
+    </div>
+
+    ${c.models ? `<p class="models-block" style="margin-top:1.6rem;"><b>Models &amp; Psychology:</b> ${esc(c.models)}</p>` : ''}
+
+    <div class="modal-section">
+      <p class="modal-section-label">Who Should Attend</p>
+      <ul class="day-points">${c.audience.map(a => `<li>${esc(a)}</li>`).join('')}</ul>
+    </div>
+
+    <div class="modal-foot">
+      <p>Requirements: ${esc(c.requirements)}</p>
+      ${c.awarded ? `<p class="award">Awarded: ${esc(c.awarded)}</p>` : ''}
+    </div>
+  `;
+  overlay.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeOutline() {
+  overlay.hidden = true;
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modalClose').addEventListener('click', closeOutline);
+overlay.addEventListener('click', (e) => { if (e.target === overlay) closeOutline(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !overlay.hidden) closeOutline(); });
+
+/* ---------- hero video ---------- */
+(() => {
+  const heroVideo = document.querySelector('.hero-video');
+  if (!heroVideo) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    heroVideo.removeAttribute('autoplay');
+    heroVideo.pause();
+    return;
+  }
+  const started = heroVideo.play();
+  if (started && started.catch) started.catch(() => {});
+})();
+</script>
+
+</body>
+</html>

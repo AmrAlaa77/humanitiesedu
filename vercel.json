@@ -81,6 +81,22 @@
                          "destination":  "/who-we-are/index.html"
                      },
                      {
+                         "source":  "/B2B-B2G-Focus",
+                         "destination":  "/b2b-b2g-focus/index.html"
+                     },
+                     {
+                         "source":  "/B2B-B2G-Focus/",
+                         "destination":  "/b2b-b2g-focus/index.html"
+                     },
+                     {
+                         "source":  "/b2b-b2g-focus",
+                         "destination":  "/b2b-b2g-focus/index.html"
+                     },
+                     {
+                         "source":  "/b2b-b2g-focus/",
+                         "destination":  "/b2b-b2g-focus/index.html"
+                     },
+                     {
                          "source":  "/B2B-B2G",
                          "destination":  "/b2b-b2g/index.html"
                      },
