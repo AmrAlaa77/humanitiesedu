@@ -1233,7 +1233,7 @@ const MIC_HTML = '<svg class="mic-ic" viewBox="0 0 24 24" aria-hidden="true"><de
       + '<select id="nearLang" aria-label="Voice language"><option value="en"' + (lang === 'en' ? ' selected' : '') + '>English</option><option value="ar"' + (lang === 'ar' ? ' selected' : '') + '>العربية</option></select>'
       + '<button class="btn sm ai" id="nearSpeak">🔊 Hear them</button></div>'
       + (list.length
-          ? list.slice(0, 6).map(x => '<div class="near-row"><span class="near-due">' + (x.due === todayISO() ? 'Today' : 'Tomorrow') + '</span>' + esc(short(x.txt, 90)) + '<button class="btn sm listen-btn" data-listen="' + encodeURIComponent((x.due === todayISO() ? 'Due today: ' : 'Due tomorrow: ') + x.txt) + '" aria-label="Listen to this reminder">🔊 Listen</button></div>').join('')
+          ? list.slice(0, 6).map(x => '<div class="near-row"><span class="near-due">' + (x.due === todayISO() ? 'Today' : 'Tomorrow') + '</span>' + esc(short(x.txt, 90)) + '</div>').join('')
           : '<div class="subtle" style="padding:6px 0">Nothing due today or tomorrow.</div>')
       + '</div>';
     document.getElementById('nearSpeak').onclick = () => speak(nearText(nearItems()));
