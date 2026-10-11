@@ -1068,9 +1068,9 @@ function renderSupport(){const el=document.getElementById('supportNote');if(!el)
    +(hi?'<b>You have '+od+' overdue items.</b> That is a lot to carry alone. ':'<b>Feeling you need support?</b> ')
    +'Reach out early. Options:<ul>'
    +'<li><b>Employee Assistance Programme (EAP):</b> free, confidential counselling. Request it through HR.</li>'
-   +'<li><b>1:1 with Humantic:</b> wellbeing challenges revisited, in a private session arranged through People &amp; Culture or your manager.</li>'
-   +'<li><b>Focus group:</b> when several items are overdue in one team, we run a short session to unblock them together.</li>'
-   +'<li><b>Meeting with management:</b> agree priorities and realistic deadlines with your manager.</li></ul>'
+   +'<li><button type="button" class="sopt" data-stype="oneone"><b>1:1 with Humantic</b><span>Wellbeing challenges revisited, in a private session arranged through People &amp; Culture or your manager.</span></button></li>'
+   +'<li><button type="button" class="sopt" data-stype="focus"><b>Focus group</b><span>When several items are overdue in one team, we run a short session to unblock them together.</span></button></li>'
+   +'<li><button type="button" class="sopt" data-stype="meeting"><b>Meeting with management</b><span>Agree priorities and realistic deadlines with your manager.</span></button></li></ul>'
    +'<p class="help-sos">If you are in danger or feel at risk of harming yourself, contact emergency services now (911 in Saudi Arabia).</p></div>'}
 /* ---- Calendar: week view of due dates (tasks + follow-through) ---- */
 let calOffset=0;
@@ -1159,7 +1159,7 @@ document.getElementById('capRun').onclick=runCapture;document.getElementById('ca
 document.getElementById('autoRemind').onchange=e=>{const p=pById(state.me);if(!p)return;p.autoRemind=e.target.checked;save();toast(e.target.checked?'Automatic reminders on':'Automatic reminders off')};
 document.getElementById('lpAIWrite').onclick=writeWithAI;
 document.getElementById('pmRelease').onclick=async()=>{const p=pById(editPersonId);if(!p||!LIVE)return;const mine=p.userId===LIVE.uid;if(!(await ask({title:mine?'Leave this seat?':'Free this seat?',text:mine?'You will be asked to choose a seat again.':'The person in this seat will be asked to choose a seat again.',ok:mine?'Leave seat':'Free seat',danger:true})))return;p.userId=null;save();closePerson();toast('Seat freed')};
-(function(){const m={overview:'sparkles',loop:'refresh',priorities:'rank',waiting:'hourglass',capture:'inbox',reset:'reset',index:'gauge',objectives:'target',oversight:'owner',org:'org',manual:'book',search:'search',inbox:'inbox',today:'clock',upcoming:'flag',calendar:'calendar',filters:'tag',board:'board',team:'users',workqueue:'phone',comments:'msg',notifications:'bell',settings:'settings'};document.querySelectorAll('.navitem[data-nav]').forEach(n=>{const sp=n.querySelector('span');if(sp&&m[n.dataset.nav])sp.innerHTML=haIc(m[n.dataset.nav])});const add=document.querySelector('#sideAdd span');if(add)add.innerHTML=haIc('plus');const ib={menuBtn:'menu',quickAdd:'plus',exportBtn:'download',importBtn:'upload'};Object.entries(ib).forEach(([id,n])=>{const b=document.getElementById(id);if(b)b.innerHTML=haIc(n)});const nb=document.querySelector('.iconbtn[data-nav="notifications"]');if(nb){const bd=nb.querySelector('.badge');nb.innerHTML=haIc('bell');if(bd)nb.appendChild(bd)}const ts=document.querySelector('.top-search span');if(ts)ts.innerHTML=haIc('search')})();
+(function(){const m={overview:'sparkles',loop:'refresh',priorities:'rank',waiting:'hourglass',capture:'inbox',reset:'check',index:'gauge',objectives:'target',oversight:'owner',org:'org',manual:'book',search:'search',inbox:'inbox',today:'clock',upcoming:'flag',calendar:'calendar',filters:'tag',board:'board',team:'users',workqueue:'phone',comments:'msg',notifications:'bell',settings:'settings'};document.querySelectorAll('.navitem[data-nav]').forEach(n=>{const sp=n.querySelector('span');if(sp&&m[n.dataset.nav])sp.innerHTML=haIc(m[n.dataset.nav])});const add=document.querySelector('#sideAdd span');if(add)add.innerHTML=haIc('plus');const ib={menuBtn:'menu',quickAdd:'plus',exportBtn:'download',importBtn:'upload'};Object.entries(ib).forEach(([id,n])=>{const b=document.getElementById(id);if(b)b.innerHTML=haIc(n)});const nb=document.querySelector('.iconbtn[data-nav="notifications"]');if(nb){const bd=nb.querySelector('.badge');nb.innerHTML=haIc('bell');if(bd)nb.appendChild(bd)}const ts=document.querySelector('.top-search span');if(ts)ts.innerHTML=haIc('search')})();
 boot();
 </script>
 <script>
@@ -1752,7 +1752,7 @@ haIc = function(n, cls){ const k = HA3D_MAP[n]; if(k && HA3D[k]) return '<svg cl
 <script>
 /* Re-draw the navigation and header icons with the 3D set once the page is built */
 (function(){
-  const map = {overview:'sparkles',loop:'loop',priorities:'rank',waiting:'hourglass',capture:'inbox',reset:'reset',index:'gauge',leadership:'gauge',objectives:'target',oversight:'owner',org:'org',manual:'book',search:'search',inbox:'inbox',today:'clock',upcoming:'flag',calendar:'calendar',filters:'tag',board:'board',team:'users',workqueue:'phone',comments:'msg',notifications:'bell',settings:'settings'};
+  const map = {overview:'sparkles',loop:'loop',priorities:'rank',waiting:'hourglass',capture:'inbox',reset:'check',index:'gauge',leadership:'gauge',objectives:'target',oversight:'owner',org:'org',manual:'book',search:'search',inbox:'inbox',today:'clock',upcoming:'flag',calendar:'calendar',filters:'tag',board:'board',team:'users',workqueue:'phone',comments:'msg',notifications:'bell',settings:'settings'};
   function paint(){
     document.querySelectorAll('.navitem[data-nav]').forEach(n=>{const sp=n.querySelector('span');if(sp&&map[n.dataset.nav]) sp.innerHTML=haIc(map[n.dataset.nav])});
     const b=document.querySelector('.navitem#sideAdd span'); if(b) b.innerHTML=haIc('plus');
@@ -2028,5 +2028,8 @@ const HA3D_NAMES = {
 (function(){const names=['reset','target','hourglass','alert','chart','sparkles'];document.querySelectorAll('.pillar .ic').forEach((el,i)=>{if(names[i]) el.innerHTML=haIc(names[i])});})();
 </script>
 <script>document.querySelectorAll('.navitem[data-nav="ops"] span').forEach(function(el){el.innerHTML=haIc('settings')});</script>
+<script>document.addEventListener("click",function(e){const b=e.target.closest("[data-stype]");if(!b)return;const sel=document.getElementById("ooTopic");if(sel){sel.value=b.dataset.stype;sel.dispatchEvent(new Event("change"))}document.querySelectorAll(".sopt").forEach(x=>x.classList.toggle("on",x===b));const f=document.getElementById("ooNote");if(f)f.scrollIntoView({behavior:"smooth",block:"center"});});</script>
+<style>.sopt{display:flex;flex-direction:column;align-items:flex-start;width:100%;text-align:left;background:#fff;border:1px solid #cfe5e1;border-radius:12px;padding:10px 12px;font:inherit;cursor:pointer}.sopt span{font-size:13px;color:var(--muted);margin-top:2px}.sopt:hover{border-color:#0d9488}.sopt.on{border:2px solid #0d9488;background:#f0fbf8}.help-note li{list-style:none;margin:6px 0}.help-note ul{padding-left:0}</style>
+<script>["view-leadership","view-ops"].forEach(function(id){document.querySelectorAll("#"+id).forEach(function(el,i){if(i>0)el.remove()})});</script>
 </body>
 </html>
