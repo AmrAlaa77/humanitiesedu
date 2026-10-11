@@ -1226,5 +1226,174 @@ boot();
 .near-due{font-size:11px;font-weight:800;text-transform:uppercase;color:#8a5a00;background:#fff1cf;border-radius:8px;padding:2px 7px;white-space:nowrap}
 </style>
 
+<script>
+/* ---- Leadership: metrics, impact on outcomes, early warnings, conflicts, decision log, weekly brief ---- */
+(function(){
+  /* Navigation item and page */
+  const objNav = document.querySelector('.navitem[data-nav="objectives"]');
+  if(objNav){
+    objNav.insertAdjacentHTML('beforebegin', '<div class="navitem" data-nav="leadership"><span></span> Leadership metrics</div>');
+    const n = document.querySelector('.navitem[data-nav="leadership"] span');
+    if(n) n.innerHTML = haIc('gauge');
+  }
+  const main = document.querySelector('main.main');
+  if(main) main.insertAdjacentHTML('beforeend',
+    '<section class="view" id="view-leadership"><div class="view-head"><div><h1>Leadership metrics</h1>'
+    + '<div class="subtle">Alignment, reliability and impact on outcomes for your reporting chain</div></div></div>'
+    + '<div id="leadContent"></div></section>');
+
+  const fmtH = h => h === null ? '—' : (h < 48 ? Math.round(h) + 'h' : (h / 24).toFixed(1) + ' days');
+  const pct = v => v === null ? '—' : v + '%';
+
+  /* Core numbers for the chain you lead */
+  function metrics(){
+    const ids = scopeIds(), items = itemsFor(ids), now = Date.now();
+    const linkable = items.filter(i => i.type !== 'Update');
+    const linked = linkable.filter(i => i.goal);
+    const coverage = linkable.length ? Math.round(100 * linked.length / linkable.length) : null;
+    const actionable = items.filter(i => ['Request','Commitment','Blocker'].includes(i.type));
+    const closed = actionable.filter(i => i.status === 'done');
+    const onTime = closed.filter(i => !i.due || (i.doneAt || 0) <= new Date(i.due + 'T23:59:59').getTime());
+    const reliability = closed.length ? Math.round(100 * onTime.length / closed.length) : null;
+    const dec = items.filter(i => i.type === 'Decision' && Object.keys(i.acks || {}).length);
+    const decH = dec.map(i => (Math.max(...Object.values(i.acks)) - i.created) / H);
+    const decLatency = decH.length ? decH.reduce((a, b) => a + b, 0) / decH.length : null;
+    const blk = items.filter(i => i.type === 'Blocker' && i.status === 'done' && i.doneAt);
+    const blkH = blk.map(i => (i.doneAt - i.created) / H);
+    const blkRes = blkH.length ? blkH.reduce((a, b) => a + b, 0) / blkH.length : null;
+    const drift = state.objectives.filter(o => !state.loop.some(i => i.goal === o.id && now - i.created < 14 * DAY)).length;
+    const pul = (state.pulse || []).filter(p => p.week === isoWeek());
+    const health = pul.length >= 3 ? (pul.reduce((a, p) => a + (+p.score || 0), 0) / pul.length) : null;
+    return { coverage, reliability, decLatency, blkRes, drift, health, closedN: closed.length, decN: dec.length, blkN: blk.length };
+  }
+
+  /* Impact: each objective's KPI against its target */
+  function kpiOf(o){
+    if(!o.kpi || !o.kpi.target) return null;
+    const p = Math.min(100, Math.round(100 * (+o.kpi.current || 0) / (+o.kpi.target)));
+    return { p, status: p >= 80 ? 'on track' : (p >= 40 ? 'at risk' : 'behind') };
+  }
+  function objectiveRows(){
+    return state.objectives.map(o => {
+      const li = state.loop.filter(i => i.goal === o.id && i.status !== 'done');
+      const od = li.filter(i => flagsOf(i).overdue).length;
+      const k = kpiOf(o);
+      const quiet = !state.loop.some(i => i.goal === o.id && Date.now() - i.created < 14 * DAY);
+      const warn = [];
+      if(od) warn.push(od + ' overdue');
+      if(quiet) warn.push('no activity in 14 days');
+      if(k && k.status === 'behind') warn.push('impact behind target');
+      return { o, open: li.length, od, k, quiet, warn };
+    });
+  }
+
+  /* Possible duplicate or competing work: similar open items from different people */
+  function words(t){ return new Set((String(t).toLowerCase().match(/[a-z]{4,}/g)) || []); }
+  function conflicts(){
+    const open = state.loop.filter(i => i.status !== 'done' && canSee(i) && i.type !== 'Update');
+    const out = [];
+    for(let a = 0; a < open.length; a++) for(let b = a + 1; b < open.length; b++){
+      const x = open[a], y = open[b];
+      if(x.from === y.from) continue;
+      const A = words(x.text), B = words(y.text);
+      if(!A.size || !B.size) continue;
+      let inter = 0; A.forEach(w => { if(B.has(w)) inter++; });
+      const jac = inter / (A.size + B.size - inter);
+      if(jac >= 0.5) out.push({ x, y, jac });
+    }
+    return out.slice(0, 5);
+  }
+
+  /* Weekly brief in plain language (built-in summary; the live workspace can use Claude) */
+  function brief(rows, m){
+    const on = rows.filter(r => r.k && r.k.status === 'on track').length;
+    const risk = rows.filter(r => r.k && r.k.status === 'at risk').length;
+    const behind = rows.filter(r => r.k && r.k.status === 'behind').length;
+    const noKpi = rows.filter(r => !r.k).length;
+    const dec = state.loop.filter(i => i.type === 'Decision' && i.status !== 'done' && canSee(i)).length;
+    const blk = state.loop.filter(i => i.type === 'Blocker' && i.status !== 'done' && canSee(i)).length;
+    let t = '<p><b>' + rows.length + ' objectives</b> in your chain. ';
+    t += (on + risk + behind) ? (on + ' on track, ' + risk + ' at risk, ' + behind + ' behind target on impact. ') : 'No impact targets are set yet. ';
+    if(noKpi) t += noKpi + ' objective' + (noKpi > 1 ? 's have' : ' has') + ' no measurable KPI yet. ';
+    t += '</p><p><b>Needs a decision this week:</b> ' + (dec + blk) + ' item' + ((dec + blk) === 1 ? '' : 's') + ' (decisions and blockers).</p>';
+    if(m.drift) t += '<p><b>Drifting:</b> ' + m.drift + ' objective' + (m.drift > 1 ? 's have' : ' has') + ' had no activity in two weeks.</p>';
+    return t;
+  }
+
+  function card(label, value, note, cls){
+    return '<div class="card lead-card' + (cls ? ' ' + cls : '') + '"><div class="label">' + label + '</div><div class="num">' + value + '</div><div class="subtle">' + note + '</div></div>';
+  }
+
+  function renderLead(){
+    const el = document.getElementById('leadContent');
+    if(!el) return;
+    const m = metrics(), rows = objectiveRows(), con = conflicts();
+    const warnings = rows.filter(r => r.warn.length);
+    const decisions = state.loop.filter(i => i.type === 'Decision' && canSee(i)).sort((a, b) => b.created - a.created).slice(0, 8);
+    el.innerHTML =
+      '<div class="aibox" style="margin-bottom:16px"><div class="aihead">✦ This week, in brief</div>' + brief(rows, m) + '<div class="ainote">Built-in summary from your workspace data.</div></div>'
+      + '<div class="lead-cards">'
+      + card('Objective coverage', pct(m.coverage), 'Open work linked to an objective')
+      + card('Commitment reliability', pct(m.reliability), m.closedN + ' closed, on time')
+      + card('Decision latency', fmtH(m.decLatency), 'Average time to full acknowledgement (' + m.decN + ')')
+      + card('Blocker resolution', fmtH(m.blkRes), 'Average time to clear a blocker (' + m.blkN + ')')
+      + card('Drift', m.drift, 'Objectives quiet for 14 days')
+      + card('Team health', m.health === null ? '—' : m.health.toFixed(1) + '/10', m.health === null ? 'Shown once 3 people answer the pulse' : 'Anonymous team average')
+      + '</div>'
+      + '<h2 class="sectiontitle">Impact on outcomes</h2>'
+      + '<div class="panel"><div class="panelbody" style="padding:4px 16px;overflow:auto">'
+      + '<table class="dtable"><thead><tr><th>Objective</th><th>Open</th><th>Impact (KPI)</th><th>Status</th><th></th></tr></thead><tbody>'
+      + rows.map(r => '<tr><td><b>' + esc(r.o.name) + '</b><div class="subtle">' + esc(r.warn.join(' · ') || 'No warnings') + '</div></td>'
+          + '<td>' + r.open + (r.od ? ' <span class="status red">' + r.od + ' overdue</span>' : '') + '</td>'
+          + '<td>' + (r.k
+              ? '<div>' + esc(r.o.kpi.name) + ': <b>' + esc(String(r.o.kpi.current)) + '</b> of ' + esc(String(r.o.kpi.target)) + '</div><div class="goalbar" style="margin:6px 0 0;height:6px"><div style="width:' + r.k.p + '%"></div></div>'
+              : '<span class="subtle">No KPI set</span>') + '</td>'
+          + '<td>' + (r.k ? '<span class="status ' + (r.k.status === 'on track' ? 'green' : r.k.status === 'at risk' ? 'orange' : 'red') + '">' + r.k.status + '</span>' : '—') + '</td>'
+          + '<td><button class="btn sm" data-kpi="' + esc(r.o.id) + '">' + (r.k ? 'Update KPI' : 'Set KPI') + '</button></td></tr>').join('')
+      + '</tbody></table></div></div>'
+      + '<h2 class="sectiontitle">Early warnings</h2>'
+      + (warnings.length
+          ? warnings.map(r => '<div class="insight ' + (r.od ? 'high' : 'med') + '"><div class="ic">' + haIc(r.od ? 'alert' : 'eye') + '</div><div class="tx"><b>' + esc(r.o.name) + '</b>: ' + esc(r.warn.join(', ')) + '.</div></div>').join('')
+          : '<div class="empty">No early warnings. Keep the rhythm going.</div>')
+      + '<h2 class="sectiontitle">Possible duplicate or competing work</h2>'
+      + (con.length
+          ? con.map(c => '<div class="insight med"><div class="ic">' + haIc('search') + '</div><div class="tx">“' + esc(short(c.x.text, 70)) + '” and “' + esc(short(c.y.text, 70)) + '” look alike, from different people. Check they are not duplicated.</div></div>').join('')
+          : '<div class="empty">Nothing similar found.</div>')
+      + '<h2 class="sectiontitle">Decision log</h2>'
+      + (decisions.length
+          ? decisions.map(d => '<div class="insight low"><div class="ic">' + haIc('check') + '</div><div class="tx"><b>' + esc(short(d.text, 110)) + '</b><div class="subtle">' + esc(pById(d.from)?.name || '') + ' · ' + ago(d.created) + ' · ' + Object.keys(d.acks || {}).length + '/' + d.to.length + ' acknowledged</div></div></div>').join('')
+          : '<div class="empty">No decisions logged yet.</div>');
+  }
+
+  /* Set or update an objective's KPI (the impact measure) */
+  document.addEventListener('click', async e => {
+    const b = e.target.closest('[data-kpi]');
+    if(!b) return;
+    const o = state.objectives.find(x => x.id === b.dataset.kpi);
+    if(!o) return;
+    const name = await ask({ title: 'KPI name', text: 'The measure this objective should move, for example "Renewals signed" or "Client satisfaction (%)".', input: o.kpi ? o.kpi.name : '', ok: 'Next' });
+    if(name === null || !String(name).trim()) return;
+    const target = await ask({ title: 'Target', text: 'What does success look like?', input: o.kpi ? String(o.kpi.target) : '', ok: 'Next' });
+    if(target === null || !(+target > 0)) return;
+    const current = await ask({ title: 'Current value', text: 'Where are we now?', input: o.kpi ? String(o.kpi.current) : '0', ok: 'Save' });
+    if(current === null) return;
+    o.kpi = { name: String(name).trim(), target: +target, current: +current || 0 };
+    save(); renderAll(); toast('KPI saved');
+  });
+
+  /* Keep the page current with every update */
+  const _renderAll = renderAll;
+  renderAll = function(){ _renderAll(); renderLead(); };
+  renderLead();
+})();
+</script>
+<style>
+.lead-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.lead-card .num{font-size:24px}
+.sectiontitle{font-size:17px;margin:22px 0 10px}
+@media(max-width:820px){.lead-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.lead-cards{grid-template-columns:1fr}}
+</style>
+
 </body>
 </html>
