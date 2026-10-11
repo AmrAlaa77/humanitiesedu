@@ -123,6 +123,7 @@ body.live .local-only{display:none!important}body:not(.live) .live-only{display:
 .help-note li{margin:5px 0}
 .help-hi{background:#fff7e6;border-color:#f0c36b}
 .help-sos{font-size:12.5px;color:#7a4b00;margin:6px 0 0}
+.calm-out{margin-top:8px;background:#f4fbfa;border:1px solid #cdeee8;border-radius:10px;padding:10px 12px;line-height:1.55;font-size:14px}
 .manual{max-width:860px}.manual .toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}.manual .toc a{text-decoration:none}.manual h2{font-size:20px;margin:30px 0 8px;scroll-margin-top:16px}.manual p,.manual li{line-height:1.65;color:#3a3e45;font-size:14.5px}.manual ul,.manual ol{padding-left:20px;margin:8px 0}.manual .note{border:1px solid #99e0d6;background:#effaf8;border-left:4px solid var(--ai);border-radius:10px;padding:14px 16px;margin:14px 0}.manual .note strong{color:#0b766f}.manual .tip{border:1px solid #bfead3;background:#eefcf5;border-left:4px solid var(--green);border-radius:10px;padding:12px 16px;margin:14px 0}.manual kbd{background:#f1f3f5;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12.5px}
 .photo-edit{display:flex;align-items:center;gap:14px;margin-bottom:14px}
 @media(max-width:1100px){.pillars{grid-template-columns:1fr 1fr}.ovgrid{grid-template-columns:1fr}.memb{grid-template-columns:44px 1fr repeat(2,70px)}.memb .hide-md{display:none}.comp-row{grid-template-columns:1fr 1fr}}
@@ -217,7 +218,7 @@ body.live .local-only{display:none!important}body:not(.live) .live-only{display:
         <div id="lpPick"></div>
         <textarea id="lpText" placeholder="Share an update, make a request, or commit to something… (Align AI reads as you type)"></textarea>
         <div class="aisuggest" id="lpAI"></div>
-        <div class="comp-foot"><label class="inl"><input type="checkbox" id="lpAck" checked> Require acknowledgement</label><button class="btn sm ai ai-only" id="lpAIWrite">✦ Communication Coach</button><button class="btn sm" id="lpCheckin">✎ Daily check-in template</button><span class="grow subtle" id="lpPreview"></span><button class="btn ai" id="lpPost">Post</button></div>
+        <div class="comp-foot"><label class="inl"><input type="checkbox" id="lpAck" checked> Require acknowledgement</label><button class="btn sm ai" id="lpAIWrite">✦ Communication Coach</button><button class="btn sm" id="lpCheckin">✎ Daily check-in template</button><span class="grow subtle" id="lpPreview"></span><button class="btn ai" id="lpPost">Post</button></div>
       </div></div>
       <div class="filterbar" id="loopTabs" style="margin-top:18px"></div>
       <div id="loopFeed"></div>
@@ -576,7 +577,34 @@ function startLocal(){hideGate();document.body.classList.remove('live');renderAl
 /* ---------- Align AI on Claude (live workspace only) ---------- */
 const aiBrief={};
 function aiErr(e){const c=e&&e.code;if(['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].includes(c)){SAMPLE=null;document.body.classList.remove('has-ai');return 'Claude is not available for this account, so Align AI uses its built-in rules.'}if(c==='rate_limited')return 'Claude is busy or your usage limit was reached. Try again later.';if(c==='cancelled')return '';if(c==='session_expired')return 'Please sign in to Claude again.';return 'Claude could not answer just now. Try again.'}
-async function writeWithAI(){const t=document.getElementById('lpText').value.trim();if(!t)return toast('Write a rough draft first');if(!SAMPLE)return;const btn=document.getElementById('lpAIWrite');btn.disabled=true;btn.textContent='✦ Thinking…';
+/* Communication Coach (built-in, works without Claude): softens tense wording and reports the tone */
+const TENSE=[
+  [/this is the (third|second|\w+) time i('| a)?m asking\.?/ig,"I'd like to follow up on this again."],
+  [/why is this still not done\??/ig,"could you share where this stands?"],
+  [/why (haven't|havent|hasn't|hasnt) (you|it|this)[^.?!]*[.?!]?/ig,"could you let me know what is holding this up?"],
+  [/why is (this|it) (still )?(not|taking so long)[^.?!]*[.?!]?/ig,"could you let me know what is holding this up?"],
+  [/\bfor the last time,?\s*/ig,""],
+  [/\bseriously,?\s*/ig,""],
+  [/\basap\b/ig,"as soon as you can"],
+  [/\bunacceptable\b/ig,"not where we need it to be"],
+  [/\byou (never|always)\b/ig,"I have noticed that you often"],
+  [/\bi need this now\b/ig,"could we prioritise this"],
+  [/\bcan'?t send anything\b/ig,"we are not yet able to send anything"],
+  [/\bstill waiting\b/ig,"still following up"]
+];
+function calmRewrite(t){
+  let hits=0,s=t;
+  TENSE.forEach(([re,rep])=>{s=s.replace(re,()=>{hits++;return rep})});
+  const caps=(s.match(/\b[A-Z]{3,}\b/g)||[]).length; if(caps) hits+=caps;
+  s=s.replace(/\b([A-Z])([A-Z]{2,})\b/g,(m,a,b)=>a+b.toLowerCase());
+  const marks=(s.match(/[!?]{2,}/g)||[]).length; if(marks) hits+=marks;
+  s=s.replace(/[!?]{2,}/g,'.').replace(/!/g,'.').replace(/\s{2,}/g,' ').trim();
+  s=s.split(/(?<=[.?!])\s+/).map(x=>{x=x.trim();if(/^(could|can|would|will|do|does|is|are|when|what|where|why|how)\b/i.test(x))x=x.replace(/[.]+$/,'?');return x.charAt(0).toUpperCase()+x.slice(1)}).join(' ');
+  if(s && !/[.?]$/.test(s)) s+='.';
+  if(!/\?\s*$|blocking|help/i.test(s)) s=s+' Is anything blocking this on your side? I am happy to help.';
+  return {text:s,tense:hits>0,hits};
+}
+async function writeWithAI(){const t=document.getElementById('lpText').value.trim();if(!t)return toast('Write a rough draft first');if(!SAMPLE){const r=calmRewrite(t);const box=document.getElementById('lpAI');box.classList.add('show');box.innerHTML='<strong style="color:#0b5f59">✦ Communication Coach</strong> Tone: <b>'+(r.tense?'tense':'already calm')+'</b>. Calmer version:<div class="calm-out">'+esc(r.text)+'</div><div style="display:flex;gap:8px;margin-top:8px"><button class="btn sm ai" id="calmUse">Use calmer version</button><button class="btn sm" id="calmKeep">Keep mine</button></div><div class="ainote">Built-in calm rewrite. The live workspace uses Claude for fuller rewrites.</div>';document.getElementById('calmUse').onclick=()=>{document.getElementById('lpText').value=r.text;box.classList.remove('show');toast('Calmer version applied')};document.getElementById('calmKeep').onclick=()=>box.classList.remove('show');return;}if(!SAMPLE)return;const btn=document.getElementById('lpAIWrite');btn.disabled=true;btn.textContent='✦ Thinking…';
   const me=pById(state.me);const people=state.people.filter(p=>p.id!==state.me).map(p=>({id:p.id,role:p.name,department:dept(p.dept)?.name||'',reportsTo:pById(p.managerId)?.name||''}));
   const prompt=`You help a team member write a clear message in a workplace follow-through tool.
 Today is ${todayISO()} (${WD[new Date().getDay()]}).
@@ -1100,5 +1128,103 @@ document.getElementById('pmRelease').onclick=async()=>{const p=pById(editPersonI
 (function(){const m={overview:'sparkles',loop:'refresh',priorities:'rank',waiting:'hourglass',capture:'inbox',reset:'reset',index:'gauge',objectives:'target',oversight:'eye',org:'org',manual:'book',search:'search',inbox:'inbox',today:'calendar',upcoming:'calendar',calendar:'calendar',filters:'tag',board:'board',team:'users',workqueue:'phone',comments:'msg',notifications:'bell',settings:'settings'};document.querySelectorAll('.navitem[data-nav]').forEach(n=>{const sp=n.querySelector('span');if(sp&&m[n.dataset.nav])sp.innerHTML=haIc(m[n.dataset.nav])});const add=document.querySelector('#sideAdd span');if(add)add.innerHTML=haIc('plus');const ib={menuBtn:'menu',quickAdd:'plus',exportBtn:'download',importBtn:'upload'};Object.entries(ib).forEach(([id,n])=>{const b=document.getElementById(id);if(b)b.innerHTML=haIc(n)});const nb=document.querySelector('.iconbtn[data-nav="notifications"]');if(nb){const bd=nb.querySelector('.badge');nb.innerHTML=haIc('bell');if(bd)nb.appendChild(bd)}const ts=document.querySelector('.top-search span');if(ts)ts.innerHTML=haIc('search')})();
 boot();
 </script>
+<script>
+/* ---- Voice: speak instead of typing, and spoken near-miss reminders ---- */
+(function(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const hasTTS = 'speechSynthesis' in window;
+  function getLang(){ try { return localStorage.getItem('HA_lang') === 'ar' ? 'ar-SA' : 'en-GB'; } catch(e){ return 'en-GB'; } }
+  function setLang(v){ try { localStorage.setItem('HA_lang', v); } catch(e){} }
+  function speak(text){
+    if(!hasTTS){ toast('Spoken reminders are not supported in this browser'); return; }
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = getLang(); u.rate = 0.95;
+    speechSynthesis.speak(u);
+  }
+
+  /* 🎤 Speak button: adds spoken words to a text box */
+  function addMic(ta){
+    if(!SR || !ta || ta.dataset.mic) return;
+    ta.dataset.mic = '1';
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'btn sm mic-btn';
+    b.textContent = '🎤 Speak';
+    b.setAttribute('aria-label', 'Speak instead of typing');
+    ta.insertAdjacentElement('afterend', b);
+    let rec = null;
+    b.onclick = () => {
+      if(rec){ rec.stop(); return; }
+      rec = new SR();
+      rec.lang = getLang(); rec.interimResults = false; rec.continuous = false;
+      rec.onresult = e => {
+        const said = e.results[0][0].transcript;
+        ta.value = (ta.value ? ta.value.trim() + ' ' : '') + said;
+        ta.dispatchEvent(new Event('input'));
+      };
+      rec.onend = () => { rec = null; b.textContent = '🎤 Speak'; };
+      rec.onerror = () => { rec = null; b.textContent = '🎤 Speak'; toast('Could not hear you. Check the microphone permission.'); };
+      b.textContent = '● Listening…';
+      rec.start();
+    };
+  }
+
+  /* Near-miss: items due today or tomorrow that involve you */
+  function nearItems(){
+    const t = todayISO(), tm = addDaysISO(1), me = state.me, out = [];
+    state.loop.forEach(it => {
+      if(it.status === 'done' || !(it.due === t || it.due === tm) || !canSee(it)) return;
+      if(!(it.to.includes(me) || it.from === me)) return;
+      out.push({ txt: it.text, due: it.due, kind: it.type.toLowerCase() });
+    });
+    state.tasks.forEach(k => {
+      if(k.done || !(k.due === t || k.due === tm) || k.assignee !== me) return;
+      out.push({ txt: k.name, due: k.due, kind: 'task' });
+    });
+    return out;
+  }
+  function nearText(list){
+    if(!list.length) return 'Nothing is due today or tomorrow. Well done.';
+    const head = 'You have ' + list.length + (list.length === 1 ? ' item' : ' items') + ' due today or tomorrow. ';
+    return head + list.slice(0, 5).map(x => (x.due === todayISO() ? 'Due today: ' : 'Due tomorrow: ') + x.txt + '.').join(' ');
+  }
+  function renderNear(){
+    const host = document.getElementById('nearBox');
+    if(!host) return;
+    const list = nearItems();
+    const lang = getLang() === 'ar-SA' ? 'ar' : 'en';
+    host.innerHTML = '<div class="near-box">'
+      + '<div class="near-head"><b>Near-miss reminders</b><span>Due today or tomorrow</span>'
+      + '<select id="nearLang" aria-label="Voice language"><option value="en"' + (lang === 'en' ? ' selected' : '') + '>English</option><option value="ar"' + (lang === 'ar' ? ' selected' : '') + '>العربية</option></select>'
+      + '<button class="btn sm ai" id="nearSpeak">🔊 Hear them</button></div>'
+      + (list.length
+          ? list.slice(0, 6).map(x => '<div class="near-row"><span class="near-due">' + (x.due === todayISO() ? 'Today' : 'Tomorrow') + '</span>' + esc(short(x.txt, 90)) + '</div>').join('')
+          : '<div class="subtle" style="padding:6px 0">Nothing due today or tomorrow.</div>')
+      + '</div>';
+    document.getElementById('nearSpeak').onclick = () => speak(nearText(nearItems()));
+    document.getElementById('nearLang').onchange = e => { setLang(e.target.value === 'ar' ? 'ar' : 'en'); renderNear(); };
+  }
+
+  /* Wire it in */
+  const host = document.getElementById('moodBox');
+  if(host) host.insertAdjacentHTML('afterend', '<div id="nearBox"></div>');
+  addMic(document.getElementById('lpText'));
+  addMic(document.getElementById('capText'));
+  const _renderAll = renderAll;
+  renderAll = function(){ _renderAll(); renderNear(); };
+  renderNear();
+})();
+</script>
+<style>
+.mic-btn{margin-top:6px}
+.near-box{background:#f4fbfa;border:1px solid #cdeee8;border-radius:12px;padding:12px 14px;margin:12px 0}
+.near-head{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.near-head span{color:var(--muted);font-size:12.5px}
+.near-head select{width:auto;padding:6px 8px;font-size:13px}
+.near-head .btn{margin-left:auto}
+.near-row{display:flex;gap:10px;align-items:center;padding:8px 0;border-top:1px solid #e2f1ee;font-size:14px}
+.near-due{font-size:11px;font-weight:800;text-transform:uppercase;color:#8a5a00;background:#fff1cf;border-radius:8px;padding:2px 7px;white-space:nowrap}
+</style>
+
 </body>
 </html>
