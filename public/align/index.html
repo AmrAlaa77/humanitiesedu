@@ -521,14 +521,14 @@ function makeDemo(){const now=Date.now();return {
     {id:'c3',name:'HR Business Partner',company:'Vertex Group',phone:'+971 50 555 1900',email:'hr@vertex.ae',status:'Active',title:'',activities:[{type:'Meeting',text:'Discovery meeting completed',date:'2 days ago'}],notes:'Existing client.'}
   ],
   pulse:[],
-  meetings:[],notifications:[{id:'n1',to:'u1',text:'Head of Sales asked you: “Can we review the Q1 hiring plan together?”',read:false,at:now-4*H},{id:'n2',to:'u1',text:'“Write agenda for Monday’s meeting” is due tomorrow.',read:false,at:now-3*H},{id:'n3',to:'u3',text:'Sales Executive raised a blocker: pricing sign-off for Vertex.',read:false,at:now-30*H}]
+  meetings:[],oneonones:[],notifications:[{id:'n1',to:'u1',text:'Head of Sales asked you: “Can we review the Q1 hiring plan together?”',read:false,at:now-4*H},{id:'n2',to:'u1',text:'“Write agenda for Monday’s meeting” is due tomorrow.',read:false,at:now-3*H},{id:'n3',to:'u3',text:'Sales Executive raised a blocker: pricing sign-off for Vertex.',read:false,at:now-30*H}]
 }}
 const demo=makeDemo();
 
 let state=load(), currentView='overview', selectedTaskId=null, selectedContactId=null, activeFilter='All', call={contactId:null,start:null,timer:null};
 let loopTab='inbox', loopPerson=null, focusItem=null, ovManager=null, editPersonId=null, pmPhoto=null;
 let pick={people:new Set(),depts:new Set()};
-function normalize(x){const d=makeDemo();['departments','people','objectives','loop','projects','tasks','contacts','notifications','pulse','meetings'].forEach(k=>{if(!Array.isArray(x[k]))x[k]=d[k]});if(!x.me||!x.people.find(p=>p.id===x.me))x.me=x.people[0]?.id;x.loop.forEach(i=>{i.to=i.to||[];i.acks=i.acks||{};i.replies=i.replies||[];i.escalatedTo=i.escalatedTo||[]});return x}
+function normalize(x){const d=makeDemo();['departments','people','objectives','loop','projects','tasks','contacts','notifications','pulse','meetings','oneonones'].forEach(k=>{if(!Array.isArray(x[k]))x[k]=d[k]});if(!x.me||!x.people.find(p=>p.id===x.me))x.me=x.people[0]?.id;x.loop.forEach(i=>{i.to=i.to||[];i.acks=i.acks||{};i.replies=i.replies||[];i.escalatedTo=i.escalatedTo||[]});return x}
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY)); if(x&&x.tasks&&x.projects)return normalize(x)}catch(e){} return clone(demo)}
 function save(){if(LIVE)return liveSave();try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){toast('Could not save in this browser — export a backup')}}
 
@@ -537,7 +537,7 @@ function save(){if(LIVE)return liveSave();try{localStorage.setItem(KEY,JSON.stri
    Local actions mutate `state` then call save(), which writes only the fields
    that changed (field-level merge), so two people acting on the same item
    don't overwrite each other's acknowledgements or replies. */
-const COLS={people:'seats',departments:'departments',objectives:'objectives',loop:'loop',projects:'projects',tasks:'tasks',contacts:'contacts',notifications:'notifications',pulse:'pulse',meetings:'meetings'};
+const COLS={people:'seats',departments:'departments',objectives:'objectives',loop:'loop',projects:'projects',tasks:'tasks',contacts:'contacts',notifications:'notifications',pulse:'pulse',meetings:'meetings',oneonones:'oneonones'};
 let LIVE=null, SAMPLE=null, readOnly=false;const loaded=new Set(), synced={}, writeChains={};
 function isObj(x){return !!x&&typeof x==='object'&&!Array.isArray(x)}
 function diffObj(a,b){const out={};let n=0;new Set([...Object.keys(a||{}),...Object.keys(b||{})]).forEach(k=>{const x=a?.[k],y=b?.[k];if(isObj(x)&&isObj(y)){const d=diffObj(x,y);if(d){out[k]=d;n++}}else if(JSON.stringify(x)!==JSON.stringify(y)){out[k]=y===undefined?null:y;n++}});return n?out:null}
@@ -1618,6 +1618,86 @@ const MIC_HTML = '<svg class="mic-ic" viewBox="0 0 24 24" aria-hidden="true"><de
 .mt-row label{margin:0}
 .mt-row input,.mt-row select{width:100%}
 @media(max-width:700px){.mt-row{grid-template-columns:1fr}}
+</style>
+
+<script>
+/* ---- 1:1 support: request a private 1:1 for wellbeing or productivity; you choose the recipient ---- */
+(function(){
+  const TOPICS = { wellbeing: 'Wellbeing', productivity: 'Productivity' };
+
+  function hrPerson(){ return state.people.find(p => (dept(p.dept) || {}).name === 'People & Culture') || null; }
+  function myRequests(){ return (state.oneOnOnes || []).filter(r => r.from === state.me).slice(0, 6); }
+
+  function formHTML(){
+    const mgr = managerOf(state.me) ? pById(managerOf(state.me)) : null;
+    const hr = hrPerson();
+    const opts = [];
+    if(mgr) opts.push('<option value="manager">My manager (' + esc(mgr.name) + ')</option>');
+    if(hr && (!mgr || hr.id !== mgr.id)) opts.push('<option value="hr">HR (' + esc(hr.name) + ')</option>');
+    if(!opts.length) return '<div class="subtle">No manager or HR contact is set on the org chart yet.</div>';
+    const reqs = myRequests();
+    return '<div class="oo-box"><div class="oo-head"><b>Request a private 1:1</b><span>You choose who receives it. Only they see the details.</span></div>'
+      + '<div class="oo-row"><label>Send to<select id="ooTo">' + opts.join('') + '</select></label>'
+      + '<label>Topic<select id="ooTopic"><option value="wellbeing">Wellbeing</option><option value="productivity">Productivity</option></select></label></div>'
+      + '<label style="display:block;margin-top:8px">What would help? (optional)<textarea id="ooNote" placeholder="Share as much or as little as you like."></textarea></label>'
+      + '<p style="margin:8px 0 0"><button class="btn ai" id="ooSend">Request 1:1</button></p>'
+      + (reqs.length ? '<div class="oo-list"><div class="subtle" style="font-weight:700;margin-top:10px">Your requests</div>' + reqs.map(r =>
+          '<div class="oo-item"><span>' + (r.to === 'hr' ? 'HR' : 'Manager') + ' · ' + TOPICS[r.topic] + '</span><span class="status ' + (r.status === 'scheduled' ? 'green' : 'orange') + '">' + r.status + '</span><span class="subtle">' + ago(r.created) + '</span></div>').join('') + '</div>' : '')
+      + '</div>';
+  }
+
+  function addForm(){
+    const host = document.querySelector('#supportNote .help-note');
+    if(!host) return;
+    const old = host.querySelector('.oo-box'); if(old) old.remove();
+    host.insertAdjacentHTML('beforeend', formHTML());
+    const ta = document.getElementById('ooNote');
+    if(ta){
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if(SR && !ta.dataset.mic){
+        ta.dataset.mic = '1';
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'btn sm mic-btn';
+        b.innerHTML = MIC_HTML; ta.insertAdjacentElement('afterend', b);
+        let rec = null;
+        b.onclick = () => {
+          if(rec){ rec.stop(); return; }
+          rec = new SR(); rec.lang = 'en-GB'; rec.interimResults = false;
+          rec.onresult = e => { ta.value = (ta.value ? ta.value.trim() + ' ' : '') + e.results[0][0].transcript; };
+          rec.onend = () => { rec = null; b.innerHTML = MIC_HTML; };
+          rec.onerror = () => { rec = null; b.innerHTML = MIC_HTML; toast('Could not hear you. Check the microphone permission.'); };
+          rec.start();
+        };
+      }
+    }
+  }
+
+  document.addEventListener('click', e => {
+    if(!e.target.closest('#ooSend')) return;
+    const to = document.getElementById('ooTo').value;
+    const topic = document.getElementById('ooTopic').value;
+    const note = (document.getElementById('ooNote').value || '').trim();
+    const recipient = to === 'hr' ? hrPerson() : pById(managerOf(state.me));
+    if(!recipient) return toast('Choose a recipient first');
+    state.oneOnOnes = state.oneOnOnes || [];
+    state.oneOnOnes.unshift({ id: 'oo' + Date.now(), from: state.me, to, toId: recipient.id, topic, note, status: 'requested', created: Date.now() });
+    notify(recipient.id, 'A private 1:1 was requested (' + TOPICS[topic] + ')' + (note ? ': “' + short(note, 80) + '”' : '.'));
+    save(); renderAll(); toast('Request sent privately');
+  });
+
+  const _rs = renderSupport;
+  renderSupport = function(){ _rs(); addForm(); };
+  renderSupport();
+})();
+</script>
+<style>
+.oo-box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:10px}
+.oo-head{display:flex;flex-direction:column;gap:2px;margin-bottom:8px}
+.oo-head span{font-size:12.5px;color:var(--muted)}
+.oo-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.oo-row label{margin:0}
+.oo-row select{width:100%}
+.oo-item{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:6px 0;border-top:1px solid var(--line);font-size:13px}
+@media(max-width:560px){.oo-row{grid-template-columns:1fr}}
 </style>
 
 </body>
