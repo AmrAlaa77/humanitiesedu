@@ -124,6 +124,8 @@ body.live .local-only{display:none!important}body:not(.live) .live-only{display:
 .help-hi{background:#fff7e6;border-color:#f0c36b}
 .help-sos{font-size:12.5px;color:#7a4b00;margin:6px 0 0}
 .calm-out{margin-top:8px;background:#f4fbfa;border:1px solid #cdeee8;border-radius:10px;padding:10px 12px;line-height:1.55;font-size:14px}
+.mic-btn{display:inline-flex;align-items:center;gap:8px;font-weight:800;color:#14201f;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(90deg,#6f5ce6,#0fa39a) border-box;border:2px solid transparent;border-radius:14px;padding:6px 14px;box-shadow:0 2px 8px rgba(6,58,64,.10);cursor:pointer}
+.mic-ic{width:18px;height:18px;flex:0 0 auto}
 .manual{max-width:860px}.manual .toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}.manual .toc a{text-decoration:none}.manual h2{font-size:20px;margin:30px 0 8px;scroll-margin-top:16px}.manual p,.manual li{line-height:1.65;color:#3a3e45;font-size:14.5px}.manual ul,.manual ol{padding-left:20px;margin:8px 0}.manual .note{border:1px solid #99e0d6;background:#effaf8;border-left:4px solid var(--ai);border-radius:10px;padding:14px 16px;margin:14px 0}.manual .note strong{color:#0b766f}.manual .tip{border:1px solid #bfead3;background:#eefcf5;border-left:4px solid var(--green);border-radius:10px;padding:12px 16px;margin:14px 0}.manual kbd{background:#f1f3f5;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12.5px}
 .photo-edit{display:flex;align-items:center;gap:14px;margin-bottom:14px}
 @media(max-width:1100px){.pillars{grid-template-columns:1fr 1fr}.ovgrid{grid-template-columns:1fr}.memb{grid-template-columns:44px 1fr repeat(2,70px)}.memb .hide-md{display:none}.comp-row{grid-template-columns:1fr 1fr}}
@@ -519,14 +521,14 @@ function makeDemo(){const now=Date.now();return {
     {id:'c3',name:'HR Business Partner',company:'Vertex Group',phone:'+971 50 555 1900',email:'hr@vertex.ae',status:'Active',title:'',activities:[{type:'Meeting',text:'Discovery meeting completed',date:'2 days ago'}],notes:'Existing client.'}
   ],
   pulse:[],
-  notifications:[{id:'n1',to:'u1',text:'Head of Sales asked you: “Can we review the Q1 hiring plan together?”',read:false,at:now-4*H},{id:'n2',to:'u1',text:'“Write agenda for Monday’s meeting” is due tomorrow.',read:false,at:now-3*H},{id:'n3',to:'u3',text:'Sales Executive raised a blocker: pricing sign-off for Vertex.',read:false,at:now-30*H}]
+  meetings:[],notifications:[{id:'n1',to:'u1',text:'Head of Sales asked you: “Can we review the Q1 hiring plan together?”',read:false,at:now-4*H},{id:'n2',to:'u1',text:'“Write agenda for Monday’s meeting” is due tomorrow.',read:false,at:now-3*H},{id:'n3',to:'u3',text:'Sales Executive raised a blocker: pricing sign-off for Vertex.',read:false,at:now-30*H}]
 }}
 const demo=makeDemo();
 
 let state=load(), currentView='overview', selectedTaskId=null, selectedContactId=null, activeFilter='All', call={contactId:null,start:null,timer:null};
 let loopTab='inbox', loopPerson=null, focusItem=null, ovManager=null, editPersonId=null, pmPhoto=null;
 let pick={people:new Set(),depts:new Set()};
-function normalize(x){const d=makeDemo();['departments','people','objectives','loop','projects','tasks','contacts','notifications','pulse'].forEach(k=>{if(!Array.isArray(x[k]))x[k]=d[k]});if(!x.me||!x.people.find(p=>p.id===x.me))x.me=x.people[0]?.id;x.loop.forEach(i=>{i.to=i.to||[];i.acks=i.acks||{};i.replies=i.replies||[];i.escalatedTo=i.escalatedTo||[]});return x}
+function normalize(x){const d=makeDemo();['departments','people','objectives','loop','projects','tasks','contacts','notifications','pulse','meetings'].forEach(k=>{if(!Array.isArray(x[k]))x[k]=d[k]});if(!x.me||!x.people.find(p=>p.id===x.me))x.me=x.people[0]?.id;x.loop.forEach(i=>{i.to=i.to||[];i.acks=i.acks||{};i.replies=i.replies||[];i.escalatedTo=i.escalatedTo||[]});return x}
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY)); if(x&&x.tasks&&x.projects)return normalize(x)}catch(e){} return clone(demo)}
 function save(){if(LIVE)return liveSave();try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){toast('Could not save in this browser — export a backup')}}
 
@@ -535,7 +537,7 @@ function save(){if(LIVE)return liveSave();try{localStorage.setItem(KEY,JSON.stri
    Local actions mutate `state` then call save(), which writes only the fields
    that changed (field-level merge), so two people acting on the same item
    don't overwrite each other's acknowledgements or replies. */
-const COLS={people:'seats',departments:'departments',objectives:'objectives',loop:'loop',projects:'projects',tasks:'tasks',contacts:'contacts',notifications:'notifications',pulse:'pulse'};
+const COLS={people:'seats',departments:'departments',objectives:'objectives',loop:'loop',projects:'projects',tasks:'tasks',contacts:'contacts',notifications:'notifications',pulse:'pulse',meetings:'meetings'};
 let LIVE=null, SAMPLE=null, readOnly=false;const loaded=new Set(), synced={}, writeChains={};
 function isObj(x){return !!x&&typeof x==='object'&&!Array.isArray(x)}
 function diffObj(a,b){const out={};let n=0;new Set([...Object.keys(a||{}),...Object.keys(b||{})]).forEach(k=>{const x=a?.[k],y=b?.[k];if(isObj(x)&&isObj(y)){const d=diffObj(x,y);if(d){out[k]=d;n++}}else if(JSON.stringify(x)!==JSON.stringify(y)){out[k]=y===undefined?null:y;n++}});return n?out:null}
@@ -1130,6 +1132,7 @@ boot();
 </script>
 <script>
 /* ---- Voice: speak instead of typing, and spoken near-miss reminders ---- */
+const MIC_HTML = '<svg class="mic-ic" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="micG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6f5ce6"/><stop offset="1" stop-color="#0fa39a"/></linearGradient></defs><rect x="9" y="2" width="6" height="12" rx="3" fill="url(#micG)"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4M8 22h8" fill="none" stroke="url(#micG)" stroke-width="2" stroke-linecap="round"/></svg> Speak';
 (function(){
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   const hasTTS = 'speechSynthesis' in window;
@@ -1149,7 +1152,7 @@ boot();
     ta.dataset.mic = '1';
     const b = document.createElement('button');
     b.type = 'button'; b.className = 'btn sm mic-btn';
-    b.textContent = '🎤 Speak';
+    b.innerHTML = MIC_HTML;
     b.setAttribute('aria-label', 'Speak instead of typing');
     ta.insertAdjacentElement('afterend', b);
     let rec = null;
@@ -1162,8 +1165,8 @@ boot();
         ta.value = (ta.value ? ta.value.trim() + ' ' : '') + said;
         ta.dispatchEvent(new Event('input'));
       };
-      rec.onend = () => { rec = null; b.textContent = '🎤 Speak'; };
-      rec.onerror = () => { rec = null; b.textContent = '🎤 Speak'; toast('Could not hear you. Check the microphone permission.'); };
+      rec.onend = () => { rec = null; b.innerHTML = MIC_HTML; };
+      rec.onerror = () => { rec = null; b.innerHTML = MIC_HTML; toast('Could not hear you. Check the microphone permission.'); };
       b.textContent = '● Listening…';
       rec.start();
     };
@@ -1359,10 +1362,7 @@ boot();
       + (con.length
           ? con.map(c => '<div class="insight med"><div class="ic">' + haIc('search') + '</div><div class="tx">“' + esc(short(c.x.text, 70)) + '” and “' + esc(short(c.y.text, 70)) + '” look alike, from different people. Check they are not duplicated.</div></div>').join('')
           : '<div class="empty">Nothing similar found.</div>')
-      + '<h2 class="sectiontitle">Decision log</h2>'
-      + (decisions.length
-          ? decisions.map(d => '<div class="insight low"><div class="ic">' + haIc('check') + '</div><div class="tx"><b>' + esc(short(d.text, 110)) + '</b><div class="subtle">' + esc(pById(d.from)?.name || '') + ' · ' + ago(d.created) + ' · ' + Object.keys(d.acks || {}).length + '/' + d.to.length + ' acknowledged</div></div></div>').join('')
-          : '<div class="empty">No decisions logged yet.</div>');
+      + '';
   }
 
   /* Set or update an objective's KPI (the impact measure) */
@@ -1393,6 +1393,231 @@ boot();
 .sectiontitle{font-size:17px;margin:22px 0 10px}
 @media(max-width:820px){.lead-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.lead-cards{grid-template-columns:1fr}}
+</style>
+
+<script>
+/* ---- Access: Leadership metrics for leaders (people with reports) and the account owner only ---- */
+(function(){
+  function canLead(){
+    if(LIVE) return !!(LIVE.isOwner || LIVE.canEdit || directReports(state.me).length > 0);
+    /* demo: a leader has people reporting to them; the top of the chart stands in for the owner */
+    return directReports(state.me).length > 0 || !managerOf(state.me);
+  }
+  function applyAccess(){ document.body.classList.toggle('no-lead', !canLead()); }
+
+  const _navigate = navigate;
+  navigate = function(v){
+    if(v === 'leadership' && !canLead()) v = 'overview';
+    _navigate(v);
+    applyAccess();
+  };
+  const _renderAll = renderAll;
+  renderAll = function(){ _renderAll(); applyAccess(); };
+
+  const style = document.createElement('style');
+  style.textContent = 'body.no-lead .navitem[data-nav="leadership"], body.no-lead #view-leadership{display:none!important}';
+  document.head.appendChild(style);
+  applyAccess();
+})();
+</script>
+
+<script>
+/* ---- Leadership, part 2: closing reviews, decision reversals, meetings linked to outcomes ---- */
+(function(){
+  const WEEK_MS = 7 * DAY;
+
+  function kpiPct(o){
+    if(!o.kpi || !o.kpi.target) return null;
+    return Math.min(100, Math.round(100 * (+o.kpi.current || 0) / (+o.kpi.target)));
+  }
+  function wordSet(t){ return new Set((String(t).toLowerCase().match(/[a-z]{4,}/g)) || []); }
+  function similar(a, b){
+    const A = wordSet(a), B = wordSet(b);
+    if(!A.size || !B.size) return 0;
+    let inter = 0; A.forEach(w => { if(B.has(w)) inter++; });
+    return inter / (A.size + B.size - inter);
+  }
+  function canReverse(i){
+    return i.from === state.me || descendants(state.me).includes(i.from);
+  }
+
+  /* Facts about an objective, gathered from the workspace (not written by hand) */
+  function facts(o){
+    const li = state.loop.filter(i => i.goal === o.id);
+    const done = li.filter(i => i.status === 'done');
+    const onTime = done.filter(i => !i.due || (i.doneAt || 0) <= new Date(i.due + 'T23:59:59').getTime());
+    const od = li.filter(i => i.status !== 'done' && flagsOf(i).overdue).length;
+    return {
+      items: li.length, closed: done.length, overdue: od,
+      onTime: done.length ? Math.round(100 * onTime.length / done.length) : null,
+      kpi: o.kpi ? (o.kpi.name + ': ' + o.kpi.current + ' of ' + o.kpi.target + ' (' + kpiPct(o) + '%)') : 'no KPI set'
+    };
+  }
+
+  /* Small voice helper for the notes box (🎤 Speak) */
+  function micFor(ta){
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if(!SR || !ta || ta.dataset.mic) return;
+    ta.dataset.mic = '1';
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'btn sm mic-btn'; b.textContent = '🎤 Speak';
+    ta.insertAdjacentElement('afterend', b);
+    let rec = null;
+    b.onclick = () => {
+      if(rec){ rec.stop(); return; }
+      rec = new SR(); rec.lang = 'en-GB'; rec.interimResults = false; rec.continuous = false;
+      rec.onresult = e => { const said = e.results[0][0].transcript; ta.value = (ta.value ? ta.value.trim() + ' ' : '') + said; };
+      rec.onend = () => { rec = null; b.textContent = '🎤 Speak'; };
+      rec.onerror = () => { rec = null; b.textContent = '🎤 Speak'; toast('Could not hear you. Check the microphone permission.'); };
+      b.textContent = '● Listening…'; rec.start();
+    };
+  }
+
+  /* 1. Closing reviews for finished objectives */
+  function reviewsHTML(){
+    const closed = state.objectives.filter(o => o.status === 'closed');
+    const open = state.objectives.filter(o => o.status !== 'closed');
+    let h = '<h2 class="sectiontitle">Closed objective reviews</h2>';
+    h += closed.length ? closed.map(o => {
+      const f = facts(o), r = o.review || {};
+      return '<div class="panel review-card"><div class="panelbody">'
+        + '<div class="review-head"><b>' + esc(o.name) + '</b><span class="status green">Closed ' + (r.closedAt ? new Date(r.closedAt).toLocaleDateString('en-GB') : '') + '</span></div>'
+        + '<div class="review-facts">' + f.closed + ' of ' + f.items + ' items closed'
+        + (f.onTime !== null ? ' · ' + f.onTime + '% on time' : '') + (f.overdue ? ' · ' + f.overdue + ' still overdue' : '')
+        + ' · ' + esc(f.kpi) + '</div>'
+        + '<div class="review-q"><b>What worked:</b> ' + esc(r.worked || '—') + '</div>'
+        + '<div class="review-q"><b>What did not:</b> ' + esc(r.didnt || '—') + '</div>'
+        + '<div class="review-q"><b>What we will repeat:</b> ' + esc(r.repeat || '—') + '</div>'
+        + '<p style="margin:10px 0 0"><button class="btn sm" data-reopen="' + esc(o.id) + '">Reopen</button></p>'
+        + '</div></div>';
+    }).join('') : '<div class="empty">No closed objectives yet. Close one when its work is finished, and a review records what worked and what to repeat.</div>';
+    h += '<h3 class="subhead">Open objectives</h3>';
+    h += open.length ? open.map(o => '<div class="close-row"><span>' + esc(o.name) + '</span><button class="btn sm" data-close="' + esc(o.id) + '">Close and review</button></div>').join('')
+      : '<div class="subtle">No open objectives.</div>';
+    return h;
+  }
+
+  /* 2. Meetings linked to outcomes */
+  function meetingsHTML(){
+    const objOpts = state.objectives.map(o => '<option value="' + esc(o.id) + '">' + esc(o.name) + '</option>').join('');
+    let h = '<h2 class="sectiontitle">Meetings and outcomes</h2>'
+      + '<div class="panel"><div class="panelbody">'
+      + '<div class="mt-row"><label>Meeting<input id="mtTitle" type="text" placeholder="e.g. Weekly delivery review"></label>'
+      + '<label>Date<input id="mtDate" type="date" value="' + todayISO() + '"></label>'
+      + '<label>Objective<select id="mtObj">' + objOpts + '</select></label></div>'
+      + '<label style="display:block;margin-top:10px">What was agreed?<textarea id="mtNotes" placeholder="Speak or type the decisions and actions. Actions created in the next two days for this objective are linked automatically."></textarea></label>'
+      + '<p style="margin:10px 0 0"><button class="btn ai" data-meeting-save="1">Save meeting</button></p>'
+      + '</div></div>';
+    const meetings = (state.meetings || []).slice(0, 10);
+    h += meetings.length ? meetings.map(m => {
+      const o = state.objectives.find(x => x.id === m.objectiveId);
+      const start = new Date(m.date + 'T00:00:00').getTime();
+      const acts = state.loop.filter(i => i.goal === m.objectiveId && i.created >= start && i.created <= start + 2 * DAY);
+      const done = acts.filter(i => i.status === 'done').length;
+      const od = acts.filter(i => i.status !== 'done' && flagsOf(i).overdue).length;
+      const now = o ? kpiPct(o) : null;
+      const move = (m.kpiAtMeeting !== null && m.kpiAtMeeting !== undefined && now !== null) ? (now - m.kpiAtMeeting) : null;
+      return '<div class="panel meeting-card"><div class="panelbody">'
+        + '<div class="review-head"><b>' + esc(m.title) + '</b><span class="subtle">' + esc(m.date) + ' · ' + esc(o ? o.name : 'No objective') + '</span></div>'
+        + (m.notes ? '<div class="review-q">' + esc(short(m.notes, 220)) + '</div>' : '')
+        + '<div class="review-facts">' + acts.length + ' linked action' + (acts.length === 1 ? '' : 's')
+        + ' · ' + done + ' closed' + (od ? ' · ' + od + ' overdue' : '')
+        + (move !== null ? ' · impact ' + (move >= 0 ? '+' : '') + move + ' points since the meeting' : (o && o.kpi ? '' : ' · no KPI set'))
+        + '</div></div></div>';
+    }).join('') : '<div class="empty">Log a meeting to see which actions came from it and whether the objective moved afterwards.</div>';
+    return h;
+  }
+
+  /* 3. Decisions, with reversals tracked */
+  function decisionsHTML(){
+    const all = state.loop.filter(i => i.type === 'Decision' && canSee(i));
+    const cut = Date.now() - 90 * DAY;
+    const recent = all.filter(i => i.created >= cut);
+    const reversed = recent.filter(i => i.reversed);
+    const rate = recent.length ? Math.round(100 * reversed.length / recent.length) : null;
+    const repeats = all.filter(d => !d.reversed && all.some(r => r.reversed && r.created < d.created && similar(r.text, d.text) >= 0.4)).length;
+    let h = '<h2 class="sectiontitle">Decisions and reversals</h2>';
+    h += '<div class="review-facts" style="margin-bottom:8px">Reversal rate (90 days): <b>' + (rate === null ? '—' : rate + '%') + '</b> · '
+      + reversed.length + ' of ' + recent.length + ' reversed' + (repeats ? ' · ' + repeats + ' decision' + (repeats > 1 ? 's' : '') + ' look like earlier reversed ones' : '') + '</div>';
+    const list = all.sort((a, b) => b.created - a.created).slice(0, 8);
+    h += list.length ? list.map(d => {
+      const isRev = !!d.reversed;
+      return '<div class="insight ' + (isRev ? 'high' : 'low') + '"><div class="ic">' + haIc(isRev ? 'alert' : 'check') + '</div><div class="tx">'
+        + '<b>' + esc(short(d.text, 110)) + '</b>'
+        + (isRev ? '<div class="subtle">Reversed ' + ago(d.reversed.at) + ': ' + esc(d.reversed.reason || 'no reason given') + '</div>' : '')
+        + '<div class="subtle">' + esc(pById(d.from)?.name || '') + ' · ' + ago(d.created) + ' · ' + Object.keys(d.acks || {}).length + '/' + d.to.length + ' acknowledged</div></div>'
+        + (!isRev && canReverse(d) ? '<button class="btn sm" data-reverse="' + esc(d.id) + '">Reverse</button>' : '')
+        + '</div>';
+    }).join('') : '<div class="empty">No decisions logged yet.</div>';
+    return h;
+  }
+
+  /* Render the three parts below the Leadership metrics */
+  function renderExtras(){
+    const host = document.getElementById('leadContent');
+    if(!host) return;
+    let box = document.getElementById('leadExtras');
+    if(!box){ box = document.createElement('div'); box.id = 'leadExtras'; host.appendChild(box); }
+    box.innerHTML = reviewsHTML() + meetingsHTML() + decisionsHTML();
+    micFor(document.getElementById('mtNotes'));
+  }
+
+  /* Actions */
+  document.addEventListener('click', async e => {
+    const c = e.target.closest('[data-close]');
+    if(c){
+      const o = state.objectives.find(x => x.id === c.dataset.close); if(!o) return;
+      const worked = await ask({ title: 'What worked?', text: 'Be specific. What helped this objective move?', input: '', ok: 'Next' }); if(worked === null) return;
+      const didnt = await ask({ title: 'What did not?', text: 'What got in the way, honestly?', input: '', ok: 'Next' }); if(didnt === null) return;
+      const repeat = await ask({ title: 'What will we repeat?', text: 'The one habit or practice to keep next time.', input: '', ok: 'Close and save' }); if(repeat === null) return;
+      o.status = 'closed';
+      o.review = { closedAt: Date.now(), worked: String(worked).trim(), didnt: String(didnt).trim(), repeat: String(repeat).trim(), facts: facts(o) };
+      save(); renderAll(); toast('Objective closed and reviewed');
+      return;
+    }
+    const r = e.target.closest('[data-reopen]');
+    if(r){ const o = state.objectives.find(x => x.id === r.dataset.reopen); if(o){ o.status = 'open'; save(); renderAll(); toast('Objective reopened'); } return; }
+    const rv = e.target.closest('[data-reverse]');
+    if(rv){
+      const d = state.loop.find(x => x.id === rv.dataset.reverse); if(!d || !canReverse(d)) return;
+      const reason = await ask({ title: 'Reverse this decision', text: 'Why is it being reversed? This stays visible in the log.', input: '', ok: 'Reverse' });
+      if(reason === null) return;
+      d.reversed = { at: Date.now(), by: state.me, reason: String(reason).trim() };
+      d.to.forEach(u => notify(u, 'Decision reversed: “' + short(d.text, 60) + '”' + (reason ? ' — ' + short(reason, 60) : '')));
+      save(); renderAll(); toast('Decision reversed and logged');
+      return;
+    }
+    const ms = e.target.closest('[data-meeting-save]');
+    if(ms){
+      const title = (document.getElementById('mtTitle').value || '').trim();
+      const date = document.getElementById('mtDate').value || todayISO();
+      const objectiveId = document.getElementById('mtObj').value;
+      const notes = (document.getElementById('mtNotes').value || '').trim();
+      if(!title) return toast('Give the meeting a title');
+      const o = state.objectives.find(x => x.id === objectiveId);
+      state.meetings = state.meetings || [];
+      state.meetings.unshift({ id: 'm' + Date.now(), title, date, objectiveId, notes, kpiAtMeeting: o ? kpiPct(o) : null, created: Date.now() });
+      save(); renderAll(); toast('Meeting saved');
+    }
+  });
+
+  /* Keep the new parts current with every update */
+  const _renderAll2 = renderAll;
+  renderAll = function(){ _renderAll2(); renderExtras(); };
+  renderExtras();
+})();
+</script>
+<style>
+.review-card,.meeting-card{margin:0 0 12px}
+.review-head{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.review-facts{font-size:12.5px;color:var(--muted);margin:6px 0}
+.review-q{font-size:14px;line-height:1.55;margin-top:6px}
+.subhead{font-size:14px;margin:14px 0 6px}
+.close-row{display:flex;gap:10px;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding:8px 0;font-size:14px}
+.mt-row{display:grid;grid-template-columns:2fr 1fr 2fr;gap:10px}
+.mt-row label{margin:0}
+.mt-row input,.mt-row select{width:100%}
+@media(max-width:700px){.mt-row{grid-template-columns:1fr}}
 </style>
 
 </body>
