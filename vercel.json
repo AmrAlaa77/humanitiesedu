@@ -113,6 +113,10 @@
                          "destination":  "/who-we-are/index.html"
                      },
                      {
+                         "source":  "/align",
+                         "destination":  "/align/index.html"
+                     },
+                     {
                          "source":  "/B2B-B2G-Focus",
                          "destination":  "/b2b-b2g-focus/index.html"
                      },
@@ -149,7 +153,7 @@
                          "destination":  "/amex-partnership/preview/ar/index.html"
                      },
                      {
-                         "source":  "/((?!experience|amex-role-cards|AmEx-Role-Cards|amex-storytelling|AmEx-Storytelling|amex-proposal|amex-partnership|game-on-kits|who-we-are|b2b-b2g|B2B-B2G).*)",
+                         "source":  "/((?!experience|amex-role-cards|AmEx-Role-Cards|amex-storytelling|AmEx-Storytelling|amex-proposal|amex-partnership|game-on-kits|who-we-are|align|b2b-b2g|B2B-B2G).*)",
                          "destination":  "/index.html"
                      }
                  ]
