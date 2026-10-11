@@ -1159,7 +1159,7 @@ document.getElementById('capRun').onclick=runCapture;document.getElementById('ca
 document.getElementById('autoRemind').onchange=e=>{const p=pById(state.me);if(!p)return;p.autoRemind=e.target.checked;save();toast(e.target.checked?'Automatic reminders on':'Automatic reminders off')};
 document.getElementById('lpAIWrite').onclick=writeWithAI;
 document.getElementById('pmRelease').onclick=async()=>{const p=pById(editPersonId);if(!p||!LIVE)return;const mine=p.userId===LIVE.uid;if(!(await ask({title:mine?'Leave this seat?':'Free this seat?',text:mine?'You will be asked to choose a seat again.':'The person in this seat will be asked to choose a seat again.',ok:mine?'Leave seat':'Free seat',danger:true})))return;p.userId=null;save();closePerson();toast('Seat freed')};
-(function(){const m={overview:'sparkles',loop:'refresh',priorities:'rank',waiting:'hourglass',capture:'inbox',reset:'reset',index:'gauge',objectives:'target',oversight:'eye',org:'org',manual:'book',search:'search',inbox:'inbox',today:'calendar',upcoming:'calendar',calendar:'calendar',filters:'tag',board:'board',team:'users',workqueue:'phone',comments:'msg',notifications:'bell',settings:'settings'};document.querySelectorAll('.navitem[data-nav]').forEach(n=>{const sp=n.querySelector('span');if(sp&&m[n.dataset.nav])sp.innerHTML=haIc(m[n.dataset.nav])});const add=document.querySelector('#sideAdd span');if(add)add.innerHTML=haIc('plus');const ib={menuBtn:'menu',quickAdd:'plus',exportBtn:'download',importBtn:'upload'};Object.entries(ib).forEach(([id,n])=>{const b=document.getElementById(id);if(b)b.innerHTML=haIc(n)});const nb=document.querySelector('.iconbtn[data-nav="notifications"]');if(nb){const bd=nb.querySelector('.badge');nb.innerHTML=haIc('bell');if(bd)nb.appendChild(bd)}const ts=document.querySelector('.top-search span');if(ts)ts.innerHTML=haIc('search')})();
+(function(){const m={overview:'sparkles',loop:'refresh',priorities:'rank',waiting:'hourglass',capture:'inbox',reset:'reset',index:'gauge',objectives:'target',oversight:'owner',org:'org',manual:'book',search:'search',inbox:'inbox',today:'clock',upcoming:'flag',calendar:'calendar',filters:'tag',board:'board',team:'users',workqueue:'phone',comments:'msg',notifications:'bell',settings:'settings'};document.querySelectorAll('.navitem[data-nav]').forEach(n=>{const sp=n.querySelector('span');if(sp&&m[n.dataset.nav])sp.innerHTML=haIc(m[n.dataset.nav])});const add=document.querySelector('#sideAdd span');if(add)add.innerHTML=haIc('plus');const ib={menuBtn:'menu',quickAdd:'plus',exportBtn:'download',importBtn:'upload'};Object.entries(ib).forEach(([id,n])=>{const b=document.getElementById(id);if(b)b.innerHTML=haIc(n)});const nb=document.querySelector('.iconbtn[data-nav="notifications"]');if(nb){const bd=nb.querySelector('.badge');nb.innerHTML=haIc('bell');if(bd)nb.appendChild(bd)}const ts=document.querySelector('.top-search span');if(ts)ts.innerHTML=haIc('search')})();
 boot();
 </script>
 <script>
@@ -1752,7 +1752,7 @@ haIc = function(n, cls){ const k = HA3D_MAP[n]; if(k && HA3D[k]) return '<svg cl
 <script>
 /* Re-draw the navigation and header icons with the 3D set once the page is built */
 (function(){
-  const map = {overview:'sparkles',loop:'loop',priorities:'rank',waiting:'hourglass',capture:'inbox',reset:'reset',index:'gauge',leadership:'gauge',objectives:'target',oversight:'eye',org:'org',manual:'book',search:'search',inbox:'inbox',today:'calendar',upcoming:'calendar',calendar:'calendar',filters:'tag',board:'board',team:'users',workqueue:'phone',comments:'msg',notifications:'bell',settings:'settings'};
+  const map = {overview:'sparkles',loop:'loop',priorities:'rank',waiting:'hourglass',capture:'inbox',reset:'reset',index:'gauge',leadership:'gauge',objectives:'target',oversight:'owner',org:'org',manual:'book',search:'search',inbox:'inbox',today:'clock',upcoming:'flag',calendar:'calendar',filters:'tag',board:'board',team:'users',workqueue:'phone',comments:'msg',notifications:'bell',settings:'settings'};
   function paint(){
     document.querySelectorAll('.navitem[data-nav]').forEach(n=>{const sp=n.querySelector('span');if(sp&&map[n.dataset.nav]) sp.innerHTML=haIc(map[n.dataset.nav])});
     const b=document.querySelector('.navitem#sideAdd span'); if(b) b.innerHTML=haIc('plus');
@@ -2025,7 +2025,7 @@ const HA3D_NAMES = {
 </script>
 <style>.hic3d{width:26px;height:26px;display:inline-block;flex:0 0 auto;overflow:visible}.navitem>span:first-child .hic3d{width:26px;height:26px}</style>
 <script>
-(function(){const names=['reset','target','hourglass','alert','eye','sparkles'];document.querySelectorAll('.pillar .ic').forEach((el,i)=>{if(names[i]) el.innerHTML=haIc(names[i])});})();
+(function(){const names=['reset','target','hourglass','alert','chart','sparkles'];document.querySelectorAll('.pillar .ic').forEach((el,i)=>{if(names[i]) el.innerHTML=haIc(names[i])});})();
 </script>
 <script>document.querySelectorAll('.navitem[data-nav="ops"] span').forEach(function(el){el.innerHTML=haIc('settings')});</script>
 </body>
