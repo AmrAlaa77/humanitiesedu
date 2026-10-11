@@ -144,7 +144,7 @@ body.live .local-only{display:none!important}body:not(.live) .live-only{display:
 
   <aside class="sidebar" id="sidebar">
 <div class="profile" id="profileBox"></div>
-<div class="viewas local-only"><label>Viewing as</label><select id="meSelect"></select></div>
+<div class="viewas local-only"><label>Viewing as</label><select id="meSelect"></select><label>Demo view</label><select id="demoMode"><option value="manager">Manager</option><option value="member">Team member (non-manager)</option></select></div>
 
 <div class="navtitle ai">Start here</div>
 <div class="navitem active" data-nav="overview"><span>✦</span> Overview</div>
@@ -208,7 +208,7 @@ body.live .local-only{display:none!important}body:not(.live) .live-only{display:
       </div>
       <h2 class="sectiontitle">How alignment is built in</h2>
       <div class="pillars">
-        <div class="pillar"><div class="ic"><i data-ic="reset"></i></div><strong>Closed-loop communication</strong><p>Every update, request and decision has a sender, a named audience and a visible acknowledgement from each recipient.</p></div>
+        <div class="pillar"><div class="ic"><i data-ic="mail"></i></div><strong>Closed-loop communication</strong><p>Every update, request and decision has a sender, a named audience and a visible acknowledgement from each recipient.</p></div>
         <div class="pillar"><div class="ic"><i data-ic="target"></i></div><strong>Objective linkage</strong><p>Requests and commitments map to shared objectives, so unlinked work shows up as an alignment gap.</p></div>
         <div class="pillar"><div class="ic"><i data-ic="hourglass"></i></div><strong>24-hour acknowledgement rule</strong><p>Anything not acknowledged within 24 hours is flagged automatically. Nobody has to chase it.</p></div>
         <div class="pillar"><div class="ic"><i data-ic="alert"></i></div><strong>Smart escalation</strong><p>Overdue or unacknowledged items go one level up, to the right manager, with the full thread attached.</p></div>
@@ -1460,6 +1460,39 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-listen]');
 </script>
 
 <script>
+/* ---- Demo view: Manager (default) or Team member (non-manager). Team member sees only their own items, no manager tools ---- */
+(function(){
+  let memberMode = false;
+  const MANAGER_ONLY = ['oversight','team','org','leadership'];
+  const _scope = scopeIds;
+  scopeIds = function(v=state.me){ return memberMode ? [v] : _scope(v); };
+
+  const style = document.createElement('style');
+  style.textContent = 'body.member-view [data-nav="oversight"], body.member-view [data-nav="team"], body.member-view [data-nav="org"], body.member-view [data-nav="leadership"]{display:none!important}';
+  document.head.appendChild(style);
+
+  const _navigate = navigate;
+  navigate = function(v){ _navigate(memberMode && MANAGER_ONLY.includes(v) ? 'overview' : v); };
+
+  const sel = document.getElementById('demoMode');
+  sel.onchange = () => {
+    memberMode = sel.value === 'member';
+    document.body.classList.toggle('member-view', memberMode);
+    if(memberMode && directReports(state.me).length > 0){
+      const plain = state.people.find(p => directReports(p.id).length === 0);
+      if(plain) state.me = plain.id;
+    }
+    pick = { people: new Set(), depts: new Set() };
+    loopPerson = null; ovManager = null;
+    save();
+    renderAll();
+    navigate(currentView);
+    toast(memberMode ? 'Team member view: own items only' : 'Manager view');
+  };
+})();
+</script>
+
+<script>
 /* ---- Leadership, part 2: closing reviews, decision reversals, meetings linked to outcomes ---- */
 (function(){
   const WEEK_MS = 7 * DAY;
@@ -1674,9 +1707,9 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-listen]');
     if(hr && (!mgr || hr.id !== mgr.id)) opts.push('<option value="hr">HR (' + esc(hr.name) + ')</option>');
     if(!opts.length) return '<div class="subtle">No manager or HR contact is set on the org chart yet.</div>';
     const reqs = myRequests();
-    return '<div class="oo-box"><div class="oo-head"><b>Request support</b><span>Choose the type of support and who receives it. Only they see the details.</span></div>'
+    return '<div class="oo-box"><div class="oo-head"><b>Request support</b><span>Choose a support option above, then choose who receives it. Only they see the details.</span></div>'
       + '<div class="oo-row"><label>Send to<select id="ooTo">' + opts.join('') + '</select></label>'
-      + '<label>Type of support<select id="ooTopic"><option value="oneone">1:1 with Humantic: wellbeing challenges revisited</option><option value="focus">Focus group: several overdue items in one team</option><option value="meeting">Meeting with management: agree priorities and realistic deadlines</option></select></label></div>'
+      + '<input type="hidden" id="ooTopic" value="oneone"></div>'
       + '<label style="display:block;margin-top:8px">What would help? (optional)<textarea id="ooNote" placeholder="Share as much or as little as you like."></textarea></label>'
       + '<p style="margin:8px 0 0"><button class="btn ai" id="ooSend">Send request</button></p>'
       + (reqs.length ? '<div class="oo-list"><div class="subtle" style="font-weight:700;margin-top:10px">Your requests</div>' + reqs.map(r =>
