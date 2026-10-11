@@ -834,7 +834,7 @@ function loopAction(act,id){const it=state.loop.find(x=>x.id===id);if(!it)return
 function ringColor(s){return s>=80?'var(--green)':s>=60?'var(--orange)':'var(--red)'}
 function scoreBlock(ids){const s=scoreFor(ids);const bars=[['Acknowledged',s.parts.ack,'Share of required acknowledgements given'],['On time',s.parts.ontime,'Requests, commitments and blockers not overdue'],['Linked to objectives',s.parts.linked,'Non-update items tied to a shared objective'],['Check-in rhythm',s.parts.rhythm,'People who posted in the last 3 days']];
   return `<div class="ring" style="background:conic-gradient(${ringColor(s.score)} ${s.score*3.6}deg,#eef0f3 0)"><div class="in"><div><b>${s.score}</b><span>out of 100</span></div></div></div>${bars.map(([n,v,t])=>`<div class="bar" title="${esc(t)}"><div class="bl"><span>${n}</span><span>${pct(v)}</span></div><div class="track"><div class="fill" style="width:${pct(v)};background:${ringColor(v*100)}"></div></div></div>`).join('')}`}
-const INS_IC={"⏰":"alert","👀":"eye","📅":"calendar","🎯":"target","🔇":"bell","⚖":"gauge"};
+const INS_IC={"⏰":"alert","👀":"bell","📅":"calendar","🎯":"target","🔇":"bell","⚖":"gauge"};
 function insightRow(i){return `<div class="insight ${i.lvl}"><div class="ic">${INS_IC[i.icon]?haIc(INS_IC[i.icon]):i.icon}</div><div class="tx">${i.text}</div>${i.act?`<button class="btn sm" data-ins="${i.act}" data-id="${i.id||''}" data-person="${i.person||''}">${esc(i.label||'Open')}</button>`:''}</div>`}
 function renderOverview(){const ids=scopeIds();document.getElementById('scoreScope').textContent=ids.length>1?`You + ${ids.length-1} in your chain`:'Your loop';document.getElementById('scoreBox').innerHTML=scoreBlock(ids);
   document.getElementById('aiBriefing').innerHTML=`<div class="aihead">✦ Align AI briefing</div>${briefing()}<div class="ainote">${LIVE?'Instant summary from built-in rules. Use the button below for a briefing written by Claude.':'Demo: generated on this device using built-in rules.'}</div>${aiBlock(state.me)}`;
@@ -1394,7 +1394,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-listen]');
       + '</tbody></table></div></div>'
       + '<h2 class="sectiontitle">Early warnings</h2>'
       + (warnings.length
-          ? warnings.map(r => '<div class="insight ' + (r.od ? 'high' : 'med') + '"><div class="ic">' + haIc(r.od ? 'alert' : 'eye') + '</div><div class="tx"><b>' + esc(r.o.name) + '</b>: ' + esc(r.warn.join(', ')) + '.</div></div>').join('')
+          ? warnings.map(r => '<div class="insight ' + (r.od ? 'high' : 'med') + '"><div class="ic">' + haIc(r.od ? 'alert' : 'bell') + '</div><div class="tx"><b>' + esc(r.o.name) + '</b>: ' + esc(r.warn.join(', ')) + '.</div></div>').join('')
           : '<div class="empty">No early warnings. Keep the rhythm going.</div>')
       + '<h2 class="sectiontitle">Possible duplicate or competing work</h2>'
       + (con.length
