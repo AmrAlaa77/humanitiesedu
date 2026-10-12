@@ -12,7 +12,15 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Segoe UI",sys
 .brand{color:var(--teal);font-weight:800;letter-spacing:.1em;font-size:12px;text-transform:uppercase}
 h1{font:800 30px/1.2 "Segoe UI",system-ui,sans-serif;margin:12px 0 6px}
 .lede{color:var(--muted);margin:0 0 24px}
-.grid figure:first-child{grid-column:1/-1}
+.grid figure:nth-child(-n+2){grid-column:1/-1}
+.sustain{grid-column:1/-1;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 32px}
+.sustain h3{font:800 22px/1.25 "Segoe UI",system-ui,sans-serif;margin:0 0 14px;letter-spacing:-.01em}
+.sustain-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.sustain-wide{margin-top:12px;padding-top:18px;border-top:1px solid var(--line)}
+.sustain-wide p{max-width:900px}
+.sustain h4{margin:0 0 8px;font:800 13px/1.3 ui-monospace,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;color:#0b6f69}
+.sustain p{margin:0 0 10px;font-size:16px;line-height:1.65}
+@media(max-width:800px){.sustain-cols{grid-template-columns:1fr}}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:18px}
 figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}
 figure img{width:100%;height:auto;display:block;border-radius:8px}
@@ -71,7 +79,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
   </section>
   <section class="about">
     <div class="about-tags"><span>Productivity</span><span>Alignment</span><span>Accountability</span></div>
-    <p>We bring organisational and human psychology, engineering and technology together in one system.</p>
+    <p>We bring organisational psychology, human behaviour and machine intelligence together in one system.</p>
     <h3>Protecting Performance and the People Behind It</h3>
     <p>Our AI productivity and wellbeing metrics sit side by side in Humantic AI - Align, giving leaders the full picture of organisational health. Backed by confidential pulse checks, weekly resets and Humantic 1:1 advisory, leaders get the early insight to:</p>
     <ol class="about-list">
@@ -83,6 +91,26 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
   <div class="grid">
     <figure><img src="img/000-core-overview-v4.png" alt="Core features overview of Humantic AI - Align" loading="lazy"><figcaption>Core features overview</figcaption></figure>
     <figure><img src="img/00-manager-view.png" alt="Manager view screen" loading="lazy"><figcaption>Manager view: the executive overview</figcaption></figure>
+    <section class="sustain">
+      <h3>Sustaining Collective Strength</h3>
+      <div class="sustain-cols">
+        <div>
+          <h4>1. Individualised performance derailers (1:1)</h4>
+          <p>Performance is sustained by addressing behavioural derailers at the one-on-one level. Through structured sessions that build self-awareness and realign behaviour with strengths, individuals become more effective and the team&rsquo;s performance grows with them.</p>
+          <p>Our approach helps leaders unlock the strengths already in their teams instead of fixating on what is lacking. The focus shifts from deficits to growth, so people can acknowledge, embrace and celebrate their unique talents for organisational impact.</p>
+        </div>
+        <div>
+          <h4>2. Sustainability phase: focus groups</h4>
+          <p>Our in-house strengths mapping builds a collective strength culture. Diverse strengths are deliberately combined, so team members understand, appreciate and use one another&rsquo;s strengths.</p>
+          <p>Every team member is positioned where their natural talents meet organisational priorities.</p>
+        </div>
+      </div>
+      <div class="sustain-wide">
+        <h4>3. Sustainability phase: individualised productivity derailers, explored one-to-one</h4>
+        <p>Our in-house productivity metrics and organisational behavioural mapping help address what is holding your team back, through a structured productivity methodology.</p>
+        <p>Identify the unique productivity challenges of each team member by uncovering the psychological barriers that affect their performance and growth. Behaviours and psychological factors are common challenges to getting things done at work. Assessing productivity through a psychological lens accommodates individual differences, helps increase efficiency, and helps uncover the root causes of chronic distraction, procrastination and misplaced priorities.</p>
+      </div>
+    </section>
     <figure><img src="img/01-team-board.png" alt="Team board screen" loading="lazy"><figcaption>Team board</figcaption></figure>
     <figure><img src="img/02-capture-inbox.png" alt="Capture inbox screen" loading="lazy"><figcaption>Capture inbox</figcaption></figure>
     <figure><img src="img/03-priorities-waiting.png" alt="Priorities and pending screen" loading="lazy"><figcaption>Priorities and pending</figcaption></figure>
