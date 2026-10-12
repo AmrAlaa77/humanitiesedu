@@ -135,6 +135,85 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .a-role.open{border-style:solid;border-color:#14a39a;color:#0b6f69;box-shadow:0 0 0 4px rgba(20,163,154,.18)}
 .a-role.set{border:1px solid #bfe6e1;background:#e6f6f4;color:#0b6f69}
 .a-tags{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.early{grid-column:1/-1;border-radius:18px;padding:28px;background:radial-gradient(900px 600px at 100% -10%,rgba(153,246,228,.45),transparent 60%),linear-gradient(135deg,#0f8f86,#0e7490);color:#fff}
+.early .e-eyebrow{font:800 12px/1 ui-monospace,Consolas,monospace;letter-spacing:.2em;text-transform:uppercase;color:#7ff5e3}
+.early h3{font:800 26px/1.2 "Segoe UI",system-ui,sans-serif;margin:8px 0 6px;letter-spacing:-.01em;max-width:760px}
+.early .e-sub{font-size:17px;color:#d5f7f2;margin:0 0 18px}
+.e-card{background:#f9fdfc;border-radius:16px;box-shadow:0 22px 44px rgba(4,50,60,.35);padding:8px 22px;color:#10302f}
+.e-row{display:grid;grid-template-columns:38px minmax(0,1fr);gap:14px;padding:16px 0;border-top:1px solid #e6f0ee}
+.e-row:first-child{border-top:0}
+.e-n{width:36px;height:36px;border-radius:50%;background:#7ff5e3;color:#0b5b63;font-weight:800;font-size:16px;display:grid;place-items:center}
+.e-b>b{display:block;font-size:17px;font-weight:800;margin:0 0 8px}
+.e-b dl{margin:0;display:grid;grid-template-columns:1fr 18px 1fr 18px 1.4fr;align-items:stretch}
+.e-b dl>em{display:grid;place-items:center;font-style:normal;color:#0b8a82;font-weight:800}
+.e-b dl .cost+em{color:#0b8a82}
+.e-pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;padding:5px 12px;border-radius:99px;background:#fff;border:1px solid #14a39a;color:#0b6f69;box-shadow:0 0 0 4px rgba(20,163,154,.14);margin:0 0 8px}
+.e-pill i{width:8px;height:8px;border-radius:50%;background:#14a39a}
+.e-b dl>div{background:#f2faf8;border:1px solid #dcebe9;border-radius:12px;padding:10px 12px}
+.e-b dl .cost{background:#fff4e2;border-color:#f3d9a8}
+.e-b dl .al{background:#e3f6f2;border-color:#9fdcd2}
+.e-b dt{font:800 10px/1 ui-monospace,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;color:#0b8a82;margin-bottom:5px}
+.e-b .cost dt{color:#8a5200}
+.e-b dd{margin:0;font-size:14px;line-height:1.4;color:#35625f}
+@media(max-width:800px){.e-b dl{grid-template-columns:1fr;gap:6px}.e-b dl>em{transform:rotate(90deg);height:14px}.early{padding:20px}}
+.e-b dl{grid-template-columns:1fr 18px 1fr!important;margin-bottom:10px}
+.e-win{border:1px solid #cfe3e0;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 8px 18px rgba(4,50,60,.1)}
+.w-bar0{display:flex;align-items:center;gap:6px;background:#e9f5f3;border-bottom:1px solid #cfe3e0;padding:8px 12px;font-size:12px;color:#35625f}
+.w-bar0 s{width:9px;height:9px;border-radius:50%;background:#9fdcd2;display:block}
+.w-bar0 span{margin-left:8px}.w-bar0 b{color:#0b6f69}
+.w-body{padding:6px 14px 10px}
+.w-h{font:800 11px/1 ui-monospace,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;color:#0b8a82;padding:8px 0 2px}
+.w-r{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid #e6f0ee;flex-wrap:wrap}
+.w-r:first-child,.w-h+.w-r{border-top:0}
+.w-t{flex:1;min-width:180px}.w-t b{display:block;font-size:14px}.w-t small{font-size:12px;color:#6a8a87}
+.w-c{font-size:12px;font-weight:800;padding:5px 12px;border-radius:99px;white-space:nowrap}
+.w-c.am{background:#ffe9c7;color:#8a5200}.w-c.gr{background:#d9f5ef;color:#0b6f69}.w-c.rd{background:#fde0e0;color:#9b2a2a}
+.w-btn{font-size:12px;font-weight:800;padding:6px 13px;border-radius:99px;background:#fff;border:1px solid #bfe6e1;color:#0b6f69;white-space:nowrap}
+.w-btn.go{background:linear-gradient(135deg,#14a39a,#0e7490);color:#fff;border-color:#14a39a;box-shadow:0 0 0 4px rgba(20,163,154,.2)}
+.w-n{font-size:12px;color:#6a8a87;padding:6px 0 0;border-top:1px solid #e6f0ee}
+.w-l{display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:center;padding:8px 0;font-size:13px;font-weight:700}
+.w-bar{height:10px;border-radius:99px;background:#e2efed;overflow:hidden;display:block}.w-bar i{display:block;height:100%;background:#14a39a;border-radius:99px}.w-bar i.ov{background:#e8a021}
+.w-l em{font-style:normal;font-size:12px;font-weight:800;padding:4px 10px;border-radius:99px}.w-l em.rd{background:#fde0e0;color:#9b2a2a}.w-l em.gr{background:#d9f5ef;color:#0b6f69}
+.w-sg{margin-top:4px;padding:8px 12px;border-radius:10px;background:#eef8f6;border:1px solid #cfe9e5;font-size:13px;color:#18524e}.w-sg b{color:#0b6f69;margin-right:6px}
+.w-dots{display:flex;gap:6px}.w-dots i{width:16px;height:16px;border-radius:50%;background:#e2efed;display:block}.w-dots i.on{background:#14a39a;box-shadow:0 0 0 4px rgba(20,163,154,.2)}
+@media(max-width:800px){.w-l{grid-template-columns:1fr}}
+@media(max-width:800px){.e-b dl>em{display:none}.e-b dl{grid-template-columns:1fr 1fr!important;gap:8px}}
+.e-win{cursor:pointer;transition:box-shadow .3s,transform .3s}
+.e-win:hover,.e-win.play{box-shadow:0 14px 30px rgba(4,50,60,.22);transform:translateY(-2px)}
+.w-c,.w-l em{transition:background .4s,color .4s}
+.w-c.done,.w-l em.done{background:#d9f5ef!important;color:#0b6f69!important}
+.w-bar i{transition:width 1s ease,background .6s}
+.w-bar i.ok{background:#14a39a}
+.e-win.play .w-r,.e-win.play .w-l,.e-win.play .w-sg,.e-win.play .w-n{animation:wrise .5s ease both}
+.e-win.play .w-r:nth-child(2),.e-win.play .w-l:nth-child(2){animation-delay:.12s}
+.e-win.play .w-r:nth-child(3),.e-win.play .w-sg{animation-delay:.24s}
+@keyframes wrise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.e-win.play .w-btn.go{animation:wpress .7s .5s ease both}
+@keyframes wpress{40%{transform:scale(.92);filter:brightness(1.2)}100%{transform:none}}
+.e-win.play .w-dots i.on{animation:wpop .6s .5s ease both}
+@keyframes wpop{50%{transform:scale(1.5)}}
+.e-win .w-play{margin-left:auto;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#0b8a82}
+.e-win.play .w-play{opacity:0}
+@media(prefers-reduced-motion:reduce){.e-win.play .w-r,.e-win.play .w-l,.e-win.play .w-sg,.e-win.play .w-n,.e-win.play .w-btn.go,.e-win.play .w-dots i.on{animation:none}}
+.e-win{position:relative;cursor:default}
+.e-win:hover{transform:none;box-shadow:0 8px 18px rgba(4,50,60,.1)}
+.w-bar0{cursor:pointer;user-select:none}
+.w-bar0 .w-play{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#0b6f69;background:#fff;border:1px solid #14a39a;border-radius:99px;padding:5px 12px;opacity:1}
+.e-win.play .w-play{opacity:1}
+.w-play.cue i{width:8px;height:8px;border-radius:50%;background:#14a39a;animation:wcue 1.3s ease-in-out infinite}
+@keyframes wcue{0%{box-shadow:0 0 0 0 rgba(20,163,154,.55)}100%{box-shadow:0 0 0 9px rgba(20,163,154,0)}}
+.e-win .w-body{max-height:0;overflow:hidden;padding-top:0;padding-bottom:0;transition:max-height .7s ease,padding .4s ease}
+.e-win.open .w-body{max-height:460px;padding-top:6px;padding-bottom:10px}
+.e-win:not(.open) .w-bar0{border-bottom-color:transparent}
+.w-cur{position:absolute;width:26px;height:26px;z-index:5;pointer-events:none;opacity:0;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35));transition:left 1s cubic-bezier(.4,0,.2,1),top 1s cubic-bezier(.4,0,.2,1),opacity .3s}
+.e-win.go .w-cur{opacity:1}
+.e-win.click .w-cur{animation:wtap .35s ease}
+@keyframes wtap{50%{transform:scale(.8)}}
+.e-win.click .w-bar0{background:#c9ebe6}
+.e-win.click .w-bar0::after{content:"";position:absolute;right:46px;top:50%;width:14px;height:14px;margin:-7px 0 0;border-radius:50%;border:2px solid #14a39a;animation:wripple .6s ease-out}
+.w-bar0{position:relative}
+@keyframes wripple{from{transform:scale(.4);opacity:1}to{transform:scale(3.2);opacity:0}}
+@media(prefers-reduced-motion:reduce){.w-cur{display:none}.e-win .w-body{transition:none}}
 </style>
 </head>
 <body>
@@ -302,6 +381,32 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
   })();
   </script>
 
+    <section class="early" aria-label="Seven problems that are cheap when caught early and expensive once they land">
+      <div class="e-eyebrow">Caught early, not once they land</div>
+      <h3>Seven problems that are cheap when caught early and expensive once they land</h3>
+      <p class="e-sub">Each one has an early signal, a cost if it lands, and a place in Align where it shows up.</p>
+      <div class="e-card">
+        <div class="e-row"><span class="e-n">1</span><div class="e-b"><b>A quiet blocker</b><dl><div><dt>Early signal</dt><dd>Work stalls and nobody says so.</dd></div><em>&rarr;</em><div class="cost"><dt>Cost</dt><dd>A deadline slips, and the team scrambles.</dd></div></dl><div class="e-win"><div class="w-bar0"><s></s><s></s><s></s><span>Where in Align: <b>Follow-Through &rsaquo; Call for backup</b></span></div><div class="w-body"><div class="w-r"><div class="w-t"><b>Supplier contract sign-off</b><small>Head of Operations &middot; due Thursday</small></div><span data-after="Backup requested" class="w-c am">Stalled 3 days</span><span class="w-btn go">Call for backup</span></div>
+<div class="w-r"><div class="w-t"><b>Venue booking confirmed</b><small>Head of Sales &middot; due Friday</small></div><span class="w-c gr">On track</span></div>
+<div class="w-n">Manager View &rsaquo; blockers list shows every stalled item in the chain.</div></div></div></div></div>
+        <div class="e-row"><span class="e-n">2</span><div class="e-b"><b>Work not linked to a goal</b><dl><div><dt>Early signal</dt><dd>Tasks with no objective.</dd></div><em>&rarr;</em><div class="cost"><dt>Cost</dt><dd>Effort goes into things that don&rsquo;t move the business.</dd></div></dl><div class="e-win"><div class="w-bar0"><s></s><s></s><s></s><span>Where in Align: <b>Objectives &rsaquo; Alignment gaps</b></span></div><div class="w-body"><div class="w-h">Alignment gaps</div>
+<div class="w-r"><div class="w-t"><b>Redesign price list</b><small>Head of Sales</small></div><span data-after="Linked" class="w-c rd">No linked objective</span><span class="w-btn go">Link to objective</span></div>
+<div class="w-r"><div class="w-t"><b>Update onboarding pack</b><small>Head of People &amp; Culture</small></div><span data-after="Linked" class="w-c rd">No linked objective</span><span class="w-btn">Link</span></div></div></div></div></div>
+        <div class="e-row"><span class="e-n">3</span><div class="e-b"><b>An unacknowledged request</b><dl><div><dt>Early signal</dt><dd>No reply within 24 hours.</dd></div><em>&rarr;</em><div class="cost"><dt>Cost</dt><dd>The sender assumes it&rsquo;s handled, and it isn&rsquo;t.</dd></div></dl><div class="e-win"><div class="w-bar0"><s></s><s></s><s></s><span>Where in Align: <b>Follow-Through &rsaquo; Nudge</b></span></div><div class="w-body"><div class="w-r"><div class="w-t"><b>Approve Q3 training budget</b><small>Sent to Head of Operations &middot; 26 hours ago</small></div><span data-after="Nudge sent" class="w-c am">Not acknowledged</span><span class="w-btn go">&#128276; Nudge</span></div>
+<div class="w-n">Items unacknowledged for 24 hours are flagged automatically.</div></div></div></div></div>
+        <div class="e-row"><span class="e-n">4</span><div class="e-b"><b>Overload building up</b><dl><div><dt>Early signal</dt><dd>A person&rsquo;s load runs above their weekly capacity.</dd></div><em>&rarr;</em><div class="cost"><dt>Cost</dt><dd>Mistakes, sick days or a resignation.</dd></div></dl><div class="e-win"><div class="w-bar0"><s></s><s></s><s></s><span>Where in Align: <b>Productivity index</b></span></div><div class="w-body"><div class="w-l"><span>Head of Sales</span><span class="w-bar"><i data-w="78" class="ov" data-w="78" style="width:100%"></i></span><em data-after="Within capacity" class="rd">Over capacity</em></div>
+<div class="w-l"><span>Head of Operations</span><span class="w-bar"><i class="" style="width:70%"></i></span><em class="gr">Within capacity</em></div>
+<div class="w-sg"><b>Suggestion</b> Rebalance work before it becomes burnout.</div></div></div></div></div>
+        <div class="e-row"><span class="e-n">5</span><div class="e-b"><b>Drifting follow-ups</b><dl><div><dt>Early signal</dt><dd>Replies you&rsquo;re owed go unanswered for several days.</dd></div><em>&rarr;</em><div class="cost"><dt>Cost</dt><dd>A decision, payment or approval stalls.</dd></div></dl><div class="e-win"><div class="w-bar0"><s></s><s></s><s></s><span>Where in Align: <b>Follow-Through &rsaquo; Waiting For</b></span></div><div class="w-body"><div class="w-r"><div class="w-t"><b>Supplier quote</b><small>Owed by Head of Operations &middot; asked 5 days ago</small></div><span data-after="Reminder sent" class="w-c am">Waiting 5 days</span><span class="w-btn go">Send polite reminder</span></div>
+<div class="w-r"><div class="w-t"><b>Invoice approval</b><small>Owed by Executive Sponsor &middot; asked 2 days ago</small></div><span class="w-c gr">Waiting 2 days</span></div></div></div></div></div>
+        <div class="e-row"><span class="e-n">6</span><div class="e-b"><b>A decision with no owner</b><dl><div><dt>Early signal</dt><dd>&ldquo;We should decide&rdquo; shows up in several meetings.</dd></div><em>&rarr;</em><div class="cost"><dt>Cost</dt><dd>The same discussion repeats, and the project waits.</dd></div></dl><div class="e-win"><div class="w-bar0"><s></s><s></s><s></s><span>Where in Align: <b>Leadership metrics &rsaquo; Decision log</b></span></div><div class="w-body"><div class="w-h">Decision log</div>
+<div class="w-r"><div class="w-t"><b>Choose training venue</b><small>Owner: Executive Sponsor &middot; decide by 20 Oct</small></div><span data-after="Decided" class="w-c am">Open</span></div>
+<div class="w-r"><div class="w-t"><b>Approve supplier shortlist</b><small>Owner: Head of Operations</small></div><span class="w-c gr">Decided</span></div></div></div></div></div>
+        <div class="e-row"><span class="e-n">7</span><div class="e-b"><b>Disengagement</b><dl><div><dt>Early signal</dt><dd>Falling check-ins and silent members.</dd></div><em>&rarr;</em><div class="cost"><dt>Cost</dt><dd>The loss of a good person and the cost of replacing them.</dd></div></dl><div class="e-win"><div class="w-bar0"><s></s><s></s><s></s><span>Where in Align: <b>Manager View &amp; Productivity index</b></span></div><div class="w-body"><div class="w-r"><div class="w-t"><b>Head of People &amp; Culture</b><small>Last update 4 days ago</small></div><span data-after="Check-in noted" class="w-c am">Silent 3+ days</span></div>
+<div class="w-r"><div class="w-t"><b>Anonymous wellbeing check-in</b><small>How are you this week? Responses are never tied to a name.</small></div><span class="w-dots"><i></i><i></i><i class="on"></i><i></i><i></i></span></div></div></div></div></div>
+      </div>
+    </section>
+
     <section class="sustain">
       <h3>Sustaining Collective Strength</h3>
       <div class="sustain-cols">
@@ -331,5 +436,39 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
   </div>
   <p class="foot">Illustrative example. All names and figures are sample data.</p>
 </div>
+<script>
+(function(){
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.e-win').forEach(function(win){
+    var bar=win.querySelector('.w-bar0');if(!bar)return;
+    bar.setAttribute('role','button');bar.setAttribute('tabindex','0');
+    var hint=document.createElement('span');hint.className='w-play';bar.appendChild(hint);
+    var cur=document.createElementNS('http://www.w3.org/2000/svg','svg');cur.setAttribute('viewBox','0 0 24 24');cur.setAttribute('class','w-cur');cur.innerHTML='<path d="M5 3l14 8-6 1.5L10.5 19z" fill="#14201f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>';win.appendChild(cur);
+    var timers=[],state='closed';
+    function at(ms,fn){timers.push(setTimeout(fn,ms));}
+    function label(){hint.innerHTML=state==='closed'?'<i></i>Click here':'↻ Replay';hint.className='w-play '+(state==='closed'?'cue':'');}
+    function swap(){win.querySelectorAll('[data-after]').forEach(function(c){c.dataset.before=c.dataset.before||c.textContent;c.textContent=c.dataset.after;c.classList.add('done');});win.querySelectorAll('[data-w]').forEach(function(b){b.dataset.before=b.dataset.before||b.style.width;b.style.width=b.dataset.w+'%';b.classList.add('ok');});}
+    function unswap(){win.querySelectorAll('[data-after]').forEach(function(c){if(c.dataset.before)c.textContent=c.dataset.before;c.classList.remove('done');});win.querySelectorAll('[data-w]').forEach(function(b){if(b.dataset.before)b.style.width=b.dataset.before;b.classList.remove('ok');});}
+    function reset(){timers.forEach(clearTimeout);timers=[];win.classList.remove('open','play','go','click');unswap();state='closed';label();}
+    function play(){
+      reset();state='busy';label();hint.className='w-play';hint.textContent='';
+      if(reduce){win.classList.add('open','play');swap();state='open';label();return;}
+      var h=hint.getBoundingClientRect(),w=win.getBoundingClientRect();
+      cur.style.left=(h.left-w.left+h.width/2+70)+'px';cur.style.top=(h.top-w.top+h.height/2+60)+'px';
+      void cur.offsetWidth;
+      at(50,function(){win.classList.add('go');cur.style.left=(h.left-w.left+h.width/2-4)+'px';cur.style.top=(h.top-w.top+h.height/2-2)+'px';});
+      at(1100,function(){win.classList.add('click');});
+      at(1350,function(){win.classList.add('open');});
+      at(1900,function(){win.classList.add('play');win.classList.remove('go');});
+      at(3300,function(){swap();state='open';label();win.classList.remove('click');});
+    }
+    function toggle(){state==='closed'||state==='open'?(state==='open'?reset():play()):0;if(state==='open'&&false)0;}
+    bar.addEventListener('click',function(){if(state==='busy')return;state==='open'?play():play();});
+    bar.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();bar.click();}});
+    label();
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting&&state==='closed'){io.disconnect();play();}});},{threshold:.6});io.observe(win);}
+  });
+})();
+</script>
 </body>
 </html>
