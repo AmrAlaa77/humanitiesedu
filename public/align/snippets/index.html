@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Humantic AI - Align: app snippets</title>
 <style>
-:root{--ink:#14201f;--muted:#5a6b69;--line:#dfe8e7;--bg:#f3f8f7;--teal:#0f8f86}
+:root{--ink:#0b4a52;--muted:#3f6b70;--line:#dfe8e7;--bg:#f3f8f7;--teal:#0f8f86}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Segoe UI",system-ui,sans-serif;padding:0 16px}
 .wrap{max-width:1040px;margin:0 auto;padding:36px 0 64px}
@@ -215,8 +215,8 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 @keyframes wripple{from{transform:scale(.4);opacity:1}to{transform:scale(3.2);opacity:0}}
 @media(prefers-reduced-motion:reduce){.w-cur{display:none}.e-win .w-body{transition:none}}
 .w-play:empty{display:none}.e-win:focus-within .w-bar0{outline:0}.w-bar0:focus{outline:0}
-.hero::before{opacity:.5}
-@media(max-width:900px){.hero::before{opacity:.5}}
+@media(min-width:901px){.hero::before{opacity:1;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 12%,rgba(0,0,0,.14) 26%,rgba(0,0,0,.3) 38%,rgba(0,0,0,.5) 50%,rgba(0,0,0,.8) 62%,#000 74%);mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 12%,rgba(0,0,0,.14) 26%,rgba(0,0,0,.3) 38%,rgba(0,0,0,.5) 50%,rgba(0,0,0,.8) 62%,#000 74%)}}
+@media(max-width:900px){.hero::before{opacity:.95}}
 .a-card{grid-column:1/-1;margin-top:0;max-height:0;opacity:0;overflow:hidden;padding-top:0;padding-bottom:0;margin-top:-28px;transform:translateY(10px);transition:max-height .7s ease,opacity .6s ease,padding .5s ease,margin .5s ease,transform .6s ease}
 .a-card.show{max-height:520px;opacity:1;padding-top:16px;padding-bottom:16px;margin-top:0;transform:none}
 .a-card-g{grid-template-columns:repeat(4,1fr)}
@@ -229,6 +229,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .e-b .meas dt{color:#0b6f69}
 .e-b .src{display:block;margin-top:6px;font-size:11.5px;font-weight:700;color:#0b6f69}
 @media(max-width:800px){.e-b dl{grid-template-columns:1fr!important}}
+.sustain-wide h4{font-size:15px;line-height:1.5;letter-spacing:.08em}.sustain strong{color:#0b6f69}
 </style>
 </head>
 <body>
@@ -261,7 +262,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     </ol>
   </section>
   <div class="grid">
-    <figure><img src="img/000-core-overview-v6.png" alt="Core features overview of Humantic AI - Align" loading="lazy"><figcaption>Core features overview</figcaption></figure>
+    <figure><img src="img/000-core-overview-v7.png" alt="Core features overview of Humantic AI - Align" loading="lazy"><figcaption>Core features overview</figcaption></figure>
     <figure><img src="img/00-manager-view.png" alt="Manager view screen" loading="lazy"><figcaption>Manager view: the executive overview</figcaption></figure>
   <section class="acct" id="acct" aria-label="Animated example: inviting teammates, assigning roles and tracking who has responded">
     <div class="a-logo"><svg viewBox="0 0 64 70" aria-hidden="true"><defs><linearGradient id="alg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset=".6" stop-color="#0fa39a"/><stop offset="1" stop-color="#0891b2"/></linearGradient></defs><rect x="2" y="2" width="60" height="62" rx="16" fill="url(#alg)"/><path d="M10 36h10l5-12 8 24 6-16 4 4h11" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Humantic</b><span>DIGITAL</span></div></div>
@@ -425,9 +426,10 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 
     <section class="sustain">
       <div class="sustain-wide" style="margin-top:0;padding-top:0;border-top:0">
-        <h4>Sustainability phase: 1:1 to gauge progress</h4>
-        <p>Our in-house productivity metrics and organisational behavioural mapping show what is holding your team back, through structured reports.</p>
-        <p>We identify each team member&rsquo;s unique productivity challenges by uncovering the psychological barriers that affect their performance and growth. Assessing productivity through a psychological lens accommodates individual differences, helps increase efficiency, and uncovers the root causes of chronic distraction, procrastination and misplaced priorities.</p>
+        <h4>Productivity Intelligence. Behavioural Mapping. Performance Optimisation.</h4>
+        <p>Humantic Align AI transforms in-house productivity metrics and organisational behavioural mapping into structured, actionable reports that reveal individual and team performance barriers.</p>
+        <p>Through a psychological lens, it identifies patterns associated with distraction, procrastination, misaligned priorities, and factors that impede effective collaboration&mdash;helping leaders expose underlying risks, tailor interventions to individual needs, and strengthen collective effectiveness.</p>
+        <p><strong>The outcome:</strong> reduced productivity risks, stronger team performance, and measurable business impact.</p>
       </div>
     </section>
     <figure><img src="img/01-team-board.png" alt="Team board screen" loading="lazy"><figcaption>Team board</figcaption></figure>
@@ -446,7 +448,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     var bar=win.querySelector('.w-bar0');if(!bar)return;
     bar.setAttribute('role','button');bar.setAttribute('tabindex','0');
     var hint=document.createElement('span');hint.className='w-play';bar.appendChild(hint);
-    var cur=document.createElementNS('http://www.w3.org/2000/svg','svg');cur.setAttribute('viewBox','0 0 24 24');cur.setAttribute('class','w-cur');cur.innerHTML='<path d="M5 3l14 8-6 1.5L10.5 19z" fill="#14201f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>';win.appendChild(cur);
+    var cur=document.createElementNS('http://www.w3.org/2000/svg','svg');cur.setAttribute('viewBox','0 0 24 24');cur.setAttribute('class','w-cur');cur.innerHTML='<path d="M5 3l14 8-6 1.5L10.5 19z" fill="#0b4a52" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>';win.appendChild(cur);
     var timers=[],state='closed';
     function at(ms,fn){timers.push(setTimeout(fn,ms));}
     function label(){hint.innerHTML=state==='closed'?'<i></i>Click here':'↻ Replay';hint.className='w-play '+(state==='closed'?'cue':'');}
