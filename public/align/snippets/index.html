@@ -28,15 +28,21 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .hero{position:relative;overflow:hidden}
 .hero{background:linear-gradient(120deg,#22c4b3 0%,#0f9a8f 55%,#0b7896 100%)}
 .hero>*{position:relative;z-index:1}
+.hero h3{font:800 22px/1.25 "Segoe UI",system-ui,sans-serif;margin:22px 0 0;letter-spacing:-.01em}
+.derail li span{font-weight:400}
+.derail strong{font-weight:800}
 .hero::before{content:"";position:absolute;top:0;right:0;height:100%;aspect-ratio:1655/2000;background:linear-gradient(rgba(14,140,145,.16),rgba(11,120,150,.16)),url(img/hero-bg.webp) center/cover no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.3) 20%,#000 58%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.3) 20%,#000 58%)}
 .derail{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;max-width:560px}
-.derail li{display:flex;align-items:center;gap:14px;background:rgba(6,50,60,.2);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(2px);border-radius:999px;padding:7px 20px 7px 8px;font-weight:700;font-size:15px;line-height:1.3}
+.derail li{display:flex;align-items:center;gap:14px;font-weight:400;background:rgba(6,50,60,.2);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(2px);border-radius:999px;padding:7px 20px 7px 8px;font-weight:700;font-size:15px;line-height:1.3}
 .derail i{flex:none;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#5fe3ef,#2bb8d4);color:#08323c;display:grid;place-items:center}
 .derail svg{width:18px;height:18px}
 @media(max-width:900px){.hero::before{width:100%;height:100%;aspect-ratio:auto;opacity:.3;-webkit-mask-image:none;mask-image:none}}
 .about{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 32px;margin:0 0 24px}
 .about-tags{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 14px}
 .about-tags span{font:700 12px/1 ui-monospace,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;color:#0b6f69;background:#e6f6f4;border:1px solid #bfe6e1;padding:8px 13px;border-radius:999px}
+.about h3{font:800 22px/1.25 "Segoe UI",system-ui,sans-serif;margin:0 0 8px;letter-spacing:-.01em;color:var(--ink)}
+.about-list{margin:10px 0;padding-left:22px;max-width:820px;font-size:17px;line-height:1.65}
+.about-list li{padding-left:4px}
 .about p{margin:0;max-width:820px;font-size:17px;line-height:1.65;color:var(--ink)}
 .about p+p{margin-top:10px}
 </style>
@@ -50,18 +56,23 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <div class="eyebrow">Agentic AI · Humantic Digital</div>
     <h2>Teams that move together.<span>Aligned by agentic AI.</span></h2>
     <span class="pill">Productivity · Alignment · Accountability</span>
-    <p>Built to give leaders real-time visibility, intelligent streamlining and operational control across the enterprise.</p>
-    <p>We bring organisational and human psychology, engineering and technology together in one system.</p>
+    <h3>One Live View. Full Operational Control.</h3>
+    <p>Humantic AI - Align gives leaders real-time visibility across the whole enterprise, through dynamic dashboards built to:</p>
     <ul class="derail">
-      <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></i>AI watches over behaviour, wellbeing and productivity metrics</li>
-      <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></i>Individualised performance derailers</li>
-      <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16M9 16v-5M14 16V8M19 16v-3"/></svg></i>Dashboards that back leaders up by catching error and near-missed opportunities before they hurt ROI</li>
+      <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></i><span><strong>Protect the bottom line:</strong> flag operational risk before it reaches the P&amp;L.</span></li>
+      <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><path d="M8 15l4-4 3 3 5-6"/></svg></i><span><strong>Maximise ROI:</strong> expose the delays and rework that quietly drain returns.</span></li>
+      <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></i><span><strong>Drive growth:</strong> surface the revenue opportunities that would otherwise slip through.</span></li>
     </ul>
   </section>
   <section class="about">
     <div class="about-tags"><span>Real-time visibility</span><span>Intelligent streamlining</span><span>Operational control</span></div>
-    <p>Humantic AI - Align builds intelligent digital solutions that give leaders one live view of what matters, through dashboards that flag risk before it reaches the P&amp;L, show where delays and rework drain ROI, surface the opportunities slipping through, and spot burnout before it kicks in.</p>
-    <p>Because wellbeing and performance grow together, our AI wellbeing index and productivity metrics sit side by side, so leaders see both the work and the people doing it. Protecting wellbeing protects performance. Weekly resets and anonymous pulse checks keep teams steady, and early signals can point people to employee assistance support when it helps most. That is how top talent finds every reason to stay.</p>
+    <h3>Protecting Performance and the People Behind It</h3>
+    <p>Humantic AI - Align puts productivity and wellbeing metrics side by side, giving leaders the full picture of organisational health. Backed by confidential pulse checks, weekly resets and Humantic 1:1 advisory, leaders get the early insight to:</p>
+    <ol class="about-list">
+      <li>Spot burnout before performance drops.</li>
+      <li>Keep top talent at their best, before disengagement sets in.</li>
+    </ol>
+    <p>We bring organisational and human psychology, engineering and technology together in one system.</p>
   </section>
   <div class="grid">
     <figure><img src="img/000-core-overview.png" alt="Core features overview of Humantic AI - Align" loading="lazy"><figcaption>Core features overview</figcaption></figure>
