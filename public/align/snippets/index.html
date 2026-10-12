@@ -217,6 +217,13 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .w-play:empty{display:none}.e-win:focus-within .w-bar0{outline:0}.w-bar0:focus{outline:0}
 .hero::before{opacity:.5}
 @media(max-width:900px){.hero::before{opacity:.5}}
+.a-card{grid-column:1/-1;margin-top:0;max-height:0;opacity:0;overflow:hidden;padding-top:0;padding-bottom:0;margin-top:-28px;transform:translateY(10px);transition:max-height .7s ease,opacity .6s ease,padding .5s ease,margin .5s ease,transform .6s ease}
+.a-card.show{max-height:520px;opacity:1;padding-top:16px;padding-bottom:16px;margin-top:0;transform:none}
+.a-card-g{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.a-card-g{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.a-card-g{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.a-card{transition:none}}
+.hero h2{font-size:clamp(26px,3.6vw,36px)}.hero .kicker{font-size:12px}.hero h3{font-size:19px}.hero p{font-size:15.5px;max-width:560px}.pill{font-size:11px;padding:8px 13px}.derail li{font-size:14px}.derail i{width:30px;height:30px}.derail svg{width:16px;height:16px}
 </style>
 </head>
 <body>
@@ -249,7 +256,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     </ol>
   </section>
   <div class="grid">
-    <figure><img src="img/000-core-overview-v4.png" alt="Core features overview of Humantic AI - Align" loading="lazy"><figcaption>Core features overview</figcaption></figure>
+    <figure><img src="img/000-core-overview-v5.png" alt="Core features overview of Humantic AI - Align" loading="lazy"><figcaption>Core features overview</figcaption></figure>
     <figure><img src="img/00-manager-view.png" alt="Manager view screen" loading="lazy"><figcaption>Manager view: the executive overview</figcaption></figure>
   <section class="acct" id="acct" aria-label="Animated example: inviting teammates, assigning roles and tracking who has responded">
     <div class="a-logo"><svg viewBox="0 0 64 70" aria-hidden="true"><defs><linearGradient id="alg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset=".6" stop-color="#0fa39a"/><stop offset="1" stop-color="#0891b2"/></linearGradient></defs><rect x="2" y="2" width="60" height="62" rx="16" fill="url(#alg)"/><path d="M10 36h10l5-12 8 24 6-16 4 4h11" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Humantic</b><span>DIGITAL</span></div></div>
@@ -280,6 +287,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
       <div class="a-step" id="a-s1"><div class="a-n">1</div><div><b>Invite everyone who owns work</b><span>Each teammate joins the shared board, so no task depends on someone who is not in it.</span></div></div>
       <div class="a-step" id="a-s2"><div class="a-n">2</div><div><b>Assign roles, and each person acknowledges</b><span>Give each person a role. An owner confirms the work is theirs, with a clear due date and status.</span></div></div>
       <div class="a-step" id="a-s3"><div class="a-n">3</div><div><b>Leaders see who has not responded</b><span>Pending invites and unacknowledged tasks are visible, so nothing waits in silence.</span></div></div>
+    </div>
       <div class="a-card">
         <div class="a-card-h"><b>How Humantic closes the gap</b><span>One owner, one view</span></div>
         <div class="a-card-g">
@@ -290,7 +298,6 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
         </div>
         <div class="a-card-f">Illustrative scenario. Timings are examples.</div>
       </div>
-    </div>
     <div class="a-note">Illustrative example. All roles and addresses are sample data.</div>
   </section>
   <script>
@@ -307,7 +314,8 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     var NAMES={GM:'Abdulrahman Al-Zahrani',HO:'Noura Al-Qahtani',HS:'Faisal Al-Harbi',HP:'Charlotte Hayes'};
     var run=0,playing=false,gm=null,reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
-    function setStep(n){steps.forEach(function(s,k){s.classList.toggle('on',k===n)})}
+    var card=root.querySelector('.a-card'),cardT=null;
+    function setStep(n){steps.forEach(function(s,k){s.classList.toggle('on',k===n)});clearTimeout(cardT);if(n===2){if(reduce){card.classList.add('show')}else{cardT=setTimeout(function(){card.classList.add('show')},700)}}else{card.classList.remove('show')}}
     function row(r,e,a,cls,roleTxt,roleCls,txt,chipCls){
       var d=document.createElement('div');d.className='a-row '+cls;
       d.innerHTML='<img class="a-av" alt="" src="img/av-'+a+'.png"><div class="a-who"><div class="a-nm"></div><div class="a-pn"></div><div class="a-tk"></div><div class="a-em"></div></div><div class="a-tags"><span class="a-role '+roleCls+'">'+roleTxt+'</span><span class="a-chip '+chipCls+'">'+txt+'</span></div>';
@@ -411,23 +419,10 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     </section>
 
     <section class="sustain">
-      <h3>Sustaining Collective Strength</h3>
-      <div class="sustain-cols">
-        <div>
-          <h4>1. Individualised performance derailers (1:1)</h4>
-          <p>Performance is sustained by addressing behavioural derailers at the one-on-one level. Through structured sessions that build self-awareness and realign behaviour with strengths, individuals become more effective and the team&rsquo;s performance grows with them.</p>
-          <p>Our approach helps leaders unlock the strengths already in their teams instead of fixating on what is lacking. The focus shifts from deficits to growth, so people can acknowledge, embrace and celebrate their unique talents for organisational impact.</p>
-        </div>
-        <div>
-          <h4>2. Sustainability phase: focus groups</h4>
-          <p>Our in-house strengths mapping builds a collective strength culture. Diverse strengths are deliberately combined, so team members understand, appreciate and use one another&rsquo;s strengths.</p>
-          <p>Every team member is positioned where their natural talents meet organisational priorities.</p>
-        </div>
-      </div>
-      <div class="sustain-wide">
-        <h4>3. Sustainability phase: individualised productivity derailers, explored one-to-one</h4>
-        <p>Our in-house productivity metrics and organisational behavioural mapping help address what is holding your team back, through a structured productivity methodology.</p>
-        <p>Identify the unique productivity challenges of each team member by uncovering the psychological barriers that affect their performance and growth. Behaviours and psychological factors are common challenges to getting things done at work. Assessing productivity through a psychological lens accommodates individual differences, helps increase efficiency, and helps uncover the root causes of chronic distraction, procrastination and misplaced priorities.</p>
+      <div class="sustain-wide" style="margin-top:0;padding-top:0;border-top:0">
+        <h4>Sustainability phase: 1:1 to gauge progress</h4>
+        <p>Our in-house productivity metrics and organisational behavioural mapping show what is holding your team back, through structured reports.</p>
+        <p>We identify each team member&rsquo;s unique productivity challenges by uncovering the psychological barriers that affect their performance and growth. Assessing productivity through a psychological lens accommodates individual differences, helps increase efficiency, and uncovers the root causes of chronic distraction, procrastination and misplaced priorities.</p>
       </div>
     </section>
     <figure><img src="img/01-team-board.png" alt="Team board screen" loading="lazy"><figcaption>Team board</figcaption></figure>
