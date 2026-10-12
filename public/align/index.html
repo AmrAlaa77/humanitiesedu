@@ -158,6 +158,8 @@ body.live .local-only{display:none!important}body:not(.live) .live-only{display:
 <div class="navitem" data-nav="waiting"><span>⧗</span> Waiting for others <span class="count" id="waitCount">0</span></div>
 <div class="navitem" data-nav="capture"><span>⇣</span> Capture notes</div>
 <div class="navitem" data-nav="reset"><span>↻</span> Weekly reset</div>
+
+
 <div class="navitem" data-nav="calendar"><span>📆</span> Calendar</div>
 
 <div class="navsep"></div>
@@ -216,6 +218,8 @@ body.live .local-only{display:none!important}body:not(.live) .live-only{display:
         <div class="pillar"><div class="ic"><i data-ic="sparkles"></i></div><strong>Align AI co-pilot</strong><p>Reads drafts as you type and suggests the type, deadline, recipients and objective. It also flags risks and writes the manager briefing.</p></div>
       </div>
     </section>
+
+
 
     <section class="view" id="view-loop">
       <div class="view-head"><div><h1>Follow-Through</h1><div class="subtle">Updates, requests, commitments and decisions, acknowledged by every recipient so nothing is missed</div></div></div>
@@ -1229,7 +1233,7 @@ const MIC_HTML = '<svg class="mic-ic" viewBox="0 0 24 24" aria-hidden="true"><re
     const list = nearItems();
     const lang = getLang() === 'ar-SA' ? 'ar' : 'en';
     host.innerHTML = '<div class="near-box">'
-      + '<div class="near-head"><span class="near-badge">We have your back</span><b>Near-miss reminders</b><span>Due today or tomorrow</span>'
+      + '<div class="near-head"><b>Near-miss reminders</b><span>Due today or tomorrow</span>'
       + '<select id="nearLang" aria-label="Voice language"><option value="en"' + (lang === 'en' ? ' selected' : '') + '>English</option><option value="ar"' + (lang === 'ar' ? ' selected' : '') + '>العربية</option></select>'
       + '<button class="btn sm ai" id="nearSpeak">🔊 Hear them</button></div>'
       + (list.length
