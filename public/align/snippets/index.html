@@ -214,6 +214,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .w-bar0{position:relative}
 @keyframes wripple{from{transform:scale(.4);opacity:1}to{transform:scale(3.2);opacity:0}}
 @media(prefers-reduced-motion:reduce){.w-cur{display:none}.e-win .w-body{transition:none}}
+.w-play:empty{display:none}.e-win:focus-within .w-bar0{outline:0}.w-bar0:focus{outline:0}
 </style>
 </head>
 <body>
@@ -454,19 +455,20 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
       reset();state='busy';label();hint.className='w-play';hint.textContent='';
       if(reduce){win.classList.add('open','play');swap();state='open';label();return;}
       var h=hint.getBoundingClientRect(),w=win.getBoundingClientRect();
-      cur.style.left=(h.left-w.left+h.width/2+70)+'px';cur.style.top=(h.top-w.top+h.height/2+60)+'px';
+      cur.style.left=(h.left-w.left+h.width/2+40)+'px';cur.style.top=(h.top-w.top+h.height/2+36)+'px';
       void cur.offsetWidth;
       at(50,function(){win.classList.add('go');cur.style.left=(h.left-w.left+h.width/2-4)+'px';cur.style.top=(h.top-w.top+h.height/2-2)+'px';});
-      at(1100,function(){win.classList.add('click');});
-      at(1350,function(){win.classList.add('open');});
-      at(1900,function(){win.classList.add('play');win.classList.remove('go');});
-      at(3300,function(){swap();state='open';label();win.classList.remove('click');});
+      at(650,function(){win.classList.add('click');});
+      at(800,function(){win.classList.add('open');});
+      at(1250,function(){win.classList.add('play');win.classList.remove('go');});
+      at(2500,function(){swap();state='open';label();win.classList.remove('click');});
     }
     function toggle(){state==='closed'||state==='open'?(state==='open'?reset():play()):0;if(state==='open'&&false)0;}
-    bar.addEventListener('click',function(){if(state==='busy')return;state==='open'?play():play();});
     bar.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();bar.click();}});
     label();
-    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting&&state==='closed'){io.disconnect();play();}});},{threshold:.6});io.observe(win);}
+    var canHover=window.matchMedia&&matchMedia('(hover: hover)').matches;
+    if(canHover){win.addEventListener('mouseenter',function(){if(state==='closed')play();});win.addEventListener('mouseleave',reset);}
+    bar.addEventListener('click',function(){if(state==='busy')return;if(canHover||state==='closed')play();else reset();});
   });
 })();
 </script>
