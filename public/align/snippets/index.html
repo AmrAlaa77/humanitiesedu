@@ -30,11 +30,6 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .hero{background:rgb(22,123,140)}
 .hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(22,123,140,1) 0,rgba(22,123,140,1) 30%,rgba(22,123,140,0.82) 36%,rgba(22,123,140,0.6) 43%,rgba(22,123,140,0.42) 50%,rgba(22,123,140,0.28) 58%,rgba(22,123,140,0.17) 68%,rgba(22,123,140,0.07) 82%,rgba(22,123,140,0) 100%)}
 .hero>*{position:relative;z-index:1}
-.strip{background:rgb(22,123,140);border-radius:18px;padding:16px;margin:0 0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;color:#fff}
-.strip div{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:12px 14px;font-weight:700;font-size:15px;line-height:1.35}
-.strip i{flex:none;width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.26);box-shadow:inset 0 1px 0 rgba(255,255,255,.18);color:#e2fffa;display:grid;place-items:center}
-.strip svg{width:18px;height:18px}
-@media(max-width:900px){.strip{grid-template-columns:1fr}}
 .hero .kicker{margin:22px 0 0;font:800 13px/1.3 ui-monospace,Consolas,monospace;letter-spacing:.18em;text-transform:uppercase;color:#7ff5e3}
 .hero h3{font:800 22px/1.25 "Segoe UI",system-ui,sans-serif;margin:6px 0 0;letter-spacing:-.01em}
 .derail li span{font-weight:400}
@@ -81,12 +76,8 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <ol class="about-list">
       <li>Spot burnout before performance drops.</li>
       <li>Keep top talent at their best, before disengagement sets in.</li>
+      <li>See what is slowing each person down, through individualised performance derailers.</li>
     </ol>
-  </section>
-  <section class="strip">
-    <div><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></i><span>AI watches over behaviour, wellbeing and productivity metrics</span></div>
-    <div><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></i><span>Individualised performance derailers</span></div>
-    <div><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><path d="M9 16v-5M14 16V8M19 16v-3"/></svg></i><span>Dashboards that back leaders up by catching error and near-missed opportunities before they hurt ROI</span></div>
   </section>
   <div class="grid">
     <figure><img src="img/000-core-overview-v2.png" alt="Core features overview of Humantic AI - Align" loading="lazy"><figcaption>Core features overview</figcaption></figure>
