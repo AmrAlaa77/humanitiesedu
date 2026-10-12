@@ -31,12 +31,12 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .eyebrow:before{content:"";width:34px;height:2px;background:#7ff5e3}
 .hero h2{font:800 clamp(30px,5vw,46px)/1.08 "Segoe UI",system-ui,sans-serif;letter-spacing:-.02em;margin:14px 0 6px}
 .hero h2 span{display:block;font-weight:600;opacity:.85}
-.pill{display:inline-block;margin-top:14px;font:700 12px/1 ui-monospace,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(2px);padding:9px 14px;border-radius:999px;max-width:100%;white-space:normal;line-height:1.5}
+.pill{display:inline-block;margin-top:14px;font:700 12px/1 ui-monospace,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(1px);padding:9px 14px;border-radius:999px;max-width:100%;white-space:normal;line-height:1.5}
 .hero p{max-width:620px;font-size:17px;line-height:1.6;margin:16px 0 0;opacity:.95}
 .hero p+p{margin-top:12px}
 .hero{position:relative;overflow:hidden}
 .hero{background:rgb(22,123,140)}
-.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(22,123,140,1) 0,rgba(22,123,140,1) 30%,rgba(22,123,140,0.972) 36.4%,rgba(22,123,140,0.896) 42.8%,rgba(22,123,140,0.784) 49.2%,rgba(22,123,140,0.648) 55.6%,rgba(22,123,140,0.500) 62.0%,rgba(22,123,140,0.352) 68.4%,rgba(22,123,140,0.216) 74.8%,rgba(22,123,140,0.104) 81.2%,rgba(22,123,140,0.028) 87.6%,rgba(22,123,140,0.000) 94.0%)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(22,123,140,1) 0,rgba(22,123,140,1) 22%,rgba(22,123,140,0.980) 26.2%,rgba(22,123,140,0.926) 30.3%,rgba(22,123,140,0.844) 34.5%,rgba(22,123,140,0.741) 38.7%,rgba(22,123,140,0.624) 42.8%,rgba(22,123,140,0.500) 47.0%,rgba(22,123,140,0.376) 51.2%,rgba(22,123,140,0.259) 55.3%,rgba(22,123,140,0.156) 59.5%,rgba(22,123,140,0.074) 63.7%,rgba(22,123,140,0.020) 67.8%,rgba(22,123,140,0.000) 72.0%,rgba(22,123,140,0) 100%)}
 .hero>*{position:relative;z-index:1}
 .hero .kicker{margin:22px 0 0;font:800 13px/1.3 ui-monospace,Consolas,monospace;letter-spacing:.18em;text-transform:uppercase;color:#7ff5e3}
 .hero h3{font:800 22px/1.25 "Segoe UI",system-ui,sans-serif;margin:6px 0 0;letter-spacing:-.01em}
@@ -57,6 +57,43 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .about-list li{padding-left:4px}
 .about p{margin:0;max-width:820px;font-size:17px;line-height:1.65;color:var(--ink)}
 .about p+p{margin-top:10px}
+.acct{grid-column:1/-1;border-radius:18px;padding:28px;background:radial-gradient(900px 600px at 100% -10%,rgba(153,246,228,.45),transparent 60%),linear-gradient(135deg,#0f8f86,#0e7490);color:#fff;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+.acct .a-eyebrow{font:800 12px/1 ui-monospace,Consolas,monospace;letter-spacing:.2em;text-transform:uppercase;color:#7ff5e3}
+.acct h3{font:800 26px/1.2 "Segoe UI",system-ui,sans-serif;margin:8px 0 6px;letter-spacing:-.01em}
+.acct .a-sub{font-size:16px;color:#d5f7f2;margin:0 0 16px}
+.a-dlg{background:#f9fdfc;border-radius:16px;box-shadow:0 22px 44px rgba(4,50,60,.35);padding:20px 22px;color:#10302f}
+.a-dlg .a-t{font-size:19px;font-weight:800;margin:0 0 10px}
+.a-inv{display:flex;gap:10px}
+.a-inp{flex:1;border:1px solid #cfe3e0;border-radius:10px;padding:11px 14px;font-size:15px;color:#10302f;background:#fff;min-height:44px;display:flex;align-items:center;overflow:hidden;white-space:nowrap}
+.a-inp .ph{color:#7a9895}
+.a-inp .cur{display:inline-block;width:2px;height:18px;background:#14a39a;margin-left:1px;animation:ablink 1s steps(1) infinite}
+@keyframes ablink{50%{opacity:0}}
+.a-btn{background:linear-gradient(135deg,#14a39a,#0e7490);color:#fff;border-radius:10px;padding:11px 22px;font-size:15px;font-weight:800;transition:transform .15s,filter .15s}
+.a-btn.press{transform:scale(.94);filter:brightness(1.15)}
+.a-list{margin-top:8px;min-height:430px}
+.a-row{display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center;padding:11px 0;border-top:1px solid #e6f0ee;animation:arow .5s ease both}
+@keyframes arow{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+.a-av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:15px;border:2px solid #14a39a;background:#d9f5ef;color:#0b6f69;transition:all .4s}
+.a-row.p .a-av{border-color:#e8a021;background:#fff3dd;color:#8a5200}
+.a-nm{font-size:15px;font-weight:800}.a-em{font-size:13px;color:#6a8a87}
+.a-chip{font-size:12px;font-weight:800;padding:5px 12px;border-radius:99px;transition:all .4s;white-space:nowrap}
+.a-chip.pe{background:#ffe9c7;color:#8a5200}.a-chip.jo{background:#d9f5ef;color:#0b6f69}.a-chip.ac{background:#d8ecfa;color:#0b5f8a}
+.a-row.pulse .a-chip.pe{animation:apulse 1.4s ease-in-out infinite}
+@keyframes apulse{50%{box-shadow:0 0 0 6px rgba(232,160,33,.25)}}
+.a-sum{margin-top:10px;padding-top:10px;border-top:1px solid #e6f0ee;font-size:14px;font-weight:700;color:#35625f;display:flex;gap:16px;flex-wrap:wrap}
+.a-sum b{color:#0b6f69}.a-sum .w{color:#8a5200}
+.a-steps{display:grid;gap:12px}
+.a-step{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:16px;padding:14px 18px;opacity:.55;transition:all .5s}
+.a-step.on{opacity:1;background:rgba(255,255,255,.22);border-color:rgba(127,245,227,.8);transform:translateX(6px)}
+.a-n{width:38px;height:38px;border-radius:50%;background:#7ff5e3;color:#0b5b63;font-weight:800;font-size:17px;display:grid;place-items:center}
+.a-step b{font-size:17px;display:block;margin-bottom:3px}.a-step span{font-size:15px;line-height:1.4;color:#e6fbf8}
+.a-note{grid-column:1/-1;font-size:13px;color:#c4efe9;text-align:right}
+@media(max-width:900px){.acct{grid-template-columns:1fr;padding:20px}.a-list{min-height:300px}}
+@media(prefers-reduced-motion:reduce){.a-row,.a-inp .cur,.a-row.pulse .a-chip.pe{animation:none}}
+.a-tabs{display:flex;gap:24px;margin:0 0 14px;border-bottom:1px solid #dcebe9;font-size:15px;font-weight:700;color:#6a8a87}
+.a-tabs .on{color:#0b6f69;border-bottom:3px solid #14a39a;padding-bottom:8px;margin-bottom:-1px}
+.a-h4{font:800 24px/1.25 "Segoe UI",system-ui,sans-serif;margin:0 0 4px;letter-spacing:-.01em}
+.a-steps{align-content:center}
 </style>
 </head>
 <body>
@@ -91,6 +128,110 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
   <div class="grid">
     <figure><img src="img/000-core-overview-v4.png" alt="Core features overview of Humantic AI - Align" loading="lazy"><figcaption>Core features overview</figcaption></figure>
     <figure><img src="img/00-manager-view.png" alt="Manager view screen" loading="lazy"><figcaption>Manager view: the executive overview</figcaption></figure>
+  <section class="acct" id="acct" aria-label="Animated example: inviting teammates and tracking who has responded">
+    <div>
+      <div class="a-eyebrow">Accountability, including teammates</div>
+      <h3>Everyone who owns work is on the board</h3>
+      <p class="a-sub">Invite teammates, and see who has joined and who has acknowledged their tasks.</p>
+      <div class="a-dlg">
+        <div class="a-t">Share the board</div>
+        <div class="a-tabs"><span class="on">Teammates</span><span>Invite from team</span></div>
+        <div class="a-inv"><div class="a-inp" id="a-inp"><span class="ph">Email or role</span></div><div class="a-btn" id="a-btn">Invite</div></div>
+        <div class="a-list" id="a-list"></div>
+        <div class="a-sum" id="a-sum"></div>
+      </div>
+    </div>
+    <div class="a-steps">
+      <h4 class="a-h4">Accountability that includes everyone</h4>
+      <div class="a-step" id="a-s1"><div class="a-n">1</div><div><b>Invite everyone who owns work</b><span>Each teammate joins the shared board, so no task depends on someone who is not in it.</span></div></div>
+      <div class="a-step" id="a-s2"><div class="a-n">2</div><div><b>Each person acknowledges their tasks</b><span>An owner confirms the work is theirs, with a clear due date and status.</span></div></div>
+      <div class="a-step" id="a-s3"><div class="a-n">3</div><div><b>Leaders see who has not responded</b><span>Pending invites and unacknowledged tasks are visible, so nothing waits in silence.</span></div></div>
+    </div>
+    <div class="a-note">Illustrative example. All roles and addresses are sample data.</div>
+  </section>
+  <script>
+  (function(){
+    var root=document.getElementById('acct');if(!root)return;
+    var list=document.getElementById('a-list'),inp=document.getElementById('a-inp'),btn=document.getElementById('a-btn'),sum=document.getElementById('a-sum');
+    var steps=[document.getElementById('a-s1'),document.getElementById('a-s2'),document.getElementById('a-s3')];
+    var people=[
+      {r:'Head of Operations',e:'ops.sample@humanticdigital.sa',i:'O',end:'pe'},
+      {r:'Head of Sales',e:'sales.sample@humanticdigital.sa',i:'S',end:'pe'},
+      {r:'Head of People & Culture',e:'people.sample@humanticdigital.sa',i:'P',end:'jo'},
+      {r:'Account Manager',e:'accounts.sample@humanticdigital.sa',i:'A',end:'ac'},
+      {r:'Operations Coordinator',e:'coord.sample@humanticdigital.sa',i:'C',end:'ac'}
+    ];
+    var run=0,playing=false,gm=null,reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
+    function setStep(n){steps.forEach(function(s,k){s.classList.toggle('on',k===n)})}
+    function row(r,e,i,cls,txt,chipCls){
+      var d=document.createElement('div');d.className='a-row '+cls;
+      d.innerHTML='<div class="a-av">'+i+'</div><div><div class="a-nm"></div><div class="a-em"></div></div><span class="a-chip '+chipCls+'">'+txt+'</span>';
+      d.querySelector('.a-nm').textContent=r;d.querySelector('.a-em').textContent=e;return d;
+    }
+    function status(d,kind){
+      var c=d.querySelector('.a-chip');
+      d.classList.remove('p','pulse');
+      if(kind==='pe'){d.classList.add('p');c.className='a-chip pe';c.textContent='Pending'}
+      if(kind==='jo'){c.className='a-chip jo';c.textContent='Joined'}
+      if(kind==='ac'){c.className='a-chip ac';c.textContent='Acknowledged tasks'}
+    }
+    function summary(){
+      var rows=list.querySelectorAll('.a-row'),p=0,a=0,j=0;
+      rows.forEach(function(d){var c=d.querySelector('.a-chip');if(c.classList.contains('pe'))p++;else if(c.classList.contains('ac'))a++;else j++;});
+      sum.innerHTML='<span>'+rows.length+' on the board</span><span><b>'+a+'</b> acknowledged</span><span><b>'+j+'</b> joined</span>'+(p?'<span class="w">'+p+' not yet responded</span>':'');
+    }
+    function base(){
+      list.innerHTML='';
+      gm=row('General Manager','Owner of the board','G','','Joined','jo');gm.style.animation='none';
+      list.appendChild(gm);summary();inp.innerHTML='<span class="ph">Email or role</span>';
+    }
+    async function type(text,token){
+      inp.innerHTML='<span class="t"></span><span class="cur"></span>';
+      var t=inp.querySelector('.t');
+      for(var k=1;k<=text.length;k++){if(token!==run)return false;t.textContent=text.slice(0,k);await sleep(34)}
+      return true;
+    }
+    function finalState(){
+      base();
+      people.forEach(function(p){var d=row(p.r,p.e,p.i,'',' ','jo');d.style.animation='none';list.insertBefore(d,gm);status(d,p.end);if(p.end==='pe')d.classList.add('pulse')});
+      setStep(2);summary();
+    }
+    async function play(){
+      var token=++run;playing=true;
+      while(token===run){
+        base();setStep(0);await sleep(900);
+        var added=[];
+        for(var k=0;k<people.length;k++){
+          var p=people[k];
+          if(!(await type(p.e,token)))return;
+          await sleep(220);btn.classList.add('press');await sleep(160);btn.classList.remove('press');
+          var d=row(p.r,p.e,p.i,'p','Pending','pe');list.insertBefore(d,gm);added.push(d);summary();
+          inp.innerHTML='<span class="ph">Email or role</span>';await sleep(560);if(token!==run)return;
+        }
+        setStep(1);await sleep(900);
+        var order=[2,3,4];
+        for(var m=0;m<order.length;m++){
+          var idx=order[m],d2=added[idx];
+          status(d2,'jo');summary();await sleep(700);
+          if(people[idx].end==='ac'){status(d2,'ac');summary();await sleep(800);}
+          if(token!==run)return;
+        }
+        added[0].classList.add('pulse');added[1].classList.add('pulse');
+        setStep(2);await sleep(5200);
+      }
+    }
+    function go(){if(reduce){finalState();return}if(!playing)play();}
+    function halt(){run++;playing=false;}
+    if("IntersectionObserver" in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)go();else halt();})},{threshold:.2});
+      io.observe(root);
+      document.addEventListener("visibilitychange",function(){if(document.hidden)halt();});
+    }else{finalState();}
+    base();setStep(0);
+  })();
+  </script>
+
     <section class="sustain">
       <h3>Sustaining Collective Strength</h3>
       <div class="sustain-cols">
