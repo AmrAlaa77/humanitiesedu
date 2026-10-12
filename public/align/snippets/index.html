@@ -20,20 +20,18 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .hero{background:linear-gradient(120deg,#22c4b3 0%,#0f9a8f 55%,#0b7896 100%);color:#fff;border-radius:18px;padding:40px 36px;margin:0 0 24px}
 .eyebrow{display:flex;align-items:center;gap:12px;font:700 12px/1.4 ui-monospace,Consolas,monospace;letter-spacing:.2em;text-transform:uppercase;opacity:.95}
 .eyebrow:before{content:"";width:34px;height:2px;background:#7ff5e3}
-.hero h2{max-width:520px;font:800 clamp(30px,5vw,46px)/1.08 "Segoe UI",system-ui,sans-serif;letter-spacing:-.02em;margin:14px 0 6px}
+.hero h2{font:800 clamp(30px,5vw,46px)/1.08 "Segoe UI",system-ui,sans-serif;letter-spacing:-.02em;margin:14px 0 6px}
 .hero h2 span{display:block;font-weight:600;opacity:.85}
 .pill{display:inline-block;margin-top:14px;font:700 12px/1 ui-monospace,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;background:rgba(6,60,70,.55);border:1px solid rgba(255,255,255,.35);padding:9px 14px;border-radius:999px}
-.hero p{max-width:480px;font-size:17px;line-height:1.6;margin:16px 0 0;opacity:.95}
+.hero p{max-width:620px;font-size:17px;line-height:1.6;margin:16px 0 0;opacity:.95}
 .hero p+p{margin-top:12px}
 .hero{position:relative;overflow:hidden}
-.hero{background:linear-gradient(120deg,#22c4b3 0%,#0f9a8f 55%,#0b7896 100%)}
-.hero>*{position:relative;z-index:1}
-.hero::before{content:"";position:absolute;bottom:0;right:0;width:540px;aspect-ratio:884/844;background:linear-gradient(120deg,rgba(34,196,179,.3),rgba(11,120,150,.2)),url(img/hero-bg.webp) center/100% 100% no-repeat;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 12%),linear-gradient(to bottom,transparent 0,#000 8%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 12%),linear-gradient(to bottom,transparent 0,#000 8%);mask-composite:intersect}
-.derail{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;max-width:480px}
+.hero{background:linear-gradient(100deg,rgba(34,196,179,.95) 0%,rgba(15,154,143,.88) 45%,rgba(11,120,150,.6) 100%),url(img/hero-bg.webp) 25% 0/cover no-repeat,#0f9a8f}
+.derail{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;max-width:560px}
 .derail li{display:flex;align-items:center;gap:14px;background:rgba(6,50,60,.5);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 20px 7px 8px;font-weight:700;font-size:15px;line-height:1.3}
 .derail i{flex:none;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#5fe3ef,#2bb8d4);color:#08323c;display:grid;place-items:center}
 .derail svg{width:18px;height:18px}
-@media(max-width:900px){.hero::before{width:100%;height:100%;aspect-ratio:auto;opacity:.35;-webkit-mask-image:none;mask-image:none}}
+@media(max-width:900px){.hero{background:linear-gradient(180deg,rgba(15,154,143,.92),rgba(11,120,150,.82)),url(img/hero-bg.webp) center/cover no-repeat,#0f9a8f}}
 </style>
 </head>
 <body>
@@ -45,12 +43,12 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <div class="eyebrow">Agentic AI · Humantic Digital</div>
     <h2>Teams that move together.<span>Aligned by agentic AI.</span></h2>
     <span class="pill">Productivity · Alignment · Accountability</span>
-    <p>Humantic AI - Align gives leaders one live view of what matters. Every request, owner and deadline sits on a shared board, and the AI watches over behaviour, wellbeing and productivity metrics, capturing what is asked and flagging what is slipping, so accountability stays clear without chasing.</p>
+    <p>Humantic AI - Align gives leaders one live view of what matters. Every request, owner and deadline sits on a shared board, the AI captures what is asked and flags what is slipping, and accountability stays clear without chasing.</p>
     <p>Alongside delivery, the wellbeing index and productivity metrics sit side by side, so leaders see both the work and the people doing it. Priorities, pending items and workload stay visible, and early signals show who is stretched before pressure becomes burnout.</p>
     <p>Because the two grow together, protecting wellbeing protects performance and the return on investing in people. Calm communication, weekly resets and anonymous pulse checks keep teams steady, and early signals can point people to employee assistance support when it helps most. That is how top talent finds every reason to stay.</p>
     <ul class="derail">
+      <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></i>AI watches over behaviour, wellbeing and productivity metrics</li>
       <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></i>Individualised performance derailers</li>
-      <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/></svg></i>Individualised wellbeing derailers</li>
       <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16M9 16v-5M14 16V8M19 16v-3"/></svg></i>Dashboards show relevant insights</li>
     </ul>
   </section>
