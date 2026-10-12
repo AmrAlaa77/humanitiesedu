@@ -90,6 +90,34 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .a-note{grid-column:1/-1;font-size:13px;color:#c4efe9;text-align:right}
 @media(max-width:900px){.acct{grid-template-columns:1fr;padding:20px}.a-list{min-height:300px}}
 @media(prefers-reduced-motion:reduce){.a-row,.a-inp .cur,.a-row.pulse .a-chip.pe{animation:none}}
+.a-steps{display:flex;flex-direction:column;gap:12px;align-self:stretch;align-content:normal}
+.a-card{margin-top:auto;background:#fff;color:#10302f;border-radius:16px;padding:16px 18px;box-shadow:0 18px 36px rgba(4,50,60,.3)}
+.a-card-h{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:12px}
+.a-card-h b{font:800 17px/1.2 "Segoe UI",system-ui,sans-serif}
+.a-card-h span{font:800 10px/1 ui-monospace,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;color:#0b6f69;background:#e6f6f4;border:1px solid #bfe6e1;padding:6px 10px;border-radius:99px}
+.a-card-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.a-card-g>div{background:#f2faf8;border:1px solid #dcebe9;border-radius:12px;padding:10px 12px}
+.a-card-g .res{background:#e3f6f2;border-color:#9fdcd2}
+.a-card-g i{display:block;font:800 10px/1 ui-monospace,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;color:#0b8a82;font-style:normal;margin-bottom:5px}
+.a-card-g b{display:block;font-size:14.5px;line-height:1.25;margin-bottom:3px}
+.a-card-g p{margin:0;font-size:12.5px;line-height:1.4;color:#35625f}
+.a-card-f{margin-top:10px;font-size:11.5px;color:#6a8a87}
+@media(max-width:560px){.a-card-g{grid-template-columns:1fr}}
+.a-head{grid-column:1/-1}
+.a-main{align-self:start}
+.a-challenge{grid-column:1/-1;background:rgba(6,40,50,.34);border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:16px 18px}
+.a-ch-h{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:12px}
+.a-ch-h b{font:800 19px/1.2 "Segoe UI",system-ui,sans-serif}
+.a-ch-h span{font:800 10px/1 ui-monospace,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,125,125,.26);border:1px solid rgba(255,170,170,.5);padding:6px 10px;border-radius:99px}
+.a-ch-g{display:grid;grid-template-columns:1fr 22px 1fr 22px 1fr 22px 1fr;align-items:stretch}
+.a-ch-g>em{display:grid;place-items:center;font-style:normal;font-size:20px;color:#ffb3b3}
+.a-ch-g>div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:12px 14px}
+.a-ch-g .risk{background:rgba(255,100,100,.16);border:2px solid rgba(255,170,170,.6)}
+.a-ch-g i{display:block;font:800 10px/1.3 ui-monospace,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;font-style:normal;color:#ffd0d0;margin-bottom:5px}
+.a-ch-g b{display:block;font-size:15.5px;line-height:1.25;margin-bottom:4px}
+.a-ch-g p{margin:0 0 8px;font-size:13.5px;line-height:1.4;color:#e6fbf8}
+.a-ch-g u{text-decoration:none;display:inline-block;font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:99px;background:rgba(255,120,120,.24);border:1px solid rgba(255,170,170,.5);margin:0 5px 4px 0}
+@media(max-width:900px){.a-ch-g{grid-template-columns:1fr}.a-ch-g>em{display:none}.a-ch-g>div{margin-bottom:8px}}
 .a-tabs{display:flex;gap:24px;margin:0 0 14px;border-bottom:1px solid #dcebe9;font-size:15px;font-weight:700;color:#6a8a87}
 .a-tabs .on{color:#0b6f69;border-bottom:3px solid #14a39a;padding-bottom:8px;margin-bottom:-1px}
 .a-h4{font:800 24px/1.25 "Segoe UI",system-ui,sans-serif;margin:0 0 4px;letter-spacing:-.01em}
@@ -144,11 +172,21 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <figure style="grid-column:1/-1"><img src="img/one-request-two-outcomes.png" alt="One request, two outcomes: a client request nobody was assigned to, with and without a shared board" loading="lazy"><figcaption>One request, two outcomes: an illustrative scenario</figcaption></figure>
   <section class="acct" id="acct" aria-label="Animated example: inviting teammates, assigning roles and tracking who has responded">
     <div class="a-logo"><svg viewBox="0 0 64 70" aria-hidden="true"><defs><linearGradient id="alg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset=".6" stop-color="#0fa39a"/><stop offset="1" stop-color="#0891b2"/></linearGradient></defs><rect x="2" y="2" width="60" height="62" rx="16" fill="url(#alg)"/><path d="M10 36h10l5-12 8 24 6-16 4 4h11" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Humantic</b><span>DIGITAL</span></div></div>
+    <div class="a-head"><div class="a-eyebrow">Accountability, everyone included</div><h3>Everyone who owns work is on the board</h3><p class="a-sub">Invite teammates, assign roles, and see who has joined and who has acknowledged their tasks.</p></div>
+    <div class="a-challenge">
+      <div class="a-ch-h"><b>The challenge</b><span>Nobody owns it</span></div>
+      <div class="a-ch-g">
+        <div><i>Day 1</i><b>The request arrives</b><p>It comes by email and gets forwarded in a chat. Everyone sees it.</p><u>No owner</u><u>No due date</u></div>
+        <em>&rarr;</em>
+        <div><i>Days 2 to 5</i><b>Everyone assumes</b><p>Each person thinks someone else has it. Nothing shows it is waiting.</p><u>No status</u><u>Nobody chasing</u></div>
+        <em>&rarr;</em>
+        <div><i>24 hours before delivery</i><b>Noticed at the last minute</b><p>Someone finally spots it. The team scrambles to catch up.</p><u>Rushed work</u><u>Late discovery</u></div>
+        <em>&rarr;</em>
+        <div class="risk"><i>The risk</i><b>The client relationship is at risk</b><p>A late or rushed delivery can cost trust, and in the worst case the client.</p></div>
+      </div>
+    </div>
     <div class="a-main">
-      <div class="a-eyebrow">Accountability, including teammates</div>
-      <h3>Everyone who owns work is on the board</h3>
-      <p class="a-sub">Invite teammates, assign roles, and see who has joined and who has acknowledged their tasks.</p>
-      <div class="a-dlg">
+        <div class="a-dlg">
         <div class="a-t">Share the board</div>
         <div class="a-tabs"><span class="on">Teammates</span><span>Invite from team</span></div>
         <div class="a-inv"><div class="a-inp" id="a-inp"><span class="ph">Email or role</span></div><div class="a-btn" id="a-btn">Invite</div></div>
@@ -161,6 +199,16 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
       <div class="a-step" id="a-s1"><div class="a-n">1</div><div><b>Invite everyone who owns work</b><span>Each teammate joins the shared board, so no task depends on someone who is not in it.</span></div></div>
       <div class="a-step" id="a-s2"><div class="a-n">2</div><div><b>Assign roles, and each person acknowledges</b><span>Give each person a role. An owner confirms the work is theirs, with a clear due date and status.</span></div></div>
       <div class="a-step" id="a-s3"><div class="a-n">3</div><div><b>Leaders see who has not responded</b><span>Pending invites and unacknowledged tasks are visible, so nothing waits in silence.</span></div></div>
+      <div class="a-card">
+        <div class="a-card-h"><b>How Humantic closes the gap</b><span>One owner, one view</span></div>
+        <div class="a-card-g">
+          <div><i>Day 1</i><b>The request is captured</b><p>It lands on the shared board with an owner, a due date and a status.</p></div>
+          <div><i>Days 2 to 5</i><b>Progress stays visible</b><p>Leaders see where it stands, without asking for updates.</p></div>
+          <div><i>Days before delivery</i><b>Flagged early</b><p>If it starts to slip, the board shows it while there is time to fix it.</p></div>
+          <div class="res"><i>The result</i><b>Delivered with confidence</b><p>The client sees a team that is in control.</p></div>
+        </div>
+        <div class="a-card-f">Illustrative scenario. Timings are examples.</div>
+      </div>
     </div>
     <div class="a-note">Illustrative example. All roles and addresses are sample data.</div>
   </section>
