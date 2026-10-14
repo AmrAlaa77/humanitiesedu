@@ -215,7 +215,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 @keyframes wripple{from{transform:scale(.4);opacity:1}to{transform:scale(3.2);opacity:0}}
 @media(prefers-reduced-motion:reduce){.w-cur{display:none}.e-win .w-body{transition:none}}
 .w-play:empty{display:none}.e-win:focus-within .w-bar0{outline:0}.w-bar0:focus{outline:0}
-@media(min-width:901px){.hero::before{opacity:1;left:calc(36px + 597px);right:0;width:auto;aspect-ratio:auto;background:url(img/hero-bg.webp) right center/auto 100% no-repeat;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,.35) 60px,rgba(0,0,0,.75) 120px,#000 180px);mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,.35) 60px,rgba(0,0,0,.75) 120px,#000 180px)}.hero::after{background:linear-gradient(90deg,#167b8c 0,#167b8c calc(36px + 597px),rgba(22,123,140,0) calc(36px + 597px))}}
+@media(min-width:901px){.hero::before{opacity:1;left:calc(36px + 597px);right:0;width:auto;aspect-ratio:auto;background:url(img/hero-bg.webp) right center/auto 100% no-repeat;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,.3) 80px,rgba(0,0,0,.4) 200px,rgba(0,0,0,.5) 290px,#000 400px);mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,.3) 80px,rgba(0,0,0,.4) 200px,rgba(0,0,0,.5) 290px,#000 400px)}.hero::after{background:linear-gradient(90deg,#167b8c 0,#167b8c calc(36px + 597px),rgba(22,123,140,0) calc(36px + 597px))}}
 @media(max-width:900px){.hero::before{opacity:.18}}
 .a-card{grid-column:1/-1;margin-top:0;max-height:0;opacity:0;overflow:hidden;padding-top:0;padding-bottom:0;margin-top:-28px;transform:translateY(10px);transition:max-height .7s ease,opacity .6s ease,padding .5s ease,margin .5s ease,transform .6s ease}
 .a-card.show{max-height:520px;opacity:1;padding-top:16px;padding-bottom:16px;margin-top:0;transform:none}
@@ -241,6 +241,8 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .e-m-g p{margin:0;font-size:13px;line-height:1.4;color:#e6fbf8}
 @media(max-width:800px){.e-m-g{grid-template-columns:1fr}}
 .e-m-d{margin:0 0 12px;font-size:15px;line-height:1.5;color:#e6fbf8}
+.a-risks{margin-top:12px;padding-top:12px;border-top:1px solid #dcebe9}.a-rh b{font:800 15px/1.3 "Segoe UI",system-ui,sans-serif;color:#10302f}.a-rg{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:10px}.a-rg>div{background:#f2faf8;border:1px solid #dcebe9;border-radius:12px;padding:10px 12px}.a-rn{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#7ff5e3;color:#0b5b63;font-weight:800;font-size:12px;margin-bottom:6px}.a-rg b{display:block;font-size:13.5px;line-height:1.25;margin-bottom:3px;color:#10302f}.a-rg p{margin:0 0 7px;font-size:12px;line-height:1.35;color:#35625f}.a-rg u{text-decoration:none;display:inline-block;font-size:11px;font-weight:800;color:#0b6f69;background:#e3f6f2;border:1px solid #9fdcd2;border-radius:99px;padding:3px 9px}@media(max-width:900px){.a-rg{grid-template-columns:1fr 1fr}}@media(max-width:560px){.a-rg{grid-template-columns:1fr}}
+.a-rt{max-height:0;opacity:0;overflow:hidden;margin-top:0;transition:max-height .7s ease,opacity .6s ease,margin .5s ease}.a-rt.show{max-height:420px;opacity:1;margin-top:12px}.a-rt-h{font:800 13px/1.3 "Segoe UI",system-ui,sans-serif;color:#10302f;margin-bottom:6px}.a-tr{display:grid;grid-template-columns:24px 1.25fr 1.1fr 1fr;gap:8px;align-items:center;padding:6px 8px;border-top:1px solid #e6f0ee;font-size:12px;color:#35625f}.a-tr b{color:#10302f;font-size:12.5px}.a-th{background:#f0f5f4;border-radius:8px;border-top:0;font:800 10.5px/1 ui-monospace,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase;color:#56646a}.a-tn{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#7ff5e3;color:#0b5b63;font-weight:800;font-size:11px}.a-tr u{text-decoration:none;font-size:11px;font-weight:800;color:#0b6f69;background:#e3f6f2;border:1px solid #9fdcd2;border-radius:99px;padding:3px 9px;justify-self:start}@media(prefers-reduced-motion:reduce){.a-rt{transition:none}}
 </style>
 </head>
 <body>
@@ -297,6 +299,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
         <div class="a-inv"><div class="a-inp" id="a-inp"><span class="ph">Email or role</span></div><div class="a-btn" id="a-btn">Invite</div></div>
         <div class="a-list" id="a-list"></div>
         <div class="a-sum" id="a-sum"></div>
+        <div class="a-rt" id="a-rt"><div class="a-rt-h">The board shows everything, so 5 risks are flagged before they land</div><div class="a-tr a-th"><span>#</span><span>Risk</span><span>Signal</span><span>Solution</span></div><div class="a-tr"><span class="a-tn">1</span><b>Quiet blocker</b><span>Work stalls</span><u>Call for backup</u></div><div class="a-tr"><span class="a-tn">2</span><b>Work not linked to a goal</b><span>Task with no objective</span><u>Alignment gaps</u></div><div class="a-tr"><span class="a-tn">3</span><b>Unacknowledged request</b><span>No reply in 24h</span><u>Nudge</u></div><div class="a-tr"><span class="a-tn">4</span><b>Overload</b><span>Load over capacity</span><u>Productivity Index</u></div><div class="a-tr"><span class="a-tn">5</span><b>Drifting follow-ups</b><span>Replies owed for days</span><u>Waiting For</u></div></div>
       </div>
     </div>
     <div class="a-steps">
@@ -331,8 +334,8 @@ figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     var NAMES={GM:'Abdulrahman Al-Zahrani',HO:'Noura Al-Qahtani',HS:'Faisal Al-Harbi',HP:'Charlotte Hayes'};
     var run=0,playing=false,gm=null,reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
-    var card=root.querySelector('.a-card'),cardT=null;
-    function setStep(n){steps.forEach(function(s,k){s.classList.toggle('on',k===n)});clearTimeout(cardT);if(n===2){if(reduce){card.classList.add('show')}else{cardT=setTimeout(function(){card.classList.add('show')},700)}}else{card.classList.remove('show')}}
+    var card=root.querySelector('.a-card'),rt=root.querySelector('#a-rt'),cardT=null;
+    function setStep(n){steps.forEach(function(s,k){s.classList.toggle('on',k===n)});clearTimeout(cardT);if(n===2){if(reduce){card.classList.add('show');rt.classList.add('show')}else{cardT=setTimeout(function(){card.classList.add('show');rt.classList.add('show')},700)}}else{card.classList.remove('show');rt.classList.remove('show')}}
     function row(r,e,a,cls,roleTxt,roleCls,txt,chipCls){
       var d=document.createElement('div');d.className='a-row '+cls;
       d.innerHTML='<img class="a-av" alt="" src="img/av-'+a+'.png"><div class="a-who"><div class="a-nm"></div><div class="a-pn"></div><div class="a-tk"></div><div class="a-em"></div></div><div class="a-tags"><span class="a-role '+roleCls+'">'+roleTxt+'</span><span class="a-chip '+chipCls+'">'+txt+'</span></div>';
