@@ -468,9 +468,10 @@
 </main>
 <script>
   var T = ['Saudi Aramco','Ma’aden','National Guard Health Affairs','Royal Commission for AlUla','Mubadala','PepsiCo','Unilever','Nestlé','Google','Siemens','Shell','BP'];
-  document.getElementById('track').innerHTML = T.concat(T).map(function (n) { return '<span>' + n + '</span>'; }).join('');
-  var T2 = T.slice(6).concat(T.slice(0, 6)).reverse();
-  document.getElementById('track2').innerHTML = T2.concat(T2).map(function (n) { return '<span>' + n + '</span>'; }).join('');
+  var half = Math.ceil(T.length / 2), R1 = T.slice(0, half), R2 = T.slice(half);
+  function fill(id, list) { document.getElementById(id).innerHTML = list.concat(list).map(function (n) { return '<span>' + n + '</span>'; }).join(''); }
+  fill('track', R1);
+  fill('track2', R2);
 
 document.querySelectorAll('button.dp-btn:not(.dp-live)').forEach(function(b){b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',o?'false':'true');var t=document.getElementById(b.getAttribute('aria-controls'));if(t){t.hidden=o;}var l=b.firstChild;b.firstChild.nodeValue=o?'Learn more ':'Show less ';});});
 
