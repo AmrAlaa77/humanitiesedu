@@ -421,8 +421,10 @@
     #dpcard .dp-hero-copy > .dp-bul { grid-column: 2; grid-row: 1 / span 6; align-self: center; }
     #dpcard .dp-hero::after { background: linear-gradient(90deg, rgba(20,125,143,.98) 0%, rgba(20,125,143,.93) 50%, rgba(18,128,146,.55) 100%); }
     /* programme 02: stage picture beside the animated board */
-    #dpcard2 .dp-showcase { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 16px; align-items: stretch; }
-    #dpcard2 .dp-hero-stage { margin-bottom: 0; min-height: 100%; }
+    #dpcard2 .dp-showcase { display: block; }
+    #dpcard2 .dp-hero-stage { margin-bottom: 0; min-height: 532px; align-items: center; }
+    #dpcard2 .dp-hero-stage::before { background-position: 78% 40%; }
+    #dpcard2 .dp-hero-stage .dp-hero-copy { padding: 34px 40px; }
     #dpcard2 .dp2-fit { align-self: start; }
   }
 
@@ -738,6 +740,15 @@
               <p class="dp-pill">Presence &middot; Story &middot; Room</p>
             </div>
           </div>
+          
+        </div>
+        <div class="dp-head dp-foot-actions">
+          <div class="dp-actions">
+            <button class="dp-btn" type="button" aria-expanded="false" aria-controls="dp2a">Learn more <span class="dp-plus" aria-hidden="true">+</span></button>
+            <button class="dp-btn dp-live" type="button" aria-expanded="false" aria-controls="dp2live">Live digital board <span class="dp-arrow" aria-hidden="true">&#8599;</span></button>
+          </div>
+        </div>
+        <div class="dp-body" id="dp2live" hidden>
           <div class="dp2-face dp2-fit" id="pbfit"><div class="pb-stage" id="pbstage"><div class="dp2-live pb" id="pboard">
             <div class="pb-top">
               <div><div class="pb-kicker">Present with Intelligence</div><div class="pb-kick2">Evaluation board</div><h4><span class="pb-name">Presenter</span> <em>&middot;</em> Presentation 1</h4></div>
@@ -751,12 +762,6 @@
             </div>
             <p class="dp2-note">Illustrative example. Panel text is blurred.</p>
           </div></div></div>
-        </div>
-        <div class="dp-head dp-foot-actions">
-          <div class="dp-actions">
-            <button class="dp-btn" type="button" aria-expanded="false" aria-controls="dp2a">Learn more <span class="dp-plus" aria-hidden="true">+</span></button>
-            <button class="dp-btn dp-live" type="button" aria-expanded="false" aria-controls="pbfit">Live digital board <span class="dp-arrow" aria-hidden="true">&#8599;</span></button>
-          </div>
         </div>
         <div class="dp-body" id="dp2a" hidden>
           <div class="dp-white">
