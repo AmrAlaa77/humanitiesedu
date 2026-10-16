@@ -467,9 +467,9 @@
 
 </main>
 <script>
-  var T = ['Saudi Aramco','Ma’aden','National Guard Health Affairs','Royal Commission for AlUla','Mubadala','PepsiCo','Unilever','Nestlé','Google','Siemens','Shell','BP'];
+  var T = ['Saudi Aramco', 'Google', 'Ministry of National Guard', 'Microsoft', 'Royal Commission for AlUla', 'Unilever', 'King Salman Hospital', 'The World Bank', 'Ma’aden', 'Nestlé', 'King Abdullah Medical City', 'Mubadala', 'SGS Aviation Services', 'PepsiCo', 'King Abdulaziz Medical City', 'Siemens', 'General Authority for Defense Development', 'Philip Morris International', 'Prince Sattam bin Abdulaziz University', 'Shell', 'National Guard Health Affairs', 'eni', 'King Saud bin Abdulaziz University for Health Sciences', 'BP', 'SAMI Advanced Electronics', 'Mars', 'Saudi Arabian Military Industries', 'Dell EMC', 'Roads & Transport Authority', 'Kuwait Energy', 'Jamjoom Medical Solutions', 'Majid Al Futtaim', 'Alinma Bank', 'TAQA', 'SAAS', 'Vodafone', 'alnafitha IT', 'CMA CGM', 'Alkhorayef Industries', 'Emirates NBD', 'Savola', 'Warba Bank', 'STC', 'GIZ German Cooperation', 'Saudi Electricity Company', 'Valeo', 'Embassy of the Kingdom of Saudi Arabia', 'NESR', 'TASNEE', 'Lafarge', 'Abdul Latif Jameel Motors', 'RWE', 'Embassy of the United States of America', 'Commercial Bank', 'Al-Ayuni', 'Emirates Islamic'];
   var half = Math.ceil(T.length / 2), R1 = T.slice(0, half), R2 = T.slice(half);
-  function fill(id, list) { document.getElementById(id).innerHTML = list.concat(list).map(function (n) { return '<span>' + n + '</span>'; }).join(''); }
+  function fill(id, list) { var el = document.getElementById(id); el.innerHTML = list.concat(list).map(function (n) { return '<span>' + n + '</span>'; }).join(''); el.style.animationDuration = Math.round(list.length * 3.4) + 's'; }
   fill('track', R1);
   fill('track2', R2);
 
