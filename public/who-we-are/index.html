@@ -533,6 +533,12 @@
   .rk-lock { justify-self: end; font: 700 11px var(--sans); color: #0d6f74; background: #e3f3f1; border-radius: 99px; padding: 4px 10px; white-space: nowrap; }
   .rk-note { margin-top: 16px; padding: 14px 16px; border-radius: 14px; background: #e3f3f1; font-size: 13px; line-height: 1.55; color: #164a60; }
   .rk .dp2-note { color: #6a8792; }
+
+  /* deliverables category heading */
+  .dp-cat { grid-column: 1 / -1; margin: 6px 0 2px; }
+  .dp-cat small { font: 700 11px var(--mono); letter-spacing: .2em; text-transform: uppercase; color: var(--aqua); }
+  .dp-cat h3 { margin: 6px 0 0; font: 700 clamp(1.6rem, 3.6vw, 2.4rem)/1.1 var(--serif); color: #fff; }
+  .dp-cat h3 span { background: linear-gradient(90deg, #99f6e4, #67e8f9); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .dp-plus { font-size: 18px; line-height: 1; transition: transform .2s ease; }
   .dp-btn[aria-expanded="true"] .dp-plus { transform: rotate(45deg); }
   .dp-body { padding: 0 18px 22px; }
@@ -740,7 +746,7 @@
   <section class="deliver" id="deliverables">
     <div class="eyebrow">Deliverables</div>
     <div class="dp-list">
-
+      <div class="dp-cat"><small>Category 01</small><h3>Safer Workplace for All <span>2030</span></h3></div>
       <article class="dp-card dp-single" id="dpcard">
         <div class="dp-head">
           <p class="mono">Programme 01</p>
