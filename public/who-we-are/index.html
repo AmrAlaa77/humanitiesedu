@@ -439,6 +439,17 @@
     #dpcard .dp-hero-copy > .dp-bul { grid-column: 1 / -1; grid-row: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
     #dpcard .dp-hero-copy > .dp-bul li { border-radius: 22px; align-items: flex-start; }
   }
+
+  /* programme 02 learn more: summary sections + the four AI cards */
+  .dp-white .dp-eb { margin: 26px 0 6px; font: 700 11px var(--mono); letter-spacing: .2em; text-transform: uppercase; color: #0d8a8a; }
+  .dp-white .dp-eb:first-of-type { margin-top: 22px; }
+  .dp-aigrid { display: grid; gap: 14px; margin-top: 16px; }
+  @media (min-width: 700px) { .dp-aigrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1000px) { .dp-aigrid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .dp-aic { border: 1px solid #bfe7e0; background: #f1faf8; border-radius: 16px; padding: 18px 18px 20px; }
+  .dp-aic small { font: 700 11px var(--mono); letter-spacing: .2em; text-transform: uppercase; color: #0d8a8a; }
+  .dp-aic h5 { margin: 10px 0 8px; font: 800 1.1rem/1.25 var(--sans); color: #0a4a5e; }
+  .dp-aic p { margin: 0; font-size: 14.5px; line-height: 1.55; color: #164a60; }
   .dp-plus { font-size: 18px; line-height: 1; transition: transform .2s ease; }
   .dp-btn[aria-expanded="true"] .dp-plus { transform: rotate(45deg); }
   .dp-body { padding: 0 18px 22px; }
@@ -767,13 +778,29 @@
           <div class="dp-white">
             <div class="dp-tags"><span>Presence</span><span>Story</span><span>Room</span></div>
             <p class="dp-big">Communicate with awareness, present with impact.</p>
-            <h4>How every presentation is evaluated, live.</h4>
-            <p>Each participant presents on the Present with Intelligence board: the presenter at the centre, every evaluation point linked to what the audience sees and hears, with the live score and AI evaluation alongside.</p>
-            <h4>Why this programme</h4>
+
+            <div class="dp-eb">Learning outcomes</div>
+            <h4>From raw numbers to a message people act on.</h4>
+            <p>Participants learn to find the insight in the data, build the story around it, and present it with clarity and confidence.</p>
+
+            <div class="dp-eb">Why this programme</div>
             <p class="dp-big">Reports and dashboards only matter when someone acts on them.</p>
             <p>Most professionals already have the data. What decides whether a project, a proposal or a pitch lands is how clearly it is framed, how well it fits the audience, and how calmly it is delivered when questions start.</p>
             <p>Participants work on their own projects and presentations, so what they practise is what they present next, in the boardroom, to stakeholders or to decision-makers.</p>
-            <p>Participants learn to find the insight in the data, build the story around it, and present it with clarity and confidence. AI is built into the practice day: every participant is evaluated live by AI on the Present with Intelligence platform and receives a personalised performance-gap report.</p>
+
+            <div class="dp-eb">Evaluated live</div>
+            <h4>How every presentation is evaluated, live.</h4>
+            <p>Each participant presents on the Present with Intelligence board: the presenter at the centre, every evaluation point linked to what the audience sees and hears, with the live score and AI evaluation alongside.</p>
+
+            <div class="dp-eb">AI-implemented</div>
+            <h4>Where AI is built into the programme.</h4>
+            <p>AI is part of how every participant practises and is assessed. It is not taken as a separate module.</p>
+            <div class="dp-aigrid">
+              <div class="dp-aic"><small>Rehearse</small><h5>AI rehearsal</h5><p>Participants rehearse their own presentation with AI before presenting their final project, followed by 2 minutes with their instructor.</p></div>
+              <div class="dp-aic"><small>Deepen</small><h5>Questions that go deeper</h5><p>Mid-presentation, the AI asks the questions a curious panel would, so participants learn to think on their feet and take their answers further.</p></div>
+              <div class="dp-aic"><small>Assess</small><h5>Present with Intelligence platform</h5><p>Composure, vocal confidence and nervousness are read during the live presentation.</p></div>
+              <div class="dp-aic"><small>Report</small><h5>Performance-gap report</h5><p>Every participant receives a personalised report showing where to improve next.</p></div>
+            </div>
           </div>
         </div>
         
