@@ -408,6 +408,35 @@
   .dp-hero-stage .dp-hero-copy { position: relative; z-index: 2; max-width: 560px; padding: 26px 24px; color: #fff; }
   .dp-hero-stage h4 { margin: 12px 0 0; font: 400 clamp(1.4rem, 3vw, 1.9rem)/1.15 var(--sans); } .dp-hero-stage h4 b { font-weight: 800; }
   @media (prefers-reduced-motion: reduce) { .dp-hero-stage::before, .dp-hero-stage .dp-sweep::before { animation: none; } }
+
+  /* broad programme cards: one per row, content laid out side by side */
+  @media (min-width: 900px) {
+    .dp-list { grid-template-columns: 1fr !important; }
+    .dp-single, .dp-single.open { grid-column: 1 / -1; }
+    /* programme 01: text on the left, the three benefits on the right */
+    #dpcard .dp-hero { min-height: 0; }
+    #dpcard .dp-hero-copy { max-width: none; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); column-gap: 38px; align-items: center; padding: 34px 40px; }
+    #dpcard .dp-hero-copy > .dp-eye { grid-column: 1; }
+    #dpcard .dp-hero-copy > h4, #dpcard .dp-hero-copy > .dp-pill, #dpcard .dp-hero-copy > .dp-eye2, #dpcard .dp-hero-copy > h5, #dpcard .dp-hero-copy > .dp-lead { grid-column: 1; }
+    #dpcard .dp-hero-copy > .dp-bul { grid-column: 2; grid-row: 1 / span 6; align-self: center; }
+    #dpcard .dp-hero::after { background: linear-gradient(90deg, rgba(20,125,143,.98) 0%, rgba(20,125,143,.93) 50%, rgba(18,128,146,.55) 100%); }
+    /* programme 02: stage picture beside the animated board */
+    #dpcard2 .dp-showcase { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 16px; align-items: stretch; }
+    #dpcard2 .dp-hero-stage { margin-bottom: 0; min-height: 100%; }
+    #dpcard2 .dp2-fit { align-self: start; }
+  }
+
+  /* programme 01 picture shows the tablet the robot holds */
+  @media (min-width: 900px) {
+    #dpcard .dp-hero { min-height: 0; background-color: #137a8a; }
+    #dpcard .dp-hero::before { inset: 0 0 138px 50%; background-position: 24% center; background-size: cover; clip-path: inset(0); animation: dpTabletDrift 26s ease-in-out infinite alternate; }
+    @keyframes dpTabletDrift { 0% { transform: scale(1) translate3d(0,0,0); } 100% { transform: scale(1.07) translate3d(-1.5%, 1%, 0); } }
+    #dpcard .dp-hero::after { background: linear-gradient(90deg, rgba(20,125,143,1) 0%, rgba(20,125,143,1) 49%, rgba(20,125,143,.85) 51%, rgba(20,125,143,.38) 57%, rgba(20,125,143,.08) 68%, rgba(20,125,143,0) 100%); }
+    #dpcard .dp-hero-copy { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    #dpcard .dp-hero-copy > h4, #dpcard .dp-hero-copy > .dp-pill, #dpcard .dp-hero-copy > .dp-eye, #dpcard .dp-hero-copy > .dp-eye2, #dpcard .dp-hero-copy > h5, #dpcard .dp-hero-copy > .dp-lead { grid-column: 1; }
+    #dpcard .dp-hero-copy > .dp-bul { grid-column: 1 / -1; grid-row: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    #dpcard .dp-hero-copy > .dp-bul li { border-radius: 22px; align-items: flex-start; }
+  }
   .dp-plus { font-size: 18px; line-height: 1; transition: transform .2s ease; }
   .dp-btn[aria-expanded="true"] .dp-plus { transform: rotate(45deg); }
   .dp-body { padding: 0 18px 22px; }
