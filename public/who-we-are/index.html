@@ -882,15 +882,32 @@ var AVMAP = {"GM":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAABwCAYAAAD
     total.textContent = pct + '%'; ring.style.strokeDashoffset = C * (1 - pct / 100);
   }
   function reset() { items.forEach(function (x) { x.li.classList.remove('on'); }); refresh(); }
+  var round = 0;
+  function pick() {
+    // a different, believable selection each round: about 50-70% of items ticked, never all, never none per card
+    var chosen = items.map(function () { return Math.random() < 0.46 + (round % 3) * 0.08; });
+    cards.forEach(function (c, ci) {
+      var idx = items.map(function (x, i) { return x.ci === ci ? i : -1; }).filter(function (i) { return i >= 0; });
+      var n = idx.filter(function (i) { return chosen[i]; }).length;
+      if (n === 0) chosen[idx[Math.floor(Math.random() * idx.length)]] = true;
+      if (n === idx.length) chosen[idx[Math.floor(Math.random() * idx.length)]] = false;
+    });
+    return chosen;
+  }
   function cycle() {
-    reset();
-    items.forEach(function (x, i) { timers.push(setTimeout(function () { x.li.classList.add('on'); refresh(); }, 700 + i * 420)); });
-    timers.push(setTimeout(cycle, 700 + items.length * 420 + 3200));
+    reset(); round++;
+    var chosen = pick(), t = 700;
+    items.forEach(function (x, i) {
+      if (!chosen[i]) return;
+      t += 380 + Math.random() * 420;
+      timers.push(setTimeout(function () { x.li.classList.add('on'); refresh(); }, t));
+    });
+    timers.push(setTimeout(cycle, t + 3400));
   }
   function stop() { timers.forEach(clearTimeout); timers = []; }
   function start() {
     stop();
-    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { items.forEach(function (x) { x.li.classList.add('on'); }); refresh(); return; }
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { items.forEach(function (x, i) { if (i % 3 !== 1) x.li.classList.add('on'); }); refresh(); return; }
     cycle();
   }
   function fitIt() { var s = fit.clientWidth / 1000; stage.style.transform = 'scale(' + s + ')'; fit.style.height = Math.ceil(stage.offsetHeight * s) + 'px'; }
