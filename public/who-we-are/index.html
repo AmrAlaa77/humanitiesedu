@@ -587,6 +587,9 @@
   #dpcard-text .dp-showcase { padding: 0 18px 18px; } #dpcard-text .dp-showcase[hidden] { display: none; }
 
   #dpTextBody { transition: opacity .9s ease; } #dpTextBody.dp-fading { opacity: 0; }
+
+  /* programme 01 pill: one line */
+  #dpcard-text .dp-pill { white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: clip; font-size: clamp(7.5px, 1.55vw, 11px); letter-spacing: .06em; grid-column: 1 / -1 !important; justify-self: start; }
   .dp-plus { font-size: 18px; line-height: 1; transition: transform .2s ease; }
   .dp-btn[aria-expanded="true"] .dp-plus { transform: rotate(45deg); }
   .dp-body { padding: 0 18px 22px; }
