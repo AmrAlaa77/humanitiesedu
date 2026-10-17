@@ -577,7 +577,7 @@
 
   /* programme 01 title card carries the video */
   .dp-vidcard { position: relative; isolation: isolate; min-height: 330px; display: flex; flex-direction: column; justify-content: space-between; background: #137a8a; }
-  .dp-vidcard > .dp-vid { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; transform: none; }
+  .dp-vidcard > .dp-vid { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transform: none; }
   .dp-vidcard > .dp-vcover { position: absolute; z-index: 1; inset: 0; background: rgba(20,125,143,.4); }
   .dp-vidcard > .dp-sweep { position: absolute; z-index: 1; inset: 0; pointer-events: none; overflow: hidden; }
   .dp-vidcard > .dp-sweep::before { content: ""; position: absolute; top: -20%; bottom: -20%; width: 34%; left: -45%; background: linear-gradient(100deg, rgba(255,255,255,0), rgba(150,255,240,.16), rgba(255,255,255,0)); transform: skewX(-14deg); animation: dpSweep 8s ease-in-out infinite; }
@@ -624,7 +624,7 @@
   @media (prefers-reduced-motion: reduce) { .dp-svid { display: none; } .dp-hero-stage::before { display: block; } }
 
   /* programme 01: title on the card, video in its own block below it */
-  .dp-vblock { position: relative; isolation: isolate; overflow: hidden; margin: 0 18px; height: 300px; border-radius: 18px; background: #137a8a; }
+  .dp-vblock { position: relative; isolation: isolate; overflow: hidden; margin: 0 18px; height: auto; aspect-ratio: 16 / 9; border-radius: 18px; background: #137a8a; }
   .dp-vblock .dp-vid { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; transform: none; }
   .dp-vblock .dp-vcover { position: absolute; z-index: 1; inset: 0; background: rgba(20,125,143,.4); }
   .dp-vblock .dp-sweep { position: absolute; z-index: 1; inset: 0; pointer-events: none; overflow: hidden; }
