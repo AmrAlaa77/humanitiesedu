@@ -590,6 +590,11 @@
 
   /* programme 01 pill: one line */
   #dpcard-text .dp-pill { white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: clip; font-size: clamp(7.5px, 1.55vw, 11px); letter-spacing: .06em; grid-column: 1 / -1 !important; justify-self: start; }
+
+  /* programme 02: AI cards always visible on the card */
+  .dp-aiface { padding: 0 18px 4px; margin-top: 14px; }
+  .dp-aiface .dp-white { margin-top: 0; }
+  .dp-aiface .dp-eb { margin-top: 0; }
   .dp-plus { font-size: 18px; line-height: 1; transition: transform .2s ease; }
   .dp-btn[aria-expanded="true"] .dp-plus { transform: rotate(45deg); }
   .dp-body { padding: 0 18px 22px; }
@@ -923,6 +928,15 @@
           </div>
           
         </div>
+        <div class="dp-aiface"><div class="dp-white"><div class="dp-eb">AI-implemented</div>
+            <h4>Where AI is built into the programme.</h4>
+            <p>AI is part of how every participant practises and is assessed. It is not taken as a separate module.</p>
+            <div class="dp-aigrid">
+              <div class="dp-aic"><small>Rehearse</small><h5>AI rehearsal</h5><p>Participants rehearse their own presentation with AI before presenting their final project.</p></div>
+              <div class="dp-aic"><small>Deepen</small><h5>Questions that go deeper</h5><p>Mid-presentation, the AI asks the questions a curious panel would, so participants learn to think on their feet and take their answers further.</p></div>
+              <div class="dp-aic"><small>Assess</small><h5>Present with Intelligence platform</h5><p>Composure, vocal confidence and nervousness are read during the live presentation.</p></div>
+              <div class="dp-aic"><small>Report</small><h5>Performance-gap report</h5><p>Every participant receives a personalised report showing where to improve next.</p></div>
+            </div></div></div>
         <div class="dp-head dp-foot-actions">
           <div class="dp-actions">
             <button class="dp-btn" type="button" aria-expanded="false" aria-controls="dp2a">Learn more <span class="dp-plus" aria-hidden="true">+</span></button>
@@ -995,16 +1009,7 @@
             <p>Each participant presents on the Present with Intelligence board: the presenter at the centre, every evaluation point linked to what the audience sees and hears, with the live score and AI evaluation alongside.</p>
             <p>Experts in behavioral analysis and human sciences evaluate it through one-on-one evaluation sessions of 1 hour each, scheduled with every participant. It is Human-AI: human and machine intelligence.</p>
 
-            <div class="dp-eb">AI-implemented</div>
-            <h4>Where AI is built into the programme.</h4>
-            <p>AI is part of how every participant practises and is assessed. It is not taken as a separate module.</p>
-            <div class="dp-aigrid">
-              <div class="dp-aic"><small>Rehearse</small><h5>AI rehearsal</h5><p>Participants rehearse their own presentation with AI before presenting their final project.</p></div>
-              <div class="dp-aic"><small>Deepen</small><h5>Questions that go deeper</h5><p>Mid-presentation, the AI asks the questions a curious panel would, so participants learn to think on their feet and take their answers further.</p></div>
-              <div class="dp-aic"><small>Assess</small><h5>Present with Intelligence platform</h5><p>Composure, vocal confidence and nervousness are read during the live presentation.</p></div>
-              <div class="dp-aic"><small>Report</small><h5>Performance-gap report</h5><p>Every participant receives a personalised report showing where to improve next.</p></div>
             </div>
-          </div>
         </div>
         
       </article>
