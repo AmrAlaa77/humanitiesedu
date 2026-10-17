@@ -1287,6 +1287,14 @@ svg.ego text[font-size=&quot;11&quot;],.legend{filter:blur(5px);user-select:none
 @keyframes hShim{from{transform:scaleX(.55)}to{transform:scaleX(1)}}
 .hud-n{animation:hNum 3.2s ease-in-out infinite}
 @keyframes hNum{50%{opacity:.55}}
+@property --a{syntax:&quot;<percentage>&quot;;inherits:false;initial-value:0%}
+@property --b{syntax:&quot;<percentage>&quot;;inherits:false;initial-value:0%}
+@keyframes pGrow{from{--a:0%;--b:0%;transform:rotate(-120deg) scale(.6)}to{transform:none}}
+@keyframes pTurn{to{transform:rotate(360deg)}}
+@keyframes pGlow{0%,100%{box-shadow:0 0 0 0 rgba(20,184,166,.0)}50%{box-shadow:0 0 0 7px rgba(20,184,166,.18)}}
+.pie .p{animation:pGrow 1.6s cubic-bezier(.2,.8,.2,1) both,pTurn 40s linear 1.6s infinite,pGlow 3.2s ease-in-out infinite!important}
+.pie:nth-child(2) .p{animation-delay:.15s,1.75s,.4s!important}.pie:nth-child(3) .p{animation-delay:.3s,1.9s,.8s!important}
+@media (prefers-reduced-motion:reduce){.pie .p{animation:none!important}}
 .dx{background:radial-gradient(520px 300px at 100% 100%,rgba(124,92,214,.38),transparent 70%),linear-gradient(135deg,#0a5565 0%,#0f7f8c 52%,#2a8fa0 100%);border:1px solid rgba(255,255,255,.22);border-top:2px solid #7fe7d8;border-radius:22px;padding:32px 30px;color:#fff;margin:16px 0}
 .dx-k{font:700 12px/1 system-ui,sans-serif;letter-spacing:.16em;color:#b9ece5}
 .dx h2{margin:16px 0 14px;font-size:30px;line-height:1.15;color:#fff}
@@ -1394,7 +1402,8 @@ function egoSvg(E){const W=640,top=26,base=200,cw=W/6;let g=&quot;&quot;;
   if(e.o!=null){const y=base-(base-top)*e.o/100,c=e.o>=70?&quot;#d93025&quot;:&quot;#0e7490&quot;;g+='<line x1=&quot;'+(x-4)+'&quot; x2=&quot;'+(x+bw+4)+'&quot; y1=&quot;'+y+'&quot; y2=&quot;'+y+'&quot; stroke=&quot;'+c+'&quot; stroke-width=&quot;2&quot; stroke-dasharray=&quot;4 3&quot;/><circle cx=&quot;'+(x+bw/2)+'&quot; cy=&quot;'+y+'&quot; r=&quot;5&quot; fill=&quot;#fff&quot; stroke=&quot;'+c+'&quot; stroke-width=&quot;2&quot;><title>Overuse signal '+e.o+'%</title></circle>'}
   const w=e.label.split(&quot; &quot;);g+='<text x=&quot;'+(x+bw/2)+'&quot; y=&quot;'+(base+16)+'&quot; text-anchor=&quot;middle&quot; font-size=&quot;11&quot; font-weight=&quot;700&quot; fill=&quot;#3a474d&quot;>'+w[0]+'</text><text x=&quot;'+(x+bw/2)+'&quot; y=&quot;'+(base+29)+'&quot; text-anchor=&quot;middle&quot; font-size=&quot;11&quot; font-weight=&quot;700&quot; fill=&quot;#3a474d&quot;>'+(w[1]||&quot;&quot;)+'</text>'});
  return '<svg class=&quot;ego&quot; viewBox=&quot;0 0 640 235&quot; role=&quot;img&quot; aria-label=&quot;Egogram of the six ego states&quot;>'+g+'</svg><div class=&quot;legend&quot;><span>Bar: functional strength</span><span><i></i>Dashed marker: overuse signal (red only at 70% or more)</span></div>'}
-const pieHtml=(c,s,name)=>{const a=s.hi/s.n*100,b=a+s.me/s.n*100;return '<div class=&quot;pie&quot;><div class=&quot;p&quot; style=&quot;background:conic-gradient('+c+' 0 '+a+'%,color-mix(in srgb,'+c+' 55%,#fff) '+a+'% '+b+'%,color-mix(in srgb,'+c+' 22%,#fff) '+b+'% 100%)&quot;></div><b>'+name+'</b>High '+s.hi+' &amp;middot; Med '+s.me+' &amp;middot; Low '+s.lo+'</div>'};
+const TEALS={s:&quot;#0f766e&quot;,d:&quot;#0e9aa7&quot;,b:&quot;#19b8a8&quot;};
+const pieHtml=(c,s,name)=>{const a=s.hi/s.n*100,b=a+s.me/s.n*100;return '<div class=&quot;pie&quot;><div class=&quot;p&quot; style=&quot;--a:'+a+'%;--b:'+b+'%;background:conic-gradient('+c+' 0 var(--a),color-mix(in srgb,'+c+' 55%,#fff) var(--a) var(--b),color-mix(in srgb,'+c+' 22%,#fff) var(--b) 100%)&quot;></div><b>'+name+'</b>High '+s.hi+' &amp;middot; Med '+s.me+' &amp;middot; Low '+s.lo+'</div>'};
 const wait=n=>'<div class=&quot;wait&quot;><b>'+(MIN-n)+' more response'+(MIN-n===1?&quot;&quot;:&quot;s&quot;)+' needed</b><br>Results appear once '+MIN+' people have responded, so no one can be identified.</div>';
 const kpis=(n)=>'<div class=&quot;kpi&quot;><div><b>'+n+'</b>'+(demo?&quot;sample responses&quot;:&quot;responses&quot;)+'</div><div><b>'+MIN+'</b>needed to show results</div></div>';
 const demoBar=()=>'<div class=&quot;bar-actions&quot;><button class=&quot;btn'+(demo?&quot; on&quot;:&quot;&quot;)+'&quot; onclick=&quot;demo=!demo;draw()&quot;>'+(demo?&quot;Showing sample data. Show live responses&quot;:&quot;Show sample data&quot;)+'</button></div>';
@@ -1427,7 +1436,7 @@ function viewBoard(){const rs=R(),n=rs.length;let h=hudHero()+kpis(n)+demoBar();
   S.items.forEach((it,i)=>{const s=stat(id,i,rs),nm=it[0];let chip=&quot;&quot;;
    if(id===&quot;d&quot;){const v=sev(s.pct);chip=' <span class=&quot;chipx '+v[0]+'&quot;>'+v[1]+'</span>'}
    bars+='<div class=&quot;row&quot;><span class=&quot;lab&quot;>'+nm+(id===&quot;s&quot;?'<small class=&quot;stt&quot;>'+STN[it[1]]+'</small>':&quot;&quot;)+chip+'</span><div class=&quot;tr&quot;><div class=&quot;bar&quot; style=&quot;width:'+s.pct+'%&quot;></div></div><em>'+s.pct+'%</em></div>';
-   pies+=pieHtml(S.color,s,nm)});
+   if(i<3)pies+=pieHtml(TEALS[id]||S.color,s,nm)});
   h+='<section class=&quot;sec'+(id===&quot;b&quot;||id===&quot;d&quot;||id===&quot;s&quot;?&quot; mask&quot;:&quot;&quot;)+'&quot; style=&quot;--c:'+S.color+'&quot;><h2>'+S.title+'</h2><div class=&quot;k&quot;>'+S.kicker+'</div><div class=&quot;grid&quot;><div>'+bars+'</div><div class=&quot;pies&quot;>'+pies+'</div></div>'+(id===&quot;b&quot;?'<div class=&quot;eb&quot; style=&quot;margin-top:18px&quot;>Live egogram: how the group balances the six ego states</div>'+egoSvg(egoData(rs)):&quot;&quot;)+'</section>'});
  h+='<div class=&quot;foot&quot;>Anonymous group totals only. High = 4 or 5, Medium = 3, Low = 1 or 2. Red is used only for serious signals.</div>';
  if(!DB||canReset)h+='<div class=&quot;bar-actions&quot; style=&quot;margin-top:10px&quot;><button class=&quot;btn&quot; onclick=&quot;resetAll()&quot;>'+(armed?&quot;Click again to delete all responses&quot;:&quot;Reset board&quot;)+'</button></div>';
