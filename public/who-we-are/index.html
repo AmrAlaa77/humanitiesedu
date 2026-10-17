@@ -175,7 +175,7 @@
   .dp-single .dp-hero { min-height: 0; }
   .dp-single .dp-hero-copy { max-width: none; padding: 26px 22px; }
   .dp-single .dp-hero::before { background-position: 78% center; background-size: cover; }
-  .dp-single .dp-hero::after { background: linear-gradient(90deg, rgba(20,125,143,.9) 0%, rgba(20,125,143,.82) 55%, rgba(18,128,146,.45) 100%); }
+  .dp-single .dp-hero::after { background: rgba(20,125,143,.2); }
   .dp-single .dp-hero h4 { font-size: clamp(1.5rem, 3.2vw, 2rem); }
   .dp-single .dp-hero h5 { font-size: 1.15rem; }
   .dp-single .dp-pill { font-size: 10px; letter-spacing: .08em; }
@@ -431,7 +431,8 @@
     #dpcard .dp-hero { min-height: 0; background-color: #137a8a; }
     #dpcard .dp-hero::before { inset: 0 0 138px 50%; background-position: 24% center; background-size: cover; clip-path: inset(0); animation: dpTabletDrift 26s ease-in-out infinite alternate; }
     @keyframes dpTabletDrift { 0% { transform: scale(1) translate3d(0,0,0); } 100% { transform: scale(1.07) translate3d(-1.5%, 1%, 0); } }
-    #dpcard .dp-hero::after { background: linear-gradient(90deg, rgba(20,125,143,.9) 0%, rgba(20,125,143,.88) 46%, rgba(20,125,143,.5) 50%, rgba(20,125,143,.12) 58%, rgba(20,125,143,0) 70%, rgba(20,125,143,0) 100%); }
+    #dpcard .dp-hero::after { background: rgba(20,125,143,.2); }
+    #dpcard .dp-hero-copy { text-shadow: 0 1px 14px rgba(5,40,60,.85), 0 0 3px rgba(5,40,60,.6); }
     #dpcard .dp-hero-copy { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
     #dpcard .dp-hero-copy > h4, #dpcard .dp-hero-copy > .dp-pill, #dpcard .dp-hero-copy > .dp-eye, #dpcard .dp-hero-copy > .dp-eye2, #dpcard .dp-hero-copy > h5, #dpcard .dp-hero-copy > .dp-lead { grid-column: 1; }
     #dpcard .dp-hero-copy > .dp-bul { grid-column: 1 / -1; grid-row: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
@@ -546,8 +547,8 @@
   #dpcard .dp-hero::before { background-size: auto 150%; background-position: 92% 18%; }
 
   /* programme 01 video */
-  .dp-vid { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 88% center; transform: scaleX(-1); }
-  @media (min-width: 900px) { #dpcard .dp-vid { inset: 0 0 138px 50%; width: 50%; height: calc(100% - 138px); object-position: 82% center; } }
+  .dp-vid { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+  @media (min-width: 900px) { #dpcard .dp-vid { inset: 0; width: 100%; height: 100%; object-position: 50% 40%; } }
   .dp-vsound { position: absolute; z-index: 3; right: 16px; top: 14px; padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.4); background: rgba(6,54,79,.55); color: #fff; font: 600 12px var(--sans); cursor: pointer; backdrop-filter: blur(4px); }
   .dp-vsound:hover { background: rgba(6,54,79,.8); }
   @media (prefers-reduced-motion: reduce) { .dp-vid { display: none; } .dp-vsound { display: none; } }
