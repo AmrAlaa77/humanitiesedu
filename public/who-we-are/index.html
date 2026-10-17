@@ -1262,6 +1262,29 @@ svg.ego text[font-size=&quot;11&quot;],.legend{filter:blur(5px);user-select:none
 .tpl{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;margin-top:8px}
 .tpl i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px}
 @media (prefers-reduced-motion:reduce){.tp-s,.tp-a{animation:none!important}}
+.hud{position:relative;border-radius:18px;overflow:hidden;margin:0 0 16px;background:radial-gradient(700px 360px at 70% 20%,rgba(53,214,197,.28),transparent 70%),linear-gradient(135deg,#04262f 0%,#073c49 55%,#0a5562 100%);min-height:260px}
+.hud-in{transform:perspective(1100px) rotateX(5deg) rotateY(-8deg) scale(1.04);transform-origin:60% 50%}
+.hud svg{display:block;width:100%;height:auto}
+.hud::after{content:&quot;&quot;;position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,38,47,.88) 0%,rgba(4,38,47,.55) 34%,rgba(4,38,47,0) 62%);pointer-events:none}
+.hud-title{position:absolute;left:24px;bottom:20px;z-index:2;color:#fff}
+.hud-title span{display:inline-block;font:800 11px/1 system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#9af2e6;margin-bottom:8px}
+.hud-title h1{margin:0;font-size:clamp(28px,5vw,44px);line-height:1.05;text-shadow:0 2px 16px rgba(2,30,38,.8)}
+.hudt{filter:blur(3.5px)}
+@keyframes hRise{from{transform:scaleY(.05)}to{transform:scaleY(1)}}
+@keyframes hSwing{0%{transform:rotate(-58deg)}50%{transform:rotate(32deg)}100%{transform:rotate(-58deg)}}
+@keyframes hGlow{50%{opacity:.45}}
+@keyframes hSpin{to{stroke-dashoffset:-274}}
+@keyframes hArc{from{stroke-dashoffset:140}to{stroke-dashoffset:0}}
+@keyframes hTwk{50%{opacity:.35}}
+@keyframes hPulse{50%{transform:scaleY(1.45)}}
+.hud-b{transform-box:fill-box;transform-origin:bottom;animation:hRise 1.1s cubic-bezier(.2,.8,.2,1) both}
+.hud-b2{transform-box:fill-box;transform-origin:bottom;animation:hPulse 2.2s ease-in-out infinite}
+.hud-needle{animation:hSwing 7s ease-in-out infinite}
+.hud-glow{animation:hGlow 2.6s ease-in-out infinite}
+.hud-ring{animation:hSpin 6s linear infinite}
+.hud-ring2{animation:hArc 1.6s ease-out both}
+.hud-star{animation:hTwk 2.4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.hud *{animation:none!important}}
 .dx{background:radial-gradient(520px 300px at 100% 100%,rgba(124,92,214,.38),transparent 70%),linear-gradient(135deg,#0a5565 0%,#0f7f8c 52%,#2a8fa0 100%);border:1px solid rgba(255,255,255,.22);border-top:2px solid #7fe7d8;border-radius:22px;padding:32px 30px;color:#fff;margin:16px 0}
 .dx-k{font:700 12px/1 system-ui,sans-serif;letter-spacing:.16em;color:#b9ece5}
 .dx h2{margin:16px 0 14px;font-size:30px;line-height:1.15;color:#fff}
@@ -1374,7 +1397,33 @@ const wait=n=>'<div class=&quot;wait&quot;><b>'+(MIN-n)+' more response'+(MIN-n=
 const kpis=(n)=>'<div class=&quot;kpi&quot;><div><b>'+n+'</b>'+(demo?&quot;sample responses&quot;:&quot;responses&quot;)+'</div><div><b>'+MIN+'</b>needed to show results</div></div>';
 const demoBar=()=>'<div class=&quot;bar-actions&quot;><button class=&quot;btn'+(demo?&quot; on&quot;:&quot;&quot;)+'&quot; onclick=&quot;demo=!demo;draw()&quot;>'+(demo?&quot;Showing sample data. Show live responses&quot;:&quot;Show sample data&quot;)+'</button></div>';
 
-function viewBoard(){const rs=R(),n=rs.length;let h=kpis(n)+demoBar();if(n<MIN)return h+wait(n);
+function hudHero(){const T=&quot;#35d6c5&quot;,L=&quot;#9af2e6&quot;,W=&quot;#ffffff&quot;;let s=&quot;&quot;;
+ const arc=(cx,cy,r,a0,a1)=>{const p=a=>[cx+r*Math.cos(a*Math.PI/180),cy+r*Math.sin(a*Math.PI/180)];const [x0,y0]=p(a0),[x1,y1]=p(a1);return 'M'+x0.toFixed(1)+' '+y0.toFixed(1)+' A'+r+' '+r+' 0 0 1 '+x1.toFixed(1)+' '+y1.toFixed(1)};
+ const panel=(pts,o)=>'<polygon points=&quot;'+pts+'&quot; fill=&quot;rgba(6,60,72,.55)&quot; stroke=&quot;'+L+'&quot; stroke-opacity=&quot;'+(o||.55)+'&quot; stroke-width=&quot;1.6&quot;/>';
+ s+=panel(&quot;36,70 330,44 330,300 36,326&quot;);
+ s+=panel(&quot;372,40 612,34 626,50 626,372 606,388 380,388 362,372 362,52&quot;);
+ s+=panel(&quot;652,84 944,72 944,300 676,310 652,290&quot;);
+ s+=panel(&quot;640,334 944,326 944,404 664,408 640,388&quot;,.5);
+ s+='<text x=&quot;58&quot; y=&quot;96&quot; fill=&quot;'+W+'&quot; font-size=&quot;20&quot; font-weight=&quot;800&quot; letter-spacing=&quot;3&quot;>DASHBOARD</text><rect x=&quot;58&quot; y=&quot;108&quot; width=&quot;120&quot; height=&quot;14&quot; rx=&quot;7&quot; fill=&quot;rgba(255,255,255,.14)&quot;/><rect x=&quot;226&quot; y=&quot;80&quot; width=&quot;82&quot; height=&quot;34&quot; rx=&quot;6&quot; fill=&quot;rgba(255,255,255,.1)&quot;/><text class=&quot;hudt&quot; x=&quot;240&quot; y=&quot;104&quot; fill=&quot;'+W+'&quot; font-size=&quot;16&quot; font-weight=&quot;700&quot;>10.500</text>';
+ const hs=[44,70,96,64,110,84,120,92,136,100,150,118,128,104];
+ hs.forEach((h,i)=>{const x=60+i*18.4;s+='<rect class=&quot;hud-b&quot; style=&quot;animation-delay:'+(i*.07).toFixed(2)+'s&quot; x=&quot;'+x.toFixed(1)+'&quot; y=&quot;'+(262-h)+'&quot; width=&quot;10&quot; height=&quot;'+h+'&quot; rx=&quot;2&quot; fill=&quot;'+(i%2?&quot;none&quot;:T)+'&quot; stroke=&quot;'+(i%2?W:T)+'&quot; stroke-width=&quot;2&quot;/>'});
+ s+='<line x1=&quot;58&quot; y1=&quot;264&quot; x2=&quot;316&quot; y2=&quot;262&quot; stroke=&quot;'+L+'&quot; stroke-opacity=&quot;.5&quot;/>';
+ s+='<text class=&quot;hudt&quot; x=&quot;62&quot; y=&quot;288&quot; fill=&quot;'+L+'&quot; font-size=&quot;13&quot;>DATA 1  11.054</text><text class=&quot;hudt&quot; x=&quot;190&quot; y=&quot;288&quot; fill=&quot;'+L+'&quot; font-size=&quot;13&quot;>DATA 2  8.344</text>';
+ const cx=494,cy=156;
+ for(let i=0;i<6;i++){s+='<path d=&quot;'+arc(cx,cy,88,200+i*23.5,200+i*23.5+20)+'&quot; fill=&quot;none&quot; stroke=&quot;'+(i%2?W:T)+'&quot; stroke-width=&quot;22&quot; opacity=&quot;'+(.55+i*.08)+'&quot;/>'}
+ s+='<path d=&quot;'+arc(cx,cy,112,196,344)+'&quot; fill=&quot;none&quot; stroke=&quot;'+L+'&quot; stroke-opacity=&quot;.5&quot; stroke-width=&quot;2&quot;/>';
+ s+='<circle cx=&quot;'+cx+'&quot; cy=&quot;'+(cy+6)+'&quot; r=&quot;38&quot; fill=&quot;none&quot; stroke=&quot;'+W+'&quot; stroke-width=&quot;3&quot; class=&quot;hud-glow&quot;/><g class=&quot;hud-needle&quot; style=&quot;transform-origin:'+cx+'px '+(cy+6)+'px&quot;><line x1=&quot;'+cx+'&quot; y1=&quot;'+(cy+6)+'&quot; x2=&quot;'+cx+'&quot; y2=&quot;'+(cy-74)+'&quot; stroke=&quot;'+W+'&quot; stroke-width=&quot;5&quot; stroke-linecap=&quot;round&quot;/></g><circle cx=&quot;'+cx+'&quot; cy=&quot;'+(cy+6)+'&quot; r=&quot;7&quot; fill=&quot;'+W+'&quot;/>';
+ s+='<text x=&quot;'+cx+'&quot; y=&quot;262&quot; text-anchor=&quot;middle&quot; fill=&quot;'+W+'&quot; font-size=&quot;52&quot; font-weight=&quot;900&quot; letter-spacing=&quot;2&quot;>KPI</text><text x=&quot;'+cx+'&quot; y=&quot;288&quot; text-anchor=&quot;middle&quot; fill=&quot;'+W+'&quot; font-size=&quot;13&quot; letter-spacing=&quot;3&quot;>PERFORMANCE INDICATOR</text><line x1=&quot;384&quot; y1=&quot;302&quot; x2=&quot;604&quot; y2=&quot;302&quot; stroke=&quot;'+L+'&quot; stroke-opacity=&quot;.6&quot;/>';
+ s+='<circle cx=&quot;424&quot; cy=&quot;346&quot; r=&quot;26&quot; fill=&quot;none&quot; stroke=&quot;rgba(255,255,255,.18)&quot; stroke-width=&quot;9&quot;/><circle class=&quot;hud-ring&quot; cx=&quot;424&quot; cy=&quot;346&quot; r=&quot;26&quot; fill=&quot;none&quot; stroke=&quot;'+T+'&quot; stroke-width=&quot;9&quot; stroke-dasharray=&quot;110 164&quot; transform=&quot;rotate(-90 424 346)&quot;/><text x=&quot;480&quot; y=&quot;326&quot; fill=&quot;'+W+'&quot; font-size=&quot;13&quot; font-weight=&quot;700&quot;>DATA</text>';
+ [[480,342,70],[480,358,40],[560,342,40],[560,358,34]].forEach(a=>{s+='<rect x=&quot;'+a[0]+'&quot; y=&quot;'+a[1]+'&quot; width=&quot;'+a[2]+'&quot; height=&quot;4&quot; rx=&quot;2&quot; fill=&quot;'+W+'&quot; opacity=&quot;.85&quot;/>'});
+ [[716,40,.65],[800,40,.47],[884,40,.65]].forEach((r,i)=>{const c=2*Math.PI*22;s+='<circle cx=&quot;'+r[0]+'&quot; cy=&quot;'+r[1]+'&quot; r=&quot;22&quot; fill=&quot;none&quot; stroke=&quot;rgba(255,255,255,.16)&quot; stroke-width=&quot;4&quot;/><circle class=&quot;hud-ring2&quot; style=&quot;animation-delay:'+(i*.3)+'s&quot; cx=&quot;'+r[0]+'&quot; cy=&quot;'+r[1]+'&quot; r=&quot;22&quot; fill=&quot;none&quot; stroke=&quot;'+(i===1?W:T)+'&quot; stroke-width=&quot;4&quot; stroke-dasharray=&quot;'+(c*r[2]).toFixed(1)+' '+c.toFixed(1)+'&quot; transform=&quot;rotate(-90 '+r[0]+' '+r[1]+')&quot;/><text class=&quot;hudt&quot; x=&quot;'+r[0]+'&quot; y=&quot;'+(r[1]+5)+'&quot; text-anchor=&quot;middle&quot; fill=&quot;'+W+'&quot; font-size=&quot;13&quot; font-weight=&quot;800&quot;>'+Math.round(r[2]*100)+'%</text>'});
+ s+='<text class=&quot;hudt&quot; x=&quot;682&quot; y=&quot;160&quot; fill=&quot;'+L+'&quot; font-size=&quot;64&quot; font-weight=&quot;900&quot;>4,8</text>';
+ [100,118,136,154].forEach((y,i)=>{s+='<rect x=&quot;'+(790+i*6)+'&quot; y=&quot;'+y+'&quot; width=&quot;'+(140-i*10)+'&quot; height=&quot;3&quot; rx=&quot;1.5&quot; fill=&quot;'+T+'&quot;/>'});
+ s+='<line x1=&quot;682&quot; y1=&quot;182&quot; x2=&quot;760&quot; y2=&quot;182&quot; stroke=&quot;'+T+'&quot; stroke-width=&quot;2&quot;/>';
+ [214,262].forEach((y,k)=>{s+='<circle cx=&quot;700&quot; cy=&quot;'+(y-8)+'&quot; r=&quot;9&quot; fill=&quot;'+T+'&quot;/><path d=&quot;M687 '+(y+12)+' a13 11 0 0 1 26 0 z&quot; fill=&quot;'+T+'&quot;/>';for(let i=0;i<5;i++){s+='<path class=&quot;hud-star&quot; style=&quot;animation-delay:'+(i*.2+k*.5)+'s&quot; d=&quot;M'+(742+i*22)+' '+(y-14)+' l3 6.5 7 .8 -5.2 4.7 1.5 7 -6.3 -3.6 -6.3 3.6 1.5 -7 -5.2 -4.7 7 -.8z&quot; fill=&quot;'+(k?W:L)+'&quot;/>'}s+='<rect x=&quot;742&quot; y=&quot;'+(y+8)+'&quot; width=&quot;'+(k?110:150)+'&quot; height=&quot;3&quot; rx=&quot;1.5&quot; fill=&quot;'+W+'&quot; opacity=&quot;.85&quot;/>'});
+ [[690,356,.82],[690,392,.51]].forEach((r,k)=>{const y=r[1];s+='<circle cx=&quot;'+r[0]+'&quot; cy=&quot;'+(y-12)+'&quot; r=&quot;8&quot; fill=&quot;'+(k?W:T)+'&quot;/><path d=&quot;M679 '+(y+4)+' a11 9 0 0 1 22 0 z&quot; fill=&quot;'+(k?W:T)+'&quot;/><text class=&quot;hudt&quot; x=&quot;716&quot; y=&quot;'+(y-3)+'&quot; fill=&quot;'+W+'&quot; font-size=&quot;22&quot; font-weight=&quot;800&quot;>'+Math.round(r[2]*100)+'%</text>';for(let i=0;i<20;i++){const h=6+((i*7+k*5)%5)*5;s+='<rect class=&quot;hud-b2&quot; style=&quot;animation-delay:'+(i*.08+k*.3).toFixed(2)+'s&quot; x=&quot;'+(790+i*7.4)+'&quot; y=&quot;'+(y-3-h)+'&quot; width=&quot;4&quot; height=&quot;'+h+'&quot; fill=&quot;'+(k?W:T)+'&quot; opacity=&quot;.9&quot;/>'}});
+ return '<div class=&quot;hud&quot;><div class=&quot;hud-in&quot;><svg viewBox=&quot;0 0 960 420&quot; preserveAspectRatio=&quot;xMidYMid slice&quot; role=&quot;img&quot; aria-label=&quot;Live dashboard graphic&quot;>'+s+'</svg></div><div class=&quot;hud-title&quot;><span>Programme 3</span><h1>Live board</h1></div></div>'}
+function viewBoard(){const rs=R(),n=rs.length;let h=hudHero()+kpis(n)+demoBar();if(n<MIN)return h+wait(n);
  IDS.forEach(id=>{const S=SEC[id];let bars=&quot;&quot;,pies=&quot;&quot;;
   S.items.forEach((it,i)=>{const s=stat(id,i,rs),nm=it[0];let chip=&quot;&quot;;
    if(id===&quot;d&quot;){const v=sev(s.pct);chip=' <span class=&quot;chipx '+v[0]+'&quot;>'+v[1]+'</span>'}
