@@ -645,6 +645,14 @@
   .pb2-wires .w-ring { fill: none; stroke: #5ff7dc; stroke-width: 1.6; transform-box: fill-box; transform-origin: center; animation: pbRing 2.4s ease-out infinite; }
   @keyframes pbRing { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(3.6); opacity: 0; } }
   @media (prefers-reduced-motion: reduce) { .pb2-wires .w-flow, .pb2-wires .w-ring { animation: none; } }
+
+  /* right column ends level with the main board */
+  .pb2 { align-items: stretch; }
+  .pb2-side { display: flex; flex-direction: column; gap: 14px; }
+  .pb2-side > .pb2-light:last-child { flex: 1; }
+  .pb2-key-row { grid-column: 1 / -1; margin-top: 0; }
+  .pb2-main { display: flex; flex-direction: column; }
+  .pb2-main .pb2-obs { flex: 1; }
   .dp-plus { font-size: 18px; line-height: 1; transition: transform .2s ease; }
   .dp-btn[aria-expanded="true"] .dp-plus { transform: rotate(45deg); }
   .dp-body { padding: 0 18px 22px; }
@@ -1025,7 +1033,7 @@
                     
                   </div>
                 </div>
-                <div class="pb2-key"><span><i></i>Not yet</span><span><i class="d"></i>Developing (tap once)</span><span><i class="s"></i>Strong (tap twice)</span></div>
+                
               </div>
               <aside class="pb2-side">
                 <div class="pb2-p"><small>Live score</small><b id="pb-total">0%</b><div class="pb2-st" id="pb-state">Not started</div><div class="pb2-bar"><div><span>Presence</span><em data-bar="0">0%</em></div><u><s data-fill="0"></s></u></div><div class="pb2-bar"><div><span>Voice</span><em data-bar="1">0%</em></div><u><s data-fill="1"></s></u></div><div class="pb2-bar"><div><span>Gesture &amp; movement</span><em data-bar="2">0%</em></div><u><s data-fill="2"></s></u></div><div class="pb2-bar"><div><span>Story &amp; data</span><em data-bar="3">0%</em></div><u><s data-fill="3"></s></u></div><div class="pb2-bar"><div><span>Handling the room</span><em data-bar="4">0%</em></div><u><s data-fill="4"></s></u></div></div>
@@ -1033,7 +1041,7 @@
                 <div class="pb2-p"><small>Presenter name</small><div class="pb2-in bl">Type the presenter’s name</div><small class="mt">Round</small><div class="pb2-in" id="pb-round">Round 1: AI rehearsal</div><div class="pb2-btn">End &amp; save presentation</div><div class="pb2-btn ghost">Clear the board</div></div>
                 <div class="pb2-p"><small>Saved presentations</small><p class="bl sm">No presentations saved yet.</p></div>
               <div class="pb2-adv"><small>1:1</small><b>Executive advising</b></div><div class="pb2-light"><h6>Self-talk mirror</h6><div class="pb2-two"><div><small>Confident phrases heard</small><div class="pb2-box bl">“We recommend…”</div></div><div><small>Doubtful phrases heard</small><div class="pb2-box bl">“I might be wrong but…”</div></div></div></div><div class="pb2-light"><h6>Question handling</h6><div class="pb2-line bl">Question asked</div><div class="pb2-line bl">Question asked</div><div class="pb2-add bl">+ Add a question</div></div><div class="pb2-light"><h6>My next three steps</h6><div class="pb2-line bl">Step 1</div><div class="pb2-line bl">Step 2</div><div class="pb2-line bl">Step 3</div></div></aside>
-              <p class="dp2-note">Illustrative example. Panel text is blurred.</p>
+              <div class="pb2-key pb2-key-row"><span><i></i>Not yet</span><span><i class="d"></i>Developing (tap once)</span><span><i class="s"></i>Strong (tap twice)</span></div><p class="dp2-note">Illustrative example. Panel text is blurred.</p>
             </div></div></div></div>
         </div>
         <div class="dp-body" id="dp2a" hidden>
