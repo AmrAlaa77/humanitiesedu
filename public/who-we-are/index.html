@@ -1330,10 +1330,10 @@ var AVMAP = {"GM":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAABwCAYAAAD
 (function(){var b=document.querySelector('.dp-plusbar'),t=document.getElementById('dpTextBody');if(!b||!t)return;b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',o?'false':'true');t.hidden=o;});})();
 
 /* dpFade: Programme 01 text shows first, then fades into the + bar */
-(function(){var b=document.querySelector('.dp-plusbar'),t=document.getElementById('dpTextBody');if(!b||!t)return;var timer=null,done=false;function collapse(){if(done)return;done=true;t.classList.add('dp-fading');setTimeout(function(){if(b.getAttribute('aria-expanded')==='true'){b.setAttribute('aria-expanded','false');t.hidden=true;}t.classList.remove('dp-fading');var c=document.getElementById('dpcard-text');if(c)c.classList.remove('dp-intro');},900);}
+(function(){var b=document.querySelector('.dp-plusbar'),t=document.getElementById('dpTextBody');if(!b||!t)return;var timer=null,done=true; /* kept visible: no automatic collapse */function collapse(){if(done)return;done=true;t.classList.add('dp-fading');setTimeout(function(){if(b.getAttribute('aria-expanded')==='true'){b.setAttribute('aria-expanded','false');t.hidden=true;}t.classList.remove('dp-fading');var c=document.getElementById('dpcard-text');if(c)c.classList.remove('dp-intro');},900);}
 var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 b.addEventListener('click',function(){done=true;clearTimeout(timer);t.classList.remove('dp-fading');});
-if(reduce){var c0=document.getElementById('dpcard-text');if(c0)c0.classList.remove('dp-intro');return;}
+if(reduce){return;}
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!timer&&!done){timer=setTimeout(collapse,7000);io.disconnect();}});},{threshold:.5});io.observe(t);}else{timer=setTimeout(collapse,7000);}})();
 </script>
 </body>
