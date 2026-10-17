@@ -485,7 +485,8 @@
   .pb2-cb { width: 14px; height: 14px; border: 1.5px solid #8ea3ab; border-radius: 3px; background: #fff; transition: background .25s, border-color .25s; position: relative; }
   .pb2-cb.on { background: #12b5a6; border-color: #12b5a6; } .pb2-cb.on::after { content: ""; position: absolute; left: 3.5px; top: .5px; width: 4px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
   .pb2-field { margin-top: 12px; } .pb2-field .bl { border: 1px solid #c9d9dd; background: #fff; border-radius: 8px; padding: 12px; min-height: 64px; font-size: 12.5px; }
-  .pb2-trio { display: grid; grid-template-columns: 1.1fr .9fr .9fr; gap: 16px; }
+  .pb2-trio { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; }
+  .pb2-side > .pb2-light { box-shadow: 0 10px 24px rgba(4,40,60,.22); }
   .pb2-duo { display: grid; grid-template-columns: 1fr 1.5fr; gap: 16px; }
   .pb2-two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } .pb2-box { border: 1px solid #c9d9dd; background: #fff; border-radius: 8px; padding: 10px; min-height: 70px; font-size: 12.5px; }
   .pb2-line { border: 1px solid #c9d9dd; background: #fff; border-radius: 8px; padding: 9px 12px; margin: 8px 0; font-size: 12.5px; } .pb2-add { display: inline-block; border: 1px solid #c9d9dd; border-radius: 99px; padding: 5px 12px; font-size: 12px; }
@@ -985,11 +986,11 @@
                   <div class="pb2-trio">
                     <div class="pb2-light"><h6>Self-talk mirror</h6><div class="pb2-two"><div><small>Confident phrases heard</small><div class="pb2-box bl">“We recommend…”</div></div><div><small>Doubtful phrases heard</small><div class="pb2-box bl">“I might be wrong but…”</div></div></div></div>
                     <div class="pb2-light"><h6>Before and after</h6><p class="bl">Choose the round, then End &amp; save. Once Round 1 and The Final Jury are both saved for the same presenter, the change in each area shows here.</p></div>
-                    <div class="pb2-light"><h6>Strength spotlight</h6><small>The three strongest moments</small><div class="pb2-line bl">Strongest moment 1</div><div class="pb2-line bl">Strongest moment 2</div><div class="pb2-line bl">Strongest moment 3</div></div>
+                    
                   </div>
                   <div class="pb2-duo">
-                    <div class="pb2-light"><h6>Question handling</h6><div class="pb2-line bl">Question asked</div><div class="pb2-line bl">Question asked</div><div class="pb2-add bl">+ Add a question</div></div>
-                    <div class="pb2-light"><h6>My next three steps</h6><div class="pb2-line bl">Step 1</div><div class="pb2-line bl">Step 2</div><div class="pb2-line bl">Step 3</div></div>
+                    
+                    
                   </div>
                 </div>
                 <div class="pb2-key"><span><i></i>Not yet</span><span><i class="d"></i>Developing (tap once)</span><span><i class="s"></i>Strong (tap twice)</span></div>
@@ -999,7 +1000,7 @@
                 <div class="pb2-p"><small>Record for AI evaluation</small><p class="bl sm">Recording is not available in this browser. Paste a transcript to evaluate it with AI.</p><small class="mt">Transcript</small><div class="pb2-ta bl">The transcript appears here while you record. You can also paste or type one.</div><div class="pb2-met"><span><small>Words / min</small>&ndash;</span><span><small>Fillers</small>&ndash;</span><span><small>Duration</small>&ndash;</span></div><div class="pb2-btn">Evaluate with AI</div></div>
                 <div class="pb2-p"><small>Presenter name</small><div class="pb2-in bl">Type the presenter’s name</div><small class="mt">Round</small><div class="pb2-in" id="pb-round">Round 1: AI rehearsal</div><div class="pb2-btn">End &amp; save presentation</div><div class="pb2-btn ghost">Clear the board</div></div>
                 <div class="pb2-p"><small>Saved presentations</small><p class="bl sm">No presentations saved yet.</p></div>
-              </aside>
+              <div class="pb2-light"><h6>Strength spotlight</h6><small>The three strongest moments</small><div class="pb2-line bl">Strongest moment 1</div><div class="pb2-line bl">Strongest moment 2</div><div class="pb2-line bl">Strongest moment 3</div></div><div class="pb2-light"><h6>Question handling</h6><div class="pb2-line bl">Question asked</div><div class="pb2-line bl">Question asked</div><div class="pb2-add bl">+ Add a question</div></div><div class="pb2-light"><h6>My next three steps</h6><div class="pb2-line bl">Step 1</div><div class="pb2-line bl">Step 2</div><div class="pb2-line bl">Step 3</div></div></aside>
               <p class="dp2-note">Illustrative example. Panel text is blurred.</p>
             </div></div></div></div>
         </div>
