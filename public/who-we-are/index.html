@@ -1366,7 +1366,15 @@ const SEC={
   [&quot;Actions lost after meetings&quot;,0,&quot;Decisions made in meetings do not turn into tracked actions&quot;,&quot;Turn each meeting into owned actions before people leave.&quot;],
   [&quot;Unclear priorities&quot;,0,&quot;I am unsure what matters most this week&quot;,&quot;Publish a ranked list of priorities each week.&quot;],
   [&quot;Waiting with no follow-up&quot;,0,&quot;I wait on others and have to chase them by hand&quot;,&quot;Track what you are waiting on and send automatic reminders.&quot;],
-  [&quot;Overload with no reset&quot;,0,&quot;I get no weekly review or recovery time&quot;,&quot;Hold a short weekly reset to rebalance load and recover.&quot;]]},
+  [&quot;Overload with no reset&quot;,0,&quot;I get no weekly review or recovery time&quot;,&quot;Hold a short weekly reset to rebalance load and recover.&quot;],
+  [&quot;Procrastination&quot;,0,&quot;Important tasks are put off until the last minute&quot;,&quot;Break the work into small steps and book the first one now.&quot;],
+  [&quot;Rumination&quot;,0,&quot;I keep going over the same worries and decisions&quot;,&quot;Set a short time limit to review, then decide and move on.&quot;],
+  [&quot;Multitasking&quot;,0,&quot;I switch between several tasks at once&quot;,&quot;Work in single-task focus blocks and batch the small items.&quot;],
+  [&quot;Impostorism&quot;,0,&quot;I doubt my abilities even when there is evidence of success&quot;,&quot;Keep a record of wins and ask for specific feedback.&quot;],
+  [&quot;Perfectionism&quot;,0,&quot;I keep polishing work instead of finishing it&quot;,&quot;Agree what done looks like and ship at good enough.&quot;],
+  [&quot;Avoiding hard conversations&quot;,0,&quot;Difficult conversations are delayed so small issues grow&quot;,&quot;Use a simple feedback format and a weekly slot for direct input.&quot;],
+  [&quot;Decision delay under pressure&quot;,0,&quot;Decisions wait for more information when the stakes rise&quot;,&quot;Set decision deadlines, owners and a good-enough threshold.&quot;],
+  [&quot;Meeting overload&quot;,0,&quot;Meetings take time that should go to focused work&quot;,&quot;Default to short async updates and keep meetings for decisions.&quot;]]},
  b:{title:&quot;Behavioral Performance Indicators&quot;,color:&quot;#0891b2&quot;,kicker:&quot;Parent - Adult - Child tendencies (Transactional Analysis)&quot;,prompt:&quot;In our group&quot;,items:[
   [&quot;Clear standards and expectations&quot;,&quot;CP&quot;,&quot;Standards, rules and quality bars are clear and kept&quot;],[&quot;Blame and fault-finding&quot;,&quot;CP&quot;,&quot;Criticism and blaming are common&quot;,1],
   [&quot;Support and encouragement&quot;,&quot;NP&quot;,&quot;People coach, praise and back each other up&quot;],[&quot;Rescuing and over-helping&quot;,&quot;NP&quot;,&quot;People do others' work for them&quot;,1],
@@ -1379,9 +1387,9 @@ let mem=[],DB=null,canReset=false,armed=false,demo=true,tab=&quot;respond&quot;,
 try{mem=JSON.parse(localStorage.getItem(KEY))||[]}catch(e){}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(mem))}catch(e){}};
 const $=id=>document.getElementById(id);
-const okShape=r=>r&amp;&amp;r.s&amp;&amp;r.d&amp;&amp;r.b&amp;&amp;r.s.length===12&amp;&amp;r.d.length===5&amp;&amp;r.b.length===10;
+const okShape=r=>r&amp;&amp;r.s&amp;&amp;r.d&amp;&amp;r.b&amp;&amp;r.s.length===12&amp;&amp;r.d.length===SEC.d.items.length&amp;&amp;r.b.length===10;
 function mkDemo(){const T=[3.2,3,2.2,3,3.8,3.8,3.2,3,4.2,2.8],S=[[4,4,3,3,2],[4,3,3,2,2],[3,3,3,2,4]],D=[[2,2,3,4,2],[2,3,2,2,3],[3,3,3,2,3],[3,4,2,3,3],[2,3,2,3,2]],o=[];
- for(let k=0;k<5;k++){o.push({s:SEC.s.items.map((_,i)=>S[i%3][(k+i)%5]),d:SEC.d.items.map((_,i)=>D[i][k]),b:SEC.b.items.map((_,i)=>{const t=T[i],f=Math.floor(t),r=Math.round((t-f)*5);return f+(k<r?1:0)})})}return o}
+ for(let k=0;k<5;k++){o.push({s:SEC.s.items.map((_,i)=>S[i%3][(k+i)%5]),d:SEC.d.items.map((_,i)=>D[i%5][(k+i)%5]),b:SEC.b.items.map((_,i)=>{const t=T[i],f=Math.floor(t),r=Math.round((t-f)*5);return f+(k<r?1:0)})})}return o}
 const R=()=>demo?mkDemo():mem;
 function stat(id,i,rs){const v=rs.map(r=>r[id][i]),n=v.length,avg=v.reduce((a,b)=>a+b,0)/n,hi=v.filter(x=>x>=4).length,me=v.filter(x=>x===3).length;return{pct:Math.round((avg-1)/4*100),hi,me,lo:n-hi-me,n}}
 const sev=p=>p>=70?[&quot;serious&quot;,&quot;Serious&quot;]:p>=55?[&quot;watch&quot;,&quot;Watch&quot;]:[&quot;low&quot;,&quot;Low&quot;];
