@@ -109,6 +109,14 @@
                          "destination":  "/game-on-kits/index.html"
                      },
                      {
+                         "source":  "/human-ai-intelligence-ar",
+                         "destination":  "/human-ai-intelligence-ar/index.html"
+                     },
+                     {
+                         "source":  "/human-ai-intelligence-ar/",
+                         "destination":  "/human-ai-intelligence-ar/index.html"
+                     },
+                     {
                          "source":  "/humantic-digital",
                          "destination":  "/humantic-digital/index.html"
                      },
@@ -157,7 +165,7 @@
                          "destination":  "/amex-partnership/preview/ar/index.html"
                      },
                      {
-                         "source":  "/((?!humantic-digital|experience|amex-role-cards|AmEx-Role-Cards|amex-storytelling|AmEx-Storytelling|amex-proposal|amex-partnership|game-on-kits|who-we-are|align|b2b-b2g|B2B-B2G).*)",
+                         "source":  "/((?!human-ai-intelligence-ar|humantic-digital|experience|amex-role-cards|AmEx-Role-Cards|amex-storytelling|AmEx-Storytelling|amex-proposal|amex-partnership|game-on-kits|who-we-are|align|b2b-b2g|B2B-B2G).*)",
                          "destination":  "/index.html"
                      }
                  ]
