@@ -141,6 +141,22 @@
                          "destination":  "/humantic-digital-ar/index.html"
                      },
                      {
+                         "source":  "/هيومانتك",
+                         "destination":  "/humantic-digital-ar/index.html"
+                     },
+                     {
+                         "source":  "/%D9%87%D9%8A%D9%88%D9%85%D8%A7%D9%86%D8%AA%D9%83",
+                         "destination":  "/humantic-digital-ar/index.html"
+                     },
+                     {
+                         "source":  "/هيومانتك/",
+                         "destination":  "/humantic-digital-ar/index.html"
+                     },
+                     {
+                         "source":  "/%D9%87%D9%8A%D9%88%D9%85%D8%A7%D9%86%D8%AA%D9%83/",
+                         "destination":  "/humantic-digital-ar/index.html"
+                     },
+                     {
                          "source":  "/humantic-digital-ar",
                          "destination":  "/humantic-digital-ar/index.html"
                      },
