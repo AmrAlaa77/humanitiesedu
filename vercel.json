@@ -133,6 +133,14 @@
                          "destination":  "/humantic-digital-ar/index.html"
                      },
                      {
+                         "source":  "/ar",
+                         "destination":  "/humantic-digital-ar/index.html"
+                     },
+                     {
+                         "source":  "/ar/",
+                         "destination":  "/humantic-digital-ar/index.html"
+                     },
+                     {
                          "source":  "/humantic-digital-ar",
                          "destination":  "/humantic-digital-ar/index.html"
                      },
