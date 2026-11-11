@@ -117,6 +117,22 @@
                          "destination":  "/human-ai-intelligence-ar/index.html"
                      },
                      {
+                         "source":  "/هيومانتك-ديجيتال",
+                         "destination":  "/humantic-digital-ar/index.html"
+                     },
+                     {
+                         "source":  "/%D9%87%D9%8A%D9%88%D9%85%D8%A7%D9%86%D8%AA%D9%83-%D8%AF%D9%8A%D8%AC%D9%8A%D8%AA%D8%A7%D9%84",
+                         "destination":  "/humantic-digital-ar/index.html"
+                     },
+                     {
+                         "source":  "/هيومانتك-ديجيتال/",
+                         "destination":  "/humantic-digital-ar/index.html"
+                     },
+                     {
+                         "source":  "/%D9%87%D9%8A%D9%88%D9%85%D8%A7%D9%86%D8%AA%D9%83-%D8%AF%D9%8A%D8%AC%D9%8A%D8%AA%D8%A7%D9%84/",
+                         "destination":  "/humantic-digital-ar/index.html"
+                     },
+                     {
                          "source":  "/humantic-digital-ar",
                          "destination":  "/humantic-digital-ar/index.html"
                      },
