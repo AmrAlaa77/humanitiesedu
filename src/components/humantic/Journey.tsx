@@ -8,7 +8,6 @@ import {
   Users,
   HeartHandshake,
   Lightbulb,
-  Trophy,
   Globe,
   GraduationCap,
   Award,
@@ -16,13 +15,12 @@ import {
   ArrowRight,
 } from 'lucide-react';
 
-type PanelKey = 'start' | 'global' | 'initiatives' | 'milestones' | 'next';
+type PanelKey = 'start' | 'global' | 'initiatives' | 'next';
 
 const tabs: { key: PanelKey; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
   { key: 'start', label: 'The Genesis', icon: Sprout },
   { key: 'global', label: 'Global Integration', icon: Globe },
   { key: 'initiatives', label: 'Past Initiatives', icon: Flag },
-  { key: 'milestones', label: 'Milestones', icon: Trophy },
   { key: 'next', label: 'What’s Next', icon: Rocket },
 ];
 
@@ -66,23 +64,6 @@ const accreditations = [
   { icon: GraduationCap, name: 'CACHE', detail: 'Council for Awards in Care, Health and Education' },
 ];
 
-const milestones = [
-  {
-    year: '2007–2014',
-    title: 'The Genesis — From medicine to the field',
-    desc: 'A vow to humanity moved from the hospital ward to the wellhead, where caring for one life became a cause for all.',
-  },
-  {
-    year: '2007–2014',
-    title: 'Safety becomes a promise',
-    desc: 'Leadership reframed as a life-preserving act, and safety as a promise to come home in one piece.',
-  },
-  {
-    year: '2016–2023',
-    title: 'Global Knowledge Integration',
-    desc: 'Joint ventures with leading British awarding bodies — inspected and recognised by Ofqual, Great British Qualifications, and CACHE.',
-  },
-];
 
 
 
@@ -144,7 +125,6 @@ const Journey: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           {active === 'start' && <StartPanel />}
           {active === 'global' && <GlobalPanel />}
           {active === 'initiatives' && <InitiativesPanel />}
-          {active === 'milestones' && <MilestonesPanel />}
           {active === 'next' && <NextPanel onCta={onCta} />}
         </div>
       </div>
@@ -247,26 +227,6 @@ const InitiativesPanel: React.FC = () => (
         <p className="mt-2 text-sm text-slate-400 leading-relaxed">{it.desc}</p>
       </div>
     ))}
-  </div>
-);
-
-const MilestonesPanel: React.FC = () => (
-  <div className="relative">
-    <div className="absolute left-3 sm:left-4 top-2 bottom-2 w-px bg-gradient-to-b from-emerald-400/50 via-cyan-400/30 to-transparent" />
-    <div className="space-y-7">
-      {milestones.map((m) => (
-        <div key={m.year} className="relative pl-12 sm:pl-14">
-          <span className="absolute left-0 sm:left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 shadow-lg shadow-emerald-500/30">
-            <span className="h-2 w-2 rounded-full bg-slate-950" />
-          </span>
-          <div className="flex flex-wrap items-baseline gap-x-3">
-            <span className="text-sm font-bold text-emerald-300">{m.year}</span>
-            <h4 className="text-lg font-semibold text-white">{m.title}</h4>
-          </div>
-          <p className="mt-1 text-sm text-slate-400">{m.desc}</p>
-        </div>
-      ))}
-    </div>
   </div>
 );
 
