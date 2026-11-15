@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import Deliverables from '@/components/humantic/Deliverables';
+import Pillar from '@/components/humantic/Pillar';
 import Footer from '@/components/humantic/Footer';
 import AmbientBackground from '@/components/humantic/AmbientBackground';
 import GlowCursor from '@/components/humantic/GlowCursor';
@@ -31,6 +32,8 @@ const DeliverablesPage: React.FC = () => (
 
       <main>
         <Deliverables />
+        {/* Platform pillar section, moved off the homepage and kept here. */}
+        <Pillar />
       </main>
 
       <Footer />

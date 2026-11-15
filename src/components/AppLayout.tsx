@@ -8,7 +8,6 @@ import TrustedAcross from '@/components/humantic/TrustedAcross';
 
 import Assessment from '@/components/humantic/Assessment';
 import Programmes from '@/components/humantic/Programmes';
-import Pillar from '@/components/humantic/Pillar';
 import Footer from '@/components/humantic/Footer';
 import AccessModal from '@/components/humantic/AccessModal';
 import GlowCursor from '@/components/humantic/GlowCursor';
@@ -46,9 +45,7 @@ const AppLayout: React.FC = () => {
 
           <NarrativeReel onCta={() => setModalOpen(true)} />
 
-          <Reveal variant="flip" repeat>
-            <Pillar />
-          </Reveal>
+          {/* Pillar ("Where biology meets organisational strategy") moved to /deliverables per request. */}
 
           <Reveal variant="blur" repeat>
             <Assessment />

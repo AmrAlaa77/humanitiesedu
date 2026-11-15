@@ -62,7 +62,7 @@ const Pillar: React.FC = () => {
               </span>
             </div>
             <a
-              href="#assessment"
+              href="/#assessment"
               className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition-transform duration-150 ease-out hover:opacity-90"
             >
               Get Your Organizational Development Metrics
