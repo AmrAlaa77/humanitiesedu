@@ -3,7 +3,7 @@ import { Clock, Plus, Minus, ArrowUpRight } from 'lucide-react';
 
 /**
  * Programmes section, shown on the homepage and on /deliverables. Replaces the six-category
- * Deliverables picker: Initiative 01 (Safer Workplace for All 2030, two programmes) followed by
+ * Deliverables picker: Initiative 01 (Safer Workplace for All 2030, three programmes) followed by
  * the four headline programmes. Keeps id="deliverables" so the navbar link still lands here.
  */
 
@@ -18,6 +18,19 @@ const alignFeatures: { title: string; text: string }[] = [
   { title: 'Calm Communication', text: 'Suggests a calm, respectful version of sensitive or overdue follow-ups, so hard conversations start well.' },
   { title: 'Weekly Reset', text: 'Every Sunday evening, each person and manager gets an AI-built review of what closed, what is stuck and what is due.' },
   { title: 'Productivity & Wellbeing Index', text: 'A workload and wellbeing view for each person, and a team view so managers can spot overload before burnout.' },
+];
+
+const bpiEnables: { step: string; title: string; text: string }[] = [
+  { step: 'Predict', title: 'Predictive Performance Management', text: 'Identify emerging risks and intervene before they affect results.' },
+  { step: 'Sustain', title: 'Sustained Execution Momentum', text: 'Address behavioural friction and maintain consistent progress towards strategic objectives.' },
+  { step: 'Act', title: 'Actionable Leadership Intelligence', text: 'Translate behavioural insights into targeted leadership interventions and practical action.' },
+  { step: 'Align', title: 'Strategic Behavioural Alignment', text: 'Align everyday actions, team dynamics and workplace behaviours with organisational priorities.' },
+];
+
+const bpiApproach: string[] = [
+  'Optimise Complementary Partnerships — Map strengths and potential derailers to pair people whose capabilities balance each other’s blind spots.',
+  'Operationalise Collective Talent — Combine strengths mapping with behavioural simulations to align individual capabilities with strategic priorities.',
+  'Address Performance Derailers — Pair diagnostic insights with one-to-one executive coaching to uncover the behavioural factors behind performance and sustain it over time.',
 ];
 
 const programmes: { label: string; title: string; text: string }[] = [
@@ -50,6 +63,7 @@ const solidBtn = 'inline-flex items-center gap-2 rounded-full bg-emerald-300 px-
 
 const Programmes: React.FC = () => {
   const [alignOpen, setAlignOpen] = useState(false);
+  const [bpiOpen, setBpiOpen] = useState(false);
   const [active, setActive] = useState(0);
 
   return (
@@ -167,6 +181,80 @@ const Programmes: React.FC = () => {
                 Learn more <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>
+          </article>
+
+          {/* Programme 03 */}
+          <article className={cardClass}>
+            <p className={monoClass}>Programme 03</p>
+            <h3 className="mt-3 font-serif text-3xl sm:text-4xl font-bold text-white">Humantic BPI Intelligence™</h3>
+            <p className="mt-2 text-lg text-sky-200">AI-Enabled Behavioural &amp; Performance Analytics</p>
+
+            <div className="relative mt-8 overflow-hidden rounded-2xl bg-teal-900">
+              <video
+                src="/videos/bpi-intelligence.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-hidden="true"
+                className="block h-[280px] w-full object-cover sm:h-[460px]"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-teal-950/85 to-transparent p-5 sm:p-8">
+                <p className="font-mono text-[11px] sm:text-xs tracking-[0.2em] uppercase text-white/85">AI-evaluated · Humantic Digital</p>
+                <h4 className="mt-3 text-2xl sm:text-4xl text-white">
+                  <span className="font-bold">Behavioral Performance Indicators,</span>
+                  <br />
+                  evaluated by AI.
+                </h4>
+                <p className="mt-4 inline-block rounded-full border border-white/50 px-5 py-2 font-mono text-[11px] sm:text-xs tracking-[0.2em] uppercase text-white">
+                  Productivity · Behavior · Risk
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-2xl bg-gradient-to-br from-teal-600/70 to-cyan-700/60 p-6 sm:p-8">
+              <p className={monoClass}>BPI enables</p>
+              <h4 className="mt-3 text-2xl sm:text-3xl font-bold text-white">KPIs Measure Outcomes. BPIs Reveal What Drives Them.</h4>
+              <p className="mt-3 max-w-3xl text-white/90">
+                KPIs tell you what performance delivered. BPIs reveal the behavioural signals shaping what performance delivers next.
+              </p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {bpiEnables.map((b) => (
+                  <div key={b.step} className="rounded-2xl border border-white/25 bg-white/10 p-5">
+                    <p className="font-mono text-xs tracking-[0.2em] uppercase text-emerald-200">{b.step}</p>
+                    <h5 className="mt-2 font-semibold text-white">{b.title}</h5>
+                    <p className="mt-2 text-sm text-white/85">{b.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <button type="button" onClick={() => setBpiOpen((v) => !v)} aria-expanded={bpiOpen} className={outlineBtn}>
+                Learn more {bpiOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+              </button>
+            </div>
+
+            {bpiOpen && (
+              <div className="mt-8 max-w-3xl animate-in fade-in-0 slide-in-from-bottom-2 duration-300">
+                <div className="flex flex-wrap gap-2">
+                  {['Productivity', 'Behavior', 'Risk'].map((t) => (
+                    <span key={t} className="rounded-full border border-emerald-300/40 bg-emerald-300/10 px-4 py-1 text-xs font-semibold text-emerald-200">{t}</span>
+                  ))}
+                </div>
+                <p className="mt-6 font-serif text-2xl sm:text-3xl font-bold text-white">Humantic BPI Intelligence™</p>
+                <p className={`mt-8 ${monoClass}`}>Our unique approach</p>
+                <p className="mt-3 text-slate-300">
+                  We deploy proprietary intellectual property that integrates organisational behaviour, modern neuroscience and AI-powered predictive analytics. Immersive experiential learning and behavioural simulations equip leaders with actionable strategies to optimise team dynamics and deliver measurable business impact.
+                </p>
+                <ul className="mt-4 list-disc space-y-2 pl-5 text-slate-300">
+                  {bpiApproach.map((a) => (
+                    <li key={a}>{a}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </article>
         </div>
 
