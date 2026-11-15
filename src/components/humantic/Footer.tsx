@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
               <h4 className="text-white font-semibold text-sm mb-4">{c.h}</h4>
               <ul className="space-y-2.5">
                 {c.items.map((i) => (
-                  <li key={i}><a href="#" className="text-slate-400 text-sm transition-all duration-200 hover:text-emerald-300 hover:pl-1">{i}</a></li>
+                  <li key={i}><a href={i === 'Contact' ? 'mailto:collaborations@oxford.humanitiesedu.uk' : '#'} className="text-slate-400 text-sm transition-all duration-200 hover:text-emerald-300 hover:pl-1">{i}</a></li>
                 ))}
               </ul>
             </div>

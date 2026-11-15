@@ -49,7 +49,7 @@ html.lenis,html.lenis body{height:auto}
 
 /* hero */
 .hero{min-height:100vh;display:flex;flex-direction:column;background:radial-gradient(125% 62% at 50% -10%, rgba(4,6,15,.82) 0%, rgba(4,6,15,.28) 44%, transparent 68%)}
-.nav{width:100%;max-width:var(--maxw);margin:0 auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav{position:relative;z-index:5;width:100%;max-width:var(--maxw);margin:0 auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .nav-left{display:flex;align-items:center;gap:20px}
 .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-size:14px;font-weight:500;transition:color .2s ease;text-shadow:0 1px 3px rgba(0,0,0,.9),0 2px 16px rgba(0,0,0,.8)}
 .back-link:hover{color:var(--ink)}
@@ -461,7 +461,7 @@ function brainPoint(radialScale){
 // tissue (soft lit, mostly opaque) so the glowing cloud reads as structure sitting ON/IN a real
 // brain rather than free-floating points. Same geometry family already proven to render (the
 // earlier faceted teal mesh), just recoloured pale/light and layered under the particle field.
-const meshGeo = new THREE.IcosahedronGeometry(R0, 6);
+const meshGeo = new THREE.IcosahedronGeometry(R0, 40); // finer shell so the gyri/sulci resolve as folds, not facets
 {
   const mp = meshGeo.attributes.position;
   const mFold = new Float32Array(mp.count);
@@ -503,10 +503,13 @@ const meshMat = new THREE.ShaderMaterial({
       // trace the same gyri/sulci pattern the cloud follows -- ridges glow a touch brighter,
       // grooves stay dimmer, so the shell itself reads as a wrinkled anatomical surface
       float sulcus = smoothstep(0.55,0.1,vFold);
-      vec3 base = mix(uColor, uDim, sulcus*0.5);
+      vec3 base = mix(uColor, uDim, sulcus*0.8);
       vec3 col = mix(base, uRim, fres*0.5);
-      float ridgeGlow = mix(0.7, 1.15, vFold);
-      gl_FragColor = vec4(col, fres*0.22*ridgeGlow);
+      // sharper definition: ridges glow more, grooves fall darker, and the fold pattern stays
+      // faintly visible face-on (not only at the rim) so the surface reads as wrinkled cortex
+      float ridgeGlow = mix(0.35, 1.45, smoothstep(0.25,0.8,vFold));
+      float faceOn = smoothstep(0.5,0.92,vFold) * 0.07;
+      gl_FragColor = vec4(col, (fres*0.26 + faceOn)*ridgeGlow);
     }`,
 });
 brainGroup.add(new THREE.Mesh(meshGeo, meshMat));
