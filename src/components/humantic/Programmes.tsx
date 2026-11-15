@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Clock, Plus, Minus, ArrowUpRight } from 'lucide-react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Clock, Plus, Minus, ArrowUpRight, X, Loader2 } from 'lucide-react';
 
 /**
  * Programmes section, shown on the homepage and on /deliverables. Replaces the six-category
@@ -65,6 +65,92 @@ const Programmes: React.FC = () => {
   const [alignOpen, setAlignOpen] = useState(false);
   const [bpiOpen, setBpiOpen] = useState(false);
   const [active, setActive] = useState(0);
+
+  // Programme details open in place, under the cards. The detail panels (text, videos, day
+  // plans) live in the standalone /humantic-digital page; rather than duplicating ~15 MB of
+  // content here, that same-site page is loaded once in an inline frame and reduced, from this
+  // side, to just the chosen programme's panel (its tab is selected and everything around the
+  // panel is hidden). Nothing in the /humantic-digital page itself needs to know about this, so
+  // republishing that page keeps working as long as its tabs keep the ids tp1..tp4 / tpp1..tpp4.
+  const [detail, setDetail] = useState<number | null>(null);
+  const [frameReady, setFrameReady] = useState(false);
+  const [frameHeight, setFrameHeight] = useState(900);
+  const frameRef = useRef<HTMLIFrameElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const hiddenRef = useRef<HTMLElement[]>([]);
+
+  const isolate = useCallback((n: number): boolean => {
+    try {
+      const doc = frameRef.current?.contentDocument;
+      if (!doc) return false;
+      const tab = doc.getElementById(`tp${n}`);
+      const panel = doc.getElementById(`tpp${n}`);
+      if (!tab || !panel) return false;
+      hiddenRef.current.forEach((el) => { el.style.display = el.dataset.prevDisplay || ''; });
+      hiddenRef.current = [];
+      tab.click();
+      let node: HTMLElement | null = panel;
+      while (node && node !== doc.body) {
+        const parent: HTMLElement | null = node.parentElement;
+        if (!parent) break;
+        Array.from(parent.children).forEach((child) => {
+          const el = child as HTMLElement;
+          if (el === node || ['SCRIPT', 'STYLE', 'LINK'].includes(el.tagName)) return;
+          el.dataset.prevDisplay = el.style.display;
+          el.style.display = 'none';
+          hiddenRef.current.push(el);
+        });
+        node = parent;
+      }
+      doc.documentElement.style.overflow = 'hidden';
+      doc.defaultView?.scrollTo(0, 0);
+      return true;
+    } catch {
+      return false;
+    }
+  }, []);
+
+  // Re-isolate when a different card is chosen (the frame itself stays loaded).
+  useEffect(() => {
+    if (detail !== null && frameReady) isolate(detail + 1);
+  }, [detail, frameReady, isolate]);
+
+  // Keep the frame as tall as the panel, so the page scrolls as one (no inner scrollbar).
+  useEffect(() => {
+    if (detail === null || !frameReady) return;
+    const measure = () => {
+      try {
+        const doc = frameRef.current?.contentDocument;
+        const panel = doc?.getElementById(`tpp${detail + 1}`);
+        const win = doc?.defaultView;
+        if (!panel || !win) return;
+        const h = Math.ceil(panel.getBoundingClientRect().bottom + win.scrollY + 32);
+        if (h > 200) setFrameHeight((prev) => (Math.abs(prev - h) > 4 ? h : prev));
+      } catch {
+        /* frame not reachable: keep the last height */
+      }
+    };
+    measure();
+    const id = window.setInterval(measure, 700);
+    return () => window.clearInterval(id);
+  }, [detail, frameReady]);
+
+  // Closing unmounts the frame, so the next open starts from a fresh (browser-cached) load.
+  const closeDetail = () => {
+    setDetail(null);
+    setFrameReady(false);
+    hiddenRef.current = [];
+  };
+
+  const openDetail = (i: number) => {
+    setActive(i);
+    if (detail === i) {
+      closeDetail();
+      return;
+    }
+    setDetail(i);
+    window.setTimeout(() => panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
+  };
 
   return (
     <section id="deliverables" className="relative py-24">
@@ -261,27 +347,62 @@ const Programmes: React.FC = () => {
         {/* Headline programmes */}
         <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {programmes.map((p, i) => (
-            <a
+            <button
               key={p.label}
-              href={`/humantic-digital#programme-${i + 1}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              type="button"
+              onClick={() => openDetail(i)}
               onMouseEnter={() => setActive(i)}
               onFocus={() => setActive(i)}
+              aria-expanded={detail === i}
+              aria-controls="programme-details"
               className={`flex flex-col text-left rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 ${
-                active === i
+                active === i || detail === i
                   ? 'border-white/60 bg-gradient-to-br from-teal-300 via-teal-400 to-cyan-500 shadow-lg shadow-teal-400/30'
                   : 'border-teal-200/30 bg-gradient-to-br from-teal-500/20 via-teal-700/20 to-cyan-900/30 hover:border-white/50'
               }`}
             >
-              <p className={`font-mono text-xs tracking-[0.25em] uppercase ${active === i ? 'text-teal-950/80' : 'text-emerald-300'}`}>{p.label}</p>
-              <h3 className={`mt-3 font-serif text-2xl font-bold leading-snug ${active === i ? 'text-teal-950' : 'text-white'}`}>{p.title}</h3>
-              <p className={`mt-3 text-sm leading-relaxed ${active === i ? 'text-teal-950/85' : 'text-slate-300'}`}>{p.text}</p>
-              <span className={`mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold ${active === i ? 'text-teal-950' : 'text-emerald-300'}`}>
-                Programme details <ArrowUpRight className="w-4 h-4" />
+              <p className={`font-mono text-xs tracking-[0.25em] uppercase ${active === i || detail === i ? 'text-teal-950/80' : 'text-emerald-300'}`}>{p.label}</p>
+              <h3 className={`mt-3 font-serif text-2xl font-bold leading-snug ${active === i || detail === i ? 'text-teal-950' : 'text-white'}`}>{p.title}</h3>
+              <p className={`mt-3 text-sm leading-relaxed ${active === i || detail === i ? 'text-teal-950/85' : 'text-slate-300'}`}>{p.text}</p>
+              <span className={`mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold ${active === i || detail === i ? 'text-teal-950' : 'text-emerald-300'}`}>
+                Programme details {detail === i ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
               </span>
-            </a>
+            </button>
           ))}
+        </div>
+
+        {/* In-place programme details (see the comment on `detail` above). The frame is only
+            created on the first click, then kept so switching cards is instant. */}
+        <div id="programme-details" ref={panelRef} className="scroll-mt-24">
+          {detail !== null && (
+            <div className="mt-6 overflow-hidden rounded-3xl border border-teal-200/30 bg-white">
+              <div className="flex items-center justify-between gap-4 bg-teal-950 px-5 py-3 sm:px-8">
+                <p className="font-mono text-xs tracking-[0.25em] uppercase text-emerald-300">
+                  {programmes[detail].label} · <span className="text-white">{programmes[detail].title}</span>
+                </p>
+                <button
+                  type="button"
+                  onClick={closeDetail}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-1.5 text-xs font-semibold text-white transition hover:bg-white/10"
+                >
+                  Close <X className="w-3.5 h-3.5" />
+                </button>
+              </div>
+              {!frameReady && (
+                <p className="flex items-center gap-3 px-5 py-10 text-slate-600 sm:px-8">
+                  <Loader2 className="w-5 h-5 animate-spin" /> Loading programme details…
+                </p>
+              )}
+              <iframe
+                ref={frameRef}
+                src="/humantic-digital"
+                title={`${programmes[detail].title}: programme details`}
+                onLoad={() => setFrameReady(true)}
+                className="block w-full border-0"
+                style={{ height: frameReady ? frameHeight : 0 }}
+              />
+            </div>
+          )}
         </div>
 
       </div>
