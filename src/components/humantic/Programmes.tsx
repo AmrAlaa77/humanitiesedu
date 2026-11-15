@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Clock, Plus, Minus, ArrowUpRight, ArrowRight } from 'lucide-react';
+import { Clock, Plus, Minus, ArrowUpRight } from 'lucide-react';
 
 /**
- * Homepage programmes section. Replaces the six-category Deliverables picker on the homepage:
- * the full catalogue now lives on its own page (/deliverables, see DeliverablesPage.tsx), and
- * the homepage shows only Initiative 01 (Safer Workplace for All 2030, two programmes) followed
- * by the four headline programmes. Keeps id="deliverables" so the navbar link still lands here.
+ * Programmes section, shown on the homepage and on /deliverables. Replaces the six-category
+ * Deliverables picker: Initiative 01 (Safer Workplace for All 2030, two programmes) followed by
+ * the four headline programmes. Keeps id="deliverables" so the navbar link still lands here.
  */
 
 const alignFeatures: { title: string; text: string }[] = [
@@ -194,11 +192,6 @@ const Programmes: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-10">
-          <Link to="/deliverables" className={outlineBtn}>
-            All deliverables <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
       </div>
     </section>
   );

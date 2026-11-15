@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import Deliverables from '@/components/humantic/Deliverables';
-import Pillar from '@/components/humantic/Pillar';
+import Programmes from '@/components/humantic/Programmes';
 import Footer from '@/components/humantic/Footer';
 import AmbientBackground from '@/components/humantic/AmbientBackground';
 import GlowCursor from '@/components/humantic/GlowCursor';
 import ScrollProgress from '@/components/humantic/ScrollProgress';
 
 /**
- * Standalone page for the full deliverables catalogue (all six categories, every programme and
- * outline) -- moved off the homepage per request. Deliverables.tsx itself is unchanged; the
- * homepage now shows Programmes.tsx in its place. Same shell as QoLPage.
+ * /deliverables now shows the same Programmes section as the homepage (Safer Workplace for All
+ * 2030 plus the four headline programmes), per request. The old six-category catalogue
+ * (Deliverables.tsx) and the Platform Pillar section (Pillar.tsx) are no longer rendered anywhere
+ * on the live site; both files are kept in the repo, untouched, so they can be restored.
  */
 const DeliverablesPage: React.FC = () => (
   <div className="relative min-h-screen bg-slate-950 text-white antialiased selection:bg-emerald-400/30 md:cursor-none">
@@ -31,9 +31,7 @@ const DeliverablesPage: React.FC = () => (
       </header>
 
       <main>
-        <Deliverables />
-        {/* Platform pillar section, moved off the homepage and kept here. */}
-        <Pillar />
+        <Programmes />
       </main>
 
       <Footer />
