@@ -261,13 +261,14 @@ const Programmes: React.FC = () => {
         {/* Headline programmes */}
         <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {programmes.map((p, i) => (
-            <button
+            <a
               key={p.label}
-              type="button"
-              onClick={() => setActive(i)}
+              href={`/humantic-digital#programme-${i + 1}`}
+              target="_blank"
+              rel="noopener noreferrer"
               onMouseEnter={() => setActive(i)}
-              aria-pressed={active === i}
-              className={`text-left rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 ${
+              onFocus={() => setActive(i)}
+              className={`flex flex-col text-left rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 ${
                 active === i
                   ? 'border-white/60 bg-gradient-to-br from-teal-300 via-teal-400 to-cyan-500 shadow-lg shadow-teal-400/30'
                   : 'border-teal-200/30 bg-gradient-to-br from-teal-500/20 via-teal-700/20 to-cyan-900/30 hover:border-white/50'
@@ -276,7 +277,10 @@ const Programmes: React.FC = () => {
               <p className={`font-mono text-xs tracking-[0.25em] uppercase ${active === i ? 'text-teal-950/80' : 'text-emerald-300'}`}>{p.label}</p>
               <h3 className={`mt-3 font-serif text-2xl font-bold leading-snug ${active === i ? 'text-teal-950' : 'text-white'}`}>{p.title}</h3>
               <p className={`mt-3 text-sm leading-relaxed ${active === i ? 'text-teal-950/85' : 'text-slate-300'}`}>{p.text}</p>
-            </button>
+              <span className={`mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold ${active === i ? 'text-teal-950' : 'text-emerald-300'}`}>
+                Programme details <ArrowUpRight className="w-4 h-4" />
+              </span>
+            </a>
           ))}
         </div>
 
