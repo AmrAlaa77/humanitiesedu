@@ -16,7 +16,7 @@ const LivingMatrix: React.FC = () => {
           <span className="text-emerald-400 text-sm font-semibold uppercase tracking-widest">The Living Matrix &middot; Platform Positioning</span>
           <h2 className="mt-4 text-3xl sm:text-5xl font-bold text-white tracking-tight max-w-2xl">
             <span className="text-white">Behavioral-</span><span className="text-emerald-400">First.</span>{' '}
-            <span className="text-slate-500">Physiology-</span><span className="text-slate-500">Second.</span>
+            <span className="text-slate-500">Cognitive Neuroscience and Physiology-</span><span className="text-slate-500">Second.</span>
           </h2>
         </div>
 
