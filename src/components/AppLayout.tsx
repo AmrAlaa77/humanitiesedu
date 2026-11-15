@@ -7,7 +7,7 @@ import TeaserTabs from '@/components/humantic/TeaserTabs';
 import TrustedAcross from '@/components/humantic/TrustedAcross';
 
 import Assessment from '@/components/humantic/Assessment';
-import Deliverables from '@/components/humantic/Deliverables';
+import Programmes from '@/components/humantic/Programmes';
 import Pillar from '@/components/humantic/Pillar';
 import Footer from '@/components/humantic/Footer';
 import AccessModal from '@/components/humantic/AccessModal';
@@ -55,7 +55,8 @@ const AppLayout: React.FC = () => {
           </Reveal>
 
           <Reveal variant="up" repeat>
-            <Deliverables />
+            {/* Full catalogue moved to /deliverables (DeliverablesPage); homepage shows Programmes. */}
+            <Programmes />
           </Reveal>
 
           <Reveal variant="up" repeat>

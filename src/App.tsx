@@ -13,6 +13,7 @@ import JourneyPage from "./pages/JourneyPage";
 import QoLPage from "./pages/QoLPage";
 import WellbeingIndexPage from "./pages/WellbeingIndexPage";
 import NextGenPage from "./pages/NextGenPage";
+import DeliverablesPage from "./pages/DeliverablesPage";
 import CPPIAssessment from "./pages/CPPIAssessment";
 import NotFound from "./pages/NotFound";
 
@@ -35,6 +36,7 @@ const App = () => (
               <Route path="/qol-2030" element={<QoLPage />} />
               <Route path="/wellbeing-index" element={<WellbeingIndexPage />} />
               <Route path="/nextgen-2030" element={<NextGenPage />} />
+              <Route path="/deliverables" element={<DeliverablesPage />} />
               <Route path="/survey" element={<CPPIAssessment />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
