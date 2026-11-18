@@ -172,7 +172,7 @@ const FilmHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
       </div>
       <h1
         className="mt-4 mb-5 font-light text-white"
-        style={{ fontSize: 'clamp(38px, 6.2vw, 92px)', lineHeight: 0.98, letterSpacing: '-0.02em', minHeight: '1.96em' }}
+        style={{ fontSize: 'clamp(38px, 6.2vw, 92px)', lineHeight: 0.98, letterSpacing: '-0.02em', minHeight: isMobile ? undefined : '1.96em' }}
         aria-label={HEAD_PLAIN}
       >
         {headline}
