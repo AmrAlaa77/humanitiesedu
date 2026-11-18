@@ -72,9 +72,13 @@ const Navbar: React.FC<{ onCta: () => void }> = ({ onCta }) => {
         }`}
       >
         <button onClick={() => go('#top')} className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center shadow-lg shadow-emerald-500/30 transition-transform duration-300 group-hover:scale-105 group-hover:rotate-6">
-            <Activity className="w-5 h-5 text-slate-950" />
-          </div>
+          {/* Latest 3D Humantic Digital badge (same mark as the Align app). */}
+          <img
+            src="/humantic-logo.svg"
+            alt=""
+            aria-hidden
+            className="h-10 w-auto drop-shadow-[0_6px_16px_rgba(16,185,129,0.35)] transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3"
+          />
           <div className="leading-tight text-left">
             <span className="block text-white font-semibold tracking-tight">Humantic</span>
             <span className="block text-[10px] uppercase tracking-[0.2em] text-emerald-400">Digital</span>

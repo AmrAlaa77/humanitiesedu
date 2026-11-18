@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 /**
  * FilmHero -- full-bleed hero reel with the "Decode" text treatment.
@@ -22,35 +23,21 @@ const FILM_FULL = '/videos/human-hero.mp4'; // original reel with sound, for "Wa
 
 const EYEBROW = 'Human + Machine Intelligence';
 const HEAD_PLAIN = 'We are Humantic Digital';
-const GLYPHS = '01<>/\\#*+=%$@ABCDEFXYZ';
+const GLYPHS = 'ABCDEFGHKMNPRSTUVXZ0123456789';
 
 // Timeline (seconds of the film)
-const T_EYE_START = 1.2;
-const T_EYE_DUR = 1.6;
-const T_HEAD_START = 2.6;
-const T_HEAD_DUR = 4.2;
-const T_SCRIM = 5.8;
+// Text waits for the human face (~5s in) so nothing sits over the robot reveal.
+const T_EYE_START = 4.6;
+const T_EYE_DUR = 1.2;
+const T_HEAD_START = 5.4; // first letter settles here
+const T_STAGGER = 0.05; // each next letter settles this much later
+const T_FLICKER = 0.35; // how long a letter flickers before settling
+const T_SCRIM = 4.8;
 const T_SUB = 7.2;
-const T_CTA = 7.8;
+const T_CTA = 7.7;
 const DONE = 99;
 
-const scrambled = (target: string, p: number, seed: number) => {
-  const out: { ch: string; glyph: boolean }[] = [];
-  const n = target.length;
-  for (let i = 0; i < n; i++) {
-    const c = target[i];
-    if (c === ' ') out.push({ ch: ' ', glyph: false });
-    else if (i / n < p) out.push({ ch: c, glyph: false });
-    else if (p > 0) out.push({ ch: GLYPHS[(i * 7 + seed) % GLYPHS.length], glyph: true });
-  }
-  return out;
-};
 
-const FinalHeadline: React.FC = () => (
-  <>
-    We are <em className="font-normal" style={{ fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', letterSpacing: 0 }}>Humantic</em> Digital
-  </>
-);
 
 const FilmHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -140,7 +127,6 @@ const FilmHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   }, [filmOpen]);
 
   const eyeP = Math.min(1, Math.max(0, (t - T_EYE_START) / T_EYE_DUR));
-  const headP = Math.min(1, Math.max(0, (t - T_HEAD_START) / T_HEAD_DUR));
   const showScrim = t > T_SCRIM;
   const showSub = t > T_SUB;
   const showCta = t > T_CTA;
@@ -150,34 +136,55 @@ const FilmHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
     transition: 'opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)',
   });
 
-  const headline =
-    headP >= 1 ? (
-      <FinalHeadline />
-    ) : (
-      scrambled(HEAD_PLAIN, headP, Math.floor(t * 14)).map((c, i) =>
-        c.glyph ? (
-          <span key={i} className="font-mono font-normal text-emerald-300/80">
-            {c.ch}
-          </span>
-        ) : (
-          <span key={i}>{c.ch}</span>
-        )
-      )
-    );
+  // Per-letter reveal in the headline's own font: each letter flickers briefly through a few
+  // characters (faint, slightly blurred), then settles sharp. Every letter keeps its own slot,
+  // so the line never changes width or wraps differently while it resolves.
+  const SERIF = { fontFamily: "'Instrument Serif', serif", fontStyle: 'italic' as const, letterSpacing: 0 };
+  const words: { text: string; serif?: boolean }[] = [
+    { text: 'We' },
+    { text: 'are' },
+    { text: 'Humantic', serif: true },
+    { text: 'Digital' },
+  ];
+  let idx = 0;
+  const headline = words.map((w, wi) => (
+    <React.Fragment key={wi}>
+      <span className="inline-block whitespace-nowrap" style={w.serif ? SERIF : undefined}>
+        {w.text.split('').map((ch, ci) => {
+          const settle = T_HEAD_START + idx++ * T_STAGGER;
+          const flick = t >= settle - T_FLICKER && t < settle;
+          const shown = t >= settle;
+          return (
+            <span key={ci} className="relative inline-block">
+              <span style={{ opacity: shown ? 1 : 0, filter: shown ? 'none' : 'blur(6px)', transition: 'opacity .35s ease, filter .45s ease' }}>
+                {ch}
+              </span>
+              {flick && (
+                <span aria-hidden className="absolute inset-0 text-center text-emerald-200/40" style={{ filter: 'blur(1px)' }}>
+                  {GLYPHS[(Math.floor(t * 20) + ci * 3 + wi * 5) % GLYPHS.length]}
+                </span>
+              )}
+            </span>
+          );
+        })}
+      </span>
+      {wi < words.length - 1 ? ' ' : null}
+    </React.Fragment>
+  ));
 
   const copy = (
-    <div className="relative z-20 max-w-[680px]">
+    <div className="relative z-20" style={{ maxWidth: isMobile ? undefined : 'min(36vw, 560px)' }}>
       <div className="min-h-[1.2em] font-mono text-[11px] sm:text-xs uppercase tracking-[0.28em] text-emerald-300">
         {EYEBROW.slice(0, Math.round(eyeP * EYEBROW.length))}
       </div>
       <h1
         className="mt-4 mb-5 font-light text-white"
-        style={{ fontSize: 'clamp(38px, 6.2vw, 92px)', lineHeight: 0.98, letterSpacing: '-0.02em', minHeight: isMobile ? undefined : '1.96em' }}
+        style={{ fontSize: isMobile ? 'clamp(34px, 10vw, 46px)' : 'clamp(34px, 4vw, 64px)', lineHeight: 1.02, letterSpacing: '-0.02em' }}
         aria-label={HEAD_PLAIN}
       >
         {headline}
       </h1>
-      <p className="max-w-[470px] text-[15px] sm:text-lg leading-relaxed text-white/70" style={fade(showSub)}>
+      <p className="max-w-[420px] text-[15px] sm:text-base lg:text-lg leading-relaxed text-white/70" style={fade(showSub)}>
         Science-based assessment and performance programmes, powered by AI.
       </p>
       <div className="mt-7 flex flex-wrap gap-3" style={fade(showCta)}>
@@ -213,7 +220,16 @@ const FilmHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   );
 
   return (
-    <section id="reel" className="relative w-full overflow-hidden bg-[#020617] text-white">
+    <section
+      id="reel"
+      className="relative w-full overflow-hidden text-white"
+      style={{
+        // Fade the section itself out at the bottom (no solid colour band), so the next section's
+        // glow shows through and there is no hard line between them.
+        WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)',
+        maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)',
+      }}
+    >
       {isMobile ? (
         <div className="pt-20">
           <div className="relative w-full" style={{ aspectRatio: '16 / 9' }}>
@@ -230,15 +246,15 @@ const FilmHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
             style={{
               opacity: showScrim ? 1 : 0,
               background:
-                'linear-gradient(90deg, rgba(2,6,23,.82) 0%, rgba(2,6,23,.45) 38%, rgba(2,6,23,0) 62%)',
+                'linear-gradient(90deg, rgba(2,6,23,.88) 0%, rgba(2,6,23,.6) 28%, rgba(2,6,23,0) 50%)',
             }}
           />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-[#020617] via-[#020617]/60 to-transparent" />
           <div className="absolute inset-x-0 bottom-[12vh] px-[5vw]">{copy}</div>
         </div>
       )}
 
-      {filmOpen && (
+      {filmOpen &&
+        createPortal(
         <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/95 p-4" onClick={() => setFilmOpen(false)}>
           <video
             className="max-h-full max-w-full rounded-lg"
@@ -254,8 +270,9 @@ const FilmHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           >
             Close ✕
           </button>
-        </div>
-      )}
+        </div>,
+        document.body
+        )}
     </section>
   );
 };
