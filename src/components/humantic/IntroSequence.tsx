@@ -38,6 +38,8 @@ const IntroSequence: React.FC = () => {
     }
 
     document.body.style.overflow = 'hidden';
+    // Lets the hero film wait for the doors to open before it starts (see FilmHero).
+    (window as unknown as { __humanticIntroActive?: boolean }).__humanticIntroActive = true;
     setPhase('pre');
 
     // two rAFs so the browser paints the 'pre' from-state before we flip to 'in'
@@ -46,7 +48,11 @@ const IntroSequence: React.FC = () => {
       raf2 = requestAnimationFrame(() => setPhase('in'));
     });
 
-    const tOut = window.setTimeout(() => setPhase('out'), 2900);
+    const tOut = window.setTimeout(() => {
+      setPhase('out');
+      (window as unknown as { __humanticIntroActive?: boolean }).__humanticIntroActive = false;
+      window.dispatchEvent(new Event('humantic-intro-done'));
+    }, 2900);
     const tEnd = window.setTimeout(() => {
       setPhase('hidden');
       document.body.style.overflow = '';

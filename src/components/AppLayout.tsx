@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/humantic/Navbar';
 // import TealHero from '@/components/humantic/TealHero'; // hidden for now, see <main> below
-import HumanReel from '@/components/humantic/HumanReel';
+// import HumanReel from '@/components/humantic/HumanReel'; // previous hero, swapped for FilmHero
+import FilmHero from '@/components/humantic/FilmHero';
 import NarrativeReel from '@/components/humantic/NarrativeReel';
 import TeaserTabs from '@/components/humantic/TeaserTabs';
 import TrustedAcross from '@/components/humantic/TrustedAcross';
@@ -41,7 +42,9 @@ const AppLayout: React.FC = () => {
           {/* <TealHero /> */}
           <div id="top" aria-hidden />
 
-          <HumanReel />
+          {/* Full-bleed hero reel with the "Decode" text (Nov 2026). The previous HUMANTIC-letters
+              hero is <HumanReel /> -- swap back here if needed. */}
+          <FilmHero onCta={() => setModalOpen(true)} />
 
           <NarrativeReel onCta={() => setModalOpen(true)} />
 
