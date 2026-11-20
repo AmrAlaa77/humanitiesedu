@@ -33,11 +33,52 @@ const T_HEAD_START = 5.4; // first letter settles here
 const T_STAGGER = 0.05; // each next letter settles this much later
 const T_FLICKER = 0.35; // how long a letter flickers before settling
 const T_SCRIM = 4.8;
+// HUMANTIC wordmark: the film plays inside its letters, then the camera flies through them.
+const T_WORD_ZOOM = 3.8; // zoom-through starts
+const T_WORD_DUR = 1.8; // and lasts this long
 const T_SUB = 7.2;
 const T_CTA = 7.7;
 const DONE = 99;
 
 
+
+const ease = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+
+/** Dark cover with HUMANTIC cut out of it, so the film is seen only through the letters. */
+const WordCover: React.FC<{ t: number; id: string }> = ({ t, id }) => {
+  const p = ease(Math.min(1, Math.max(0, (t - T_WORD_ZOOM) / T_WORD_DUR)));
+  if (p >= 1) return null;
+  const scale = 1 + p * 36;
+  return (
+    <svg
+      className="pointer-events-none absolute inset-0 z-[5] h-full w-full"
+      viewBox="0 0 1600 900"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden
+    >
+      <defs>
+        <mask id={id} maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="900">
+          <rect width="1600" height="900" fill="#fff" />
+          <g style={{ transformOrigin: '800px 450px', transform: `scale(${scale})` }}>
+            <text
+              x="800"
+              y="450"
+              textAnchor="middle"
+              dominantBaseline="central"
+              fontFamily="'Archivo Black', sans-serif"
+              fontSize="290"
+              letterSpacing="-4"
+              fill="#000"
+            >
+              HUMANTIC
+            </text>
+          </g>
+        </mask>
+      </defs>
+      <rect width="1600" height="900" fill="#020617" mask={`url(#${id})`} style={{ opacity: 1 - Math.min(1, p * 1.3) }} />
+    </svg>
+  );
+};
 
 const FilmHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -235,6 +276,7 @@ const FilmHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
         <div className="pt-20">
           <div className="relative w-full" style={{ aspectRatio: '16 / 9' }}>
             {video}
+            <WordCover t={t} id="hero-word-m" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#020617] to-transparent" />
           </div>
           <div className="px-6 pb-14 pt-6">{copy}</div>
@@ -242,6 +284,7 @@ const FilmHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
       ) : (
         <div className="relative h-[100svh] min-h-[620px]">
           {video}
+          <WordCover t={t} id="hero-word-d" />
           <div
             className="pointer-events-none absolute inset-0 transition-opacity duration-[1200ms]"
             style={{
