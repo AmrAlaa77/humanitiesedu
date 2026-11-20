@@ -168,7 +168,8 @@ const FilmHero: React.FC<{ onCta: () => void }> = ({ onCta }) => {
           );
         })}
       </span>
-      {wi < words.length - 1 ? ' ' : null}
+      {/* "We are" on the first line, "Humantic Digital" kept together on the second */}
+      {wi === 1 ? <br /> : wi === 2 ? '\u00A0' : wi < words.length - 1 ? ' ' : null}
     </React.Fragment>
   ));
 
