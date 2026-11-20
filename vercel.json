@@ -165,6 +165,22 @@
                          "destination":  "/humantic-digital-ar/index.html"
                      },
                      {
+                         "source":  "/humantic-digital-overview-ar",
+                         "destination":  "/humantic-digital-overview-ar/index.html"
+                     },
+                     {
+                         "source":  "/humantic-digital-overview-ar/",
+                         "destination":  "/humantic-digital-overview-ar/index.html"
+                     },
+                     {
+                         "source":  "/humantic-digital-overview",
+                         "destination":  "/humantic-digital-overview/index.html"
+                     },
+                     {
+                         "source":  "/humantic-digital-overview/",
+                         "destination":  "/humantic-digital-overview/index.html"
+                     },
+                     {
                          "source":  "/humantic-digital",
                          "destination":  "/humantic-digital/index.html"
                      },
