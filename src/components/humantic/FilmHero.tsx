@@ -53,12 +53,14 @@ const WordCover: React.FC<{ t: number; id: string }> = ({ t, id }) => {
     <svg
       className="pointer-events-none absolute inset-0 z-[5] h-full w-full"
       viewBox="0 0 1600 900"
-      preserveAspectRatio="xMidYMid slice"
+      preserveAspectRatio="xMidYMid meet"
+      overflow="visible"
       aria-hidden
     >
       <defs>
-        <mask id={id} maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="900">
-          <rect width="1600" height="900" fill="#fff" />
+        <mask id={id} maskUnits="userSpaceOnUse" x="-4000" y="-4000" width="9600" height="8900">
+          {/* oversized so the cover still fills the screen when the word is fitted ("meet") */}
+          <rect x="-4000" y="-4000" width="9600" height="8900" fill="#fff" />
           <g style={{ transformOrigin: '800px 450px', transform: `scale(${scale})` }}>
             <text
               x="800"
@@ -66,7 +68,7 @@ const WordCover: React.FC<{ t: number; id: string }> = ({ t, id }) => {
               textAnchor="middle"
               dominantBaseline="central"
               fontFamily="'Archivo Black', sans-serif"
-              fontSize="290"
+              fontSize="250"
               letterSpacing="-4"
               fill="#000"
             >
@@ -75,7 +77,7 @@ const WordCover: React.FC<{ t: number; id: string }> = ({ t, id }) => {
           </g>
         </mask>
       </defs>
-      <rect width="1600" height="900" fill="#020617" mask={`url(#${id})`} style={{ opacity: 1 - Math.min(1, p * 1.3) }} />
+      <rect x="-4000" y="-4000" width="9600" height="8900" fill="#020617" mask={`url(#${id})`} style={{ opacity: 1 - Math.min(1, p * 1.3) }} />
     </svg>
   );
 };
