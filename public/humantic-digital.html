@@ -396,6 +396,16 @@ body.px-open > header.band, body.px-open > section.band:not(#presence) { display
 #presence .px-cta-btn { display: inline-flex; align-items: center; gap: .6rem; padding: .95rem 1.9rem; border-radius: 999px; background: linear-gradient(120deg, #35d9c2 0%, #0fa39a 45%, #0e758c 100%); color: #fff; font-weight: 600; font-size: 1rem; text-decoration: none; box-shadow: 0 10px 26px rgba(14,117,140,.28); transition: transform .2s, box-shadow .2s; }
 #presence .px-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(14,117,140,.34); color: #fff; }
 #presence .px-cta-btn:focus-visible { outline: 3px solid #0e758c; outline-offset: 3px; }
+#presence .px-form { margin-top: 1.4rem; padding: clamp(1rem, 3vw, 1.5rem); border: 1px solid var(--line); border-radius: 18px; background: var(--panel); max-width: 860px; }
+#presence .px-form-h { margin: 0 0 .9rem; color: var(--ivory); font-weight: 600; }
+#presence .px-form-row { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 1rem; }
+#presence .px-form label { display: flex; flex-direction: column; gap: .35rem; font-size: .85rem; font-weight: 500; color: var(--ivory); }
+#presence .px-form label span { font-weight: 400; color: var(--muted); }
+#presence .px-form input { font: inherit; font-size: .95rem; padding: .7rem .9rem; border: 1px solid var(--line); border-radius: 12px; background: #fff; color: var(--ivory); }
+#presence .px-form input:focus { outline: 2px solid #0e758c; outline-offset: 1px; border-color: #0e758c; }
+#presence .px-form input[aria-invalid="true"] { border-color: #c2410c; }
+#presence .px-form button.px-cta-btn { border: 0; cursor: pointer; font-family: inherit; }
+#presence .px-form-msg { margin: .7rem 0 0; font-size: .88rem; color: var(--muted); min-height: 1.2em; }
 #presence .px-cta-alt { font-size: .88rem; color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { #presence .px-cta-btn { transition: none; } #presence .px-cta-btn:hover { transform: none; } }
 #presence .px-btns { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.4rem; }
@@ -460,6 +470,16 @@ body.px-open > header.band, body.px-open > section.band:not(#presence) { display
       </a>
       <span class="px-cta-alt">or message +966 59 590 9212</span>
     </div>
+    <form class="px-form" id="px-form" novalidate>
+      <p class="px-form-h">Prefer we reach out? Leave your details.</p>
+      <div class="px-form-row">
+        <label>Name<input name="name" type="text" autocomplete="name" required placeholder="Your full name"></label>
+        <label>WhatsApp number<input name="wa" type="tel" autocomplete="tel" inputmode="tel" required placeholder="+966 5X XXX XXXX"></label>
+        <label>Email <span>(optional)</span><input name="email" type="email" autocomplete="email" placeholder="you@company.com"></label>
+      </div>
+      <button type="submit" class="px-cta-btn">Send via WhatsApp</button>
+      <p class="px-form-msg" id="px-form-msg" role="status" aria-live="polite"></p>
+    </form>
     <div class="px-btns">
       <button type="button" class="px-btn" id="px-learn-btn" aria-expanded="false" aria-controls="px-learn">Learn more +</button>
       <a class="px-btn" href="/presence/board.html#who-it-is-for">Who it is for &rarr;</a>
@@ -665,6 +685,23 @@ body.px-open > header.band, body.px-open > section.band:not(#presence) { display
   window.addEventListener('hashchange', sync);
   $('px-back').addEventListener('click', function () { location.hash = 'intro'; });
   if (location.hash === '#presence') sync();
+  /* Lead form: no server here, so it hands the details to WhatsApp, ready to send. */
+  (function () {
+    var f = $('px-form'), msg = $('px-form-msg'); if (!f) return;
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var n = f.name.value.trim(), w = f.wa.value.trim(), m = f.email.value.trim(), bad = null;
+      [f.name, f.wa, f.email].forEach(function (i) { i.removeAttribute('aria-invalid'); });
+      if (!n) bad = f.name;
+      else if (!/^\+?[0-9 ()-]{7,}$/.test(w)) bad = f.wa;
+      else if (m && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m)) bad = f.email;
+      if (bad) { bad.setAttribute('aria-invalid', 'true'); bad.focus(); msg.textContent = bad === f.name ? 'Please add your name.' : bad === f.wa ? 'Please add a valid WhatsApp number.' : 'Please check your email address.'; return; }
+      var text = 'Hello Humantic, I\u2019d like to book a PRESENCE\u2122 session.\nName: ' + n + '\nWhatsApp: ' + w + (m ? '\nEmail: ' + m : '');
+      var url = 'https://wa.me/966595909212?text=' + encodeURIComponent(text);
+      var win = window.open(url, '_blank', 'noopener'); if (!win) location.href = url;
+      msg.textContent = 'WhatsApp is opening with your details. Just press send.';
+    });
+  })();
   /* Keep the hero video playing whenever the panel is open. */
   (function () { var v = sec.querySelector('video'); if (!v) return; v.muted = true;
     ['loadeddata', 'canplay'].forEach(function (ev) { v.addEventListener(ev, function () { if (!sec.hidden) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } }); });
