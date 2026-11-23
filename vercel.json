@@ -53,6 +53,14 @@
                   ],
     "rewrites":  [
                      {
+                         "source":  "/humantic/presence",
+                         "destination":  "/humantic-digital.html"
+                     },
+                     {
+                         "source":  "/humantic/presence/",
+                         "destination":  "/humantic-digital.html"
+                     },
+                     {
                          "source":  "/AmEx-Role-Cards",
                          "destination":  "/amex-role-cards/index.html"
                      },

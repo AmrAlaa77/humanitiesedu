@@ -685,6 +685,8 @@ body.px-open > header.band, body.px-open > section.band:not(#presence) { display
   }
   window.addEventListener('hashchange', sync);
   $('px-back').addEventListener('click', function () { location.hash = 'intro'; });
+  /* The short link /humantic/presence opens straight on this panel. */
+  if (/^\/humantic\/presence\/?$/.test(location.pathname) && !location.hash) { try { history.replaceState(null, '', location.pathname + '#presence'); } catch (e) { location.hash = 'presence'; } }
   if (location.hash === '#presence') sync();
   /* Lead form: no server here, so it hands the details to WhatsApp, ready to send. */
   (function () {
